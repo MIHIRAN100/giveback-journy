@@ -50,7 +50,7 @@ const Navbar = () => {
                         <li><Link to="/" className="nav-item">Introduction</Link></li>
                         <li><Link to="/packages" className="nav-item">Packages</Link></li>
                         <li><Link to="/sri-lanka" className="nav-item">Sri Lankan Heritage</Link></li>
-                        <li><a href="#journeys" className="nav-item">Exclusive Journeys</a></li>
+                        <li><Link to="/exclusive-journeys" className="nav-item">Exclusive Journeys</Link></li>
                         <li><a href="#stays" className="nav-item">Private Stays</a></li>
                     </ul>
                 </div>
@@ -73,7 +73,7 @@ const Navbar = () => {
             <Link to="/" className="nav-item" onClick={toggleMenu}>Introduction</Link>
             <Link to="/packages" className="nav-item" onClick={toggleMenu}>Packages</Link>
             <Link to="/sri-lanka" className="nav-item" onClick={toggleMenu}>Sri Lankan Heritage</Link>
-            <a href="/#journeys" className="nav-item" onClick={toggleMenu}>Exclusive Journeys</a>
+            <Link to="/exclusive-journeys" className="nav-item" onClick={toggleMenu}>Exclusive Journeys</Link>
             <a href="/#stays" className="nav-item" onClick={toggleMenu}>Private Stays</a>
             <Link to="/contact" className="btn-modern btn-black" onClick={toggleMenu} style={{textAlign: 'center', marginTop: '20px'}}>Contact Us</Link>
         </div>

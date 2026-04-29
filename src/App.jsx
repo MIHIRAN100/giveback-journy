@@ -9,6 +9,7 @@ import SriLanka from './pages/SriLanka';
 import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ExclusiveJourneys from './pages/ExclusiveJourneys';
 
 function App() {
   const [cookieVisible, setCookieVisible] = useState(false);
@@ -24,6 +25,7 @@ function App() {
             <Route path="/packages" element={<PackagesPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/exclusive-journeys" element={<ExclusiveJourneys />} />
           </Routes>
         </main>
         <Footer />
