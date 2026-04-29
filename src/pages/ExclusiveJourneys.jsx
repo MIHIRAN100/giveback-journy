@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 
+import img1 from '../assets/sebastian-latorre-VqPOeYqzK-M-unsplash.jpg';
+import ctaImg from '../assets/kirsty-barnby-JbZG7U093Bw-unsplash.jpg';
+import cookingImg from '../assets/Tasting Sri Lankan Cuisine .jpg';
+import wildlifeImg from '../assets/a.jpg';
+import streetFoodImg from '../assets/b.jpg';
+
 const ExclusiveJourneys = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -34,28 +40,28 @@ const ExclusiveJourneys = () => {
             title: "Village Cooking & Dining",
             location: "Hiriwadunna",
             desc: "Learn the secrets of Sri Lankan spices from village elders and enjoy a traditional lunch in a humble mud-brick home.",
-            image: "https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=800"
+            image: cookingImg
         },
         {
             id: 2,
             title: "Public Land Wildlife Spotting",
             location: "Wilpattu Borders",
             desc: "Experience the thrill of the wild in lesser-known buffer zones with local trackers who know every trail.",
-            image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800"
+            image: wildlifeImg
         },
         {
             id: 3,
             title: "Local Market & Street Food Tour",
             location: "Colombo/Kandy",
             desc: "Navigate the vibrant Pettah markets and taste the best 'Kottu Roti' at authentic spots known only to locals.",
-            image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800"
+            image: streetFoodImg
         }
     ];
 
     return (
         <div className="exclusive-page">
             {/* Premium Hero */}
-            <section className="exclusive-hero">
+            <section className="exclusive-hero" style={{ backgroundImage: `url(${img1})` }}>
                 <div className="exclusive-hero-overlay"></div>
                 <div className="exclusive-hero-content">
                     <ScrollReveal>
@@ -63,7 +69,7 @@ const ExclusiveJourneys = () => {
                         <h1>Real Journeys.<br/>True Local Value.</h1>
                         <p>Discover the soul of Sri Lanka without the tourist price tag. We specialize in handcrafted budget adventures that give back to local communities.</p>
                         <div className="exclusive-hero-btns">
-                            <a href="#bespoke" className="btn-modern btn-white">View Budget Plans</a>
+                            <Link to="/packages" className="btn-modern btn-white">View Our Packages</Link>
                             <Link to="/contact" className="btn-modern btn-solid-green">Plan Your Value Trip</Link>
                         </div>
                     </ScrollReveal>
@@ -151,7 +157,7 @@ const ExclusiveJourneys = () => {
             </section>
 
             {/* Final CTA */}
-            <section className="exclusive-cta">
+            <section className="exclusive-cta" style={{ backgroundImage: `url(${ctaImg})` }}>
                 <div className="cta-glass-box">
                     <ScrollReveal>
                         <h2>Ready for an Authentic Adventure?</h2>

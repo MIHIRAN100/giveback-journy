@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
 import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
@@ -61,11 +61,17 @@ const Hero = ({ onSearch }) => {
         executeSearch(name);
     };
 
+    const searchRef = React.useRef(null);
+
     // Close suggestions on click outside
     React.useEffect(() => {
-        const handleClickOutside = () => setShowSuggestions(false);
-        document.addEventListener('click', handleClickOutside);
-        return () => document.removeEventListener('click', handleClickOutside);
+        const handleClickOutside = (event) => {
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                setShowSuggestions(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     // Mobile slideshow logic
@@ -112,7 +118,7 @@ const Hero = ({ onSearch }) => {
                     <h1>Journey Through the <br/> Soul of the Island</h1>
                     <p>From misty emerald tea plantations to pristine azure shores, we curate authentic experiences that reveal the hidden magic of Sri Lanka.</p>
                     
-                    <div className="hero-search-container">
+                    <div className="hero-search-container" ref={searchRef}>
                         <div className="hero-search-bar">
                             <i className="bi bi-search"></i>
                             <input 
@@ -145,6 +151,10 @@ const Hero = ({ onSearch }) => {
                                 ))}
                             </div>
                         )}
+                    </div>
+
+                    <div className="hero-mobile-actions">
+                        <Link to="/packages" className="btn-modern btn-solid-green">View Our Packages</Link>
                     </div>
                 </div>
             </div>

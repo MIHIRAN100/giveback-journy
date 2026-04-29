@@ -10,6 +10,7 @@ import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ExclusiveJourneys from './pages/ExclusiveJourneys';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const [cookieVisible, setCookieVisible] = useState(false);
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <div className="App" style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
+        <LoadingScreen />
         <Navbar />
         <main style={{flex: 1}}>
           <Routes>
