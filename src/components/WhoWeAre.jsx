@@ -9,18 +9,29 @@ const WhoWeAre = () => {
             <div className="who-we-are-container">
                 <div className="who-image-column">
                     <div className="who-image-grid-refined">
-                        <div className="who-grid-item-refined item-large">
+                        <div className="who-grid-item-refined">
                             <img src={WhoImageMain} alt="Exquisite Budget Travel" />
-                            <div className="who-floating-badge">
-                                <span className="badge-number">15+</span>
-                                <span className="badge-text">Years</span>
+                            <span className="who-card-label">Experience</span>
+                            <div className="who-card-overlay">
+                                <h3>15+ Years</h3>
+                                <p>Of curating memories</p>
                             </div>
                         </div>
                         <div className="who-grid-item-refined">
                             <img src={WhoImageSecondary} alt="Authentic Experience" />
+                            <span className="who-card-label">Authentic</span>
+                            <div className="who-card-overlay">
+                                <h3>Local Life</h3>
+                                <p>Immersive journeys</p>
+                            </div>
                         </div>
                         <div className="who-grid-item-refined">
                             <img src={WhoImageTertiary} alt="Island Journey" />
+                            <span className="who-card-label">Value</span>
+                            <div className="who-card-overlay">
+                                <h3>Budget Luxury</h3>
+                                <p>Unbeatable pricing</p>
+                            </div>
                         </div>
                     </div>
                 </div>

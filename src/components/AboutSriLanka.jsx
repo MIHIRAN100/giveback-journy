@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageImage from '../assets/ivani-de-silva-7SPIdNscD4I-unsplash.jpg';
-import BigImage from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
+import BigImage from '../assets/Wanderlust Sri Lanka - Mini Adams Peak Ella.jpg';
+import ThirdImage from '../assets/artem-beliaikin-pDiWpjV14F0-unsplash.jpg';
+import NatureImage from '../assets/Sri Lanka_ Beaches, Wildlife, Temples, Culture, Adventure, Nature.jpg';
 
 const AboutSriLanka = () => {
     return (
@@ -23,26 +25,33 @@ const AboutSriLanka = () => {
 
             <div className="about-image-container">
                 <div className="about-image-grid">
-                    {/* Top Span Image */}
-                    <div className="about-grid-item grid-span-2">
-                        <img 
-                            src={BigImage} 
-                            alt="Sri Lanka High View" 
-                        />
+                    {/* Card 1 */}
+                    <div className="about-grid-item">
+                        <img src={BigImage} alt="Sri Lanka High View" />
+                        <span className="about-card-label">Scenic</span>
+                        <div className="about-card-overlay">
+                            <h3>High Views</h3>
+                            <p>Breathtaking landscapes</p>
+                        </div>
                     </div>
                     
-                    {/* Featured Green Card with dark inset shadow style from CSS */}
-                    <div className="about-grid-item featured-green-card">
-                        <h3>Discover <br/> Authenticity.</h3>
-                        <p>Experience the island through local eyes <i className="fa-solid fa-arrow-right"></i></p>
+                    {/* Card 2 */}
+                    <div className="about-grid-item green-card">
+                        <span className="about-card-label" style={{background: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)'}}>Local</span>
+                        <div className="about-card-overlay">
+                            <h3>Discover <br/> Authenticity</h3>
+                            <p>Experience the island through local eyes <i className="fa-solid fa-arrow-right" style={{marginLeft: '5px'}}></i></p>
+                        </div>
                     </div>
 
-                    {/* Side Image */}
+                    {/* Card 3 */}
                     <div className="about-grid-item">
-                        <img 
-                            src={PageImage} 
-                            alt="Scenic Sri Lanka Landscape" 
-                        />
+                        <img src={NatureImage} alt="Scenic Sri Lanka Landscape" />
+                        <span className="about-card-label">Heritage</span>
+                        <div className="about-card-overlay">
+                            <h3>Ancient History</h3>
+                            <p>Timeless journeys</p>
+                        </div>
                     </div>
                 </div>
             </div>
