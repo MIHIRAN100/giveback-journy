@@ -1,18 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import VolunteerImg from '../assets/a2c730ae-701d-4a8c-8862-2a70549aebf1.jpg';
+import VolunteerImg2 from '../assets/a.jpg';
+import VolunteerImg3 from '../assets/b.jpg';
 
 const VolunteerSection = () => {
     return (
         <section className="volunteer-preview-section">
             <div className="volunteer-preview-container">
-                <div className="volunteer-preview-image">
-                    <img 
-                        src={VolunteerImg} 
-                        alt="Volunteering in Sri Lanka" 
-                    />
-                    <div className="volunteer-image-overlay">
-                        <div className="experience-badge">Impactful Journeys</div>
+                <div className="volunteer-bento-grid">
+                    <div className="volunteer-grid-item tall-card video-card">
+                        <img 
+                            src={VolunteerImg} 
+                            alt="Volunteering in Sri Lanka" 
+                        />
+                        <div className="video-play-btn">
+                            <i className="fa-solid fa-play"></i>
+                        </div>
+                        <div className="volunteer-image-overlay">
+                            <div className="experience-badge">Impactful Journeys</div>
+                        </div>
+                    </div>
+                    <div className="volunteer-grid-item">
+                        <img src={VolunteerImg2} alt="Wildlife Protection" />
+                    </div>
+                    <div className="volunteer-grid-item">
+                        <img src={VolunteerImg3} alt="Community Teaching" />
                     </div>
                 </div>
 

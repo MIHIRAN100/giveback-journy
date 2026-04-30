@@ -2,6 +2,8 @@ import React from 'react';
 import WhoImageMain from '../assets/javier-saint-jean-r4pIcB2reug-unsplash.jpg';
 import WhoImageSecondary from '../assets/f60e45b2-b97c-4817-8ce3-903aad9819e5.jpg';
 import WhoImageTertiary from '../assets/lucija-ros-VC7P8p6dFIc-unsplash.jpg';
+import WhoImage4 from '../assets/artem-beliaikin-pDiWpjV14F0-unsplash.jpg';
+import WhoImage5 from '../assets/brian-kyed-8NpelZe-EzM-unsplash.jpg';
 
 const WhoWeAre = () => {
     return (
@@ -9,14 +11,7 @@ const WhoWeAre = () => {
             <div className="who-we-are-container">
                 <div className="who-image-column">
                     <div className="who-image-grid-refined">
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImageMain} alt="Exquisite Budget Travel" />
-                            <span className="who-card-label">Experience</span>
-                            <div className="who-card-overlay">
-                                <h3>15+ Years</h3>
-                                <p>Of curating memories</p>
-                            </div>
-                        </div>
+                        {/* Left Top Card */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImageSecondary} alt="Authentic Experience" />
                             <span className="who-card-label">Authentic</span>
@@ -25,12 +20,44 @@ const WhoWeAre = () => {
                                 <p>Immersive journeys</p>
                             </div>
                         </div>
+
+                        {/* Middle Tall Card */}
+                        <div className="who-grid-item-refined">
+                            <img src={WhoImageMain} alt="Exquisite Budget Travel" />
+                            <span className="who-card-label">Experience</span>
+                            <div className="who-card-overlay">
+                                <h3>15+ Years</h3>
+                                <p>Of curating memories</p>
+                            </div>
+                        </div>
+
+                        {/* Right Top Card */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImageTertiary} alt="Island Journey" />
                             <span className="who-card-label">Value</span>
                             <div className="who-card-overlay">
                                 <h3>Budget Luxury</h3>
                                 <p>Unbeatable pricing</p>
+                            </div>
+                        </div>
+
+                        {/* Left Bottom Card */}
+                        <div className="who-grid-item-refined">
+                            <img src={WhoImage4} alt="Nature" />
+                            <span className="who-card-label">Nature</span>
+                            <div className="who-card-overlay">
+                                <h3>Wild Trails</h3>
+                                <p>Explore the unseen</p>
+                            </div>
+                        </div>
+
+                        {/* Right Bottom Card */}
+                        <div className="who-grid-item-refined">
+                            <img src={WhoImage5} alt="Heritage" />
+                            <span className="who-card-label">Culture</span>
+                            <div className="who-card-overlay">
+                                <h3>Heritage</h3>
+                                <p>Ancient stories</p>
                             </div>
                         </div>
                     </div>

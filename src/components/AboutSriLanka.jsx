@@ -4,6 +4,7 @@ import PageImage from '../assets/ivani-de-silva-7SPIdNscD4I-unsplash.jpg';
 import BigImage from '../assets/Wanderlust Sri Lanka - Mini Adams Peak Ella.jpg';
 import ThirdImage from '../assets/artem-beliaikin-pDiWpjV14F0-unsplash.jpg';
 import NatureImage from '../assets/Sri Lanka_ Beaches, Wildlife, Temples, Culture, Adventure, Nature.jpg';
+import WildlifeImage from '../assets/a.jpg';
 
 const AboutSriLanka = () => {
     return (
@@ -25,7 +26,17 @@ const AboutSriLanka = () => {
 
             <div className="about-image-container">
                 <div className="about-image-grid">
-                    {/* Card 1 */}
+                    {/* Left Top Card */}
+                    <div className="about-grid-item">
+                        <img src={ThirdImage} alt="Local Markets" />
+                        <span className="about-card-label">Culture</span>
+                        <div className="about-card-overlay">
+                            <h3>Vibrant Markets</h3>
+                            <p>Taste the spices</p>
+                        </div>
+                    </div>
+
+                    {/* Middle Tall Card */}
                     <div className="about-grid-item">
                         <img src={BigImage} alt="Sri Lanka High View" />
                         <span className="about-card-label">Scenic</span>
@@ -35,22 +46,42 @@ const AboutSriLanka = () => {
                         </div>
                     </div>
                     
-                    {/* Card 2 */}
+                    {/* Right Top Card (Green Card) */}
                     <div className="about-grid-item green-card">
                         <span className="about-card-label" style={{background: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)'}}>Local</span>
                         <div className="about-card-overlay">
                             <h3>Discover <br/> Authenticity</h3>
-                            <p>Experience the island through local eyes <i className="fa-solid fa-arrow-right" style={{marginLeft: '5px'}}></i></p>
+                            <p>Experience the island <i className="fa-solid fa-arrow-right" style={{marginLeft: '5px'}}></i></p>
                         </div>
                     </div>
 
-                    {/* Card 3 */}
+                    {/* Left Bottom Card */}
                     <div className="about-grid-item">
-                        <img src={NatureImage} alt="Scenic Sri Lanka Landscape" />
+                        <img src={NatureImage} alt="Heritage" />
                         <span className="about-card-label">Heritage</span>
                         <div className="about-card-overlay">
                             <h3>Ancient History</h3>
                             <p>Timeless journeys</p>
+                        </div>
+                    </div>
+
+                    {/* Card 5 (Tall) */}
+                    <div className="about-grid-item">
+                        <img src={PageImage} alt="Beaches" />
+                        <span className="about-card-label">Coastal</span>
+                        <div className="about-card-overlay">
+                            <h3>Golden Shores</h3>
+                            <p>Tropical paradise</p>
+                        </div>
+                    </div>
+
+                    {/* Card 6 (Tall) */}
+                    <div className="about-grid-item">
+                        <img src={WildlifeImage} alt="Wildlife" />
+                        <span className="about-card-label">Wild</span>
+                        <div className="about-card-overlay">
+                            <h3>Safari Trails</h3>
+                            <p>Untamed nature</p>
                         </div>
                     </div>
                 </div>

@@ -996,14 +996,18 @@ h1, h2, h3, .logo-text {
     padding: 120px 5%;
     background: var(--white);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 80px;
+    gap: 60px;
     max-width: 1400px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .about-content {
-    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-tag {
@@ -1038,29 +1042,40 @@ h1, h2, h3, .logo-text {
     color: #4a4a4a;
     line-height: 1.8;
     margin-bottom: 40px;
-    max-width: 550px;
 }
 
 .about-image-container {
-    flex: 0.85; /* Reduced from 1.2 to decrease the width of the cards */
+    width: 100%;
 }
 
 .about-image-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 230px 230px;
+    gap: 15px;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .about-grid-item {
     position: relative;
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
-    height: 480px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    height: 100%; /* Fill the grid cell */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     background: #111;
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
+/* Facebook Masonry Grid Placement */
+.about-grid-item:nth-child(1) { grid-area: 1 / 1 / 3 / 2; } /* Tall */
+.about-grid-item:nth-child(2) { grid-area: 1 / 2 / 3 / 3; } /* Tall */
+.about-grid-item:nth-child(3) { grid-area: 1 / 3 / 2 / 4; } /* Small Top */
+.about-grid-item:nth-child(4) { grid-area: 2 / 3 / 3 / 4; } /* Small Bottom */
+.about-grid-item:nth-child(5) { grid-area: 1 / 4 / 3 / 5; } /* Tall */
+.about-grid-item:nth-child(6) { grid-area: 1 / 5 / 3 / 6; } /* Tall */
 
 .about-grid-item:hover {
     transform: translateY(-10px);
@@ -1152,20 +1167,12 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 1024px) {
     .about-section {
-        flex-direction: column;
         padding: 80px 5%;
         gap: 50px;
-        text-align: center;
     }
-    
-    .about-content {
-        max-width: 800px;
-    }
+}
 
-    .about-content p {
-        margin: 0 auto 40px;
-    }
-
+@media (max-width: 768px) {
     /* Instagram Reels style on mobile */
     .about-image-grid {
         display: flex !important;
@@ -1211,7 +1218,6 @@ h1, h2, h3, .logo-text {
     .about-card-overlay p {
         font-size: 0.8rem !important;
     }
-
 }
 
 /* Secondary Hero for Subpages */
@@ -2485,14 +2491,17 @@ h1, h2, h3, .logo-text {
 
 .who-we-are-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 80px;
-    max-width: 1400px;
+    gap: 60px;
+    max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .who-image-column {
-    flex: 1;
+    width: 100%;
+    order: 2; /* Move images below text */
 }
 
 .who-image-card {
@@ -2517,7 +2526,10 @@ h1, h2, h3, .logo-text {
 
 
 .who-content-column {
-    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    order: 1; /* Move text above images */
 }
 
 .who-content-column h2 {
@@ -2548,9 +2560,12 @@ h1, h2, h3, .logo-text {
 /* Image Grid Styling */
 .who-image-grid-refined {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1.2fr 1fr;
+    grid-template-rows: 250px 250px;
     gap: 15px;
-    height: 520px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .who-grid-item-refined {
@@ -2561,6 +2576,11 @@ h1, h2, h3, .logo-text {
     box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Make the middle card tall, spanning both rows */
+.who-grid-item-refined:nth-child(2) {
+    grid-row: span 2;
 }
 
 .who-grid-item-refined:hover {
@@ -2680,11 +2700,11 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 1024px) {
     .who-we-are-container {
-        flex-direction: column;
         gap: 50px;
-        text-align: center;
     }
+}
 
+@media (max-width: 768px) {
     /* Instagram Reels style horizontal scroll */
     .who-image-grid-refined {
         display: flex !important;
@@ -2930,24 +2950,71 @@ h1, h2, h3, .logo-text {
     margin: 0 auto;
 }
 
-.volunteer-preview-image {
+.volunteer-bento-grid {
     flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 15px;
+    width: 100%;
+}
+
+.volunteer-grid-item {
     position: relative;
     border-radius: 24px;
     overflow: hidden;
-    height: 550px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+    height: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.volunteer-preview-image img {
+.volunteer-grid-item.tall-card {
+    grid-row: span 2;
+}
+
+.volunteer-grid-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.22);
+}
+
+.volunteer-grid-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.6s ease;
+    display: block;
 }
 
-.volunteer-preview-image:hover img {
-    transform: scale(1.05);
+.volunteer-grid-item:hover img {
+    transform: scale(1.06);
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    z-index: 5;
+    transition: all 0.3s ease;
+    padding-left: 4px; /* visually center the play triangle */
+}
+
+.volunteer-grid-item:hover .video-play-btn {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 .volunteer-image-overlay {
@@ -3040,9 +3107,36 @@ h1, h2, h3, .logo-text {
         text-align: center;
     }
     
-    .volunteer-preview-image {
-        width: 100%;
-        height: 400px;
+    .volunteer-bento-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 12px !important;
+        height: 360px !important;
+        overflow-x: auto;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .volunteer-bento-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .volunteer-bento-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .volunteer-grid-item {
+        flex: 0 0 65% !important;
+        height: 100% !important;
+        border-radius: 16px !important;
+        min-width: 0 !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+        scroll-snap-align: center;
+    }
+
+    .volunteer-grid-item.tall-card {
+        grid-row: auto;
     }
     
     .volunteer-preview-content h2 {
@@ -4394,31 +4488,35 @@ h1, h2, h3, .logo-text {
 /* Modern Experience Cards */
 .experience-cards-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-top: 60px;
 }
 
 .experience-book-card {
     background: var(--white);
-    border-radius: 30px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
     transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.04);
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Facebook horizontal layout */
+    align-items: stretch;
+    min-height: 260px;
 }
 
 .experience-book-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
 }
 
 .exp-card-img {
-    height: 300px;
+    width: 45%; /* Image on the left */
+    height: auto;
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .exp-card-img img {
@@ -4426,18 +4524,19 @@ h1, h2, h3, .logo-text {
     height: 100%;
     object-fit: cover;
     transition: transform 0.8s ease;
+    display: block;
 }
 
 .experience-book-card:hover .exp-card-img img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .exp-card-number {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -4448,20 +4547,20 @@ h1, h2, h3, .logo-text {
     justify-content: center;
     color: var(--white);
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1rem;
     z-index: 5;
 }
 
 .exp-card-location {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    padding: 8px 16px;
+    bottom: 15px;
+    left: 15px;
+    padding: 6px 12px;
     background: rgba(18, 18, 18, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 50px;
     color: var(--white);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -4469,45 +4568,54 @@ h1, h2, h3, .logo-text {
 }
 
 .exp-card-content {
-    padding: 35px;
+    padding: 30px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .exp-card-content h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    line-height: 1.2;
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    line-height: 1.25;
+    font-weight: 800;
+    color: var(--pitch-black);
 }
 
 .exp-card-content p {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 25px;
     line-height: 1.6;
-    flex: 1;
 }
 
 .exp-book-btn {
-    width: 100%;
-    text-align: center;
-    padding: 15px !important;
+    width: max-content;
+    padding: 12px 24px !important;
     font-size: 0.8rem !important;
+    margin-top: auto;
 }
 
 @media (max-width: 1024px) {
     .experience-cards-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    .experience-cards-container {
-        grid-template-columns: 1fr;
+    .experience-book-card {
+        flex-direction: column;
     }
     .exp-card-img {
-        height: 250px;
+        width: 100%;
+        height: 220px;
+    }
+    .exp-card-content {
+        padding: 25px;
+    }
+    .exp-book-btn {
+        width: 100%;
     }
 }
 

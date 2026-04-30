@@ -58,6 +58,13 @@ const ExclusiveJourneys = () => {
             location: "Colombo/Kandy",
             desc: "Navigate the vibrant Pettah markets and taste the best 'Kottu Roti' at authentic spots known only to locals.",
             image: streetFoodImg
+        },
+        {
+            id: 4,
+            title: "Hidden Waterfall Expedition",
+            location: "Ella Highlands",
+            desc: "Trek through untouched tea estates to discover secret waterfalls where you can swim in crystal-clear natural pools.",
+            image: resortImg
         }
     ];
 
@@ -145,19 +152,6 @@ const ExclusiveJourneys = () => {
                 </div>
             </section>
 
-            {/* Private Stays Gallery */}
-            <section className="private-gallery">
-                <div className="gallery-header">
-                    <h2>Eco-Stays & Hidden Gems.</h2>
-                    <p>We partner with small-scale, sustainable accommodations that offer the best value for your stay.</p>
-                </div>
-                <div className="gallery-strip">
-                    <div className="gallery-item"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800" alt="Eco Stay 1" /></div>
-                    <div className="gallery-item"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=800" alt="Eco Stay 2" /></div>
-                    <div className="gallery-item"><img src="https://images.unsplash.com/photo-1445013544690-d30045d04b1b?auto=format&fit=crop&q=80&w=800" alt="Eco Stay 3" /></div>
-                    <div className="gallery-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Eco Stay 4" /></div>
-                </div>
-            </section>
 
             {/* Final CTA */}
             <section className="exclusive-cta" style={{ backgroundImage: `url(${ctaImg})` }}>

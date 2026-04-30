@@ -1,6 +1,11 @@
 import tourCover from '../assets/praveen-maleesha-5XSOMBEhJWQ-unsplash.jpg';
 import southernCover from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import adventureCover from '../assets/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg';
+import mistMountainsCover from '../assets/Little Adam’s Peak.jpg';
+import wildSafariCover from '../assets/Hurulu Eco Park.jpg';
+import galleFortCover from '../assets/Galle Fort, Sri Lanka.jpg';
+import koslandaCover from '../assets/Koslanda 🇱🇰.jpg';
+import kandyEssenceCover from '../assets/download (4).jpg';
 
 export const tourPackages = [
     {
@@ -64,7 +69,7 @@ export const tourPackages = [
         days: "5 Days",
         description: "Venture into the emerald heart of Sri Lanka. Traverse the misty tea plantations of Nuwara Eliya and hike the scenic trails of Horton Plains.",
         price: "$550",
-        image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&q=80&w=1200",
+        image: mistMountainsCover,
         itinerary: [
             { day: 1, title: "Arrival | Kandy", activities: ["Pick-up", "Kandy Lake walk"], desc: "Start your mountain journey in the peaceful hill capital." },
             { day: 2, title: "Nuwara Eliya", activities: ["Blue train ride", "Tea factory"], desc: "Travel through the clouds to the 'Little England' of Sri Lanka." },
@@ -81,7 +86,7 @@ export const tourPackages = [
         days: "6 Days",
         description: "Experience the raw beauty of Sri Lanka's wildlife. Encounter leopards in Yala and explore the untamed jungles of Udawalawe.",
         price: "$720",
-        image: "https://images.unsplash.com/photo-1590418606746-018840fb9cd0?auto=format&fit=crop&q=80&w=1200",
+        image: wildSafariCover,
         itinerary: [
             { day: 1, title: "Arrival | Udawalawe", activities: ["Pick-up", "Sunset safari"], desc: "Meet the elephant herds in their untamed grassland home." },
             { day: 2, title: "Elephant Home", activities: ["Feeding session", "Transfer to Yala"], desc: "Visit the transit home for baby elephants before the jungle." },
@@ -99,7 +104,7 @@ export const tourPackages = [
         days: "3 Days",
         description: "A quick but immersive journey into the colonial heart of Sri Lanka. Walk the historic ramparts and enjoy boutique coastal living.",
         price: "$320",
-        image: "https://images.unsplash.com/photo-1626081442111-744315264020?auto=format&fit=crop&q=80&w=1200",
+        image: galleFortCover,
         itinerary: [
             { day: 1, title: "Arrival | Galle", activities: ["Airport pick-up", "Sunset on ramparts"], desc: "Arrive at the Dutch Fort and walk the ancient walls." },
             { day: 2, title: "Fort Boutique", activities: ["Lighthouse visit", "Shopping"], desc: "Discover the charming streets and local artisan shops." },
@@ -114,7 +119,7 @@ export const tourPackages = [
         days: "4 Days",
         description: "A deep dive into the rainforest and untamed landscapes. Experience the raw biodiversity of Sinharaja and the hidden waterfalls of the south.",
         price: "$480",
-        image: "https://images.unsplash.com/photo-1580982327559-c1202864eb05?auto=format&fit=crop&q=80&w=1200",
+        image: koslandaCover,
         itinerary: [
             { day: 1, title: "Arrival | Sinharaja", activities: ["Airport pick-up", "Jungle lodge check-in"], desc: "Enter the heart of the last primeval rainforest in Sri Lanka." },
             { day: 2, title: "Rainforest Trek", activities: ["Guided jungle hike", "Bird watching"], desc: "Discover endemic species and the vibrant life under the canopy." },
@@ -130,7 +135,7 @@ export const tourPackages = [
         days: "1 Day",
         description: "Explore the cultural soul of Sri Lanka in just one day. Visit the sacred Temple of the Tooth and enjoy the scenic beauty of the hill capital starting from Kandy.",
         price: "$120",
-        image: "https://images.unsplash.com/photo-1625736312933-7649539665bc?auto=format&fit=crop&q=80&w=1200",
+        image: kandyEssenceCover,
         itinerary: [
             { day: 1, title: "Kandy Highlights", activities: ["Temple of Tooth", "Royal Botanical Gardens", "Kandy Lake Walk", "Cultural Show"], desc: "A deep dive into the spiritual and natural beauty of the hill capital." }
         ],
