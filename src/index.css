@@ -99,6 +99,16 @@
     letter-spacing: -0.02em;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 @media (max-width: 768px) {
     section, footer {
         padding-left: 20px !important;
@@ -538,6 +548,7 @@ h1, h2, h3, .logo-text {
     padding: 10px 10px 10px 30px;
     border-radius: 100px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
@@ -1294,6 +1305,130 @@ h1, h2, h3, .logo-text {
     overflow: hidden;
     z-index: 5000;
     animation: slideDown 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.itinerary-detailed-view {
+    animation: slideDown 0.3s ease-out;
+    margin-top: 20px;
+}
+
+.itinerary-section h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: var(--primary-green);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 10px;
+}
+
+.timeline-item {
+    margin-bottom: 25px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-green);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px var(--primary-green);
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.day-label {
+    font-weight: 900;
+    color: var(--primary-green);
+    font-size: 0.8rem;
+}
+
+.day-title {
+    font-size: 1rem;
+    color: var(--pitch-black);
+}
+
+.day-desc {
+    font-size: 0.85rem;
+    color: #666;
+    marginBottom: 10px;
+    line-height: 1.5;
+}
+
+.activities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.activity-tag {
+    font-size: 0.7rem;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    borderRadius: 4px;
+    color: #444;
+}
+
+.activity-tag i {
+    margin-right: 4px;
+    color: var(--primary-green);
+}
+
+.inclusions-exclusions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 25px;
+    background: #f9f9f9;
+    border-radius: 12px;
+}
+
+.inclusions-box h5, .exclusions-box h5 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inclusions-box h5 { color: var(--primary-green); }
+.exclusions-box h5 { color: #e74c3c; }
+
+.inclusions-box ul, .exclusions-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inclusions-box li, .exclusions-box li {
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.inclusions-box li i { color: var(--primary-green); }
+.exclusions-box li i { color: #e74c3c; }
+
+@media (max-width: 768px) {
+    .inclusions-exclusions-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
 }
 
 .suggestion-item {
@@ -3450,8 +3585,39 @@ h1, h2, h3, .logo-text {
     }
 
     .hero-content {
-        z-index: 1000 !important;
+        z-index: 100 !important;
         pointer-events: auto !important;
+        position: relative;
+    }
+
+    /* Prevent invisible overlays from blocking clicks */
+    .hero-overlay, .mobile-hero-slideshow, .hero-video-container {
+        pointer-events: none !important;
+    }
+
+    /* Ensure buttons and links are always interactive */
+    .btn-modern, a, button, input, select, textarea {
+        pointer-events: auto !important;
+        position: relative;
+        z-index: 150 !important;
+    }
+
+    /* Fix Navbar overlap */
+    .brand-header {
+        z-index: 9999 !important;
+    }
+
+    .navbar-container {
+        pointer-events: auto !important;
+    }
+
+    /* Ensure the mobile drawer doesn't block when closed */
+    .mobile-drawer {
+        pointer-events: auto !important;
+    }
+    
+    .mobile-overlay {
+        z-index: 9000 !important;
     }
 
     .hero-search-container {
@@ -3460,6 +3626,9 @@ h1, h2, h3, .logo-text {
 
     .hero-mobile-actions {
         display: block !important;
+        z-index: 200 !important;
+        position: relative;
+        pointer-events: auto !important;
         text-align: center;
     }
 
@@ -3797,6 +3966,7 @@ h1, h2, h3, .logo-text {
 
 .exclusive-hero-btns {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }

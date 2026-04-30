@@ -172,7 +172,7 @@ const SriLanka = () => {
                     <ScrollReveal>
                         <h2>Book Your Heritage Journey</h2>
                         <p>Let our expert guides take you through the hidden stories of these ancient wonders.</p>
-                        <div style={{display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '40px'}}>
+                        <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', marginTop: '40px'}}>
                             <a href="/packages" className="btn-modern btn-solid-green">View Heritage Tours</a>
                             <a href="/contact" className="btn-modern btn-white-outline">Request Custom Itinerary</a>
                         </div>

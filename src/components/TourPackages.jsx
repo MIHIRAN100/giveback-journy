@@ -159,25 +159,24 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                 </button>
 
                 {showItinerary && (
-                    <div className="itinerary-detailed-view" style={{animation: 'slideDown 0.3s ease-out', marginTop: '20px'}}>
-                        {/* Day-by-Day */}
+                    <div className="itinerary-detailed-view">
                         <div className="itinerary-section">
-                            <h4 style={{fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '20px', color: 'var(--primary-green)', borderBottom: '1px solid rgba(0,0,0,0.05)', paddingBottom: '10px'}}>Day-by-Day Itinerary</h4>
+                            <h4>Day-by-Day Itinerary</h4>
                             <div className="itinerary-timeline">
                                 {pkg.itinerary.map((step) => (
-                                    <div key={step.day} className="timeline-item" style={{marginBottom: '25px', paddingLeft: '30px', position: 'relative'}}>
-                                        <div className="timeline-dot" style={{position: 'absolute', left: '0', top: '5px', width: '12px', height: '12px', borderRadius: '50%', background: 'var(--primary-green)', border: '3px solid #fff', boxShadow: '0 0 0 1px var(--primary-green)'}}></div>
+                                    <div key={step.day} className="timeline-item">
+                                        <div className="timeline-dot"></div>
                                         <div className="timeline-content">
-                                            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px'}}>
-                                                <span style={{fontWeight: 900, color: 'var(--primary-green)', fontSize: '0.8rem'}}>DAY {step.day}</span>
-                                                <strong style={{fontSize: '1rem', color: 'var(--pitch-black)'}}>{step.title}</strong>
+                                            <div className="timeline-header">
+                                                <span className="day-label">DAY {step.day}</span>
+                                                <strong className="day-title">{step.title}</strong>
                                             </div>
-                                            <p style={{fontSize: '0.85rem', color: '#666', marginBottom: '10px', lineHeight: '1.5'}}>{step.desc}</p>
+                                            <p className="day-desc">{step.desc}</p>
                                             {step.activities && (
-                                                <div className="activities-list" style={{display: 'flex', flexWrap: 'wrap', gap: '8px'}}>
+                                                <div className="activities-list">
                                                     {step.activities.map((act, i) => (
-                                                        <span key={i} style={{fontSize: '0.7rem', background: '#f0f0f0', padding: '4px 10px', borderRadius: '4px', color: '#444'}}>
-                                                            <i className="bi bi-check2" style={{marginRight: '4px', color: 'var(--primary-green)'}}></i>
+                                                        <span key={i} className="activity-tag">
+                                                            <i className="bi bi-check2"></i>
                                                             {act}
                                                         </span>
                                                     ))}
@@ -189,29 +188,28 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                             </div>
                         </div>
 
-                        {/* Inclusions & Exclusions */}
-                        <div className="inclusions-exclusions-grid" style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '30px', padding: '25px', background: '#f9f9f9', borderRadius: '12px'}}>
+                        <div className="inclusions-exclusions-grid">
                             <div className="inclusions-box">
-                                <h5 style={{fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--primary-green)', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px'}}>
+                                <h5>
                                     <i className="bi bi-check-circle-fill"></i> What's Included
                                 </h5>
-                                <ul style={{listStyle: 'none', padding: 0, margin: 0}}>
+                                <ul>
                                     {pkg.inclusions.map((item, i) => (
-                                        <li key={i} style={{fontSize: '0.8rem', color: '#555', marginBottom: '8px', display: 'flex', gap: '8px'}}>
-                                            <i className="bi bi-plus" style={{color: 'var(--primary-green)'}}></i>
+                                        <li key={i}>
+                                            <i className="bi bi-plus"></i>
                                             {item}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                             <div className="exclusions-box">
-                                <h5 style={{fontSize: '0.8rem', textTransform: 'uppercase', color: '#e74c3c', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px'}}>
+                                <h5>
                                     <i className="bi bi-x-circle-fill"></i> Not Included
                                 </h5>
-                                <ul style={{listStyle: 'none', padding: 0, margin: 0, opacity: 0.8}}>
+                                <ul>
                                     {pkg.exclusions.map((item, i) => (
-                                        <li key={i} style={{fontSize: '0.8rem', color: '#555', marginBottom: '8px', display: 'flex', gap: '8px'}}>
-                                            <i className="bi bi-dash" style={{color: '#e74c3c'}}></i>
+                                        <li key={i}>
+                                            <i className="bi bi-dash"></i>
                                             {item}
                                         </li>
                                     ))}
@@ -221,7 +219,7 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     </div>
                 )}
 
-                <div className="card-footer" style={{marginTop: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '15px'}}>
+                <div className="card-footer" style={{marginTop: 'auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '15px'}}>
                     <div className="price-label">
                         <span style={{fontSize: '0.65rem', opacity: 0.6, textTransform: 'uppercase', fontWeight: 800}}>Starting From</span>
                         <span className="price-val" style={{fontSize: '1.4rem', color: 'var(--primary-green)'}}>{getPrice()}</span>
