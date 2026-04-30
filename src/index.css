@@ -902,10 +902,10 @@ h1, h2, h3, .logo-text {
 /* Company Status Bar (Partner Slider) */
 .partner-slider-section {
     background: linear-gradient(90deg, #121212 0%, #1a1a1a 100%);
-    padding: 25px 0;
+    padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     position: relative;
     z-index: 10;
 }
@@ -937,8 +937,8 @@ h1, h2, h3, .logo-text {
 .partner-logo {
     display: inline-flex;
     align-items: center;
-    gap: 15px;
-    padding: 0 50px;
+    gap: 10px;
+    padding: 0 32px;
     cursor: default;
     transition: var(--transition);
 }
@@ -948,13 +948,13 @@ h1, h2, h3, .logo-text {
 }
 
 .partner-logo i {
-    font-size: 1.4rem;
+    font-size: 1.05rem;
     color: var(--primary-green);
 }
 
 .partner-logo span {
-    font-weight: 800;
-    font-size: 0.85rem;
+    font-weight: 700;
+    font-size: 0.72rem;
     letter-spacing: 0.5px;
     color: var(--white);
     text-transform: uppercase;
@@ -1080,7 +1080,7 @@ h1, h2, h3, .logo-text {
     .about-section {
         flex-direction: column;
         padding: 80px 5%;
-        gap: 60px;
+        gap: 50px;
         text-align: center;
     }
     
@@ -1091,18 +1091,51 @@ h1, h2, h3, .logo-text {
     .about-content p {
         margin: 0 auto 40px;
     }
-    
+
+    /* Facebook-style horizontal photo strip — all 3 in one row */
     .about-image-grid {
-        grid-template-rows: auto;
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        height: 150px !important;
+        grid-template-columns: unset !important;
+        grid-template-rows: unset !important;
     }
-    
+
     .grid-span-2 {
         grid-column: span 1;
+        flex: 1.5 !important; /* Wide image gets more room */
     }
-    
+
     .about-grid-item {
-        height: 300px;
+        flex: 1 !important;
+        height: 100% !important;
+        border-radius: 14px !important;
+        min-width: 0 !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+    }
+
+    .about-grid-item img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* Compact the green card text to fit the smaller tile */
+    .featured-green-card {
+        padding: 12px !important;
+        justify-content: center !important;
+    }
+
+    .featured-green-card h3 {
+        font-size: 0.82rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 6px !important;
+    }
+
+    .featured-green-card p {
+        font-size: 0.68rem !important;
+        opacity: 0.9 !important;
     }
 }
 
@@ -2552,27 +2585,54 @@ h1, h2, h3, .logo-text {
 @media (max-width: 1024px) {
     .who-we-are-container {
         flex-direction: column;
-        gap: 60px;
+        gap: 50px;
         text-align: center;
     }
-    
+
+    /* Facebook-style horizontal photo strip — all 3 in one row */
     .who-image-grid-refined {
-        grid-template-rows: auto;
-        grid-template-columns: 1fr;
-        width: 100%;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        width: 100% !important;
+        height: 160px !important;
     }
-    
+
     .item-large {
         grid-row: span 1;
+        flex: 1.4 !important; /* slightly wider for the main image */
     }
-    
+
     .who-grid-item-refined {
-        height: 250px;
+        flex: 1 !important;
+        height: 100% !important;
+        border-radius: 14px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important;
+        overflow: hidden !important;
+        min-width: 0 !important;
     }
-    
+
+    .who-grid-item-refined img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+    }
+
     .who-floating-badge {
-        right: 0px;
-        bottom: -15px;
+        right: 8px !important;
+        bottom: 8px !important;
+        padding: 8px 12px !important;
+        border-radius: 10px !important;
+    }
+
+    .badge-number {
+        font-size: 1.2rem !important;
+    }
+
+    .badge-text {
+        font-size: 0.58rem !important;
+        letter-spacing: 1px !important;
     }
 }
 
@@ -3649,60 +3709,75 @@ h1, h2, h3, .logo-text {
         z-index: 9000 !important;
     }
 
+    /* Show search bar on mobile — Google pill style */
     .hero-search-container {
-        display: none !important;
-    }
-
-    .hero-mobile-actions {
         display: block !important;
-        z-index: 200 !important;
-        position: relative;
-        pointer-events: auto !important;
-        text-align: center;
+        width: 100% !important;
+        margin-top: 24px !important;
+        z-index: 2000 !important;
+        position: relative !important;
     }
 
-    .hero-mobile-actions .btn-modern {
-        width: 100%;
-        padding: 18px !important;
-        font-size: 1rem !important;
+    /* Hide the old button */
+    .hero-mobile-actions {
+        display: none !important;
     }
 
     .search-suggestions {
         z-index: 5000 !important;
     }
 
-    /* Hero Search Optimization */
+    /* Google-style pill search bar on mobile */
     .hero-search-bar {
-        background: rgba(0, 0, 0, 0.6) !important;
+        background: rgba(255, 255, 255, 0.97) !important;
         backdrop-filter: blur(20px) !important;
-        border-radius: 20px !important;
-        flex-direction: column !important;
-        padding: 20px !important;
-        gap: 15px !important;
-        align-items: stretch !important;
+        border-radius: 100px !important;
+        flex-direction: row !important;
+        padding: 6px 6px 6px 18px !important;
+        gap: 10px !important;
+        align-items: center !important;
+        border: none !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .hero-search-bar i.bi-search {
+        color: #888 !important;
+        font-size: 1rem !important;
     }
     
     .hero-search-bar input {
-        font-size: 1rem !important;
-        padding: 10px 0 !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        font-size: 0.95rem !important;
+        color: #111 !important;
+        padding: 8px 0 !important;
+        border-bottom: none !important;
+        flex: 1 !important;
+    }
+    
+    .hero-search-bar input::placeholder {
+        color: #999 !important;
     }
     
     .hero-search-btn {
-        width: 100% !important;
+        width: auto !important;
         justify-content: center !important;
-        height: 50px !important;
-        border-radius: 12px !important;
+        height: 42px !important;
+        border-radius: 100px !important;
+        padding: 0 18px !important;
+        font-size: 0.85rem !important;
+        white-space: nowrap !important;
     }
 
+    /* Suggestions dropdown floats below the bar */
     .search-suggestions {
-        position: fixed !important;
-        top: 20px !important;
-        left: 20px !important;
-        right: 20px !important;
-        width: auto !important;
-        max-height: 70vh !important;
+        position: absolute !important;
+        top: calc(100% + 10px) !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-height: 60vh !important;
         overflow-y: auto !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.2) !important;
     }
 
     /* Tour Packages Adjustments */
@@ -3728,28 +3803,72 @@ h1, h2, h3, .logo-text {
         height: 60vh !important;
     }
 
-    .detailed-site-card, .detailed-site-card:nth-child(even) {
+    /* Heritage Page — Facebook-style compact photo grid on mobile */
+    .heritage-detailed-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        margin-top: 24px !important;
+    }
+
+    .detailed-site-card,
+    .detailed-site-card:nth-child(even) {
         flex-direction: column !important;
-        border-radius: 24px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important;
+        overflow: hidden !important;
+        background: #fff !important;
+        transform: none !important;
+        transition: none !important;
+        position: relative !important;
     }
-    
+
+    .detailed-site-card:hover {
+        transform: none !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important;
+    }
+
     .site-image-wrapper {
-        height: 350px !important;
+        height: 130px !important;
         width: 100% !important;
+        flex: none !important;
+        position: relative !important;
     }
-    
+
+    .site-image-wrapper img {
+        border-radius: 0 !important;
+    }
+
+    /* Hide text content on mobile, show as overlay */
     .site-info {
-        padding: 40px 25px !important;
+        padding: 10px 10px 12px !important;
+        flex: none !important;
     }
-    
+
     .site-info h3 {
-        font-size: 1.8rem !important;
-        margin-bottom: 20px !important;
+        font-size: 0.78rem !important;
+        margin-bottom: 0 !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    .site-long-desc {
+        display: none !important;
     }
 
     .site-highlights {
-        padding: 25px !important;
-        border-radius: 20px !important;
+        display: none !important;
+    }
+
+    .site-meta {
+        top: 8px !important;
+        left: 8px !important;
+        padding: 4px 9px !important;
+        font-size: 0.58rem !important;
+        border-radius: 8px !important;
+        letter-spacing: 0.5px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
     }
 
     /* Tips Grid Responsiveness */

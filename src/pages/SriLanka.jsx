@@ -4,9 +4,11 @@ import heritageCover from '../assets/brian-kyed-8NpelZe-EzM-unsplash.jpg';
 import anuradhapuraImg from '../assets/ivani-de-silva-7SPIdNscD4I-unsplash.jpg';
 import polonnaruwaImg from '../assets/filiz-elaerts-I9N8rE3tzq8-unsplash.jpg';
 import sigiriyaImg from '../assets/jannes-jacobs-8x3mdrB3x5A-unsplash.jpg';
+import minneriyaImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 import kandyImg from '../assets/chathura-anuradha-subasinghe-isdvqf04MDk-unsplash.jpg';
 import dambullaImg from '../assets/agnieszka-stankiewicz-OMgi4DfiO3c-unsplash.jpg';
 import galleImg from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
+import mirissaImg from '../assets/sebastian-latorre-VqPOeYqzK-M-unsplash.jpg';
 
 const HeritageSection = ({ title, subtitle, description, sites }) => (
     <section className="heritage-site-group section">
@@ -69,6 +71,13 @@ const SriLanka = () => {
             image: sigiriyaImg,
             description: "Built by King Kasyapa as a fortress-palace on top of a 200-meter high rock. It features sophisticated urban planning, stunning frescoes of 'heavenly maidens', and the massive Lion's Paws guarding the final ascent.",
             highlights: ["The Mirror Wall with ancient graffiti", "The Water Gardens", "Cobra Hood Cave"]
+        },
+        {
+            title: "Minneriya: The Gathering",
+            period: "3rd Century BC",
+            image: minneriyaImg,
+            description: "Home to one of nature's greatest spectacles — the annual 'Gathering' where hundreds of wild Asian elephants converge on the ancient Minneriya reservoir. Built by King Mahasena, the tank is a marvel of ancient hydraulic engineering surrounded by lush jungle.",
+            highlights: ["The Elephant Gathering (July–October)", "King Mahasena's Ancient Reservoir", "Jeep Safari through the National Park"]
         }
     ];
 
@@ -96,6 +105,13 @@ const SriLanka = () => {
             image: galleImg,
             description: "Originally built by the Portuguese and later fortified by the Dutch, the Galle Fort is a living heritage site. Its narrow cobblestone streets are lined with Dutch-era villas, museums, and boutique cafes.",
             highlights: ["The Galle Lighthouse", "Dutch Reformed Church", "The Old Dutch Hospital"]
+        },
+        {
+            title: "Mirissa: Whale Watching Capital",
+            period: "Natural Wonder",
+            image: mirissaImg,
+            description: "Mirissa is Sri Lanka's premier destination for blue whale watching, offering one of the most reliable spots in the world to witness the Earth's largest creature in the wild. Beyond the ocean, its crescent beach and laid-back vibe make it the perfect southern escape.",
+            highlights: ["Blue & Sperm Whale Watching Tours", "Mirissa Beach & Coconut Hill", "Parrot Rock Sunset Viewpoint"]
         }
     ];
 
