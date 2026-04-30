@@ -7,6 +7,9 @@ import ctaImg from '../assets/kirsty-barnby-JbZG7U093Bw-unsplash.jpg';
 import cookingImg from '../assets/Tasting Sri Lankan Cuisine .jpg';
 import wildlifeImg from '../assets/a.jpg';
 import streetFoodImg from '../assets/b.jpg';
+import trainImg from '../assets/Kandy to Ella Train Journey _ Lanka Tour Experts.jpg';
+import bohoImg from '../assets/The Kip Sri Lanka - Boho Hideaway in Ahangama - Sun Chasing Travelers.jpg';
+import resortImg from '../assets/Wild grass nature resort.jpg';
 
 const ExclusiveJourneys = () => {
     useEffect(() => {
@@ -18,19 +21,19 @@ const ExclusiveJourneys = () => {
             title: "Local Train Adventures",
             desc: "Experience the world's most scenic rail journeys with pre-booked tickets in observation classes at local prices.",
             icon: "fa-solid fa-train-subway",
-            image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&q=80&w=800"
+            image: trainImg
         },
         {
             title: "Authentic Homestays",
             desc: "Stay with local families in handpicked guesthouses that offer comfort, safety, and real Sri Lankan hospitality.",
             icon: "fa-solid fa-house-user",
-            image: "https://images.unsplash.com/photo-1580982327559-c1202864eb05?auto=format&fit=crop&q=80&w=800"
+            image: bohoImg
         },
         {
             title: "Budget Conscious Planning",
             desc: "Our local experts design itineraries that maximize your experience while keeping costs transparent and affordable.",
             icon: "fa-solid fa-wallet",
-            image: "https://images.unsplash.com/photo-1590418606746-018840fb9cd0?auto=format&fit=crop&q=80&w=800"
+            image: resortImg
         }
     ];
 

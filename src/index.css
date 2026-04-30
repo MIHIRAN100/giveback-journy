@@ -616,6 +616,11 @@ h1, h2, h3, .logo-text {
     .hero-search-bar {
         padding: 8px 8px 8px 20px;
         border-radius: 50px;
+        background: rgba(255, 255, 255, 0.18) !important;
+        backdrop-filter: blur(24px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
     }
     
     .hero-search-bar input {
@@ -908,6 +913,26 @@ h1, h2, h3, .logo-text {
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     position: relative;
     z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .partner-slider-section {
+        padding: 6px 0;
+    }
+
+    .partner-logo {
+        padding: 0 18px;
+        gap: 6px;
+    }
+
+    .partner-logo i {
+        font-size: 0.75rem;
+    }
+
+    .partner-logo span {
+        font-size: 0.6rem;
+        letter-spacing: 0.3px;
+    }
 }
 
 .partner-title {
@@ -3727,34 +3752,35 @@ h1, h2, h3, .logo-text {
         z-index: 5000 !important;
     }
 
-    /* Google-style pill search bar on mobile */
+    /* Glass-effect search bar on mobile */
     .hero-search-bar {
-        background: rgba(255, 255, 255, 0.97) !important;
-        backdrop-filter: blur(20px) !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(24px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
         border-radius: 100px !important;
         flex-direction: row !important;
         padding: 6px 6px 6px 18px !important;
         gap: 10px !important;
         align-items: center !important;
-        border: none !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     }
 
     .hero-search-bar i.bi-search {
-        color: #888 !important;
+        color: var(--primary-green) !important;
         font-size: 1rem !important;
     }
     
     .hero-search-bar input {
         font-size: 0.95rem !important;
-        color: #111 !important;
+        color: rgba(255, 255, 255, 0.95) !important;
         padding: 8px 0 !important;
         border-bottom: none !important;
         flex: 1 !important;
     }
     
     .hero-search-bar input::placeholder {
-        color: #999 !important;
+        color: rgba(255, 255, 255, 0.55) !important;
     }
     
     .hero-search-btn {
@@ -3778,6 +3804,25 @@ h1, h2, h3, .logo-text {
         overflow-y: auto !important;
         border-radius: 20px !important;
         box-shadow: 0 20px 50px rgba(0,0,0,0.2) !important;
+    }
+
+    /* Status bar — thinner on mobile */
+    .partner-slider-section {
+        padding: 5px 0 !important;
+    }
+
+    .partner-logo {
+        padding: 0 16px !important;
+        gap: 5px !important;
+    }
+
+    .partner-logo i {
+        font-size: 0.72rem !important;
+    }
+
+    .partner-logo span {
+        font-size: 0.58rem !important;
+        letter-spacing: 0.2px !important;
     }
 
     /* Tour Packages Adjustments */
@@ -4139,56 +4184,103 @@ h1, h2, h3, .logo-text {
 .bespoke-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 24px;
+    align-items: stretch;
 }
 
+/* Tall Facebook-style photo card */
 .bespoke-card {
-    background: var(--white);
+    position: relative;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-    transition: var(--transition);
+    height: 480px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    cursor: pointer;
+    background: #111;
 }
 
 .bespoke-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 35px 70px rgba(0,0,0,0.22);
 }
 
+.bespoke-card:hover .bespoke-img img {
+    transform: scale(1.06);
+}
+
+/* Full-bleed image fills entire card */
 .bespoke-img {
-    height: 250px;
-    position: relative;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .bespoke-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
 }
 
+/* Bottom gradient overlay on the card itself (not image) so icon shows above it */
+.bespoke-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 30%,
+        rgba(0,0,0,0.55) 60%,
+        rgba(0,0,0,0.92) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Icon badge — top right corner (above gradient) */
 .bespoke-icon {
     position: absolute;
-    bottom: -30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
     background: var(--primary-green);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
-    font-size: 1.5rem;
-    border: 5px solid var(--white);
+    font-size: 1.1rem;
+    z-index: 10;
+    box-shadow: 0 4px 14px rgba(29,185,84,0.5);
 }
 
+/* Text content sits at the bottom over the gradient */
 .bespoke-content {
-    padding: 50px 30px 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 26px;
+    z-index: 2;
 }
 
 .bespoke-content h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.25;
+}
+
+.bespoke-content p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.55;
+    margin: 0;
 }
 
 /* Elite Experiences */
@@ -4389,18 +4481,38 @@ h1, h2, h3, .logo-text {
 }
 
 @media (max-width: 1024px) {
-    .bespoke-grid { grid-template-columns: repeat(2, 1fr); }
+    .bespoke-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .bespoke-card { height: 420px; }
     .exclusive-hero h1 { font-size: 3.5rem; }
 }
 
 @media (max-width: 768px) {
-    .bespoke-grid { grid-template-columns: 1fr; }
+    .bespoke-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+    }
+    .bespoke-card { height: 260px !important; border-radius: 16px !important; }
+    .bespoke-content h3 { font-size: 0.9rem !important; margin-bottom: 4px !important; }
+    .bespoke-content p { font-size: 0.72rem !important; display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
+    .bespoke-content { padding: 16px 14px !important; }
+    .bespoke-icon { width: 32px !important; height: 32px !important; font-size: 0.8rem !important; top: 10px !important; right: 10px !important; }
     .experience-row { flex-direction: column; gap: 40px; }
     .row-reverse { flex-direction: column; }
     .exp-img-box { height: 350px; width: 100%; }
-    .exclusive-hero h1 { font-size: 2.8rem; }
+    .exclusive-hero h1 { font-size: 2.2rem !important; }
     .section-header-centered h2, .experience-text h2, .cta-glass-box h2 { font-size: 2.2rem; }
     .gallery-strip { flex-direction: column; height: auto; }
     .gallery-item { height: 250px; }
     .cta-glass-box { padding: 40px 20px; }
+
+    /* Fix cover image on mobile */
+    .exclusive-hero,
+    .heritage-hero,
+    .contact-hero {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        height: 70vh !important;
+        min-height: 420px !important;
+    }
 }
