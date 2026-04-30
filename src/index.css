@@ -1928,6 +1928,14 @@ h1, h2, h3, .logo-text {
     align-items: flex-end;
     gap: 15px;
     transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none; /* Let clicks pass through to page content */
+}
+
+/* Only the visible children should intercept clicks */
+.chat-container > .chat-window,
+.chat-container > .hi-bubble,
+.chat-container > .chat-toggle {
+    pointer-events: auto;
 }
 
 .chat-window {
@@ -1942,15 +1950,17 @@ h1, h2, h3, .logo-text {
     overflow: hidden;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
-    pointer-events: none;
+    pointer-events: none !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: bottom right;
+    visibility: hidden; /* Fully remove from interaction when closed */
 }
 
 .chat-window.open {
     opacity: 1;
     transform: translateY(0) scale(1);
-    pointer-events: all;
+    pointer-events: auto !important;
+    visibility: visible;
 }
 
 .chat-header {
@@ -2113,9 +2123,12 @@ h1, h2, h3, .logo-text {
     }
 }
 
+/* Note: .chat-window base styles are defined above (line ~1933).
+   Only override specific visual properties here — do NOT remove
+   pointer-events:none or visibility:hidden from the base rule. */
 .chat-window {
     width: 380px;
-    height: 550px;
+    max-height: 550px;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -2325,17 +2338,33 @@ h1, h2, h3, .logo-text {
 }
 
 @media (max-width: 480px) {
+    /* CRITICAL: Never make chat-window full width/height —
+       it creates an invisible full-screen overlay that blocks all touches */
     .chat-window {
-        width: 100%;
-        height: 100%;
-        bottom: 0;
-        right: 0;
-        border-radius: 0;
+        width: calc(100vw - 30px);
+        max-height: 70vh;
+        bottom: auto;
+        right: auto;
+        border-radius: 20px;
     }
     
     .chat-container {
         right: 15px;
         bottom: 15px;
+        pointer-events: none; /* Reinforce: container must not intercept */
+    }
+    
+    .chat-container > .chat-window,
+    .chat-container > .hi-bubble,
+    .chat-container > .chat-toggle {
+        pointer-events: auto;
+    }
+    
+    /* Ensure closed chat window is completely non-interactive */
+    .chat-window:not(.open) {
+        pointer-events: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
 }
 
