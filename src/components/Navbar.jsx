@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+    const location = useLocation();
+    const isHomePage = location.pathname === '/';
     const [bannerVisible, setBannerVisible] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 80) {
+            if (window.scrollY > 50) {
                 setIsScrolled(true);
-            } else if (window.scrollY < 30) {
+            } else {
                 setIsScrolled(false);
             }
         };
@@ -21,9 +23,11 @@ const Navbar = () => {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    const shouldShowSolid = !isHomePage || isScrolled;
+
     return (
         <>
-            <header className={`brand-header ${isScrolled ? 'header-scrolled' : ''}`}>
+            <header className={`brand-header ${shouldShowSolid ? 'header-scrolled' : ''}`}>
             {/* Smooth-Hiding Advertising Banner */}
             <div className={`banner-wrapper ${!bannerVisible || isScrolled ? 'banner-hidden' : ''}`}>
                 <div className="banner">
