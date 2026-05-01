@@ -32,7 +32,7 @@ const Footer = () => {
                         <li><Link to="/packages" className="footer-link">Tour Packages</Link></li>
                         <li><Link to="/sri-lanka" className="footer-link">Island Heritage</Link></li>
                         <li><Link to="/contact" className="footer-link">Talk to an Expert</Link></li>
-                        <li><a href="#" className="footer-link">Private Stays</a></li>
+                        <li><Link to="/stays" className="footer-link">Stays</Link></li>
                     </ul>
                 </div>
 
@@ -65,7 +65,7 @@ const Footer = () => {
                 <div>© 2024 Giveback journny. Tour Agency Sri Lanka. All rights reserved.</div>
                 <div className="footer-bottom-links" style={{display: 'flex', gap: '30px'}}>
                     <Link to="/privacy-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Privacy Policy</Link>
-                    <a href="#" className="footer-link" style={{fontSize: '0.75rem'}}>Terms of Service</a>
+                    <Link to="/terms-and-conditions" className="footer-link" style={{fontSize: '0.75rem'}}>Terms & Conditions</Link>
                 </div>
             </div>
         </footer>

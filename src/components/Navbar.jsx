@@ -51,7 +51,7 @@ const Navbar = () => {
                         <li><Link to="/packages" className="nav-item">Packages</Link></li>
                         <li><Link to="/sri-lanka" className="nav-item">Sri Lankan Heritage</Link></li>
                         <li><Link to="/exclusive-journeys" className="nav-item">Exclusive Journeys</Link></li>
-                        <li><a href="#stays" className="nav-item">Private Stays</a></li>
+                        <li><Link to="/stays" className="nav-item">Stays</Link></li>
                     </ul>
                 </div>
 
@@ -74,7 +74,7 @@ const Navbar = () => {
             <Link to="/packages" className="nav-item" onClick={toggleMenu}>Packages</Link>
             <Link to="/sri-lanka" className="nav-item" onClick={toggleMenu}>Sri Lankan Heritage</Link>
             <Link to="/exclusive-journeys" className="nav-item" onClick={toggleMenu}>Exclusive Journeys</Link>
-            <a href="/#stays" className="nav-item" onClick={toggleMenu}>Private Stays</a>
+            <Link to="/stays" className="nav-item" onClick={toggleMenu}>Stays</Link>
             <Link to="/contact" className="btn-modern btn-black" onClick={toggleMenu} style={{textAlign: 'center', marginTop: '20px'}}>Contact Us</Link>
         </div>
         </>
