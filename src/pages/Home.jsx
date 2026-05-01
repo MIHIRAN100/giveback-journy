@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
+import FeaturesScroll from '../components/FeaturesScroll';
 import PartnerSlider from '../components/PartnerSlider';
 import AboutSriLanka from '../components/AboutSriLanka';
 import WhoWeAre from '../components/WhoWeAre';
@@ -21,6 +22,7 @@ const Home = () => {
         <div className="home-page">
             <Hero onSearch={handleSearch} />
             <ScrollReveal><PartnerSlider /></ScrollReveal>
+            <ScrollReveal><FeaturesScroll /></ScrollReveal>
             <ScrollReveal><WhoWeAre /></ScrollReveal>
             <ScrollReveal><AboutSriLanka /></ScrollReveal>
             <ScrollReveal><VolunteerSection /></ScrollReveal>
