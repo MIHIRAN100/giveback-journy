@@ -21,12 +21,6 @@ const VolunteerSection = () => {
                             <div className="experience-badge">Impactful Journeys</div>
                         </div>
                     </div>
-                    <div className="volunteer-grid-item">
-                        <img src={VolunteerImg2} alt="Wildlife Protection" />
-                    </div>
-                    <div className="volunteer-grid-item">
-                        <img src={VolunteerImg3} alt="Community Teaching" />
-                    </div>
                 </div>
 
                 <div className="volunteer-preview-content">
