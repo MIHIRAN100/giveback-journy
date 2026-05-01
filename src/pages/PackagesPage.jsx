@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import TourPackages from '../components/TourPackages';
+import SriLankaGlance from '../components/SriLankaGlance';
 import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 
 const PackagesPage = () => {
@@ -30,6 +31,7 @@ const PackagesPage = () => {
             </div>
             
             <TourPackages searchTerm={searchTerm} />
+            <SriLankaGlance />
             
             <section className="cta-section">
                 <div className="cta-content">

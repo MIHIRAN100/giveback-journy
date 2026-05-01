@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
 
 const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
-    const [showItinerary, setShowItinerary] = useState(false);
-    const [transport, setTransport] = useState('taxi');
-
     const getPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         // Hardcoded override for pkg.id 1 as requested previously
-        let currentBase = pkg.id === 1 ? 900 : basePriceVal;
-        
-        if (transport === 'tuktuk') {
-            return `$${currentBase - 300}`;
-        }
-        if (transport === 'van') {
-            return `$${currentBase + 150}`;
-        }
-        return `$${currentBase}`;
+        return `$${pkg.id === 1 ? 900 : basePriceVal}`;
     };
 
-    const getLuggageInfo = () => {
-        switch(transport) {
-            case 'tuktuk': return { text: "2 Small Backpacks", icon: "bi-bag-x" };
-            case 'van': return { text: "6 Large Suitcases", icon: "bi-suitcases" };
-            default: return { text: "2 Large + 2 Small Bags", icon: "bi-briefcase" };
-        }
+    const getOriginalPrice = () => {
+        const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
+        const currentBase = pkg.id === 1 ? 900 : basePriceVal;
+        return `$${Math.floor(currentBase * 1.25)}`; // 25% original markup for the discount
+    };
+
+    const getTags = () => {
+        if (pkg.id % 3 === 0) return ['Nature', 'Active', 'Wildlife'];
+        if (pkg.id % 3 === 1) return ['Original', 'Cultural', 'Explorer'];
+        return ['Coastal', 'Relaxing', 'Premium'];
     };
 
     return (
@@ -64,170 +58,63 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 
                 {isExactMatch && <div className="result-badge" style={{position: 'absolute', top: '20px', left: '20px', background: 'var(--primary-green)', color: 'var(--pitch-black)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px'}}>Top Result</div>}
                 {isRecommendation && <div className="result-badge" style={{position: 'absolute', top: '20px', left: '20px', background: 'var(--pitch-black)', color: 'var(--white)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px'}}>You May Also Like</div>}
+                
+                <div className="sale-badge" style={{
+                    position: 'absolute',
+                    bottom: '20px',
+                    left: '20px',
+                    background: '#ff4757',
+                    color: 'white',
+                    padding: '5px 12px',
+                    borderRadius: '4px',
+                    fontSize: '0.6rem',
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    letterSpacing: '1.5px',
+                    zIndex: 10,
+                    boxShadow: '0 4px 15px rgba(255, 71, 87, 0.3)'
+                }}>Sale Now On</div>
             </div>
             <div className="card-body">
-                <h3>{pkg.name}</h3>
-                <p style={{marginBottom: '20px'}}>{pkg.description}</p>
-                
-                <div className="transport-selector-box" style={{
-                    marginBottom: '25px', 
-                    padding: '15px', 
-                    background: 'rgba(29, 185, 84, 0.05)', 
-                    borderRadius: '12px', 
-                    border: '1px solid rgba(29, 185, 84, 0.1)',
-                    position: 'relative',
-                    zIndex: 40,
-                    pointerEvents: 'auto'
-                }}>
-                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
-                        <label style={{fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--primary-green)', margin: 0, letterSpacing: '1px'}}>Vehicle Type</label>
-                        <div style={{fontSize: '0.7rem', fontWeight: 700, color: '#666', background: 'rgba(0,0,0,0.05)', padding: '2px 8px', borderRadius: '4px'}}>
-                            <i className={`bi ${getLuggageInfo().icon}`} style={{marginRight: '5px', color: 'var(--primary-green)'}}></i>
-                            {getLuggageInfo().text}
-                        </div>
-                    </div>
-                    <select 
-                        className="form-control" 
-                        value={transport}
-                        onChange={(e) => setTransport(e.target.value)}
-                        style={{
-                            width: '100%',
-                            background: 'white',
-                            border: '1px solid rgba(0,0,0,0.1)',
-                            borderRadius: '8px',
-                            padding: '10px',
-                            fontSize: '0.9rem',
-                            fontWeight: 700,
-                            cursor: 'pointer',
-                            outline: 'none',
-                            position: 'relative',
-                            zIndex: 50,
-                            pointerEvents: 'auto'
-                        }}
-                    >
-                        <option value="taxi">Private Car</option>
-                        <option value="van">Private Van (+ $150)</option>
-                        <option value="tuktuk">Tuk Tuk Adventure (- $300)</option>
-                    </select>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-green)', marginBottom: '10px', fontSize: '0.8rem' }}>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star-half-stroke"></i>
+                    <span style={{ color: '#888', fontWeight: 700, marginLeft: '6px', fontSize: '0.75rem' }}>4.8 (Excellent)</span>
                 </div>
-
-                <div className="card-highlights" style={{
-                    display: 'grid', 
-                    gridTemplateColumns: '1fr 1fr', 
-                    gap: '15px 20px', 
-                    marginBottom: '30px', 
-                    borderTop: '1px solid rgba(0,0,0,0.05)', 
-                    borderBottom: '1px solid rgba(0,0,0,0.05)', 
-                    padding: '15px 0'
-                }}>
-                    <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                        <div style={{display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary-green)', fontSize: '0.9rem'}}>
-                            <i className="bi bi-geo-alt"></i>
-                            <span style={{fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', color: '#888'}}>Destinations</span>
-                        </div>
-                        <span style={{fontSize: '0.85rem', fontWeight: 600}}>{pkg.itinerary.length} Major Stops</span>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                        <div style={{display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary-green)', fontSize: '0.9rem'}}>
-                            <i className="bi bi-shield-check"></i>
-                            <span style={{fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', color: '#888'}}>Type</span>
-                        </div>
-                        <span style={{fontSize: '0.85rem', fontWeight: 600}}>{transport === 'tuktuk' ? 'Rustic Adventure' : 'Private Guided'}</span>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                        <div style={{display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary-green)', fontSize: '0.9rem'}}>
-                            <i className="bi bi-person-badge"></i>
-                            <span style={{fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', color: '#888'}}>Service</span>
-                        </div>
-                        <span style={{fontSize: '0.85rem', fontWeight: 600}}>Driver Provided</span>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
-                        <div style={{display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary-green)', fontSize: '0.9rem'}}>
-                            <i className="bi bi-stars"></i>
-                            <span style={{fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', color: '#888'}}>Includes</span>
-                        </div>
-                        <span style={{fontSize: '0.85rem', fontWeight: 600}}>All Breakfasts</span>
-                    </div>
+                <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '8px'}}>{pkg.name}</h3>
+                <p style={{marginBottom: '15px', fontSize: '0.85rem', color: '#666', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{pkg.description.split('.')[0] + '.'}</p>
+                
+                <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
+                    {getTags().map((tag, i) => (
+                        <span key={i} style={{ 
+                            fontSize: '0.6rem', 
+                            fontWeight: 800, 
+                            textTransform: 'uppercase', 
+                            letterSpacing: '0.5px', 
+                            padding: '4px 8px', 
+                            background: i === 1 ? 'rgba(29,185,84,0.1)' : 'rgba(0,0,0,0.03)', 
+                            color: i === 1 ? 'var(--primary-green)' : '#666', 
+                            border: i !== 1 ? '1px solid rgba(0,0,0,0.05)' : '1px solid transparent',
+                            borderRadius: '4px' 
+                        }}>{tag}</span>
+                    ))}
                 </div>
                 
-                <button 
-                    className="btn-itinerary-toggle" 
-                    onClick={() => setShowItinerary(!showItinerary)}
-                >
-                    {showItinerary ? 'Hide Detailed Plan' : 'View Full Itinerary'}
-                    <i className="bi bi-chevron-down" style={{transform: showItinerary ? 'rotate(180deg)' : 'none'}}></i>
-                </button>
-
-                {showItinerary && (
-                    <div className="itinerary-detailed-view">
-                        <div className="itinerary-section">
-                            <h4>Day-by-Day Itinerary</h4>
-                            <div className="itinerary-timeline">
-                                {pkg.itinerary.map((step) => (
-                                    <div key={step.day} className="timeline-item">
-                                        <div className="timeline-dot"></div>
-                                        <div className="timeline-content">
-                                            <div className="timeline-header">
-                                                <span className="day-label">DAY {step.day}</span>
-                                                <strong className="day-title">{step.title}</strong>
-                                            </div>
-                                            <p className="day-desc">{step.desc}</p>
-                                            {step.activities && (
-                                                <div className="activities-list">
-                                                    {step.activities.map((act, i) => (
-                                                        <span key={i} className="activity-tag">
-                                                            <i className="bi bi-check2"></i>
-                                                            {act}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="inclusions-exclusions-grid">
-                            <div className="inclusions-box">
-                                <h5>
-                                    <i className="bi bi-check-circle-fill"></i> What's Included
-                                </h5>
-                                <ul>
-                                    {pkg.inclusions.map((item, i) => (
-                                        <li key={i}>
-                                            <i className="bi bi-plus"></i>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="exclusions-box">
-                                <h5>
-                                    <i className="bi bi-x-circle-fill"></i> Not Included
-                                </h5>
-                                <ul>
-                                    {pkg.exclusions.map((item, i) => (
-                                        <li key={i}>
-                                            <i className="bi bi-dash"></i>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                <div className="card-footer" style={{marginTop: 'auto', display: 'flex', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-between', gap: '10px'}}>
+                    <div className="price-label" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{fontSize: '0.6rem', opacity: 0.6, textTransform: 'uppercase', fontWeight: 800}}>Starting From</span>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
+                            <span className="price-val" style={{fontSize: '1.25rem', color: 'var(--primary-green)'}}>{getPrice()}</span>
+                            <span style={{fontSize: '0.85rem', color: '#aaa', textDecoration: 'line-through', fontWeight: 600}}>{getOriginalPrice()}</span>
                         </div>
                     </div>
-                )}
-
-                <div className="card-footer" style={{marginTop: 'auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '15px'}}>
-                    <div className="price-label">
-                        <span style={{fontSize: '0.65rem', opacity: 0.6, textTransform: 'uppercase', fontWeight: 800}}>Starting From</span>
-                        <span className="price-val" style={{fontSize: '1.4rem', color: 'var(--primary-green)'}}>{getPrice()}</span>
-                    </div>
-                    <div style={{display: 'flex', gap: '10px'}}>
-                        <a href="/contact" className="btn-black" style={{padding: '12px 25px', borderRadius: '500px', fontWeight: 800, textTransform: 'uppercase', fontSize: '0.7rem', letterSpacing: '1px', textDecoration: 'none', display: 'inline-block'}}>
-                            Contact for Booking
-                        </a>
+                    <div style={{display: 'flex', flexShrink: 0}}>
+                        <Link to={`/package/${pkg.id}`} className="btn-black" style={{padding: '10px 16px', borderRadius: '500px', fontWeight: 800, textTransform: 'uppercase', fontSize: '0.65rem', letterSpacing: '0.5px', textDecoration: 'none', display: 'inline-block', whiteSpace: 'nowrap'}}>
+                            View Details
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -236,35 +123,43 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 };
 
 const TourPackages = ({ searchTerm }) => {
+    const [filterDuration, setFilterDuration] = React.useState('all');
+    const [filterCategory, setFilterCategory] = React.useState('all');
+
     // Check if the searchTerm is an exact match
     const searchLower = (searchTerm || "").toLowerCase();
     const exactMatch = searchLower.length > 2 
         ? tourPackages.find(pkg => pkg.name.toLowerCase().includes(searchLower))
         : null;
 
-    const otherPackages = tourPackages.filter(pkg => {
-        const searchLower = (searchTerm || "").toLowerCase();
-        if (!searchLower) return true;
-        
+    const filteredPackages = tourPackages.filter(pkg => {
+        // Search Filter
         const searchWords = searchLower.split(' ').filter(w => w.length > 0);
-        
-        // Check if all search words match something in the package
-        const isMatch = searchWords.every(word => {
+        const searchMatch = searchWords.every(word => {
             const inName = pkg.name.toLowerCase().includes(word);
             const inDesc = pkg.description.toLowerCase().includes(word);
-            const inDays = pkg.days.toLowerCase().includes(word);
-            const inItinerary = pkg.itinerary.some(step => 
-                step.title.toLowerCase().includes(word) || 
-                step.desc.toLowerCase().includes(word) ||
-                (step.activities && step.activities.some(act => act.toLowerCase().includes(word)))
-            );
-            const inInclusions = pkg.inclusions.some(inc => inc.toLowerCase().includes(word));
-            
-            return inName || inDesc || inDays || inItinerary || inInclusions;
+            return inName || inDesc;
         });
-        
-        return pkg.id !== (exactMatch ? exactMatch.id : null) && isMatch;
+
+        if (!searchMatch) return false;
+
+        // Duration Filter
+        const days = parseInt(pkg.days);
+        if (filterDuration === 'short' && days >= 5) return false;
+        if (filterDuration === 'medium' && (days < 5 || days > 7)) return false;
+        if (filterDuration === 'long' && days <= 7) return false;
+
+        // Category Filter (Simplified mapping for now)
+        const tags = pkg.name.toLowerCase() + pkg.description.toLowerCase();
+        if (filterCategory === 'nature' && !tags.includes('wild') && !tags.includes('nature') && !tags.includes('safari')) return false;
+        if (filterCategory === 'cultural' && !tags.includes('temple') && !tags.includes('ancient') && !tags.includes('cultural')) return false;
+        if (filterCategory === 'adventure' && !tags.includes('trek') && !tags.includes('hike') && !tags.includes('adventure')) return false;
+        if (filterCategory === 'coastal' && !tags.includes('beach') && !tags.includes('coast') && !tags.includes('shore')) return false;
+
+        return true;
     });
+
+    const otherPackages = filteredPackages.filter(pkg => pkg.id !== (exactMatch ? exactMatch.id : null));
 
     return (
         <section className="packages-section" id="tours">
@@ -272,6 +167,35 @@ const TourPackages = ({ searchTerm }) => {
                 <span className="about-tag">Handpicked Journeys</span>
                 <h2>Curated Tour Plans.</h2>
                 <p>From misty emerald tea plantations to pristine azure shores, find the perfect itinerary for your island escape.</p>
+            </div>
+
+            {/* Filter Bar */}
+            <div className="filter-bar">
+                <div className="filter-group">
+                    <span className="filter-label">Duration:</span>
+                    {['all', 'short', 'medium', 'long'].map(d => (
+                        <button 
+                            key={d} 
+                            onClick={() => setFilterDuration(d)}
+                            className={`filter-btn ${filterDuration === d ? 'active' : ''}`}
+                        >
+                            {d === 'all' ? 'All' : d === 'short' ? '1-4 Days' : d === 'medium' ? '5-7 Days' : '8+ Days'}
+                        </button>
+                    ))}
+                </div>
+                
+                <div className="filter-group">
+                    <span className="filter-label">Interest:</span>
+                    {['all', 'nature', 'cultural', 'adventure', 'coastal'].map(c => (
+                        <button 
+                            key={c} 
+                            onClick={() => setFilterCategory(c)}
+                            className={`filter-btn ${filterCategory === c ? 'active' : ''}`}
+                        >
+                            {c === 'all' ? 'All' : c === 'nature' ? 'Nature' : c === 'cultural' ? 'Culture' : c === 'adventure' ? 'Adventure' : 'Beach'}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             <div className="packages-grid">

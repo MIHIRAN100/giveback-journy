@@ -12,6 +12,7 @@ import Stays from './pages/Stays';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import ExclusiveJourneys from './pages/ExclusiveJourneys';
+import TourDetails from './pages/TourDetails';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/sri-lanka" element={<SriLanka />} />
             <Route path="/packages" element={<PackagesPage />} />
+            <Route path="/package/:id" element={<TourDetails />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/stays" element={<Stays />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
