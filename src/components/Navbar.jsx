@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useCompare } from '../context/CompareContext';
 
 const Navbar = () => {
+    const { compareList } = useCompare();
     const location = useLocation();
     const isHomePage = location.pathname === '/';
     const [bannerVisible, setBannerVisible] = useState(true);
@@ -60,6 +62,29 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-actions">
+                    <Link to="/compare" className="nav-icon-link" style={{ position: 'relative', marginRight: '15px', color: 'var(--pitch-black)', fontSize: '1.2rem' }}>
+                        <i className="bi bi-shuffle"></i>
+                        {compareList.length > 0 && (
+                            <span style={{ 
+                                position: 'absolute', 
+                                top: '-8px', 
+                                right: '-8px', 
+                                background: 'var(--primary-green)', 
+                                color: 'white', 
+                                fontSize: '0.65rem', 
+                                fontWeight: 800, 
+                                width: '18px', 
+                                height: '18px', 
+                                borderRadius: '50%', 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                border: '2px solid white'
+                            }}>
+                                {compareList.length}
+                            </span>
+                        )}
+                    </Link>
                     <Link to="/contact" className="btn-modern btn-black">Contact Us</Link>
                 </div>
 

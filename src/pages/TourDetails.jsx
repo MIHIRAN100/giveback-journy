@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
 import SriLankaGlance from '../components/SriLankaGlance';
-import routeMap from '../assets/route-map.png';
+import gallery1 from '../assets/Galle Fort, Sri Lanka.jpg';
+import gallery2 from '../assets/Hurulu Eco Park.jpg';
+import { useCompare } from '../context/CompareContext';
 
 const ItineraryDay = ({ step, index }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -52,6 +54,7 @@ const ItineraryDay = ({ step, index }) => {
 const TourDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { addToCompare } = useCompare();
     const [transport, setTransport] = useState('taxi');
     
     // Scroll to top on mount
@@ -124,6 +127,12 @@ const TourDetails = () => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '15px' }}>
                             <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden' }}>
                                 <img src={pkg.image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                            <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden' }}>
+                                <img src={gallery1} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                            <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden' }}>
+                                <img src={gallery2} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                             <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
                                 <img src={pkg.image} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6)' }} />
@@ -221,7 +230,10 @@ const TourDetails = () => {
                             </button>
 
                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '25px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
-                                <button style={{ background: 'none', border: 'none', color: '#444', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <button 
+                                    onClick={() => addToCompare(pkg)}
+                                    style={{ background: 'none', border: 'none', color: '#444', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+                                >
                                     <i className="bi bi-plus-lg"></i> Add to compare
                                 </button>
                                 <button style={{ background: 'none', border: 'none', color: '#444', fontSize: '1.2rem', cursor: 'pointer' }}>
@@ -271,6 +283,38 @@ const TourDetails = () => {
                                 <option value="van">Private Van (+ $150)</option>
                                 <option value="tuktuk">Tuk Tuk Adventure (- $300)</option>
                             </select>
+                        </div>
+
+                        {/* Why You'll Love This Trip */}
+                        <div style={{
+                            marginTop: '30px',
+                            padding: '30px',
+                            background: 'white',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(0,0,0,0.05)',
+                            boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
+                        }}>
+                            <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '20px' }}>
+                                Why you'll love this trip
+                            </h4>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                                <div style={{ display: 'flex', gap: '15px' }}>
+                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-camera-retro"></i></div>
+                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Stunning Photo Ops:</strong> Capture the iconic Nine Arches Bridge and sunrise at Sigiriya.</p>
+                                </div>
+                                <div style={{ display: 'flex', gap: '15px' }}>
+                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-leaf"></i></div>
+                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Authentic Stays:</strong> Relax in hand-picked boutique villas and eco-lodges.</p>
+                                </div>
+                                <div style={{ display: 'flex', gap: '15px' }}>
+                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-user-shield"></i></div>
+                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Expert Drivers:</strong> Navigate the island safely with our professional, local knowledge experts.</p>
+                                </div>
+                                <div style={{ display: 'flex', gap: '15px' }}>
+                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-gem"></i></div>
+                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Hidden Gems:</strong> Go beyond the guidebook with exclusive local village experiences.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -342,7 +386,7 @@ const TourDetails = () => {
                                 border: '1px solid rgba(0,0,0,0.05)',
                                 boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
                             }}>
-                                <img src={routeMap} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Sri Lanka Route Map" />
+                                <img src={pkg.routeMap || pkg.image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Sri Lanka Route Map" />
                             </div>
 
                             <div style={{ 
@@ -367,6 +411,45 @@ const TourDetails = () => {
                         </div>
                     </div>
                 </div>
+                {/* Important Notes Section */}
+                {pkg.importantNotes && (
+                    <div style={{ marginTop: '80px', padding: '50px', background: 'rgba(0,0,0,0.02)', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.03)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '35px' }}>
+                            <div style={{ width: '40px', height: '40px', background: '#111', color: 'white', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <i className="bi bi-exclamation-lg"></i>
+                            </div>
+                            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, margin: 0 }}>Important Notes</h3>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
+                            {pkg.importantNotes.map((note, i) => {
+                                const [title, ...rest] = note.split(':');
+                                const description = rest.join(':');
+                                return (
+                                    <div key={i} style={{ display: 'flex', gap: '25px', alignItems: 'flex-start' }}>
+                                        <div style={{ 
+                                            fontSize: '1.2rem', 
+                                            fontWeight: 900, 
+                                            color: 'var(--primary-green)', 
+                                            minWidth: '35px',
+                                            height: '35px',
+                                            border: '2px solid var(--primary-green)',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}>
+                                            {i + 1}
+                                        </div>
+                                        <div>
+                                            <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '10px', color: '#111' }}>{title}</h4>
+                                            <p style={{ margin: 0, fontSize: '1.05rem', color: '#555', lineHeight: 1.7 }}>{description.trim()}</p>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
             </div>
             <SriLankaGlance />
         </div>

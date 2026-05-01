@@ -13,8 +13,10 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import ExclusiveJourneys from './pages/ExclusiveJourneys';
 import TourDetails from './pages/TourDetails';
+import Compare from './pages/Compare';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
+import { CompareProvider } from './context/CompareContext';
 
 const AppContent = () => {
   const [cookieVisible, setCookieVisible] = useState(false);
@@ -36,6 +38,7 @@ const AppContent = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/exclusive-journeys" element={<ExclusiveJourneys />} />
+          <Route path="/compare" element={<Compare />} />
         </Routes>
       </main>
       <Footer />
@@ -49,7 +52,9 @@ const AppContent = () => {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <CompareProvider>
+        <AppContent />
+      </CompareProvider>
     </Router>
   );
 }
