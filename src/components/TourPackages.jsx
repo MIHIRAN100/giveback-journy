@@ -6,7 +6,7 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     const getPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         // Hardcoded override for pkg.id 1 as requested previously
-        return `$${pkg.id === 1 ? 900 : basePriceVal}`;
+        return `$${pkg.id === 1 ? 840 : basePriceVal}`;
     };
 
     const getOriginalPrice = () => {
@@ -112,7 +112,7 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                         </div>
                     </div>
                     <div style={{display: 'flex', flexShrink: 0}}>
-                        <Link to={`/package/${pkg.id}`} className="btn-black" style={{padding: '10px 16px', borderRadius: '500px', fontWeight: 800, textTransform: 'uppercase', fontSize: '0.65rem', letterSpacing: '0.5px', textDecoration: 'none', display: 'inline-block', whiteSpace: 'nowrap'}}>
+                        <Link to={`/package/${pkg.id}`} className="btn-black" style={{padding: '10px 20px', borderRadius: '500px', fontWeight: 800, textTransform: 'uppercase', fontSize: '0.65rem', letterSpacing: '0.5px', textDecoration: 'none', display: 'inline-block', whiteSpace: 'nowrap'}}>
                             View Details
                         </Link>
                     </div>

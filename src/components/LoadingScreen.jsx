@@ -5,10 +5,18 @@ const LoadingScreen = () => {
     const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
+        // Preload sound
+        const sound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+        sound.volume = 0.3;
+
         const timer = setTimeout(() => {
             setFadeOut(true);
-            setTimeout(() => setVisible(false), 800); // Wait for fade animation
-        }, 2000); // Minimum display time
+            
+            // Try to play sound (may be blocked by browser until first interaction)
+            sound.play().catch(err => console.log("Audio playback blocked:", err));
+            
+            setTimeout(() => setVisible(false), 800); 
+        }, 2000); 
 
         return () => clearTimeout(timer);
     }, []);

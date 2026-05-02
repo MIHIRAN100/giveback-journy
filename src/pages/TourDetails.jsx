@@ -56,6 +56,7 @@ const TourDetails = () => {
     const navigate = useNavigate();
     const { addToCompare } = useCompare();
     const [transport, setTransport] = useState('taxi');
+    const [activeBookingTab, setActiveBookingTab] = useState('Is this trip right for you?');
     
     // Scroll to top on mount
     useEffect(() => {
@@ -76,10 +77,10 @@ const TourDetails = () => {
 
     const getPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
-        let currentBase = pkg.id === 1 ? 900 : basePriceVal;
+        let currentBase = pkg.id === 1 ? 840 : basePriceVal;
         
         if (transport === 'tuktuk') {
-            return `$${currentBase - 300}`;
+            return `$${currentBase - (pkg.id === 1 ? 200 : 300)}`;
         }
         if (transport === 'van') {
             return `$${currentBase + 150}`;
@@ -224,9 +225,9 @@ const TourDetails = () => {
                                     cursor: 'pointer',
                                     transition: 'all 0.3s ease'
                                 }} 
-                                onClick={() => window.location.href='/contact'}
+                                onClick={() => navigate(`/contact?package=${pkg.name}`)}
                             >
-                                Contact Us
+                                Contact Us to Book
                             </button>
 
                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '25px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
@@ -253,6 +254,113 @@ const TourDetails = () => {
                         <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '40px' }}>
                             {pkg.description}
                         </p>
+
+                        {/* Before You Book Section */}
+                        <div style={{ marginTop: '40px', marginBottom: '60px', padding: '40px', background: '#fdfdfd', borderRadius: '32px', border: '1px solid #f0f0f0' }}>
+                            <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#111', marginBottom: '30px' }}>Before you book you should know</h2>
+                            <div className="booking-tabs-container">
+                                <div style={{ 
+                                    display: 'flex', 
+                                    gap: '30px', 
+                                    borderBottom: '1px solid #eee', 
+                                    marginBottom: '35px',
+                                    overflowX: 'auto',
+                                    paddingBottom: '2px'
+                                }}>
+                                    {['Is this trip right for you?', 'Accommodation', 'Joining point'].map((tab) => (
+                                        <div 
+                                            key={tab}
+                                            onClick={() => setActiveBookingTab(tab)}
+                                            style={{
+                                                padding: '12px 0',
+                                                fontSize: '1rem',
+                                                fontWeight: 700,
+                                                color: activeBookingTab === tab ? '#ff4d4d' : '#111',
+                                                cursor: 'pointer',
+                                                position: 'relative',
+                                                whiteSpace: 'nowrap',
+                                                transition: 'all 0.3s ease',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '10px'
+                                            }}
+                                        >
+                                            <i className={
+                                                tab === 'Is this trip right for you?' ? 'bi bi-flag' : 
+                                                tab === 'Accommodation' ? 'bi bi-houses' : 'bi bi-geo-alt'
+                                            } style={{ fontSize: '1.1rem', color: activeBookingTab === tab ? '#ff4d4d' : '#666' }}></i>
+                                            {tab}
+                                            {activeBookingTab === tab && (
+                                                <div style={{ 
+                                                    position: 'absolute', 
+                                                    bottom: '-1px', 
+                                                    left: 0, 
+                                                    right: 0, 
+                                                    height: '4px', 
+                                                    background: '#ff4d4d',
+                                                    borderRadius: '2px'
+                                                }}></div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{ minHeight: '180px' }}>
+                                    {activeBookingTab === 'Is this trip right for you?' && (
+                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                            <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
+                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
+                                                Though its equatorial position means fairly constant year-round temperatures, the summer months in Sri Lanka are very hot with short, sharp monsoons in the south-west of the country. Be sure to use adequate sun protection and drink plenty of water.
+                                            </li>
+                                            <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
+                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
+                                                Beaches in Sri Lanka may be unpatrolled, so please seek local advice on where to swim safely.
+                                            </li>
+                                            <li style={{ display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
+                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
+                                                Some temples on this trip require your head to be uncovered when visiting. You can opt out of temple visits if this requirement doesn't suit you.
+                                            </li>
+                                        </ul>
+                                    )}
+                                    {activeBookingTab === 'Accommodation' && (
+                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                            <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
+                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
+                                                We handpick a mix of boutique hotels, colonial-era bungalows, and high-quality eco-lodges that reflect the authentic character of the region.
+                                            </li>
+                                            <li style={{ display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
+                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
+                                                Most accommodations feature air conditioning and Wi-Fi in common areas, though some remote eco-stays focus on natural ventilation and digital detox.
+                                            </li>
+                                        </ul>
+                                    )}
+                                    {activeBookingTab === 'Joining point' && (
+                                        <div>
+                                            <p style={{ color: '#666', marginBottom: '20px' }}>This trip can be joined at any of the following locations:</p>
+                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                                                {['Kandy', 'Galle', 'Hikkaduwa', 'Katunayake Airport'].map((point) => (
+                                                    <div key={point} style={{ 
+                                                        padding: '10px 20px', 
+                                                        background: '#fcfcfc', 
+                                                        borderRadius: '50px', 
+                                                        border: '1px solid #eee',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '10px',
+                                                        fontWeight: 800,
+                                                        color: '#111',
+                                                        fontSize: '0.9rem'
+                                                    }}>
+                                                        <i className="bi bi-geo-alt-fill" style={{ color: 'var(--primary-green)' }}></i>
+                                                        {point}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
 
                         <div className="transport-selector-box" style={{
                             padding: '25px', 
@@ -411,6 +519,7 @@ const TourDetails = () => {
                         </div>
                     </div>
                 </div>
+
                 {/* Important Notes Section */}
                 {pkg.importantNotes && (
                     <div style={{ marginTop: '80px', padding: '50px', background: 'rgba(0,0,0,0.02)', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.03)' }}>
@@ -447,6 +556,59 @@ const TourDetails = () => {
                                     </div>
                                 );
                             })}
+                        </div>
+                    </div>
+                )}
+
+                {/* Guest Reviews Section */}
+                {pkg.reviews && (
+                    <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '80px' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>Guest Reviews</h2>
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', color: '#FFD700', fontSize: '1.2rem' }}>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <span style={{ color: '#666', fontSize: '1rem', fontWeight: 700, marginLeft: '10px' }}>5.0 / 5.0 Rating</span>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                            {pkg.reviews.map((review) => (
+                                <div key={review.id} style={{ 
+                                    background: '#fff', 
+                                    padding: '35px', 
+                                    borderRadius: '32px', 
+                                    border: '1px solid #f0f0f0',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+                                        <div style={{ 
+                                            width: '50px', 
+                                            height: '50px', 
+                                            background: 'rgba(29, 185, 84, 0.1)', 
+                                            color: 'var(--primary-green)', 
+                                            borderRadius: '50%', 
+                                            display: 'flex', 
+                                            alignItems: 'center', 
+                                            justifyContent: 'center',
+                                            fontSize: '1.5rem'
+                                        }}>
+                                            <i className={review.icon || "bi bi-person-fill"}></i>
+                                        </div>
+                                        <div>
+                                            <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800 }}>{review.name}</h4>
+                                            <span style={{ fontSize: '0.85rem', color: '#999', fontWeight: 600 }}>{review.date}</span>
+                                        </div>
+                                        <div style={{ marginLeft: 'auto', display: 'flex', gap: '3px', color: '#FFD700' }}>
+                                            {[...Array(review.rating)].map((_, i) => <i key={i} className="bi bi-star-fill" style={{ fontSize: '0.85rem' }}></i>)}
+                                        </div>
+                                    </div>
+                                    <p style={{ margin: 0, color: '#555', lineHeight: 1.7, fontStyle: 'italic' }}>"{review.comment}"</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 )}

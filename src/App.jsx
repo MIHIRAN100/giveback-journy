@@ -13,6 +13,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import ExclusiveJourneys from './pages/ExclusiveJourneys';
 import TourDetails from './pages/TourDetails';
+import BookingPage from './pages/BookingPage';
 import Compare from './pages/Compare';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
@@ -39,6 +40,7 @@ const AppContent = () => {
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/exclusive-journeys" element={<ExclusiveJourneys />} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/booking" element={<BookingPage />} />
         </Routes>
       </main>
       <Footer />

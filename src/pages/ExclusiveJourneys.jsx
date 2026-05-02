@@ -141,8 +141,8 @@ const ExclusiveJourneys = () => {
                                     <div className="exp-card-content">
                                         <h3>{exp.title}</h3>
                                         <p>{exp.desc}</p>
-                                        <Link to="/contact" className="btn-modern btn-solid-green exp-book-btn">
-                                            Book This Experience
+                                        <Link to={`/contact?package=${encodeURIComponent(exp.title)}`} className="btn-modern btn-solid-green exp-book-btn">
+                                            Inquire Now
                                         </Link>
                                     </div>
                                 </div>

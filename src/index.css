@@ -419,7 +419,7 @@ h1, h2, h3, .logo-text {
 /* Hero Styles */
 .hero {
     position: relative;
-    height: 75vh;
+    height: 85vh;
     width: 100%;
     z-index: 20;
     display: flex;
@@ -543,7 +543,7 @@ h1, h2, h3, .logo-text {
 
 /* Hero Search and Filters */
 .hero-search-container {
-    margin-top: 50px;
+    margin: 50px auto 0;
     width: 100%;
     max-width: 800px;
     position: relative;
@@ -5519,19 +5519,33 @@ h1, h2, h3, .logo-text {
    FEATURES SCROLL (PROFILE CIRCLES)
    ===================================================== */
 .features-scroll-section {
+    display: none; /* Hidden on desktop */
     padding: 50px 0 30px;
     background: var(--white);
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
+@media (max-width: 1024px) {
+    .features-scroll-section {
+        display: block; /* Visible on mobile/tablet */
+    }
+}
+
 .features-scroll-container {
     display: flex;
     overflow-x: auto;
-    padding: 15px 5%; /* Added top/bottom padding to prevent clipping of shadows/rings */
+    padding: 15px 5%; 
     gap: 15px;
     scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    justify-content: center; /* Centering for laptop/desktop */
+}
+
+@media (max-width: 1024px) {
+    .features-scroll-container {
+        justify-content: flex-start; /* Keep scrolling from left on tablet/mobile */
+    }
 }
 
 .features-scroll-container::-webkit-scrollbar {

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import FeaturesScroll from '../components/FeaturesScroll';
-import SriLankaGlance from '../components/SriLankaGlance';
 import PartnerSlider from '../components/PartnerSlider';
 import WhoWeAre from '../components/WhoWeAre';
 import AboutSriLanka from '../components/AboutSriLanka';
-import TourPackages from '../components/TourPackages';
 import FAQSection from '../components/FAQSection';
 import MapSection from '../components/MapSection';
 import VolunteerSection from '../components/VolunteerSection';
@@ -13,21 +11,13 @@ import FeedbackSection from '../components/FeedbackSection';
 import ScrollReveal from '../components/ScrollReveal';
 
 const Home = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const handleSearch = (term) => {
-        setSearchTerm(term);
-    };
-
     return (
         <div className="home-page">
-            <Hero onSearch={handleSearch} />
+            <Hero />
             <ScrollReveal><PartnerSlider /></ScrollReveal>
             <ScrollReveal><FeaturesScroll /></ScrollReveal>
             <ScrollReveal><WhoWeAre /></ScrollReveal>
             <ScrollReveal><AboutSriLanka /></ScrollReveal>
-            <ScrollReveal><TourPackages searchTerm={searchTerm} /></ScrollReveal>
-            <ScrollReveal><SriLankaGlance /></ScrollReveal>
             <ScrollReveal><VolunteerSection /></ScrollReveal>
             <ScrollReveal><FeedbackSection /></ScrollReveal>
             <ScrollReveal><MapSection /></ScrollReveal>
