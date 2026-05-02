@@ -14,6 +14,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import ExclusiveJourneys from './pages/ExclusiveJourneys';
 import TourDetails from './pages/TourDetails';
 import BookingPage from './pages/BookingPage';
+import BookingInquiryPage from './pages/BookingInquiryPage';
 import Compare from './pages/Compare';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
@@ -34,6 +35,7 @@ const AppContent = () => {
           <Route path="/sri-lanka" element={<SriLanka />} />
           <Route path="/packages" element={<PackagesPage />} />
           <Route path="/package/:id" element={<TourDetails />} />
+          <Route path="/inquiry/:id" element={<BookingInquiryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/stays" element={<Stays />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

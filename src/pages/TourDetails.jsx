@@ -234,7 +234,7 @@ const TourDetails = () => {
                                     cursor: 'pointer',
                                     transition: 'all 0.3s ease'
                                 }} 
-                                onClick={() => navigate(`/contact?package=${pkg.name}`)}
+                                onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}
                             >
                                 Contact Us to Book
                             </button>
