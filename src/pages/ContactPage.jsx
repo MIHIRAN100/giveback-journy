@@ -23,11 +23,12 @@ const ContactPage = () => {
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
         const templateParams = {
-            from_name: formData.name,
-            from_email: formData.email,
-            subject: formData.subject,
-            message: formData.details,
-            to_name: "North Wind Team"
+            name: formData.name,
+            email: formData.email,
+            notes: formData.details,
+            tour_package: formData.subject, // Using subject as the package name for general inquiries
+            submitted_at: new Date().toLocaleString(),
+            to_email: "givebackjourney@gmail.com"
         };
 
         try {
