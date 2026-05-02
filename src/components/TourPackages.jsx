@@ -5,13 +5,16 @@ import { tourPackages } from '../data/tours';
 const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     const getPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
-        // Hardcoded override for pkg.id 1 as requested previously
-        return `$${pkg.id === 1 ? 840 : basePriceVal}`;
+        if (pkg.id === 1) return `$840`;
+        if (pkg.id === 2) return `$600`;
+        return `$${basePriceVal}`;
     };
 
     const getOriginalPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
-        const currentBase = pkg.id === 1 ? 900 : basePriceVal;
+        let currentBase = basePriceVal;
+        if (pkg.id === 1) currentBase = 840;
+        if (pkg.id === 2) currentBase = 600;
         return `$${Math.floor(currentBase * 1.25)}`; // 25% original markup for the discount
     };
 

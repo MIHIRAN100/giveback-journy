@@ -16,6 +16,7 @@ import routeMapHill from '../assets/route-map-hill.png';
 import routeMapWild from '../assets/route-map-wild.png';
 import routeMapScenic from '../assets/route-map-scenic.png';
 import routeMapSignatureNew from '../assets/route-map-signature-new.png';
+import routeMapSouthernNew from '../assets/route-map-southern-new.png';
 
 export const tourPackages = [
     {
@@ -58,9 +59,9 @@ export const tourPackages = [
             },
             { 
                 day: 6, 
-                title: "Ella to Hikkaduwa | Coastal Bliss", 
-                desc: "Travel south towards the vibrant coast of Hikkaduwa. En route, stop at the thundering Ravana Falls for a photo opportunity. In the evening, enjoy the golden sands and turquoise waters of Hikkaduwa, known for its coral reefs and laid-back surf vibes.", 
-                activities: ["Ravana Falls Stopover", "Southern Coastal Drive", "Hikkaduwa Beach Sunset"] 
+                title: "Ella to Hikkaduwa via Galle Fort", 
+                desc: "Travel south towards the coast. En route, stop at the thundering Ravana Falls for a photo opportunity. In the late afternoon, enjoy a historic sunset walk along the ramparts of Galle Fort before continuing to the vibrant shores of Hikkaduwa for your overnight stay.", 
+                activities: ["Ravana Falls Stopover", "Galle Fort Sunset Walk", "Hikkaduwa Coastal Transition"] 
             },
             { 
                 day: 7, 
@@ -95,21 +96,66 @@ export const tourPackages = [
     },
     {
         id: 2,
-        name: "Southern Shores & Blue Whales",
-        days: "5 Days",
-        description: "A coastal escape focused on the pristine beaches of the south. From the colonial charm of Galle Fort to the majestic blue whales of Mirissa.",
-        price: "$620",
+        name: "Southern Sun & Beach Escape",
+        days: "7 Days / 6 Nights",
+        description: "A relaxing coastal journey along Sri Lanka’s south—combining beach life, culture, and optional adventures, with a perfect ending by the ocean.",
+        price: "$600",
         image: southernCover,
         itinerary: [
-            { day: 1, title: "Historic Galle Fort", desc: "Arrive on the southern coast and immerse yourself in the colonial atmosphere of Galle Fort. Wander through cobblestone streets lined with Dutch-era architecture, vibrant art galleries, and charming boutique cafes. As the sun dips, take a leisurely stroll along the historic ramparts, watching the waves crash against the stone walls as the lighthouse begins to glow against the twilight sky.", activities: ["Fort Rampart Walk", "Colonial Architecture Tour", "Sunset Over Ocean"] },
-            { day: 2, title: "Coastal Bliss in Mirissa", desc: "Travel to the tropical paradise of Mirissa, famous for its sweeping golden beaches and swaying coconut palms. Spend your day lounging on the soft sands, dipping into the turquoise waters, or visiting the iconic Coconut Tree Hill for a panoramic view of the bay. The laid-back vibe here is perfect for recharging, with fresh tropical fruit juices and local delicacies available at every corner.", activities: ["Beach Relaxation", "Coconut Tree Hill", "Island Vibe Experience"] },
-            { day: 3, title: "Ocean Giants & Whale Watching", desc: "Embark on an early morning boat excursion to witness the majestic blue whales in their natural habitat. Mirissa is one of the premier spots in the world for these gentle giants, and sightings are often spectacular. After returning to shore, spend the afternoon snorkeling in hidden coves or watching sea turtles glide near the water's surface, creating memories of a lifetime in the Indian Ocean.", activities: ["Blue Whale Watching", "Snorkeling", "Turtle Spotting"] },
-            { day: 4, title: "Surfing & Seafood Delights", desc: "Head to the nearby shores of Weligama, where gentle waves provide the perfect playground for surfing. Whether you are a beginner or a pro, the experience of riding the tropical swells is unmatched. As evening approaches, join a local beach BBQ where fresh-caught fish and prawns are grilled right on the sand, accompanied by the sounds of the ocean and vibrant music.", activities: ["Surfing Lessons", "Beach BBQ", "Local Seafood Tasting"] },
-            { day: 5, title: "Farewell to the Shores", desc: "Enjoy one last refreshing dip in the ocean before concluding your southern journey. Reflect on the sun-kissed days, the incredible wildlife, and the serene beauty of the coastline as you begin your transfer back to the airport, carrying the warmth of the Sri Lankan sun with you.", activities: ["Morning Beach Walk", "Last Dip in Ocean", "Airport Transfer"] }
+            { 
+                day: 1, 
+                title: "Arrival & Beach Relaxation in Hikkaduwa", 
+                desc: "Welcome to Sri Lanka! Your journey begins in Hikkaduwa, known for its lively beach vibe and surf culture. After checking into your guesthouse, take time to unwind and recover from your journey. Enjoy a beautiful sunset by the coast.", 
+                activities: ["Beachfront Relaxation", "Indian Ocean Swim", "Sunset Watching"] 
+            },
+            { 
+                day: 2, 
+                title: "Marine Life & Coastal Vibes", 
+                desc: "After breakfast, enjoy a full day at leisure exploring Hikkaduwa. Discover local cafés, shops, and the vibrant underwater world. Hikkaduwa is the perfect introduction to Sri Lanka's coastal beauty.", 
+                activities: ["Beach Hopping", "Optional Snorkeling at Sanctuary", "Optional Scuba Diving"] 
+            },
+            { 
+                day: 3, 
+                title: "Hikkaduwa to Unawatuna via Galle", 
+                desc: "Travel further south to Unawatuna, with a stop at the historic Galle Fort. Walk along the fort walls and explore charming streets filled with colonial architecture before checking into your Unawatuna guesthouse.", 
+                activities: ["Galle Fort Wall Walk", "Colonial Architecture Tour", "Sunset Drinks by the Ocean"] 
+            },
+            { 
+                day: 4, 
+                title: "Beach & Nature in Unawatuna", 
+                desc: "Enjoy a peaceful day combining beach and nature. Visit Jungle Beach, a quiet spot surrounded by lush greenery, or the Japanese Peace Pagoda for panoramic views of the coastline.", 
+                activities: ["Unawatuna Beach Swim", "Jungle Beach Visit", "Japanese Peace Pagoda", "Optional Yoga Session"] 
+            },
+            { 
+                day: 5, 
+                title: "Unawatuna to Mirissa | Sunset Coast", 
+                desc: "Continue your journey to Mirissa, one of Sri Lanka’s most beautiful and relaxed beach destinations. After check-in, visit Coconut Tree Hill for the most iconic sunset views on the island.", 
+                activities: ["Travel to Mirissa", "Coconut Tree Hill Sunset", "Beachside Relaxation"] 
+            },
+            { 
+                day: 6, 
+                title: "Whale Watching & Final Relaxation", 
+                desc: "Start early for a memorable ocean experience spotting blue whales and dolphins (seasonal). Spend your final afternoon fully unwinding and enjoying your last moments by the tropical Indian Ocean.", 
+                activities: ["Optional Whale Watching", "Final Beach Relaxation", "Farewell Ocean Swim"] 
+            },
+            { 
+                day: 7, 
+                title: "Departure", 
+                desc: "After breakfast, transfer directly to the airport for your onward journey. Carry the warmth of the sun and the rhythm of the waves home with you.", 
+                activities: ["Final Island Breakfast", "Direct Airport Transfer"] 
+            }
         ],
-        inclusions: ["Airport transfers", "Private vehicle with Professional Driver", "Whale watching boat", "Surfing lesson", "Accommodation + Breakfast"],
-        exclusions: ["International flights", "Personal expenses"],
-        routeMap: routeMapSouthern,
+        inclusions: [
+            "6 nights guesthouse accommodation",
+            "Daily breakfast",
+            "All ground transfers"
+        ],
+        exclusions: [
+            "Lunch & dinner",
+            "Optional activities",
+            "Personal expenses"
+        ],
+        routeMap: routeMapSouthernNew,
         importantNotes: [
             "Beach Safety & Indian Ocean Currents: The southern coast of Sri Lanka offers breathtaking beaches, but the Indian Ocean can have powerful undercurrents and riptides. It is vital to pay close attention to the colored flags on the beach: red means the water is dangerous for swimming. Always consult with locals or hotel staff before heading out, especially during the monsoon transitions. If you find yourself caught in a current, stay calm and swim parallel to the shore until you are free. We prioritize your safety and recommend swimming only in designated areas with active lifeguard monitoring.",
             "Tropical Sun Protection & Hydration: The sun in Sri Lanka is exceptionally strong due to its proximity to the equator. Even on overcast days, UV levels remain high. We strongly advise using high-SPF, reef-safe sunscreen, wearing a wide-brimmed hat, and utilizing UV-protective swimwear. Maintaining hydration is equally important in the humid coastal heat. Always carry a reusable water bottle; we provide clean refills throughout your journey to ensure you remain energized and healthy. Avoid direct sun exposure during the peak hours of 11 AM to 3 PM to prevent heat exhaustion and severe sunburn.",

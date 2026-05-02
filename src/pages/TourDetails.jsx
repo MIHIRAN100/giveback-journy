@@ -6,8 +6,13 @@ import gallery1 from '../assets/Galle Fort, Sri Lanka.jpg';
 import gallery2 from '../assets/Hurulu Eco Park.jpg';
 import { useCompare } from '../context/CompareContext';
 
-const ItineraryDay = ({ step, index }) => {
+const ItineraryDay = ({ step, index, forceOpen }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
+
+    React.useEffect(() => {
+        setIsOpen(forceOpen);
+    }, [forceOpen]);
+
     return (
         <div style={{ borderBottom: '1px solid #eee' }}>
             <div 
@@ -57,6 +62,7 @@ const TourDetails = () => {
     const { addToCompare } = useCompare();
     const [transport, setTransport] = useState('taxi');
     const [activeBookingTab, setActiveBookingTab] = useState('Is this trip right for you?');
+    const [allOpen, setAllOpen] = useState(false);
     
     // Scroll to top on mount
     useEffect(() => {
@@ -77,10 +83,13 @@ const TourDetails = () => {
 
     const getPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
-        let currentBase = pkg.id === 1 ? 840 : basePriceVal;
+        let currentBase = basePriceVal;
+        if (pkg.id === 1) currentBase = 840;
+        if (pkg.id === 2) currentBase = 600;
         
         if (transport === 'tuktuk') {
-            return `$${currentBase - (pkg.id === 1 ? 200 : 300)}`;
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : 300);
+            return `$${currentBase - discount}`;
         }
         if (transport === 'van') {
             return `$${currentBase + 150}`;
@@ -464,18 +473,22 @@ const TourDetails = () => {
                 <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '60px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111' }}>Itinerary</h2>
-                        <button style={{ 
-                            background: 'white', 
-                            border: '1px solid #ddd', 
-                            padding: '8px 20px', 
-                            borderRadius: '8px', 
-                            fontWeight: 700, 
-                            fontSize: '0.9rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px'
-                        }}>
-                            <i className="bi bi-chevron-down"></i> Show all
+                        <button 
+                            onClick={() => setAllOpen(!allOpen)}
+                            style={{ 
+                                background: 'white', 
+                                border: '1px solid #ddd', 
+                                padding: '8px 20px', 
+                                borderRadius: '8px', 
+                                fontWeight: 700, 
+                                fontSize: '0.9rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            <i className={`bi bi-chevron-${allOpen ? 'up' : 'down'}`}></i> {allOpen ? 'Hide all' : 'Show all'}
                         </button>
                     </div>
 
@@ -514,7 +527,7 @@ const TourDetails = () => {
                         {/* Right Column: Accordion Itinerary */}
                         <div>
                             {pkg.itinerary.map((step, index) => (
-                                <ItineraryDay key={step.day} step={step} index={index} />
+                                <ItineraryDay key={step.day} step={step} index={index} forceOpen={allOpen} />
                             ))}
                         </div>
                     </div>
