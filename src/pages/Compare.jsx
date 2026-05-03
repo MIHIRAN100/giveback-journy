@@ -90,7 +90,7 @@ const Compare = () => {
                                     <div style={{ padding: '20px', background: '#f8f9fa', borderRadius: '16px' }}>
                                         <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#999', textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '1px' }}>Top Highlights</span>
                                         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                            {tour.inclusions.slice(0, 3).map((inc, i) => (
+                                            {tour.inclusions && tour.inclusions.slice(0, 3).map((inc, i) => (
                                                 <li key={i} style={{ fontSize: '0.9rem', color: '#444', marginBottom: '8px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                                                     <i className="bi bi-check2-circle" style={{ color: 'var(--primary-green)', fontWeight: 900 }}></i>
                                                     {inc}

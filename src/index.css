@@ -3512,7 +3512,7 @@ h1, h2, h3, .logo-text {
 /* Feedback Section Styles */
 .feedback-section {
     padding: 120px 5%;
-    background: #f8f9fa;
+    background: #fdfdfd;
 }
 
 .feedback-container {
@@ -3520,32 +3520,35 @@ h1, h2, h3, .logo-text {
     margin: 0 auto;
 }
 
-.feedback-header {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
 .feedback-header h2 {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
     margin-top: 15px;
     letter-spacing: -0.05em;
     line-height: 1.1;
+    color: #111;
 }
 
-.feedback-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+.feedback-scroll-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0 40px 0;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.feedback-scroll-row::-webkit-scrollbar {
+    display: none;
 }
 
 .feedback-card {
-    background: var(--white);
-    padding: 40px;
+    background: #ffffff;
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-    border: 1px solid rgba(0,0,0,0.03);
-    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -3554,48 +3557,30 @@ h1, h2, h3, .logo-text {
 .feedback-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    border-color: rgba(29, 185, 84, 0.2);
+    border-color: rgba(29, 185, 84, 0.1);
 }
 
 .feedback-stars {
-    color: var(--primary-green);
-    font-size: 0.9rem;
-    margin-bottom: 25px;
-    display: flex;
-    gap: 4px;
+    color: #FFD700;
 }
 
 .feedback-text {
-    font-size: 1.1rem;
-    color: var(--pitch-black);
-    line-height: 1.7;
-    margin-bottom: 40px;
-    font-style: italic;
-    font-weight: 500;
+    color: #333;
 }
 
 .feedback-user {
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-.feedback-user img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+    gap: 12px;
 }
 
 .user-info h4 {
     margin: 0;
-    font-size: 1rem;
-    font-weight: 800;
+    color: #111;
 }
 
 .user-info span {
-    font-size: 0.8rem;
-    color: #888;
+    color: #999;
 }
 
 @media (max-width: 1024px) {

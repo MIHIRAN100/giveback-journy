@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { tourPackages } from '../data/tours';
+import { tourPackages, BUDGET_PROMO_IMG } from '../data/tours';
 import SriLankaGlance from '../components/SriLankaGlance';
 import gallery1 from '../assets/Galle Fort, Sri Lanka.jpg';
 import gallery2 from '../assets/Hurulu Eco Park.jpg';
+import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -69,6 +70,10 @@ const TourDetails = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const itineraryRef = React.useRef(null);
     const reviewsRef = React.useRef(null);
+    
+    const getInitials = (name) => {
+        return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    };
     
     // Scroll to top on mount
     useEffect(() => {
@@ -503,7 +508,7 @@ const TourDetails = () => {
                                 <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)', marginRight: '10px' }}></i> What's Included
                             </h5>
                             <ul style={{ listStyle: 'none', padding: 0 }}>
-                                {pkg.inclusions.map((item, i) => (
+                                {pkg.inclusions && pkg.inclusions.map((item, i) => (
                                     <li key={i} style={{ fontSize: '0.95rem', color: '#555', marginBottom: '10px', display: 'flex', alignItems: 'flex-start' }}>
                                         <i className="bi bi-check" style={{ color: 'var(--primary-green)', marginRight: '10px', fontWeight: 900 }}></i>
                                         {item}
@@ -528,45 +533,94 @@ const TourDetails = () => {
                         </div>
 
                         {/* Budget Promo Card - Filling the empty space */}
-                        <div className="budget-promo-card" style={{
+                        <div className="spotify-ad-card" style={{
                             position: 'relative',
-                            borderRadius: '24px',
+                            borderRadius: '16px',
                             overflow: 'hidden',
-                            height: '400px',
-                            background: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url(${pkg.image})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
+                            height: '420px',
                             display: 'flex',
                             flexDirection: 'column',
-                            justifyContent: 'center',
-                            padding: '40px',
+                            justifyContent: 'space-between',
+                            padding: '30px',
                             color: 'white',
-                            boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
-                            marginTop: '10px'
+                            background: '#121212',
+                            boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
+                            marginTop: '10px',
+                            border: '1px solid rgba(255,255,255,0.05)'
                         }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
-                                <div style={{ background: 'var(--primary-green)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}>
-                                    <i className="fa-solid fa-hand-holding-heart"></i>
+                            {/* Accent Gradient */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '-100px',
+                                right: '-100px',
+                                width: '300px',
+                                height: '300px',
+                                background: 'radial-gradient(circle, rgba(29,185,84,0.3) 0%, transparent 70%)',
+                                zIndex: 0
+                            }}></div>
+
+                            <div style={{ zIndex: 1 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '25px' }}>
+                                    <div style={{ color: '#1DB954', fontSize: '1.8rem' }}>
+                                        <i className="fa-brands fa-spotify"></i>
+                                    </div>
+                                    <span style={{ fontSize: '0.7rem', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#b3b3b3' }}>Premium Travel</span>
                                 </div>
-                                <span style={{ fontSize: '0.85rem', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>Giveback journny</span>
+                                
+                                <h3 style={{ 
+                                    fontSize: '2.8rem', 
+                                    fontWeight: 900, 
+                                    lineHeight: 1.1, 
+                                    margin: 0, 
+                                    color: 'white',
+                                    letterSpacing: '-1.5px',
+                                    maxWidth: '280px'
+                                }}>
+                                    The Best <span style={{color: '#1DB954'}}>Budget</span> <br/>Tour Plan.
+                                </h3>
+                                <p style={{ color: '#b3b3b3', fontSize: '0.9rem', marginTop: '15px', fontWeight: 600 }}>No hidden fees. Just pure adventure.</p>
                             </div>
-                            <h3 style={{ fontSize: '1.6rem', fontWeight: 900, lineHeight: 1.2, margin: 0, color: 'white' }}>
-                                The Best Budget Tour Plan <br/> in Sri Lanka
-                            </h3>
-                            <div style={{ 
-                                marginTop: '25px', 
-                                fontSize: '0.75rem', 
-                                fontWeight: 700, 
-                                textTransform: 'uppercase', 
-                                letterSpacing: '2px',
-                                background: 'rgba(29, 185, 84, 0.9)',
-                                color: 'white',
-                                padding: '6px 15px',
-                                borderRadius: '50px',
-                                width: 'fit-content'
-                            }}>
-                                Top Rated Experience
+
+                            <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                <div style={{ 
+                                    fontSize: '0.8rem', 
+                                    fontWeight: 800, 
+                                    textTransform: 'uppercase', 
+                                    letterSpacing: '1.5px',
+                                    background: '#1DB954',
+                                    color: 'black',
+                                    padding: '12px 30px',
+                                    borderRadius: '500px',
+                                    width: 'fit-content',
+                                    cursor: 'pointer',
+                                    transition: 'transform 0.2s ease'
+                                }}>
+                                    Explore Now
+                                </div>
+                                
+                                <div style={{ 
+                                    fontSize: '0.65rem', 
+                                    color: '#888', 
+                                    fontWeight: 600,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '6px'
+                                }}>
+                                    <i className="fa-solid fa-circle-check" style={{color: '#1DB954'}}></i> Verified by Giveback Journey
+                                </div>
                             </div>
+
+                            {/* Decorative Circle */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '-50px',
+                                right: '-50px',
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '50%',
+                                border: '20px solid rgba(29,185,84,0.05)',
+                                zIndex: 0
+                            }}></div>
                         </div>
 
                         {/* Cost-Benefit Travel Card */}
@@ -738,107 +792,100 @@ const TourDetails = () => {
                 {/* Guest Reviews */}
                 {pkg.reviews && (
                     <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '80px', position: 'relative' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '50px' }}>
-                            <div style={{ textAlign: 'left' }}>
-                                <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>Guest Reviews</h2>
-                                <div style={{ display: 'flex', gap: '5px', color: '#FFD700', fontSize: '1.1rem' }}>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <span style={{ color: '#666', fontSize: '1rem', fontWeight: 700, marginLeft: '10px' }}>5.0 Rating</span>
-                                </div>
-                            </div>
-                            
-                            <div style={{ display: 'flex', gap: '10px' }}>
-                                <button 
-                                    onClick={() => reviewsRef.current.scrollBy({ left: -320, behavior: 'smooth' })}
-                                    style={{ 
-                                        width: '45px', 
-                                        height: '45px', 
-                                        borderRadius: '50%', 
-                                        border: '1px solid #eee', 
-                                        background: 'white', 
-                                        cursor: 'pointer',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary-green)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.borderColor = '#eee'}
-                                >
-                                    <i className="bi bi-chevron-left" style={{ fontSize: '1.2rem' }}></i>
-                                </button>
-                                <button 
-                                    onClick={() => reviewsRef.current.scrollBy({ left: 320, behavior: 'smooth' })}
-                                    style={{ 
-                                        width: '45px', 
-                                        height: '45px', 
-                                        borderRadius: '50%', 
-                                        border: '1px solid #eee', 
-                                        background: 'white', 
-                                        cursor: 'pointer',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary-green)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.borderColor = '#eee'}
-                                >
-                                    <i className="bi bi-chevron-right" style={{ fontSize: '1.2rem' }}></i>
-                                </button>
+                        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>Guest Reviews</h2>
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', color: '#FFD700', fontSize: '1.1rem' }}>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <i className="bi bi-star-fill"></i>
+                                <span style={{ color: '#666', fontSize: '1rem', fontWeight: 700, marginLeft: '10px' }}>5.0 Rating</span>
                             </div>
                         </div>
+                        
+                        <div style={{ position: 'relative' }}>
+                            <button 
+                                onClick={() => reviewsRef.current.scrollBy({ left: -reviewsRef.current.offsetWidth, behavior: 'smooth' })}
+                                style={{ 
+                                    position: 'absolute', left: '-25px', top: '50%', transform: 'translateY(-50%)', zIndex: 10,
+                                    width: '45px', height: '45px', borderRadius: '50%', border: 'none', background: 'white', 
+                                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    boxShadow: '0 8px 25px rgba(0,0,0,0.1)', transition: 'all 0.3s ease'
+                                }}
+                            >
+                                <i className="bi bi-chevron-left" style={{ fontSize: '1.2rem' }}></i>
+                            </button>
+                            <button 
+                                onClick={() => reviewsRef.current.scrollBy({ left: reviewsRef.current.offsetWidth, behavior: 'smooth' })}
+                                style={{ 
+                                    position: 'absolute', right: '-25px', top: '50%', transform: 'translateY(-50%)', zIndex: 10,
+                                    width: '45px', height: '45px', borderRadius: '50%', border: 'none', background: 'white', 
+                                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    boxShadow: '0 8px 25px rgba(0,0,0,0.1)', transition: 'all 0.3s ease'
+                                }}
+                            >
+                                <i className="bi bi-chevron-right" style={{ fontSize: '1.2rem' }}></i>
+                            </button>
 
-                        <div ref={reviewsRef} style={{ 
-                            display: 'flex', 
-                            gap: '20px', 
-                            overflowX: 'auto', 
-                            paddingBottom: '30px',
-                            msOverflowStyle: 'none',
-                            scrollbarWidth: 'none',
-                            scrollSnapType: 'x mandatory'
-                        }} className="reviews-scroll-container">
-                            {pkg.reviews.map((review) => (
-                                <div key={review.id} style={{ 
-                                    background: '#fff', 
-                                    padding: '20px', 
-                                    borderRadius: '24px', 
-                                    border: '1px solid #f0f0f0',
-                                    boxShadow: '0 8px 20px rgba(0,0,0,0.02)',
-                                    minWidth: '300px',
-                                    flexShrink: 0
-                                }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                                        <div style={{ 
-                                            width: '35px', 
-                                            height: '35px', 
-                                            background: 'rgba(29, 185, 84, 0.1)', 
-                                            color: 'var(--primary-green)', 
-                                            borderRadius: '50%', 
-                                            display: 'flex', 
-                                            alignItems: 'center', 
-                                            justifyContent: 'center',
-                                            fontSize: '1rem'
-                                        }}>
-                                            <i className={review.icon || "bi bi-person-fill"}></i>
+                            <div ref={reviewsRef} style={{ 
+                                display: 'flex', 
+                                flexWrap: 'nowrap',
+                                gap: '20px', 
+                                overflowX: 'auto', 
+                                padding: '10px 0 40px 0',
+                                msOverflowStyle: 'none',
+                                scrollbarWidth: 'none',
+                                scrollSnapType: 'x mandatory',
+                                width: '100%'
+                            }} className="reviews-scroll-container">
+                                {pkg.reviews.map((review) => (
+                                    <div key={review.id} style={{ 
+                                        flex: '0 0 calc(25% - 16px)', 
+                                        scrollSnapAlign: 'start',
+                                        background: 'white',
+                                        padding: '20px',
+                                        borderRadius: '24px',
+                                        border: '1px solid #eee',
+                                        boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 'auto',
+                                        minHeight: '320px',
+                                        justifyContent: 'space-between',
+                                        boxSizing: 'border-box'
+                                    }}>
+                                        <div>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+                                                <div style={{ 
+                                                    width: '50px', height: '50px', 
+                                                    background: review.color || 'rgba(29, 185, 84, 0.1)', 
+                                                    color: '#333', borderRadius: '50%', 
+                                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    fontSize: '1.1rem', fontWeight: 800, border: '1px solid rgba(0,0,0,0.05)'
+                                                }}>
+                                                    {getInitials(review.name)}
+                                                </div>
+                                                <div>
+                                                    <h4 style={{ margin: '0 0 3px 0', fontSize: '0.95rem', fontWeight: 800, color: '#111' }}>{review.name}</h4>
+                                                    <div style={{ display: 'flex', gap: '2px', color: '#FFD700' }}>
+                                                        {[...Array(review.rating)].map((_, i) => <i key={i} className="bi bi-star-fill" style={{ fontSize: '0.7rem' }}></i>)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style={{ margin: '0 0 20px 0', color: '#555', lineHeight: 1.6, fontSize: '0.9rem', fontStyle: 'italic' }}>"{review.comment}"</p>
                                         </div>
-                                        <div style={{ flex: 1 }}>
-                                            <h4 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800 }}>{review.name}</h4>
-                                            <span style={{ fontSize: '0.7rem', color: '#999', fontWeight: 600 }}>{review.date}</span>
-                                        </div>
-                                        <div style={{ display: 'flex', gap: '2px', color: '#FFD700' }}>
-                                            {[...Array(review.rating)].map((_, i) => <i key={i} className="bi bi-star-fill" style={{ fontSize: '0.7rem' }}></i>)}
+                                        <div style={{ borderTop: '1px solid #f5f5f5', paddingTop: '15px' }}>
+                                            <div style={{ fontSize: '0.75rem', color: '#888', marginBottom: '4px' }}>
+                                                <strong>Profile:</strong> {review.profile || 'Traveler'}
+                                            </div>
+                                            <div style={{ fontSize: '0.75rem', color: '#888' }}>
+                                                <strong>Tour Plan:</strong> <span style={{ color: 'var(--primary-green)', fontWeight: 600 }}>{review.trip || pkg.name}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6, fontSize: '0.85rem', fontStyle: 'italic' }}>"{review.comment}"</p>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
                 )}

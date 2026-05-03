@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import TourPackages from '../components/TourPackages';
+import TourPackages, { TourCard } from '../components/TourPackages';
 import SriLankaGlance from '../components/SriLankaGlance';
+import { tourPackages } from '../data/tours';
 import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 
 const PackagesPage = () => {
@@ -16,9 +17,7 @@ const PackagesPage = () => {
         }
     }, [location]);
 
-    const handleSearch = (term) => {
-        setSearchTerm(term);
-    };
+    const dayTrips = tourPackages.filter(p => p.days === '1 Day' || p.id === 10 || p.id === 11);
 
     return (
         <div className="packages-page">
@@ -31,6 +30,26 @@ const PackagesPage = () => {
             </div>
             
             <TourPackages searchTerm={searchTerm} />
+
+            {/* Short Day Trips Section */}
+            {!searchTerm && dayTrips.length > 0 && (
+                <section className="packages-section" style={{ background: '#f8f9fa', padding: '100px 5%' }}>
+                    <div className="packages-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
+                        <span className="about-tag">Quick Escapes</span>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 900 }}>Short Day Trips.</h2>
+                        <p style={{ maxWidth: '700px', margin: '20px auto', color: '#666' }}>
+                            Perfect for travelers with limited time who still want to experience the absolute highlights of Sri Lanka's cultural capital.
+                        </p>
+                    </div>
+                    
+                    <div className="packages-grid">
+                        {dayTrips.map(pkg => (
+                            <TourCard key={pkg.id} pkg={pkg} />
+                        ))}
+                    </div>
+                </section>
+            )}
+
             <SriLankaGlance />
             
             <section className="cta-section">

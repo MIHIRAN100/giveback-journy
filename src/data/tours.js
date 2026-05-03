@@ -1,407 +1,370 @@
-import tourCover from '../assets/praveen-maleesha-5XSOMBEhJWQ-unsplash.jpg';
+import essentialCover from '../assets/praveen-maleesha-5XSOMBEhJWQ-unsplash.jpg';
 import southernCover from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import adventureCover from '../assets/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg';
-import mistMountainsCover from '../assets/Little Adam’s Peak.jpg';
+import mistMountainsCover from '../assets/Nuwera Eliya day tour.jpg';
 import wildSafariCover from '../assets/Hurulu Eco Park.jpg';
 import galleFortCover from '../assets/Galle Fort, Sri Lanka.jpg';
 import koslandaCover from '../assets/Koslanda 🇱🇰.jpg';
-import kandyEssenceCover from '../assets/download (4).jpg';
-import nuwaraEliyaCover from '../assets/Nuwera Eliya day tour.jpg';
-import pinnawalaCover from '../assets/Pinnawala Elephant Orphanage in Sri Lanka.jpg';
-import adamsPeakCover from '../assets/download (5).jpg';
-import raftingCover from '../assets/Rafting.jpg';
-import routeMapSignature from '../assets/route-map.png';
-import routeMapSouthern from '../assets/route-map-southern.png';
+import kandyImg from '../assets/Pinnawala Elephant Orphanage in Sri Lanka.jpg';
+import kandyDayImg from '../assets/download (4).jpg';
+import adamsPeakImg from '../assets/download (5).jpg';
+import raftingImg from '../assets/Rafting.jpg';
+import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
+
+import routeMapEssential from '../assets/route-map-signature-new.png';
+import routeMapSouthernNew from '../assets/route-map-southern-new.png';
+import routeMapScenic from '../assets/route-map-scenic.png';
 import routeMapHill from '../assets/route-map-hill.png';
 import routeMapWild from '../assets/route-map-wild.png';
-import routeMapScenic from '../assets/route-map-scenic.png';
-import routeMapSignatureNew from '../assets/route-map-signature-new.png';
-import routeMapSouthernNew from '../assets/route-map-southern-new.png';
+import routeMapHighlandsCoast from '../assets/route-map-highlands-coast.png';
+import routeMapKandy from '../assets/route-map-kandy.png';
+import routeMapKandyPinnawala from '../assets/route-map-kandy-pinnawala.png';
+import routeMapAdamsPeak from '../assets/route-map-adams-peak.png';
+import routeMapKitulgala from '../assets/route-map-kitulgala.png';
+import routeMapGrandLoop from '../assets/route-map-grand-loop.png';
+import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 
+const signatureReviews = [
+    { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2025", profile: "British, 24", trip: "Signature Experience", comment: "The sunrise climb at Sigiriya was the highlight of my trip! Everything was perfectly organized.", color: "#fff3e0" },
+    { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", profile: "USA, 29", trip: "Signature Experience", comment: "The train journey from Kandy to Ella was breathtaking. Highly recommend this signature tour.", color: "#f3e5f5" },
+    { id: 3, name: "Elena Rossi", rating: 5, date: "August 2025", profile: "Italian, 22", trip: "Signature Experience", comment: "Minneriya safari was amazing! We saw so many elephants. A truly essential Sri Lanka experience.", color: "#e0f2f1" },
+    { id: 4, name: "James Wilson", rating: 5, date: "July 2025", profile: "Canadian, 31", trip: "Signature Experience", comment: "Perfect balance between culture and relaxation. The south coast stay was the perfect ending.", color: "#fbe9e7" },
+    { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2025", profile: "French, 20", trip: "Signature Experience", comment: "Galle Fort at sunset is a dream. The hospitality throughout the week was exceptional.", color: "#e8f5e9" }
+];
+
+const kandyReviews = [
+    { id: 1, name: "Jessica Lee", rating: 5, date: "October 2025", profile: "Traveler", trip: "Kandy Day Trip", comment: "Watching the elephants walk to the river in Pinnawala was magical! A must-do day trip.", color: "#e8f5e9" },
+    { id: 2, name: "David Miller", rating: 5, date: "September 2025", profile: "Traveler", trip: "Kandy Day Trip", comment: "The Temple of the Tooth is so spiritual and peaceful. Kandy is a beautiful city.", color: "#e3f2fd" },
+    { id: 3, name: "Emma Watson", rating: 5, date: "August 2025", profile: "UK", trip: "Kandy Day Trip", comment: "Botanical gardens were stunning. Our driver was very helpful with picking us up.", color: "#fff3e0" },
+    { id: 4, name: "Hans Zimmer", rating: 5, date: "July 2025", profile: "German", trip: "Kandy Day Trip", comment: "The cultural show music and dance were very impressive. Great way to spend a day.", color: "#f3e5f5" },
+    { id: 5, name: "Sofia Loren", rating: 5, date: "June 2025", profile: "Italy", trip: "Kandy Day Trip", comment: "Short but very comprehensive. We saw all the major sights in just one day.", color: "#e0f2f1" }
+];
+
+const coastalReviews = [
+    { id: 1, name: "Mateo Silva", rating: 5, date: "October 2025", profile: "Brazilian", trip: "Southern Escape", comment: "Surfing in Weligama was a dream. The coastal vibe of this tour is perfect.", color: "#fff3e0" },
+    { id: 2, name: "Yuna Kim", rating: 5, date: "September 2025", profile: "Korean", trip: "Southern Escape", comment: "Mirissa beaches are the best. Watching the whales was a life-changing experience.", color: "#f3e5f5" },
+    { id: 3, name: "Noah Williams", rating: 5, date: "August 2025", profile: "USA", trip: "Southern Escape", comment: "Galle Fort is so historic and charming. Loved the boutique stays along the coast.", color: "#e0f2f1" },
+    { id: 4, name: "Mia Dubois", rating: 5, date: "July 2025", profile: "French", trip: "Southern Escape", comment: "The seafood dinners by the beach were incredible. Such a relaxing week.", color: "#fbe9e7" },
+    { id: 5, name: "Leo Rossi", rating: 5, date: "June 2025", profile: "Italian", trip: "Southern Escape", comment: "Sunset at Coconut Tree Hill is a must-see. The southern coast is beautiful.", color: "#e8f5e9" }
+];
+
+const adventureReviews = [
+    { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2025", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every bit of it.", color: "#e8f5e9" },
+    { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2025", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the rainforest to the mountains of Ella was spectacular.", color: "#e3f2fd" },
+    { id: 3, name: "Ryan Reyn", rating: 5, date: "August 2025", profile: "Canadian", trip: "Highlands & Coast", comment: "Seeing a leopard in Yala was the highlight of my trip. The guide was expert.", color: "#fff3e0" },
+    { id: 4, name: "Gal Gadot", rating: 5, date: "July 2025", profile: "Israel", trip: "Highlands & Coast", comment: "Little Adam's Peak hike was easy but offered the most incredible views of Ella.", color: "#f3e5f5" },
+    { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" }
+];
+
+export const BUDGET_PROMO_IMG = budgetPromoImg;
 export const tourPackages = [
     {
         id: 1,
         name: "7-Day Essential Sri Lanka",
         days: "7 Days / 6 Nights",
-        description: "A carefully designed journey blending culture, nature, and adventure—perfect for travelers who want to experience the best of Sri Lanka in a short time.",
-        price: "$840",
-        image: tourCover,
+        description: "A comprehensive journey through Sri Lanka’s most iconic highlights—from ancient heritage and misty tea mountains to the wild jungles and the tropical south.",
+        price: "$650",
+        image: essentialCover,
+        itinerary: [
+            { day: 1, title: "Arrival & Transfer to Sigiriya", desc: "Welcome to Sri Lanka! Your private driver will meet you at the airport and transfer you to Sigiriya. After checking into your guesthouse, spend a relaxed evening preparing for the adventure ahead.", activities: ["Airport Greeting", "Private Transfer", "Evening Relaxation"] },
+            { day: 2, title: "Sigiriya Lion Rock & Village Experience", desc: "Climb the ancient Sigiriya Lion Rock for breathtaking views. In the afternoon, enjoy a traditional village tour and lunch, gaining insight into the local way of life.", activities: ["Lion Rock Hike", "Village Tour", "Traditional Lunch"] },
+            { day: 3, title: "Dambulla Temple & Journey to Kandy", desc: "Visit the Dambulla Cave Temple, a UNESCO site, before traveling to Kandy. Explore the Temple of the Tooth and end your day with a vibrant cultural dance performance.", activities: ["Cave Temple Visit", "Temple of the Tooth", "Cultural Show"] },
+            { day: 4, title: "Scenic Train Ride to Ella", desc: "Board the world-famous train from Kandy to Ella. Wind through emerald tea plantations and misty mountains on what is widely considered the most beautiful train journey on earth.", activities: ["Iconic Train Ride", "Tea Plantation Views", "Mountain Sightseeing"] },
+            { day: 5, title: "Ella Highlights & Transfer to Yala", desc: "Visit the Nine Arches Bridge and Little Adam’s Peak in the morning. Afterward, travel to Yala, ready for an early morning wildlife safari the next day.", activities: ["Nine Arches Bridge", "Little Adam’s Peak", "Drive to Yala"] },
+            { day: 6, title: "Yala Safari & Mirissa Coast", desc: "Embark on an early morning jeep safari in Yala National Park to spot leopards and elephants. In the afternoon, head to the golden beaches of Mirissa.", activities: ["Leopard Safari", "Jungle Wildlife", "Sunset at Mirissa"] },
+            { day: 7, title: "Galle Fort & Departure", desc: "Explore the historic Galle Fort and walk its colonial ramparts. Finally, transfer back to the airport for your onward journey, carrying memories of an unforgettable week.", activities: ["Galle Fort Tour", "Colonial Architecture", "Airport Transfer"] }
+        ],
+        inclusions: ["Accommodation", "Daily breakfast", "Private transport", "Train tickets", "Yala Safari"],
+        exclusions: ["Flights", "Entrance fees", "Lunch & dinner"],
+        routeMap: routeMapEssential,
+        reviews: signatureReviews
+    },
+    {
+        id: 8,
+        name: "Kandy & Pinnawala Day Trip",
+        days: "1 Day",
+        description: "A memorable day combining wildlife, culture, and scenic experiences around Kandy, including the famous Pinnawala Elephant Orphanage and a Ceylon tea factory.",
+        price: "$125",
+        image: budgetPromoImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "Arrival in Negombo", 
-                desc: "Welcome to Sri Lanka! Upon arrival, you will be transferred to Negombo, a relaxed beach town near the airport—perfect to recover after your flight and prepare for the adventure ahead. Take the day at your own pace and unwind.", 
-                activities: ["Beach walk along Negombo coastline", "Lagoon boat ride", "Visit local fish markets", "Sunset by the beach"] 
-            },
-            { 
-                day: 2, 
-                title: "Negombo to Sigiriya | Sunset Adventure", 
-                desc: "After breakfast, travel to Sigiriya, located in the cultural heart of the island. In the evening, enjoy a sunset hike up Pidurangala Rock—a rewarding climb offering breathtaking panoramic views. After the hike, return to your hotel and relax.", 
-                activities: ["Scenic drive to Cultural Triangle", "Pidurangala Rock Hike", "Panoramic Sunset Views"] 
-            },
-            { 
-                day: 3, 
-                title: "Sunrise at Sigiriya & Wildlife Safari", 
-                desc: "Start early with a sunrise visit to Sigiriya Rock Fortress, one of Sri Lanka’s most iconic landmarks. Return to the hotel for breakfast, then continue your journey with an exciting wild elephant safari, a visit to Dambulla Cave Temple, and a stop at a traditional herbal garden. Afterward, transfer to Kandy for a peaceful evening walk around the lake.", 
-                activities: ["Sigiriya Rock Fortress", "Wild Elephant Safari", "Dambulla Cave Temple", "Herbal Garden Visit", "Kandy Lake Walk"] 
-            },
-            { 
-                day: 4, 
-                title: "Kandy to Ella | Scenic Train Experience", 
-                desc: "Visit the sacred Temple of the Tooth in the morning. Then proceed towards Ella with a scenic journey. You will experience part of the world-famous Kandy to Ella train ride (from a nearby station due to current operational limits). Arrive in Ella and transfer to your accommodation to explore the local cafés.", 
-                activities: ["Temple of the Tooth Relic", "Scenic Highland Train Ride", "Ella Town Exploration"] 
-            },
-            { 
-                day: 5, 
-                title: "Explore Ella at Your Own Pace", 
-                desc: "Today is yours to explore Ella as a solo traveler. Immerse yourself in the mountain vibes, hike the trails, or simply relax with a view. Ella offers the perfect blend of adventure and tranquility in the highlands.", 
-                activities: ["Hike Little Adam's Peak", "Visit Nine Arches Bridge", "Explore tea plantations", "Scenic Café Relaxation"] 
-            },
-            { 
-                day: 6, 
-                title: "Ella to Hikkaduwa via Galle Fort", 
-                desc: "Travel south towards the coast. En route, stop at the thundering Ravana Falls for a photo opportunity. In the late afternoon, enjoy a historic sunset walk along the ramparts of Galle Fort before continuing to the vibrant shores of Hikkaduwa for your overnight stay.", 
-                activities: ["Ravana Falls Stopover", "Galle Fort Sunset Walk", "Hikkaduwa Coastal Transition"] 
-            },
-            { 
-                day: 7, 
-                title: "Departure", 
-                desc: "After breakfast, enjoy your final moments of island life before transferring to the airport for your departure journey, carrying home memories of ancient rocks, misty mountains, and golden shores.", 
-                activities: ["Final Island Breakfast", "Airport Transfer"] 
+                title: "Pinnawala & Kandy Scenic Day Tour", 
+                desc: "Your day begins with a 7:00 AM pick-up to reach Pinnawala in time for the feeding and bathing sessions. Observe elephants up close as they gather by the river. Later, see the eco-friendly elephant dung paper recycling process. On the return journey, visit a local tea factory to learn about Ceylon tea production before being transferred back to your hotel.", 
+                activities: ["Elephant Feeding & Bathing", "Riverside Interaction", "Dung Paper Recycling", "Tea Factory Visit", "Fresh Ceylon Tea Tasting"] 
             }
         ],
-        inclusions: [
-            "Accommodation throughout the tour",
-            "Daily breakfast",
-            "Dinner on Day 2",
-            "All entrance fees to mentioned sites",
-            "Transportation and transfers"
-        ],
-        exclusions: [
-            "Lunches and dinners (unless specified)",
-            "Personal expenses",
-            "Optional activities"
-        ],
-        routeMap: routeMapSignatureNew,
-        importantNotes: [
-            "Temple Dress Code & Respectful Conduct: When visiting sacred sites like the Temple of the Tooth or Sigiriya, it is imperative to dress modestly. Both men and women must ensure their shoulders and knees are fully covered. We recommend carrying a light sarong or shawl in your day bag. Additionally, remember that it is considered highly disrespectful to pose with your back to a Buddha statue for photographs, or to wear clothing with religious symbols. Removal of hats and shoes is mandatory before entering temple grounds to maintain the sanctity of these ancient spiritual spaces.",
-
-            "Regional Weather Patterns & Packing Essentials: Sri Lanka's geography creates diverse micro-climates. While the coast is tropical and humid, the hill country destinations like Kandy and Ella can experience significant temperature drops, especially during the evenings and early mornings. We advise packing a versatile wardrobe; breathable cotton fabrics are best for the lowlands, while a warm fleece or light down jacket is essential for the highlands. A sturdy pair of walking shoes is a must for exploring the rock fortresses and tea estates, along with a high-quality raincoat for unpredictable tropical showers.",
-            "Currency, Tipping Culture & Local Transactions: The official currency is the Sri Lankan Rupee (LKR). While credit cards are widely accepted in major hotels and upscale restaurants in Colombo and Kandy, carrying local cash is essential for smaller transactions at local markets, village shops, and for tipping. Tipping is a customary way to show appreciation for good service; a small gesture for your driver, guides, and hotel staff goes a long way. We suggest withdrawing cash from ATMs in major cities, as they offer competitive exchange rates and are readily available throughout the main tourist routes."
-        ],
-        reviews: [
-            { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2025", comment: "An absolutely flawless experience. The climb up Sigiriya at sunrise was the highlight of my year. Our driver was so knowledgeable and kind!", icon: "bi bi-person-circle" },
-            { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", comment: "The train journey from Kandy to Ella was as beautiful as the pictures. Every detail was handled perfectly.", icon: "bi bi-person-badge" },
-            { id: 3, name: "Elena Rossi", rating: 5, date: "August 2025", comment: "The wildlife safari in Minneriya was breathtaking! We saw over 50 elephants. Highly recommended.", icon: "bi bi-emoji-smile" },
-            { id: 4, name: "James Wilson", rating: 5, date: "July 2025", comment: "Perfectly organized. The balance between culture and relaxation on the south coast was just right.", icon: "bi bi-person-heart" },
-            { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2025", comment: "Galle Fort at sunset is something I will never forget. Amazing hospitality from the locals.", icon: "bi bi-stars" },
-            { id: 6, name: "Liam O'Connor", rating: 5, date: "May 2025", comment: "Best value for money. The budget stays were clean and the food was delicious everywhere we went.", icon: "bi bi-wallet2" },
-            { id: 7, name: "Yuki Tanaka", rating: 5, date: "April 2025", comment: "The hiking in Ella was challenging but the views were worth every step. Excellent guides!", icon: "bi bi-compass" }
-        ]
+        inclusions: ["Private transport (Taxi)", "Elephant orphanage visit", "Tea factory tour", "Hotel pick-up & drop-off"],
+        exclusions: ["Lunch", "Personal expenses", "Entrance fees for optional sites"],
+        routeMap: routeMapKandyPinnawala,
+        reviews: kandyReviews
     },
     {
         id: 2,
         name: "Southern Sun & Beach Escape",
         days: "7 Days / 6 Nights",
-        description: "A relaxing coastal journey along Sri Lanka’s south—combining beach life, culture, and optional adventures, with a perfect ending by the ocean.",
+        description: "A relaxing coastal journey along Sri Lanka’s south—combining beach life, culture, and optional adventures.",
         price: "$600",
         image: southernCover,
         itinerary: [
+            { day: 1, title: "Hikkaduwa Arrival", desc: "Welcome to the coast!", activities: ["Beach Relax"] },
+            { day: 2, title: "Marine Life", desc: "Explore the coral reef.", activities: ["Snorkeling"] },
+            { day: 3, title: "Galle Fort", desc: "Walk the ancient walls.", activities: ["Fort Tour"] },
+            { day: 4, title: "Unawatuna", desc: "Relax by the jungle beach.", activities: ["Beach Day"] },
+            { day: 5, title: "Mirissa", desc: "Sunset at Coconut Tree Hill.", activities: ["Sunset View"] },
+            { day: 6, title: "Whale Watching", desc: "Search for blue whales.", activities: ["Whale Safari"] },
+            { day: 7, title: "Departure", desc: "Airport transfer.", activities: ["Transfer"] }
+        ],
+        inclusions: ["Accommodation", "Breakfast", "Transfers"],
+        exclusions: ["Lunch & Dinner", "Personal expenses", "Entrance fees"],
+        routeMap: routeMapSouthernNew,
+        reviews: coastalReviews
+    },
+    {
+        id: 3,
+        name: "Highlands & Coast Adventure",
+        days: "7 Days / 6 Nights",
+        description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches—designed for travelers who want maximum experience with great value.",
+        price: "$680",
+        image: adventureCover,
+        itinerary: [
             { 
                 day: 1, 
-                title: "Arrival & Beach Relaxation in Hikkaduwa", 
-                desc: "Welcome to Sri Lanka! Your journey begins in Hikkaduwa, known for its lively beach vibe and surf culture. After checking into your guesthouse, take time to unwind and recover from your journey. Enjoy a beautiful sunset by the coast.", 
-                activities: ["Beachfront Relaxation", "Indian Ocean Swim", "Sunset Watching"] 
+                title: "Arrival & Transfer to Kitulgala", 
+                desc: "Welcome to Sri Lanka! Upon arrival, transfer to Kitulgala, a peaceful riverside destination surrounded by lush rainforest. Check into your guesthouse and relax after your journey.", 
+                activities: ["Kelani River Relaxation", "Village Walk", "Jungle Atmosphere", "Nature Walk (Optional)", "River Bathing (Optional)"] 
             },
             { 
                 day: 2, 
-                title: "Marine Life & Coastal Vibes", 
-                desc: "After breakfast, enjoy a full day at leisure exploring Hikkaduwa. Discover local cafés, shops, and the vibrant underwater world. Hikkaduwa is the perfect introduction to Sri Lanka's coastal beauty.", 
-                activities: ["Beach Hopping", "Optional Snorkeling at Sanctuary", "Optional Scuba Diving"] 
+                title: "Rafting Adventure & Transfer to Ella", 
+                desc: "Start your day with adventure on the Kelani River with white water rafting. After lunch, proceed to Ella, enjoying scenic tea plantations and mountain views.", 
+                activities: ["White Water Rafting", "Bird Watching (Optional)", "Scenic Drive to Ella", "Explore Ella Town"] 
             },
             { 
                 day: 3, 
-                title: "Hikkaduwa to Unawatuna via Galle", 
-                desc: "Travel further south to Unawatuna, with a stop at the historic Galle Fort. Walk along the fort walls and explore charming streets filled with colonial architecture before checking into your Unawatuna guesthouse.", 
-                activities: ["Galle Fort Wall Walk", "Colonial Architecture Tour", "Sunset Drinks by the Ocean"] 
+                title: "Ella Peaks & Iconic Landmarks", 
+                desc: "Discover the beauty of Ella. Hike to Little Adam's Peak and visit the world-famous Nine Arches Bridge.", 
+                activities: ["Little Adam's Peak Hike", "Nine Arches Bridge", "Zip-lining (Optional)", "Tea Plantation Visit (Optional)"] 
             },
             { 
                 day: 4, 
-                title: "Beach & Nature in Unawatuna", 
-                desc: "Enjoy a peaceful day combining beach and nature. Visit Jungle Beach, a quiet spot surrounded by lush greenery, or the Japanese Peace Pagoda for panoramic views of the coastline.", 
-                activities: ["Unawatuna Beach Swim", "Jungle Beach Visit", "Japanese Peace Pagoda", "Optional Yoga Session"] 
+                title: "Yala Safari & Journey to the Coast", 
+                desc: "Explore Yala National Park, home to elephants and leopards, before continuing your journey towards the southern coast.", 
+                activities: ["Yala Jeep Safari", "Wildlife Spotting", "Drive to South Coast"] 
             },
             { 
                 day: 5, 
-                title: "Unawatuna to Mirissa | Sunset Coast", 
-                desc: "Continue your journey to Mirissa, one of Sri Lanka’s most beautiful and relaxed beach destinations. After check-in, visit Coconut Tree Hill for the most iconic sunset views on the island.", 
-                activities: ["Travel to Mirissa", "Coconut Tree Hill Sunset", "Beachside Relaxation"] 
+                title: "Beach Relaxation in Hikkaduwa", 
+                desc: "Settle into coastal life in Hikkaduwa. Spend your day relaxing on the beach or enjoying the ocean.", 
+                activities: ["Beach Relaxation", "Ocean Swimming", "Sunset Views", "Snorkeling (Optional)", "Surfing Lessons (Optional)"] 
             },
             { 
                 day: 6, 
-                title: "Whale Watching & Final Relaxation", 
-                desc: "Start early for a memorable ocean experience spotting blue whales and dolphins (seasonal). Spend your final afternoon fully unwinding and enjoying your last moments by the tropical Indian Ocean.", 
-                activities: ["Optional Whale Watching", "Final Beach Relaxation", "Farewell Ocean Swim"] 
+                title: "Galle Fort & River Safari", 
+                desc: "Explore the historic Galle Fort and its charming streets. Later, enjoy a relaxing boat ride through the mangroves of Madu River.", 
+                activities: ["Galle Fort Walk", "Colonial Architecture", "Madu River Safari (Optional)", "Shopping (Optional)"] 
             },
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "After breakfast, transfer directly to the airport for your onward journey. Carry the warmth of the sun and the rhythm of the waves home with you.", 
-                activities: ["Final Island Breakfast", "Direct Airport Transfer"] 
+                desc: "After breakfast, transfer to the airport for your onward journey, carrying memories of an incredible Sri Lankan adventure.", 
+                activities: ["Final Breakfast", "Airport Transfer"] 
             }
         ],
         inclusions: [
-            "6 nights guesthouse accommodation",
-            "Daily breakfast",
-            "All ground transfers"
+            "6 nights guesthouse accommodation", 
+            "Daily breakfast", 
+            "Dinner on Day 1 (Kitulgala)", 
+            "Lunch on Day 2 (Kitulgala)", 
+            "White water rafting experience", 
+            "Yala National Park jeep safari", 
+            "All transfers"
         ],
         exclusions: [
-            "Lunch & dinner",
-            "Optional activities",
+            "Other lunches & dinners", 
+            "Optional activities", 
             "Personal expenses"
         ],
-        routeMap: routeMapSouthernNew,
-        importantNotes: [
-            "Beach Safety & Indian Ocean Currents: The southern coast of Sri Lanka offers breathtaking beaches, but the Indian Ocean can have powerful undercurrents and riptides. It is vital to pay close attention to the colored flags on the beach: red means the water is dangerous for swimming. Always consult with locals or hotel staff before heading out, especially during the monsoon transitions. If you find yourself caught in a current, stay calm and swim parallel to the shore until you are free. We prioritize your safety and recommend swimming only in designated areas with active lifeguard monitoring.",
-            "Tropical Sun Protection & Hydration: The sun in Sri Lanka is exceptionally strong due to its proximity to the equator. Even on overcast days, UV levels remain high. We strongly advise using high-SPF, reef-safe sunscreen, wearing a wide-brimmed hat, and utilizing UV-protective swimwear. Maintaining hydration is equally important in the humid coastal heat. Always carry a reusable water bottle; we provide clean refills throughout your journey to ensure you remain energized and healthy. Avoid direct sun exposure during the peak hours of 11 AM to 3 PM to prevent heat exhaustion and severe sunburn.",
-            "Responsible Whale Watching Etiquette: Mirissa is one of the world's premier destinations for spotting blue whales, but it's crucial to choose operators who prioritize marine conservation. Our partners follow strict international guidelines for whale watching, ensuring boats maintain a respectful distance and never cross the path of these majestic creatures. Never attempt to touch or feed marine life, and ensure all trash is disposed of correctly on the boat. By following these rules, we help preserve the delicate marine ecosystem for future generations while providing you with an awe-inspiring and ethical wildlife encounter.",
-            "Eco-Conscious Travel & Wildlife Respect: The southern shores are nesting grounds for several endangered sea turtle species. If you encounter a turtle on the beach, especially at night, maintain a distance of at least 30 feet and never use flash photography, as it disorients them. Avoid walking on nesting areas and do not disturb the sand. Sri Lanka is also home to diverse land wildlife; always admire animals from a distance and avoid supporting attractions that use animals for entertainment. Your responsible actions contribute directly to the successful conservation efforts of this vibrant and fragile island ecosystem."
-        ],
-        reviews: [
-            { id: 1, name: "Elena Rodriguez", rating: 5, date: "August 2025", comment: "Whale watching in Mirissa was breathtaking. We saw three blue whales! The hotel recommendations were spot on.", icon: "bi bi-person-heart" },
-            { id: 2, name: "David Chen", rating: 4, date: "July 2025", comment: "Great surf lessons in Weligama. The southern coast is truly magical. Highly recommend the sunset at Coconut Tree Hill.", icon: "bi bi-person-video" }
-        ]
-    },
-    {
-        id: 3,
-        name: "7-Day Scenic Adventure",
-        days: "7 Days",
-        description: "Journey through the emerald mountains of Ella, the wild jungles of Yala, and the golden shores of Mirissa. A perfect blend of nature, wildlife, and coastal bliss.",
-        price: "$680",
-        image: adventureCover,
-        itinerary: [
-            { day: 1, title: "Scenic Highlands Arrival", desc: "Embark on a breathtaking journey from the airport into the heart of the central highlands. As you ascend, witness the landscape transform from bustling lowlands into rolling tea plantations and mist-shrouded peaks. Arriving in Ella, you'll be greeted by crisp, cool air and stunning vistas of the surrounding mountain gaps, setting the perfect tone for your upcoming adventure.", activities: ["Mountain Transfer", "Tea Estate Views", "Evening in Ella"] },
-            { day: 2, title: "Ella Peaks & Iconic Bridges", desc: "Start your day with a hike up Little Adam's Peak, an exhilarating experience that rewards you with panoramic views over the lush valley below. Afterward, walk along the tracks of the Nine Arches Bridge, a masterpiece of colonial engineering perfectly nestled within the forest. Spend the afternoon exploring the local cafes or visiting a hidden waterfall tucked away in the mountain trails.", activities: ["Little Adam's Peak Hike", "Nine Arches Bridge Visit", "Waterfall Exploration"] },
-            { day: 3, title: "Wild Safari Expedition", desc: "Traverse the southern plains as you head toward Yala National Park. On arrival, head straight into the wild on an afternoon jeep safari, scanning the dense bushes and watering holes for the elusive Sri Lankan leopard, herds of elephants, and lazy crocodiles. The raw beauty of the jungle at sunset offers incredible photography opportunities and an unforgettable connection with nature.", activities: ["Yala Safari", "Leopard Spotting", "Wildlife Photography"] },
-            { day: 4, title: "Tropical Coast Transition", desc: "Leave the wild plains behind and head to the shimmering coastline of the south. Reach the pristine sands of Mirissa, where the crashing waves and swaying palms offer an immediate sense of relaxation. Spend your afternoon walking the beach, watching the local fishermen, or simply lounging in a hammock while listening to the rhythmic pulse of the Indian Ocean.", activities: ["Coastal Drive", "Beach Relaxation", "Sunset Watching"] },
-            { day: 5, title: "Marine Wonders & Leisure", desc: "Enjoy the freedom of a day at your own pace. Opt for an optional boat trip to spot whales and dolphins in the deep blue sea, or stay on land to explore the quiet fishing villages and secret coves. Whether you choose adrenaline-filled water activities or quiet reflection on the sand, the coastal charm of Mirissa promises a day of true indulgence and tranquility.", activities: ["Whale Watching", "Beach Exploration", "Relaxed Island Life"] },
-            { day: 6, title: "Galle Fort & River Safari", desc: "Discover the rich history of Galle Fort, a UNESCO-listed site packed with colonial charm and artisan boutiques. After exploring the ramparts, head to the nearby river for a peaceful boat safari through the mangroves, where you can spot exotic birds and monitor lizards. The day seamlessly blends historical exploration with the natural serenity of Sri Lanka's winding waterways.", activities: ["Galle Fort Tour", "Madu River Safari", "Artisan Shopping"] },
-            { day: 7, title: "Return to Memories", desc: "On your final day, take a slow morning to enjoy one last cup of Ceylon tea while looking out at the ocean. Your private driver will then guide you back to the airport, allowing you to reminisce about the diverse landscapes, the wild jungles, and the serene beaches you've traversed throughout your unforgettable seven-day adventure.", activities: ["Slow Morning", "Coastal Drive", "Airport Departure"] }
-        ],
-        inclusions: ["Accommodation with breakfast", "Airport pick-up & drop-off", "Private transport with Professional Driver", "Yala safari experience", "Madu River safari", "Visit to Galle Fort"],
-        exclusions: ["International flights", "Lunch & Dinner", "Entrance fees"],
-        routeMap: routeMapScenic,
-        importantNotes: [
-            "Wildlife Safari Etiquette & Safety: Embarking on a safari in Yala National Park is a thrilling experience, but it requires strict adherence to safety protocols. It is essential to remain quiet and stay completely inside the vehicle at all times to avoid distressing the animals. Leopards and elephants are wild and unpredictable; maintaining a respectful distance is mandatory. We also advocate for a 'no trace' policy—ensure all plastic and waste is kept within the jeep. By following these guidelines, you ensure your own safety while helping to preserve the natural behavior of Sri Lanka's most iconic wildlife in their pristine jungle habitat.",
-            "Scenic Train Journey & Ticket Logistics: The train journey between Kandy and Ella is widely considered one of the most beautiful in the world. Due to its immense popularity, tickets for reserved seating in first and second class sell out weeks in advance. We handle these bookings for you to ensure the best possible experience. However, please note that the train schedule can be subject to delays. We recommend bringing a light snack and a book, though most travelers find themselves mesmerized by the passing tea estates and mountain vistas. This slow-travel experience is a highlight of the trip, offering a unique perspective on the island's interior.",
-            "Hiking Preparedness & Gear for Ella: Exploring the peaks of Ella, including Little Adam’s Peak and Ella Rock, involves trekking through varied terrain, from manicured tea paths to rugged forest trails. Sturdy, non-slip hiking shoes or high-quality trainers with good grip are essential, especially as paths can become slippery after rain. We also recommend wearing long socks to protect against leeches in the denser forest areas during the wet season. Carrying a lightweight daypack with water, a camera, and a light rain jacket will ensure you are comfortable throughout your mountain adventures while capturing the stunning panoramic views from the summits.",
-            "Connectivity & Communication in Remote Areas: While Sri Lanka has excellent mobile coverage in urban centers, signal strength can fluctuate significantly as you move through the deep jungles of Yala or the high-altitude regions of Ella. We recommend downloading offline maps and ensuring your loved ones know you may be out of reach during certain segments of your adventure. Most of our handpicked hotels and eco-lodges offer Wi-Fi in common areas, allowing you to stay connected and share your experiences. This temporary disconnection from the digital world often enhances the sense of immersion in the raw beauty and tranquility of the Sri Lankan wilderness."
-        ],
-        reviews: [
-            { id: 1, name: "James Wilson", rating: 5, date: "November 2025", comment: "The safari in Yala was incredible. Our guide knew exactly where to find the leopards! Truly a wild adventure.", icon: "bi bi-person-workspace" },
-            { id: 2, name: "Sophie Muller", rating: 5, date: "December 2025", comment: "Ella is a dream. The Nine Arches Bridge is even more impressive in person. Thank you for the amazing organization.", icon: "bi bi-person-check" }
-        ]
+        routeMap: routeMapHighlandsCoast,
+        reviews: adventureReviews
     },
     {
         id: 4,
         name: "5-Day Mist & Mountains",
         days: "5 Days",
-        description: "Venture into the emerald heart of Sri Lanka. Traverse the misty tea plantations of Nuwara Eliya and hike the scenic trails of Horton Plains.",
+        description: "Venture into the emerald heart of Sri Lanka. Traverse tea plantations and hike the scenic trails of Ella.",
         price: "$550",
         image: mistMountainsCover,
         itinerary: [
-            { day: 1, title: "Kandy Arrival & Sacred Temple", desc: "Enter the misty hills of Kandy and visit the sacred Temple of the Tooth Relic, the spiritual heart of the island. Walk through the beautifully adorned halls and witness the evening 'Pooja' ceremony, where the sound of drums and the scent of incense create a deeply spiritual atmosphere. Afterward, enjoy a quiet evening overlooking the city lights and the serene Kandy Lake.", activities: ["Temple of the Tooth", "Lake Walk", "Spiritual Ceremony"] },
-            { day: 2, title: "Botanical Gardens & Tea Culture", desc: "Wander through the Peradeniya Botanical Gardens, home to a stunning collection of orchids and giant palm avenues. Later, visit a working tea factory to learn the secrets behind Sri Lanka's world-famous Ceylon tea. From plucking the tender leaves to the final drying process, you'll gain a new appreciation for every cup you enjoy amidst the rolling green estates.", activities: ["Botanical Garden Tour", "Tea Factory Visit", "Tea Tasting"] },
-            { day: 3, title: "The Great Train Journey to Ella", desc: "Prepare for the journey of a lifetime as you board the train from Kandy to Ella. This six-hour ride is often cited as the most beautiful in the world, winding through high-altitude cloud forests, over historic viaducts, and past cascading waterfalls. Keep your camera ready as every turn reveals a new, more breathtaking view of the island's emerald heart.", activities: ["Iconic Train Ride", "Cloud Forest Views", "Photography Session"] },
-            { day: 4, title: "Ella Rock & Nine Arches Adventure", desc: "Lace up your boots for a rewarding hike up Ella Rock, offering the most dramatic panoramic views in the region. After descending, visit the Nine Arches Bridge, an engineering marvel hidden within a lush forest valley. Stand on the tracks and feel the history of the railway as you wait for the colorful trains to pass through this iconic landscape.", activities: ["Ella Rock Hike", "Nine Arches Bridge", "Mountain Exploration"] },
-            { day: 5, title: "Ravana Falls & Highland Farewell", desc: "Visit the thundering Ravana Falls, tied to ancient legends of the Ramayana. Feel the cooling mist on your face before enjoying a final traditional highland lunch in the village. As you prepare for your departure, take one last look at the stunning Ella Gap, carrying with you the peace and majesty of the Sri Lankan mountains.", activities: ["Ravana Falls Visit", "Village Lunch", "Panoramic Vistas"] }
+            { day: 1, title: "Kandy Sacred", desc: "Temple visit.", activities: ["Spiritual"] },
+            { day: 2, title: "Tea Culture", desc: "Factory tour.", activities: ["Tasting"] },
+            { day: 3, title: "Epic Train", desc: " Scenic ride.", activities: ["Train"] },
+            { day: 4, title: "Ella Rock", desc: "Summit hike.", activities: ["Hiking"] },
+            { day: 5, title: "Departure", desc: "Mountain farewell.", activities: ["Transfer"] }
         ],
-        inclusions: ["All transfers with Professional Driver", "Train tickets", "Park entrance fees", "Accommodation + Breakfast"],
-        exclusions: ["International flights", "Tips"],
+        inclusions: ["Tea factory visit", "Train tickets", "Mountain hiking"],
+        exclusions: ["Lunch", "Entrance fees", "Insurance"],
         routeMap: routeMapHill,
-        importantNotes: [
-            "High Altitude Climate & Wardrobe Advice: Nuwara Eliya, often referred to as 'Little England,' sits at an elevation of 1,889 meters. Consequently, the climate is remarkably different from the tropical lowlands. Temperatures can drop to 10°C (50°F) or lower during the night, and mist is common in the mornings. We strongly advise packing layered clothing, including sweaters, long trousers, and a windproof jacket. Most historic hotels in this region provide heaters or hot water bottles, but being prepared with warm attire will ensure you can comfortably enjoy the colonial charm and scenic beauty of the highland plantations regardless of the weather.",
-            "Leech Protection on Nature Trails: When hiking through the lush tea estates and forest reserves like Horton Plains, it is possible to encounter land leeches, particularly after a tropical downpour. While they are harmless, they can be a nuisance. We provide specialized leech socks and repellent spray for our guests during these treks. We also recommend wearing long trousers and tucking them into your socks for added protection. Staying on the main designated paths significantly reduces the likelihood of an encounter. These small precautions allow you to focus entirely on the breathtaking biodiversity and unique flora of the Sri Lankan highlands.",
-            "Nuwara Eliya to Ella Train Segment: The segment of the railway between Nuwara Eliya (Nanu Oya station) and Ella is the most scenic part of the entire hill country line. The train winds through high-altitude cloud forests and vast emerald tea valleys. We recommend keeping your camera fully charged and staying near the windows or doors (safely!) to capture the famous views. The atmosphere on the train is often festive and communal, providing a wonderful opportunity to interact with local commuters and other travelers. It’s a slow, rhythmic journey that perfectly captures the soul of the island’s mountainous heart.",
-            "Temple Etiquette & Sacred Site Protocols: As you visit the cultural landmarks of the hill country, such as the Seetha Amman Temple, please remember that these are active places of worship. In addition to the standard dress code of covering shoulders and knees, you will be required to remove your shoes and hats before entering the temple precincts. Walking barefoot on sun-warmed stone can be challenging, so some travelers choose to wear socks, which are generally permitted. Maintaining a quiet and respectful demeanor ensures you can witness the vibrant rituals and deep spirituality of the local community without causing any unintentional offense."
-        ],
-        reviews: [
-            { id: 1, name: "Lucas Wagner", rating: 5, date: "September 2025", comment: "The mist in Nuwara Eliya is magical. We loved the colonial tea bungalows and the high-altitude hikes. A very relaxing segment of our trip.", icon: "bi bi-person-check" },
-            { id: 2, name: "Emma Larsson", rating: 5, date: "October 2025", comment: "The train ride from Nanu Oya to Ella is life-changing. Don't forget your camera!", icon: "bi bi-person-heart" }
-        ]
+        reviews: signatureReviews
     },
     {
         id: 5,
         name: "6-Day Wild Safari Expedition",
         days: "6 Days",
-        description: "Experience the raw beauty of Sri Lanka's wildlife. Encounter leopards in Yala and explore the untamed jungles of Udawalawe.",
+        description: "Experience the raw beauty of Sri Lanka's wildlife in Yala and Udawalawe.",
         price: "$720",
         image: wildSafariCover,
         itinerary: [
-            { day: 1, title: "Arrival | Udawalawe", activities: ["Pick-up", "Sunset safari"], desc: "Meet the elephant herds in their untamed grassland home." },
-            { day: 2, title: "Elephant Home", activities: ["Feeding session", "Transfer to Yala"], desc: "Visit the transit home for baby elephants before the jungle." },
-            { day: 3, title: "Yala Expedition", activities: ["Full day safari", "Picnic lunch"], desc: "A dedicated search for leopards and bears in the deep wild." },
-            { day: 4, title: "Tangalle Coast", activities: ["Transfer to Tangalle", "Turtle visit"], desc: "Transition from the jungle to the wild, secluded shores." },
-            { day: 5, title: "Southern Leisure", activities: ["Lagoon safari", "Beach BBQ"], desc: "Relax and enjoy the coastal wildlife of the deep south." },
-            { day: 6, title: "Departure", activities: ["Transfer to airport"], desc: "Final memories of the island's wild side." }
+            { day: 1, title: "Udawalawe", desc: "Elephant home.", activities: ["Safari"] },
+            { day: 2, title: "Transit Home", desc: "Baby elephants.", activities: ["Feeding"] },
+            { day: 3, title: "Yala Wild", desc: "Leopard search.", activities: ["Full Safari"] },
+            { day: 4, title: "Tangalle", desc: "Wild coast.", activities: ["Beach"] },
+            { day: 5, title: "Leisure", desc: "BBQ on beach.", activities: ["BBQ"] },
+            { day: 6, title: "Departure", desc: "Transfer.", activities: ["Airport"] }
         ],
-        inclusions: ["All transfers with Professional Driver", "4x4 Safari Jeeps", "Park fees", "Accommodation + Breakfast"],
-        exclusions: ["International flights", "Dinner"],
+        inclusions: ["Safari jeeps", "Park entry permits", "Expert tracker"],
+        exclusions: ["Personal items", "Drinks", "Tips"],
         routeMap: routeMapWild,
-        importantNotes: [
-            "Optimizing Your Safari Experience: For the best chances of encountering the elusive Sri Lankan leopard or large herds of wild elephants in Udawalawe and Yala, early morning safaris are essential. We typically depart before dawn to reach the park gates as they open, as wildlife is most active in the cooler hours. Our experienced naturalists and drivers are experts at tracking movements and identifying alarm calls of other animals. Patience is key; sometimes the most rewarding sightings happen when you least expect them. Ensure you have your binoculars ready to spot the incredible array of endemic birdlife and smaller mammals that call these jungles home.",
-            "Safari Environment & Dust Protection: The terrain in Sri Lanka’s national parks can be very dry and rugged, leading to significant dust during jeep safaris. This is especially true during the dry season. We recommend bringing a lightweight scarf, buff, or face mask to protect your nose and mouth, as well as sunglasses to shield your eyes. Keeping your camera equipment in a protective bag when not in use is also highly advised to prevent dust from entering the lenses. These simple practical steps will ensure you remain comfortable throughout the multi-hour expeditions while you focus on the raw beauty of the untamed wilderness.",
-            "Strict National Park Rules & Conservation: Sri Lanka takes wildlife conservation very seriously. Within the national parks, it is strictly forbidden to feed animals, litter, or use loud music. Jeeps must remain on designated tracks to protect the habitat. Our drivers are committed to these ethical standards and will not approach animals too closely to ensure their natural behavior is not disrupted. Smoking is also prohibited within the park boundaries. By respecting these rules, you contribute to the sustainable management of these vital ecosystems, ensuring that the wildlife continues to thrive and that future generations can also experience the magic of the wild.",
-            " Hydration & Sun Safety in the Wild: The temperatures in the lowland jungles can rise rapidly after sunrise, often reaching over 30°C (86°F). Proper hydration is critical for your well-being. We provide ample bottled water in the jeeps, but we encourage the use of reusable containers to minimize plastic waste. Additionally, wear breathable, light-colored clothing and apply plenty of sunscreen. A wide-brimmed hat is useful, though you should ensure it is secured during the bumpy jeep ride. Staying cool and hydrated allows you to maintain your energy for the full duration of the safari, from the first light of dawn to the golden hues of late afternoon."
-        ],
-        reviews: [
-            { id: 1, name: "Oliver Scott", rating: 5, date: "November 2025", comment: "Saw a leopard within the first hour at Yala! The drivers are incredibly skilled and respect the wildlife. A 10/10 experience.", icon: "bi bi-person-workspace" },
-            { id: 2, name: "Mia Takahashi", rating: 5, date: "December 2025", comment: "Udawalawe elephants are so peaceful. It was amazing to see them in such large herds. Very well organized safari.", icon: "bi bi-person-circle" }
-        ]
+        reviews: adventureReviews
     },
     {
         id: 6,
         name: "3-Day Galle Fort Escape",
         days: "3 Days",
-        description: "A quick but immersive journey into the colonial heart of Sri Lanka. Walk the historic ramparts and enjoy boutique coastal living.",
+        description: "A quick but immersive journey into the colonial heart of Sri Lanka.",
         price: "$320",
         image: galleFortCover,
         itinerary: [
-            { day: 1, title: "Arrival | Galle", activities: ["Airport pick-up", "Sunset on ramparts"], desc: "Arrive at the Dutch Fort and walk the ancient walls." },
-            { day: 2, title: "Fort Boutique", activities: ["Lighthouse visit", "Shopping"], desc: "Discover the charming streets and local artisan shops." },
-            { day: 3, title: "Departure", activities: ["Morning swim", "Transfer to airport"], desc: "One last dip in the ocean before your flight." }
+            { day: 1, title: "Arrival", desc: "Dutch Fort.", activities: ["Sunset"] },
+            { day: 2, title: "Boutique", desc: "Shopping.", activities: ["Artisan"] },
+            { day: 3, title: "Departure", desc: "Swim.", activities: ["Transfer"] }
         ],
-        inclusions: ["Airport transfers with Professional Driver", "Guided walk", "Accommodation + Breakfast"],
-        exclusions: ["Lunch and dinner"]
+        inclusions: ["Galle Fort tour", "Boutique stay", "Local breakfast"],
+        exclusions: ["Shopping", "Lunches", "Transport to Galle"],
+        reviews: coastalReviews
     },
     {
         id: 7,
         name: "Into the Wild",
         days: "4 Days",
-        description: "A deep dive into the rainforest and untamed landscapes. Experience the raw biodiversity of Sinharaja and the hidden waterfalls of the south.",
+        description: "A deep dive into the rainforest and untamed landscapes of Sinharaja.",
         price: "$480",
         image: koslandaCover,
         itinerary: [
-            { day: 1, title: "Arrival | Sinharaja", activities: ["Airport pick-up", "Jungle lodge check-in"], desc: "Enter the heart of the last primeval rainforest in Sri Lanka." },
-            { day: 2, title: "Rainforest Trek", activities: ["Guided jungle hike", "Bird watching"], desc: "Discover endemic species and the vibrant life under the canopy." },
-            { day: 3, title: "Waterfalls & Wild", activities: ["Natural pool bath", "Night jungle walk"], desc: "Swim in hidden falls and experience the forest after dark." },
-            { day: 4, title: "Departure", activities: ["Morning trek", "Transfer to airport"], desc: "Leave the wilderness behind with a soul full of nature." }
+            { day: 1, title: "Sinharaja", desc: "Rainforest lodge.", activities: ["Check-in"] },
+            { day: 2, title: "Jungle Trek", desc: "Bird watching.", activities: ["Hike"] },
+            { day: 3, title: "Waterfalls", desc: "Natural pool.", activities: ["Swim"] },
+            { day: 4, title: "Departure", desc: "Transfer.", activities: ["Airport"] }
         ],
-        inclusions: ["All transfers with Professional Driver", "Jungle guide", "Accommodation + All Meals", "Park fees"],
-        exclusions: ["International flights", "Personal gear"]
-    },
-    {
-        id: 8,
-        name: "1-Day Kandy Essence",
-        days: "1 Day",
-        description: "Explore the cultural soul of Sri Lanka in just one day. Visit the sacred Temple of the Tooth and enjoy the scenic beauty of the hill capital starting from Kandy.",
-        price: "$120",
-        image: kandyEssenceCover,
-        itinerary: [
-            { day: 1, title: "Kandy Highlights", activities: ["Temple of Tooth", "Royal Botanical Gardens", "Kandy Lake Walk", "Cultural Show"], desc: "A deep dive into the spiritual and natural beauty of the hill capital." }
-        ],
-        inclusions: ["Private transport with Driver", "All Entrance fees", "Lunch with a view", "Bottle of water"],
-        exclusions: ["Personal expenses", "Tips"]
+        inclusions: ["Rainforest trekking", "Naturalist guide", "Eco-lodge stay"],
+        exclusions: ["Alcoholic beverages", "Travel insurance", "Personal gear"],
+        reviews: adventureReviews
     },
     {
         id: 9,
-        name: "2-Day Highlands Escape",
-        days: "2 Days",
-        description: "A perfect getaway from Kandy to the misty mountains of Nuwara Eliya. Experience tea plantations, waterfalls, and the cool highland breeze.",
-        price: "$240",
-        image: nuwaraEliyaCover,
+        name: "Kandy Highlights",
+        days: "1 Day",
+        description: "A relaxing introduction to the cultural and natural beauty of Kandy, including the Temple of the Tooth, Kandy Lake, and Royal Botanical Gardens.",
+        price: "$120",
+        image: kandyDayImg,
         itinerary: [
-            { day: 1, title: "Kandy → Nuwara Eliya", activities: ["Tea factory visit", "Ramboda Falls", "Gregory Lake"], desc: "Travel through scenic mountain roads to the 'Little England' of Sri Lanka." },
-            { day: 2, title: "Nuwara Eliya & Return", activities: ["Hakgala Gardens", "Strawberry farms", "Scenic drive back to Kandy"], desc: "Enjoy the refreshing mountain air and vibrant gardens before returning." }
+            { 
+                day: 1, 
+                title: "Kandy Highlights", 
+                desc: "You will be picked up from your accommodation and taken to the sacred Temple of the Tooth Relic. After a guided visit, enjoy a peaceful walk around Kandy Lake. The journey continues to the Royal Botanical Gardens. In the evening, attend a vibrant Sri Lankan cultural show.", 
+                activities: ["Temple of the Tooth", "Kandy Lake Walk", "Royal Botanical Gardens", "Cultural Dance Show"] 
+            }
         ],
-        importantNotes: [
-            "Nuwara Eliya Weather & Clothing: Known as 'Little England', Nuwara Eliya is significantly cooler than the lowlands. Temperatures can drop to 10°C (50°F) at night. We recommend bringing warm layers and a light jacket for the evenings.",
-            "Tea Estate Etiquette: When visiting tea factories, please follow the guide's instructions. Photos are often encouraged, but avoid plucking tea leaves without permission as it's a delicate agricultural process.",
-            "Altitude & Hydration: The winding roads can sometimes cause motion sickness. We recommend staying hydrated and perhaps having a light meal before the mountain climb."
-        ],
-        reviews: [
-            { id: 1, name: "Sophie Clarke", rating: 5, date: "January 2026", comment: "The mist over the tea estates is unforgettable. Nuwara Eliya has such a unique charm. The Ramboda Falls stop was a great highlight!", icon: "bi bi-person-heart" },
-            { id: 2, name: "Thomas Wright", rating: 5, date: "December 2025", comment: "A perfect 2-day trip from Kandy. The accommodation was cozy and the driver was very safe on the winding mountain roads.", icon: "bi bi-person-check" }
-        ],
-        inclusions: ["Private transport with Driver", "1 Night Accommodation (3-star)", "Breakfast", "All Entrance fees"],
-        exclusions: ["Lunch and dinner", "Tips"]
+        inclusions: ["Pick-up & Drop-off (within 1km of city)", "Temple of the Tooth visit", "Botanical Garden tour", "Cultural show tickets"],
+        exclusions: ["Lunch", "Locations outside 1km radius", "Personal expenses"],
+        routeMap: routeMapKandy,
+        reviews: kandyReviews
     },
     {
         id: 10,
-        name: "Kandy & Pinnawala Day Trip",
-        days: "1 Day",
-        description: "Spend a day with the gentle giants. Visit the world-famous Pinnawala Elephant Orphanage and witness elephants bathing in the river, starting from Kandy.",
-        price: "$110",
-        image: pinnawalaCover,
+        name: "Adam’s Peak Sunrise Quest",
+        days: "2 Days / 1 Night",
+        description: "A spiritual and scenic journey to the sacred Adam's Peak (Sri Pada). Experience a magical night climb and witness a breathtaking sunrise from the summit.",
+        price: "$280",
+        image: adamsPeakImg,
         itinerary: [
-            { day: 1, title: "Kandy → Pinnawala", activities: ["Elephant Orphanage", "River Bathing", "Millennium Elephant Foundation", "Spice Garden"], desc: "A heartwarming experience visiting the most famous elephant sanctuary on the island." }
+            { 
+                day: 1, 
+                title: "Kandy to Dalhousie", 
+                desc: "Begin with a scenic drive through tea plantations and waterfalls to Dalhousie. Check in to a guesthouse to relax and prepare for the upcoming night climb.", 
+                activities: ["Scenic Highlands Drive", "Tea Plantation Views", "Guesthouse Relaxation"] 
+            },
+            { 
+                day: 2, 
+                title: "Sunrise Climb & Back to Kandy", 
+                desc: "Begin your night climb at 10:00 PM. Reach the summit for a spiritual sunrise. Descend for breakfast before returning to Kandy for your hotel drop-off.", 
+                activities: ["Night Peak Climb", "Spiritual Sunrise", "Mountain Descent", "Return Transfer"] 
+            }
         ],
+        inclusions: ["Private transport (Taxi/TukTuk)", "Guesthouse stay (1 Night)", "Breakfast", "Hotel Pick-up & Drop-off"],
+        exclusions: ["Dinner", "Lunch", "Personal snacks/water", "Hiking gear"],
         importantNotes: [
-            "Elephant Bathing Schedule: To witness the spectacular sight of the elephant herd bathing in the Maha Oya river, we aim to arrive at the orphanage by 10 AM or 2 PM. This is the highlight of the visit and provides excellent photography opportunities.",
-            "Responsible Interaction: We prioritize ethical wildlife encounters. While you can observe the elephants closely, we advise against any activities that cause stress to the animals. Respect the boundaries set by the mahouts (elephant handlers).",
-            "Sun Protection: Most of the observation areas are outdoors near the river. We recommend wearing a hat and applying sunscreen, as the sun can be quite strong during the midday bathing sessions."
+            "Supplies: Please carry water and light snacks for the climb",
+            "Gear: A rain jacket and proper hiking shoes are recommended",
+            "Respect: modest dress is required (no shorts, tank tops, or revealing clothing)",
+            "Tradition: Shoes must be removed at the very top of the peak"
         ],
-        reviews: [
-            { id: 1, name: "Jessica Lee", rating: 5, date: "February 2026", comment: "Watching the elephants walk through the village streets to the river was incredible! A must-see if you're staying in Kandy.", icon: "bi bi-person-heart" },
-            { id: 2, name: "David Miller", rating: 5, date: "January 2026", comment: "So many elephants! The river bathing session is just beautiful. It was great to see them so happy in the water.", icon: "bi bi-person-video" }
-        ],
-        inclusions: ["Private transport with Driver", "Orphanage Entrance fees", "Lunch near the river", "English speaking guide"],
-        exclusions: ["Personal expenses", "Elephant riding (not recommended)"]
+        routeMap: routeMapAdamsPeak,
+        reviews: adventureReviews
     },
     {
         id: 11,
-        name: "Adam's Peak Sunrise Quest",
-        days: "2 Days",
-        description: "Embark on a spiritual journey from Kandy to the sacred summit of Adam's Peak. Hike under the stars to witness a breathtaking mountain sunrise.",
-        price: "$280",
-        image: adamsPeakCover,
+        name: "Kitulgala White Water Rafting",
+        days: "1 Day",
+        description: "A thrilling adventure from Kandy to Kitulgala, home to the famous Kelani River rapids. Perfect for beginners and adrenaline seekers alike.",
+        price: "$152",
+        image: raftingImg,
         itinerary: [
-            { day: 1, title: "Kandy → Dalhousie", activities: ["Drive to foothills", "Prep for climb", "Night start"], desc: "Travel from Kandy to the base of the peak and prepare for the midnight ascent." },
-            { day: 2, title: "The Summit & Return", activities: ["Sunrise at Temple", "Descent", "Return to Kandy"], desc: "Witness the 'Shadow of the Peak' at sunrise before heading back for a well-earned rest." }
+            { 
+                day: 1, 
+                title: "River Rapids Adventure", 
+                desc: "Depart from Kandy to Kitulgala. Experience exciting white-water rafting through tropical rainforest rapids. Enjoy a traditional Sri Lankan riverside lunch before returning to Kandy.", 
+                activities: ["White Water Rafting", "Safety Briefing", "Rainforest Scenery", "Traditional Riverside Lunch"] 
+            }
         ],
-        importantNotes: [
-            "Physical Preparation & Gear: The climb involves over 5,000 stone steps and can be physically demanding. We recommend wearing sturdy hiking shoes with good grip. The temperature drops significantly as you ascend, so bringing layers (including a warm hat and gloves) is essential for staying comfortable while waiting for the sunrise.",
-            "Pilgrimage Season & Crowds: The official season runs from December to May. During full moon days and weekends, the path can become very crowded. We guide you on the best starting times to manage the flow and ensure you reach the summit comfortably before the first light of dawn.",
-            "Temple Etiquette: Adam's Peak is a sacred site for multiple religions. Please dress respectfully (shoulders and knees covered) especially at the summit temple. It is customary to remove your shoes before entering the immediate temple precinct at the top."
-        ],
-        reviews: [
-            { id: 1, name: "Alexander Gross", rating: 5, date: "March 2026", comment: "The most challenging and rewarding thing I've ever done. The sunrise was spiritual. Our driver made the logistics so easy so we could focus on the climb.", icon: "bi bi-person-check" },
-            { id: 2, name: "Elena Volkov", rating: 5, date: "April 2026", comment: "A truly bucket-list experience. The view of the shadow of the peak at sunrise is something I'll never forget. Tough climb but worth every step!", icon: "bi bi-person-heart" }
-        ],
-        inclusions: ["Private transport with Driver", "1 Night Lodge stay", "Early morning coffee/tea", "Walking sticks provided"],
-        exclusions: ["Personal guide for climb", "All meals except snacks"]
+        inclusions: ["Private transport (Taxi/TukTuk)", "Rafting equipment & guide", "Traditional Lunch", "Hotel Pick-up & Drop-off"],
+        exclusions: ["Personal expenses", "Tips", "Travel insurance"],
+        routeMap: routeMapKitulgala,
+        reviews: adventureReviews
     },
     {
         id: 12,
-        name: "Kitulgala White Water Rafting",
-        days: "1 Day",
-        description: "Get your adrenaline pumping with a day trip to Kitulgala from Kandy. Experience white water rafting and explore the lush tropical rainforest.",
-        price: "$130",
-        image: raftingCover,
+        name: "21-Day Whole Island Odyssey",
+        days: "21 Days / 20 Nights",
+        description: "The ultimate national journey. A complete loop of the entire island, covering every major region from the northernmost tip of Jaffna to the southern beaches of Galle.",
+        price: "$1,980",
+        image: grandLoopImg,
         itinerary: [
-            { day: 1, title: "Kandy → Kitulgala", activities: ["White water rafting", "Canyoning", "Jungle trekking", "River lunch"], desc: "An action-packed day on the Kelani River with professional adventure guides." }
+            { day: 1, title: "Arrival & Transfer to Negombo", desc: "Welcome to Sri Lanka. Relax at a beachfront hotel in Negombo to recover from your flight.", activities: ["Airport Transfer", "Beach Evening", "Relaxation"] },
+            { day: 2, title: "Wilpattu National Park", desc: "Head North to Wilpattu for a safari in the island's largest and oldest national park.", activities: ["Leopard Safari", "Jungle Drive", "Eco-Lodge Stay"] },
+            { day: 3, title: "Mannar & Giant's Tank", desc: "Discover the unique arid landscapes, ancient baobab trees, and the historic Mannar Fort.", activities: ["Baobab Tree Sighting", "Mannar Fort", "Bird Watching"] },
+            { day: 4, title: "The Journey to Jaffna", desc: "Drive over the Elephant Pass to enter the northern peninsula, a world of its own.", activities: ["Elephant Pass", "Scenic North Drive", "Jaffna Arrival"] },
+            { day: 5, title: "Jaffna Heritage & Culture", desc: "Visit the iconic Nallur Kandaswamy Kovil and the historic Jaffna Public Library.", activities: ["Nallur Kovil", "Jaffna Library", "Colonial Fort"] },
+            { day: 6, title: "Point Pedro & Northern Islands", desc: "Visit the northernmost tip of the island and take a boat to the unique Nainativu island.", activities: ["Point Pedro Visit", "Boat to Nainativu", "Island Temples"] },
+            { day: 7, title: "Sacred Anuradhapura", desc: "Head south to the ancient capital and explore the cradle of Buddhism in Sri Lanka.", activities: ["Sacred Stupas", "Ancient Ruins", "Spiritual Heritage"] },
+            { day: 8, title: "Sigiriya Lion Rock", desc: "Climb the majestic rock fortress and admire the 5th-century frescoes and gardens.", activities: ["Lion Rock Climb", "Water Gardens", "Village Tour"] },
+            { day: 9, title: "Medieval Polonnaruwa", desc: "Explore the second capital by bicycle, visiting the Gal Vihara and Royal Palace.", activities: ["Bicycle Tour", "Stone Statues", "Ancient Lake Sights"] },
+            { day: 10, title: "Trincomalee Beaches", desc: "Head to the East Coast for the crystal-clear waters of Nilaveli Beach.", activities: ["Koneswaram Temple", "Nilaveli Beach", "Seafood Dinner"] },
+            { day: 11, title: "Pigeon Island Sanctuary", desc: "A morning of world-class snorkeling in the turquoise marine sanctuary.", activities: ["Snorkeling", "Coral Reef Exploration", "Boat Ride"] },
+            { day: 12, title: "The Hill Capital: Kandy", desc: "Travel to the misty hills and visit the Temple of the Sacred Tooth Relic.", activities: ["Temple Visit", "Kandy Lake", "Cultural Show"] },
+            { day: 13, title: "Tea Highlands: Nuwara Eliya", desc: "Wind through emerald tea estates and visit a colonial-era factory.", activities: ["Tea Tasting", "Waterfall Sights", "Gregory Lake"] },
+            { day: 14, title: "Scenic Train Ride to Ella", desc: "Experience the world's most beautiful train journey through the mountains.", activities: ["Iconic Train Trip", "Highland Panoramas", "Ella Town"] },
+            { day: 15, title: "Ella Peaks & Arches", desc: "Visit the Nine Arches Bridge and hike Little Adam’s Peak for stunning views.", activities: ["Nine Arches Bridge", "Little Adam's Peak", "Mountain Café"] },
+            { day: 16, title: "Udawalawe Elephant Safari", desc: "Visit the Elephant Transit Home and enjoy a safari in Udawalawe National Park.", activities: ["Elephant Transit Home", "Safari Drive", "River Stay"] },
+            { day: 17, title: "Wild Yala National Park", desc: "An early morning search for leopards in the island's most famous wilderness.", activities: ["Leopard Safari", "Wildlife Photography", "Bush Dinner"] },
+            { day: 18, title: "Mirissa Coastal Bliss", desc: "Relax in the southern surf hub and witness whales in the deep blue.", activities: ["Whale Watching", "Coconut Tree Hill", "Surfing"] },
+            { day: 19, title: "Historic Galle Fort", desc: "Explore the UNESCO-listed Dutch fort with its boutique shops and cafes.", activities: ["Fort Walk", "Lighthouse Photo", "Boutique Shopping"] },
+            { day: 20, title: "Bentota Golden Beaches", desc: "A final day of relaxation with a river safari and sunset beach walk.", activities: ["Madu River Safari", "Beach Relaxation", "Farewell Dinner"] },
+            { day: 21, title: "Colombo & Departure", desc: "Final city sightseeing and shopping before your transfer to the airport.", activities: ["City Tour", "Souvenir Shopping", "Airport Transfer"] }
         ],
-        importantNotes: [
-            "Safety Gear & Requirements: All participants are provided with international-standard life jackets and helmets. No prior rafting experience is necessary, but we do require all guests to inform their guide of any medical conditions or swimming abilities beforehand. The minimum age for rafting is typically 6 years old.",
-            "What to Bring: You will get wet! We recommend wearing quick-drying sportswear or swimwear. A change of clothes and a towel are essential for after the rafting session. We provide secure lockers at the base camp for your dry clothes and valuables.",
-            "Weather Conditions: Rafting is possible throughout the year, but the intensity of the rapids (Grades 2 and 3) can vary depending on the rainfall in the catchment area. Our guides constantly monitor the river levels to ensure a safe and thrilling experience."
-        ],
-        reviews: [
-            { id: 1, name: "Ben Sullivan", rating: 5, date: "May 2026", comment: "The adrenaline rush was incredible! The guides were professional and made us feel safe while having a blast in the rapids. The lunch afterward was the best curry I've had in Sri Lanka.", icon: "bi bi-person-video" },
-            { id: 2, name: "Carla Mendez", rating: 5, date: "April 2026", comment: "Such a fun day trip from Kandy. Canyoning and jumping into the natural pools was the highlight. Highly recommend for any adventure seekers!", icon: "bi bi-person-badge" }
-        ],
-        inclusions: ["Private transport with Driver", "Rafting equipment & Life jackets", "Adventure Guide", "Traditional buffet lunch"],
-        exclusions: ["Insurance", "GoPro rental for photos"]
+        inclusions: ["All Accommodation", "Daily Breakfast", "Private Luxury Transport", "Train Tickets", "3 National Park Safaris", "Boat Transfers"],
+        exclusions: ["International Flights", "Entrance fees for all sites", "Lunch & Dinner"],
+        routeMap: routeMapGrandLoop,
+        reviews: signatureReviews
     }
-];
-
-export const TOURS_DATA = [
-    { id: 1, title: "The Lion Rock", category: "Historical", rating: 4.9, price: "$45", image: "https://images.unsplash.com/photo-1588598136852-2999e339f416?auto=format&fit=crop&q=80&w=800" },
-    { id: 2, title: "Kandy Temple", category: "Cultural", rating: 4.8, price: "$30", image: "https://images.unsplash.com/photo-1625736312933-7649539665bc?auto=format&fit=crop&q=80&w=800" },
-    { id: 3, title: "Nine Arches", category: "Adventure", rating: 4.9, price: "$25", image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&q=80&w=800" },
-    { id: 4, title: "Yala Safari", category: "Nature", rating: 4.7, price: "$60", image: "https://images.unsplash.com/photo-1590418606746-018840fb9cd0?auto=format&fit=crop&q=80&w=800" },
-    { id: 5, title: "Galle Fort", category: "Historical", rating: 4.8, price: "$20", image: "https://images.unsplash.com/photo-1626081442111-744315264020?auto=format&fit=crop&q=80&w=800" },
-    { id: 6, title: "Into the Wild", category: "Nature", rating: 4.9, price: "$55", image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&q=80&w=800" },
-    { id: 7, title: "Ancient Polonnaruwa", category: "Historical", rating: 4.8, price: "$35", image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&q=80&w=800" },
-    { id: 8, title: "Adam's Peak Trek", category: "Adventure", rating: 4.9, price: "$50", image: "https://images.unsplash.com/photo-1580982327559-c1202864eb05?auto=format&fit=crop&q=80&w=800" }
 ];

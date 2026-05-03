@@ -90,7 +90,17 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     <i className="fa-solid fa-star-half-stroke"></i>
                     <span style={{ color: '#888', fontWeight: 700, marginLeft: '6px', fontSize: '0.75rem' }}>4.8 (Excellent)</span>
                 </div>
-                <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '15px'}}>{pkg.name}</h3>
+                <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '8px'}}>{pkg.name}</h3>
+                <p style={{ 
+                    fontSize: '0.85rem', 
+                    color: '#666', 
+                    lineHeight: 1.5, 
+                    marginBottom: '15px',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                }}>{pkg.description}</p>
                 
                 <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
                     {getTags().map((tag, i) => (
