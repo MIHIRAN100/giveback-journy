@@ -4,6 +4,8 @@ import WhoImageSecondary from '../assets/f60e45b2-b97c-4817-8ce3-903aad9819e5.jp
 import WhoImageTertiary from '../assets/lucija-ros-VC7P8p6dFIc-unsplash.jpg';
 import WhoImage4 from '../assets/artem-beliaikin-pDiWpjV14F0-unsplash.jpg';
 import WhoImage5 from '../assets/brian-kyed-8NpelZe-EzM-unsplash.jpg';
+import WhoImage6 from '../assets/Tasting Sri Lankan Cuisine .jpg';
+import WhoImage7 from '../assets/Wild grass nature resort.jpg';
 
 const WhoWeAre = () => {
     return (
@@ -11,53 +13,73 @@ const WhoWeAre = () => {
             <div className="who-we-are-container">
                 <div className="who-image-column">
                     <div className="who-image-grid-refined">
-                        {/* Left Top Card */}
+                        {/* Card 1 */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImageSecondary} alt="Authentic Experience" />
                             <span className="who-card-label">Authentic</span>
                             <div className="who-card-overlay">
                                 <h3>Local Life</h3>
-                                <p>Immersive journeys</p>
+                                <p>Connecting you directly with village artisans and community projects.</p>
                             </div>
                         </div>
 
-                        {/* Middle Tall Card */}
+                        {/* Card 2 */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImageMain} alt="Exquisite Budget Travel" />
                             <span className="who-card-label">Experience</span>
                             <div className="who-card-overlay">
                                 <h3>15+ Years</h3>
-                                <p>Of curating memories</p>
+                                <p>A decade and a half of crafting deep-island experiences beyond guidebooks.</p>
                             </div>
                         </div>
 
-                        {/* Right Top Card */}
+                        {/* Card 3 */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImageTertiary} alt="Island Journey" />
                             <span className="who-card-label">Value</span>
                             <div className="who-card-overlay">
                                 <h3>Budget Luxury</h3>
-                                <p>Unbeatable pricing</p>
+                                <p>Premium boutique stays and private transport at unbeatable value.</p>
                             </div>
                         </div>
 
-                        {/* Left Bottom Card */}
+                        {/* Card 4 */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImage4} alt="Nature" />
                             <span className="who-card-label">Nature</span>
                             <div className="who-card-overlay">
                                 <h3>Wild Trails</h3>
-                                <p>Explore the unseen</p>
+                                <p>Ethical wildlife expeditions led by conservation-focused local experts.</p>
                             </div>
                         </div>
 
-                        {/* Right Bottom Card */}
+                        {/* Card 5 */}
                         <div className="who-grid-item-refined">
                             <img src={WhoImage5} alt="Heritage" />
                             <span className="who-card-label">Culture</span>
                             <div className="who-card-overlay">
                                 <h3>Heritage</h3>
-                                <p>Ancient stories</p>
+                                <p>Uncovering 2,500 years of history through the eyes of local historians.</p>
+                            </div>
+                        </div>
+
+                        {/* Card 6 */}
+                        <div className="who-grid-item-refined">
+                            <img src={WhoImage6} alt="Cuisine" />
+                            <span className="who-card-label">Flavor</span>
+                            <div className="who-card-overlay">
+                                <h3>Island Tastes</h3>
+                                <p>Savoring the authentic spices and culinary traditions of Sri Lanka.</p>
+                            </div>
+                        </div>
+
+                        {/* Card 7 */}
+                        <div className="who-grid-item-refined">
+                            <img src={WhoImage7} alt="Eco Stay" />
+                            <span className="who-card-label">Eco</span>
+                            <div className="who-card-overlay">
+                                <h3>Green Stays</h3>
+                                <p>Hand-picked eco-resorts that prioritize sustainability and local nature.</p>
                             </div>
                         </div>
                     </div>
