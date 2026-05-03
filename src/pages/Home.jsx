@@ -10,12 +10,15 @@ import VolunteerSection from '../components/VolunteerSection';
 import FeedbackSection from '../components/FeedbackSection';
 import ScrollReveal from '../components/ScrollReveal';
 
+import PackageHighlight from '../components/PackageHighlight';
+
 const Home = () => {
     return (
         <div className="home-page">
             <Hero />
             <ScrollReveal><PartnerSlider /></ScrollReveal>
             <ScrollReveal><FeaturesScroll /></ScrollReveal>
+            <ScrollReveal><PackageHighlight /></ScrollReveal>
             <ScrollReveal><WhoWeAre /></ScrollReveal>
             <ScrollReveal><ExclusiveExperiences /></ScrollReveal>
             <ScrollReveal><VolunteerSection /></ScrollReveal>

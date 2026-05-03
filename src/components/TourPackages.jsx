@@ -2,21 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
 
-const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
-    const getPrice = () => {
+export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
+    const getPriceVal = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
-        if (pkg.id === 1) return `$840`;
-        if (pkg.id === 2) return `$600`;
-        return `$${basePriceVal}`;
+        if (pkg.id === 1) return 840;
+        if (pkg.id === 2) return 600;
+        return basePriceVal;
     };
 
-    const getOriginalPrice = () => {
-        const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
-        let currentBase = basePriceVal;
-        if (pkg.id === 1) currentBase = 840;
-        if (pkg.id === 2) currentBase = 600;
-        return `$${Math.floor(currentBase * 1.25)}`; // 25% original markup for the discount
+    const getDiscountFactor = () => {
+        const factors = [0.65, 0.75, 0.8, 0.7, 0.85]; // Different discount levels
+        return factors[pkg.id % factors.length];
     };
+
+    const originalPrice = Math.floor(getPriceVal() / getDiscountFactor());
+    const discountPercent = Math.round((1 - getPriceVal() / originalPrice) * 100);
+
+    const getPrice = () => `$${getPriceVal()}`;
+    const getOriginalPrice = () => `$${originalPrice}`;
 
     const getTags = () => {
         if (pkg.id % 3 === 0) return ['Nature', 'Active', 'Wildlife'];
@@ -68,15 +71,15 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     left: '20px',
                     background: '#ff4757',
                     color: 'white',
-                    padding: '5px 12px',
-                    borderRadius: '4px',
-                    fontSize: '0.6rem',
+                    padding: '6px 12px',
+                    borderRadius: '50px',
+                    fontSize: '0.75rem',
                     fontWeight: 900,
                     textTransform: 'uppercase',
-                    letterSpacing: '1.5px',
+                    letterSpacing: '1px',
                     zIndex: 10,
                     boxShadow: '0 4px 15px rgba(255, 71, 87, 0.3)'
-                }}>Sale Now On</div>
+                }}>-{discountPercent}% OFF</div>
             </div>
             <div className="card-body">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-green)', marginBottom: '10px', fontSize: '0.8rem' }}>
@@ -87,8 +90,7 @@ const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     <i className="fa-solid fa-star-half-stroke"></i>
                     <span style={{ color: '#888', fontWeight: 700, marginLeft: '6px', fontSize: '0.75rem' }}>4.8 (Excellent)</span>
                 </div>
-                <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '8px'}}>{pkg.name}</h3>
-                <p style={{marginBottom: '15px', fontSize: '0.85rem', color: '#666', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{pkg.description.split('.')[0] + '.'}</p>
+                <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '15px'}}>{pkg.name}</h3>
                 
                 <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
                     {getTags().map((tag, i) => (

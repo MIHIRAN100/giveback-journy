@@ -91,7 +91,12 @@ export const tourPackages = [
         ],
         reviews: [
             { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2025", comment: "An absolutely flawless experience. The climb up Sigiriya at sunrise was the highlight of my year. Our driver was so knowledgeable and kind!", icon: "bi bi-person-circle" },
-            { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", comment: "The train journey from Kandy to Ella was as beautiful as the pictures. Every detail was handled perfectly.", icon: "bi bi-person-badge" }
+            { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", comment: "The train journey from Kandy to Ella was as beautiful as the pictures. Every detail was handled perfectly.", icon: "bi bi-person-badge" },
+            { id: 3, name: "Elena Rossi", rating: 5, date: "August 2025", comment: "The wildlife safari in Minneriya was breathtaking! We saw over 50 elephants. Highly recommended.", icon: "bi bi-emoji-smile" },
+            { id: 4, name: "James Wilson", rating: 5, date: "July 2025", comment: "Perfectly organized. The balance between culture and relaxation on the south coast was just right.", icon: "bi bi-person-heart" },
+            { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2025", comment: "Galle Fort at sunset is something I will never forget. Amazing hospitality from the locals.", icon: "bi bi-stars" },
+            { id: 6, name: "Liam O'Connor", rating: 5, date: "May 2025", comment: "Best value for money. The budget stays were clean and the food was delicious everywhere we went.", icon: "bi bi-wallet2" },
+            { id: 7, name: "Yuki Tanaka", rating: 5, date: "April 2025", comment: "The hiking in Ella was challenging but the views were worth every step. Excellent guides!", icon: "bi bi-compass" }
         ]
     },
     {

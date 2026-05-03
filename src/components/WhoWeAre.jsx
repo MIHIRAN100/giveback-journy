@@ -1,119 +1,120 @@
 import React from 'react';
-import WhoImageMain from '../assets/javier-saint-jean-r4pIcB2reug-unsplash.jpg';
-import WhoImageSecondary from '../assets/f60e45b2-b97c-4817-8ce3-903aad9819e5.jpg';
-import WhoImageTertiary from '../assets/lucija-ros-VC7P8p6dFIc-unsplash.jpg';
+import WhoImage1 from '../assets/javier-saint-jean-r4pIcB2reug-unsplash.jpg';
+import WhoImage2 from '../assets/f60e45b2-b97c-4817-8ce3-903aad9819e5.jpg';
+import WhoImage3 from '../assets/lucija-ros-VC7P8p6dFIc-unsplash.jpg';
 import WhoImage4 from '../assets/artem-beliaikin-pDiWpjV14F0-unsplash.jpg';
 import WhoImage5 from '../assets/brian-kyed-8NpelZe-EzM-unsplash.jpg';
-import WhoImage6 from '../assets/Tasting Sri Lankan Cuisine .jpg';
-import WhoImage7 from '../assets/Wild grass nature resort.jpg';
+import WhoImage6 from '../assets/chathura-anuradha-subasinghe-isdvqf04MDk-unsplash.jpg';
+import WhoImage7 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
+import WhoImage8 from '../assets/Tasting Sri Lankan Cuisine .jpg';
 
 const WhoWeAre = () => {
+    const moments = [
+        {
+            id: 1,
+            user: "Dhvanil",
+            avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100",
+            image: WhoImage1,
+            title: "11 Day Highlights of Japan Small Grou...",
+            type: "tall"
+        },
+        {
+            id: 3,
+            user: "Kelvin",
+            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            image: WhoImage3,
+            title: "Highlights of Turkey - 9 days",
+            type: "small"
+        },
+        {
+            id: 5,
+            user: "梓",
+            avatar: "梓",
+            image: WhoImage5,
+            title: "7 Days : the Best of Morocco...",
+            type: "small"
+        },
+        {
+            id: 4,
+            user: "Kai",
+            avatar: "K",
+            image: WhoImage4,
+            title: "From Marrakech: 3-Day Private Imperi...",
+            type: "tall"
+        },
+        {
+            id: 2,
+            user: "Sandy",
+            avatar: "S",
+            image: WhoImage2,
+            title: "10-Day Premium South Korea...",
+            type: "small"
+        },
+        {
+            id: 6,
+            user: "Sushma",
+            avatar: "S",
+            image: WhoImage6,
+            title: "Eternal and Traditional Japan",
+            type: "small"
+        },
+        {
+            id: 7,
+            user: "Laura",
+            avatar: "L",
+            image: WhoImage7,
+            title: "Pharaohs Nile Cruise Adventure...",
+            type: "small"
+        },
+        {
+            id: 8,
+            user: "Sohan",
+            avatar: "S",
+            image: WhoImage8,
+            title: "Tasting Sri Lankan Flavors",
+            type: "small"
+        }
+    ];
+
     return (
         <section className="who-we-are-section">
-            <div className="who-we-are-container">
-                <div className="who-image-column">
-                    <div className="who-image-grid-refined">
-                        {/* Card 1 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImageSecondary} alt="Authentic Experience" />
-                            <span className="who-card-label">Authentic</span>
-                            <div className="who-card-overlay">
-                                <h3>Local Life</h3>
-                                <p>Connecting you directly with village artisans and community projects.</p>
+            <div className="who-we-are-header">
+                <h2>Traveler Moments</h2>
+                <div className="who-header-actions">
+                    <div className="who-nav-btns">
+                        <button className="who-nav-btn"><i className="fa-solid fa-chevron-left"></i></button>
+                        <button className="who-nav-btn"><i className="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <button className="btn-modern btn-see-more">See More</button>
+                </div>
+            </div>
+
+            <div className="who-moments-grid">
+                {moments.map((moment) => (
+                    <div key={moment.id} className={`moment-card ${moment.type}`}>
+                        <div className="moment-user">
+                            <div className="moment-avatar">
+                                {moment.avatar.startsWith('http') ? (
+                                    <img src={moment.avatar} alt={moment.user} style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}} />
+                                ) : (
+                                    moment.avatar
+                                )}
                             </div>
+                            <span className="moment-username">{moment.user}</span>
+                        </div>
+                        
+                        <img src={moment.image} alt={moment.title} />
+                        
+                        <div className="moment-play-btn">
+                            <i className="fa-solid fa-play"></i>
                         </div>
 
-                        {/* Card 2 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImageMain} alt="Exquisite Budget Travel" />
-                            <span className="who-card-label">Experience</span>
-                            <div className="who-card-overlay">
-                                <h3>15+ Years</h3>
-                                <p>A decade and a half of crafting deep-island experiences beyond guidebooks.</p>
-                            </div>
-                        </div>
-
-                        {/* Card 3 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImageTertiary} alt="Island Journey" />
-                            <span className="who-card-label">Value</span>
-                            <div className="who-card-overlay">
-                                <h3>Budget Luxury</h3>
-                                <p>Premium boutique stays and private transport at unbeatable value.</p>
-                            </div>
-                        </div>
-
-                        {/* Card 4 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImage4} alt="Nature" />
-                            <span className="who-card-label">Nature</span>
-                            <div className="who-card-overlay">
-                                <h3>Wild Trails</h3>
-                                <p>Ethical wildlife expeditions led by conservation-focused local experts.</p>
-                            </div>
-                        </div>
-
-                        {/* Card 5 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImage5} alt="Heritage" />
-                            <span className="who-card-label">Culture</span>
-                            <div className="who-card-overlay">
-                                <h3>Heritage</h3>
-                                <p>Uncovering 2,500 years of history through the eyes of local historians.</p>
-                            </div>
-                        </div>
-
-                        {/* Card 6 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImage6} alt="Cuisine" />
-                            <span className="who-card-label">Flavor</span>
-                            <div className="who-card-overlay">
-                                <h3>Island Tastes</h3>
-                                <p>Savoring the authentic spices and culinary traditions of Sri Lanka.</p>
-                            </div>
-                        </div>
-
-                        {/* Card 7 */}
-                        <div className="who-grid-item-refined">
-                            <img src={WhoImage7} alt="Eco Stay" />
-                            <span className="who-card-label">Eco</span>
-                            <div className="who-card-overlay">
-                                <h3>Green Stays</h3>
-                                <p>Hand-picked eco-resorts that prioritize sustainability and local nature.</p>
-                            </div>
+                        <div className="moment-footer">
+                            <span className="moment-title">{moment.title}</span>
+                            <i className="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
-                </div>
-                
-                <div className="who-content-column">
-                    <span className="about-tag">Who We Are</span>
-                    <h2>World-Class Travel, <br/> Budget-Friendly Reality.</h2>
-                    <p className="who-lead">
-                        We believe that extraordinary travel shouldn't be reserved only for the elite. Our mission is to provide the best budget travel experiences in the world, combining luxury service with unbeatable value.
-                    </p>
-                    <p className="who-text">
-                        From hand-picked local stays to exclusive off-the-beaten-path expeditions, we curate every detail to ensure you get the absolute most out of every dollar. We don't just plan tours; we craft memories that stay with you forever, without the heavy price tag.
-                    </p>
-                    
-                    <div className="who-stats-grid">
-                        <div className="who-stat-item">
-                            <i className="fa-solid fa-earth-asia"></i>
-                            <div>
-                                <h4>Global Reach</h4>
-                                <p>Tours across the island</p>
-                            </div>
-                        </div>
-                        <div className="who-stat-item">
-                            <i className="fa-solid fa-wallet"></i>
-                            <div>
-                                <h4>Best Value</h4>
-                                <p>Unbeatable pricing</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button className="btn-modern btn-solid-green" style={{marginTop: '20px'}}>Read Our Full Story</button>
-                </div>
+                ))}
             </div>
         </section>
     );

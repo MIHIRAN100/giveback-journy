@@ -5,6 +5,8 @@ import SriLankaGlance from '../components/SriLankaGlance';
 import gallery1 from '../assets/Galle Fort, Sri Lanka.jpg';
 import gallery2 from '../assets/Hurulu Eco Park.jpg';
 import { useCompare } from '../context/CompareContext';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const ItineraryDay = ({ step, index, forceOpen }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -63,11 +65,47 @@ const TourDetails = () => {
     const [transport, setTransport] = useState('taxi');
     const [activeBookingTab, setActiveBookingTab] = useState('Is this trip right for you?');
     const [allOpen, setAllOpen] = useState(false);
+    const [isMapZoomed, setIsMapZoomed] = useState(false);
+    const [isDownloading, setIsDownloading] = useState(false);
+    const itineraryRef = React.useRef(null);
+    const reviewsRef = React.useRef(null);
     
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handleDownloadPDF = async () => {
+        if (!itineraryRef.current) return;
+        setIsDownloading(true);
+        
+        try {
+            // Force all items open for the PDF capture
+            setAllOpen(true);
+            
+            // Wait for items to expand
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            const canvas = await html2canvas(itineraryRef.current, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff'
+            });
+
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save(`${pkg.name.replace(/\s+/g, '_')}_Itinerary.pdf`);
+        } catch (err) {
+            console.error('PDF generation failed:', err);
+        } finally {
+            setIsDownloading(false);
+        }
+    };
 
     const pkg = tourPackages.find(p => p.id === parseInt(id));
 
@@ -97,16 +135,35 @@ const TourDetails = () => {
         return `$${currentBase}`;
     };
 
-    const getLuggageInfo = () => {
-        switch(transport) {
-            case 'tuktuk': return { text: "2 Small Backpacks", icon: "bi-bag-x" };
-            case 'van': return { text: "6 Large Suitcases", icon: "bi-suitcases" };
-            default: return { text: "2 Large + 2 Small Bags", icon: "bi-briefcase" };
-        }
-    };
-
     return (
         <div className="tour-details-page" style={{ background: '#fff', paddingTop: '100px' }}>
+            {/* Map Zoom Modal */}
+            {isMapZoomed && (
+                <div 
+                    onClick={() => setIsMapZoomed(false)}
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        background: 'rgba(0,0,0,0.9)',
+                        zIndex: 9999,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'zoom-out',
+                        padding: '40px'
+                    }}
+                >
+                    <img 
+                        src={pkg.routeMap || pkg.image} 
+                        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '12px' }} 
+                        alt="Zoomed Map"
+                    />
+                    <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'white', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', fontSize: '1.2rem' }}>
+                        <i className="bi bi-x"></i>
+                    </button>
+                </div>
+            )}
+
             <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
                 
                 {/* Header: Title & Sale Badge */}
@@ -193,7 +250,7 @@ const TourDetails = () => {
                                 </div>
                                 <div>
                                     <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Minimum age</span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>15 years old</span>
+                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>10 years old</span>
                                 </div>
                                 <div>
                                     <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Style <i className="bi bi-info-circle" style={{ fontSize: '0.65rem' }}></i></span>
@@ -222,21 +279,22 @@ const TourDetails = () => {
                                 className="btn-modern" 
                                 style={{ 
                                     width: '100%', 
-                                    fontSize: '1rem', 
-                                    padding: '18px', 
+                                    fontSize: '1.2rem', 
+                                    padding: '20px', 
                                     background: 'var(--primary-green)', 
                                     color: 'white', 
-                                    borderRadius: '12px', 
+                                    borderRadius: '15px', 
                                     border: 'none', 
-                                    fontWeight: 800, 
+                                    fontWeight: 900, 
                                     textTransform: 'none', 
                                     marginBottom: '20px',
                                     cursor: 'pointer',
-                                    transition: 'all 0.3s ease'
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 10px 30px rgba(29, 185, 84, 0.2)'
                                 }} 
                                 onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}
                             >
-                                Contact Us to Book
+                                Book Now
                             </button>
 
                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '25px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
@@ -254,10 +312,10 @@ const TourDetails = () => {
                     </div>
                 </div>
 
-                {/* Rest of the Content */}
+                {/* Content Section */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '50px' }}>
                     
-                    {/* Left Column: Overview & Inclusions */}
+                    {/* Left Column */}
                     <div>
                         <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '20px' }}>Overview</h2>
                         <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '40px' }}>
@@ -332,16 +390,17 @@ const TourDetails = () => {
                                         </ul>
                                     )}
                                     {activeBookingTab === 'Accommodation' && (
-                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                            <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
-                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
-                                                We handpick a mix of boutique hotels, colonial-era bungalows, and high-quality eco-lodges that reflect the authentic character of the region.
-                                            </li>
-                                            <li style={{ display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
-                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
-                                                Most accommodations feature air conditioning and Wi-Fi in common areas, though some remote eco-stays focus on natural ventilation and digital detox.
-                                            </li>
-                                        </ul>
+                                        <div style={{ color: '#444', lineHeight: 1.8 }}>
+                                            <p style={{ marginBottom: '20px' }}>
+                                                Our accommodation is based on clean, comfortable budget stays that provide all the essential amenities for a pleasant and relaxed experience. These are not boutique hotels or colonial-style luxury properties, but carefully selected places that offer good value, convenience, and a local feel.
+                                            </p>
+                                            <p style={{ marginBottom: '20px' }}>
+                                                Most accommodations include private rooms, attached western bathrooms, and basic comforts such as Wi-Fi and air conditioning or fan options, depending on the location.
+                                            </p>
+                                            <p style={{ fontWeight: 600, color: '#111' }}>
+                                                If you are able to travel with one or more (friends/partners), the cost per person will be lower, as transport and accommodation expenses can be shared. This makes the program more cost-effective while still enjoying the same experiences.
+                                            </p>
+                                        </div>
                                     )}
                                     {activeBookingTab === 'Joining point' && (
                                         <div>
@@ -374,8 +433,9 @@ const TourDetails = () => {
                         <div className="transport-selector-box" style={{
                             padding: '25px', 
                             background: 'rgba(29, 185, 84, 0.05)', 
-                            borderRadius: '16px', 
-                            border: '1px solid rgba(29, 185, 84, 0.1)'
+                            borderRadius: '24px', 
+                            border: '1px solid rgba(29, 185, 84, 0.1)',
+                            marginTop: '40px'
                         }}>
                             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
                                 <label style={{fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--primary-green)', margin: 0, letterSpacing: '1px'}}>Vehicle Type</label>
@@ -388,7 +448,7 @@ const TourDetails = () => {
                                     width: '100%',
                                     background: 'white',
                                     border: '1px solid rgba(0,0,0,0.1)',
-                                    borderRadius: '10px',
+                                    borderRadius: '15px',
                                     padding: '15px',
                                     fontSize: '1.05rem',
                                     fontWeight: 700,
@@ -421,7 +481,7 @@ const TourDetails = () => {
                                 </div>
                                 <div style={{ display: 'flex', gap: '15px' }}>
                                     <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-leaf"></i></div>
-                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Authentic Stays:</strong> Relax in hand-picked boutique villas and eco-lodges.</p>
+                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Value Stays:</strong> Relax in hand-picked, clean and comfortable local guesthouses.</p>
                                 </div>
                                 <div style={{ display: 'flex', gap: '15px' }}>
                                     <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-user-shield"></i></div>
@@ -435,7 +495,7 @@ const TourDetails = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Inclusions & Exclusions */}
+                    {/* Right Column */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                         {/* Inclusions */}
                         <div className="inclusions-box" style={{ background: 'white', border: '1px solid rgba(0,0,0,0.05)', boxShadow: '0 10px 30px rgba(0,0,0,0.02)', padding: '30px', borderRadius: '20px' }}>
@@ -466,6 +526,65 @@ const TourDetails = () => {
                                 ))}
                             </ul>
                         </div>
+
+                        {/* Budget Promo Card - Filling the empty space */}
+                        <div className="budget-promo-card" style={{
+                            position: 'relative',
+                            borderRadius: '24px',
+                            overflow: 'hidden',
+                            height: '400px',
+                            background: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url(${pkg.image})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            padding: '40px',
+                            color: 'white',
+                            boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
+                            marginTop: '10px'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+                                <div style={{ background: 'var(--primary-green)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}>
+                                    <i className="fa-solid fa-hand-holding-heart"></i>
+                                </div>
+                                <span style={{ fontSize: '0.85rem', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>Giveback journny</span>
+                            </div>
+                            <h3 style={{ fontSize: '1.6rem', fontWeight: 900, lineHeight: 1.2, margin: 0, color: 'white' }}>
+                                The Best Budget Tour Plan <br/> in Sri Lanka
+                            </h3>
+                            <div style={{ 
+                                marginTop: '25px', 
+                                fontSize: '0.75rem', 
+                                fontWeight: 700, 
+                                textTransform: 'uppercase', 
+                                letterSpacing: '2px',
+                                background: 'rgba(29, 185, 84, 0.9)',
+                                color: 'white',
+                                padding: '6px 15px',
+                                borderRadius: '50px',
+                                width: 'fit-content'
+                            }}>
+                                Top Rated Experience
+                            </div>
+                        </div>
+
+                        {/* Cost-Benefit Travel Card */}
+                        <div style={{
+                            padding: '35px',
+                            background: '#f0fdf4',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(29, 185, 84, 0.1)',
+                            marginTop: '20px'
+                        }}>
+                            <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--primary-green)', marginBottom: '15px' }}>
+                                <i className="bi bi-people-fill" style={{ marginRight: '10px' }}></i>
+                                Travel Together, Save More
+                            </h4>
+                            <p style={{ fontSize: '0.95rem', color: '#444', lineHeight: 1.6, margin: 0 }}>
+                                If you are able to travel with one or more (friends/partners), the cost per person will be lower, as transport and accommodation expenses can be shared. This makes the program more cost-effective while still enjoying the same experiences.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -473,41 +592,84 @@ const TourDetails = () => {
                 <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '60px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111' }}>Itinerary</h2>
-                        <button 
-                            onClick={() => setAllOpen(!allOpen)}
-                            style={{ 
-                                background: 'white', 
-                                border: '1px solid #ddd', 
-                                padding: '8px 20px', 
-                                borderRadius: '8px', 
-                                fontWeight: 700, 
-                                fontSize: '0.9rem',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '10px',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            <i className={`bi bi-chevron-${allOpen ? 'up' : 'down'}`}></i> {allOpen ? 'Hide all' : 'Show all'}
-                        </button>
+                        <div style={{ display: 'flex', gap: '15px' }}>
+                            <button 
+                                onClick={handleDownloadPDF}
+                                disabled={isDownloading}
+                                style={{ 
+                                    background: 'var(--primary-green)', 
+                                    color: 'white',
+                                    border: 'none', 
+                                    padding: '8px 25px', 
+                                    borderRadius: '8px', 
+                                    fontWeight: 800, 
+                                    fontSize: '0.9rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    cursor: isDownloading ? 'not-allowed' : 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    opacity: isDownloading ? 0.7 : 1
+                                }}
+                            >
+                                <i className={isDownloading ? "bi bi-hourglass-split" : "bi bi-file-earmark-pdf"}></i> 
+                                {isDownloading ? 'Generating...' : 'Download PDF'}
+                            </button>
+                            <button 
+                                onClick={() => setAllOpen(!allOpen)}
+                                style={{ 
+                                    background: 'white', 
+                                    border: '1px solid #ddd', 
+                                    padding: '8px 20px', 
+                                    borderRadius: '8px', 
+                                    fontWeight: 700, 
+                                    fontSize: '0.9rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <i className={`bi bi-chevron-${allOpen ? 'up' : 'down'}`}></i> {allOpen ? 'Hide all' : 'Show all'}
+                            </button>
+                        </div>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px' }}>
-                        {/* Left Column: Map & Sustainability */}
+                    <div ref={itineraryRef} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', padding: '20px', background: 'white' }}>
+                        {/* Left Column: Map */}
                         <div>
-                            <div style={{ 
-                                background: '#f0f9ff', 
-                                borderRadius: '24px', 
-                                height: '350px', 
-                                marginBottom: '20px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                overflow: 'hidden',
-                                border: '1px solid rgba(0,0,0,0.05)',
-                                boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
-                            }}>
-                                <img src={pkg.routeMap || pkg.image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Sri Lanka Route Map" />
+                            <div 
+                                onClick={() => setIsMapZoomed(true)}
+                                style={{ 
+                                    background: '#f0f9ff', 
+                                    borderRadius: '24px', 
+                                    height: '400px', 
+                                    marginBottom: '20px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    overflow: 'hidden',
+                                    border: '1px solid rgba(0,0,0,0.05)',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                                    cursor: 'zoom-in',
+                                    position: 'relative'
+                                }}
+                            >
+                                <img src={pkg.routeMap || pkg.image} style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Sri Lanka Route Map" />
+                                <div style={{ 
+                                    position: 'absolute', 
+                                    bottom: '20px', 
+                                    right: '20px', 
+                                    background: 'rgba(255,255,255,0.9)', 
+                                    padding: '8px 12px', 
+                                    borderRadius: '8px', 
+                                    fontSize: '0.8rem', 
+                                    fontWeight: 700, 
+                                    color: '#333',
+                                    boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+                                }}>
+                                    <i className="bi bi-zoom-in"></i> Click to zoom
+                                </div>
                             </div>
 
                             <div style={{ 
@@ -524,7 +686,7 @@ const TourDetails = () => {
                             </div>
                         </div>
 
-                        {/* Right Column: Accordion Itinerary */}
+                        {/* Right Column: Accordion */}
                         <div>
                             {pkg.itinerary.map((step, index) => (
                                 <ItineraryDay key={step.day} step={step} index={index} forceOpen={allOpen} />
@@ -533,7 +695,7 @@ const TourDetails = () => {
                     </div>
                 </div>
 
-                {/* Important Notes Section */}
+                {/* Important Notes */}
                 {pkg.importantNotes && (
                     <div style={{ marginTop: '80px', padding: '50px', background: 'rgba(0,0,0,0.02)', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.03)' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '35px' }}>
@@ -573,53 +735,108 @@ const TourDetails = () => {
                     </div>
                 )}
 
-                {/* Guest Reviews Section */}
+                {/* Guest Reviews */}
                 {pkg.reviews && (
-                    <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '80px' }}>
-                        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>Guest Reviews</h2>
-                            <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', color: '#FFD700', fontSize: '1.2rem' }}>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <span style={{ color: '#666', fontSize: '1rem', fontWeight: 700, marginLeft: '10px' }}>5.0 / 5.0 Rating</span>
+                    <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '80px', position: 'relative' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '50px' }}>
+                            <div style={{ textAlign: 'left' }}>
+                                <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>Guest Reviews</h2>
+                                <div style={{ display: 'flex', gap: '5px', color: '#FFD700', fontSize: '1.1rem' }}>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <span style={{ color: '#666', fontSize: '1rem', fontWeight: 700, marginLeft: '10px' }}>5.0 Rating</span>
+                                </div>
+                            </div>
+                            
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <button 
+                                    onClick={() => reviewsRef.current.scrollBy({ left: -320, behavior: 'smooth' })}
+                                    style={{ 
+                                        width: '45px', 
+                                        height: '45px', 
+                                        borderRadius: '50%', 
+                                        border: '1px solid #eee', 
+                                        background: 'white', 
+                                        cursor: 'pointer',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary-green)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.borderColor = '#eee'}
+                                >
+                                    <i className="bi bi-chevron-left" style={{ fontSize: '1.2rem' }}></i>
+                                </button>
+                                <button 
+                                    onClick={() => reviewsRef.current.scrollBy({ left: 320, behavior: 'smooth' })}
+                                    style={{ 
+                                        width: '45px', 
+                                        height: '45px', 
+                                        borderRadius: '50%', 
+                                        border: '1px solid #eee', 
+                                        background: 'white', 
+                                        cursor: 'pointer',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary-green)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.borderColor = '#eee'}
+                                >
+                                    <i className="bi bi-chevron-right" style={{ fontSize: '1.2rem' }}></i>
+                                </button>
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                        <div ref={reviewsRef} style={{ 
+                            display: 'flex', 
+                            gap: '20px', 
+                            overflowX: 'auto', 
+                            paddingBottom: '30px',
+                            msOverflowStyle: 'none',
+                            scrollbarWidth: 'none',
+                            scrollSnapType: 'x mandatory'
+                        }} className="reviews-scroll-container">
                             {pkg.reviews.map((review) => (
                                 <div key={review.id} style={{ 
                                     background: '#fff', 
-                                    padding: '35px', 
-                                    borderRadius: '32px', 
+                                    padding: '20px', 
+                                    borderRadius: '24px', 
                                     border: '1px solid #f0f0f0',
-                                    boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
+                                    boxShadow: '0 8px 20px rgba(0,0,0,0.02)',
+                                    minWidth: '300px',
+                                    flexShrink: 0
                                 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
                                         <div style={{ 
-                                            width: '50px', 
-                                            height: '50px', 
+                                            width: '35px', 
+                                            height: '35px', 
                                             background: 'rgba(29, 185, 84, 0.1)', 
                                             color: 'var(--primary-green)', 
                                             borderRadius: '50%', 
                                             display: 'flex', 
                                             alignItems: 'center', 
                                             justifyContent: 'center',
-                                            fontSize: '1.5rem'
+                                            fontSize: '1rem'
                                         }}>
                                             <i className={review.icon || "bi bi-person-fill"}></i>
                                         </div>
-                                        <div>
-                                            <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800 }}>{review.name}</h4>
-                                            <span style={{ fontSize: '0.85rem', color: '#999', fontWeight: 600 }}>{review.date}</span>
+                                        <div style={{ flex: 1 }}>
+                                            <h4 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800 }}>{review.name}</h4>
+                                            <span style={{ fontSize: '0.7rem', color: '#999', fontWeight: 600 }}>{review.date}</span>
                                         </div>
-                                        <div style={{ marginLeft: 'auto', display: 'flex', gap: '3px', color: '#FFD700' }}>
-                                            {[...Array(review.rating)].map((_, i) => <i key={i} className="bi bi-star-fill" style={{ fontSize: '0.85rem' }}></i>)}
+                                        <div style={{ display: 'flex', gap: '2px', color: '#FFD700' }}>
+                                            {[...Array(review.rating)].map((_, i) => <i key={i} className="bi bi-star-fill" style={{ fontSize: '0.7rem' }}></i>)}
                                         </div>
                                     </div>
-                                    <p style={{ margin: 0, color: '#555', lineHeight: 1.7, fontStyle: 'italic' }}>"{review.comment}"</p>
+                                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6, fontSize: '0.85rem', fontStyle: 'italic' }}>"{review.comment}"</p>
                                 </div>
                             ))}
                         </div>
