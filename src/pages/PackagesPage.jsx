@@ -34,7 +34,7 @@ const PackagesPage = () => {
 
             {/* Short Day Trips Section */}
             {!searchTerm && dayTrips.length > 0 && (
-                <section className="packages-section" style={{ background: '#f8f9fa', padding: '100px 5%' }}>
+                <section className="packages-section" style={{ background: '#f8f9fa', padding: '20px 5% 100px 5%' }}>
                     <div className="packages-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
                         <span className="about-tag">Quick Escapes</span>
                         <h2 style={{ fontSize: '3rem', fontWeight: 900 }}>Short Day Trips.</h2>

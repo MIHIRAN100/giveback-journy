@@ -78,7 +78,7 @@ const VolunteerPage = () => {
                         Volunteer <br/> Experiences<span style={{ color: 'var(--primary-green)' }}>.</span>
                     </h1>
                     <p style={{ fontSize: '1.25rem', marginTop: '30px', opacity: 0.9, lineHeight: 1.6, fontWeight: 400, maxWidth: '700px', margin: '30px auto 0' }}>
-                        Join our mission to protect Sri Lanka's incredible wildlife and support its vibrant local communities.
+                        Join our mission to empower local communities through education, sustainable development, and hands-on support.
                     </p>
                 </div>
             </section>
@@ -93,10 +93,10 @@ const VolunteerPage = () => {
                     </h2>
                     <div style={{ fontSize: '1.2rem', lineHeight: 1.9, color: '#444' }}>
                         <p style={{ marginBottom: '30px' }}>
-                            Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs. Whether you're helping release baby turtles into the ocean, teaching English in a rural village school, or supporting sustainable organic farming, your contribution creates a ripple effect of positive change.
+                            Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs. Whether you're teaching English to enthusiastic students, supporting woman empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.
                         </p>
                         <p>
-                            We believe in "Responsible Volunteering." This means our projects are developed in close partnership with local leaders to ensure they are sustainable, ethical, and culturally sensitive. We don't just offer "voluntourism"—we offer a chance to work side-by-side with Sri Lankans, learning from each other and building bridges of understanding that last a lifetime.
+                            We believe in "Responsible Volunteering." This means our projects are developed in close partnership with local leaders to ensure they are sustainable, ethical, and culturally sensitive. We don't just offer "voluntourism"—we offer a chance to work side-by-side with Sri Lankans, learning from each other and building bridges of empowerment that last a lifetime.
                         </p>
                     </div>
                 </section>
@@ -104,27 +104,27 @@ const VolunteerPage = () => {
                 {/* Experience Focus Areas */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', marginBottom: '100px' }}>
                     
-                    {/* Community Teaching */}
+                    {/* Woman Empowerment */}
                     <div style={{ borderTop: '1px solid #eee', paddingTop: '60px' }}>
-                        <h3 style={{ fontSize: '2.2rem', fontWeight: 900, marginBottom: '25px', color: 'var(--primary-green)' }}>Community Teaching</h3>
+                        <h3 style={{ fontSize: '2.2rem', fontWeight: 900, marginBottom: '25px', color: 'var(--primary-green)' }}>Woman Empowerment</h3>
                         <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444', marginBottom: '30px' }}>
-                            Education is the key to a brighter future. Our teaching projects allow volunteers to work in rural schools and community centers, primarily assisting with English language education. You'll help students gain confidence in speaking, share your culture, and support local teachers in creating engaging learning environments.
+                            Support local women in gaining financial independence and leadership skills. Our empowerment projects involve vocational training, small business workshops, and English literacy programs tailored for women in rural areas. You'll help build confidence and create sustainable pathways for local families.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
-                            {["English Support", "Cultural Exchange", "Youth Mentoring", "Creative Workshops"].map((item, i) => (
+                            {["Skills Training", "Economic Literacy", "Mentorship", "Business Workshops"].map((item, i) => (
                                 <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '8px 18px', borderRadius: '100px', fontSize: '0.9rem', fontWeight: 700 }}>{item}</span>
                             ))}
                         </div>
                     </div>
 
-                    {/* Renovation Projects */}
+                    {/* Special Needs Care */}
                     <div style={{ borderTop: '1px solid #eee', paddingTop: '60px' }}>
-                        <h3 style={{ fontSize: '2.2rem', fontWeight: 900, marginBottom: '25px', color: '#111' }}>Renovation & Building</h3>
+                        <h3 style={{ fontSize: '2.2rem', fontWeight: 900, marginBottom: '25px', color: '#111' }}>Special Needs Support</h3>
                         <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444', marginBottom: '30px' }}>
-                            Help improve local infrastructure through hands-on renovation projects. From painting rural school classrooms and repairing community centers to building sustainable facilities in village areas, these projects offer tangible ways to give back. You'll work side-by-side with local craftsmen and community members to leave a lasting physical legacy.
+                            Work in dedicated centers providing care and education for children and adults with special needs. Volunteers assist with physical therapy exercises, creative arts, and basic life skills training. Your presence provides essential support to local staff and brings joy and personalized attention to those who need it most.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
-                            {["School Painting", "Facility Repairs", "Sustainable Building", "Village Support"].map((item, i) => (
+                            {["Therapeutic Play", "Individual Care", "Art Therapy", "Skill Building"].map((item, i) => (
                                 <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '8px 18px', borderRadius: '100px', fontSize: '0.9rem', fontWeight: 700 }}>{item}</span>
                             ))}
                         </div>
@@ -147,7 +147,7 @@ const VolunteerPage = () => {
                         }}>
                             <h4 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '20px', color: '#111' }}>Kandy District</h4>
                             <p style={{ color: '#555', lineHeight: 1.8, fontSize: '1.1rem', marginBottom: '25px' }}>
-                                Nestled in the lush hill country, our Kandy projects focus on community development, English education in rural schools, and supporting traditional organic farming practices. It’s an ideal location for those who love mountain landscapes and rich cultural heritage.
+                                Nestled in the lush hill country, our Kandy projects focus on community development, English education in rural schools, and supporting local medical clinics and healthcare initiatives. It’s an ideal location for those who love mountain landscapes and rich cultural heritage.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                                 {["Hill Country", "Education", "Rural Villages"].map((tag, i) => (
@@ -163,10 +163,10 @@ const VolunteerPage = () => {
                         }}>
                             <h4 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '20px', color: 'var(--primary-green)' }}>Galle District</h4>
                             <p style={{ color: '#555', lineHeight: 1.8, fontSize: '1.1rem', marginBottom: '25px' }}>
-                                Along the sun-drenched southern coast, our Galle projects are primarily centered around wildlife conservation. Volunteers here contribute to sea turtle hatcheries, coral reef restoration, and coastal community empowerment programs.
+                                Along the historic southern coast, our Galle projects focus on renovation of ancient community buildings and supporting special needs education centers. It's a blend of heritage preservation and high-impact social work.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                {["Coastal Region", "Conservation", "Beach Life"].map((tag, i) => (
+                                {["Coastal Region", "Renovation", "Special Needs"].map((tag, i) => (
                                     <span key={i} style={{ fontSize: '0.8rem', fontWeight: 700, background: 'rgba(0,0,0,0.05)', padding: '5px 12px', borderRadius: '6px' }}>{tag}</span>
                                 ))}
                             </div>

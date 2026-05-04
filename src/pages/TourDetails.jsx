@@ -87,7 +87,7 @@ const TourDetails = () => {
 
     if (!pkg) {
         return (
-            <div style={{ padding: '150px 20px', textAlign: 'center' }}>
+            <div style={{ padding: '20px', textAlign: 'center' }}>
                 <h2>Tour Package Not Found</h2>
                 <p>We couldn't find the tour you're looking for.</p>
                 <button className="btn-modern btn-black" onClick={() => navigate('/packages')}>Back to Packages</button>
@@ -148,7 +148,7 @@ const TourDetails = () => {
     };
 
     return (
-        <div className="tour-details-page" style={{ background: '#fff', paddingTop: '100px' }}>
+        <div className="tour-details-page" style={{ background: '#fff', paddingTop: '20px' }}>
             {/* Map Zoom Modal */}
             {isMapZoomed && (
                 <div 

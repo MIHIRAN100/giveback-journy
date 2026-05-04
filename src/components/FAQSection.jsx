@@ -18,7 +18,7 @@ const FAQSection = () => {
         },
         {
             question: "How do you provide such low prices for luxury tours?",
-            answer: "Our secrets lie in our 15+ years of local operational experience. We maintain direct partnerships with boutique hotels and local transport fleets, cutting out middle-man commissions to pass 100% of the savings directly to you."
+            answer: "Our secrets lie in our 10+ years of local operational experience. We maintain direct partnerships with local guesthouses and transport fleets, cutting out middle-man commissions to pass 100% of the savings directly to you."
         },
         {
             question: "Can I customize a budget tour package?",

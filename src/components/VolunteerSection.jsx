@@ -4,13 +4,29 @@ import hihiImg from '../assets/hihi.webp';
 import puppyImg from '../assets/dominican puppy.jpg';
 
 const VolunteerSection = () => {
+    const [isMuted, setIsMuted] = React.useState(true);
+    const iframeRef = React.useRef(null);
+
+    const toggleMute = () => {
+        const command = isMuted ? 'unMute' : 'mute';
+        if (iframeRef.current) {
+            iframeRef.current.contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: command,
+                args: []
+            }), '*');
+            setIsMuted(!isMuted);
+        }
+    };
+
     return (
         <section className="volunteer-preview-section">
             <div className="volunteer-preview-container">
                 <div className="volunteer-bento-grid">
                     <div className="volunteer-grid-item tall-card video-card" style={{ overflow: 'hidden', position: 'relative', marginBottom: '20px' }}>
                         <iframe 
-                            src="https://www.youtube.com/embed/cSBzHuvubQQ?autoplay=1&mute=1&loop=1&playlist=cSBzHuvubQQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1" 
+                            ref={iframeRef}
+                            src="https://www.youtube.com/embed/cSBzHuvubQQ?autoplay=1&mute=1&loop=1&playlist=cSBzHuvubQQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1" 
                             title="Volunteering in Sri Lanka"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -25,8 +41,35 @@ const VolunteerSection = () => {
                                 pointerEvents: 'none'
                             }}
                         ></iframe>
-                        <div className="volunteer-image-overlay" style={{ zIndex: 1 }}>
+                        <div className="volunteer-image-overlay" style={{ zIndex: 5 }}>
                             <div className="experience-badge">Impactful Journeys</div>
+                            
+                            {/* Mute/Unmute Toggle */}
+                            <button 
+                                onClick={toggleMute}
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '20px',
+                                    right: '20px',
+                                    width: '45px',
+                                    height: '45px',
+                                    borderRadius: '50%',
+                                    background: 'rgba(255, 255, 255, 0.15)',
+                                    backdropFilter: 'blur(10px)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                    color: 'white',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    zIndex: 10
+                                }}
+                                onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.25)'}
+                                onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.15)'}
+                            >
+                                <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`} style={{ fontSize: '1.1rem' }}></i>
+                            </button>
                         </div>
                     </div>
 
@@ -43,19 +86,19 @@ const VolunteerSection = () => {
                                 padding: '20px'
                             }}>
                                 <span style={{ 
-                                    fontSize: '0.7rem', 
+                                    fontSize: '0.65rem', 
                                     fontWeight: 900, 
                                     textTransform: 'uppercase', 
                                     letterSpacing: '2px',
-                                    background: 'rgba(255,255,255,0.15)',
-                                    backdropFilter: 'blur(10px)',
-                                    padding: '6px 12px',
-                                    borderRadius: '4px',
-                                    border: '1px solid rgba(255,255,255,0.2)',
+                                    background: 'rgba(29, 185, 84, 0.2)',
+                                    backdropFilter: 'blur(12px)',
+                                    padding: '8px 18px',
+                                    borderRadius: '100px',
+                                    border: '1px solid rgba(29, 185, 84, 0.3)',
                                     color: 'white',
-                                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
                                 }}>
-                                    Conservation
+                                    Community
                                 </span>
                             </div>
                         </div>
@@ -71,19 +114,19 @@ const VolunteerSection = () => {
                                 padding: '20px'
                             }}>
                                 <span style={{ 
-                                    fontSize: '0.7rem', 
+                                    fontSize: '0.65rem', 
                                     fontWeight: 900, 
                                     textTransform: 'uppercase', 
                                     letterSpacing: '2px',
-                                    background: 'rgba(255,255,255,0.15)',
-                                    backdropFilter: 'blur(10px)',
-                                    padding: '6px 12px',
-                                    borderRadius: '4px',
-                                    border: '1px solid rgba(255,255,255,0.2)',
+                                    background: 'rgba(29, 185, 84, 0.2)',
+                                    backdropFilter: 'blur(12px)',
+                                    padding: '8px 18px',
+                                    borderRadius: '100px',
+                                    border: '1px solid rgba(29, 185, 84, 0.3)',
                                     color: 'white',
-                                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
                                 }}>
-                                    Wildlife
+                                    Empowerment
                                 </span>
                             </div>
                         </div>
@@ -109,28 +152,28 @@ const VolunteerSection = () => {
                     
                     <div className="volunteer-perks">
                         <div className="perk-item">
-                            <i className="fa-solid fa-paw"></i>
-                            <span>Wildlife Protection</span>
-                        </div>
-                        <div className="perk-item">
                             <i className="fa-solid fa-graduation-cap"></i>
-                            <span>Community Teaching</span>
+                            <span>English Teaching</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-seedling"></i>
-                            <span>Eco-Sustainability</span>
+                            <i className="fa-solid fa-person-breastfeeding"></i>
+                            <span>Woman Empowerment</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-fish-fins"></i>
-                            <span>Marine Conservation</span>
+                            <i className="fa-solid fa-hands-holding-child"></i>
+                            <span>Special Needs Care</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-leaf"></i>
-                            <span>Organic Farming</span>
+                            <i className="fa-solid fa-trowel-bricks"></i>
+                            <span>Renovation Projects</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-hand-holding-heart"></i>
-                            <span>Elderly Care Support</span>
+                            <i className="fa-solid fa-user-doctor"></i>
+                            <span>Medical Projects</span>
+                        </div>
+                        <div className="perk-item">
+                            <i className="fa-solid fa-handshake-angle"></i>
+                            <span>Local Support</span>
                         </div>
                     </div>
 

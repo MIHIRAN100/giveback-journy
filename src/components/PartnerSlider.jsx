@@ -2,14 +2,13 @@ import React from 'react';
 
 const PartnerSlider = () => {
     const stats = [
-        { id: 1, name: "10K+ HAPPY TRAVELERS", icon: "fa-users" },
-        { id: 2, name: "500+ EXCLUSIVE TOURS", icon: "fa-map-location-dot" },
+        { id: 1, name: "500+ HAPPY TRAVELERS", icon: "fa-users" },
+        { id: 2, name: "SIGNATURE IMPACT TOURS", icon: "fa-map-location-dot" },
         { id: 3, name: "4.9/5 USER RATING", icon: "fa-star" },
-        { id: 4, name: "15+ YEARS EXPERIENCE", icon: "fa-award" },
+        { id: 4, name: "10+ YEARS EXPERIENCE", icon: "fa-award" },
         { id: 5, name: "24/7 ISLAND SUPPORT", icon: "fa-headset" },
-        { id: 6, name: "CERTIFIED SUSTAINABLE", icon: "fa-leaf" },
-        { id: 7, name: "BOUTIQUE LUXURY", icon: "fa-crown" },
-        { id: 8, name: "VOTED BEST AGENCY 2024", icon: "fa-trophy" }
+        { id: 6, name: "VOLUNTEER INTEGRATED", icon: "fa-hand-holding-heart" },
+        { id: 7, name: "COMMUNITY DRIVEN", icon: "fa-people-group" }
     ];
 
     return (

@@ -18,6 +18,7 @@ import BookingInquiryPage from './pages/BookingInquiryPage';
 import Compare from './pages/Compare';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
+import Breadcrumbs from './components/Breadcrumbs';
 import { CompareProvider } from './context/CompareContext';
 
 const AppContent = () => {
@@ -30,6 +31,7 @@ const AppContent = () => {
       <LoadingScreen />
       <Navbar />
       <main style={{flex: 1, paddingTop: isHomePage ? '0' : '90px'}}>
+        {!isHomePage && <Breadcrumbs />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sri-lanka" element={<SriLanka />} />

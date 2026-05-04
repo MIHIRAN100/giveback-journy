@@ -3067,28 +3067,33 @@ h1, h2, h3, .logo-text {
 .perk-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: var(--transition);
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 14px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    backdrop-filter: blur(10px);
 }
 
 .perk-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
+    background: rgba(29, 185, 84, 0.1);
+    border-color: rgba(29, 185, 84, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .perk-item i {
-    color: var(--white);
-    font-size: 1.2rem;
+    color: var(--primary-green);
+    font-size: 1.1rem;
 }
 
 .perk-item span {
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-weight: 800;
+    font-size: 0.85rem;
     color: var(--white);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 @media (max-width: 1024px) {
