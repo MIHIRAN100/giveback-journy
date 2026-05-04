@@ -4,7 +4,10 @@ import { tourPackages, BUDGET_PROMO_IMG } from '../data/tours';
 import SriLankaGlance from '../components/SriLankaGlance';
 import gallery1 from '../assets/Galle Fort, Sri Lanka.jpg';
 import gallery2 from '../assets/Hurulu Eco Park.jpg';
+import surfImg from '../assets/Surfin in Sri Lanka.webp';
+import polhenaImg from '../assets/Polhena.jpg';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
+import SpotifyAdCard from '../components/SpotifyAdCard';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -63,6 +66,9 @@ const TourDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { addToCompare } = useCompare();
+
+    const pkg = tourPackages.find(p => p.id === parseInt(id));
+
     const [transport, setTransport] = useState('taxi');
     const [activeBookingTab, setActiveBookingTab] = useState('Is this trip right for you?');
     const [allOpen, setAllOpen] = useState(false);
@@ -71,14 +77,27 @@ const TourDetails = () => {
     const itineraryRef = React.useRef(null);
     const reviewsRef = React.useRef(null);
     
-    const getInitials = (name) => {
-        return name.split(' ').map(n => n[0]).join('').toUpperCase();
-    };
+    const [activeImage, setActiveImage] = useState(pkg ? pkg.image : '');
     
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+        if (pkg) setActiveImage(pkg.image);
+    }, [id, pkg]);
+
+    if (!pkg) {
+        return (
+            <div style={{ padding: '150px 20px', textAlign: 'center' }}>
+                <h2>Tour Package Not Found</h2>
+                <p>We couldn't find the tour you're looking for.</p>
+                <button className="btn-modern btn-black" onClick={() => navigate('/packages')}>Back to Packages</button>
+            </div>
+        );
+    }
+
+    const getInitials = (name) => {
+        return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    };
 
     const handleDownloadPDF = async () => {
         if (!itineraryRef.current) return;
@@ -111,18 +130,6 @@ const TourDetails = () => {
             setIsDownloading(false);
         }
     };
-
-    const pkg = tourPackages.find(p => p.id === parseInt(id));
-
-    if (!pkg) {
-        return (
-            <div style={{ padding: '150px 20px', textAlign: 'center' }}>
-                <h2>Tour Package Not Found</h2>
-                <p>We couldn't find the tour you're looking for.</p>
-                <button className="btn-modern btn-black" onClick={() => navigate('/packages')}>Back to Packages</button>
-            </div>
-        );
-    }
 
     const getPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
@@ -193,23 +200,32 @@ const TourDetails = () => {
                     
                     {/* Gallery Section */}
                     <div>
-                        <div style={{ borderRadius: '24px', overflow: 'hidden', height: '500px', marginBottom: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                            <img src={pkg.image} alt={pkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div style={{ borderRadius: '24px', overflow: 'hidden', height: '500px', marginBottom: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', transition: 'all 0.5s ease' }}>
+                            <img src={activeImage} alt={pkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '15px' }}>
-                            <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden' }}>
-                                <img src={pkg.image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            </div>
-                            <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden' }}>
-                                <img src={gallery1} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            </div>
-                            <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden' }}>
-                                <img src={gallery2} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            </div>
-                            <div style={{ height: '100px', borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
-                                <img src={pkg.image} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6)' }} />
-                                <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', fontWeight: 800, fontSize: '0.9rem', whiteSpace: 'nowrap' }}>All photos (19)</span>
-                            </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '15px' }}>
+                            {[pkg.image, surfImg, polhenaImg, gallery1, gallery2].map((img, i) => (
+                                <div 
+                                    key={i} 
+                                    onClick={() => setActiveImage(img)}
+                                    style={{ 
+                                        height: '80px', 
+                                        borderRadius: '12px', 
+                                        overflow: 'hidden', 
+                                        cursor: 'pointer',
+                                        border: activeImage === img ? '3px solid var(--primary-green)' : '3px solid transparent',
+                                        transition: 'all 0.2s ease',
+                                        position: 'relative'
+                                    }}
+                                >
+                                    <img src={img} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: activeImage === img ? 1 : 0.7 }} />
+                                    {i === 4 && (
+                                        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: '0.7rem', textAlign: 'center', padding: '5px' }}>
+                                            All photos (19)
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -532,96 +548,7 @@ const TourDetails = () => {
                             </ul>
                         </div>
 
-                        {/* Budget Promo Card - Filling the empty space */}
-                        <div className="spotify-ad-card" style={{
-                            position: 'relative',
-                            borderRadius: '16px',
-                            overflow: 'hidden',
-                            height: '420px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                            padding: '30px',
-                            color: 'white',
-                            background: '#121212',
-                            boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
-                            marginTop: '10px',
-                            border: '1px solid rgba(255,255,255,0.05)'
-                        }}>
-                            {/* Accent Gradient */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '-100px',
-                                right: '-100px',
-                                width: '300px',
-                                height: '300px',
-                                background: 'radial-gradient(circle, rgba(29,185,84,0.3) 0%, transparent 70%)',
-                                zIndex: 0
-                            }}></div>
-
-                            <div style={{ zIndex: 1 }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '25px' }}>
-                                    <div style={{ color: '#1DB954', fontSize: '1.8rem' }}>
-                                        <i className="fa-brands fa-spotify"></i>
-                                    </div>
-                                    <span style={{ fontSize: '0.7rem', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#b3b3b3' }}>Premium Travel</span>
-                                </div>
-                                
-                                <h3 style={{ 
-                                    fontSize: '2.8rem', 
-                                    fontWeight: 900, 
-                                    lineHeight: 1.1, 
-                                    margin: 0, 
-                                    color: 'white',
-                                    letterSpacing: '-1.5px',
-                                    maxWidth: '280px'
-                                }}>
-                                    The Best <span style={{color: '#1DB954'}}>Budget</span> <br/>Tour Plan.
-                                </h3>
-                                <p style={{ color: '#b3b3b3', fontSize: '0.9rem', marginTop: '15px', fontWeight: 600 }}>No hidden fees. Just pure adventure.</p>
-                            </div>
-
-                            <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                <div style={{ 
-                                    fontSize: '0.8rem', 
-                                    fontWeight: 800, 
-                                    textTransform: 'uppercase', 
-                                    letterSpacing: '1.5px',
-                                    background: '#1DB954',
-                                    color: 'black',
-                                    padding: '12px 30px',
-                                    borderRadius: '500px',
-                                    width: 'fit-content',
-                                    cursor: 'pointer',
-                                    transition: 'transform 0.2s ease'
-                                }}>
-                                    Explore Now
-                                </div>
-                                
-                                <div style={{ 
-                                    fontSize: '0.65rem', 
-                                    color: '#888', 
-                                    fontWeight: 600,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '6px'
-                                }}>
-                                    <i className="fa-solid fa-circle-check" style={{color: '#1DB954'}}></i> Verified by Giveback Journey
-                                </div>
-                            </div>
-
-                            {/* Decorative Circle */}
-                            <div style={{
-                                position: 'absolute',
-                                bottom: '-50px',
-                                right: '-50px',
-                                width: '200px',
-                                height: '200px',
-                                borderRadius: '50%',
-                                border: '20px solid rgba(29,185,84,0.05)',
-                                zIndex: 0
-                            }}></div>
-                        </div>
+                        <SpotifyAdCard margin="10px 0 0 0" />
 
                         {/* Cost-Benefit Travel Card */}
                         <div style={{

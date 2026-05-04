@@ -1,4 +1,4 @@
-import essentialCover from '../assets/praveen-maleesha-5XSOMBEhJWQ-unsplash.jpg';
+import essentialCover from '../assets/gy.jpg';
 import southernCover from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import adventureCover from '../assets/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg';
 import mistMountainsCover from '../assets/Nuwera Eliya day tour.jpg';

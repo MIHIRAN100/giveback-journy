@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import TourPackages, { TourCard } from '../components/TourPackages';
 import SriLankaGlance from '../components/SriLankaGlance';
+import SpotifyAdCard from '../components/SpotifyAdCard';
 import { tourPackages } from '../data/tours';
 import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 
@@ -51,6 +52,10 @@ const PackagesPage = () => {
             )}
 
             <SriLankaGlance />
+            
+            <section style={{ padding: '0 5% 100px 5%', background: '#fff' }}>
+                <SpotifyAdCard />
+            </section>
             
             <section className="cta-section">
                 <div className="cta-content">

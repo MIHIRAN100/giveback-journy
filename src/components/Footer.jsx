@@ -17,10 +17,10 @@ const Footer = () => {
                         Sri Lanka's leading boutique travel agency. We reveal the island's soul through curated heritage, wilderness, and luxury experiences.
                     </p>
                     <div className="footer-social" style={{display: 'flex', gap: '20px', marginTop: '30px', fontSize: '1.2rem'}}>
-                        <a href="#" className="footer-link"><i className="fa-brands fa-instagram"></i></a>
+                        <a href="#" className="footer-link"><i className="fa-brands fa-tiktok"></i></a>
+                        <a href="#" className="footer-link"><i className="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" className="footer-link"><i className="fa-brands fa-youtube"></i></a>
                         <a href="#" className="footer-link"><i className="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" className="footer-link"><i className="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" className="footer-link"><i className="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
