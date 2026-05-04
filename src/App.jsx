@@ -8,10 +8,10 @@ import Home from './pages/Home';
 import SriLanka from './pages/SriLanka';
 import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
-import Stays from './pages/Stays';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import ExclusiveJourneys from './pages/ExclusiveJourneys';
+import VolunteerPage from './pages/VolunteerPage';
 import TourDetails from './pages/TourDetails';
 import BookingPage from './pages/BookingPage';
 import BookingInquiryPage from './pages/BookingInquiryPage';
@@ -37,10 +37,10 @@ const AppContent = () => {
           <Route path="/package/:id" element={<TourDetails />} />
           <Route path="/inquiry/:id" element={<BookingInquiryPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/stays" element={<Stays />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/exclusive-journeys" element={<ExclusiveJourneys />} />
+          <Route path="/volunteer" element={<VolunteerPage />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/booking" element={<BookingPage />} />
         </Routes>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
 
+
 const Navbar = () => {
     const { compareList } = useCompare();
     const location = useLocation();
@@ -57,7 +58,7 @@ const Navbar = () => {
                         <li><Link to="/packages" className="nav-item">Packages</Link></li>
                         <li><Link to="/sri-lanka" className="nav-item">Sri Lankan Heritage</Link></li>
                         <li><Link to="/exclusive-journeys" className="nav-item">Exclusive Journeys</Link></li>
-                        <li><Link to="/stays" className="nav-item">Stays</Link></li>
+                        <li><Link to="/volunteer" className="nav-item">Volunteer</Link></li>
                     </ul>
                 </div>
 
@@ -103,7 +104,7 @@ const Navbar = () => {
             <Link to="/packages" className="nav-item" onClick={toggleMenu}>Packages</Link>
             <Link to="/sri-lanka" className="nav-item" onClick={toggleMenu}>Sri Lankan Heritage</Link>
             <Link to="/exclusive-journeys" className="nav-item" onClick={toggleMenu}>Exclusive Journeys</Link>
-            <Link to="/stays" className="nav-item" onClick={toggleMenu}>Stays</Link>
+            <Link to="/volunteer" className="nav-item" onClick={toggleMenu}>Volunteer</Link>
             <Link to="/contact" className="btn-modern btn-black" onClick={toggleMenu} style={{textAlign: 'center', marginTop: '20px'}}>Contact Us</Link>
         </div>
         </>
