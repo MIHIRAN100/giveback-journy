@@ -5,6 +5,28 @@ const ChatBot = ({ cookieVisible }) => {
     const whatsappNumber = "94754154119";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi!%20I'm%20interested%20in%20your%20Sri%20Lanka%20tour%20packages.`;
 
+    const messages = [
+        "Hi 👋 Need help?",
+        "Ready for adventure? 🌴",
+        "Plan your trip now! ✨",
+        "Have any questions? 🤔",
+        "Discover Sri Lanka! 🇱🇰"
+    ];
+
+    const [msgIndex, setMsgIndex] = useState(0);
+    const [isMsgFading, setIsMsgFading] = useState(false);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setIsMsgFading(true);
+            setTimeout(() => {
+                setMsgIndex((prev) => (prev + 1) % messages.length);
+                setIsMsgFading(false);
+            }, 600); // Wait for fade out
+        }, 5000); // Change every 5 seconds
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="chat-container" style={{ bottom: cookieVisible ? '100px' : '30px' }}>
             {/* Popup Window */}
@@ -53,8 +75,16 @@ const ChatBot = ({ cookieVisible }) => {
 
             {/* Hi greeting bubble */}
             {!isOpen && (
-                <div className="hi-bubble" onClick={() => setIsOpen(true)}>
-                    Hi 👋 Need help?
+                <div 
+                    className="hi-bubble" 
+                    onClick={() => setIsOpen(true)}
+                    style={{
+                        opacity: isMsgFading ? 0 : 1,
+                        transform: isMsgFading ? 'translateY(10px)' : 'translateY(0)',
+                        transition: 'all 0.6s ease'
+                    }}
+                >
+                    {messages[msgIndex]}
                 </div>
             )}
 
