@@ -707,9 +707,9 @@ const TourDetails = () => {
                             <div 
                                 onClick={() => setIsMapZoomed(true)}
                                 style={{ 
-                                    background: '#f0f9ff', 
+                                    background: '#fff', 
                                     borderRadius: '24px', 
-                                    height: '400px', 
+                                    width: '100%',
                                     marginBottom: '20px',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -721,7 +721,7 @@ const TourDetails = () => {
                                     position: 'relative'
                                 }}
                             >
-                                <img src={pkg.routeMap || pkg.image} style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Sri Lanka Route Map" />
+                                <img src={pkg.routeMap || pkg.image} style={{ width: '100%', height: 'auto', display: 'block' }} alt="Sri Lanka Route Map" />
                                 <div style={{ 
                                     position: 'absolute', 
                                     bottom: '20px', 
