@@ -99,7 +99,7 @@ export const tourPackages = [
             { 
                 day: 4, 
                 title: "Kandy to Ella | Scenic Train Experience", 
-                desc: "In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous <b>Kandy to Ella train ride</b>—often cited as the most beautiful rail journey in the world—winding through emerald tea estates and cascading waterfalls.<br/><br/><i>(Note: Due to unstable and unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle through the same scenic route).</i><br/><br/>Arrive in the charming village of Ella and transfer to your accommodation nestled in the hills.<br/><br/><b>Evening free to:</b><br/>• Wander through the bohemian streets of <b>Ella town</b><br/>• Relax in cozy local cafés and enjoy the cool mountain air<br/><br/><b>Overnight stay in Ella.</b>", 
+                desc: "In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous <b>Kandy to Ella train ride</b>—often cited as the most beautiful rail journey in the world—winding through emerald tea estates and cascading waterfalls.<br/><br/><i>(Note: Due to unstable and unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle via the same scenic route).</i><br/><br/>Arrive in the charming village of Ella and transfer to your accommodation nestled in the hills.<br/><br/><b>Evening free to:</b><br/>• Wander through the bohemian streets of <b>Ella town</b><br/>• Relax in cozy local cafés and enjoy the cool mountain air<br/><br/><b>Overnight stay in Ella.</b>", 
                 activities: ["Temple of the Tooth", "Scenic train ride", "Ella town exploration"] 
             },
             { 
@@ -226,58 +226,58 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival & Transfer to Kitulgala", 
-                desc: "Welcome to the tropical paradise of Sri Lanka! Upon your arrival at the Bandaranaike International Airport, your private representative will be waiting to whisk you away to the emerald heart of the island—Kitulgala. This tranquil riverside destination is nestled within a lush rainforest, offering the perfect serene introduction to your journey. \n\nAfter checking into your charming guesthouse, take some time to unwind and listen to the rhythmic sounds of the Kelani River. Whether you choose to enjoy a peaceful walk through the local village or simply relax amidst the vibrant jungle atmosphere, your adventure begins with the soothing embrace of nature.", 
-                activities: ["Kelani River Relaxation", "Village Walk", "Jungle Atmosphere", "Nature Walk (Optional)", "River Bathing (Optional)"] 
+                desc: "Welcome to the island of <b>Sri Lanka!</b><br/><br/>Upon your arrival, you will be warmly greeted and transferred to <b>Kitulgala</b>, a მშვიდ riverside destination nestled within a lush and vibrant rainforest. This serene landscape, where the air is thick with the scent of tropical greenery, provides the perfect tranquil introduction to your journey.<br/><br/>Check into your guesthouse and take some time to unwind and relax after your travels.<br/><br/><b>Free Activities:</b><br/>• Relax by the banks of the flowing <b>Kelani River</b><br/>• Take a short, peaceful <b>village walk</b> to observe local life<br/>• Simply sit back and enjoy the <b>peaceful jungle atmosphere</b><br/><br/><b>Optional Activities:</b><br/>• Join a <b>guided nature walk</b> to discover local flora and fauna<br/>• Enjoy a refreshing <b>river bathing experience</b> in the clear jungle waters<br/><br/><b>Dinner included at the guesthouse</b><br/><b>Overnight stay in Kitulgala.</b>", 
+                activities: ["Kelani River Relaxation", "Village Walk", "Jungle Atmosphere", "River Bathing (Optional)"] 
             },
             { 
                 day: 2, 
                 title: "Rafting Adventure & Transfer to Ella", 
-                desc: "Awaken to the sounds of the jungle and prepare for an exhilarating morning on the water. Today, you'll tackle the white-water rapids of the Kelani River, an adventure that perfectly balances adrenaline with the stunning natural beauty of the surrounding rainforest. This experience is designed for everyone, from beginners to seasoned adventurers. \n\nAfter a traditional riverside lunch in Kitulgala, we begin our scenic ascent into the central highlands. As we drive towards Ella, the landscape transforms into a tapestry of rolling tea plantations and mist-covered peaks, offering some of the most iconic views in the country. End your day in the cool, crisp air of Ella town, a backpacker's haven with a laid-back charm.", 
-                activities: ["White Water Rafting", "Bird Watching (Optional)", "Scenic Drive to Ella", "Explore Ella Town"] 
+                desc: "Start your day with an exhilarating adventure on the <b>Kelani River</b>.<br/><br/><b>Included Activity:</b><br/>• <b>White water rafting</b>: Experience a safe and exciting अनुभव through the rapids, an ideal activity for both beginners and nature lovers seeking a thrill amidst the trees.<br/><br/><b>Optional Activity:</b><br/>• <b>Early morning bird watching</b>: Set out at dawn to spot endemic species in their rich and diverse rainforest surroundings.<br/><br/><b>Lunch included in Kitulgala</b><br/><br/>After a traditional lunch, proceed towards the misty highlands of <b>Ella</b>, enjoying the sight of endless scenic <b>tea plantations</b> and dramatic mountain views along the way.<br/><br/><b>Free Activities:</b><br/>• Explore the charming and bohemian streets of <b>Ella town</b><br/>• Enjoy the refreshing and <b>cool hill country climate</b><br/><br/><b>Overnight stay in Ella.</b>", 
+                activities: ["White Water Rafting", "Scenic Drive to Ella", "Explore Ella Town", "Bird Watching (Optional)"] 
             },
             { 
                 day: 3, 
                 title: "Ella Peaks & Iconic Landmarks", 
-                desc: "Ella is a place of breathtaking vistas and iconic landmarks, and today you'll explore the very best of it. Start your morning with a rewarding hike to the summit of Little Adam’s Peak, where you’ll be treated to panoramic views of the Ella Gap and the surrounding valley. \n\nNo visit to Ella is complete without witnessing the architectural marvel of the Nine Arches Bridge; stand in awe as the train passes over this colonial-era masterpiece nestled in the jungle. For those seeking more, optional zip-lining or a visit to a local tea plantation provides a deeper connection to the region's heritage and thrill.", 
+                desc: "Discover the breathtaking beauty and misty peaks of <b>Ella</b>.<br/><br/><b>Free Activities:</b><br/>• Hike to the summit of <b>Little Adam's Peak</b> for sweeping views of the Ella Gap<br/>• Visit the world-famous <b>Nine Arches Bridge</b> and witness the train crossing the jungle valley<br/><br/><b>Optional Activities:</b><br/>• Experience the adrenaline of <b>zip-lining</b> across the hills<br/>• Visit a local <b>tea plantation</b> to learn about Ceylon's liquid gold<br/>• Relax in one of the many <b>scenic cafés</b> overlooking the mountains<br/><br/><b>Overnight stay in Ella.</b>", 
                 activities: ["Little Adam's Peak Hike", "Nine Arches Bridge", "Zip-lining (Optional)", "Tea Plantation Visit (Optional)"] 
             },
             { 
                 day: 4, 
                 title: "Yala Safari & Journey to the Coast", 
-                desc: "From the mountains to the wild, today we descend towards the arid plains of the south. Our destination is Yala National Park, Sri Lanka's premier wildlife sanctuary. Climb aboard a rugged 4x4 jeep for an unforgettable safari through the scrub jungles and lagoons. \n\nKeep your eyes peeled for the elusive Sri Lankan leopard, majestic elephants, and a kaleidoscope of birdlife that calls this park home. After the excitement of the wild, we continue our journey towards the turquoise waters of the southern coast, arriving near Hikkaduwa for a change of pace and a well-deserved coastal breeze.", 
-                activities: ["Yala Jeep Safari", "Wildlife Spotting", "Drive to South Coast"] 
+                desc: "Travel south from the mountains towards the arid plains of <b>Yala National Park</b>.<br/><br/><b>Included Activity:</b><br/>• <b>Jeep safari in Yala National Park</b>: Explore one of Sri Lanka’s premier wildlife reserves, a wild sanctuary home to elephants, elusive leopards, and a vast diversity of birdlife.<br/><br/>After the excitement of the safari, continue your journey towards the turquoise waters of the southern coast.<br/><br/><b>Overnight stay near / in Hikkaduwa.</b>", 
+                activities: ["Yala Jeep Safari", "Wildlife Spotting", "Drive to Hikkaduwa"] 
             },
             { 
                 day: 5, 
-                title: "Beach Relaxation in Hikkaduwa", 
-                desc: "Today is all about the 'slow life.' Settle into the rhythmic pace of Hikkaduwa, one of Sri Lanka’s most beloved beach towns. Whether you want to sink your toes into the soft golden sand, take a refreshing dip in the Indian Ocean, or simply watch the sun dip below the horizon with a cold drink in hand, the day is yours to command. \n\nFor the more active, the Hikkaduwa Coral Sanctuary offers incredible snorkeling opportunities right off the shore, where you can swim alongside vibrant marine life and sea turtles in their natural habitat.", 
-                activities: ["Beach Relaxation", "Ocean Swimming", "Sunset Views", "Snorkeling (Optional)", "Surfing Lessons (Optional)"] 
+                title: "Beach Relaxation & Galle Fort Sunset", 
+                desc: "Settle into the laid-back rhythm of coastal life in <b>Hikkaduwa</b> during the day, followed by a cultural evening in Galle.<br/><br/><b>Free Activities:</b><br/>• Relax on the golden sands of the <b>beach</b><br/>• Swim in the warm and clear waters of the <b>Indian Ocean</b><br/>• Take a scenic <b>sunset walk along the ancient ramparts of Galle Fort</b>, enjoying the colonial charm and ocean views.<br/><br/><b>Optional Activities:</b><br/>• Go <b>snorkeling</b> at the Hikkaduwa Coral Sanctuary to see sea turtles and fish<br/>• Take <b>surfing lessons</b> at one of the local surf schools<br/>• Enjoy <b>beachfront dining</b> or explore the café scene inside the fort<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
+                activities: ["Beach Relaxation", "Ocean Swimming", "Galle Fort Sunset Walk", "Snorkeling (Optional)", "Surfing Lessons (Optional)"] 
             },
             { 
                 day: 6, 
-                title: "Galle Fort & River Safari", 
-                desc: "Journey back in time as we visit the UNESCO World Heritage site of Galle Fort. This 16th-century colonial fortress is a living museum, where narrow cobblestone streets are lined with Dutch-era villas, boutique shops, and charming cafes. Walk along the ancient ramparts, feel the sea breeze, and capture the iconic lighthouse against the blue sky. \n\nIn the afternoon, experience the tranquil beauty of the Madu River with an optional boat safari. Drift through dense mangroves, visit small cinnamon-growing islands, and witness the traditional lifestyle of the river communities before returning to Hikkaduwa for your final evening.", 
-                activities: ["Galle Fort Walk", "Colonial Architecture", "Madu River Safari (Optional)", "Shopping (Optional)"] 
+                title: "Turtle Hatchery & River Safari", 
+                desc: "Discover the coastal wonders and conservation efforts of the south.<br/><br/><b>Included Activity:</b><br/>• <b>Madu River safari</b>: Embark on a relaxing boat ride through the tranquil mangroves and small islands of the Madu River, witnessing traditional cinnamon peeling and local life.<br/><br/><b>Optional Activity:</b><br/>• <b>Sea Turtle Hatchery visit</b>: Visit a local conservation project dedicated to protecting endangered sea turtles. Learn about the different species and the vital work being done to ensure their survival.<br/><br/>Return to the relaxed atmosphere of <b>Hikkaduwa</b> for your final evening.<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
+                activities: ["Madu River Safari", "Turtle Hatchery Visit (Optional)", "Mangrove Exploration", "Cinnamon Island Visit"] 
             },
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "After a final tropical breakfast at your guesthouse, it’s time to say goodbye to the island of smiles. Your private transfer will take you back to the airport in time for your onward flight. \n\nAs you journey through the coastal landscapes one last time, reflect on a week filled with rainforest adventures, misty mountain peaks, wild encounters, and the soothing sound of the waves. We hope you carry a piece of Sri Lanka’s magic with you as you head home.", 
+                desc: "After a final tropical breakfast, transfer comfortably to the airport for your onward journey, carrying with you the memories of your Sri Lankan adventure.", 
                 activities: ["Final Breakfast", "Airport Transfer"] 
             }
         ],
         inclusions: [
-            "6 nights guesthouse accommodation", 
-            "Daily breakfast", 
-            "Dinner on Day 1 (Kitulgala)", 
-            "Lunch on Day 2 (Kitulgala)", 
-            "White water rafting experience", 
-            "Yala National Park jeep safari", 
+            "6 nights guesthouse accommodation",
+            "Daily breakfast",
+            "Dinner on Day 1 (Kitulgala)",
+            "Lunch on Day 2 (Kitulgala)",
+            "White water rafting experience",
+            "Yala National Park jeep safari",
             "All transfers"
         ],
         exclusions: [
-            "Other lunches & dinners", 
-            "Optional activities", 
+            "Other lunches & dinners",
+            "Optional activities",
             "Personal expenses"
         ],
         routeMap: routeMapHighlandsCoast,
