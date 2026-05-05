@@ -22,9 +22,13 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     const getOriginalPrice = () => `$${originalPrice}`;
 
     const getTags = () => {
-        if (pkg.id % 3 === 0) return ['Nature', 'Active', 'Wildlife'];
-        if (pkg.id % 3 === 1) return ['Original', 'Cultural', 'Explorer'];
-        return ['Coastal', 'Relaxing', 'Premium'];
+        if (pkg.itinerary) {
+            // Flatten all activities and get unique ones, limit to 3
+            const allActivities = pkg.itinerary.flatMap(day => day.activities || []);
+            const uniqueActivities = [...new Set(allActivities)];
+            if (uniqueActivities.length > 0) return uniqueActivities.slice(0, 3);
+        }
+        return ['Nature', 'Cultural', 'Explore'];
     };
 
     return (

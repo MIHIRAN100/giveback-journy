@@ -38,19 +38,26 @@ const ItineraryDay = ({ step, index, forceOpen }) => {
                 <i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
             </div>
             {isOpen && (
-                <div style={{ padding: '0 0 30px 0', color: '#555', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                    {step.desc}
+                <div style={{ padding: '0 0 30px 0', color: '#555', lineHeight: 1.8, fontSize: '1.05rem', whiteSpace: 'pre-line' }}>
+                    <div dangerouslySetInnerHTML={{ __html: step.desc }} />
                     {step.activities && (
                         <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                             {step.activities.map((act, i) => (
                                 <span key={i} style={{ 
-                                    background: '#f8f9fa', 
-                                    padding: '6px 15px', 
+                                    background: 'rgba(29, 185, 84, 0.1)', 
+                                    color: 'var(--primary-green)',
+                                    padding: '8px 18px', 
                                     borderRadius: '50px', 
-                                    fontSize: '0.85rem', 
-                                    fontWeight: 600,
-                                    border: '1px solid #eee'
+                                    fontSize: '0.8rem', 
+                                    fontWeight: 800,
+                                    border: '1px solid rgba(29, 185, 84, 0.2)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.5px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '6px'
                                 }}>
+                                    <i className="bi bi-star-fill" style={{ fontSize: '0.6rem' }}></i>
                                     {act}
                                 </span>
                             ))}

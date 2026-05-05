@@ -74,20 +74,65 @@ export const tourPackages = [
         id: 1,
         name: "7-Day Essential Sri Lanka",
         days: "7 Days / 6 Nights",
-        description: "A comprehensive journey through Sri Lanka’s most iconic highlights—from ancient heritage and misty tea mountains to the wild jungles and the tropical south.",
+        description: "A carefully designed journey blending culture, nature, and adventure—perfect for travelers who want to experience the best of Sri Lanka in a short time.",
         price: "$650",
         image: essentialCover,
         itinerary: [
-            { day: 1, title: "Arrival & Transfer to Sigiriya", desc: "Welcome to Sri Lanka! Your private driver will meet you at the Bandaranaike International Airport and transfer you to the historic town of Sigiriya. As you drive through the countryside, watch the landscape change from coastal palms to lush interior forests.\n\nAfter checking into your guesthouse, spend a relaxed evening soaking in the atmosphere of the Cultural Triangle. Whether you choose to wander through the local lanes or simply rest after your flight, the majestic silhouette of the Lion Rock in the distance sets the stage for the adventure ahead.", activities: ["Airport Greeting", "Private Transfer", "Evening Relaxation"] },
-            { day: 2, title: "Sigiriya Lion Rock & Village Experience", desc: "Experience the grandeur of ancient Sri Lanka as you climb the iconic Sigiriya Lion Rock. This 5th-century fortress, perched atop a massive granite outcrop, offers breathtaking panoramic views of the surrounding jungle and ancient water gardens. Your guide will share the fascinating stories of King Kasyapa’s sky-palace and the beautiful frescoes that adorn the rock face.\n\nIn the afternoon, immerse yourself in local culture with a traditional village tour. Journey through the countryside on a bullock cart, cross a lily-filled lake by boat, and enjoy a delicious home-cooked Sri Lankan lunch served on lotus leaves. It’s an authentic glimpse into the heart of rural island life.", activities: ["Lion Rock Hike", "Village Tour", "Traditional Lunch"] },
-            { day: 3, title: "Dambulla Temple & Journey to Kandy", desc: "Journey to the spiritual heart of the island, starting with a visit to the Dambulla Cave Temple. This UNESCO World Heritage site is a marvel of ancient art, featuring five sprawling caves filled with hundreds of Buddha statues and intricate ceiling murals that have been preserved for centuries.\n\nContinue your drive to the hilltop capital of Kandy. In the evening, visit the sacred Temple of the Tooth Relic, the most revered site in Sri Lanka. Conclude your day with a vibrant cultural dance performance, where traditional drummers and fire-walkers showcase the island's rich heritage in a high-energy display.", activities: ["Cave Temple Visit", "Temple of the Tooth", "Cultural Show"] },
-            { day: 4, title: "Scenic Train Ride to Ella", desc: "Prepare for one of the world's most beautiful train journeys. Board the train in Kandy and wind your way through the central highlands towards Ella. As the locomotive climbs, you'll be treated to sweeping views of emerald tea estates, mist-shrouded peaks, and cascading waterfalls.\n\nThis iconic ride is the perfect way to witness the stunning geography of the island. Feel the cool mountain air on your face as you pass through tunnels and over high bridges, arriving in the charming town of Ella just in time to enjoy the crisp evening atmosphere.", activities: ["Iconic Train Ride", "Tea Plantation Views", "Mountain Sightseeing"] },
-            { day: 5, title: "Ella Highlights & Transfer to Yala", desc: "Ella is a hiker's paradise, and today you'll explore its most famous landmarks. Start with a morning walk to the Nine Arches Bridge, a colonial-era masterpiece tucked away in the jungle. Stand in awe as the train passes over this architectural marvel before heading to Little Adam’s Peak for a gentle hike with rewarding views of the Ella Gap.\n\nIn the afternoon, leave the mountains behind as we descend towards the arid plains of Yala. The landscape shifts dramatically once more, bringing you to the edge of the wilderness in preparation for an early morning wildlife safari.", activities: ["Nine Arches Bridge", "Little Adam’s Peak", "Drive to Yala"] },
-            { day: 6, title: "Yala Safari & Mirissa Coast", desc: "Rise before the sun for an exhilarating jeep safari in Yala National Park. As the first light hits the scrub jungle, keep your binoculars ready to spot elephants, sloth bears, and the elusive Sri Lankan leopard. The park’s diverse ecosystems, from lagoons to coastal dunes, make it a haven for birdlife and wildlife photography.\n\nAfter the excitement of the safari, we head to the southern coast. Arrive in the beautiful beach town of Mirissa, where you can spend your evening watching the sunset from a beachfront cafe, reflecting on the wild encounters of the morning.", activities: ["Leopard Safari", "Jungle Wildlife", "Sunset at Mirissa"] },
-            { day: 7, title: "Galle Fort & Departure", desc: "Explore the historic Galle Fort, a living museum of colonial history. Walk the ancient ramparts that have protected this Dutch-era fortress for centuries, and wander through narrow streets filled with boutique shops, art galleries, and charming cafes.\n\nFinally, your journey comes to an end as we transfer you back to the airport for your onward flight. Carry with you the memories of ancient rocks, misty mountains, and wild jungles—a true essential Sri Lanka experience.", activities: ["Galle Fort Tour", "Colonial Architecture", "Airport Transfer"] }
+            { 
+                day: 1, 
+                title: "Arrival in Negombo", 
+                desc: "Welcome to the tropical paradise of <b>Sri Lanka!</b><br/><br/>Upon arrival at the international airport, you will be warmly greeted and transferred to the vibrant coastal town of <b>Negombo</b>. This relaxed beachside sanctuary, with its swaying palms and salty breeze, is the perfect place to recover from your flight and prepare for the incredible adventure ahead.<br/><br/>Take the day at your own pace to unwind and soak in the island atmosphere.<br/><br/><b>Optional Activities (based on arrival time):</b><br/>• A serene beach walk along the golden <b>Negombo coastline</b><br/>• A tranquil <b>lagoon boat ride</b> through mangrove forests<br/>• A visit to the bustling <b>local fish markets</b> to see the day's catch<br/>• Watching a spectacular <b>sunset by the beach</b> with a tropical drink<br/><br/><b>Overnight stay in Negombo.</b>", 
+                activities: ["Beach walk", "Lagoon boat ride", "Fish market visit", "Sunset relax"] 
+            },
+            { 
+                day: 2, 
+                title: "Negombo to Sigiriya | Sunset Adventure", 
+                desc: "After a delicious breakfast, embark on a scenic journey towards <b>Sigiriya</b>, located in the deep cultural heart of the island's interior. Watch as the landscape transforms from coastal plains into lush, emerald-green jungles.<br/><br/>In the evening, as the heat of the day fades, enjoy a breathtaking <b>sunset hike up Pidurangala Rock</b>. This rewarding climb offers a unique perspective and stunning panoramic views of the surrounding valley and the majestic Lion Rock standing tall in the distance.<br/><br/>After descending, return to the comfort of your hotel to relax and reflect on your first day in the Cultural Triangle.<br/><br/><b>🍽️ Dinner included at the hotel</b><br/><b>Overnight stay in Sigiriya</b>", 
+                activities: ["Scenic drive to Sigiriya", "Pidurangala Rock sunset hike", "Dinner at hotel"] 
+            },
+            { 
+                day: 3, 
+                title: "Sunrise at Sigiriya & Wildlife Safari", 
+                desc: "Start your day early with an unforgettable <b>sunrise visit to Sigiriya Rock Fortress</b>, a UNESCO World Heritage site and one of the island's most awe-inspiring ancient landmarks. Scale the historic steps to witness the sky change colors over the vast jungle canopy.<br/><br/>Return to the hotel for a well-earned breakfast, then continue your adventure with:<br/><br/>• 🐘 An exhilarating <b>wild elephant safari</b> at Minneriya National Park, where you can witness these gentle giants in their natural habitat<br/>• A visit to the spiritual <b>Dambulla Cave Temple</b>, filled with ancient statues and vibrant murals<br/>• A sensory stop at a traditional <b>Sri Lankan herbal garden</b> to learn about local spices and oils<br/><br/>Afterward, we transfer you to the hilltop capital of <b>Kandy</b>.<br/><br/>In the evening:<br/>• Enjoy a peaceful, twilight walk around the iconic <b>Kandy Lake</b><br/>• Explore the charming city streets and enjoy dinner at your own leisure<br/><br/><b>Overnight stay in Kandy.</b>", 
+                activities: ["Sigiriya Rock Fortress", "Elephant safari", "Dambulla Cave Temple", "Herbal garden visit", "Kandy Lake walk"] 
+            },
+            { 
+                day: 4, 
+                title: "Kandy to Ella | Scenic Train Experience", 
+                desc: "In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous <b>Kandy to Ella train ride</b>—often cited as the most beautiful rail journey in the world—winding through emerald tea estates and cascading waterfalls.<br/><br/>Arrive in the charming village of Ella and transfer to your accommodation nestled in the hills.<br/><br/><b>Evening free to:</b><br/>• Wander through the bohemian streets of <b>Ella town</b><br/>• Relax in cozy local cafés and enjoy the cool mountain air<br/><br/><b>Overnight stay in Ella.</b>", 
+                activities: ["Temple of the Tooth", "Scenic train ride", "Ella town exploration"] 
+            },
+            { 
+                day: 5, 
+                title: "Explore Ella at Your Own Pace", 
+                desc: "Today is yours to embrace the slow pace of mountain life and explore <b>Ella</b> as a solo traveler.<br/><br/><b>Suggested Activities:</b><br/>• A refreshing hike up <b>Little Adam's Peak</b> for sweeping views of the Ella Gap<br/>• A visit to the colonial-era <b>Nine Arches Bridge</b> to watch the train pass through the jungle<br/>• Wandering through lush <b>tea plantations</b> and learning about the art of Ceylon tea<br/>• Finding a scenic spot to relax in a hillside café with breathtaking vistas<br/><br/><b>Overnight stay in Ella.</b>", 
+                activities: ["Little Adam's Peak hike", "Nine Arches Bridge", "Tea plantation walk", "Café relaxation"] 
+            },
+            { 
+                day: 6, 
+                title: "Ella to Galle | Coastal Charm", 
+                desc: "Leave the mountains behind as we travel south towards the historic coast. En route, we stop at the majestic <b>Ravana Falls</b>, one of the widest waterfalls on the island, for a quick photo opportunity and a breath of fresh spray.<br/><br/>Arrive in the south and, in the evening, enjoy a magical <b>sunset walk inside the historic Galle Fort</b>. This UNESCO site is known for its colonial charm, narrow cobblestone streets, and stunning ocean views from the ancient ramparts.<br/><br/><b>Overnight stay in Galle.</b>", 
+                activities: ["Ravana Falls visit", "Galle Fort sunset walk"] 
+            },
+            { 
+                day: 7, 
+                title: "Departure", 
+                desc: "After a final island breakfast, we will transfer you comfortably to the airport for your onward journey. Carry with you the memories of ancient wonders, misty mountains, and the warmth of the Sri Lankan spirit.", 
+                activities: ["Breakfast at hotel", "Airport transfer"] 
+            }
         ],
-        inclusions: ["Accommodation", "Daily breakfast", "Private transport", "Train tickets", "Yala Safari"],
-        exclusions: ["Flights", "Entrance fees", "Lunch & dinner"],
+        inclusions: [
+            "Accommodation throughout the tour",
+            "Daily breakfast",
+            "Dinner on Day 2",
+            "All entrance fees to mentioned sites",
+            "Transportation and transfers"
+        ],
+        exclusions: [
+            "Lunches and dinners (unless specified)",
+            "Personal expenses",
+            "Optional activities"
+        ],
         routeMap: routeMapEssential,
         reviews: signatureReviews,
         importantNotes: COMMON_NOTES
