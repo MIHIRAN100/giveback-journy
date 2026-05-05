@@ -99,19 +99,19 @@ export const tourPackages = [
             { 
                 day: 4, 
                 title: "Kandy to Ella | Scenic Train Experience", 
-                desc: "In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous <b>Kandy to Ella train ride</b>—often cited as the most beautiful rail journey in the world—winding through emerald tea estates and cascading waterfalls.<br/><br/>Arrive in the charming village of Ella and transfer to your accommodation nestled in the hills.<br/><br/><b>Evening free to:</b><br/>• Wander through the bohemian streets of <b>Ella town</b><br/>• Relax in cozy local cafés and enjoy the cool mountain air<br/><br/><b>Overnight stay in Ella.</b>", 
+                desc: "In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous <b>Kandy to Ella train ride</b>—often cited as the most beautiful rail journey in the world—winding through emerald tea estates and cascading waterfalls.<br/><br/><i>(Note: Due to unstable and unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle through the same scenic route).</i><br/><br/>Arrive in the charming village of Ella and transfer to your accommodation nestled in the hills.<br/><br/><b>Evening free to:</b><br/>• Wander through the bohemian streets of <b>Ella town</b><br/>• Relax in cozy local cafés and enjoy the cool mountain air<br/><br/><b>Overnight stay in Ella.</b>", 
                 activities: ["Temple of the Tooth", "Scenic train ride", "Ella town exploration"] 
             },
             { 
                 day: 5, 
                 title: "Explore Ella at Your Own Pace", 
-                desc: "Today is yours to embrace the slow pace of mountain life and explore <b>Ella</b> as a solo traveler.<br/><br/><b>Suggested Activities:</b><br/>• A refreshing hike up <b>Little Adam's Peak</b> for sweeping views of the Ella Gap<br/>• A visit to the colonial-era <b>Nine Arches Bridge</b> to watch the train pass through the jungle<br/>• Wandering through lush <b>tea plantations</b> and learning about the art of Ceylon tea<br/>• Finding a scenic spot to relax in a hillside café with breathtaking vistas<br/><br/><b>Overnight stay in Ella.</b>", 
-                activities: ["Little Adam's Peak hike", "Nine Arches Bridge", "Tea plantation walk", "Café relaxation"] 
+                desc: "Today is yours to embrace the slow pace of mountain life and explore <b>Ella</b> as a solo traveler.<br/><br/><b>Suggested Activities:</b><br/>• A refreshing hike up <b>Little Adam's Peak</b> for sweeping views of the Ella Gap<br/>• A visit to the colonial-era <b>Nine Arches Bridge</b> to watch the train pass through the jungle<br/>• Finding a scenic spot to relax in a hillside café with breathtaking vistas<br/><br/><b>Overnight stay in Ella.</b>", 
+                activities: ["Little Adam's Peak hike", "Nine Arches Bridge", "Café relaxation"] 
             },
             { 
                 day: 6, 
                 title: "Ella to Galle | Coastal Charm", 
-                desc: "Leave the mountains behind as we travel south towards the historic coast. En route, we stop at the majestic <b>Ravana Falls</b>, one of the widest waterfalls on the island, for a quick photo opportunity and a breath of fresh spray.<br/><br/>Arrive in the south and, in the evening, enjoy a magical <b>sunset walk inside the historic Galle Fort</b>. This UNESCO site is known for its colonial charm, narrow cobblestone streets, and stunning ocean views from the ancient ramparts.<br/><br/><b>Overnight stay in Galle.</b>", 
+                desc: "Leave the mountains behind as we travel south towards the historic coast. En route, we stop at the majestic <b>Ravana Falls</b>, one of the widest waterfalls on the island, for a quick photo opportunity and a breath of fresh spray.<br/><br/>Arrive in the south and, in the evening, enjoy a magical <b>sunset walk inside the historic Galle Fort</b>. This UNESCO site is known for its colonial charm, narrow cobblestone streets, and stunning ocean views from the ancient ramparts.<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
                 activities: ["Ravana Falls visit", "Galle Fort sunset walk"] 
             },
             { 
