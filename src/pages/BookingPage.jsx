@@ -5,10 +5,10 @@ import emailjs from '@emailjs/browser';
 import { tourPackages } from '../data/tours';
 
 // EMAILJS CONFIGURATION
-const EMAILJS_SERVICE_ID = 'service_677'; // Placeholder - USER should replace
-const EMAILJS_PUBLIC_KEY = 'public_677';   // Placeholder - USER should replace
-const ADMIN_TEMPLATE_ID = 'booking_admin';
-const CUSTOMER_TEMPLATE_ID = 'booking_customer';
+const EMAILJS_SERVICE_ID = 'service_95ud991'; 
+const EMAILJS_PUBLIC_KEY = 'Z-S0sHMSNtxZTuFwF';   
+const ADMIN_TEMPLATE_ID = 'template_84lczai';
+const CUSTOMER_TEMPLATE_ID = 'template_j0pdjea';
 
 const BookingPage = () => {
     const [searchParams] = useSearchParams();
@@ -60,8 +60,10 @@ const BookingPage = () => {
 
         const templateParams = {
             ...formData,
+            name: `${formData.first_name} ${formData.last_name}`,
             booking_id,
-            submitted_at
+            submitted_at,
+            to_email: "hello@givebackjourney.com"
         };
 
         try {

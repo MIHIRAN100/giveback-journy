@@ -149,6 +149,84 @@ const TourDetails = () => {
 
     return (
         <div className="tour-details-page" style={{ background: '#fff', paddingTop: '20px' }}>
+            <style>
+                {`
+                @media (max-width: 768px) {
+                    .tour-details-page > div:nth-child(2) {
+                        padding: 0 20px !important;
+                    }
+                    
+                    /* Header Responsiveness */
+                    .tour-details-page h1 {
+                        font-size: 2.2rem !important;
+                        margin-bottom: 10px !important;
+                    }
+                    .tour-details-page div[style*="justify-content: space-between"][style*="align-items: flex-start"] {
+                        flex-direction: column !important;
+                        gap: 10px !important;
+                    }
+
+                    /* Main Grids */
+                    .tour-details-page div[style*="display: grid"] {
+                        grid-template-columns: 1fr !important;
+                        gap: 30px !important;
+                    }
+
+                    /* Gallery Section */
+                    .tour-details-page div[style*="height: 500px"] {
+                        height: 300px !important;
+                    }
+                    .tour-details-page div[style*="grid-template-columns: repeat(5, 1fr)"] {
+                        grid-template-columns: repeat(5, 1fr) !important;
+                        gap: 8px !important;
+                    }
+                    .tour-details-page div[style*="height: 80px"] {
+                        height: 60px !important;
+                    }
+
+                    /* Summary Card */
+                    .tour-details-page div[style*="padding: 35px"] {
+                        padding: 25px !important;
+                    }
+                    .tour-details-page span[style*="font-size: 2.2rem"] {
+                        font-size: 1.8rem !important;
+                    }
+
+                    /* Itinerary Map & Accordion */
+                    .tour-details-page div[style*="grid-template-columns: 1fr 2fr"] {
+                        grid-template-columns: 1fr !important;
+                        gap: 40px !important;
+                        padding: 10px !important;
+                    }
+                    .tour-details-page div[style*="height: 400px"] {
+                        height: 280px !important;
+                    }
+
+                    /* Review Section */
+                    .reviews-scroll-container div[style*="flex: 0 0 calc(25% - 16px)"] {
+                        flex: 0 0 85% !important;
+                    }
+                    
+                    /* Itinerary Header */
+                    .tour-details-page div[style*="display: flex"][style*="justify-content: space-between"][style*="align-items: center"] {
+                        flex-direction: column !important;
+                        align-items: flex-start !important;
+                        gap: 20px !important;
+                    }
+                    
+                    /* Important Notes */
+                    .tour-details-page h2[style*="font-size: 2.5rem"] {
+                        font-size: 1.8rem !important;
+                    }
+                    
+                    /* Before You Book Tabs */
+                    .booking-tabs-container div[style*="display: flex"][style*="gap: 30px"] {
+                        gap: 20px !important;
+                        padding-bottom: 10px !important;
+                    }
+                }
+                `}
+            </style>
             {/* Map Zoom Modal */}
             {isMapZoomed && (
                 <div 
@@ -678,40 +756,15 @@ const TourDetails = () => {
 
                 {/* Important Notes */}
                 {pkg.importantNotes && (
-                    <div style={{ marginTop: '80px', padding: '50px', background: 'rgba(0,0,0,0.02)', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.03)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '35px' }}>
-                            <div style={{ width: '40px', height: '40px', background: '#111', color: 'white', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <i className="bi bi-exclamation-lg"></i>
-                            </div>
-                            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, margin: 0 }}>Important Notes</h3>
-                        </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
-                            {pkg.importantNotes.map((note, i) => {
-                                const [title, ...rest] = note.split(':');
-                                const description = rest.join(':');
-                                return (
-                                    <div key={i} style={{ display: 'flex', gap: '25px', alignItems: 'flex-start' }}>
-                                        <div style={{ 
-                                            fontSize: '1.2rem', 
-                                            fontWeight: 900, 
-                                            color: 'var(--primary-green)', 
-                                            minWidth: '35px',
-                                            height: '35px',
-                                            border: '2px solid var(--primary-green)',
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center'
-                                        }}>
-                                            {i + 1}
-                                        </div>
-                                        <div>
-                                            <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '10px', color: '#111' }}>{title}</h4>
-                                            <p style={{ margin: 0, fontSize: '1.05rem', color: '#555', lineHeight: 1.7 }}>{description.trim()}</p>
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                    <div style={{ marginTop: '80px', padding: '20px 0' }}>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 500, color: '#222', marginBottom: '30px', fontFamily: 'inherit' }}>Important notes</h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                            {pkg.importantNotes.map((note, i) => (
+                                <div key={i} style={{ fontSize: '1.05rem', color: '#444', lineHeight: 1.6, display: 'flex', gap: '8px' }}>
+                                    <span style={{ fontWeight: 400 }}>{i + 1}.</span>
+                                    <span>{note}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 )}
@@ -817,6 +870,177 @@ const TourDetails = () => {
                     </div>
                 )}
             </div>
+            {/* Mobile Sticky Booking Bar */}
+            <div className="mobile-booking-bar" style={{
+                display: 'none',
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'white',
+                padding: '15px 25px',
+                boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
+                zIndex: 1000,
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                borderTop: '1px solid #eee'
+            }}>
+                <div>
+                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 800, display: 'block' }}>Starting from</span>
+                    <span style={{ fontSize: '1.4rem', fontWeight: 900, color: '#111' }}>{getPrice()}</span>
+                </div>
+                <button 
+                    onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}
+                    style={{ 
+                        background: 'var(--primary-green)', 
+                        color: 'white', 
+                        border: 'none', 
+                        padding: '12px 30px', 
+                        borderRadius: '12px', 
+                        fontWeight: 800, 
+                        fontSize: '1rem' 
+                    }}
+                >
+                    Book Now
+                </button>
+            </div>
+
+            <style>
+                {`
+                @media (max-width: 768px) {
+                    .tour-details-page {
+                        background: #fdfdfd !important;
+                        padding-top: 0 !important;
+                        padding-bottom: 100px !important;
+                    }
+                    
+                    /* Glassmorphic Sticky Bar */
+                    .mobile-booking-bar {
+                        display: flex !important;
+                        background: rgba(255, 255, 255, 0.85) !important;
+                        backdrop-filter: blur(15px) !important;
+                        -webkit-backdrop-filter: blur(15px) !important;
+                        padding: 15px 25px !important;
+                        border-radius: 20px 20px 0 0 !important;
+                        box-shadow: 0 -10px 40px rgba(0,0,0,0.08) !important;
+                    }
+                    .mobile-booking-bar button {
+                        border-radius: 14px !important;
+                        padding: 12px 25px !important;
+                        box-shadow: 0 8px 20px rgba(29, 185, 84, 0.25) !important;
+                    }
+
+                    .tour-details-page > div:nth-child(3) {
+                        padding: 0 !important;
+                        max-width: 100% !important;
+                    }
+
+                    /* Full-width Hero with Overlap Card */
+                    .tour-details-page div[style*="height: 500px"] {
+                        height: 350px !important;
+                        border-radius: 0 !important;
+                        margin-bottom: -20px !important;
+                    }
+                    
+                    /* Header Overlay Card */
+                    .tour-details-page h1 {
+                        position: relative !important;
+                        z-index: 10 !important;
+                        font-size: 1.7rem !important;
+                        background: white !important;
+                        border-radius: 30px 30px 0 0 !important;
+                        padding: 30px 25px 5px 25px !important;
+                        margin: 0 !important;
+                    }
+                    .tour-details-page div[style*="justify-content: space-between"][style*="align-items: flex-start"] {
+                        background: white !important;
+                        padding: 0 25px 25px 25px !important;
+                        margin-bottom: 15px !important;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.02) !important;
+                        border-bottom: 1px solid #f5f5f5 !important;
+                    }
+
+                    /* Section Floating Cards */
+                    .tour-details-page div[style*="padding: 35px"],
+                    .tour-details-page div[style*="padding: 40px"],
+                    .inclusions-box, .exclusions-box, .transport-selector-box,
+                    .tour-details-page div[style*="padding: 20px 0"] {
+                        margin: 0 15px 20px 15px !important;
+                        padding: 25px !important;
+                        background: white !important;
+                        border-radius: 24px !important;
+                        border: 1px solid #f0f0f0 !important;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.02) !important;
+                    }
+
+                    /* Gallery Thumbnails */
+                    .tour-details-page div[style*="grid-template-columns: repeat(5, 1fr)"] {
+                        padding: 0 20px 20px 20px !important;
+                        background: white !important;
+                        margin-bottom: 20px !important;
+                        overflow-x: auto !important;
+                        display: flex !important;
+                        gap: 12px !important;
+                    }
+                    .tour-details-page div[style*="height: 80px"] {
+                        flex: 0 0 65px !important;
+                        height: 65px !important;
+                        border-radius: 12px !important;
+                    }
+
+                    /* Hide Laptop-only pricing/booking */
+                    .tour-details-page div[style*="USD"],
+                    .tour-details-page button[style*="width: 100%"] {
+                        display: none !important;
+                    }
+
+                    /* Itinerary Overhaul - Mobile Timeline */
+                    .tour-details-page div[style*="grid-template-columns: 1fr 2fr"] {
+                        grid-template-columns: 1fr !important;
+                        background: white !important;
+                        margin: 0 15px 20px 15px !important;
+                        padding: 20px !important;
+                        border-radius: 24px !important;
+                        border: 1px solid #f0f0f0 !important;
+                    }
+                    .tour-details-page div[style*="height: 400px"] {
+                        height: 240px !important;
+                        border-radius: 16px !important;
+                        margin-bottom: 15px !important;
+                    }
+                    
+                    /* Review Section */
+                    .reviews-scroll-container div[style*="flex: 0 0 calc(25% - 16px)"] {
+                        flex: 0 0 85% !important;
+                        border-radius: 24px !important;
+                        margin-left: 15px !important;
+                    }
+                    .tour-details-page div[style*="scroll-snap-type: x mandatory"] {
+                        padding-left: 0 !important;
+                        padding-right: 20px !important;
+                    }
+
+                    /* Typography Scaling */
+                    .tour-details-page h2 {
+                        font-size: 1.5rem !important;
+                        padding-left: 25px !important;
+                        margin-bottom: 15px !important;
+                    }
+                    .tour-details-page p {
+                        font-size: 0.95rem !important;
+                        line-height: 1.7 !important;
+                    }
+                    
+                    /* Tabs Scaling */
+                    .booking-tabs-container div[style*="display: flex"][style*="gap: 30px"] {
+                        gap: 15px !important;
+                    }
+                    .booking-tabs-container div[style*="font-size: 1rem"] {
+                        font-size: 0.9rem !important;
+                    }
+                }
+                `}
+            </style>
             <SriLankaGlance />
         </div>
     );

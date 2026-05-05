@@ -5651,11 +5651,11 @@ h1, h2, h3, .logo-text {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
     z-index: 2000;
     padding-bottom: env(safe-area-inset-bottom);
 }
@@ -5665,20 +5665,21 @@ h1, h2, h3, .logo-text {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #888;
+    color: #999;
     text-decoration: none;
     font-size: 0.65rem;
     font-weight: 700;
     gap: 4px;
-    padding: 15px 0 10px;
-    transition: all 0.3s ease;
+    padding: 12px 0 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex: 1;
+    position: relative;
 }
 
 .mobile-bottom-item i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 2px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .mobile-bottom-item.active {
@@ -5686,7 +5687,19 @@ h1, h2, h3, .logo-text {
 }
 
 .mobile-bottom-item.active i {
-    transform: translateY(-2px) scale(1.1);
+    transform: translateY(-4px) scale(1.15);
+    filter: drop-shadow(0 5px 10px rgba(29, 185, 84, 0.2));
+}
+
+.mobile-bottom-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-green);
 }
 
 @media (max-width: 768px) {

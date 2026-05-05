@@ -56,6 +56,18 @@ const adventureReviews = [
     { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" }
 ];
 
+const COMMON_NOTES = [
+    "Some travellers have reported being approached by locals offering excursions before their Giveback Journey trip commences. This has been particularly prevalent in and around the hotels used by Giveback Journey. These guides are in no way connected to Giveback Journey and we cannot guarantee the safety or quality standards of their tours. We advise customers against joining any tour offered by the unauthorised guides.",
+    "A single supplement is available if you'd prefer not to share a room on this trip. The single supplement is subject to availability. Please speak to your booking agent for further information.",
+    "A complimentary airport arrival transfer is included; valid if you are arriving on Day 1 or if you have booked pre-tour accommodation through us. You must provide your flight details to your booking agent at least 14 days prior to travel.",
+    "Sri Lanka is a deeply religious country. Always cover your shoulders and knees when visiting temples. Modest dress is not just expected—it's required for entry. Avoid wearing clothing with religious symbols as fashion.",
+    "While we provide private transport, for your personal time, use 'PickMe' or 'Uber' apps for fair-priced tuk-tuks. Small tips (Rs. 100-200) for good service are appreciated but never mandatory.",
+    "Every full moon is a 'Poya' holiday. Alcohol and meat are generally not sold in shops or served in public restaurants on these days. It's a day for spiritual reflection across the island.",
+    "To avoid stomach issues, never drink tap water. Use bottled water even for brushing teeth if you have a sensitive stomach. Look for the SLS certification on water bottles.",
+    "Sri Lanka uses Type D and G plugs. We recommend buying a local SIM card (Dialog/Mobitel) at the airport—it's incredibly cheap ($5-10 for 30GB+) and has better coverage than hotel Wi-Fi.",
+    "Bargaining is common in street markets but rare in fixed-price shops. Keep it friendly and fair; saving a few cents might mean more to the vendor than to your budget."
+];
+
 export const BUDGET_PROMO_IMG = budgetPromoImg;
 export const tourPackages = [
     {
@@ -66,18 +78,19 @@ export const tourPackages = [
         price: "$650",
         image: essentialCover,
         itinerary: [
-            { day: 1, title: "Arrival & Transfer to Sigiriya", desc: "Welcome to Sri Lanka! Your private driver will meet you at the airport and transfer you to Sigiriya. After checking into your guesthouse, spend a relaxed evening preparing for the adventure ahead.", activities: ["Airport Greeting", "Private Transfer", "Evening Relaxation"] },
-            { day: 2, title: "Sigiriya Lion Rock & Village Experience", desc: "Climb the ancient Sigiriya Lion Rock for breathtaking views. In the afternoon, enjoy a traditional village tour and lunch, gaining insight into the local way of life.", activities: ["Lion Rock Hike", "Village Tour", "Traditional Lunch"] },
-            { day: 3, title: "Dambulla Temple & Journey to Kandy", desc: "Visit the Dambulla Cave Temple, a UNESCO site, before traveling to Kandy. Explore the Temple of the Tooth and end your day with a vibrant cultural dance performance.", activities: ["Cave Temple Visit", "Temple of the Tooth", "Cultural Show"] },
-            { day: 4, title: "Scenic Train Ride to Ella", desc: "Board the world-famous train from Kandy to Ella. Wind through emerald tea plantations and misty mountains on what is widely considered the most beautiful train journey on earth.", activities: ["Iconic Train Ride", "Tea Plantation Views", "Mountain Sightseeing"] },
-            { day: 5, title: "Ella Highlights & Transfer to Yala", desc: "Visit the Nine Arches Bridge and Little Adam’s Peak in the morning. Afterward, travel to Yala, ready for an early morning wildlife safari the next day.", activities: ["Nine Arches Bridge", "Little Adam’s Peak", "Drive to Yala"] },
-            { day: 6, title: "Yala Safari & Mirissa Coast", desc: "Embark on an early morning jeep safari in Yala National Park to spot leopards and elephants. In the afternoon, head to the golden beaches of Mirissa.", activities: ["Leopard Safari", "Jungle Wildlife", "Sunset at Mirissa"] },
-            { day: 7, title: "Galle Fort & Departure", desc: "Explore the historic Galle Fort and walk its colonial ramparts. Finally, transfer back to the airport for your onward journey, carrying memories of an unforgettable week.", activities: ["Galle Fort Tour", "Colonial Architecture", "Airport Transfer"] }
+            { day: 1, title: "Arrival & Transfer to Sigiriya", desc: "Welcome to Sri Lanka! Your private driver will meet you at the Bandaranaike International Airport and transfer you to the historic town of Sigiriya. As you drive through the countryside, watch the landscape change from coastal palms to lush interior forests.\n\nAfter checking into your guesthouse, spend a relaxed evening soaking in the atmosphere of the Cultural Triangle. Whether you choose to wander through the local lanes or simply rest after your flight, the majestic silhouette of the Lion Rock in the distance sets the stage for the adventure ahead.", activities: ["Airport Greeting", "Private Transfer", "Evening Relaxation"] },
+            { day: 2, title: "Sigiriya Lion Rock & Village Experience", desc: "Experience the grandeur of ancient Sri Lanka as you climb the iconic Sigiriya Lion Rock. This 5th-century fortress, perched atop a massive granite outcrop, offers breathtaking panoramic views of the surrounding jungle and ancient water gardens. Your guide will share the fascinating stories of King Kasyapa’s sky-palace and the beautiful frescoes that adorn the rock face.\n\nIn the afternoon, immerse yourself in local culture with a traditional village tour. Journey through the countryside on a bullock cart, cross a lily-filled lake by boat, and enjoy a delicious home-cooked Sri Lankan lunch served on lotus leaves. It’s an authentic glimpse into the heart of rural island life.", activities: ["Lion Rock Hike", "Village Tour", "Traditional Lunch"] },
+            { day: 3, title: "Dambulla Temple & Journey to Kandy", desc: "Journey to the spiritual heart of the island, starting with a visit to the Dambulla Cave Temple. This UNESCO World Heritage site is a marvel of ancient art, featuring five sprawling caves filled with hundreds of Buddha statues and intricate ceiling murals that have been preserved for centuries.\n\nContinue your drive to the hilltop capital of Kandy. In the evening, visit the sacred Temple of the Tooth Relic, the most revered site in Sri Lanka. Conclude your day with a vibrant cultural dance performance, where traditional drummers and fire-walkers showcase the island's rich heritage in a high-energy display.", activities: ["Cave Temple Visit", "Temple of the Tooth", "Cultural Show"] },
+            { day: 4, title: "Scenic Train Ride to Ella", desc: "Prepare for one of the world's most beautiful train journeys. Board the train in Kandy and wind your way through the central highlands towards Ella. As the locomotive climbs, you'll be treated to sweeping views of emerald tea estates, mist-shrouded peaks, and cascading waterfalls.\n\nThis iconic ride is the perfect way to witness the stunning geography of the island. Feel the cool mountain air on your face as you pass through tunnels and over high bridges, arriving in the charming town of Ella just in time to enjoy the crisp evening atmosphere.", activities: ["Iconic Train Ride", "Tea Plantation Views", "Mountain Sightseeing"] },
+            { day: 5, title: "Ella Highlights & Transfer to Yala", desc: "Ella is a hiker's paradise, and today you'll explore its most famous landmarks. Start with a morning walk to the Nine Arches Bridge, a colonial-era masterpiece tucked away in the jungle. Stand in awe as the train passes over this architectural marvel before heading to Little Adam’s Peak for a gentle hike with rewarding views of the Ella Gap.\n\nIn the afternoon, leave the mountains behind as we descend towards the arid plains of Yala. The landscape shifts dramatically once more, bringing you to the edge of the wilderness in preparation for an early morning wildlife safari.", activities: ["Nine Arches Bridge", "Little Adam’s Peak", "Drive to Yala"] },
+            { day: 6, title: "Yala Safari & Mirissa Coast", desc: "Rise before the sun for an exhilarating jeep safari in Yala National Park. As the first light hits the scrub jungle, keep your binoculars ready to spot elephants, sloth bears, and the elusive Sri Lankan leopard. The park’s diverse ecosystems, from lagoons to coastal dunes, make it a haven for birdlife and wildlife photography.\n\nAfter the excitement of the safari, we head to the southern coast. Arrive in the beautiful beach town of Mirissa, where you can spend your evening watching the sunset from a beachfront cafe, reflecting on the wild encounters of the morning.", activities: ["Leopard Safari", "Jungle Wildlife", "Sunset at Mirissa"] },
+            { day: 7, title: "Galle Fort & Departure", desc: "Explore the historic Galle Fort, a living museum of colonial history. Walk the ancient ramparts that have protected this Dutch-era fortress for centuries, and wander through narrow streets filled with boutique shops, art galleries, and charming cafes.\n\nFinally, your journey comes to an end as we transfer you back to the airport for your onward flight. Carry with you the memories of ancient rocks, misty mountains, and wild jungles—a true essential Sri Lanka experience.", activities: ["Galle Fort Tour", "Colonial Architecture", "Airport Transfer"] }
         ],
         inclusions: ["Accommodation", "Daily breakfast", "Private transport", "Train tickets", "Yala Safari"],
         exclusions: ["Flights", "Entrance fees", "Lunch & dinner"],
         routeMap: routeMapEssential,
-        reviews: signatureReviews
+        reviews: signatureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 8,
@@ -90,14 +103,15 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Pinnawala & Kandy Scenic Day Tour", 
-                desc: "Your day begins with a 7:00 AM pick-up to reach Pinnawala in time for the feeding and bathing sessions. Observe elephants up close as they gather by the river. Later, see the eco-friendly elephant dung paper recycling process. On the return journey, visit a local tea factory to learn about Ceylon tea production before being transferred back to your hotel.", 
+                desc: "Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments. Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath—a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.\n\nFollowing the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling. On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.", 
                 activities: ["Elephant Feeding & Bathing", "Riverside Interaction", "Dung Paper Recycling", "Tea Factory Visit", "Fresh Ceylon Tea Tasting"] 
             }
         ],
         inclusions: ["Private transport (Taxi)", "Elephant orphanage visit", "Tea factory tour", "Hotel pick-up & drop-off"],
         exclusions: ["Lunch", "Personal expenses", "Entrance fees for optional sites"],
         routeMap: routeMapKandyPinnawala,
-        reviews: kandyReviews
+        reviews: kandyReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 2,
@@ -107,22 +121,58 @@ export const tourPackages = [
         price: "$600",
         image: southernCover,
         itinerary: [
-            { day: 1, title: "Hikkaduwa Arrival", desc: "Welcome to the coast!", activities: ["Beach Relax"] },
-            { day: 2, title: "Marine Life", desc: "Explore the coral reef.", activities: ["Snorkeling"] },
-            { day: 3, title: "Galle Fort", desc: "Walk the ancient walls.", activities: ["Fort Tour"] },
-            { day: 4, title: "Unawatuna", desc: "Relax by the jungle beach.", activities: ["Beach Day"] },
-            { day: 5, title: "Mirissa", desc: "Sunset at Coconut Tree Hill.", activities: ["Sunset View"] },
-            { day: 6, title: "Whale Watching", desc: "Search for blue whales.", activities: ["Whale Safari"] },
-            { day: 7, title: "Departure", desc: "Airport transfer.", activities: ["Transfer"] }
+            { 
+                day: 1, 
+                title: "Hikkaduwa Arrival", 
+                desc: "Welcome to the golden shores of Hikkaduwa! Upon your arrival, you'll be transferred to your charming coastal guesthouse, just a stone's throw from the turquoise waters of the Indian Ocean. Hikkaduwa is famous for its laid-back vibe and vibrant beach culture, making it the perfect starting point for your southern escape.\n\nSpend your first afternoon settling in—sink your toes into the soft sand, enjoy a refreshing drink as you watch the waves, or take a gentle stroll along the shoreline. As evening falls, the town comes alive with the scent of fresh seafood and the sound of the ocean, offering a relaxing introduction to island life.", 
+                activities: ["Beach Relaxation", "Sunset Drink", "Coastal Stroll"] 
+            },
+            { 
+                day: 2, 
+                title: "Marine Life & Coral Exploration", 
+                desc: "Awaken to the sound of the sea and prepare for a day of underwater wonder. Hikkaduwa is home to a spectacular Coral Sanctuary, where a vibrant reef thrives just off the beach. Today, you'll have the opportunity to snorkel in the crystal-clear shallow waters, where you can spot colorful schools of tropical fish and, if you're lucky, encounter the majestic sea turtles that frequent the area.\n\nThe rest of your day is dedicated to pure relaxation. Whether you choose to lounge under a palm tree with a good book or explore the local surf shops and boutiques that line the main road, the easy-going rhythm of Hikkaduwa will surely captivate you.", 
+                activities: ["Snorkeling", "Turtle Spotting", "Boutique Shopping"] 
+            },
+            { 
+                day: 3, 
+                title: "Historic Galle Fort & Colonial Charms", 
+                desc: "Today, we take a short journey south to the UNESCO World Heritage site of Galle Fort. This 16th-century fortress is a living piece of history, where Dutch colonial architecture meets modern Sri Lankan life. Wander through the narrow, cobblestone streets lined with beautifully restored villas, art galleries, and boutique cafes that whisper stories of a bygone era.\n\nWalk along the ancient ramparts as the sea breeze cools the afternoon air, and don't miss the chance to photograph the iconic Galle Lighthouse standing tall against the blue horizon. After soaking in the culture and perhaps enjoying a gelato in the fort, we return to the relaxed atmosphere of Hikkaduwa.", 
+                activities: ["Galle Fort Tour", "Rampart Walk", "Lighthouse Photo"] 
+            },
+            { 
+                day: 4, 
+                title: "Unawatuna & Jungle Beach", 
+                desc: "Discover the crescent-shaped bay of Unawatuna, often cited as one of the most beautiful beaches in the world. Today is about exploring the diverse coastal landscapes of the south. You can choose to relax on the main beach or take a short trek through the lush greenery to reach 'Jungle Beach'—a hidden gem where the forest meets the sea in a secluded, tranquil cove.\n\nThe waters here are calm and perfect for swimming. In the evening, Unawatuna’s beachfront transforms into a vibrant dining scene, where you can enjoy a candlelit dinner on the sand with the sound of the waves as your soundtrack.", 
+                activities: ["Jungle Beach Trek", "Swimming", "Beachfront Dining"] 
+            },
+            { 
+                day: 5, 
+                title: "Mirissa & Coconut Tree Hill", 
+                desc: "Our coastal journey continues to Mirissa, a picturesque bay known for its stunning sunsets and laid-back atmosphere. One of the highlights of today is a visit to Coconut Tree Hill, an iconic viewpoint where a cluster of palm trees sits atop a red-cliffed headland, offering panoramic views of the ocean.\n\nSpend your afternoon enjoying the soft sands of Mirissa Beach or exploring the small rocky outcrops that dot the bay. As the sun begins to set, the sky turns into a canvas of pink and orange, providing the perfect backdrop for a relaxing evening at one of the many beachfront bars.", 
+                activities: ["Coconut Tree Hill Visit", "Sunset Viewing", "Beach Bar Relaxation"] 
+            },
+            { 
+                day: 6, 
+                title: "Whale Watching & Deep Sea Adventure", 
+                desc: "Prepare for an early morning adventure on the high seas. Mirissa is one of the best places in the world to witness the majestic Blue Whale, the largest creature to ever inhabit our planet. Board a specialized boat and head into the deep blue for a chance to see these giants, along with playful dolphins and other marine life, in their natural habitat.\n\nAfter your whale watching safari, return to the shore for a final afternoon of leisure. Whether you want to catch one last surf session, indulge in a traditional Ayurvedic massage, or simply reflect on your journey from a beach hammock, the day is yours to enjoy at your own pace.", 
+                activities: ["Whale Watching", "Dolphin Spotting", "Final Beach Leisure"] 
+            },
+            { 
+                day: 7, 
+                title: "Departure", 
+                desc: "After a final tropical breakfast by the sea, it’s time to bid farewell to the southern coast. Your private transfer will take you back to the airport for your onward journey. As you leave the turquoise waters behind, you’ll carry with you memories of golden sunsets, historic forts, and the gentle rhythm of the Indian Ocean.\n\nWe hope this southern escape has left you feeling refreshed and inspired, and we look forward to welcoming you back to our island paradise in the future.", 
+                activities: ["Final Tropical Breakfast", "Airport Transfer"] 
+            }
         ],
         inclusions: ["Accommodation", "Breakfast", "Transfers"],
         exclusions: ["Lunch & Dinner", "Personal expenses", "Entrance fees"],
         routeMap: routeMapSouthernNew,
-        reviews: coastalReviews
+        reviews: coastalReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 3,
-        name: "Highlands & Coast Adventure",
+        name: "Sri Lanka Highlands to Southern Coast Adventure",
         days: "7 Days / 6 Nights",
         description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches—designed for travelers who want maximum experience with great value.",
         price: "$680",
@@ -131,43 +181,43 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival & Transfer to Kitulgala", 
-                desc: "Welcome to Sri Lanka! Upon arrival, transfer to Kitulgala, a peaceful riverside destination surrounded by lush rainforest. Check into your guesthouse and relax after your journey.", 
+                desc: "Welcome to the tropical paradise of Sri Lanka! Upon your arrival at the Bandaranaike International Airport, your private representative will be waiting to whisk you away to the emerald heart of the island—Kitulgala. This tranquil riverside destination is nestled within a lush rainforest, offering the perfect serene introduction to your journey. \n\nAfter checking into your charming guesthouse, take some time to unwind and listen to the rhythmic sounds of the Kelani River. Whether you choose to enjoy a peaceful walk through the local village or simply relax amidst the vibrant jungle atmosphere, your adventure begins with the soothing embrace of nature.", 
                 activities: ["Kelani River Relaxation", "Village Walk", "Jungle Atmosphere", "Nature Walk (Optional)", "River Bathing (Optional)"] 
             },
             { 
                 day: 2, 
                 title: "Rafting Adventure & Transfer to Ella", 
-                desc: "Start your day with adventure on the Kelani River with white water rafting. After lunch, proceed to Ella, enjoying scenic tea plantations and mountain views.", 
+                desc: "Awaken to the sounds of the jungle and prepare for an exhilarating morning on the water. Today, you'll tackle the white-water rapids of the Kelani River, an adventure that perfectly balances adrenaline with the stunning natural beauty of the surrounding rainforest. This experience is designed for everyone, from beginners to seasoned adventurers. \n\nAfter a traditional riverside lunch in Kitulgala, we begin our scenic ascent into the central highlands. As we drive towards Ella, the landscape transforms into a tapestry of rolling tea plantations and mist-covered peaks, offering some of the most iconic views in the country. End your day in the cool, crisp air of Ella town, a backpacker's haven with a laid-back charm.", 
                 activities: ["White Water Rafting", "Bird Watching (Optional)", "Scenic Drive to Ella", "Explore Ella Town"] 
             },
             { 
                 day: 3, 
                 title: "Ella Peaks & Iconic Landmarks", 
-                desc: "Discover the beauty of Ella. Hike to Little Adam's Peak and visit the world-famous Nine Arches Bridge.", 
+                desc: "Ella is a place of breathtaking vistas and iconic landmarks, and today you'll explore the very best of it. Start your morning with a rewarding hike to the summit of Little Adam’s Peak, where you’ll be treated to panoramic views of the Ella Gap and the surrounding valley. \n\nNo visit to Ella is complete without witnessing the architectural marvel of the Nine Arches Bridge; stand in awe as the train passes over this colonial-era masterpiece nestled in the jungle. For those seeking more, optional zip-lining or a visit to a local tea plantation provides a deeper connection to the region's heritage and thrill.", 
                 activities: ["Little Adam's Peak Hike", "Nine Arches Bridge", "Zip-lining (Optional)", "Tea Plantation Visit (Optional)"] 
             },
             { 
                 day: 4, 
                 title: "Yala Safari & Journey to the Coast", 
-                desc: "Explore Yala National Park, home to elephants and leopards, before continuing your journey towards the southern coast.", 
+                desc: "From the mountains to the wild, today we descend towards the arid plains of the south. Our destination is Yala National Park, Sri Lanka's premier wildlife sanctuary. Climb aboard a rugged 4x4 jeep for an unforgettable safari through the scrub jungles and lagoons. \n\nKeep your eyes peeled for the elusive Sri Lankan leopard, majestic elephants, and a kaleidoscope of birdlife that calls this park home. After the excitement of the wild, we continue our journey towards the turquoise waters of the southern coast, arriving near Hikkaduwa for a change of pace and a well-deserved coastal breeze.", 
                 activities: ["Yala Jeep Safari", "Wildlife Spotting", "Drive to South Coast"] 
             },
             { 
                 day: 5, 
                 title: "Beach Relaxation in Hikkaduwa", 
-                desc: "Settle into coastal life in Hikkaduwa. Spend your day relaxing on the beach or enjoying the ocean.", 
+                desc: "Today is all about the 'slow life.' Settle into the rhythmic pace of Hikkaduwa, one of Sri Lanka’s most beloved beach towns. Whether you want to sink your toes into the soft golden sand, take a refreshing dip in the Indian Ocean, or simply watch the sun dip below the horizon with a cold drink in hand, the day is yours to command. \n\nFor the more active, the Hikkaduwa Coral Sanctuary offers incredible snorkeling opportunities right off the shore, where you can swim alongside vibrant marine life and sea turtles in their natural habitat.", 
                 activities: ["Beach Relaxation", "Ocean Swimming", "Sunset Views", "Snorkeling (Optional)", "Surfing Lessons (Optional)"] 
             },
             { 
                 day: 6, 
                 title: "Galle Fort & River Safari", 
-                desc: "Explore the historic Galle Fort and its charming streets. Later, enjoy a relaxing boat ride through the mangroves of Madu River.", 
+                desc: "Journey back in time as we visit the UNESCO World Heritage site of Galle Fort. This 16th-century colonial fortress is a living museum, where narrow cobblestone streets are lined with Dutch-era villas, boutique shops, and charming cafes. Walk along the ancient ramparts, feel the sea breeze, and capture the iconic lighthouse against the blue sky. \n\nIn the afternoon, experience the tranquil beauty of the Madu River with an optional boat safari. Drift through dense mangroves, visit small cinnamon-growing islands, and witness the traditional lifestyle of the river communities before returning to Hikkaduwa for your final evening.", 
                 activities: ["Galle Fort Walk", "Colonial Architecture", "Madu River Safari (Optional)", "Shopping (Optional)"] 
             },
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "After breakfast, transfer to the airport for your onward journey, carrying memories of an incredible Sri Lankan adventure.", 
+                desc: "After a final tropical breakfast at your guesthouse, it’s time to say goodbye to the island of smiles. Your private transfer will take you back to the airport in time for your onward flight. \n\nAs you journey through the coastal landscapes one last time, reflect on a week filled with rainforest adventures, misty mountain peaks, wild encounters, and the soothing sound of the waves. We hope you carry a piece of Sri Lanka’s magic with you as you head home.", 
                 activities: ["Final Breakfast", "Airport Transfer"] 
             }
         ],
@@ -186,7 +236,8 @@ export const tourPackages = [
             "Personal expenses"
         ],
         routeMap: routeMapHighlandsCoast,
-        reviews: adventureReviews
+        reviews: adventureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 4,
@@ -196,16 +247,42 @@ export const tourPackages = [
         price: "$550",
         image: mistMountainsCover,
         itinerary: [
-            { day: 1, title: "Kandy Sacred", desc: "Temple visit.", activities: ["Spiritual"] },
-            { day: 2, title: "Tea Culture", desc: "Factory tour.", activities: ["Tasting"] },
-            { day: 3, title: "Epic Train", desc: " Scenic ride.", activities: ["Train"] },
-            { day: 4, title: "Ella Rock", desc: "Summit hike.", activities: ["Hiking"] },
-            { day: 5, title: "Departure", desc: "Mountain farewell.", activities: ["Transfer"] }
+            { 
+                day: 1, 
+                title: "Sacred Kandy & Cultural Beginnings", 
+                desc: "Your journey into the emerald heart of Sri Lanka begins in Kandy, the island's last royal capital. Nestled amongst rolling hills, this city is the spiritual home of the nation. Visit the sacred Temple of the Tooth Relic, where history and devotion come together in a beautiful display of tradition.\n\nSpend your evening walking around the serene Kandy Lake, watching the sunset reflect off the water as the city lights begin to twinkle. A vibrant cultural dance show provides the perfect introduction to the rich heritage you’ll explore in the days to come.", 
+                activities: ["Temple of the Tooth", "Kandy Lake Walk", "Cultural Dance Show"] 
+            },
+            { 
+                day: 2, 
+                title: "The Art of Ceylon Tea", 
+                desc: "Ascend higher into the mist-covered mountains as we journey towards Nuwara Eliya, often called 'Little England.' Here, the air is crisp and the landscape is a tapestry of endless tea plantations. Visit a traditional tea factory to see how the world-famous Ceylon tea is harvested and processed.\n\nWalk through the emerald fields, meet the tea pluckers, and enjoy a fresh cup of the finest brew while overlooking the rolling hills. The colonial charm of the region, with its English-style cottages and manicured gardens, offers a unique and nostalgic atmosphere.", 
+                activities: ["Tea Plantation Walk", "Factory Tour", "Tea Tasting"] 
+            },
+            { 
+                day: 3, 
+                title: "The Iconic Highland Train Journey", 
+                desc: "Board the legendary blue train for what is widely considered the most beautiful rail journey in the world. As the train winds its way through the central highlands towards Ella, you'll be treated to spectacular views of waterfalls, deep valleys, and mist-shrouded forests.\n\nThis is a slow-travel experience at its finest—lean out the window to feel the cool mountain breeze and witness the stunning geography of the island unfolding before your eyes. Arrive in the charming village of Ella, ready for adventure.", 
+                activities: ["Scenic Train Ride", "Mountain Panoramas", "Highland Breeze"] 
+            },
+            { 
+                day: 4, 
+                title: "Ella Rock & Mountain Vistas", 
+                desc: "Tackle the rewarding hike to the summit of Ella Rock, a more challenging trek that pays off with some of the most dramatic views in the country. The trail takes you through tea estates and tall eucalyptus forests before opening up to a panoramic vista of the Ella Gap and the plains below.\n\nIn the afternoon, take it easy in Ella town, a favorite among travelers for its laid-back cafes and friendly vibe. Whether you choose to visit the Nine Arches Bridge or simply relax with a view of the mountains, the tranquility of the highlands is yours to enjoy.", 
+                activities: ["Ella Rock Hike", "Summit Vistas", "Ella Town Exploration"] 
+            },
+            { 
+                day: 5, 
+                title: "Mountain Farewell & Departure", 
+                desc: "Enjoy one last breakfast in the cool mountain air before we begin our descent from the highlands. As you drive back towards the coast or the airport, reflect on the misty peaks and emerald valleys that have defined your mountain escape.\n\nYour journey concludes with a transfer to your next destination or the airport, carrying the peace and beauty of the Sri Lankan highlands in your heart. We hope these mountains have inspired you to return one day.", 
+                activities: ["Final Mountain Breakfast", "Scenic Descent", "Airport Transfer"] 
+            }
         ],
         inclusions: ["Tea factory visit", "Train tickets", "Mountain hiking"],
         exclusions: ["Lunch", "Entrance fees", "Insurance"],
         routeMap: routeMapHill,
-        reviews: signatureReviews
+        reviews: signatureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 5,
@@ -215,17 +292,48 @@ export const tourPackages = [
         price: "$720",
         image: wildSafariCover,
         itinerary: [
-            { day: 1, title: "Udawalawe", desc: "Elephant home.", activities: ["Safari"] },
-            { day: 2, title: "Transit Home", desc: "Baby elephants.", activities: ["Feeding"] },
-            { day: 3, title: "Yala Wild", desc: "Leopard search.", activities: ["Full Safari"] },
-            { day: 4, title: "Tangalle", desc: "Wild coast.", activities: ["Beach"] },
-            { day: 5, title: "Leisure", desc: "BBQ on beach.", activities: ["BBQ"] },
-            { day: 6, title: "Departure", desc: "Transfer.", activities: ["Airport"] }
+            { 
+                day: 1, 
+                title: "Udawalawe & The Elephant Sanctuary", 
+                desc: "Welcome to the wild! Your expedition begins at Udawalawe National Park, a vast sanctuary famous for its large herds of wild elephants. Embark on your first safari through the open grasslands and around the reservoir, where you'll witness these majestic giants in their natural habitat.\n\nThe park's open terrain makes it easy to spot wildlife, from water buffalo and crocodiles to a variety of birdlife. As the sun sets over the savanna, settle into your safari lodge and listen to the sounds of the wilderness awakening for the night.", 
+                activities: ["Sunset Jeep Safari", "Elephant Spotting", "Wilderness Lodge Stay"] 
+            },
+            { 
+                day: 2, 
+                title: "Elephant Transit Home & Jungle Life", 
+                desc: "Visit the Elephant Transit Home, a heartwarming facility where orphaned baby elephants are cared for before being released back into the wild. Watch the morning feeding session and learn about the incredible conservation efforts being made to protect these gentle giants.\n\nIn the afternoon, we travel deeper into the southern wilderness towards Yala. The journey itself is an adventure, passing through rural landscapes and small villages that offer a glimpse into the traditional way of life on the edge of the jungle.", 
+                activities: ["Transit Home Visit", "Feeding Session", "Scenic Jungle Drive"] 
+            },
+            { 
+                day: 3, 
+                title: "Yala National Park: The Leopard Search", 
+                desc: "Prepare for a full-day safari in Yala National Park, the crown jewel of Sri Lanka's wildlife reserves. Known for having one of the highest densities of leopards in the world, Yala offers a thrilling opportunity to spot these elusive big cats as they roam the scrub jungles and rocky outcrops.\n\nYour expert tracker will navigate the park's diverse ecosystems, from lagoons to coastal dunes, in search of elephants, sloth bears, and exotic birds. A picnic lunch in the heart of the park provides a rare chance to truly immerse yourself in the untamed beauty of the island.", 
+                activities: ["Full-Day Safari", "Leopard Tracking", "Picnic in the Wild"] 
+            },
+            { 
+                day: 4, 
+                title: "The Wild Coast of Tangalle", 
+                desc: "After the excitement of the safari, we head to the rugged and beautiful coast of Tangalle. Unlike the more developed beach towns, Tangalle offers a wilder, more secluded experience with dramatic rocky headlands and long stretches of golden sand.\n\nSpend your afternoon exploring the quiet bays or simply relaxing at your beachfront guesthouse. The sound of the powerful Indian Ocean crashing against the shore provides a soothing soundtrack to your transition from the jungle to the sea.", 
+                activities: ["Rocky Coast Exploration", "Secluded Beach Walk", "Guesthouse Relaxation"] 
+            },
+            { 
+                day: 5, 
+                title: "Coastal Leisure & Beach BBQ", 
+                desc: "Today is a day of pure relaxation on the wild southern coast. Take a long walk along the pristine beach, swim in the turquoise waters of a sheltered cove, or find a shady spot under a palm tree to simply watch the world go by.\n\nAs evening falls, enjoy a special farewell BBQ on the beach, featuring the freshest catch of the day. Dining under the stars with your toes in the sand is the perfect way to celebrate the end of your wildlife and coastal expedition.", 
+                activities: ["Beach Leisure", "Ocean Swimming", "Farewell Beach BBQ"] 
+            },
+            { 
+                day: 6, 
+                title: "Jungle Farewell & Departure", 
+                desc: "Enjoy a final tropical breakfast with a view of the ocean before your private transfer back to the airport or your next destination. As you journey through the coastal landscapes, reflect on the incredible wildlife encounters and natural beauty you've experienced over the past six days.\n\nYour wild safari expedition concludes, but the memories of the elephants, leopards, and wild coasts of Sri Lanka will stay with you forever. We look forward to your next adventure with us.", 
+                activities: ["Final Coastal Breakfast", "Airport Transfer"] 
+            }
         ],
         inclusions: ["Safari jeeps", "Park entry permits", "Expert tracker"],
         exclusions: ["Personal items", "Drinks", "Tips"],
         routeMap: routeMapWild,
-        reviews: adventureReviews
+        reviews: adventureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 6,
@@ -235,13 +343,29 @@ export const tourPackages = [
         price: "$320",
         image: galleFortCover,
         itinerary: [
-            { day: 1, title: "Arrival", desc: "Dutch Fort.", activities: ["Sunset"] },
-            { day: 2, title: "Boutique", desc: "Shopping.", activities: ["Artisan"] },
-            { day: 3, title: "Departure", desc: "Swim.", activities: ["Transfer"] }
+            { 
+                day: 1, 
+                title: "Colonial Grandeur & Sunset Ramparts", 
+                desc: "Your escape begins in the historic UNESCO World Heritage site of Galle Fort. This beautifully preserved Dutch-era fortress is a labyrinth of narrow streets, colonial villas, and vibrant culture. After checking into your boutique stay, take your first walk along the ancient ramparts as the sun begins to set over the Indian Ocean.\n\nThe iconic lighthouse and the old Dutch hospital provide a stunning backdrop for your evening. Wander through the fort's lanes, where you'll find charming cafes and artisan shops tucked away in historic buildings, offering a peaceful and sophisticated start to your journey.", 
+                activities: ["Fort Check-in", "Sunset Rampart Walk", "Colonial Sights"] 
+            },
+            { 
+                day: 2, 
+                title: "Artisan Streets & Boutique Shopping", 
+                desc: "Spend the day diving deeper into the fort's unique character. Galle Fort is a hub for art and craftsmanship; explore the many galleries showcasing local talent, visit traditional jewelry makers, and browse boutique shops for high-quality textiles and souvenirs.\n\nThe fort is best explored on foot, allowing you to discover hidden courtyards and architectural details at your own pace. In the afternoon, perhaps enjoy a traditional Sri Lankan tea experience or find a quiet spot on the ramparts to watch the local 'cliff divers'—a true fort tradition.", 
+                activities: ["Boutique Shopping", "Art Gallery Visits", "Artisan Workshops"] 
+            },
+            { 
+                day: 3, 
+                title: "Coastal Farewell & Departure", 
+                desc: "Before you say goodbye to Galle, take a final refreshing dip in the ocean at a nearby beach or enjoy a slow breakfast in one of the fort’s many picturesque cafes. Your short but immersive journey concludes with a transfer back to your next destination or the airport.\n\nAs you leave the historic walls of the fort behind, carry with you the timeless charm and elegance of this colonial gem. We hope this brief escape has left you with lasting memories of Sri Lanka’s southern heritage.", 
+                activities: ["Final Fort Breakfast", "Coastal Dip", "Airport Transfer"] 
+            }
         ],
         inclusions: ["Galle Fort tour", "Boutique stay", "Local breakfast"],
         exclusions: ["Shopping", "Lunches", "Transport to Galle"],
-        reviews: coastalReviews
+        reviews: coastalReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 7,
@@ -251,14 +375,35 @@ export const tourPackages = [
         price: "$480",
         image: koslandaCover,
         itinerary: [
-            { day: 1, title: "Sinharaja", desc: "Rainforest lodge.", activities: ["Check-in"] },
-            { day: 2, title: "Jungle Trek", desc: "Bird watching.", activities: ["Hike"] },
-            { day: 3, title: "Waterfalls", desc: "Natural pool.", activities: ["Swim"] },
-            { day: 4, title: "Departure", desc: "Transfer.", activities: ["Airport"] }
+            { 
+                day: 1, 
+                title: "Rainforest Immersion", 
+                desc: "Journey into the heart of the Sinharaja Forest Reserve, Sri Lanka’s last viable primary tropical rainforest and a UNESCO World Heritage site. Your destination is a secluded eco-lodge nestled deep within the lush greenery, where the air is thick with the scent of wet earth and the sounds of the jungle.\n\nAfter settling in, take a short introductory walk around the lodge to get your first taste of the incredible biodiversity that surrounds you. The evening is yours to relax and enjoy the symphony of the rainforest as it comes alive after dark.", 
+                activities: ["Rainforest Arrival", "Eco-Lodge Stay", "Night Jungle Sounds"] 
+            },
+            { 
+                day: 2, 
+                title: "Jungle Trekking & Bird Watching", 
+                desc: "Embark on a guided trek through the dense canopy of Sinharaja. This rainforest is a paradise for birdwatchers and nature lovers, home to many endemic species including the Sri Lanka Blue Magpie and the Red-faced Malkoha. Your expert naturalist will help you spot hidden wildlife, from vibrant frogs and lizards to rare butterflies.\n\nThe trek takes you along ancient paths and through towering trees draped in vines, offering a profound sense of connection to the natural world. Every turn reveals a new wonder, whether it’s a giant fern or the flash of a tropical bird’s wing.", 
+                activities: ["Guided Forest Trek", "Endemic Bird Watching", "Wildlife Spotting"] 
+            },
+            { 
+                day: 3, 
+                title: "Natural Pools & Waterfall Serenity", 
+                desc: "Discover the hidden water wonders of the rainforest today. Hike to one of Sinharaja’s pristine waterfalls, where you can take a refreshing dip in a natural rock pool fed by crystal-clear jungle streams. The cool, revitalizing water is the perfect reward for your trek.\n\nSpend some time soaking in the peaceful atmosphere of the falls, surrounded by giant trees and the constant melody of flowing water. It’s a moment of pure serenity in the heart of the wild before returning to your lodge for a final evening under the canopy.", 
+                activities: ["Waterfall Hike", "Natural Pool Swimming", "Rainforest Serenity"] 
+            },
+            { 
+                day: 4, 
+                title: "Forest Farewell & Departure", 
+                desc: "Enjoy a final breakfast in the rainforest as the morning mist rises from the trees. Your journey into the wild concludes with a transfer back to the coast or the airport, leaving the deep green world of Sinharaja behind.\n\nYou depart with a deeper appreciation for the island's natural heritage and the importance of preserving these wild spaces. We hope the magic of the rainforest stays with you long after you leave.", 
+                activities: ["Final Jungle Breakfast", "Airport Transfer"] 
+            }
         ],
         inclusions: ["Rainforest trekking", "Naturalist guide", "Eco-lodge stay"],
         exclusions: ["Alcoholic beverages", "Travel insurance", "Personal gear"],
-        reviews: adventureReviews
+        reviews: adventureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 9,
@@ -271,14 +416,15 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Kandy Highlights", 
-                desc: "You will be picked up from your accommodation and taken to the sacred Temple of the Tooth Relic. After a guided visit, enjoy a peaceful walk around Kandy Lake. The journey continues to the Royal Botanical Gardens. In the evening, attend a vibrant Sri Lankan cultural show.", 
-                activities: ["Temple of the Tooth", "Kandy Lake Walk", "Royal Botanical Gardens", "Cultural Dance Show"] 
+                desc: "Your immersive day in the cultural capital begins with a 9:00 AM pick-up from your accommodation. We first visit the sacred Temple of the Tooth Relic, the spiritual heart of Sri Lanka, where you'll witness the deep devotion of local pilgrims. Afterward, enjoy a peaceful stroll around the iconic Kandy Lake, taking in the views of the surrounding hills and the white-washed temple walls.\n\nThe journey continues to the Royal Botanical Gardens in Peradeniya, home to over 4,000 species of plants and a spectacular orchid collection. As evening falls, witness a vibrant Sri Lankan cultural show, where traditional drummers and fire-dancers bring the island's rich history to life in a high-energy performance.", 
+                activities: ["Temple of the Tooth Visit", "Scenic Kandy Lake Walk", "Royal Botanical Gardens", "Cultural Dance Show"] 
             }
         ],
         inclusions: ["Pick-up & Drop-off (within 1km of city)", "Temple of the Tooth visit", "Botanical Garden tour", "Cultural show tickets"],
         exclusions: ["Lunch", "Locations outside 1km radius", "Personal expenses"],
         routeMap: routeMapKandy,
-        reviews: kandyReviews
+        reviews: kandyReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 10,
@@ -290,27 +436,22 @@ export const tourPackages = [
         itinerary: [
             { 
                 day: 1, 
-                title: "Kandy to Dalhousie", 
-                desc: "Begin with a scenic drive through tea plantations and waterfalls to Dalhousie. Check in to a guesthouse to relax and prepare for the upcoming night climb.", 
-                activities: ["Scenic Highlands Drive", "Tea Plantation Views", "Guesthouse Relaxation"] 
+                title: "Highland Drive to Dalhousie", 
+                desc: "Your spiritual journey begins with a scenic drive through the heart of the tea country. Pass by cascading waterfalls and endless emerald hills as we make our way to the village of Dalhousie, the base for the Adam's Peak climb. \n\nCheck into your guesthouse and spend the afternoon resting and hydrating in preparation for the night ahead. The cool mountain air and the view of the peak from the village create a sense of anticipation for the quest that awaits.", 
+                activities: ["Scenic Highlands Drive", "Tea Plantation Views", "Pre-Climb Rest"] 
             },
             { 
                 day: 2, 
-                title: "Sunrise Climb & Back to Kandy", 
-                desc: "Begin your night climb at 10:00 PM. Reach the summit for a spiritual sunrise. Descend for breakfast before returning to Kandy for your hotel drop-off.", 
+                title: "The Sacred Sunrise & Descent", 
+                desc: "The climb begins in the silence of the night, usually around 10:00 PM, joining thousands of pilgrims on the ancient stone path. The way is illuminated by lanterns and the collective spirit of those seeking the summit. \n\nReach the peak in the pre-dawn hours to witness a breathtaking sunrise that illuminates the entire island—a spiritual experience like no other. After the descent, enjoy a well-deserved breakfast before your return transfer to Kandy, carrying the light of the sunrise with you.", 
                 activities: ["Night Peak Climb", "Spiritual Sunrise", "Mountain Descent", "Return Transfer"] 
             }
         ],
         inclusions: ["Private transport (Taxi/TukTuk)", "Guesthouse stay (1 Night)", "Breakfast", "Hotel Pick-up & Drop-off"],
         exclusions: ["Dinner", "Lunch", "Personal snacks/water", "Hiking gear"],
-        importantNotes: [
-            "Supplies: Please carry water and light snacks for the climb",
-            "Gear: A rain jacket and proper hiking shoes are recommended",
-            "Respect: modest dress is required (no shorts, tank tops, or revealing clothing)",
-            "Tradition: Shoes must be removed at the very top of the peak"
-        ],
         routeMap: routeMapAdamsPeak,
-        reviews: adventureReviews
+        reviews: adventureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 11,
@@ -323,14 +464,15 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "River Rapids Adventure", 
-                desc: "Depart from Kandy to Kitulgala. Experience exciting white-water rafting through tropical rainforest rapids. Enjoy a traditional Sri Lankan riverside lunch before returning to Kandy.", 
+                desc: "Depart from Kandy for a thrilling day on the Kelani River in Kitulgala, the famous filming location for 'The Bridge on the River Kwai.' Experience the adrenaline rush of tackling white-water rapids through a lush tropical rainforest, an adventure suitable for both beginners and thrill-seekers.\n\nAfter your river journey, enjoy a traditional Sri Lankan riverside lunch, served in a beautiful jungle setting. Relax by the river and soak in the natural beauty before your return transfer to Kandy, feeling the exhilarating energy of the forest.", 
                 activities: ["White Water Rafting", "Safety Briefing", "Rainforest Scenery", "Traditional Riverside Lunch"] 
             }
         ],
         inclusions: ["Private transport (Taxi/TukTuk)", "Rafting equipment & guide", "Traditional Lunch", "Hotel Pick-up & Drop-off"],
         exclusions: ["Personal expenses", "Tips", "Travel insurance"],
         routeMap: routeMapKitulgala,
-        reviews: adventureReviews
+        reviews: adventureReviews,
+        importantNotes: COMMON_NOTES
     },
     {
         id: 12,
@@ -340,31 +482,137 @@ export const tourPackages = [
         price: "$1,980",
         image: grandLoopImg,
         itinerary: [
-            { day: 1, title: "Arrival & Transfer to Negombo", desc: "Welcome to Sri Lanka. Relax at a beachfront hotel in Negombo to recover from your flight.", activities: ["Airport Transfer", "Beach Evening", "Relaxation"] },
-            { day: 2, title: "Wilpattu National Park", desc: "Head North to Wilpattu for a safari in the island's largest and oldest national park.", activities: ["Leopard Safari", "Jungle Drive", "Eco-Lodge Stay"] },
-            { day: 3, title: "Mannar & Giant's Tank", desc: "Discover the unique arid landscapes, ancient baobab trees, and the historic Mannar Fort.", activities: ["Baobab Tree Sighting", "Mannar Fort", "Bird Watching"] },
-            { day: 4, title: "The Journey to Jaffna", desc: "Drive over the Elephant Pass to enter the northern peninsula, a world of its own.", activities: ["Elephant Pass", "Scenic North Drive", "Jaffna Arrival"] },
-            { day: 5, title: "Jaffna Heritage & Culture", desc: "Visit the iconic Nallur Kandaswamy Kovil and the historic Jaffna Public Library.", activities: ["Nallur Kovil", "Jaffna Library", "Colonial Fort"] },
-            { day: 6, title: "Point Pedro & Northern Islands", desc: "Visit the northernmost tip of the island and take a boat to the unique Nainativu island.", activities: ["Point Pedro Visit", "Boat to Nainativu", "Island Temples"] },
-            { day: 7, title: "Sacred Anuradhapura", desc: "Head south to the ancient capital and explore the cradle of Buddhism in Sri Lanka.", activities: ["Sacred Stupas", "Ancient Ruins", "Spiritual Heritage"] },
-            { day: 8, title: "Sigiriya Lion Rock", desc: "Climb the majestic rock fortress and admire the 5th-century frescoes and gardens.", activities: ["Lion Rock Climb", "Water Gardens", "Village Tour"] },
-            { day: 9, title: "Medieval Polonnaruwa", desc: "Explore the second capital by bicycle, visiting the Gal Vihara and Royal Palace.", activities: ["Bicycle Tour", "Stone Statues", "Ancient Lake Sights"] },
-            { day: 10, title: "Trincomalee Beaches", desc: "Head to the East Coast for the crystal-clear waters of Nilaveli Beach.", activities: ["Koneswaram Temple", "Nilaveli Beach", "Seafood Dinner"] },
-            { day: 11, title: "Pigeon Island Sanctuary", desc: "A morning of world-class snorkeling in the turquoise marine sanctuary.", activities: ["Snorkeling", "Coral Reef Exploration", "Boat Ride"] },
-            { day: 12, title: "The Hill Capital: Kandy", desc: "Travel to the misty hills and visit the Temple of the Sacred Tooth Relic.", activities: ["Temple Visit", "Kandy Lake", "Cultural Show"] },
-            { day: 13, title: "Tea Highlands: Nuwara Eliya", desc: "Wind through emerald tea estates and visit a colonial-era factory.", activities: ["Tea Tasting", "Waterfall Sights", "Gregory Lake"] },
-            { day: 14, title: "Scenic Train Ride to Ella", desc: "Experience the world's most beautiful train journey through the mountains.", activities: ["Iconic Train Trip", "Highland Panoramas", "Ella Town"] },
-            { day: 15, title: "Ella Peaks & Arches", desc: "Visit the Nine Arches Bridge and hike Little Adam’s Peak for stunning views.", activities: ["Nine Arches Bridge", "Little Adam's Peak", "Mountain Café"] },
-            { day: 16, title: "Udawalawe Elephant Safari", desc: "Visit the Elephant Transit Home and enjoy a safari in Udawalawe National Park.", activities: ["Elephant Transit Home", "Safari Drive", "River Stay"] },
-            { day: 17, title: "Wild Yala National Park", desc: "An early morning search for leopards in the island's most famous wilderness.", activities: ["Leopard Safari", "Wildlife Photography", "Bush Dinner"] },
-            { day: 18, title: "Mirissa Coastal Bliss", desc: "Relax in the southern surf hub and witness whales in the deep blue.", activities: ["Whale Watching", "Coconut Tree Hill", "Surfing"] },
-            { day: 19, title: "Historic Galle Fort", desc: "Explore the UNESCO-listed Dutch fort with its boutique shops and cafes.", activities: ["Fort Walk", "Lighthouse Photo", "Boutique Shopping"] },
-            { day: 20, title: "Bentota Golden Beaches", desc: "A final day of relaxation with a river safari and sunset beach walk.", activities: ["Madu River Safari", "Beach Relaxation", "Farewell Dinner"] },
-            { day: 21, title: "Colombo & Departure", desc: "Final city sightseeing and shopping before your transfer to the airport.", activities: ["City Tour", "Souvenir Shopping", "Airport Transfer"] }
+            { 
+                day: 1, 
+                title: "Arrival & Transfer to Negombo", 
+                desc: "Welcome to Sri Lanka! Your ultimate odyssey begins in the coastal town of Negombo. After your flight, relax at a beachfront hotel where the sea breeze and the rhythmic sound of the Indian Ocean will help you recover.\n\nTake an evening stroll along the golden sands and watch the local fishing boats return as the sun sets over the horizon, offering a peaceful introduction to your 21-day adventure.", 
+                activities: ["Airport Transfer", "Beach Evening", "Relaxation"] 
+            },
+            { 
+                day: 2, 
+                title: "Wilpattu National Park", 
+                desc: "Travel north to Wilpattu National Park, the island's largest and oldest wilderness sanctuary. Embark on a thrilling safari through a landscape of 'Villus'—natural, sand-rimmed water basins—in search of the elusive Sri Lankan leopard and majestic elephants.\n\nYour stay in an eco-lodge offers a night of deep immersion in the sounds of the jungle, providing a raw and authentic wildlife experience far from the crowds.", 
+                activities: ["Leopard Safari", "Jungle Drive", "Eco-Lodge Stay"] 
+            },
+            { 
+                day: 3, 
+                title: "Mannar & Giant's Tank", 
+                desc: "Explore the arid and unique landscapes of Mannar, a region with a distinct character and history. Visit the ancient baobab trees, rumored to have been planted by Arab traders centuries ago, and wander through the historic Mannar Fort.\n\nThe vast Giant's Tank provides a sanctuary for thousands of migratory birds, making it a paradise for nature enthusiasts and bird watchers seeking a glimpse of the island's northern biodiversity.", 
+                activities: ["Baobab Tree Sighting", "Mannar Fort", "Bird Watching"] 
+            },
+            { 
+                day: 4, 
+                title: "The Journey to Jaffna", 
+                desc: "Cross the historic Elephant Pass, the gateway to the northern peninsula, as you enter a region that was once isolated from the rest of the country. The drive to Jaffna is a journey through changing landscapes and resilient communities.\n\nArrive in the northern capital and feel the vibrant, unique atmosphere of this cultural hub, where the architecture, food, and language offer a fascinating contrast to the southern parts of the island.", 
+                activities: ["Elephant Pass", "Scenic North Drive", "Jaffna Arrival"] 
+            },
+            { 
+                day: 5, 
+                title: "Jaffna Heritage & Culture", 
+                desc: "Dive into the rich Hindu heritage and colonial history of Jaffna. Visit the magnificent Nallur Kandaswamy Kovil, with its golden arches and intricate carvings, and explore the grand Jaffna Public Library, a symbol of the city's intellectual heart.\n\nA walk through the colonial-era Jaffna Fort offers panoramic views of the turquoise lagoon, providing a perfect spot to reflect on the region's complex and beautiful history.", 
+                activities: ["Nallur Kovil", "Jaffna Library", "Colonial Fort"] 
+            },
+            { 
+                day: 6, 
+                title: "Point Pedro & Northern Islands", 
+                desc: "Journey to the northernmost tip of the island at Point Pedro, where the land meets the deep blue sea. Afterward, take a boat to the unique island of Nainativu, home to both a sacred Buddhist stupa and a vibrant Hindu temple.\n\nThis spiritual pilgrimage across the water is a highlight of the northern experience, offering a glimpse into the deep-seated religious harmony and island life of the Jaffna peninsula.", 
+                activities: ["Point Pedro Visit", "Boat to Nainativu", "Island Temples"] 
+            },
+            { 
+                day: 7, 
+                title: "Sacred Anuradhapura", 
+                desc: "Head south to the UNESCO World Heritage site of Anuradhapura, the cradle of Buddhism in Sri Lanka. Explore the sprawling ruins of this ancient capital, where massive stupas like the Ruwanwelisaya tell stories of a civilization that flourished over two millennia ago.\n\nVisit the sacred Sri Maha Bodhi tree, the oldest historically documented tree in the world, and feel the spiritual energy of this ancient city that still draws thousands of pilgrims today.", 
+                activities: ["Sacred Stupas", "Ancient Ruins", "Spiritual Heritage"] 
+            },
+            { 
+                day: 8, 
+                title: "Sigiriya Lion Rock", 
+                desc: "Climb the majestic Sigiriya Lion Rock, a 5th-century fortress that rises dramatically from the jungle plains. Stand in awe of the ancient frescoes and the symmetry of the royal water gardens before reaching the summit for panoramic views.\n\nIn the afternoon, enjoy a traditional village tour and a home-cooked lunch for an authentic taste of rural life, gaining insight into the traditions that have sustained these communities for generations.", 
+                activities: ["Lion Rock Climb", "Water Gardens", "Village Tour"] 
+            },
+            { 
+                day: 9, 
+                title: "Medieval Polonnaruwa", 
+                desc: "Explore the medieval capital of Polonnaruwa by bicycle, winding your way through the well-preserved ruins of royal palaces and stone temples. The highlight is the Gal Vihara, where four magnificent Buddha statues are carved directly into the granite rock.\n\nThe scale and artistry of these ancient ruins are truly spectacular, offering a profound sense of the island's golden age of architecture and spiritual devotion.", 
+                activities: ["Bicycle Tour", "Stone Statues", "Ancient Lake Sights"] 
+            },
+            { 
+                day: 10, 
+                title: "Trincomalee Beaches", 
+                desc: "Travel to the east coast and settle into the crystal-clear waters of Trincomalee. Visit the Koneswaram Temple, perched on a cliff overlooking the world’s largest natural harbor, and enjoy the pristine sands of Nilaveli Beach.\n\nThe evening is perfect for a seafood dinner on the beach under the stars, feeling the gentle rhythm of the Indian Ocean as it laps against the shore.", 
+                activities: ["Koneswaram Temple", "Nilaveli Beach", "Seafood Dinner"] 
+            },
+            { 
+                day: 11, 
+                title: "Pigeon Island Sanctuary", 
+                desc: "A morning of world-class snorkeling awaits at the Pigeon Island National Park. This marine sanctuary is home to vibrant coral reefs, schools of tropical fish, and reef sharks that glide through the turquoise waters.\n\nIt’s a breathtaking underwater adventure just a short boat ride from the shore, providing a rare opportunity to explore one of the island's most pristine marine ecosystems.", 
+                activities: ["Snorkeling", "Coral Reef Exploration", "Boat Ride"] 
+            },
+            { 
+                day: 12, 
+                title: "The Hill Capital: Kandy", 
+                desc: "Journey back into the hills to Kandy, the island's hilltop capital. Visit the sacred Temple of the Tooth Relic, where the most revered object in Sri Lanka is housed within a golden canopy.\n\nEnd your day with a high-energy cultural dance show, featuring traditional drummers and fire-dancers, showcasing the vibrant heritage of the Kandyan kingdom in a stunning display of color and sound.", 
+                activities: ["Temple Visit", "Kandy Lake", "Cultural Show"] 
+            },
+            { 
+                day: 13, 
+                title: "Tea Highlands: Nuwara Eliya", 
+                desc: "Ascend into the misty highlands of Nuwara Eliya, the 'Little England' of Sri Lanka. Wind through endless emerald tea estates and visit a colonial-era tea factory to see how the world-famous Ceylon tea is made.\n\nThe cool, crisp air and the sight of cascading waterfalls make this a truly refreshing drive, offering a nostalgic glimpse into the island's colonial past and its thriving tea industry.", 
+                activities: ["Tea Tasting", "Waterfall Sights", "Gregory Lake"] 
+            },
+            { 
+                day: 14, 
+                title: "Scenic Train Ride to Ella", 
+                desc: "Board the legendary blue train for the iconic journey from Nuwara Eliya to Ella. As the train climbs through the mountains, you'll be treated to spectacular views of tea plantations and deep valleys.\n\nThis slow-travel experience is one of the most memorable ways to witness the beauty of the central highlands, allowing you to soak in the mountain panoramas at a relaxed and rhythmic pace.", 
+                activities: ["Iconic Train Trip", "Highland Panoramas", "Ella Town"] 
+            },
+            { 
+                day: 15, 
+                title: "Ella Peaks & Arches", 
+                desc: "Ella is a place of breathtaking vistas and iconic landmarks. Visit the architectural marvel of the Nine Arches Bridge and hike Little Adam’s Peak for panoramic views of the Ella Gap.\n\nSpend your evening in the laid-back town, enjoying the mountain atmosphere and friendly local cafes, where the community of travelers and locals creates a warm and inviting vibe.", 
+                activities: ["Nine Arches Bridge", "Little Adam's Peak", "Mountain Café"] 
+            },
+            { 
+                day: 16, 
+                title: "Udawalawe Elephant Safari", 
+                desc: "Travel south to Udawalawe National Park, a vast savanna known for its incredible herds of wild elephants. Visit the Elephant Transit Home to see orphaned calves being cared for, then embark on a sunset safari.\n\nThe park's open grasslands make wildlife spotting at its best, providing an unforgettable encounter with these gentle giants in a landscape that feels like a slice of the African savanna.", 
+                activities: ["Elephant Transit Home", "Safari Drive", "River Stay"] 
+            },
+            { 
+                day: 17, 
+                title: "Wild Yala National Park", 
+                desc: "Experience the raw beauty of Yala National Park, the island's most famous wilderness reserve. Join an early morning search for the elusive Sri Lankan leopard and watch majestic elephants roam the scrub jungle.\n\nA final evening in the wild concludes with a special bush dinner under the starlit sky, offering a profound sense of connection to the untamed nature of the island's southern wilderness.", 
+                activities: ["Leopard Safari", "Wildlife Photography", "Bush Dinner"] 
+            },
+            { 
+                day: 18, 
+                title: "Mirissa Coastal Bliss", 
+                desc: "Head to the southern coast and settle into the vibrant surf hub of Mirissa. Visit the iconic Coconut Tree Hill for a panoramic view of the bay and the Indian Ocean.\n\nMirissa is the perfect place to relax, with its golden sands, surf-friendly waves, and incredible seafood dining right on the beach, providing a laid-back and beautiful end to your journey's wilder phases.", 
+                activities: ["Whale Watching", "Coconut Tree Hill", "Surfing"] 
+            },
+            { 
+                day: 19, 
+                title: "Historic Galle Fort", 
+                desc: "Explore the historic Galle Fort, a UNESCO-listed colonial gem filled with boutique shops and cafes. Walk the ancient ramparts that have protected this Dutch-era fortress for centuries.\n\nThe fort is a living museum, where narrow cobblestone streets and colonial villas create a sophisticated and charming atmosphere, perfect for a slow afternoon of discovery and boutique shopping.", 
+                activities: ["Fort Walk", "Lighthouse Photo", "Boutique Shopping"] 
+            },
+            { 
+                day: 20, 
+                title: "Bentota Golden Beaches", 
+                desc: "A final day of relaxation awaits on the golden beaches of Bentota. Enjoy a tranquil boat safari through the mangroves of the Madu River, witnessing the traditional lifestyle of the river communities.\n\nA sunset beach walk is the perfect way to reflect on your 21-day odyssey across the island, soaking in the last rays of the tropical sun before your final evening.", 
+                activities: ["Madu River Safari", "Beach Relaxation", "Farewell Dinner"] 
+            },
+            { 
+                day: 21, 
+                title: "Colombo & Departure", 
+                desc: "Your journey concludes in the bustling capital of Colombo. Enjoy a final city sightseeing tour and some souvenir shopping before your private transfer to the airport.\n\nYou depart with a heart full of memories from every corner of this beautiful island—a truly complete Sri Lankan odyssey that has taken you from the ancient north to the wild south.", 
+                activities: ["City Tour", "Souvenir Shopping", "Airport Transfer"] 
+            }
         ],
         inclusions: ["All Accommodation", "Daily Breakfast", "Private Luxury Transport", "Train Tickets", "3 National Park Safaris", "Boat Transfers"],
         exclusions: ["International Flights", "Entrance fees for all sites", "Lunch & Dinner"],
         routeMap: routeMapGrandLoop,
-        reviews: signatureReviews
+        reviews: signatureReviews,
+        importantNotes: COMMON_NOTES
     }
 ];

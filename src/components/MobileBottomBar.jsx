@@ -8,9 +8,9 @@ const MobileBottomBar = () => {
     const navItems = [
         { path: '/',                   icon: 'fa-solid fa-house',          label: 'Home' },
         { path: '/packages',           icon: 'fa-solid fa-compass',        label: 'Packages' },
+        { path: '/volunteer',          icon: 'fa-solid fa-hand-holding-heart', label: 'Impact' },
         { path: '/sri-lanka',          icon: 'fa-solid fa-landmark',       label: 'Heritage' },
-        { path: '/stays',              icon: 'fa-solid fa-bed',            label: 'Stays' },
-        { path: '/contact',            icon: 'fa-solid fa-envelope',       label: 'Contact' },
+        { path: '/contact',            icon: 'fa-solid fa-comment-dots',   label: 'Contact' },
     ];
 
     return (

@@ -23,10 +23,12 @@ const ContactPage = () => {
         const templateParams = {
             name: formData.name,
             email: formData.email,
+            phone: 'N/A',
+            birthday: 'N/A',
             notes: formData.details,
             tour_package: formData.subject,
             submitted_at: new Date().toLocaleString(),
-            to_email: "givebackjourney@gmail.com"
+            to_email: "hello@givebackjourney.com"
         };
 
         try {
