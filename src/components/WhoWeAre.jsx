@@ -15,7 +15,7 @@ const WhoWeAre = () => {
             user: "Dhvanil",
             avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100",
             image: WhoImage1,
-            title: "11 Day Highlights of Japan Small Grou...",
+            title: "7-Day Essential Sri Lanka",
             type: "tall"
         },
         {
@@ -23,15 +23,15 @@ const WhoWeAre = () => {
             user: "Kelvin",
             avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
             image: WhoImage3,
-            title: "Highlights of Turkey - 9 days",
+            title: "7-Day Southern Sun & Safari",
             type: "small"
         },
         {
             id: 5,
-            user: "梓",
-            avatar: "梓",
+            user: "Sarah",
+            avatar: "S",
             image: WhoImage5,
-            title: "7 Days : the Best of Morocco...",
+            title: "Highlands & Southern Coast",
             type: "small"
         },
         {
@@ -39,7 +39,7 @@ const WhoWeAre = () => {
             user: "Kai",
             avatar: "K",
             image: WhoImage4,
-            title: "From Marrakech: 3-Day Private Imperi...",
+            title: "5-Day Highland Escape Journey",
             type: "tall"
         },
         {
@@ -47,7 +47,7 @@ const WhoWeAre = () => {
             user: "Sandy",
             avatar: "S",
             image: WhoImage2,
-            title: "10-Day Premium South Korea...",
+            title: "6-Day Wild Safari Expedition",
             type: "small"
         },
         {
@@ -55,7 +55,7 @@ const WhoWeAre = () => {
             user: "Sushma",
             avatar: "S",
             image: WhoImage6,
-            title: "Eternal and Traditional Japan",
+            title: "3-Day Galle Fort & Coastal Short",
             type: "small"
         },
         {
@@ -63,7 +63,7 @@ const WhoWeAre = () => {
             user: "Laura",
             avatar: "L",
             image: WhoImage7,
-            title: "Pharaohs Nile Cruise Adventure...",
+            title: "Adam's Peak Overnight Climb",
             type: "small"
         },
         {

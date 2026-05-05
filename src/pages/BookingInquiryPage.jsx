@@ -278,6 +278,18 @@ const BookingInquiryPage = () => {
                                                             style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }} 
                                                         />
                                                     </div>
+                                                    <div className="form-group">
+                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Vehicle Type</label>
+                                                        <select 
+                                                            value={transport}
+                                                            onChange={(e) => setTransport(e.target.value)}
+                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem', background: '#fff' }}
+                                                        >
+                                                            <option value="taxi">Private Car (Standard)</option>
+                                                            <option value="van">Private Van (Large Group)</option>
+                                                            <option value="tuktuk">Tuk Tuk Adventure</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             )}
 
@@ -323,7 +335,7 @@ const BookingInquiryPage = () => {
                                             {currentStep === 3 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                                     <h3 style={{ marginBottom: '10px' }}>Step 3: Tour Preferences</h3>
-                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
                                                         <div className="form-group">
                                                             <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Number of Travelers</label>
                                                             <select 
@@ -335,18 +347,6 @@ const BookingInquiryPage = () => {
                                                                 <option>2 Travelers (Couple/Friends)</option>
                                                                 <option>3-5 Travelers (Small Group)</option>
                                                                 <option>6+ Travelers (Large Group)</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Transport Mode</label>
-                                                            <select 
-                                                                value={transport}
-                                                                onChange={(e) => setTransport(e.target.value)}
-                                                                style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem', background: '#fff' }}
-                                                            >
-                                                                <option value="taxi">Premium Taxi (Car/SUV)</option>
-                                                                <option value="tuktuk">Authentic Tuk Tuk</option>
-                                                                <option value="van">Premium Van (Large Group)</option>
                                                             </select>
                                                         </div>
                                                     </div>

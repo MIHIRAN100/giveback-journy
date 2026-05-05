@@ -78,10 +78,6 @@ const ExclusiveJourneys = () => {
                         <span className="exclusive-tag">Authentic & Affordable</span>
                         <h1>Real Journeys.<br/>True Local Value.</h1>
                         <p>Discover the soul of Sri Lanka without the tourist price tag. We specialize in handcrafted budget adventures that give back to local communities.</p>
-                        <div className="exclusive-hero-btns">
-                            <Link to="/packages" className="btn-modern btn-white">View Our Packages</Link>
-                            <Link to="/contact" className="btn-modern btn-solid-green">Plan Your Value Trip</Link>
-                        </div>
                     </ScrollReveal>
                 </div>
             </section>

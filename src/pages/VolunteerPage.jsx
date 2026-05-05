@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import puppyImg from '../assets/dominican puppy.jpg';
 import effortImg from '../assets/This Moment Shows Effort Beyond Words.webp';
 import hihiImg from '../assets/hihi.webp';
+import VolunteerPackages from '../components/VolunteerPackages';
 
 const VolunteerPage = () => {
     const testimonials = [
@@ -240,7 +241,10 @@ const VolunteerPage = () => {
                     </div>
                 </section>
 
-                {/* How It Works */}
+                {/* Volunteer Packages Section */}
+                <VolunteerPackages />
+
+
                 <section style={{ marginBottom: '100px' }}>
                     <div style={{ textAlign: 'center', marginBottom: '80px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>The Roadmap</span>
