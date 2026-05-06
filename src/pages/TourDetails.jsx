@@ -442,38 +442,96 @@ const TourDetails = () => {
                         margin-bottom: 15px !important;
                     }
                     .transport-selector-box {
-                        background: #111 !important;
-                        color: white !important;
-                        padding: 15px 30px !important;
-                        margin: 20px 20px !important;
+                        background: white !important;
+                        color: #111 !important;
+                        padding: 20px !important;
+                        margin: 20px 15px !important;
                         width: auto !important;
-                        border-radius: 40px !important;
-                        border: none !important;
-                        box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+                        border-radius: 16px !important;
+                        border: 1px solid #eee !important;
+                        border-left: 5px solid var(--primary-green) !important;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
                     }
                     .transport-selector-box label {
-                        font-size: 0.7rem !important;
-                        margin-bottom: 5px !important;
+                        font-size: 0.8rem !important;
+                        font-weight: 800 !important;
+                        margin-bottom: 8px !important;
                         display: block !important;
-                        color: rgba(255,255,255,0.6) !important;
+                        color: #111 !important;
                         text-transform: uppercase !important;
-                        letter-spacing: 1px !important;
+                        letter-spacing: 0.5px !important;
                     }
                     .transport-selector-box select {
-                        background: transparent !important;
-                        color: white !important;
-                        padding: 5px 0 !important;
-                        font-size: 1rem !important;
-                        border: none !important;
-                        border-bottom: 1px solid rgba(255,255,255,0.2) !important;
-                        border-radius: 0 !important;
+                        background: #fcfcfc !important;
+                        color: #333 !important;
+                        padding: 12px 15px !important;
+                        font-size: 0.95rem !important;
+                        border: 1px solid #eee !important;
+                        border-radius: 12px !important;
                         width: 100% !important;
                         outline: none !important;
                         cursor: pointer !important;
+                        font-weight: 700 !important;
+                        appearance: none !important;
+                        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+                        background-repeat: no-repeat !important;
+                        background-position: right 15px center !important;
+                        background-size: 15px !important;
                     }
                     .transport-selector-box select option {
-                        background: #111 !important;
+                        background: white !important;
+                        color: #333 !important;
+                    }
+
+                    /* Very Modern Sticky Bar */
+                    .mobile-sticky-bar {
+                        display: block !important;
+                        position: fixed !important;
+                        bottom: 0 !important;
+                        left: 0 !important;
+                        right: 0 !important;
+                        background: rgba(255, 255, 255, 0.9) !important;
+                        backdrop-filter: blur(20px) !important;
+                        -webkit-backdrop-filter: blur(20px) !important;
+                        padding: 15px 25px calc(15px + env(safe-area-inset-bottom)) 25px !important;
+                        box-shadow: 0 -10px 40px rgba(0,0,0,0.08) !important;
+                        z-index: 10000 !important;
+                        border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+                    }
+                    .sticky-bar-content {
+                        display: flex !important;
+                        justify-content: space-between !important;
+                        align-items: center !important;
+                        max-width: 600px !important;
+                        margin: 0 auto !important;
+                    }
+                    .price-tag {
+                        display: flex !important;
+                        flex-direction: column !important;
+                    }
+                    .from-text {
+                        font-size: 0.7rem !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1px !important;
+                        color: #666 !important;
+                        font-weight: 700 !important;
+                        margin-bottom: 2px !important;
+                    }
+                    .price-amount {
+                        font-size: 1.4rem !important;
+                        font-weight: 900 !important;
+                        color: #111 !important;
+                    }
+                    .sticky-book-btn {
+                        background: var(--primary-green) !important;
                         color: white !important;
+                        padding: 14px 35px !important;
+                        border-radius: 14px !important;
+                        font-weight: 900 !important;
+                        font-size: 1rem !important;
+                        border: none !important;
+                        box-shadow: 0 8px 25px rgba(29, 185, 84, 0.3) !important;
+                        transition: all 0.3s ease !important;
                     }
                 }
                 `}
@@ -1137,15 +1195,17 @@ const TourDetails = () => {
 
             <SriLankaGlance />
 
-            {/* Mobile Sticky Bar */}
+            {/* Premium Modern Sticky Bar */}
             <div className="mobile-sticky-bar">
-                <div className="mobile-price-info">
-                    <span style={{ fontSize: '0.7rem', color: '#666', fontWeight: 700, textTransform: 'uppercase' }}>From</span>
-                    <span className="mobile-price-value">{getPrice()}</span>
+                <div className="sticky-bar-content">
+                    <div className="price-tag">
+                        <span className="from-text">From</span>
+                        <span className="price-amount">USD {getPrice()}</span>
+                    </div>
+                    <button className="sticky-book-btn" onClick={() => navigate('/contact')}>
+                        Book Now
+                    </button>
                 </div>
-                <button className="mobile-book-btn" onClick={() => navigate('/contact')}>
-                    Book Now
-                </button>
             </div>
         </div>
     );
