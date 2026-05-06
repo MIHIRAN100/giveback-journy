@@ -299,6 +299,97 @@ const TourDetails = () => {
                     display: none;
                 }
 
+                @media (max-width: 1024px) {
+                    * {
+                        box-sizing: border-box !important;
+                    }
+                    .tour-details-page {
+                        padding-top: 0 !important;
+                        overflow-x: hidden !important;
+                    }
+                    .details-main-content {
+                        padding: 0 10px !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                    }
+                    .details-grid, .content-grid {
+                        grid-template-columns: 1fr !important;
+                        display: block !important;
+                        width: 100% !important;
+                    }
+                    .tour-overview, .summary-card-container {
+                        width: 100% !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                    }
+                    .before-you-book-box {
+                        padding: 20px !important;
+                        border-radius: 20px !important;
+                        margin-top: 30px !important;
+                        width: auto !important;
+                        margin-left: 5px !important;
+                        margin-right: 5px !important;
+                    }
+                    .overview-text {
+                        padding: 0 10px !important;
+                        font-size: 1rem !important;
+                        line-height: 1.6 !important;
+                    }
+                    .section-title {
+                        padding: 0 10px !important;
+                        font-size: 1.8rem !important;
+                        margin-bottom: 15px !important;
+                    }
+                    .tour-details-header {
+                        display: flex !important;
+                        flex-direction: row !important;
+                        align-items: center !important;
+                        justify-content: space-between !important;
+                        gap: 10px !important;
+                        padding: 20px 15px !important;
+                        margin: 0 !important;
+                    }
+                    .tour-title {
+                        font-size: 1.1rem !important;
+                        margin: 0 !important;
+                        line-height: 1.2 !important;
+                        flex: 1 !important;
+                    }
+                    .sale-badge {
+                        padding: 4px 10px !important;
+                        font-size: 0.55rem !important;
+                        white-space: nowrap !important;
+                        flex-shrink: 0 !important;
+                    }
+                    /* Mobile Slider Fix */
+                    .tour-gallery-container {
+                        width: auto !important;
+                        padding: 0 !important;
+                        margin: 0 15px 15px 15px !important;
+                    }
+                    .main-gallery-slider {
+                        display: flex !important;
+                        overflow-x: auto !important;
+                        scroll-snap-type: x mandatory;
+                        height: 450px !important;
+                        border-radius: 20px !important;
+                    }
+                    .gallery-slide {
+                        display: block !important;
+                        flex: 0 0 100% !important;
+                        scroll-snap-align: start;
+                    }
+                    .gallery-thumbnails {
+                        display: none !important;
+                    }
+                    .slider-dots {
+                        bottom: 40px !important;
+                    }
+                    p, span, h1, h2, h3, h4, h5 {
+                        overflow-wrap: break-word !important;
+                        word-wrap: break-word !important;
+                    }
+
                 /* Itinerary & Buttons Mobile Fix */
                 @media (max-width: 1024px) {
                     .itinerary-header-container {
@@ -338,16 +429,51 @@ const TourDetails = () => {
                         margin-bottom: 20px !important;
                     }
                     .why-love-section {
-                        padding: 20px !important;
-                        margin: 20px 25px !important;
-                        width: auto !important;
+                        display: none !important;
                     }
-                    .why-love-section h4 {
-                        font-size: 1.1rem !important;
+                    .inclusions-box, .exclusions-box, .transport-selector-box {
+                        padding: 25px !important;
+                        margin: 20px 15px !important;
+                        width: auto !important;
+                        border-radius: 20px !important;
+                    }
+                    .inclusions-box h5, .exclusions-box h5 {
+                        font-size: 1.15rem !important;
                         margin-bottom: 15px !important;
                     }
-                    .why-love-section > div > div {
-                        gap: 10px !important;
+                    .transport-selector-box {
+                        background: #111 !important;
+                        color: white !important;
+                        padding: 15px 30px !important;
+                        margin: 20px 20px !important;
+                        width: auto !important;
+                        border-radius: 40px !important;
+                        border: none !important;
+                        box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+                    }
+                    .transport-selector-box label {
+                        font-size: 0.7rem !important;
+                        margin-bottom: 5px !important;
+                        display: block !important;
+                        color: rgba(255,255,255,0.6) !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1px !important;
+                    }
+                    .transport-selector-box select {
+                        background: transparent !important;
+                        color: white !important;
+                        padding: 5px 0 !important;
+                        font-size: 1rem !important;
+                        border: none !important;
+                        border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+                        border-radius: 0 !important;
+                        width: 100% !important;
+                        outline: none !important;
+                        cursor: pointer !important;
+                    }
+                    .transport-selector-box select option {
+                        background: #111 !important;
+                        color: white !important;
                     }
                 }
                 `}
@@ -560,7 +686,7 @@ const TourDetails = () => {
                         </div>
 
                         {/* Before You Book Section */}
-                        <div style={{ marginTop: '40px', marginBottom: '60px', padding: '40px', background: '#fdfdfd', borderRadius: '32px', border: '1px solid #f0f0f0' }}>
+                        <div className="before-you-book-box" style={{ marginTop: '40px', marginBottom: '60px', padding: '40px', background: '#fdfdfd', borderRadius: '32px', border: '1px solid #f0f0f0' }}>
                             <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#111', marginBottom: '30px' }}>Before you book you should know</h2>
                             <div className="booking-tabs-container">
                                 <div style={{ 
