@@ -178,6 +178,20 @@ const TourDetails = () => {
         return `$${currentBase}`;
     };
 
+    const getOriginalPrice = () => {
+        const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
+        let currentBase = basePriceVal;
+        if (pkg.id === 1) currentBase = 1050;
+        if (pkg.id === 2) currentBase = 750;
+        
+        // If not hardcoded, default to +25%
+        if (pkg.id !== 1 && pkg.id !== 2) {
+            currentBase = Math.round(basePriceVal * 1.25);
+        }
+        
+        return `$${currentBase}`;
+    };
+
     return (
         <div className="tour-details-page">
             <style>
@@ -296,7 +310,62 @@ const TourDetails = () => {
                 }
 
                 .mobile-sticky-bar {
-                    display: none;
+                    display: block;
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: #ffffff;
+                    padding: 15px 5%;
+                    box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+                    z-index: 10000;
+                    border-top: 1px solid #eee;
+                    width: 100%;
+                }
+                .sticky-bar-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                .price-tag {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .from-text {
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: #666;
+                    font-weight: 700;
+                    margin-bottom: 2px;
+                }
+                .price-amount {
+                    font-size: 1.6rem;
+                    font-weight: 900;
+                    color: #111;
+                }
+                .sticky-book-btn {
+                    background: var(--primary-green);
+                    color: white;
+                    padding: 15px 45px;
+                    border-radius: 14px;
+                    font-weight: 900;
+                    font-size: 1.1rem;
+                    border: none;
+                    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.3);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                }
+                .sticky-book-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 12px 30px rgba(12, 93, 49, 0.4);
+                }
+
+                /* Ensure Chat Bot is not covered by Sticky Bar */
+                .chat-container {
+                    bottom: 100px !important;
                 }
 
                 @media (max-width: 1024px) {
@@ -483,20 +552,19 @@ const TourDetails = () => {
                         color: #333 !important;
                     }
 
-                    /* Very Modern Sticky Bar */
+                    /* Solid Modern Sticky Bar */
                     .mobile-sticky-bar {
                         display: block !important;
                         position: fixed !important;
                         bottom: 0 !important;
                         left: 0 !important;
                         right: 0 !important;
-                        background: rgba(255, 255, 255, 0.9) !important;
-                        backdrop-filter: blur(20px) !important;
-                        -webkit-backdrop-filter: blur(20px) !important;
+                        background: #ffffff !important; /* Solid White to cover everything */
                         padding: 15px 25px calc(15px + env(safe-area-inset-bottom)) 25px !important;
-                        box-shadow: 0 -10px 40px rgba(0,0,0,0.08) !important;
+                        box-shadow: 0 -10px 40px rgba(0,0,0,0.1) !important;
                         z-index: 10000 !important;
-                        border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+                        border-top: 1px solid #eee !important;
+                        width: 100% !important;
                     }
                     .sticky-bar-content {
                         display: flex !important;
@@ -523,14 +591,14 @@ const TourDetails = () => {
                         color: #111 !important;
                     }
                     .sticky-book-btn {
-                        background: var(--primary-green) !important;
+                        background: #111 !important;
                         color: white !important;
-                        padding: 14px 35px !important;
+                        padding: 14px 30px !important;
                         border-radius: 14px !important;
                         font-weight: 900 !important;
-                        font-size: 1rem !important;
+                        font-size: 0.95rem !important;
                         border: none !important;
-                        box-shadow: 0 8px 25px rgba(29, 185, 84, 0.3) !important;
+                        box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
                         transition: all 0.3s ease !important;
                     }
                 }
@@ -1195,14 +1263,17 @@ const TourDetails = () => {
 
             <SriLankaGlance />
 
-            {/* Premium Modern Sticky Bar */}
+            {/* Solid Modern Sticky Bar */}
             <div className="mobile-sticky-bar">
                 <div className="sticky-bar-content">
                     <div className="price-tag">
                         <span className="from-text">From</span>
-                        <span className="price-amount">USD {getPrice()}</span>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                            <span style={{ textDecoration: 'line-through', color: '#999', fontSize: '0.85rem', fontWeight: 600 }}>USD {getOriginalPrice()}</span>
+                            <span className="price-amount">USD {getPrice()}</span>
+                        </div>
                     </div>
-                    <button className="sticky-book-btn" onClick={() => navigate('/contact')}>
+                    <button className="sticky-book-btn" onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}>
                         Book Now
                     </button>
                 </div>
