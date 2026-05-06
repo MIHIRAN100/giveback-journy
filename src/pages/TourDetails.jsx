@@ -179,10 +179,27 @@ const TourDetails = () => {
     };
 
     return (
-        <div className="tour-details-page" style={{ background: '#fff', paddingTop: '20px' }}>
+        <div className="tour-details-page">
             <style>
                 {`
+                .tour-details-page {
+                    background: #fff;
+                    padding-top: 20px;
+                }
+                .tour-details-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 30px;
+                }
+                .details-grid {
+                    display: grid;
+                    grid-template-columns: 1.4fr 1fr;
+                    gap: 40px;
+                    margin-bottom: 60px;
+                }
                 .tour-gallery-container {
+                    position: relative;
                     display: flex;
                     flex-direction: column;
                     width: 100%;
@@ -278,145 +295,61 @@ const TourDetails = () => {
                     box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
                 }
 
-                @media (max-width: 1024px) {
-                    .tour-details-page {
-                        padding-top: 0 !important;
-                        background: #f0f2f5 !important;
-                        padding-bottom: 120px !important;
-                        overflow-x: hidden !important;
-                    }
-                    .tour-details-page > div {
-                        background: transparent !important;
-                    }
-                    .details-main-content {
-                        padding: 0 !important;
-                        width: 100% !important;
-                        max-width: 100% !important;
-                    }
-                    
-                    /* Card Layout */
-                    .tour-details-header, .tour-gallery-container, .summary-card-container, 
-                    .tour-overview, div[style*="padding: 40px"], .content-grid > div, 
-                    .itinerary-section, .reviews-section, div[style*="background: #fdfdfd"] {
-                        background: white !important;
-                        margin-bottom: 12px !important;
-                        padding: 25px 20px !important;
-                        box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
-                        border-radius: 0 !important;
-                        border: none !important;
-                    }
-
-                    /* Header */
-                    .tour-details-header {
-                        padding-top: 20px !important;
-                        margin-bottom: 2px !important;
-                        display: flex !important;
-                        flex-direction: row !important;
-                        align-items: center !important;
-                        gap: 8px !important;
-                    }
-                    .tour-title {
-                        font-size: 1.1rem !important;
-                        margin: 0 !important;
-                        line-height: 1.2 !important;
-                    }
-                    .sale-badge {
-                        padding: 4px 10px !important;
-                        font-size: 0.5rem !important;
-                        flex-shrink: 0 !important;
-                    }
-
-                    /* Edge-to-Edge Gallery */
-                    .tour-gallery-container {
-                        width: 100% !important;
-                        padding: 0 !important;
-                        margin-bottom: 10px !important;
-                    }
-                    .main-gallery-slider {
-                        display: flex !important;
-                        overflow-x: auto !important;
-                        scroll-snap-type: x mandatory;
-                        height: 380px !important;
-                        border-radius: 0 !important;
-                    }
-                    .gallery-slide {
-                        display: block !important;
-                        flex: 0 0 100% !important;
-                        scroll-snap-align: start;
-                    }
-                    .gallery-thumbnails {
-                        display: none !important;
-                    }
-                    .slider-dots {
-                        bottom: 30px !important;
-                    }
-
-                    /* Typography */
-                    .section-title {
-                        font-size: 1.3rem !important;
-                        margin-bottom: 15px !important;
-                    }
-                    .overview-text {
-                        font-size: 0.95rem !important;
-                        line-height: 1.6 !important;
-                        margin-bottom: 15px !important;
-                        overflow-wrap: break-word !important;
-                    }
-
-                    /* Summary Card Adjustments */
-                    .summary-card {
-                        padding: 0 !important;
-                        box-shadow: none !important;
-                        border: none !important;
-                    }
-                    .summary-card button {
-                        display: none !important; /* Move to sticky bar */
-                    }
-
-                    /* Grids */
-                    .details-grid {
-                        grid-template-columns: 1fr !important;
-                        gap: 0 !important;
-                    }
-
-                    /* Sticky Bar */
-                    .mobile-sticky-bar {
-                        display: flex !important;
-                        position: fixed;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        background: white;
-                        padding: 12px 20px calc(12px + env(safe-area-inset-bottom)) 20px;
-                        box-shadow: 0 -4px 25px rgba(0,0,0,0.12);
-                        z-index: 1000;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-                    .mobile-price-info {
-                        display: flex;
-                        flex-direction: column;
-                    }
-                    .mobile-price-value {
-                        font-size: 1.25rem;
-                        font-weight: 900;
-                        color: #111;
-                    }
-                    .mobile-book-btn {
-                        background: #111;
-                        color: white;
-                        padding: 12px 28px;
-                        border-radius: 12px;
-                        font-weight: 700;
-                        font-size: 0.95rem;
-                        border: none;
-                    }
-                }
-                
                 .mobile-sticky-bar {
                     display: none;
                 }
 
+                /* Itinerary & Buttons Mobile Fix */
+                @media (max-width: 1024px) {
+                    .itinerary-header-container {
+                        flex-direction: column !important;
+                        align-items: flex-start !important;
+                        gap: 20px !important;
+                        margin-bottom: 30px !important;
+                        padding: 0 20px !important;
+                    }
+                    .itinerary-header-container h2 {
+                        font-size: 1.8rem !important;
+                        margin: 0 !important;
+                    }
+                    .itinerary-header-container > div {
+                        width: 100% !important;
+                        display: flex !important;
+                        gap: 10px !important;
+                    }
+                    .itinerary-header-container button {
+                        flex: 1 !important;
+                        padding: 12px 10px !important;
+                        font-size: 0.8rem !important;
+                        justify-content: center !important;
+                        border-radius: 12px !important;
+                    }
+                    .itinerary-content-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 30px !important;
+                        padding: 10px 15px !important;
+                    }
+                    .important-notes-section {
+                        padding: 20px 20px !important;
+                        margin-top: 50px !important;
+                    }
+                    .important-notes-section h2 {
+                        font-size: 1.8rem !important;
+                        margin-bottom: 20px !important;
+                    }
+                    .why-love-section {
+                        padding: 20px !important;
+                        margin: 20px 25px !important;
+                        width: auto !important;
+                    }
+                    .why-love-section h4 {
+                        font-size: 1.1rem !important;
+                        margin-bottom: 15px !important;
+                    }
+                    .why-love-section > div > div {
+                        gap: 10px !important;
+                    }
+                }
                 `}
             </style>
             {/* Map Zoom Modal */}
@@ -449,7 +382,7 @@ const TourDetails = () => {
             <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
                 
                 {/* Header: Title & Sale Badge */}
-                <div className="tour-details-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '30px' }}>
+                <div className="tour-details-header">
                     <h1 className="tour-title" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, color: '#111', margin: 0 }}>
                         {pkg.name}
                     </h1>
@@ -466,10 +399,10 @@ const TourDetails = () => {
                 </div>
 
                 {/* Gallery & Summary Card Grid */}
-                <div className="details-grid hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '40px', marginBottom: '60px' }}>
+                <div className="details-grid hero-grid">
                     
                     {/* Gallery Section */}
-                    <div className="tour-gallery-container" style={{ position: 'relative' }}>
+                    <div className="tour-gallery-container">
                         <div className="main-gallery-slider" ref={sliderRef}>
                             {galleryImages.map((img, i) => (
                                 <div key={i} className="gallery-slide" onClick={() => setActiveImageIndex(i)}>
@@ -767,7 +700,7 @@ const TourDetails = () => {
                         </div>
 
                         {/* Why You'll Love This Trip */}
-                        <div style={{
+                        <div className="why-love-section" style={{
                             marginTop: '30px',
                             padding: '30px',
                             background: 'white',
@@ -854,7 +787,7 @@ const TourDetails = () => {
 
                 {/* Itinerary Section */}
                 <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '60px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+                    <div className="itinerary-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111' }}>Itinerary</h2>
                         <div style={{ display: 'flex', gap: '15px' }}>
                             <button 
@@ -899,7 +832,7 @@ const TourDetails = () => {
                         </div>
                     </div>
 
-                    <div ref={itineraryRef} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', padding: '20px', background: 'white' }}>
+                    <div ref={itineraryRef} className="itinerary-content-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', padding: '20px', background: 'white' }}>
                         {/* Left Column: Map */}
                         <div>
                             <div 
@@ -961,7 +894,7 @@ const TourDetails = () => {
 
                 {/* Important Notes */}
                 {pkg.importantNotes && (
-                    <div style={{ marginTop: '80px', padding: '20px 0' }}>
+                    <div className="important-notes-section" style={{ marginTop: '80px', padding: '20px 0' }}>
                         <h2 style={{ fontSize: '2.5rem', fontWeight: 500, color: '#222', marginBottom: '30px', fontFamily: 'inherit' }}>Important notes</h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                             {pkg.importantNotes.map((note, i) => (
@@ -1076,6 +1009,8 @@ const TourDetails = () => {
                 )}
             </div>
 
+            <SriLankaGlance />
+
             {/* Mobile Sticky Bar */}
             <div className="mobile-sticky-bar">
                 <div className="mobile-price-info">
@@ -1086,8 +1021,6 @@ const TourDetails = () => {
                     Book Now
                 </button>
             </div>
-            
-            <SriLankaGlance />
         </div>
     );
 };
