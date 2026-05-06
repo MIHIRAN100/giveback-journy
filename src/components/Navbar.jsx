@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
+import logo from '../assets/Gemini_Generated_Image_lal8iplal8iplal8.png';
 
 
 const Navbar = () => {
@@ -46,9 +47,7 @@ const Navbar = () => {
             
             <nav className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}>
                 <Link to="/" className="logo-area">
-                    <div className="logo-box">
-                        <i className="fa-solid fa-hand-holding-heart"></i>
-                    </div>
+                    <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
                     <span className="logo-text">Giveback journny<span className="logo-dot">.</span></span>
                 </Link>
 

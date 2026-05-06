@@ -552,53 +552,56 @@ const TourDetails = () => {
                         color: #333 !important;
                     }
 
-                    /* Solid Modern Sticky Bar */
+                    /* Modern Floating Dock Sticky Bar */
                     .mobile-sticky-bar {
                         display: block !important;
                         position: fixed !important;
-                        bottom: 0 !important;
-                        left: 0 !important;
-                        right: 0 !important;
-                        background: #ffffff !important; /* Solid White to cover everything */
-                        padding: 15px 25px calc(15px + env(safe-area-inset-bottom)) 25px !important;
-                        box-shadow: 0 -10px 40px rgba(0,0,0,0.1) !important;
+                        bottom: 25px !important;
+                        left: 15px !important;
+                        right: 15px !important;
+                        background: rgba(255, 255, 255, 0.95) !important;
+                        backdrop-filter: blur(20px) !important;
+                        -webkit-backdrop-filter: blur(20px) !important;
+                        padding: 12px 25px !important;
+                        box-shadow: 0 15px 45px rgba(0,0,0,0.15) !important;
                         z-index: 10000 !important;
-                        border-top: 1px solid #eee !important;
-                        width: 100% !important;
+                        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+                        width: auto !important;
+                        border-radius: 100px !important;
+                        max-width: 500px !important;
+                        margin: 0 auto !important;
                     }
                     .sticky-bar-content {
                         display: flex !important;
                         justify-content: space-between !important;
                         align-items: center !important;
-                        max-width: 600px !important;
-                        margin: 0 auto !important;
+                        width: 100% !important;
                     }
                     .price-tag {
                         display: flex !important;
                         flex-direction: column !important;
                     }
                     .from-text {
-                        font-size: 0.7rem !important;
+                        font-size: 0.65rem !important;
                         text-transform: uppercase !important;
                         letter-spacing: 1px !important;
                         color: #666 !important;
-                        font-weight: 700 !important;
-                        margin-bottom: 2px !important;
+                        font-weight: 800 !important;
                     }
                     .price-amount {
-                        font-size: 1.4rem !important;
+                        font-size: 1.2rem !important;
                         font-weight: 900 !important;
                         color: #111 !important;
                     }
                     .sticky-book-btn {
                         background: #111 !important;
                         color: white !important;
-                        padding: 14px 30px !important;
-                        border-radius: 14px !important;
+                        padding: 12px 28px !important;
+                        border-radius: 100px !important;
                         font-weight: 900 !important;
-                        font-size: 0.95rem !important;
+                        font-size: 0.9rem !important;
                         border: none !important;
-                        box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
+                        box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important;
                         transition: all 0.3s ease !important;
                     }
                 }

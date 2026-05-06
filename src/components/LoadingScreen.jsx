@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import logo from '../assets/Gemini_Generated_Image_lal8iplal8iplal8.png';
 
 const LoadingScreen = () => {
     const [visible, setVisible] = useState(true);
@@ -27,7 +28,7 @@ const LoadingScreen = () => {
         <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
             <div className="loader-content">
                 <div className="loader-logo">
-                    <i className="fa-solid fa-hand-holding-heart"></i>
+                    <img src={logo} alt="Loading..." style={{ width: '60%', height: '60%', objectFit: 'contain' }} />
                 </div>
                 <div className="loader-progress">
                     <div className="loader-bar"></div>

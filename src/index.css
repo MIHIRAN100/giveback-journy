@@ -270,6 +270,17 @@ h1, h2, h3, .logo-text {
     font-size: 1.1rem;
 }
 
+.logo-image {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--primary-green);
+    background: white;
+    padding: 2px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
 .logo-text {
     font-family: 'DM Sans', sans-serif;
     font-size: 1.25rem;
