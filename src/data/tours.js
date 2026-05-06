@@ -74,7 +74,7 @@ export const tourPackages = [
         id: 1,
         name: "7-Day Essential Sri Lanka",
         days: "7 Days / 6 Nights",
-        description: "A carefully designed journey blending culture, nature, and adventure—perfect for travelers who want to experience the best of Sri Lanka in a short time.",
+        description: "A carefully designed journey blending culture, nature, and adventure—perfect for travelers who want to experience the best of Sri Lanka in a short time.\n\nFrom the ancient heights of Sigiriya Lion Rock to the misty emerald hills of Ella, this tour captures the island's most iconic landscapes. You'll wander through the sacred temples of Kandy and end your journey on the golden palm-fringed beaches of the south coast.\n\nExperience authentic Sri Lankan hospitality and create memories that will last a lifetime in just seven extraordinary days.",
         price: "$650",
         image: essentialCover,
         itinerary: [
@@ -135,6 +135,8 @@ export const tourPackages = [
         ],
         routeMap: routeMapEssential,
         reviews: signatureReviews,
+        rating: 4.8,
+        ratingLabel: "Excellent",
         importantNotes: COMMON_NOTES
     },
     {
@@ -156,13 +158,15 @@ export const tourPackages = [
         exclusions: ["Lunch", "Personal expenses", "Entrance fees for optional sites"],
         routeMap: routeMapKandyPinnawala,
         reviews: kandyReviews,
+        rating: 4.7,
+        ratingLabel: "Highly Rated",
         importantNotes: COMMON_NOTES
     },
     {
         id: 2,
         name: "Southern Sun & Beach Escape",
         days: "7 Days / 6 Nights",
-        description: "A relaxing coastal journey along Sri Lanka’s south—combining beach life, culture, and optional adventures.",
+        description: "Escape to the sun-drenched southern coast of Sri Lanka, where golden beaches meet colonial history and vibrant local culture.\n\nThis journey takes you through the cobblestone streets of the historic Galle Fort, into the turquoise waters of Weligama for a surf session, and along the pristine shores of Mirissa. It's the ultimate coastal retreat for those seeking relaxation and beauty.\n\nDiscover the rhythm of the ocean and the charm of the south in this perfectly curated 6-day escape.",
         price: "$600",
         image: southernCover,
         itinerary: [
@@ -213,13 +217,15 @@ export const tourPackages = [
         exclusions: ["Lunch & Dinner", "Personal expenses", "Entrance fees"],
         routeMap: routeMapSouthernNew,
         reviews: coastalReviews,
+        rating: 4.9,
+        ratingLabel: "Bestseller",
         importantNotes: COMMON_NOTES
     },
     { 
         id: 3, 
         name: "Highlands & Southern Coast", 
         days: "7 Days / 6 Nights",
-        description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches—designed for travelers who want maximum experience with great value.",
+        description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches—designed for travelers who want maximum experience with great value.\n\nFrom white-water rafting in the jungle rivers of Kitulgala to the cool, tea-scented air of the Ella highlands, this tour is an adventure for the soul. You'll explore the wild landscapes of Yala in search of leopards and finally unwind on the vibrant beaches of Hikkaduwa.\n\nIt's the perfect fusion of thrill and tranquility, capturing the very essence of the island's diverse natural beauty.",
         price: "$680",
         image: adventureCover,
         itinerary: [
@@ -283,6 +289,8 @@ export const tourPackages = [
         ],
         routeMap: routeMapHighlandsCoast,
         reviews: adventureReviews,
+        rating: 4.8,
+        ratingLabel: "Adventurer's Choice",
         importantNotes: COMMON_NOTES
     },
     {
@@ -328,6 +336,8 @@ export const tourPackages = [
         exclusions: ["Lunch", "Entrance fees", "Insurance"],
         routeMap: routeMapHill,
         reviews: signatureReviews,
+        rating: 4.7,
+        ratingLabel: "Highly Rated",
         importantNotes: COMMON_NOTES
     },
     {
@@ -379,6 +389,8 @@ export const tourPackages = [
         exclusions: ["Personal items", "Drinks", "Tips"],
         routeMap: routeMapWild,
         reviews: adventureReviews,
+        rating: 4.9,
+        ratingLabel: "Nature's Best",
         importantNotes: COMMON_NOTES
     },
     {
@@ -411,6 +423,8 @@ export const tourPackages = [
         inclusions: ["Galle Fort tour", "Boutique stay", "Local breakfast"],
         exclusions: ["Shopping", "Lunches", "Transport to Galle"],
         reviews: coastalReviews,
+        rating: 4.8,
+        ratingLabel: "Cultural Gem",
         importantNotes: COMMON_NOTES
     },
     {
@@ -449,6 +463,8 @@ export const tourPackages = [
         inclusions: ["Rainforest trekking", "Naturalist guide", "Eco-lodge stay"],
         exclusions: ["Alcoholic beverages", "Travel insurance", "Personal gear"],
         reviews: adventureReviews,
+        rating: 4.9,
+        ratingLabel: "Top Rated",
         importantNotes: COMMON_NOTES
     },
     {
@@ -470,6 +486,8 @@ export const tourPackages = [
         exclusions: ["Lunch", "Locations outside 1km radius", "Personal expenses"],
         routeMap: routeMapKandy,
         reviews: kandyReviews,
+        rating: 4.6,
+        ratingLabel: "Excellent",
         importantNotes: COMMON_NOTES
     },
     {
@@ -497,6 +515,8 @@ export const tourPackages = [
         exclusions: ["Dinner", "Lunch", "Personal snacks/water", "Hiking gear"],
         routeMap: routeMapAdamsPeak,
         reviews: adventureReviews,
+        rating: 5.0,
+        ratingLabel: "Must Experience",
         importantNotes: COMMON_NOTES
     },
     {
@@ -518,6 +538,8 @@ export const tourPackages = [
         exclusions: ["Personal expenses", "Tips", "Travel insurance"],
         routeMap: routeMapKitulgala,
         reviews: adventureReviews,
+        rating: 4.7,
+        ratingLabel: "Thrill Seekers",
         importantNotes: COMMON_NOTES
     },
     {
@@ -659,6 +681,8 @@ export const tourPackages = [
         exclusions: ["International Flights", "Entrance fees for all sites", "Lunch & Dinner"],
         routeMap: routeMapGrandLoop,
         reviews: signatureReviews,
+        rating: 5.0,
+        ratingLabel: "Lifetime Experience",
         importantNotes: COMMON_NOTES
     }
 ];

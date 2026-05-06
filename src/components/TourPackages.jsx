@@ -87,12 +87,10 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
             </div>
             <div className="card-body">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-green)', marginBottom: '10px', fontSize: '0.8rem' }}>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star-half-stroke"></i>
-                    <span style={{ color: '#888', fontWeight: 700, marginLeft: '6px', fontSize: '0.75rem' }}>4.8 (Excellent)</span>
+                    {[...Array(5)].map((_, i) => (
+                        <i key={i} className={`fa-solid fa-star${i + 1 > pkg.rating ? (i < pkg.rating ? '-half-stroke' : '-o') : ''}`} style={{ color: i + 1 > pkg.rating && i >= pkg.rating ? '#ccc' : 'var(--primary-green)' }}></i>
+                    ))}
+                    <span style={{ color: '#888', fontWeight: 700, marginLeft: '6px', fontSize: '0.75rem' }}>{pkg.rating} ({pkg.ratingLabel})</span>
                 </div>
                 <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '8px'}}>{pkg.name}</h3>
                 <p style={{ 

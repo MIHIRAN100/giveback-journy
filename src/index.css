@@ -5824,31 +5824,31 @@ h1, h2, h3, .logo-text {
 .filter-group {
     display: flex;
     align-items: center;
-    gap: 12px;
-    background: #f8f8f8;
-    padding: 6px;
-    border-radius: 12px;
+    gap: 10px;
+    background: transparent;
+    padding: 0;
 }
 
 .filter-label {
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #888;
-    margin-right: 5px;
-    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: none;
+    color: #111;
+    margin-right: 10px;
+    letter-spacing: -0.02em;
 }
 
 .filter-btn {
-    padding: 8px 16px;
-    border: none;
-    background: transparent;
-    border-radius: 8px;
+    padding: 10px 24px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 500px;
     font-size: 0.85rem;
     font-weight: 700;
-    color: #666;
+    color: #888;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
 }
 
 .filter-btn:hover {
@@ -5857,23 +5857,42 @@ h1, h2, h3, .logo-text {
 }
 
 .filter-btn.active {
-    background: white;
-    color: var(--primary-green);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+    box-shadow: 0 8px 20px rgba(29, 185, 84, 0.25);
 }
 
 @media (max-width: 768px) {
     .filter-bar {
         flex-direction: column;
-        gap: 15px;
-        align-items: center;
+        gap: 25px;
+        align-items: flex-start;
+        padding: 0 20px;
     }
     
     .filter-group {
-        width: 100%;
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        padding: 5px 20px 15px;
         overflow-x: auto;
         justify-content: flex-start;
-        padding-bottom: 10px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+    }
+
+    .filter-group::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-label {
+        margin-bottom: 5px;
+    }
+
+    .filter-btn {
+        padding: 8px 20px;
+        font-size: 0.8rem;
     }
 }
 

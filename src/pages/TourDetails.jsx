@@ -85,11 +85,35 @@ const TourDetails = () => {
     const reviewsRef = React.useRef(null);
     
     const [activeImage, setActiveImage] = useState(pkg ? pkg.image : '');
+    const [activeImageIndex, setActiveImageIndex] = useState(0);
+    const galleryImages = [pkg.image, surfImg, polhenaImg, gallery1, gallery2];
+    const sliderRef = React.useRef(null);
+    
+    // Auto-slide effect
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveImageIndex((prev) => (prev + 1) % galleryImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [galleryImages.length]);
+
+    // Sync active image when index changes
+    useEffect(() => {
+        setActiveImage(galleryImages[activeImageIndex]);
+        
+        // Auto-scroll the mobile slider
+        if (sliderRef.current && window.innerWidth <= 768) {
+            const slideWidth = sliderRef.current.offsetWidth;
+            sliderRef.current.scrollTo({
+                left: slideWidth * activeImageIndex,
+                behavior: 'smooth'
+            });
+        }
+    }, [activeImageIndex, galleryImages]);
     
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (pkg) setActiveImage(pkg.image);
     }, [id, pkg]);
 
     if (!pkg) {
@@ -158,80 +182,241 @@ const TourDetails = () => {
         <div className="tour-details-page" style={{ background: '#fff', paddingTop: '20px' }}>
             <style>
                 {`
-                @media (max-width: 768px) {
-                    .tour-details-page > div:nth-child(2) {
-                        padding: 0 20px !important;
+                .tour-gallery-container {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
+                .main-gallery-slider {
+                    display: block;
+                    border-radius: 24px;
+                    overflow: hidden;
+                    height: 500px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                }
+                .gallery-slide {
+                    display: none; /* Only one shows on desktop */
+                    width: 100%;
+                    height: 100%;
+                }
+                .gallery-slide:first-child {
+                    display: block;
+                }
+                .gallery-slide img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .gallery-thumbnails {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    gap: 15px;
+                }
+                .thumb-item {
+                    height: 80px;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    border: 3px solid transparent;
+                    transition: all 0.2s ease;
+                    position: relative;
+                }
+                .thumb-item.active {
+                    border-color: var(--primary-green);
+                }
+                .thumb-item img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0.7;
+                }
+                .thumb-item.active img {
+                    opacity: 1;
+                }
+                .thumb-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0,0,0,0.4);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: 800;
+                    font-size: 0.7rem;
+                    text-align: center;
+                    padding: 5px;
+                }
+
+                .slider-dots {
+                    position: absolute;
+                    bottom: 40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    gap: 8px;
+                    z-index: 20;
+                    padding: 8px 12px;
+                    background: rgba(255, 255, 255, 0.2);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    border-radius: 50px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                }
+                .dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.5);
+                    cursor: pointer;
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                }
+                .dot.active {
+                    background: var(--primary-green);
+                    width: 24px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
+                }
+
+                @media (max-width: 1024px) {
+                    .tour-details-page {
+                        padding-top: 0 !important;
+                        background: #f0f2f5 !important;
+                        padding-bottom: 120px !important;
+                        overflow-x: hidden !important;
+                    }
+                    .tour-details-page > div {
+                        background: transparent !important;
+                    }
+                    .details-main-content {
+                        padding: 0 !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
                     }
                     
-                    /* Header Responsiveness */
-                    .tour-details-page h1 {
-                        font-size: 2.2rem !important;
-                        margin-bottom: 10px !important;
-                    }
-                    .tour-details-page div[style*="justify-content: space-between"][style*="align-items: flex-start"] {
-                        flex-direction: column !important;
-                        gap: 10px !important;
-                    }
-
-                    /* Main Grids */
-                    .tour-details-page div[style*="display: grid"] {
-                        grid-template-columns: 1fr !important;
-                        gap: 30px !important;
+                    /* Card Layout */
+                    .tour-details-header, .tour-gallery-container, .summary-card-container, 
+                    .tour-overview, div[style*="padding: 40px"], .content-grid > div, 
+                    .itinerary-section, .reviews-section, div[style*="background: #fdfdfd"] {
+                        background: white !important;
+                        margin-bottom: 12px !important;
+                        padding: 25px 20px !important;
+                        box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+                        border-radius: 0 !important;
+                        border: none !important;
                     }
 
-                    /* Gallery Section */
-                    .tour-details-page div[style*="height: 500px"] {
-                        height: 300px !important;
-                    }
-                    .tour-details-page div[style*="grid-template-columns: repeat(5, 1fr)"] {
-                        grid-template-columns: repeat(5, 1fr) !important;
+                    /* Header */
+                    .tour-details-header {
+                        padding-top: 20px !important;
+                        margin-bottom: 2px !important;
+                        display: flex !important;
+                        flex-direction: row !important;
+                        align-items: center !important;
                         gap: 8px !important;
                     }
-                    .tour-details-page div[style*="height: 80px"] {
-                        height: 60px !important;
+                    .tour-title {
+                        font-size: 1.1rem !important;
+                        margin: 0 !important;
+                        line-height: 1.2 !important;
+                    }
+                    .sale-badge {
+                        padding: 4px 10px !important;
+                        font-size: 0.5rem !important;
+                        flex-shrink: 0 !important;
                     }
 
-                    /* Summary Card */
-                    .tour-details-page div[style*="padding: 35px"] {
-                        padding: 25px !important;
+                    /* Edge-to-Edge Gallery */
+                    .tour-gallery-container {
+                        width: 100% !important;
+                        padding: 0 !important;
+                        margin-bottom: 10px !important;
                     }
-                    .tour-details-page span[style*="font-size: 2.2rem"] {
-                        font-size: 1.8rem !important;
+                    .main-gallery-slider {
+                        display: flex !important;
+                        overflow-x: auto !important;
+                        scroll-snap-type: x mandatory;
+                        height: 380px !important;
+                        border-radius: 0 !important;
+                    }
+                    .gallery-slide {
+                        display: block !important;
+                        flex: 0 0 100% !important;
+                        scroll-snap-align: start;
+                    }
+                    .gallery-thumbnails {
+                        display: none !important;
+                    }
+                    .slider-dots {
+                        bottom: 30px !important;
                     }
 
-                    /* Itinerary Map & Accordion */
-                    .tour-details-page div[style*="grid-template-columns: 1fr 2fr"] {
+                    /* Typography */
+                    .section-title {
+                        font-size: 1.3rem !important;
+                        margin-bottom: 15px !important;
+                    }
+                    .overview-text {
+                        font-size: 0.95rem !important;
+                        line-height: 1.6 !important;
+                        margin-bottom: 15px !important;
+                        overflow-wrap: break-word !important;
+                    }
+
+                    /* Summary Card Adjustments */
+                    .summary-card {
+                        padding: 0 !important;
+                        box-shadow: none !important;
+                        border: none !important;
+                    }
+                    .summary-card button {
+                        display: none !important; /* Move to sticky bar */
+                    }
+
+                    /* Grids */
+                    .details-grid {
                         grid-template-columns: 1fr !important;
-                        gap: 40px !important;
-                        padding: 10px !important;
-                    }
-                    .tour-details-page div[style*="height: 400px"] {
-                        height: 280px !important;
+                        gap: 0 !important;
                     }
 
-                    /* Review Section */
-                    .reviews-scroll-container div[style*="flex: 0 0 calc(25% - 16px)"] {
-                        flex: 0 0 85% !important;
+                    /* Sticky Bar */
+                    .mobile-sticky-bar {
+                        display: flex !important;
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background: white;
+                        padding: 12px 20px calc(12px + env(safe-area-inset-bottom)) 20px;
+                        box-shadow: 0 -4px 25px rgba(0,0,0,0.12);
+                        z-index: 1000;
+                        justify-content: space-between;
+                        align-items: center;
                     }
-                    
-                    /* Itinerary Header */
-                    .tour-details-page div[style*="display: flex"][style*="justify-content: space-between"][style*="align-items: center"] {
-                        flex-direction: column !important;
-                        align-items: flex-start !important;
-                        gap: 20px !important;
+                    .mobile-price-info {
+                        display: flex;
+                        flex-direction: column;
                     }
-                    
-                    /* Important Notes */
-                    .tour-details-page h2[style*="font-size: 2.5rem"] {
-                        font-size: 1.8rem !important;
+                    .mobile-price-value {
+                        font-size: 1.25rem;
+                        font-weight: 900;
+                        color: #111;
                     }
-                    
-                    /* Before You Book Tabs */
-                    .booking-tabs-container div[style*="display: flex"][style*="gap: 30px"] {
-                        gap: 20px !important;
-                        padding-bottom: 10px !important;
+                    .mobile-book-btn {
+                        background: #111;
+                        color: white;
+                        padding: 12px 28px;
+                        border-radius: 12px;
+                        font-weight: 700;
+                        font-size: 0.95rem;
+                        border: none;
                     }
                 }
+                
+                .mobile-sticky-bar {
+                    display: none;
+                }
+
                 `}
             </style>
             {/* Map Zoom Modal */}
@@ -261,14 +446,14 @@ const TourDetails = () => {
                 </div>
             )}
 
-            <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+            <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
                 
                 {/* Header: Title & Sale Badge */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '30px' }}>
-                    <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, color: '#111', margin: 0 }}>
+                <div className="tour-details-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '30px' }}>
+                    <h1 className="tour-title" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, color: '#111', margin: 0 }}>
                         {pkg.name}
                     </h1>
-                    <span style={{ 
+                    <span className="sale-badge" style={{ 
                         background: '#107c41', 
                         color: 'white', 
                         padding: '8px 20px', 
@@ -281,31 +466,40 @@ const TourDetails = () => {
                 </div>
 
                 {/* Gallery & Summary Card Grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '40px', marginBottom: '60px' }}>
+                <div className="details-grid hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '40px', marginBottom: '60px' }}>
                     
                     {/* Gallery Section */}
-                    <div>
-                        <div style={{ borderRadius: '24px', overflow: 'hidden', height: '500px', marginBottom: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', transition: 'all 0.5s ease' }}>
-                            <img src={activeImage} alt={pkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div className="tour-gallery-container" style={{ position: 'relative' }}>
+                        <div className="main-gallery-slider" ref={sliderRef}>
+                            {galleryImages.map((img, i) => (
+                                <div key={i} className="gallery-slide" onClick={() => setActiveImageIndex(i)}>
+                                    <img src={img} alt={`${pkg.name} ${i + 1}`} />
+                                </div>
+                            ))}
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '15px' }}>
-                            {[pkg.image, surfImg, polhenaImg, gallery1, gallery2].map((img, i) => (
+
+                        {/* Sliding Dots Indicator */}
+                        <div className="slider-dots">
+                            {galleryImages.map((_, i) => (
                                 <div 
                                     key={i} 
-                                    onClick={() => setActiveImage(img)}
-                                    style={{ 
-                                        height: '80px', 
-                                        borderRadius: '12px', 
-                                        overflow: 'hidden', 
-                                        cursor: 'pointer',
-                                        border: activeImage === img ? '3px solid var(--primary-green)' : '3px solid transparent',
-                                        transition: 'all 0.2s ease',
-                                        position: 'relative'
-                                    }}
+                                    className={`dot ${activeImageIndex === i ? 'active' : ''}`}
+                                    onClick={() => setActiveImageIndex(i)}
+                                ></div>
+                            ))}
+                        </div>
+                        
+                        {/* Desktop Thumbnails */}
+                        <div className="gallery-thumbnails">
+                            {galleryImages.map((img, i) => (
+                                <div 
+                                    key={i} 
+                                    onClick={() => setActiveImageIndex(i)}
+                                    className={`thumb-item ${activeImageIndex === i ? 'active' : ''}`}
                                 >
-                                    <img src={img} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: activeImage === img ? 1 : 0.7 }} />
+                                    <img src={img} />
                                     {i === 4 && (
-                                        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: '0.7rem', textAlign: 'center', padding: '5px' }}>
+                                        <div className="thumb-overlay">
                                             All photos (19)
                                         </div>
                                     )}
@@ -315,8 +509,8 @@ const TourDetails = () => {
                     </div>
 
                     {/* Summary Card Section */}
-                    <div>
-                        <div style={{
+                    <div className="summary-card-container">
+                        <div className="summary-card" style={{
                             background: 'white',
                             padding: '35px',
                             borderRadius: '24px',
@@ -419,14 +613,18 @@ const TourDetails = () => {
                 </div>
 
                 {/* Content Section */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '50px' }}>
+                <div className="details-grid content-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '50px' }}>
                     
                     {/* Left Column */}
-                    <div>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '20px' }}>Overview</h2>
-                        <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '40px' }}>
-                            {pkg.description}
-                        </p>
+                    <div className="tour-overview">
+                        <h2 className="section-title" style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '20px' }}>Overview</h2>
+                        <div className="overview-content">
+                            {pkg.description.split('\n').map((para, i) => (
+                                <p key={i} className="overview-text" style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '20px' }}>
+                                    {para.trim()}
+                                </p>
+                            ))}
+                        </div>
 
                         {/* Before You Book Section */}
                         <div style={{ marginTop: '40px', marginBottom: '60px', padding: '40px', background: '#fdfdfd', borderRadius: '32px', border: '1px solid #f0f0f0' }}>
@@ -877,177 +1075,18 @@ const TourDetails = () => {
                     </div>
                 )}
             </div>
-            {/* Mobile Sticky Booking Bar */}
-            <div className="mobile-booking-bar" style={{
-                display: 'none',
-                position: 'fixed',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: 'white',
-                padding: '15px 25px',
-                boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
-                zIndex: 1000,
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                borderTop: '1px solid #eee'
-            }}>
-                <div>
-                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 800, display: 'block' }}>Starting from</span>
-                    <span style={{ fontSize: '1.4rem', fontWeight: 900, color: '#111' }}>{getPrice()}</span>
+
+            {/* Mobile Sticky Bar */}
+            <div className="mobile-sticky-bar">
+                <div className="mobile-price-info">
+                    <span style={{ fontSize: '0.7rem', color: '#666', fontWeight: 700, textTransform: 'uppercase' }}>From</span>
+                    <span className="mobile-price-value">{getPrice()}</span>
                 </div>
-                <button 
-                    onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}
-                    style={{ 
-                        background: 'var(--primary-green)', 
-                        color: 'white', 
-                        border: 'none', 
-                        padding: '12px 30px', 
-                        borderRadius: '12px', 
-                        fontWeight: 800, 
-                        fontSize: '1rem' 
-                    }}
-                >
+                <button className="mobile-book-btn" onClick={() => navigate('/contact')}>
                     Book Now
                 </button>
             </div>
-
-            <style>
-                {`
-                @media (max-width: 768px) {
-                    .tour-details-page {
-                        background: #fdfdfd !important;
-                        padding-top: 0 !important;
-                        padding-bottom: 100px !important;
-                    }
-                    
-                    /* Glassmorphic Sticky Bar */
-                    .mobile-booking-bar {
-                        display: flex !important;
-                        background: rgba(255, 255, 255, 0.85) !important;
-                        backdrop-filter: blur(15px) !important;
-                        -webkit-backdrop-filter: blur(15px) !important;
-                        padding: 15px 25px !important;
-                        border-radius: 20px 20px 0 0 !important;
-                        box-shadow: 0 -10px 40px rgba(0,0,0,0.08) !important;
-                    }
-                    .mobile-booking-bar button {
-                        border-radius: 14px !important;
-                        padding: 12px 25px !important;
-                        box-shadow: 0 8px 20px rgba(29, 185, 84, 0.25) !important;
-                    }
-
-                    .tour-details-page > div:nth-child(3) {
-                        padding: 0 !important;
-                        max-width: 100% !important;
-                    }
-
-                    /* Full-width Hero with Overlap Card */
-                    .tour-details-page div[style*="height: 500px"] {
-                        height: 350px !important;
-                        border-radius: 0 !important;
-                        margin-bottom: -20px !important;
-                    }
-                    
-                    /* Header Overlay Card */
-                    .tour-details-page h1 {
-                        position: relative !important;
-                        z-index: 10 !important;
-                        font-size: 1.7rem !important;
-                        background: white !important;
-                        border-radius: 30px 30px 0 0 !important;
-                        padding: 30px 25px 5px 25px !important;
-                        margin: 0 !important;
-                    }
-                    .tour-details-page div[style*="justify-content: space-between"][style*="align-items: flex-start"] {
-                        background: white !important;
-                        padding: 0 25px 25px 25px !important;
-                        margin-bottom: 15px !important;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.02) !important;
-                        border-bottom: 1px solid #f5f5f5 !important;
-                    }
-
-                    /* Section Floating Cards */
-                    .tour-details-page div[style*="padding: 35px"],
-                    .tour-details-page div[style*="padding: 40px"],
-                    .inclusions-box, .exclusions-box, .transport-selector-box,
-                    .tour-details-page div[style*="padding: 20px 0"] {
-                        margin: 0 15px 20px 15px !important;
-                        padding: 25px !important;
-                        background: white !important;
-                        border-radius: 24px !important;
-                        border: 1px solid #f0f0f0 !important;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.02) !important;
-                    }
-
-                    /* Gallery Thumbnails */
-                    .tour-details-page div[style*="grid-template-columns: repeat(5, 1fr)"] {
-                        padding: 0 20px 20px 20px !important;
-                        background: white !important;
-                        margin-bottom: 20px !important;
-                        overflow-x: auto !important;
-                        display: flex !important;
-                        gap: 12px !important;
-                    }
-                    .tour-details-page div[style*="height: 80px"] {
-                        flex: 0 0 65px !important;
-                        height: 65px !important;
-                        border-radius: 12px !important;
-                    }
-
-                    /* Hide Laptop-only pricing/booking */
-                    .tour-details-page div[style*="USD"],
-                    .tour-details-page button[style*="width: 100%"] {
-                        display: none !important;
-                    }
-
-                    /* Itinerary Overhaul - Mobile Timeline */
-                    .tour-details-page div[style*="grid-template-columns: 1fr 2fr"] {
-                        grid-template-columns: 1fr !important;
-                        background: white !important;
-                        margin: 0 15px 20px 15px !important;
-                        padding: 20px !important;
-                        border-radius: 24px !important;
-                        border: 1px solid #f0f0f0 !important;
-                    }
-                    .tour-details-page div[style*="height: 400px"] {
-                        height: 240px !important;
-                        border-radius: 16px !important;
-                        margin-bottom: 15px !important;
-                    }
-                    
-                    /* Review Section */
-                    .reviews-scroll-container div[style*="flex: 0 0 calc(25% - 16px)"] {
-                        flex: 0 0 85% !important;
-                        border-radius: 24px !important;
-                        margin-left: 15px !important;
-                    }
-                    .tour-details-page div[style*="scroll-snap-type: x mandatory"] {
-                        padding-left: 0 !important;
-                        padding-right: 20px !important;
-                    }
-
-                    /* Typography Scaling */
-                    .tour-details-page h2 {
-                        font-size: 1.5rem !important;
-                        padding-left: 25px !important;
-                        margin-bottom: 15px !important;
-                    }
-                    .tour-details-page p {
-                        font-size: 0.95rem !important;
-                        line-height: 1.7 !important;
-                    }
-                    
-                    /* Tabs Scaling */
-                    .booking-tabs-container div[style*="display: flex"][style*="gap: 30px"] {
-                        gap: 15px !important;
-                    }
-                    .booking-tabs-container div[style*="font-size: 1rem"] {
-                        font-size: 0.9rem !important;
-                    }
-                }
-                `}
-            </style>
+            
             <SriLankaGlance />
         </div>
     );

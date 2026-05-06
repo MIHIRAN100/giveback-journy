@@ -15,6 +15,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             image: communityImg,
             features: ["Orientation & Training", "1 Primary Project", "Shared Volunteer House", "Airport Pickup"],
             color: "#1DB954",
+            rating: 4.8,
             gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
         },
         {
@@ -26,6 +27,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             features: ["2 Project Rotations", "Host Family Stay", "Weekend Cultural Tour", "Local Language Basics"],
             color: "#111",
             popular: true,
+            rating: 4.9,
             gradient: "linear-gradient(135deg, #111 0%, #333 100%)"
         },
         {
@@ -36,6 +38,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             image: puppyImg,
             features: ["Lead a Small Project", "Full Board (Meals)", "Community Internship Cert", "Weekly Language Lessons"],
             color: "#1DB954",
+            rating: 4.7,
             gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
         },
         {
@@ -46,6 +49,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             image: wildlifeImg,
             features: ["Project Management Role", "Research Opportunities", "Advanced Impact Cert", "Private Room Option"],
             color: "#111",
+            rating: 5.0,
             gradient: "linear-gradient(135deg, #111 0%, #333 100%)"
         }
     ];
@@ -126,7 +130,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                                 <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#111', lineHeight: 1.1, margin: 0 }}>{pkg.title}</h3>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(29, 185, 84, 0.1)', padding: '2px 8px', borderRadius: '6px' }}>
                                     <i className="fa-solid fa-star" style={{ color: 'var(--primary-green)', fontSize: '0.7rem' }}></i>
-                                    <span style={{ fontWeight: 800, fontSize: '0.75rem', color: 'var(--primary-green)' }}>4.9</span>
+                                    <span style={{ fontWeight: 800, fontSize: '0.75rem', color: 'var(--primary-green)' }}>{pkg.rating}</span>
                                 </div>
                             </div>
                             
