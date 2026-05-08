@@ -5,6 +5,8 @@ import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
 
+import heroVideo from '../assets/SRI LANKA - Pearl Of The Indian Ocean  Cinematic Travel Film - JRDY Films (720p, h264).mp4';
+
 const mobileImages = [img1, img2, img3];
 
 const Hero = ({ onSearch }) => {
@@ -92,12 +94,13 @@ const Hero = ({ onSearch }) => {
     return (
         <section className="hero">
             <div className="hero-video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/KCn5Gc38oO4?autoplay=1&mute=1&loop=1&playlist=KCn5Gc38oO4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
-                    title="Hero Background"
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
+                <video 
+                    src={heroVideo} 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="hero-video"
                 />
             </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/Gemini_Generated_Image_lal8iplal8iplal8.png';
+import logo from '../assets/logo_airplane.png';
 
 const Footer = () => {
     return (

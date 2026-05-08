@@ -152,7 +152,6 @@ h1, h2, h3, .logo-text {
     background: white !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
-
 /* Modern Ticker Banner */
 .banner-wrapper {
     max-height: 100px;
@@ -216,6 +215,14 @@ h1, h2, h3, .logo-text {
     transform: rotate(90deg);
 }
 
+@media (max-width: 768px) {
+    .banner {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+
 /* Modern Glass Navbar */
 .navbar-container {
     background: var(--white);
@@ -242,7 +249,7 @@ h1, h2, h3, .logo-text {
 }
 
 @media (max-width: 768px) {
-    .navbar-container, .navbar-container.scrolled, .banner {
+    .navbar-container, .navbar-container.scrolled {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
@@ -275,7 +282,7 @@ h1, h2, h3, .logo-text {
     height: 38px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid var(--primary-green);
+    border: 2px solid white;
     background: white;
     padding: 2px;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
@@ -450,14 +457,15 @@ h1, h2, h3, .logo-text {
     overflow: hidden;
 }
 
-.hero-video-container iframe {
+.hero-video-container iframe,
+.hero-video {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 56.25vw; /* 16:9 ratio */
-    min-height: 75vh;
-    min-width: 133.33vh; /* 16:9 ratio for 75vh height */
+    min-height: 85vh;
+    min-width: 151.11vh; /* 16:9 ratio for 85vh height */
     transform: translate(-50%, -50%);
     object-fit: cover;
     pointer-events: none;

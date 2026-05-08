@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
-import logo from '../assets/Gemini_Generated_Image_lal8iplal8iplal8.png';
+import logo from '../assets/logo_airplane.png';
 
 
 const Navbar = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
                 <div className="banner">
                     <div className="banner-content">
                         <span className="banner-tag">NEW</span>
-                        <span className="banner-text">Special Island Update : Discover 2025 Seasonal Packages for Sri Lanka.</span>
+                        <span className="banner-text">New volunteering projects available - Join the impact today!</span>
                     </div>
                     <div className="banner-close" onClick={() => setBannerVisible(false)}>
                         <i className="fa-solid fa-xmark"></i>
