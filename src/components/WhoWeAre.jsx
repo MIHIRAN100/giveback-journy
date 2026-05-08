@@ -105,10 +105,6 @@ const WhoWeAre = () => {
                         
                         <img src={moment.image} alt={moment.title} />
                         
-                        <div className="moment-play-btn">
-                            <i className="fa-solid fa-play"></i>
-                        </div>
-
                         <div className="moment-footer">
                             <span className="moment-title">{moment.title}</span>
                             <i className="fa-solid fa-arrow-right"></i>

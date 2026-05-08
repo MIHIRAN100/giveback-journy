@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
-import logo from '../assets/logo_airplane.png';
+import logo from '../assets/logo_circular.png';
 
 
 const Navbar = () => {

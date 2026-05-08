@@ -89,13 +89,13 @@ const TourDetails = () => {
     const galleryImages = [pkg.image, surfImg, polhenaImg, gallery1, gallery2];
     const sliderRef = React.useRef(null);
     
-    // Auto-slide effect
+    // Auto-slide effect - resets on activeImageIndex change (manual or auto)
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveImageIndex((prev) => (prev + 1) % galleryImages.length);
         }, 5000);
         return () => clearInterval(interval);
-    }, [galleryImages.length]);
+    }, [galleryImages.length, activeImageIndex]);
 
     // Sync active image when index changes
     useEffect(() => {
@@ -219,26 +219,65 @@ const TourDetails = () => {
                     width: 100%;
                 }
                 .main-gallery-slider {
-                    display: block;
+                    position: relative;
                     border-radius: 24px;
                     overflow: hidden;
                     height: 500px;
                     margin-bottom: 20px;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    background: #f0f0f0;
                 }
                 .gallery-slide {
-                    display: none; /* Only one shows on desktop */
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     width: 100%;
                     height: 100%;
+                    opacity: 0;
+                    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+                    pointer-events: none;
+                    z-index: 1;
                 }
-                .gallery-slide:first-child {
-                    display: block;
+                .gallery-slide.active {
+                    opacity: 1;
+                    pointer-events: auto;
+                    z-index: 2;
                 }
                 .gallery-slide img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                 }
+                .gallery-nav-btn {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 45px;
+                    height: 45px;
+                    background: rgba(255, 255, 255, 0.9);
+                    border: none;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    z-index: 10;
+                    color: #111;
+                    font-size: 1.2rem;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    transition: all 0.3s ease;
+                    opacity: 0;
+                }
+                .main-gallery-slider:hover .gallery-nav-btn {
+                    opacity: 1;
+                }
+                .gallery-nav-btn:hover {
+                    background: var(--primary-green);
+                    color: white;
+                    transform: translateY(-50%) scale(1.1);
+                }
+                .gallery-nav-prev { left: 20px; }
+                .gallery-nav-next { right: 20px; }
                 .gallery-thumbnails {
                     display: grid;
                     grid-template-columns: repeat(5, 1fr);
@@ -442,11 +481,19 @@ const TourDetails = () => {
                         scroll-snap-type: x mandatory;
                         height: 450px !important;
                         border-radius: 20px !important;
+                        background: #f0f0f0;
                     }
                     .gallery-slide {
                         display: block !important;
+                        position: relative !important;
                         flex: 0 0 100% !important;
                         scroll-snap-align: start;
+                        opacity: 1 !important;
+                        pointer-events: auto !important;
+                        transition: none !important;
+                    }
+                    .gallery-nav-btn {
+                        display: none !important;
                     }
                     .gallery-thumbnails {
                         display: none !important;
@@ -552,24 +599,22 @@ const TourDetails = () => {
                         color: #333 !important;
                     }
 
-                    /* Modern Floating Dock Sticky Bar */
+                    /* Solid Full-Width Sticky Bar */
                     .mobile-sticky-bar {
                         display: block !important;
                         position: fixed !important;
-                        bottom: 25px !important;
-                        left: 15px !important;
-                        right: 15px !important;
-                        background: rgba(255, 255, 255, 0.95) !important;
-                        backdrop-filter: blur(20px) !important;
-                        -webkit-backdrop-filter: blur(20px) !important;
-                        padding: 12px 25px !important;
-                        box-shadow: 0 15px 45px rgba(0,0,0,0.15) !important;
+                        bottom: 0 !important;
+                        left: 0 !important;
+                        right: 0 !important;
+                        background: #ffffff !important;
+                        padding: 15px 5% !important;
+                        box-shadow: 0 -10px 40px rgba(0,0,0,0.1) !important;
                         z-index: 10000 !important;
-                        border: 1px solid rgba(255, 255, 255, 0.5) !important;
-                        width: auto !important;
-                        border-radius: 100px !important;
-                        max-width: 500px !important;
-                        margin: 0 auto !important;
+                        border-top: 1px solid #eee !important;
+                        width: 100% !important;
+                        border-radius: 0 !important;
+                        max-width: none !important;
+                        margin: 0 !important;
                     }
                     .sticky-bar-content {
                         display: flex !important;
@@ -597,7 +642,7 @@ const TourDetails = () => {
                         background: #111 !important;
                         color: white !important;
                         padding: 12px 28px !important;
-                        border-radius: 100px !important;
+                        border-radius: 12px !important;
                         font-weight: 900 !important;
                         font-size: 0.9rem !important;
                         border: none !important;
@@ -660,10 +705,34 @@ const TourDetails = () => {
                     <div className="tour-gallery-container">
                         <div className="main-gallery-slider" ref={sliderRef}>
                             {galleryImages.map((img, i) => (
-                                <div key={i} className="gallery-slide" onClick={() => setActiveImageIndex(i)}>
+                                <div 
+                                    key={i} 
+                                    className={`gallery-slide ${activeImageIndex === i ? 'active' : ''}`}
+                                    onClick={() => setActiveImageIndex(i)}
+                                >
                                     <img src={img} alt={`${pkg.name} ${i + 1}`} />
                                 </div>
                             ))}
+                            
+                            {/* Navigation Arrows for Laptop */}
+                            <button 
+                                className="gallery-nav-btn gallery-nav-prev"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActiveImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+                                }}
+                            >
+                                <i className="bi bi-chevron-left"></i>
+                            </button>
+                            <button 
+                                className="gallery-nav-btn gallery-nav-next"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActiveImageIndex((prev) => (prev + 1) % galleryImages.length);
+                                }}
+                            >
+                                <i className="bi bi-chevron-right"></i>
+                            </button>
                         </div>
 
                         {/* Sliding Dots Indicator */}

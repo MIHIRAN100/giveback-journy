@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/logo_airplane.png';
+import logo from '../assets/logo_circular.png';
 
 const LoadingScreen = () => {
     const [visible, setVisible] = useState(true);

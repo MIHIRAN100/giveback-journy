@@ -26,6 +26,7 @@ const AppContent = () => {
   const [cookieVisible, setCookieVisible] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isTourDetails = location.pathname.startsWith('/package/');
 
   return (
     <div className="App" style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
@@ -52,7 +53,7 @@ const AppContent = () => {
       <ChatBot cookieVisible={cookieVisible} />
       <CookieBar onVisibilityChange={setCookieVisible} />
 
-      <MobileBottomBar />
+      {!isTourDetails && <MobileBottomBar />}
     </div>
   );
 };
