@@ -35,7 +35,14 @@ const signatureReviews = [
     { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", profile: "USA, 29", trip: "Signature Experience", comment: "The train journey from Kandy to Ella was breathtaking. Highly recommend this signature tour.", color: "#f3e5f5" },
     { id: 3, name: "Elena Rossi", rating: 5, date: "August 2025", profile: "Italian, 22", trip: "Signature Experience", comment: "Minneriya safari was amazing! We saw so many elephants. A truly essential Sri Lanka experience.", color: "#e0f2f1" },
     { id: 4, name: "James Wilson", rating: 5, date: "July 2025", profile: "Canadian, 31", trip: "Signature Experience", comment: "Perfect balance between culture and relaxation. The south coast stay was the perfect ending.", color: "#fbe9e7" },
-    { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2025", profile: "French, 20", trip: "Signature Experience", comment: "Galle Fort at sunset is a dream. The hospitality throughout the week was exceptional.", color: "#e8f5e9" }
+    { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2025", profile: "French, 20", trip: "Signature Experience", comment: "Galle Fort at sunset is a dream. The hospitality throughout the week was exceptional.", color: "#e8f5e9" },
+    { id: 6, name: "Robert Brown", rating: 5, date: "May 2025", profile: "USA", trip: "Signature Experience", comment: "The tour guide was exceptionally knowledgeable. Highly recommended!", color: "#fff" },
+    { id: 7, name: "Alice Green", rating: 4, date: "April 2025", profile: "UK", trip: "Signature Experience", comment: "Great experience overall, though the bus ride was a bit long.", color: "#fff" },
+    { id: 8, name: "Tom Cruise", rating: 5, date: "March 2025", profile: "USA", trip: "Signature Experience", comment: "Felt like a movie! Every location was stunning.", color: "#fff" },
+    { id: 9, name: "Emma Stone", rating: 5, date: "February 2025", profile: "Australia", trip: "Signature Experience", comment: "The wildlife safari was out of this world.", color: "#fff" },
+    { id: 10, name: "Lucas Silva", rating: 5, date: "January 2025", profile: "Brazil", trip: "Signature Experience", comment: "Amazing food and culture. Love Sri Lanka!", color: "#fff" },
+    { id: 11, name: "Zoe Kravitz", rating: 5, date: "December 2024", profile: "USA", trip: "Signature Experience", comment: "The beaches are pristine. Very relaxing.", color: "#fff" },
+    { id: 12, name: "Ryan Gosling", rating: 4, date: "November 2024", profile: "Canada", trip: "Signature Experience", comment: "Great service and beautiful hotels.", color: "#fff" }
 ];
 
 const kandyReviews = [
@@ -87,8 +94,14 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival in Negombo", 
-                desc: "Welcome to the tropical paradise of <b>Sri Lanka!</b><br/><br/>Upon arrival at the international airport, you will be warmly greeted and transferred to the vibrant coastal town of <b>Negombo</b>. This relaxed beachside sanctuary, with its swaying palms and salty breeze, is the perfect place to recover from your flight and prepare for the incredible adventure ahead.<br/><br/>Take the day at your own pace to unwind and soak in the island atmosphere.<br/><br/><b>Optional Activities (based on arrival time):</b><br/>• A serene beach walk along the golden <b>Negombo coastline</b><br/>• A tranquil <b>lagoon boat ride</b> through mangrove forests<br/>• A visit to the bustling <b>local fish markets</b> to see the day's catch<br/>• Watching a spectacular <b>sunset by the beach</b> with a tropical drink<br/><br/><b>Overnight stay in Negombo.</b>", 
-                activities: ["Airport Transfer", "Private Transport"] 
+                desc: "Welcome to the tropical paradise of <b>Sri Lanka!</b><br/><br/>Upon arrival at the international airport, you will be warmly greeted and transferred to the vibrant coastal town of <b>Negombo</b>. This relaxed beachside sanctuary, with its swaying palms and salty breeze, is the perfect place to recover from your flight and prepare for the incredible adventure ahead.<br/><br/>Take the day at your own pace to unwind and soak in the island atmosphere.<br/><br/><b>Overnight stay in Negombo.</b>", 
+                activities: ["Airport Transfer", "Private Transport"],
+                optionalActivities: [
+                    "A serene beach walk along the golden Negombo coastline",
+                    "A tranquil lagoon boat ride through mangrove forests",
+                    "A visit to the bustling local fish markets to see the day's catch",
+                    "Watching a spectacular sunset by the beach with a tropical drink"
+                ]
             },
             { 
                 day: 2, 
@@ -238,20 +251,32 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival & Transfer to Kitulgala", 
-                desc: "Welcome to the island of <b>Sri Lanka!</b><br/><br/>Upon your arrival, you will be warmly greeted and transferred to <b>Kitulgala</b>, a riverside destination nestled within a lush and vibrant rainforest. This serene landscape, where the air is thick with the scent of tropical greenery, provides the perfect tranquil introduction to your journey.<br/><br/>Check into your guesthouse and take some time to unwind and relax after your travels.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Relax by the banks of the flowing <b>Kelani River</b><br/>• Take a short, peaceful <b>village walk</b> to observe local life<br/>• Simply sit back and enjoy the <b>peaceful jungle atmosphere</b><br/><br/><b>Optional Activities:</b><br/>• Join a <b>guided nature walk</b> to discover local flora and fauna<br/>• Enjoy a refreshing <b>river bathing experience</b> in the clear jungle waters<br/><br/><b>Dinner included at the guesthouse</b><br/><b>Overnight stay in Kitulgala.</b>", 
-                activities: ["Airport Transfer", "Private Transport", "Dinner"] 
+                desc: "Welcome to the island of <b>Sri Lanka!</b><br/><br/>Upon your arrival, you will be warmly greeted and transferred to <b>Kitulgala</b>, a riverside destination nestled within a lush and vibrant rainforest. This serene landscape, where the air is thick with the scent of tropical greenery, provides the perfect tranquil introduction to your journey.<br/><br/>Check into your guesthouse and take some time to unwind and relax after your travels.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Relax by the banks of the flowing <b>Kelani River</b><br/>• Take a short, peaceful <b>village walk</b> to observe local life<br/>• Simply sit back and enjoy the <b>peaceful jungle atmosphere</b><br/><br/><b>Dinner included at the guesthouse</b><br/><b>Overnight stay in Kitulgala.</b>", 
+                activities: ["Airport Transfer", "Private Transport", "Dinner"],
+                optionalActivities: [
+                    "Join a guided nature walk to discover local flora and fauna",
+                    "Enjoy a refreshing river bathing experience in the clear jungle waters"
+                ]
             },
             { 
                 day: 2, 
                 title: "Rafting Adventure & Transfer to Ella", 
-                desc: "Start your day with <b>breakfast</b> before embarking on an exhilarating adventure on the <b>Kelani River</b>.<br/><br/><b>Included Activity:</b><br/>• <b>White water rafting</b>: Experience a safe and exciting journey through the rapids, an ideal activity for both beginners and nature lovers seeking a thrill amidst the trees.<br/><br/><b>Optional Activity:</b><br/>• <b>Early morning bird watching</b>: Set out at dawn to spot endemic species in their rich and diverse rainforest surroundings.<br/><br/><b>Lunch included in Kitulgala</b><br/><br/>After a traditional lunch, proceed towards the misty highlands of <b>Ella</b>, enjoying the sight of endless scenic <b>tea plantations</b> and dramatic mountain views along the way.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Explore the charming and bohemian streets of <b>Ella town</b><br/>• Enjoy the refreshing and <b>cool hill country climate</b><br/><br/><b>Overnight stay in Ella.</b>", 
-                activities: ["Breakfast", "White Water Rafting", "Lunch", "Private Transport"] 
+                desc: "Start your day with <b>breakfast</b> before embarking on an exhilarating adventure on the <b>Kelani River</b>.<br/><br/><b>Included Activity:</b><br/>• <b>White water rafting</b>: Experience a safe and exciting journey through the rapids, an ideal activity for both beginners and nature lovers seeking a thrill amidst the trees.<br/><br/><b>Lunch included in Kitulgala</b><br/><br/>After a traditional lunch, proceed towards the misty highlands of <b>Ella</b>, enjoying the sight of endless scenic <b>tea plantations</b> and dramatic mountain views along the way.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Explore the charming and bohemian streets of <b>Ella town</b><br/>• Enjoy the refreshing and <b>cool hill country climate</b><br/><br/><b>Overnight stay in Ella.</b>", 
+                activities: ["Breakfast", "White Water Rafting", "Lunch", "Private Transport"],
+                optionalActivities: [
+                    "Early morning bird watching: Set out at dawn to spot endemic species in their rich and diverse rainforest surroundings"
+                ]
             },
             { 
                 day: 3, 
                 title: "Ella Peaks & Iconic Landmarks", 
-                desc: "After <b>breakfast</b> amidst the mist, discover the breathtaking beauty and iconic landmarks of <b>Ella</b>.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Hike to the summit of <b>Little Adam's Peak</b> for sweeping views of the Ella Gap<br/>• Visit the world-famous <b>Nine Arches Bridge</b> and witness the train crossing the jungle valley<br/><br/><b>Optional Activities:</b><br/>• Experience the adrenaline of <b>zip-lining</b> across the hills<br/>• Visit a local <b>tea plantation</b> to learn about Ceylon's liquid gold<br/>• Relax in one of the many <b>scenic cafés</b> overlooking the mountains<br/><br/><b>Overnight stay in Ella.</b>", 
-                activities: ["Breakfast", "Private Transport"] 
+                desc: "After <b>breakfast</b> amidst the mist, discover the breathtaking beauty and iconic landmarks of <b>Ella</b>.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Hike to the summit of <b>Little Adam's Peak</b> for sweeping views of the Ella Gap<br/>• Visit the world-famous <b>Nine Arches Bridge</b> and witness the train crossing the jungle valley<br/><br/><b>Overnight stay in Ella.</b>", 
+                activities: ["Breakfast", "Private Transport"],
+                optionalActivities: [
+                    "Experience the adrenaline of zip-lining across the hills",
+                    "Visit a local tea plantation to learn about Ceylon's liquid gold",
+                    "Relax in one of the many scenic cafés overlooking the mountains"
+                ]
             },
             { 
                 day: 4, 
@@ -262,14 +287,22 @@ export const tourPackages = [
             { 
                 day: 5, 
                 title: "Beach Relaxation & Galle Fort Sunset", 
-                desc: "Start your day with <b>breakfast</b> before settling into the laid-back rhythm of coastal life in <b>Hikkaduwa</b>.<br/><br/>In the evening, enjoy a <b>scenic sunset walk along the ancient ramparts of Galle Fort</b>, soaking in the colonial charm and ocean views.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Relax on the golden sands of the <b>beach</b><br/>• Swim in the warm and clear waters of the <b>Indian Ocean</b><br/><br/><b>Optional Activities:</b><br/>• Go <b>snorkeling</b> at the Hikkaduwa Coral Sanctuary to see sea turtles and fish<br/>• Take <b>surfing lessons</b> at one of the local surf schools<br/>• Enjoy <b>beachfront dining</b> or explore the café scene inside the fort.<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
-                activities: ["Breakfast", "Galle Fort Sunset Walk", "Private Transport"] 
+                desc: "Start your day with <b>breakfast</b> before settling into the laid-back rhythm of coastal life in <b>Hikkaduwa</b>.<br/><br/>In the evening, enjoy a <b>scenic sunset walk along the ancient ramparts of Galle Fort</b>, soaking in the colonial charm and ocean views.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Relax on the golden sands of the <b>beach</b><br/>• Swim in the warm and clear waters of the <b>Indian Ocean</b><br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
+                activities: ["Breakfast", "Galle Fort Sunset Walk", "Private Transport"],
+                optionalActivities: [
+                    "Go snorkeling at the Hikkaduwa Coral Sanctuary to see sea turtles and fish",
+                    "Take surfing lessons at one of the local surf schools",
+                    "Enjoy beachfront dining or explore the café scene inside the fort"
+                ]
             },
             { 
                 day: 6, 
                 title: "Turtle Hatchery & River Safari", 
-                desc: "After <b>breakfast</b>, discover the coastal wonders and conservation efforts of the south.<br/><br/><b>Included Activity:</b><br/>• <b>Madu River safari</b>: Embark on a relaxing boat ride through the tranquil mangroves and small islands of the Madu River, witnessing traditional cinnamon peeling and local life.<br/><br/><b>Optional Activity:</b><br/>• <b>Sea Turtle Hatchery visit</b>: Visit a local conservation project dedicated to protecting endangered sea turtles. Learn about the different species and the vital work being done to ensure their survival.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Wander through the <b>vibrant local streets</b> of Hikkaduwa<br/>• Relax at a <b>beachside cafe</b> and enjoy the ocean breeze<br/><br/>Return to the relaxed atmosphere of <b>Hikkaduwa</b> for your final evening.<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
-                activities: ["Breakfast", "Madu River Safari", "Private Transport"] 
+                desc: "After <b>breakfast</b>, discover the coastal wonders and conservation efforts of the south.<br/><br/><b>Included Activity:</b><br/>• <b>Madu River safari</b>: Embark on a relaxing boat ride through the tranquil mangroves and small islands of the Madu River, witnessing traditional cinnamon peeling and local life.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/>• Wander through the <b>vibrant local streets</b> of Hikkaduwa<br/>• Relax at a <b>beachside cafe</b> and enjoy the ocean breeze<br/><br/>Return to the relaxed atmosphere of <b>Hikkaduwa</b> for your final evening.<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
+                activities: ["Breakfast", "Madu River Safari", "Private Transport"],
+                optionalActivities: [
+                    "Sea Turtle Hatchery visit: Visit a local conservation project dedicated to protecting endangered sea turtles"
+                ]
             },
             { 
                 day: 7, 

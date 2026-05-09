@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import hihiImg from '../assets/hihi.webp';
-import puppyImg from '../assets/dominican puppy.jpg';
+import elephantImg from '../assets/Elephants in Sri Lanka (1).jpg';
 
 const VolunteerSection = () => {
     const [isMuted, setIsMuted] = React.useState(true);
@@ -85,19 +85,8 @@ const VolunteerSection = () => {
                                 alignItems: 'flex-end',
                                 padding: '20px'
                             }}>
-                                <span style={{ 
-                                    fontSize: '0.65rem', 
-                                    fontWeight: 900, 
-                                    textTransform: 'uppercase', 
-                                    letterSpacing: '2px',
-                                    background: 'rgba(29, 185, 84, 0.2)',
-                                    backdropFilter: 'blur(12px)',
-                                    padding: '8px 18px',
-                                    borderRadius: '100px',
-                                    border: '1px solid rgba(29, 185, 84, 0.3)',
-                                    color: 'white',
-                                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
-                                }}>
+                                <span className="impact-tag">
+                                    <i className="fa-solid fa-users"></i>
                                     Community
                                 </span>
                             </div>
@@ -106,26 +95,15 @@ const VolunteerSection = () => {
                             flex: 1, 
                             aspectRatio: '16/9'
                         }}>
-                            <img src={puppyImg} alt="Dominican Puppy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img src={elephantImg} alt="Elephants in Sri Lanka" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             <div className="volunteer-image-overlay" style={{ 
                                 background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
                                 display: 'flex',
                                 alignItems: 'flex-end',
                                 padding: '20px'
                             }}>
-                                <span style={{ 
-                                    fontSize: '0.65rem', 
-                                    fontWeight: 900, 
-                                    textTransform: 'uppercase', 
-                                    letterSpacing: '2px',
-                                    background: 'rgba(29, 185, 84, 0.2)',
-                                    backdropFilter: 'blur(12px)',
-                                    padding: '8px 18px',
-                                    borderRadius: '100px',
-                                    border: '1px solid rgba(29, 185, 84, 0.3)',
-                                    color: 'white',
-                                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
-                                }}>
+                                <span className="impact-tag">
+                                    <i className="fa-solid fa-bolt-lightning"></i>
                                     Empowerment
                                 </span>
                             </div>
@@ -177,21 +155,16 @@ const VolunteerSection = () => {
                         </div>
                     </div>
 
-                    <Link to="/contact" className="btn-modern" style={{
-                        textDecoration: 'none', 
-                        display: 'inline-block', 
-                        marginTop: '30px',
-                        background: 'var(--primary-green)',
-                        color: 'white',
-                        padding: '15px 35px',
-                        borderRadius: '500px',
-                        fontWeight: 800,
-                        fontSize: '0.95rem',
-                        border: 'none',
-                        boxShadow: '0 10px 25px rgba(16, 124, 65, 0.25)',
-                        transition: 'all 0.3s ease'
+                    <Link to="/contact" className="btn-modern btn-solid-green" style={{
+                        marginTop: '40px',
+                        padding: '18px 45px',
+                        fontSize: '1rem',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '12px'
                     }}>
-                        Enquire About Volunteering
+                        <span>Enquire About Volunteering</span>
+                        <i className="fa-solid fa-arrow-right"></i>
                     </Link>
                 </div>
             </div>

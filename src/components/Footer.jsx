@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo_circular.png';
+import logo from '../assets/brand_logo.jpg';
 
 const Footer = () => {
     return (
@@ -9,7 +9,9 @@ const Footer = () => {
                 {/* Column 1: Brand */}
                 <div className="footer-column">
                     <Link to="/" className="logo-area" style={{marginBottom: '25px', display: 'inline-flex'}}>
-                        <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
+                        <div className="logo-image-container">
+                            <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
+                        </div>
                         <span className="logo-text" style={{color: 'white'}}>Giveback journny<span className="logo-dot">.</span></span>
                     </Link>
                     <p style={{color: 'rgba(255,255,255,0.6)', lineHeight: 1.8}}>

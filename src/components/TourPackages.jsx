@@ -166,12 +166,12 @@ const TourPackages = ({ searchTerm }) => {
         if (filterDuration === 'medium' && (days < 5 || days > 7)) return false;
         if (filterDuration === 'long' && days <= 7) return false;
 
-        // Category Filter (Simplified mapping for now)
-        const tags = pkg.name.toLowerCase() + pkg.description.toLowerCase();
-        if (filterCategory === 'nature' && !tags.includes('wild') && !tags.includes('nature') && !tags.includes('safari')) return false;
-        if (filterCategory === 'cultural' && !tags.includes('temple') && !tags.includes('ancient') && !tags.includes('cultural')) return false;
-        if (filterCategory === 'adventure' && !tags.includes('trek') && !tags.includes('hike') && !tags.includes('adventure')) return false;
-        if (filterCategory === 'coastal' && !tags.includes('beach') && !tags.includes('coast') && !tags.includes('shore')) return false;
+        // Category Filter
+        const tags = (pkg.name + pkg.description + (pkg.tags ? pkg.tags.join(' ') : '')).toLowerCase();
+        if (filterCategory === 'wildlife' && !tags.includes('wild') && !tags.includes('nature') && !tags.includes('safari') && !tags.includes('elephant') && !tags.includes('leopard')) return false;
+        if (filterCategory === 'cultural' && !tags.includes('temple') && !tags.includes('ancient') && !tags.includes('cultural') && !tags.includes('history') && !tags.includes('heritage')) return false;
+        if (filterCategory === 'beach' && !tags.includes('beach') && !tags.includes('coast') && !tags.includes('shore') && !tags.includes('surf')) return false;
+        if (filterCategory === 'volunteer' && !tags.includes('volunteer') && !tags.includes('impact') && !tags.includes('giveback') && !tags.includes('meaningful')) return false;
 
         return true;
     });
@@ -179,40 +179,89 @@ const TourPackages = ({ searchTerm }) => {
     const otherPackages = filteredPackages.filter(pkg => pkg.id !== (exactMatch ? exactMatch.id : null));
 
     return (
-        <section className="packages-section" id="tours">
-            <div className="packages-header">
+        <section className="premium-filter-section" id="tours">
+            <div className="premium-filter-header">
                 <span className="about-tag">Handpicked Journeys</span>
-                <h2>Curated Tour Plans.</h2>
-                <p>From misty emerald tea plantations to pristine azure shores, find the perfect itinerary for your island escape.</p>
+                <h1>All Sri Lanka Tours & Meaningful Experiences in 2026</h1>
             </div>
 
-            {/* Filter Bar */}
-            <div className="filter-bar">
-                <div className="filter-group">
-                    <span className="filter-label">Duration:</span>
-                    {['all', 'short', 'medium', 'long'].map(d => (
-                        <button 
-                            key={d} 
-                            onClick={() => setFilterDuration(d)}
-                            className={`filter-btn ${filterDuration === d ? 'active' : ''}`}
-                        >
-                            {d === 'all' ? 'All' : d === 'short' ? '1-4 Days' : d === 'medium' ? '5-7 Days' : '8+ Days'}
-                        </button>
-                    ))}
+            {/* Results Meta Info */}
+            <div className="results-meta">
+                <span className="results-count">{filteredPackages.length} {filteredPackages.length === 1 ? 'Journey' : 'Journeys'} found in Sri Lanka</span>
+                <div className="sort-dropdown">
+                    Sort by: Featured <i className="fa-solid fa-chevron-down" style={{fontSize: '0.7rem'}}></i>
                 </div>
-                
-                <div className="filter-group">
-                    <span className="filter-label">Interest:</span>
-                    {['all', 'nature', 'cultural', 'adventure', 'coastal'].map(c => (
-                        <button 
-                            key={c} 
-                            onClick={() => setFilterCategory(c)}
-                            className={`filter-btn ${filterCategory === c ? 'active' : ''}`}
-                        >
-                            {c === 'all' ? 'All' : c === 'nature' ? 'Nature' : c === 'cultural' ? 'Culture' : c === 'adventure' ? 'Adventure' : 'Beach'}
-                        </button>
-                    ))}
-                </div>
+            </div>
+
+            {/* Premium Pill Filter Bar */}
+            <div className="premium-filter-bar">
+
+
+                {/* Interest Filters */}
+                <button 
+                    onClick={() => setFilterCategory('all')}
+                    className={`filter-pill ${filterCategory === 'all' ? 'active' : ''}`}
+                >
+                    All Tours
+                </button>
+
+                <button 
+                    onClick={() => setFilterCategory('wildlife')}
+                    className={`filter-pill ${filterCategory === 'wildlife' ? 'active' : ''}`}
+                >
+                    Wildlife Safaris
+                </button>
+
+                <button 
+                    onClick={() => setFilterCategory('cultural')}
+                    className={`filter-pill ${filterCategory === 'cultural' ? 'active' : ''}`}
+                >
+                    Cultural Heritage
+                </button>
+
+                <button 
+                    onClick={() => setFilterCategory('beach')}
+                    className={`filter-pill ${filterCategory === 'beach' ? 'active' : ''}`}
+                >
+                    Beach & Surf
+                </button>
+
+                <button 
+                    onClick={() => setFilterCategory('volunteer')}
+                    className={`filter-pill ${filterCategory === 'volunteer' ? 'active' : ''}`}
+                >
+                    Volunteering & Impact
+                </button>
+
+
+
+                {/* Duration Filters */}
+                <button 
+                    onClick={() => setFilterDuration('short')}
+                    className={`filter-pill ${filterDuration === 'short' ? 'active' : ''}`}
+                >
+                    1-4 Days
+                </button>
+                <button 
+                    onClick={() => setFilterDuration('medium')}
+                    className={`filter-pill ${filterDuration === 'medium' ? 'active' : ''}`}
+                >
+                    5-7 Days
+                </button>
+                <button 
+                    onClick={() => setFilterDuration('long')}
+                    className={`filter-pill ${filterDuration === 'long' ? 'active' : ''}`}
+                >
+                    8+ Days
+                </button>
+
+                <button 
+                    onClick={() => {setFilterCategory('all'); setFilterDuration('all');}}
+                    className="filter-pill"
+                    style={{marginLeft: 'auto'}}
+                >
+                    Reset
+                </button>
             </div>
 
             <div className="packages-grid">

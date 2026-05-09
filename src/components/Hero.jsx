@@ -14,6 +14,7 @@ const Hero = ({ onSearch }) => {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isMuted, setIsMuted] = useState(true);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -97,11 +98,18 @@ const Hero = ({ onSearch }) => {
                 <video 
                     src={heroVideo} 
                     autoPlay 
-                    muted 
+                    muted={isMuted} 
                     loop 
                     playsInline 
                     className="hero-video"
                 />
+                <button 
+                    className="video-mute-toggle" 
+                    onClick={() => setIsMuted(!isMuted)}
+                    title={isMuted ? "Unmute" : "Mute"}
+                >
+                    <i className={isMuted ? "bi bi-volume-mute" : "bi bi-volume-up"}></i>
+                </button>
             </div>
 
             <div className="mobile-hero-slideshow">

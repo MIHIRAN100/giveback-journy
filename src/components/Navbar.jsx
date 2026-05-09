@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
-import logo from '../assets/logo_circular.png';
+import logo from '../assets/brand_logo.jpg';
 
 
 const Navbar = () => {
@@ -47,7 +47,9 @@ const Navbar = () => {
             
             <nav className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}>
                 <Link to="/" className="logo-area">
-                    <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
+                    <div className="logo-image-container">
+                        <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
+                    </div>
                     <span className="logo-text">Giveback journny<span className="logo-dot">.</span></span>
                 </Link>
 

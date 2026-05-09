@@ -14,6 +14,7 @@ import html2canvas from 'html2canvas';
 
 const ItineraryDay = ({ step, index, forceOpen }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
+    const [showOptional, setShowOptional] = useState(false);
 
     React.useEffect(() => {
         setIsOpen(forceOpen);
@@ -63,6 +64,66 @@ const ItineraryDay = ({ step, index, forceOpen }) => {
                             ))}
                         </div>
                     )}
+
+                    {step.optionalActivities && (
+                        <div style={{ marginTop: '25px' }}>
+                            <button 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowOptional(!showOptional);
+                                }}
+                                style={{ 
+                                    padding: '10px 22px', 
+                                    fontSize: '0.8rem', 
+                                    background: '#fff', 
+                                    color: '#333', 
+                                    border: '1.5px solid #e0e0e0',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    borderRadius: '100px',
+                                    fontWeight: 800,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.5px',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s ease',
+                                    outline: 'none'
+                                }}
+                                onMouseOver={(e) => { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.borderColor = '#999'; }}
+                                onMouseOut={(e) => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.borderColor = '#e0e0e0'; }}
+                            >
+                                <i className={`bi bi-${showOptional ? 'dash' : 'plus'}-lg`} style={{ color: 'var(--primary-green)', fontWeight: 900 }}></i>
+                                {showOptional ? 'Hide' : 'Show'} Optional Activities
+                            </button>
+                            
+                            {showOptional && (
+                                <div style={{ 
+                                    marginTop: '15px', 
+                                    padding: '24px', 
+                                    background: '#f9f9f9', 
+                                    borderRadius: '20px',
+                                    border: '1px dashed #ddd',
+                                    animation: 'fadeInUp 0.4s ease'
+                                }}>
+                                    <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                                        {step.optionalActivities.map((act, i) => (
+                                            <li key={i} style={{ 
+                                                marginBottom: '12px', 
+                                                display: 'flex', 
+                                                gap: '15px', 
+                                                alignItems: 'flex-start',
+                                                fontSize: '0.95rem',
+                                                color: '#444'
+                                            }}>
+                                                <i className="bi bi-plus-circle" style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.9rem' }}></i>
+                                                <span style={{ fontWeight: 500 }}>{act}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             )}
         </div>
@@ -72,7 +133,7 @@ const ItineraryDay = ({ step, index, forceOpen }) => {
 const TourDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { addToCompare } = useCompare();
+    const { addToCompare, compareList, removeFromCompare } = useCompare();
 
     const pkg = tourPackages.find(p => p.id === parseInt(id));
 
@@ -83,6 +144,10 @@ const TourDetails = () => {
     const [isDownloading, setIsDownloading] = useState(false);
     const itineraryRef = React.useRef(null);
     const reviewsRef = React.useRef(null);
+    const [reviewSearch, setReviewSearch] = useState('');
+    const [reviewSort, setReviewSort] = useState('Most insightful');
+    const [likedReviews, setLikedReviews] = useState({});
+    const [visibleReviewsCount, setVisibleReviewsCount] = useState(3);
     
     const [activeImage, setActiveImage] = useState(pkg ? pkg.image : '');
     const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -505,6 +570,7 @@ const TourDetails = () => {
                         overflow-wrap: break-word !important;
                         word-wrap: break-word !important;
                     }
+                }
 
                 /* Itinerary & Buttons Mobile Fix */
                 @media (max-width: 1024px) {
@@ -648,6 +714,344 @@ const TourDetails = () => {
                         border: none !important;
                         box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important;
                         transition: all 0.3s ease !important;
+                    }
+                }
+
+                /* Review Section Styles */
+                .reviews-container {
+                    margin-top: 80px;
+                    border-top: 1px solid #eee;
+                    padding-top: 80px;
+                }
+                .reviews-summary {
+                    display: grid;
+                    grid-template-columns: 250px 1fr;
+                    gap: 60px;
+                    margin-bottom: 40px;
+                    align-items: center;
+                }
+                .rating-large {
+                    text-align: center;
+                }
+                .rating-large h1 {
+                    font-size: 4rem;
+                    font-weight: 800;
+                    margin: 0;
+                    line-height: 1;
+                    color: #111;
+                }
+                .rating-large .stars {
+                    color: var(--primary-green);
+                    font-size: 1.8rem;
+                    margin: 15px 0;
+                    display: flex;
+                    justify-content: center;
+                    gap: 4px;
+                }
+                .rating-large p {
+                    color: #555;
+                    font-size: 0.95rem;
+                    margin: 0;
+                    font-weight: 500;
+                }
+                .rating-breakdown {
+                    max-width: 500px;
+                }
+                .breakdown-title {
+                    font-size: 0.9rem;
+                    color: #666;
+                    margin-bottom: 20px;
+                }
+                .breakdown-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 12px;
+                }
+                .breakdown-label {
+                    min-width: 60px;
+                    font-size: 0.9rem;
+                    color: #111;
+                    font-weight: 500;
+                }
+                .breakdown-bar-container {
+                    flex: 1;
+                    height: 8px;
+                    background: #eee;
+                    border-radius: 10px;
+                    overflow: hidden;
+                }
+                .breakdown-bar {
+                    height: 100%;
+                    background: var(--primary-green);
+                    border-radius: 10px;
+                }
+                .breakdown-count {
+                    min-width: 30px;
+                    text-align: right;
+                    font-size: 0.9rem;
+                    color: #111;
+                    font-weight: 500;
+                }
+                .trust-badge {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 30px;
+                    font-size: 0.95rem;
+                    color: #111;
+                    font-weight: 600;
+                }
+                .trust-badge i.bi-patch-check-fill {
+                    color: #111;
+                }
+                .reviews-controls {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 40px 0;
+                    padding-top: 30px;
+                    border-top: 1px solid #eee;
+                    gap: 20px;
+                }
+                .search-reviews {
+                    flex: 1;
+                    max-width: 500px;
+                    position: relative;
+                }
+                .search-reviews input {
+                    width: 100%;
+                    padding: 14px 20px 14px 45px;
+                    border: 1px solid #ddd;
+                    border-radius: 100px;
+                    font-size: 1rem;
+                    outline: none;
+                    transition: border-color 0.3s;
+                }
+                .search-reviews input:focus {
+                    border-color: var(--primary-green);
+                }
+                .search-reviews i {
+                    position: absolute;
+                    left: 18px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #666;
+                    font-size: 1.1rem;
+                }
+                .sort-reviews {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .sort-reviews select {
+                    padding: 12px 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 100px;
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    outline: none;
+                    cursor: pointer;
+                    appearance: none;
+                    background: #fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center;
+                    background-size: 15px;
+                    min-width: 200px;
+                }
+                .review-card-vertical {
+                    padding: 30px 0;
+                    border-bottom: 1px solid #eee;
+                }
+                .review-card-vertical:last-child {
+                    border-bottom: none;
+                }
+                .review-stars {
+                    color: var(--primary-green);
+                    font-size: 0.9rem;
+                    margin-bottom: 12px;
+                    display: flex;
+                    gap: 2px;
+                }
+                .review-title {
+                    font-size: 1.2rem;
+                    font-weight: 800;
+                    color: #111;
+                    margin: 0 0 8px 0;
+                }
+                .review-meta {
+                    font-size: 0.95rem;
+                    color: #666;
+                    margin-bottom: 20px;
+                }
+                .review-text {
+                    font-size: 1.05rem;
+                    line-height: 1.6;
+                    color: #333;
+                    margin: 0 0 20px 0;
+                }
+                .review-actions {
+                    display: flex;
+                    gap: 25px;
+                    color: #111;
+                }
+                .review-action {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                    opacity: 0.7;
+                    transition: opacity 0.2s;
+                }
+                .review-action:hover {
+                    opacity: 1;
+                }
+
+                @media (max-width: 768px) {
+                    .reviews-summary {
+                        grid-template-columns: 1fr;
+                        gap: 40px;
+                    }
+                    .reviews-controls {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+                }
+
+                /* Also Bought Section Styles */
+                .also-bought-container {
+                    margin-top: 80px;
+                    border-top: 1px solid #eee;
+                    padding-top: 60px;
+                    margin-bottom: 60px;
+                }
+                .also-bought-title {
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                    color: #111;
+                    margin-bottom: 30px;
+                }
+                .also-bought-grid {
+                    display: flex;
+                    gap: 20px;
+                    overflow-x: auto;
+                    padding: 10px 0 30px 0;
+                    scrollbar-width: none;
+                    ms-overflow-style: none;
+                }
+                .also-bought-grid::-webkit-scrollbar {
+                    display: none;
+                }
+                .tour-card-mini {
+                    flex: 0 0 280px;
+                    background: white;
+                    border-radius: 12px;
+                    border: 1px solid #eee;
+                    overflow: hidden;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .tour-card-mini:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+                }
+                .card-image-wrapper {
+                    position: relative;
+                    height: 180px;
+                }
+                .card-image-wrapper img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .heart-icon {
+                    position: absolute;
+                    top: 12px;
+                    right: 12px;
+                    width: 32px;
+                    height: 32px;
+                    background: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    color: #666;
+                }
+                .category-tag {
+                    position: absolute;
+                    bottom: 12px;
+                    left: 12px;
+                    background: rgba(0,0,0,0.6);
+                    color: white;
+                    padding: 4px 10px;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                }
+                .card-content {
+                    padding: 15px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .card-location {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-size: 0.8rem;
+                    color: #666;
+                    margin-bottom: 8px;
+                }
+                .card-rating {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-size: 0.85rem;
+                    color: #111;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                }
+                .card-rating i {
+                    color: var(--primary-green);
+                }
+                .card-title {
+                    font-size: 0.95rem;
+                    font-weight: 800;
+                    color: #111;
+                    line-height: 1.4;
+                    margin-bottom: 15px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    height: 2.8em;
+                }
+                .card-features {
+                    margin-bottom: 15px;
+                }
+                .feature-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 0.8rem;
+                    color: #555;
+                    margin-bottom: 5px;
+                }
+                .card-price {
+                    margin-top: auto;
+                    font-size: 0.9rem;
+                    color: #111;
+                }
+                .card-price strong {
+                    font-size: 1.1rem;
+                    font-weight: 800;
+                }
+
+                @media (max-width: 1024px) {
+                    .tour-card-mini {
+                        flex: 0 0 260px;
                     }
                 }
                 `}
@@ -1233,104 +1637,172 @@ const TourDetails = () => {
 
                 {/* Guest Reviews */}
                 {pkg.reviews && (
-                    <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '80px', position: 'relative' }}>
-                        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>Guest Reviews</h2>
-                            <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', color: '#FFD700', fontSize: '1.1rem' }}>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <i className="bi bi-star-fill"></i>
-                                <span style={{ color: '#666', fontSize: '1rem', fontWeight: 700, marginLeft: '10px' }}>5.0 Rating</span>
-                            </div>
-                        </div>
+                    <div className="reviews-container">
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '50px' }}>Reviews</h2>
                         
-                        <div style={{ position: 'relative' }}>
-                            <button 
-                                onClick={() => reviewsRef.current.scrollBy({ left: -reviewsRef.current.offsetWidth, behavior: 'smooth' })}
-                                style={{ 
-                                    position: 'absolute', left: '-25px', top: '50%', transform: 'translateY(-50%)', zIndex: 10,
-                                    width: '45px', height: '45px', borderRadius: '50%', border: 'none', background: 'white', 
-                                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    boxShadow: '0 8px 25px rgba(0,0,0,0.1)', transition: 'all 0.3s ease'
-                                }}
-                            >
-                                <i className="bi bi-chevron-left" style={{ fontSize: '1.2rem' }}></i>
-                            </button>
-                            <button 
-                                onClick={() => reviewsRef.current.scrollBy({ left: reviewsRef.current.offsetWidth, behavior: 'smooth' })}
-                                style={{ 
-                                    position: 'absolute', right: '-25px', top: '50%', transform: 'translateY(-50%)', zIndex: 10,
-                                    width: '45px', height: '45px', borderRadius: '50%', border: 'none', background: 'white', 
-                                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    boxShadow: '0 8px 25px rgba(0,0,0,0.1)', transition: 'all 0.3s ease'
-                                }}
-                            >
-                                <i className="bi bi-chevron-right" style={{ fontSize: '1.2rem' }}></i>
-                            </button>
-
-                            <div ref={reviewsRef} style={{ 
-                                display: 'flex', 
-                                flexWrap: 'nowrap',
-                                gap: '20px', 
-                                overflowX: 'auto', 
-                                padding: '10px 0 40px 0',
-                                msOverflowStyle: 'none',
-                                scrollbarWidth: 'none',
-                                scrollSnapType: 'x mandatory',
-                                width: '100%'
-                            }} className="reviews-scroll-container">
-                                {pkg.reviews.map((review) => (
-                                    <div key={review.id} style={{ 
-                                        flex: '0 0 calc(25% - 16px)', 
-                                        scrollSnapAlign: 'start',
-                                        background: 'white',
-                                        padding: '20px',
-                                        borderRadius: '24px',
-                                        border: '1px solid #eee',
-                                        boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 'auto',
-                                        minHeight: '320px',
-                                        justifyContent: 'space-between',
-                                        boxSizing: 'border-box'
-                                    }}>
-                                        <div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
-                                                <div style={{ 
-                                                    width: '50px', height: '50px', 
-                                                    background: review.color || 'rgba(29, 185, 84, 0.1)', 
-                                                    color: '#333', borderRadius: '50%', 
-                                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                    fontSize: '1.1rem', fontWeight: 800, border: '1px solid rgba(0,0,0,0.05)'
-                                                }}>
-                                                    {getInitials(review.name)}
-                                                </div>
-                                                <div>
-                                                    <h4 style={{ margin: '0 0 3px 0', fontSize: '0.95rem', fontWeight: 800, color: '#111' }}>{review.name}</h4>
-                                                    <div style={{ display: 'flex', gap: '2px', color: '#FFD700' }}>
-                                                        {[...Array(review.rating)].map((_, i) => <i key={i} className="bi bi-star-fill" style={{ fontSize: '0.7rem' }}></i>)}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p style={{ margin: '0 0 20px 0', color: '#555', lineHeight: 1.6, fontSize: '0.9rem', fontStyle: 'italic' }}>"{review.comment}"</p>
+                        <div className="reviews-summary">
+                            <div className="rating-large">
+                                <h1>4.5</h1>
+                                <div className="stars">
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-fill"></i>
+                                    <i className="bi bi-star-half"></i>
+                                </div>
+                                <p>based on 100+ reviews</p>
+                            </div>
+                            
+                            <div className="rating-breakdown">
+                                <div className="breakdown-title">Total reviews and rating from Viator & Tripadvisor</div>
+                                {[
+                                    { label: '5 stars', count: 298, width: '80%' },
+                                    { label: '4 stars', count: 18, width: '5%' },
+                                    { label: '3 stars', count: 18, width: '5%' },
+                                    { label: '2 stars', count: 12, width: '3%' },
+                                    { label: '1 star', count: 26, width: '7%' }
+                                ].map((row, i) => (
+                                    <div key={i} className="breakdown-row">
+                                        <div className="breakdown-label">{row.label}</div>
+                                        <div className="breakdown-bar-container">
+                                            <div className="breakdown-bar" style={{ width: row.width }}></div>
                                         </div>
-                                        <div style={{ borderTop: '1px solid #f5f5f5', paddingTop: '15px' }}>
-                                            <div style={{ fontSize: '0.75rem', color: '#888', marginBottom: '4px' }}>
-                                                <strong>Profile:</strong> {review.profile || 'Traveler'}
-                                            </div>
-                                            <div style={{ fontSize: '0.75rem', color: '#888' }}>
-                                                <strong>Tour Plan:</strong> <span style={{ color: 'var(--primary-green)', fontWeight: 600 }}>{review.trip || pkg.name}</span>
-                                            </div>
-                                        </div>
+                                        <div className="breakdown-count">{row.count}</div>
                                     </div>
                                 ))}
                             </div>
                         </div>
+
+                        <div className="trust-badge">
+                            <i className="bi bi-patch-check-fill"></i>
+                            <span>We perform <a href="#" style={{ textDecoration: 'underline', color: 'inherit' }}>checks on reviews</a></span>
+                            <i className="bi bi-info-circle" style={{ fontSize: '0.8rem', color: '#666' }}></i>
+                        </div>
+
+                        <div className="reviews-controls">
+                            <div className="search-reviews">
+                                <i className="bi bi-search"></i>
+                                <input 
+                                    type="text" 
+                                    placeholder="Search reviews (e.g. guide)" 
+                                    value={reviewSearch}
+                                    onChange={(e) => setReviewSearch(e.target.value)}
+                                />
+                            </div>
+                            <div className="sort-reviews">
+                                <span>Sort by:</span>
+                                <select value={reviewSort} onChange={(e) => setReviewSort(e.target.value)}>
+                                    <option>Most insightful</option>
+                                    <option>Most recent</option>
+                                    <option>Highest rating</option>
+                                    <option>Lowest rating</option>
+                                </select>
+                                <i className="bi bi-info-circle" style={{ color: '#999' }}></i>
+                            </div>
+                        </div>
+
+                        <div className="reviews-list">
+                            {pkg.reviews
+                                .filter(r => r.comment.toLowerCase().includes(reviewSearch.toLowerCase()) || r.name.toLowerCase().includes(reviewSearch.toLowerCase()))
+                                .slice(0, visibleReviewsCount)
+                                .map((review) => (
+                                <div key={review.id} className="review-card-vertical">
+                                    <div className="review-stars">
+                                        {[...Array(5)].map((_, i) => (
+                                            <i key={i} className={`bi bi-star${i < review.rating ? '-fill' : ''}`}></i>
+                                        ))}
+                                    </div>
+                                    <h3 className="review-title">{review.comment.split('.')[0]}</h3>
+                                    <div className="review-meta">
+                                        {review.name}, {review.date}
+                                    </div>
+                                    <p className="review-text">{review.comment}</p>
+                                    <div className="review-actions">
+                                        <div className="review-action">
+                                            <i className="bi bi-flag"></i>
+                                        </div>
+                                        <div 
+                                            className="review-action" 
+                                            onClick={() => setLikedReviews(prev => ({ ...prev, [review.id]: (prev[review.id] || 0) + 1 }))}
+                                            style={{ color: likedReviews[review.id] ? 'var(--primary-green)' : 'inherit', opacity: likedReviews[review.id] ? 1 : 0.7 }}
+                                        >
+                                            <i className={`bi bi-hand-thumbs-up${likedReviews[review.id] ? '-fill' : ''}`}></i>
+                                            {likedReviews[review.id] > 0 && <span style={{ fontSize: '0.9rem', fontWeight: 700, marginLeft: '5px' }}>{likedReviews[review.id]}</span>}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {visibleReviewsCount < pkg.reviews.filter(r => r.comment.toLowerCase().includes(reviewSearch.toLowerCase()) || r.name.toLowerCase().includes(reviewSearch.toLowerCase())).length && (
+                            <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                                <button 
+                                    onClick={() => setVisibleReviewsCount(prev => prev + 10)}
+                                    style={{
+                                        background: 'transparent',
+                                        border: '1px solid #ddd',
+                                        padding: '12px 30px',
+                                        borderRadius: '100px',
+                                        fontSize: '1rem',
+                                        fontWeight: 700,
+                                        color: '#111',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.3s'
+                                    }}
+                                >
+                                    Show 10 more reviews
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
+
+                {/* Customers Who Bought This Tour Also Bought */}
+                <div className="also-bought-container">
+                    <h2 className="also-bought-title">Customers Who Bought This Tour Also Bought</h2>
+                    <div className="also-bought-grid">
+                        {tourPackages
+                            .filter(t => t.id !== pkg.id)
+                            .slice(0, 6)
+                            .map((tour) => (
+                            <div key={tour.id} className="tour-card-mini" onClick={() => { navigate(`/package/${tour.id}`); window.scrollTo(0, 0); }}>
+                                <div className="card-image-wrapper">
+                                    <img src={tour.image} alt={tour.name} />
+                                    <div 
+                                        className="heart-icon" 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            const isInCompare = compareList?.some(item => item.id === tour.id);
+                                            if (isInCompare) {
+                                                removeFromCompare(tour.id);
+                                            } else {
+                                                addToCompare(tour);
+                                            }
+                                        }}
+                                        style={{ color: compareList?.some(item => item.id === tour.id) ? 'var(--primary-green)' : '#666' }}
+                                    >
+                                        <i className={`bi bi-heart${compareList?.some(item => item.id === tour.id) ? '-fill' : ''}`}></i>
+                                    </div>
+                                    <div className="category-tag">Day Trips</div>
+                                </div>
+                                <div className="card-content">
+                                    <div className="card-location">
+                                        <i className="bi bi-geo-alt"></i>
+                                        <span>Sri Lanka, South Asia</span>
+                                    </div>
+                                    <div className="card-rating">
+                                        <i className="bi bi-star-fill"></i>
+                                        <span>4.9 (120+)</span>
+                                    </div>
+                                    <h3 className="card-title">{tour.name}</h3>
+                                    <div className="card-price">
+                                        from <strong>USD {tour.price.replace('$', '')}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             <SriLankaGlance />

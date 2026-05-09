@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/logo_circular.png';
+import logo from '../assets/brand_logo.jpg';
 
 const LoadingScreen = () => {
     const [visible, setVisible] = useState(true);
@@ -27,8 +27,8 @@ const LoadingScreen = () => {
     return (
         <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
             <div className="loader-content">
-                <div className="loader-logo">
-                    <img src={logo} alt="Loading..." style={{ width: '60%', height: '60%', objectFit: 'contain' }} />
+                <div className="loader-logo" style={{ overflow: 'hidden', background: 'white' }}>
+                    <img src={logo} alt="Loading..." style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
                 <div className="loader-progress">
                     <div className="loader-bar"></div>

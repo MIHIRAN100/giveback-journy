@@ -39,17 +39,17 @@
 }
 
 .loader-logo {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--primary-green) 0%, #158b3e 100%);
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 2.5rem;
-    box-shadow: 0 20px 40px rgba(29, 185, 84, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     animation: loaderPulse 2s infinite ease-in-out;
+    background: white;
 }
 
 .loader-progress {
@@ -277,15 +277,33 @@ h1, h2, h3, .logo-text {
     font-size: 1.1rem;
 }
 
-.logo-image {
-    width: 38px;
-    height: 38px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid white;
+.logo-image-container {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    border-radius: 8px;
     background: white;
-    padding: 2px;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+    transition: var(--transition);
+}
+
+.logo-image-container:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.12));
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.logo-image-container:hover .logo-image {
+    transform: scale(1.8);
 }
 
 .logo-text {
@@ -307,7 +325,12 @@ h1, h2, h3, .logo-text {
         font-size: 0.85rem;
     }
     .logo-area {
-        gap: 8px;
+        gap: 12px;
+    }
+    .logo-image-container {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
     }
 }
 
@@ -437,7 +460,7 @@ h1, h2, h3, .logo-text {
 /* Hero Styles */
 .hero {
     position: relative;
-    height: 85vh;
+    height: 80vh;
     width: 100%;
     z-index: 20;
     display: flex;
@@ -464,8 +487,8 @@ h1, h2, h3, .logo-text {
     left: 50%;
     width: 100vw;
     height: 56.25vw; /* 16:9 ratio */
-    min-height: 85vh;
-    min-width: 151.11vh; /* 16:9 ratio for 85vh height */
+    min-height: 80vh;
+    min-width: 142.22vh; /* 16:9 ratio for 80vh height */
     transform: translate(-50%, -50%);
     object-fit: cover;
     pointer-events: none;
@@ -842,7 +865,7 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .hero {
-        height: 60vh;
+        height: 50vh;
         background: none !important;
     }
 
@@ -3026,6 +3049,44 @@ h1, h2, h3, .logo-text {
     color: var(--white);
     border-color: rgba(255, 255, 255, 0.4);
     background: rgba(255, 255, 255, 0.1);
+}
+
+.impact-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    z-index: 10;
+}
+
+.impact-tag i {
+    color: var(--primary-green);
+    font-size: 1rem;
+    transition: transform 0.4s ease;
+}
+
+.volunteer-grid-item:hover .impact-tag {
+    background: rgba(29, 185, 84, 0.25);
+    border-color: rgba(29, 185, 84, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(29, 185, 84, 0.35);
+}
+
+.volunteer-grid-item:hover .impact-tag i {
+    transform: scale(1.2) rotate(10deg);
 }
 
 .volunteer-preview-content h2 {
@@ -6085,5 +6146,137 @@ h1, h2, h3, .logo-text {
     
     .exp-card-modern {
         flex: 0 0 280px;
+    }
+}
+
+/* Premium Filter Bar Modernization */
+.premium-filter-section {
+    padding: 40px 5% 0 5%;
+    background: #fff;
+}
+
+.premium-filter-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.premium-filter-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--pitch-black);
+    letter-spacing: -0.5px;
+}
+
+.results-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.results-count {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.sort-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--pitch-black);
+    cursor: pointer;
+}
+
+.premium-filter-bar {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 15px 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    position: sticky;
+    top: 90px;
+    z-index: 100;
+    background: var(--white);
+    margin-bottom: 20px;
+}
+
+.premium-filter-bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.filter-pill {
+    padding: 10px 22px;
+    border-radius: 100px;
+    background: #fff;
+    border: 1.5px solid #e0e0e0;
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    outline: none;
+}
+
+.filter-pill i {
+    font-size: 0.9rem;
+}
+
+.filter-pill:hover {
+    border-color: #999;
+    background: #f9f9f9;
+}
+
+.filter-pill.active {
+    background: var(--pitch-black);
+    border-color: var(--pitch-black);
+    color: #fff;
+}
+
+.filter-pill.active i {
+    color: var(--primary-green);
+}
+
+.filter-pill.placeholder {
+    background: #f5f5f5;
+    border-color: transparent;
+    color: #666;
+}
+
+.filter-divider {
+    width: 1px;
+    height: 24px;
+    background: #eee;
+    margin: 0 5px;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .premium-filter-section {
+        padding: 40px 5% 0 5%;
+    }
+    
+    .premium-filter-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .filter-pill {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+    }
+    
+    .results-meta {
+        margin-bottom: 15px;
     }
 }
