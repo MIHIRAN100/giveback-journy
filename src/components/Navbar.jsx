@@ -37,7 +37,7 @@ const Navbar = () => {
                 <div className="banner">
                     <div className="banner-content">
                         <span className="banner-tag">NEW</span>
-                        <span className="banner-text">New volunteering projects available - Join the impact today!</span>
+                        <span className="banner-text">Special Island Update - Discover our newest boutique experiences!</span>
                     </div>
                     <div className="banner-close" onClick={() => setBannerVisible(false)}>
                         <i className="fa-solid fa-xmark"></i>

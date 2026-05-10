@@ -152,7 +152,7 @@ h1, h2, h3, .logo-text {
     background: white !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
-/* Modern Ticker Banner */
+/* Top Advertising Banner */
 .banner-wrapper {
     max-height: 100px;
     opacity: 1;
@@ -173,16 +173,15 @@ h1, h2, h3, .logo-text {
 .banner {
     background: linear-gradient(90deg, #1DB954 0%, #158b3e 100%);
     color: var(--white);
-    padding: 5px 5%;
+    padding: 8px 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 1px;
     font-weight: 700;
     text-transform: uppercase;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .banner-tag {
@@ -217,8 +216,96 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .banner {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding: 10px 15px;
+        font-size: 0.6rem;
+    }
+    .banner-tag {
+        margin-right: 10px;
+    }
+}
+/* Modern Ticker Banner (Full-Width Bottom) */
+.bottom-ad-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2500;
+    animation: slideUpAd 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+}
+
+.bottom-ad-inner {
+    background: #000; /* Solid Black */
+    color: var(--white);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0; /* Removed Radius */
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.bottom-ad-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.bottom-ad-tag {
+    background: var(--primary-green);
+    color: var(--pitch-black);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.bottom-ad-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    opacity: 0.9;
+}
+
+.bottom-ad-close {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.bottom-ad-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+@keyframes slideUpAd {
+    from { opacity: 0; transform: translateY(100%); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .bottom-ad-banner {
+        bottom: 0;
+    }
+    .bottom-ad-inner {
+        padding: 12px 15px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom)); /* Account for safe area */
+    }
+    .bottom-ad-text {
+        font-size: 0.75rem;
+    }
+    .bottom-ad-tag {
+        font-size: 0.6rem;
+        margin-right: 5px;
     }
 }
 
@@ -460,7 +547,7 @@ h1, h2, h3, .logo-text {
 /* Hero Styles */
 .hero {
     position: relative;
-    height: 80vh;
+    height: 88vh;
     width: 100%;
     z-index: 20;
     display: flex;
@@ -487,8 +574,8 @@ h1, h2, h3, .logo-text {
     left: 50%;
     width: 100vw;
     height: 56.25vw; /* 16:9 ratio */
-    min-height: 80vh;
-    min-width: 142.22vh; /* 16:9 ratio for 80vh height */
+    min-height: 88vh;
+    min-width: 156.44vh; /* 16:9 ratio for 88vh height */
     transform: translate(-50%, -50%);
     object-fit: cover;
     pointer-events: none;
@@ -865,7 +952,7 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .hero {
-        height: 50vh;
+        height: 58vh;
         background: none !important;
     }
 
@@ -4038,7 +4125,7 @@ h1, h2, h3, .logo-text {
 }
 
 .hero-search-btn:hover {
-    background: #1ed760;
+    background: var(--white);
     transform: scale(1.05);
 }
 

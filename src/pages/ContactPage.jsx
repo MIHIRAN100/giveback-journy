@@ -82,7 +82,7 @@ const ContactPage = () => {
                                     <div className="channel-info">
                                         <h4>Call Us Directly</h4>
                                         <p>Mon-Fri, 9am - 6pm (SL Time)</p>
-                                        <a href="tel:+94112345678">+94 11 234 5678</a>
+                                        <a href="tel:+94812345678">+94 81 234 5678</a>
                                     </div>
                                 </div>
 
@@ -100,7 +100,7 @@ const ContactPage = () => {
                                 <h4>Our Headquarters</h4>
                                 <p>
                                     Give Back Journey (Pvt) Ltd.<br/>
-                                    120/A, Galle Road, Colombo 03,<br/>
+                                    No. 45, Peradeniya Road, Kandy,<br/>
                                     Sri Lanka.
                                 </p>
                             </div>
