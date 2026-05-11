@@ -59,7 +59,7 @@ const ToursGrid = ({ searchTerm }) => {
                                         <h4 style={{fontSize: '1.2rem', fontWeight: 800, color: 'var(--pitch-black)'}}>{tour.title}</h4>
                                         <span style={{color: 'var(--spotify-green)', fontWeight: 800}}>{tour.rating} <i className="bi bi-star-fill"></i></span>
                                     </div>
-                                    <p style={{color: 'var(--dark-gray)', opacity: 0.7, fontSize: '0.9rem', marginBottom: '20px'}}>Experience the authentic charm and breathtaking landscapes of this {tour.category.toLowerCase()} gem.</p>
+                                    <p style={{color: 'var(--dark-gray)', opacity: 0.7, fontSize: '0.9rem', marginBottom: '20px'}}>Experience the authentic charm and beauty of this {tour.category.toLowerCase()} gem.</p>
                                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '20px'}}>
                                         <div className="price-box">
                                             <label style={{fontSize: '0.7rem', fontWeight: 800, color: 'var(--light-gray)', textTransform: 'uppercase', display: 'block'}}>From</label>

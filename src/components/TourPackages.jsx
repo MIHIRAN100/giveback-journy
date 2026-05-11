@@ -102,7 +102,7 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden'
-                }}>{pkg.description}</p>
+                }}>{pkg.description.split('\n')[0]}</p>
                 
                 <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
                     {getTags().map((tag, i) => (

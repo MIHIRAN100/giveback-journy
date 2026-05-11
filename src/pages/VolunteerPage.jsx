@@ -189,69 +189,88 @@ const VolunteerPage = () => {
                 }
 
                 .features-section {
-                    background: #f0f2f5;
-                    padding: 100px 5%;
-                    border-radius: 50px;
+                    background: #f8fafc;
+                    padding: 120px 5%;
+                    border-radius: 60px;
                     margin-bottom: 120px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .features-section::before {
+                    content: '';
+                    position: absolute;
+                    top: -100px;
+                    right: -100px;
+                    width: 300px;
+                    height: 300px;
+                    background: radial-gradient(circle, rgba(29, 185, 84, 0.05) 0%, transparent 70%);
+                    border-radius: 50%;
                 }
 
                 .features-grid {
                     display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 25px;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 30px;
                 }
 
                 .feature-item {
-                    background: #fff;
-                    padding: 35px;
-                    border-radius: 20px;
-                    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-                    transition: all 0.3s ease;
-                    border: 1px solid #e4e6eb;
+                    background: rgba(255, 255, 255, 0.8);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    padding: 40px 30px;
+                    border-radius: 32px;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    border: 1px solid rgba(255, 255, 255, 0.5);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
                 }
 
                 .feature-item:hover {
-                    background: #f7f8f9;
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                    transform: translateY(-12px);
+                    background: #fff;
+                    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+                    border-color: rgba(29, 185, 84, 0.2);
                 }
 
                 .feature-icon-container {
-                    width: 50px;
-                    height: 50px;
-                    background: #e7f3ff;
-                    color: #1877f2;
-                    border-radius: 50%;
+                    width: 70px;
+                    height: 70px;
+                    background: white;
+                    color: #111;
+                    border-radius: 22px;
                     display: flex;
-                    alignItems: center;
+                    align-items: center;
                     justify-content: center;
-                    font-size: 1.4rem;
-                    margin-bottom: 20px;
-                    transition: 0.3s;
+                    font-size: 1.8rem;
+                    margin-bottom: 25px;
+                    transition: all 0.5s ease;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                    position: relative;
                 }
 
-                .feature-item:nth-child(2n) .feature-icon-container {
-                    background: #f0fdf4;
-                    color: #166534;
-                }
-
-                .feature-item:nth-child(3n) .feature-icon-container {
-                    background: #fff7ed;
-                    color: #92400e;
+                .feature-item:hover .feature-icon-container {
+                    transform: rotate(10deg);
+                    background: var(--primary-green);
+                    color: white;
+                    box-shadow: 0 15px 30px rgba(29, 185, 84, 0.3);
                 }
 
                 .feature-title {
-                    font-size: 1.25rem;
+                    font-size: 1.35rem;
                     font-weight: 800;
-                    color: #1c1e21;
-                    margin-bottom: 12px;
-                    letter-spacing: -0.01em;
+                    color: #111;
+                    margin-bottom: 15px;
+                    letter-spacing: -0.02em;
                 }
 
                 .feature-desc {
                     font-size: 0.95rem;
-                    line-height: 1.6;
-                    color: #65676b;
+                    line-height: 1.7;
+                    color: #64748b;
                     margin: 0;
                 }
 
@@ -292,9 +311,13 @@ const VolunteerPage = () => {
                     margin-bottom: 120px;
                 }
 
-                @media (max-width: 1024px) {
-                    .section-intro, .focus-areas-grid, .locations-grid, .journey-steps, .features-grid {
+                    @media (max-width: 1024px) {
+                    .section-intro, .focus-areas-grid, .locations-grid, .journey-steps {
                         grid-template-columns: 1fr !important;
+                    }
+
+                    .features-grid {
+                        grid-template-columns: 1fr 1fr !important;
                     }
                     
                     .volunteer-hero {
@@ -427,12 +450,15 @@ const VolunteerPage = () => {
 
                 {/* Features */}
                 <section className="features-section">
-                    <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '50px', textAlign: 'center', color: '#1c1e21' }}>Program Features</h3>
+                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Experience Excellence</span>
+                        <h3 style={{ fontSize: '3rem', fontWeight: 900, marginTop: '10px', color: '#111', letterSpacing: '-0.03em' }}>Program Features</h3>
+                    </div>
                     <div className="features-grid">
                         {[
                             { title: "Project Training", icon: "fa-chalkboard-user", desc: "Comprehensive orientation and hands-on skill training before you start." },
-                            { title: "Local Coordinator", icon: "fa-user-group", desc: "24/7 dedicated support from our experienced on-site community leaders." },
-                            { title: "Shared Living", icon: "fa-house-chimney", desc: "Safe, comfortable accommodation in volunteer houses or local host families." },
+                            { title: "Local Coordinator", icon: "fa-user-group", desc: "24/7 dedicated support from our experienced on-site leaders." },
+                            { title: "Shared Living", icon: "fa-house-chimney", desc: "Safe, comfortable accommodation in volunteer houses or host families." },
                             { title: "Impact Certificate", icon: "fa-certificate", desc: "Official recognition of your volunteer hours and community contributions." }
                         ].map((item, i) => (
                             <div key={i} className="feature-item">
