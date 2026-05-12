@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
+import essentialSlide2 from '../assets/c9643fab2024fdb4eb79ec69b070e545.jpg';
+import gallerySlide3 from '../assets/87fd5839db5c013598d55c1c41ee72d5.jpg';
+import gallerySlide4 from '../assets/24b02737e3f0ac7e69426d35da060e5a.jpg';
+import gallerySlide5 from '../assets/e00c2772910971201b0e48853af8577a.jpg';
 
 const SpotifyAdCard = ({ margin = '0' }) => {
     const navigate = useNavigate();
+    const [bgIndex, setBgIndex] = useState(0);
+    const bgImages = [budgetPromoImg, essentialSlide2, gallerySlide3, gallerySlide4, gallerySlide5];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBgIndex((prev) => (prev + 1) % bgImages.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className="spotify-ad-card" style={{
@@ -16,12 +29,33 @@ const SpotifyAdCard = ({ margin = '0' }) => {
             justifyContent: 'space-between',
             padding: '40px',
             color: 'white',
-            background: `linear-gradient(to bottom, rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.95)), url(${budgetPromoImg}) no-repeat center/cover`,
+            background: '#121212',
             boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
             margin: margin,
             border: '1px solid rgba(255,255,255,0.1)',
             cursor: 'default'
         }}>
+            {/* Absolute Background Image Layers for Cinematic Crossfade */}
+            {bgImages.map((img, index) => (
+                <div 
+                    key={index}
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundImage: `linear-gradient(to bottom, rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.95)), url(${img})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        opacity: index === bgIndex ? 1 : 0,
+                        transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                        zIndex: 0,
+                        pointerEvents: 'none'
+                    }}
+                />
+            ))}
+
             {/* Accent Gradient Overlay */}
             <div style={{
                 position: 'absolute',

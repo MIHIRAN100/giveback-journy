@@ -26,7 +26,7 @@ import routeMapGalle from '../assets/route_map_galle_v2.png';
 import routeMapKandyDetailed from '../assets/route_map_kandy_detailed.png';
 import routeMapAdamsPeakDetailed from '../assets/route_map_adams_peak_detailed.png';
 import routeMapEssentialDetailed from '../assets/route_map_essential_detailed.png';
-import routeMapKandyPinnawalaDetailed from '../assets/route_map_kandy_pinnawala_detailed.png';
+import routeMapKandyPinnawalaDetailed from '../assets/kandy_route_map_v8.png';
 import routeMapSouthernDetailed from '../assets/route_map_southern_detailed.png';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 
@@ -175,7 +175,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Pinnawala & Kandy Scenic Day Tour", 
-                desc: "Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments. Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath—a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.\n\nFollowing the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling. On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.", 
+                desc: "Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments.<br/><br/><strong>Key Highlights & Activities:</strong><ul style='margin-top: 10px; padding-left: 20px; list-style-type: disc;'><li><strong>Pinnawala Elephant Orphanage:</strong> Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath—a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.</li><li style='margin-top: 8px;'><strong>Dung Paper Recycling Factory:</strong> Following the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling.</li><li style='margin-top: 8px;'><strong>Traditional Ceylon Tea Factory:</strong> On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.</li></ul>", 
                 activities: ["Elephant Feeding & Bathing", "Riverside Interaction", "Dung Paper Recycling", "Tea Factory Visit", "Fresh Ceylon Tea Tasting"] 
             }
         ],
