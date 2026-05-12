@@ -101,6 +101,34 @@ const glanceData = [
         value: 'Type D & G',
         color: '#795548',
         desc: '230V / 50Hz'
+    },
+    {
+        icon: 'bi-passport-fill',
+        label: 'Visa',
+        value: 'ETA Online',
+        color: '#3F51B5',
+        desc: 'Free for 30 days'
+    },
+    {
+        icon: 'bi-telephone-fill',
+        label: 'Emergency',
+        value: '119 / 110',
+        color: '#F44336',
+        desc: 'Police & Ambulance'
+    },
+    {
+        icon: 'bi-heart-fill',
+        label: 'Tipping',
+        value: '10% Service',
+        color: '#FF4081',
+        desc: 'Appreciated, not mandatory'
+    },
+    {
+        icon: 'bi-droplet-fill',
+        label: 'Water',
+        value: 'Bottled Only',
+        color: '#03A9F4',
+        desc: 'Avoid tap water'
     }
 ];
 
