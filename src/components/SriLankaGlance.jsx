@@ -89,11 +89,11 @@ const glanceData = [
         desc: 'World Heritage'
     },
     {
-        icon: 'bi-airplane-fill',
-        label: 'Best Time to Visit',
-        value: 'Dec – Apr',
-        color: '#00BCD4',
-        desc: 'Dry season'
+        icon: 'bi-cup-hot-fill',
+        label: 'Famous Export',
+        value: 'Ceylon Tea',
+        color: '#FF9800',
+        desc: 'World renowned brew'
     },
     {
         icon: 'bi-plug-fill',
@@ -126,7 +126,7 @@ const glanceData = [
     {
         icon: 'bi-droplet-fill',
         label: 'Water',
-        value: 'Bottled Only',
+        value: 'Bottled / Filtered',
         color: '#03A9F4',
         desc: 'Avoid tap water'
     }

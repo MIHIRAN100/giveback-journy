@@ -22,22 +22,52 @@ const ItineraryDay = ({ step, index, forceOpen }) => {
     }, [forceOpen]);
 
     return (
-        <div style={{ borderBottom: '1px solid #eee' }}>
+        <div style={{ 
+            position: 'relative', 
+            paddingLeft: '35px', 
+            paddingRight: '10px',
+            borderLeft: '3px solid var(--primary-green)',
+            marginLeft: '15px',
+            borderBottom: '1px solid #f4f4f4',
+            background: isOpen ? 'rgba(29, 185, 84, 0.02)' : 'transparent',
+            transition: 'background 0.3s ease'
+        }}>
+            {/* Timeline Node Dot */}
+            <div style={{
+                position: 'absolute',
+                left: '-9px',
+                top: '30px',
+                width: '15px',
+                height: '15px',
+                borderRadius: '50%',
+                background: isOpen ? 'var(--primary-green)' : '#fff',
+                border: '3px solid var(--primary-green)',
+                boxShadow: isOpen ? '0 0 0 4px rgba(29, 185, 84, 0.2)' : 'none',
+                transition: 'all 0.3s ease'
+            }} />
+
             <div 
                 onClick={() => setIsOpen(!isOpen)}
                 style={{ 
-                    padding: '25px 0', 
+                    padding: '22px 0', 
                     display: 'flex', 
                     justifyContent: 'space-between', 
                     alignItems: 'center', 
                     cursor: 'pointer' 
                 }}
             >
-                <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>
-                    <span style={{ color: '#666', marginRight: '10px' }}>Day {step.day} ·</span>
-                    <span>{step.title}</span>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                    <span style={{ 
+                        background: 'var(--primary-green)', 
+                        color: '#fff', 
+                        padding: '2px 10px', 
+                        borderRadius: '6px', 
+                        fontSize: '0.8rem', 
+                        fontWeight: 800 
+                    }}>DAY {step.day}</span>
+                    <span style={{ color: '#111' }}>{step.title}</span>
                 </div>
-                <i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
+                <i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} style={{ color: 'var(--primary-green)', fontWeight: 800, fontSize: '1.1rem' }}></i>
             </div>
             {isOpen && (
                 <div style={{ padding: '0 0 30px 0', color: '#555', lineHeight: 1.8, fontSize: '1.05rem', whiteSpace: 'pre-line' }}>
@@ -787,6 +817,21 @@ const TourDetails = () => {
                     background: var(--primary-green);
                     border-radius: 10px;
                 }
+                @keyframes infiniteRising {
+                    0% { width: 70%; }
+                    50% { width: 85%; }
+                    100% { width: 70%; }
+                }
+                @keyframes shimmerGradient {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .breakdown-bar.animated-rising {
+                    animation: infiniteRising 3s ease-in-out infinite, shimmerGradient 3s linear infinite;
+                    background: linear-gradient(-45deg, var(--primary-green), #81c784, var(--primary-green));
+                    background-size: 200% 200%;
+                }
                 .breakdown-count {
                     min-width: 30px;
                     text-align: right;
@@ -1210,15 +1255,15 @@ const TourDetails = () => {
                                     <span style={{ fontSize: '1rem', fontWeight: 900 }}>10 years old</span>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Style <i className="bi bi-info-circle" style={{ fontSize: '0.65rem' }}></i></span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>Comfort</span>
+                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Style</span>
+                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>Simple Stay</span>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Theme <i className="bi bi-info-circle" style={{ fontSize: '0.65rem' }}></i></span>
+                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Theme</span>
                                     <span style={{ fontSize: '1rem', fontWeight: 900 }}>Explorer</span>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Physical rating <i className="bi bi-info-circle" style={{ fontSize: '0.65rem' }}></i></span>
+                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Physical rating</span>
                                     <div style={{ display: 'flex', gap: '4px', marginTop: '5px' }}>
                                         {[1, 2, 3, 4, 5].map(i => (
                                             <div key={i} style={{ width: '12px', height: '4px', background: i <= 2 ? '#333' : '#eee', borderRadius: '2px' }}></div>
@@ -1600,9 +1645,7 @@ const TourDetails = () => {
                                 background: '#fff' 
                             }}>
                                 <p style={{ margin: 0, fontSize: '0.95rem', color: '#444', lineHeight: 1.6 }}>
-                                    This trip generates <strong style={{ borderBottom: '2px solid #333' }}>50 kg</strong> of CO<sub>2</sub>-e per person per day. 
-                                    <i className="bi bi-info-circle" style={{ marginLeft: '5px', fontSize: '0.8rem' }}></i> 
-                                    <a href="#" style={{ color: '#0066cc', textDecoration: 'underline', marginLeft: '5px' }}>Learn more about our climate commitment.</a>
+                                    This trip generates <strong style={{ borderBottom: '2px solid #333' }}>{pkg.co2 || (42 + (pkg.id * 7) % 25)} kg</strong> of CO<sub>2</sub>-e per person per day. <span style={{ color: '#2e7d32', fontWeight: 600 }}>Fact:</span> We locally offset 100% of these emissions by planting native trees and restoring critical elephant corridors in Sri Lanka.
                                 </p>
                             </div>
                         </div>
@@ -1650,18 +1693,21 @@ const TourDetails = () => {
                             </div>
                             
                             <div className="rating-breakdown">
-                                <div className="breakdown-title">Total reviews and rating from Viator & Tripadvisor</div>
+                                <div className="breakdown-title">Total reviews and rating from Giveback Journey</div>
                                 {[
-                                    { label: '5 stars', count: 298, width: '80%' },
+                                    { label: '5 stars', count: 110, width: '80%' },
                                     { label: '4 stars', count: 18, width: '5%' },
                                     { label: '3 stars', count: 18, width: '5%' },
                                     { label: '2 stars', count: 12, width: '3%' },
-                                    { label: '1 star', count: 26, width: '7%' }
+                                    { label: '1 star', count: 3, width: '2%' }
                                 ].map((row, i) => (
                                     <div key={i} className="breakdown-row">
                                         <div className="breakdown-label">{row.label}</div>
                                         <div className="breakdown-bar-container">
-                                            <div className="breakdown-bar" style={{ width: row.width }}></div>
+                                            <div 
+                                                className={`breakdown-bar ${row.label === '5 stars' ? 'animated-rising' : ''}`} 
+                                                style={{ width: row.width }}
+                                            ></div>
                                         </div>
                                         <div className="breakdown-count">{row.count}</div>
                                     </div>
@@ -1671,8 +1717,7 @@ const TourDetails = () => {
 
                         <div className="trust-badge">
                             <i className="bi bi-patch-check-fill"></i>
-                            <span>We perform <a href="#" style={{ textDecoration: 'underline', color: 'inherit' }}>checks on reviews</a></span>
-                            <i className="bi bi-info-circle" style={{ fontSize: '0.8rem', color: '#666' }}></i>
+                            <span>We perform checks on reviews</span>
                         </div>
 
                         <div className="reviews-controls">
@@ -1700,6 +1745,12 @@ const TourDetails = () => {
                         <div className="reviews-list">
                             {pkg.reviews
                                 .filter(r => r.comment.toLowerCase().includes(reviewSearch.toLowerCase()) || r.name.toLowerCase().includes(reviewSearch.toLowerCase()))
+                                .sort((a, b) => {
+                                    if (reviewSort === 'Highest rating') return b.rating - a.rating;
+                                    if (reviewSort === 'Lowest rating') return a.rating - b.rating;
+                                    if (reviewSort === 'Most recent') return b.id - a.id;
+                                    return a.id - b.id;
+                                })
                                 .slice(0, visibleReviewsCount)
                                 .map((review) => (
                                 <div key={review.id} className="review-card-vertical">
