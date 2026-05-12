@@ -661,7 +661,7 @@ h1, h2, h3, .logo-text {
     z-index: 10;
     color: var(--white);
     max-width: 900px;
-    padding: 0 5%;
+    padding: 120px 5% 0; /* Added 120px top padding */
 }
 
 .hero-content h1 {
@@ -995,6 +995,10 @@ h1, h2, h3, .logo-text {
 
     .hero-video-container {
         display: none;
+    }
+
+    .hero-content {
+        padding-top: 60px; /* Reduced top padding for mobile */
     }
 
     .hero-content h1 {
@@ -1455,7 +1459,251 @@ h1, h2, h3, .logo-text {
     align-items: stretch;
 }
 
-.package-card {
+.package-card.gyg-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto !important;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+@media (min-width: 1025px) {
+    .package-card.gyg-card:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        transform: translateY(-2px);
+    }
+}
+
+/* GYG Card Image */
+.gyg-card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.gyg-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.package-card.gyg-card:hover .gyg-card-img {
+    transform: scale(1.05);
+}
+
+/* Days / Nights Badge — modern glassmorphism pill */
+.gyg-days-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 5;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.gyg-days-num {
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--primary-green);
+}
+
+.gyg-days-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    opacity: 0.85;
+}
+
+.gyg-days-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.25);
+    margin: 0 3px;
+}
+
+/* Discount Badge */
+.gyg-discount-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ff4757;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    z-index: 5;
+    letter-spacing: 0.3px;
+}
+
+/* GYG Card Body */
+.gyg-card-body {
+    padding: 14px 16px 18px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Category • Location */
+.gyg-card-category {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+
+/* Title */
+.gyg-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Meta tags row */
+.gyg-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.gyg-meta-tag {
+    font-size: 0.78rem;
+    color: #888;
+    font-weight: 400;
+}
+
+/* Rating row */
+.gyg-card-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.gyg-star {
+    color: var(--primary-green);
+    font-size: 0.9rem;
+}
+
+.gyg-rating-score {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.gyg-rating-count {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.gyg-rating-dot {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 2px;
+}
+
+.gyg-booking-info {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* Card Footer: Price + More button */
+.gyg-card-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Price */
+.gyg-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.gyg-price-current {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.gyg-price-original {
+    font-size: 0.85rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.gyg-price-from {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 400;
+}
+
+.gyg-price-from strong {
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+/* More Button */
+.gyg-more-btn {
+    background: var(--pitch-black);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 500px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.package-card.gyg-card:hover .gyg-more-btn {
+    background: #333;
+    transform: scale(1.05);
+}
+
+/* ---- Legacy card styles (keep for backward compatibility) ---- */
+.package-card:not(.gyg-card) {
     background: var(--white);
     border-radius: 16px;
     overflow: hidden;
@@ -1464,13 +1712,13 @@ h1, h2, h3, .logo-text {
     border: 1px solid rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    position: relative; /* Crucial for z-index */
+    position: relative;
     z-index: 20;
     pointer-events: auto !important;
 }
 
 @media (min-width: 1025px) {
-    .package-card:hover {
+    .package-card:not(.gyg-card):hover {
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     }
@@ -1565,10 +1813,369 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .packages-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
     .packages-header h2 {
         font-size: 2.2rem;
+    }
+
+    /* GYG card mobile adjustments */
+    .gyg-card-img {
+        height: 140px;
+    }
+
+    .gyg-days-badge {
+        top: 8px;
+        right: 8px;
+        padding: 4px 8px;
+        gap: 3px;
+        border-radius: 6px;
+    }
+
+    .gyg-days-num {
+        font-size: 0.75rem;
+    }
+
+    .gyg-days-label {
+        font-size: 0.45rem;
+        letter-spacing: 0.5px;
+    }
+
+    .gyg-days-divider {
+        height: 12px;
+    }
+
+    .gyg-discount-badge {
+        top: 8px;
+        left: 8px;
+        padding: 3px 7px;
+        font-size: 0.6rem;
+        border-radius: 4px;
+    }
+
+    .gyg-card-body {
+        padding: 10px 10px 14px 10px;
+    }
+
+    .gyg-card-category {
+        font-size: 0.68rem;
+        margin-bottom: 4px;
+    }
+
+    .gyg-card-title {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+
+    .gyg-card-meta {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+
+    .gyg-meta-tag {
+        font-size: 0.68rem;
+    }
+
+    .gyg-card-rating-row {
+        margin-bottom: 8px;
+        gap: 3px;
+    }
+
+    .gyg-star {
+        font-size: 0.78rem;
+    }
+
+    .gyg-rating-score,
+    .gyg-rating-count,
+    .gyg-rating-dot,
+    .gyg-booking-info {
+        font-size: 0.75rem;
+    }
+
+    .gyg-price-current,
+    .gyg-price-from strong {
+        font-size: 0.9rem;
+    }
+
+    .gyg-price-original {
+        font-size: 0.75rem;
+    }
+
+    .gyg-more-btn {
+        padding: 6px 14px;
+        font-size: 0.65rem;
+    }
+
+    .package-card.gyg-card {
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .gyg-card-img {
+        height: 120px;
+    }
+
+    .gyg-card-title {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .gyg-card-meta {
+        display: none;
+    }
+
+    .gyg-more-btn {
+        padding: 5px 10px;
+        font-size: 0.6rem;
+    }
+}
+
+/* ========== Sri Lanka at a Glance — Modern Bento Grid ========== */
+.glance-section {
+    padding: 100px 5%;
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.glance-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,185,84,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.glance-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.glance-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.glance-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--pitch-black);
+    margin: 0 0 16px 0;
+    line-height: 1.15;
+}
+
+.glance-subtitle {
+    font-size: 1.1rem;
+    color: #777;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Bento Grid */
+.glance-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+/* Card */
+.glance-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.glance-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: linear-gradient(135deg, rgba(29,185,84,0.03) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.glance-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    border-color: rgba(29,185,84,0.15);
+}
+
+.glance-card:hover::after {
+    opacity: 1;
+}
+
+/* Featured card (first item) */
+.glance-card-featured {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, var(--pitch-black) 0%, #1a1a2e 100%);
+    border-color: transparent;
+}
+
+.glance-card-featured .glance-label {
+    color: rgba(255,255,255,0.6);
+}
+
+.glance-card-featured .glance-value {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.glance-card-featured .glance-desc {
+    color: rgba(255,255,255,0.45);
+}
+
+.glance-card-featured:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.2);
+}
+
+/* Icon */
+.glance-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.glance-card:hover .glance-icon {
+    transform: scale(1.1);
+}
+
+/* Content */
+.glance-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.glance-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #999;
+}
+
+.glance-value {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--pitch-black);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.glance-desc {
+    font-size: 0.75rem;
+    color: #bbb;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* ---- Glance Responsive ---- */
+@media (max-width: 1100px) {
+    .glance-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .glance-card-featured {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .glance-section {
+        padding: 70px 5%;
+    }
+
+    .glance-title {
+        font-size: 2rem;
+    }
+
+    .glance-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .glance-header {
+        margin-bottom: 40px;
+    }
+
+    .glance-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .glance-card-featured {
+        grid-column: span 2;
+    }
+
+    .glance-card {
+        padding: 18px 16px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+
+    .glance-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .glance-value {
+        font-size: 0.9rem;
+    }
+
+    .glance-label {
+        font-size: 0.6rem;
+    }
+
+    .glance-desc {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .glance-card-featured {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .glance-card-featured .glance-value {
+        font-size: 1.2rem;
     }
 }
 
@@ -4448,10 +5055,10 @@ h1, h2, h3, .logo-text {
 
     /* Tour Packages Adjustments */
     .packages-grid {
-        gap: 25px !important;
+        gap: 12px !important;
     }
     
-    .package-card {
+    .package-card:not(.gyg-card) {
         border-radius: 12px !important;
     }
     

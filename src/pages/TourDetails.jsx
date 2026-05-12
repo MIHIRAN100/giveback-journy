@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { tourPackages, BUDGET_PROMO_IMG } from '../data/tours';
 import SriLankaGlance from '../components/SriLankaGlance';
-import gallery1 from '../assets/Galle Fort, Sri Lanka.jpg';
-import gallery2 from '../assets/Hurulu Eco Park.jpg';
-import surfImg from '../assets/Surfin in Sri Lanka.webp';
-import polhenaImg from '../assets/Polhena.jpg';
+import gallerySlide5 from '../assets/e00c2772910971201b0e48853af8577a.jpg';
+import gallerySlide6 from '../assets/galle.jpg';
+import gallerySlide3 from '../assets/87fd5839db5c013598d55c1c41ee72d5.jpg';
+import gallerySlide4 from '../assets/24b02737e3f0ac7e69426d35da060e5a.jpg';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
+import essentialSlide2 from '../assets/c9643fab2024fdb4eb79ec69b070e545.jpg';
 import SpotifyAdCard from '../components/SpotifyAdCard';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
@@ -151,7 +152,7 @@ const TourDetails = () => {
     
     const [activeImage, setActiveImage] = useState(pkg ? pkg.image : '');
     const [activeImageIndex, setActiveImageIndex] = useState(0);
-    const galleryImages = [pkg.image, surfImg, polhenaImg, gallery1, gallery2];
+    const galleryImages = [pkg.image, essentialSlide2, gallerySlide3, gallerySlide4, gallerySlide5, gallerySlide6];
     const sliderRef = React.useRef(null);
     
     // Auto-slide effect - resets on activeImageIndex change (manual or auto)
@@ -345,7 +346,7 @@ const TourDetails = () => {
                 .gallery-nav-next { right: 20px; }
                 .gallery-thumbnails {
                     display: grid;
-                    grid-template-columns: repeat(5, 1fr);
+                    grid-template-columns: repeat(6, 1fr);
                     gap: 15px;
                 }
                 .thumb-item {
@@ -1159,11 +1160,6 @@ const TourDetails = () => {
                                     className={`thumb-item ${activeImageIndex === i ? 'active' : ''}`}
                                 >
                                     <img src={img} />
-                                    {i === 4 && (
-                                        <div className="thumb-overlay">
-                                            All photos (19)
-                                        </div>
-                                    )}
                                 </div>
                             ))}
                         </div>

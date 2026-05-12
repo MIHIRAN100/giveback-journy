@@ -11,131 +11,116 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     };
 
     const getDiscountFactor = () => {
-        const factors = [0.65, 0.75, 0.8, 0.7, 0.85]; // Different discount levels
+        const factors = [0.65, 0.75, 0.8, 0.7, 0.85];
         return factors[pkg.id % factors.length];
     };
 
     const originalPrice = Math.floor(getPriceVal() / getDiscountFactor());
     const discountPercent = Math.round((1 - getPriceVal() / originalPrice) * 100);
+    const getPrice = () => `US$ ${getPriceVal().toLocaleString()}.00`;
+    const getOriginalPrice = () => `US$ ${originalPrice.toLocaleString()}.00`;
 
-    const getPrice = () => `$${getPriceVal()}`;
-    const getOriginalPrice = () => `$${originalPrice}`;
+    // Days & nights
+    const daysNum = parseInt(pkg.days);
+    const nightsNum = daysNum > 1 ? daysNum - 1 : 0;
 
-    const getTags = () => {
-        if (pkg.itinerary) {
-            // Flatten all activities and get unique ones, limit to 3
-            const allActivities = pkg.itinerary.flatMap(day => day.activities || []);
-            const uniqueActivities = [...new Set(allActivities)];
-            if (uniqueActivities.length > 0) return uniqueActivities.slice(0, 3);
-        }
-        return ['Nature', 'Cultural', 'Explore'];
+    // Determine category & location from tour data
+    const getCategory = () => {
+        const name = (pkg.name + ' ' + pkg.description).toLowerCase();
+        if (name.includes('safari') || name.includes('wild') || name.includes('leopard') || name.includes('elephant')) return 'Outdoor & sports activities';
+        if (name.includes('beach') || name.includes('coast') || name.includes('surf') || name.includes('southern')) return 'Tours';
+        if (name.includes('temple') || name.includes('cultural') || name.includes('heritage') || name.includes('kandy')) return 'Tours';
+        if (name.includes('rainforest') || name.includes('trek') || name.includes('hike')) return 'Nature & adventure';
+        return 'Tours';
     };
 
+    const getLocation = () => {
+        const name = (pkg.name + ' ' + pkg.description).toLowerCase();
+        if (name.includes('kandy')) return 'Kandy';
+        if (name.includes('galle')) return 'Galle';
+        if (name.includes('ella')) return 'Ella';
+        if (name.includes('sigiriya') || name.includes('dambulla')) return 'Dambulla';
+        if (name.includes('yala')) return 'Yala';
+        if (name.includes('kitulgala')) return 'Kitulgala';
+        if (name.includes('sinharaja')) return 'Sinharaja';
+        return 'Sri Lanka';
+    };
+
+    // Generate booking popularity text
+    const getBookingInfo = () => {
+        if (pkg.rating >= 5.0) return 'New Activity';
+        const booked = Math.floor(pkg.rating * 20 + pkg.id * 7);
+        if (booked > 80) return `${Math.floor(booked / 10) * 10}+ booked`;
+        return null;
+    };
+
+    const reviewCount = pkg.reviews ? pkg.reviews.length : Math.floor(pkg.rating * 3);
+
     return (
-        <div className={`package-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`}>
-            <div className="card-img-wrapper">
-                <img src={pkg.image} alt={pkg.name} className="card-img" />
-                
-                {/* Modern Day Indicator */}
-                <div className="modern-day-indicator" style={{
-                    position: 'absolute',
-                    top: '20px',
-                    right: '20px',
-                    background: 'rgba(18, 18, 18, 0.8)',
-                    backdropFilter: 'blur(15px)',
-                    WebkitBackdropFilter: 'blur(15px)',
-                    color: 'white',
-                    padding: '12px 20px',
-                    borderRadius: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '15px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    zIndex: 10,
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                    animation: 'fadeInUp 0.6s ease-out'
-                }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <span style={{ fontSize: '1.4rem', fontWeight: 900, lineHeight: 1, color: 'var(--primary-green)' }}>{pkg.days.split(' ')[0]}</span>
-                        <span style={{ fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800, opacity: 0.8 }}>Days</span>
-                    </div>
-                    <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.2)' }}></div>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <span style={{ fontSize: '1.4rem', fontWeight: 900, lineHeight: 1, color: '#fff' }}>{parseInt(pkg.days) - 1}</span>
-                        <span style={{ fontSize: '0.55rem', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 800, opacity: 0.8 }}>Nights</span>
-                    </div>
+        <Link to={`/package/${pkg.id}`} className={`package-card gyg-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div className="gyg-card-img-wrapper">
+                <img src={pkg.image} alt={pkg.name} className="gyg-card-img" />
+                {/* Days / Nights badge */}
+                <div className="gyg-days-badge">
+                    <span className="gyg-days-num">{daysNum}</span>
+                    <span className="gyg-days-label">Days</span>
+                    {nightsNum > 0 && (
+                        <>
+                            <span className="gyg-days-divider"></span>
+                            <span className="gyg-days-num">{nightsNum}</span>
+                            <span className="gyg-days-label">Nights</span>
+                        </>
+                    )}
+                </div>
+                {/* Discount badge */}
+                {discountPercent > 0 && (
+                    <div className="gyg-discount-badge">-{discountPercent}%</div>
+                )}
+            </div>
+            <div className="gyg-card-body">
+                {/* Category • Location */}
+                <div className="gyg-card-category">
+                    {getCategory()} • {getLocation()}
                 </div>
 
-                {isExactMatch && <div className="result-badge" style={{position: 'absolute', top: '20px', left: '20px', background: 'var(--primary-green)', color: 'var(--pitch-black)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px'}}>Top Result</div>}
-                {isRecommendation && <div className="result-badge" style={{position: 'absolute', top: '20px', left: '20px', background: 'var(--pitch-black)', color: 'var(--white)', padding: '6px 15px', borderRadius: '50px', fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px'}}>You May Also Like</div>}
-                
-                <div className="sale-badge" style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '20px',
-                    background: '#ff4757',
-                    color: 'white',
-                    padding: '6px 12px',
-                    borderRadius: '50px',
-                    fontSize: '0.75rem',
-                    fontWeight: 900,
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    zIndex: 10,
-                    boxShadow: '0 4px 15px rgba(255, 71, 87, 0.3)'
-                }}>-{discountPercent}% OFF</div>
-            </div>
-            <div className="card-body">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-green)', marginBottom: '10px', fontSize: '0.8rem' }}>
-                    {[...Array(5)].map((_, i) => (
-                        <i key={i} className={`fa-solid fa-star${i + 1 > pkg.rating ? (i < pkg.rating ? '-half-stroke' : '-o') : ''}`} style={{ color: i + 1 > pkg.rating && i >= pkg.rating ? '#ccc' : 'var(--primary-green)' }}></i>
-                    ))}
-                    <span style={{ color: '#888', fontWeight: 700, marginLeft: '6px', fontSize: '0.75rem' }}>{pkg.rating} ({pkg.ratingLabel})</span>
+                {/* Title */}
+                <h3 className="gyg-card-title">{pkg.name}</h3>
+
+                {/* Meta tags */}
+                <div className="gyg-card-meta">
+                    <span className="gyg-meta-tag">Book now for tomorrow</span>
+                    <span className="gyg-meta-tag">{pkg.days.includes('Day') ? pkg.days : `${pkg.days.split(' ')[0]}-day tour`}</span>
                 </div>
-                <h3 style={{marginTop: 0, fontSize: '1.2rem', marginBottom: '8px'}}>{pkg.name}</h3>
-                <p style={{ 
-                    fontSize: '0.85rem', 
-                    color: '#666', 
-                    lineHeight: 1.5, 
-                    marginBottom: '15px',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                }}>{pkg.description.split('\n')[0]}</p>
-                
-                <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
-                    {getTags().map((tag, i) => (
-                        <span key={i} style={{ 
-                            fontSize: '0.6rem', 
-                            fontWeight: 800, 
-                            textTransform: 'uppercase', 
-                            letterSpacing: '0.5px', 
-                            padding: '4px 8px', 
-                            background: i === 1 ? 'rgba(29,185,84,0.1)' : 'rgba(0,0,0,0.03)', 
-                            color: i === 1 ? 'var(--primary-green)' : '#666', 
-                            border: i !== 1 ? '1px solid rgba(0,0,0,0.05)' : '1px solid transparent',
-                            borderRadius: '4px' 
-                        }}>{tag}</span>
-                    ))}
+
+                {/* Rating row */}
+                <div className="gyg-card-rating-row">
+                    <span className="gyg-star">★</span>
+                    <span className="gyg-rating-score">{pkg.rating}</span>
+                    <span className="gyg-rating-count">({reviewCount})</span>
+                    {getBookingInfo() && (
+                        <>
+                            <span className="gyg-rating-dot">·</span>
+                            <span className="gyg-booking-info">{getBookingInfo()}</span>
+                        </>
+                    )}
                 </div>
-                
-                <div className="card-footer" style={{marginTop: 'auto', display: 'flex', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-between', gap: '10px'}}>
-                    <div className="price-label" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <span style={{fontSize: '0.6rem', opacity: 0.6, textTransform: 'uppercase', fontWeight: 800}}>Starting From</span>
-                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
-                            <span className="price-val" style={{fontSize: '1.25rem', color: 'var(--primary-green)'}}>{getPrice()}</span>
-                            <span style={{fontSize: '0.85rem', color: '#aaa', textDecoration: 'line-through', fontWeight: 600}}>{getOriginalPrice()}</span>
-                        </div>
+
+                {/* Price + More button */}
+                <div className="gyg-card-footer">
+                    <div className="gyg-card-price">
+                        {originalPrice > getPriceVal() ? (
+                            <>
+                                <span className="gyg-price-current">{getPrice()}</span>
+                                <span className="gyg-price-original">{getOriginalPrice()}</span>
+                            </>
+                        ) : (
+                            <span className="gyg-price-from">From <strong>{getPrice()}</strong></span>
+                        )}
                     </div>
-                    <div style={{display: 'flex', flexShrink: 0}}>
-                        <Link to={`/package/${pkg.id}`} className="btn-black" style={{padding: '10px 20px', borderRadius: '500px', fontWeight: 800, textTransform: 'uppercase', fontSize: '0.65rem', letterSpacing: '0.5px', textDecoration: 'none', display: 'inline-block', whiteSpace: 'nowrap'}}>
-                            View Details
-                        </Link>
-                    </div>
+                    <span className="gyg-more-btn">More</span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

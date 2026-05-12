@@ -95,14 +95,14 @@ const Hero = ({ onSearch }) => {
     return (
         <section className="hero">
             <div className="hero-video-container">
-                <video 
-                    src={heroVideo} 
-                    autoPlay 
-                    muted={isMuted} 
-                    loop 
-                    playsInline 
+                <iframe 
                     className="hero-video"
-                />
+                    src={`https://www.youtube.com/embed/TlypXY8OOIQ?autoplay=1&mute=${isMuted ? 1 : 0}&loop=1&playlist=TlypXY8OOIQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="Hero Background Video"
+                ></iframe>
                 <button 
                     className="video-mute-toggle" 
                     onClick={() => setIsMuted(!isMuted)}
