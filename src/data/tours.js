@@ -166,6 +166,8 @@ export const tourPackages = [
         id: 8,
         name: "Kandy & Pinnawala Day Trip",
         days: "1 Day",
+        startLocation: "Kandy",
+        endLocation: "Pinnawala",
         description: "A memorable day combining wildlife, culture, and scenic experiences around Kandy, including the famous Pinnawala Elephant Orphanage and a Ceylon tea factory.",
         price: "$125",
         image: budgetPromoImg,

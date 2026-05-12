@@ -8,6 +8,11 @@ import gallerySlide3 from '../assets/87fd5839db5c013598d55c1c41ee72d5.jpg';
 import gallerySlide4 from '../assets/24b02737e3f0ac7e69426d35da060e5a.jpg';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 import essentialSlide2 from '../assets/c9643fab2024fdb4eb79ec69b070e545.jpg';
+import kandySlide2 from '../assets/a6a35641f1b21f4c5585af9940d2ff7f.jpg';
+import kandySlide3 from '../assets/fdc18fa1b8e4c9e72b6d4bbb0e0f44d0.jpg';
+import kandySlide4 from '../assets/736c6e4f09706ca19260e0514ce7e05e.jpg';
+import kandySlide5 from '../assets/caf37462014cf60348a30fa5d872b724.jpg';
+import kandySlide6 from '../assets/288dd8aa9ab1823a1b4254e697d9ec75.jpg';
 import SpotifyAdCard from '../components/SpotifyAdCard';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
@@ -182,7 +187,7 @@ const TourDetails = () => {
     
     const [activeImage, setActiveImage] = useState(pkg ? pkg.image : '');
     const [activeImageIndex, setActiveImageIndex] = useState(0);
-    const galleryImages = [pkg.image, essentialSlide2, gallerySlide3, gallerySlide4, gallerySlide5, gallerySlide6];
+    const galleryImages = [pkg?.image || '', (pkg?.id === 8) ? kandySlide2 : essentialSlide2, (pkg?.id === 8) ? kandySlide3 : gallerySlide3, (pkg?.id === 8) ? kandySlide4 : gallerySlide4, (pkg?.id === 8) ? kandySlide5 : gallerySlide5, (pkg?.id === 8) ? kandySlide6 : gallerySlide6];
     const sliderRef = React.useRef(null);
     
     // Auto-slide effect - resets on activeImageIndex change (manual or auto)
@@ -265,7 +270,7 @@ const TourDetails = () => {
         if (pkg.id === 2) currentBase = 600;
         
         if (transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : 300);
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 8 ? 35 : 300));
             return `$${currentBase - discount}`;
         }
         if (transport === 'van') {
@@ -1233,11 +1238,11 @@ const TourDetails = () => {
                             <div style={{ marginBottom: '30px', borderBottom: '1px solid #eee', paddingBottom: '20px' }}>
                                 <div style={{ marginBottom: '15px' }}>
                                     <span style={{ fontSize: '0.85rem', color: '#555', fontWeight: 700 }}>Start: </span>
-                                    <span style={{ fontSize: '0.85rem', color: '#111', fontWeight: 800 }}>{pkg.itinerary[0].title.split(',')[0]}, Sri Lanka</span>
+                                    <span style={{ fontSize: '0.85rem', color: '#111', fontWeight: 800 }}>{pkg.startLocation || pkg.itinerary[0].title.split(',')[0]}, Sri Lanka</span>
                                 </div>
                                 <div style={{ marginBottom: '20px' }}>
                                     <span style={{ fontSize: '0.85rem', color: '#555', fontWeight: 700 }}>End: </span>
-                                    <span style={{ fontSize: '0.85rem', color: '#111', fontWeight: 800 }}>{pkg.itinerary[pkg.itinerary.length-1].title.split(',')[0]}, Sri Lanka</span>
+                                    <span style={{ fontSize: '0.85rem', color: '#111', fontWeight: 800 }}>{pkg.endLocation || pkg.itinerary[pkg.itinerary.length-1].title.split(',')[0]}, Sri Lanka</span>
                                 </div>
                             </div>
 
@@ -1277,27 +1282,50 @@ const TourDetails = () => {
                                 <span style={{ fontSize: '2.2rem', fontWeight: 900, color: '#111', lineHeight: 1 }}>USD {getPrice()}</span>
                             </div>
 
-                            <button 
-                                className="btn-modern" 
-                                style={{ 
-                                    width: '100%', 
-                                    fontSize: '1.2rem', 
-                                    padding: '20px', 
-                                    background: 'var(--primary-green)', 
-                                    color: 'white', 
-                                    borderRadius: '15px', 
-                                    border: 'none', 
-                                    fontWeight: 900, 
-                                    textTransform: 'none', 
-                                    marginBottom: '20px',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: '0 10px 30px rgba(29, 185, 84, 0.2)'
-                                }} 
-                                onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}
-                            >
-                                Book Now
-                            </button>
+                            {/* Vehicle Type Selector Row */}
+                            <div style={{ marginBottom: '25px' }}>
+                                <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#888', display: 'block', marginBottom: '10px', letterSpacing: '1px' }}>
+                                    Select Vehicle Type
+                                </label>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+                                    {[
+                                        { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
+                                        { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: '+$150' },
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : '-$300')) }
+                                    ].map(v => (
+                                        <div
+                                            key={v.id}
+                                            onClick={() => setTransport(v.id)}
+                                            style={{
+                                                padding: '12px 8px',
+                                                background: transport === v.id ? 'var(--primary-green)' : '#fcfcfc',
+                                                color: transport === v.id ? 'white' : '#333',
+                                                borderRadius: '14px',
+                                                border: `2px solid ${transport === v.id ? 'var(--primary-green)' : '#eee'}`,
+                                                textAlign: 'center',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                boxShadow: transport === v.id ? '0 8px 20px rgba(29, 185, 84, 0.25)' : 'none',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                gap: '4px'
+                                            }}
+                                        >
+                                            {v.id === 'tuktuk' ? (
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" style={{ color: transport === v.id ? 'white' : 'var(--primary-green)' }}>
+                                                    <path d="M5 11V8c0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3v3h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1H10v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1zm2-3v2h10V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1zm0 5v3h2v-3H7zm8 0v3h2v-3h-2z"/>
+                                                </svg>
+                                            ) : (
+                                                <i className={v.icon} style={{ fontSize: '1.3rem', color: transport === v.id ? 'white' : 'var(--primary-green)' }}></i>
+                                            )}
+                                            <span style={{ fontSize: '0.85rem', fontWeight: 800, lineHeight: 1.1 }}>{v.label}</span>
+                                            <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6 }}>{v.modifier}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
 
                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '25px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
                                 <button 
@@ -1436,37 +1464,7 @@ const TourDetails = () => {
                             </div>
                         </div>
 
-                        <div className="transport-selector-box" style={{
-                            padding: '25px', 
-                            background: 'rgba(29, 185, 84, 0.05)', 
-                            borderRadius: '24px', 
-                            border: '1px solid rgba(29, 185, 84, 0.1)',
-                            marginTop: '40px'
-                        }}>
-                            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
-                                <label style={{fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--primary-green)', margin: 0, letterSpacing: '1px'}}>Vehicle Type</label>
-                            </div>
-                            <select 
-                                className="form-control" 
-                                value={transport}
-                                onChange={(e) => setTransport(e.target.value)}
-                                style={{
-                                    width: '100%',
-                                    background: 'white',
-                                    border: '1px solid rgba(0,0,0,0.1)',
-                                    borderRadius: '15px',
-                                    padding: '15px',
-                                    fontSize: '1.05rem',
-                                    fontWeight: 700,
-                                    cursor: 'pointer',
-                                    outline: 'none'
-                                }}
-                            >
-                                <option value="taxi">Private Car (Standard)</option>
-                                <option value="van">Private Van (+ $150)</option>
-                                <option value="tuktuk">Tuk Tuk Adventure (- $300)</option>
-                            </select>
-                        </div>
+                        {/* Vehicle selector moved to Summary Card */}
 
                         {/* Why You'll Love This Trip */}
                         <div className="why-love-section" style={{
@@ -1497,6 +1495,42 @@ const TourDetails = () => {
                                     <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-gem"></i></div>
                                     <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Hidden Gems:</strong> Go beyond the guidebook with exclusive local village experiences.</p>
                                 </div>
+                            </div>
+                        </div>
+
+                        {/* Responsible Travel Pledge Card */}
+                        <div className="responsible-travel-card" style={{
+                            marginTop: '30px',
+                            padding: '30px',
+                            background: 'linear-gradient(145deg, #ffffff 0%, #f9fdfa 100%)',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(29, 185, 84, 0.15)',
+                            boxShadow: '0 10px 30px rgba(29, 185, 84, 0.04)'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+                                <div style={{ 
+                                    background: 'rgba(29, 185, 84, 0.1)', 
+                                    color: 'var(--primary-green)', 
+                                    width: '36px', 
+                                    height: '36px', 
+                                    borderRadius: '10px', 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center',
+                                    fontSize: '1.2rem'
+                                }}>
+                                    <i className="fa-solid fa-hand-holding-heart"></i>
+                                </div>
+                                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, margin: 0, color: '#111' }}>
+                                    Travel with Purpose
+                                </h4>
+                            </div>
+                            <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: 1.6, margin: 0 }}>
+                                A portion of your trip directly supports our ongoing community-driven and wildlife conservation projects across Sri Lanka. Experience the real culture while leaving a lasting positive footprint.
+                            </p>
+                            <div style={{ marginTop: '15px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--primary-green)' }}>
+                                <i className="bi bi-arrow-right-circle-fill"></i>
+                                <span>100% Locally Owned & Operated</span>
                             </div>
                         </div>
                     </div>
