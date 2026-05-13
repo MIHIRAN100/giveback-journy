@@ -363,6 +363,12 @@ const TourDetails = () => {
         return `$${currentBase}`;
     };
 
+    const getBaggageInfo = () => {
+        if (transport === 'van') return "Up to 7 large bags + 5 small bags";
+        if (transport === 'tuktuk') return "Up to 2 large bags OR 3 small bags";
+        return "Up to 3 large bags + 2 small bags"; // Default for Car
+    };
+
     const getOriginalPrice = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         let currentBase = basePriceVal;
@@ -1541,6 +1547,21 @@ const TourDetails = () => {
                                             <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6 }}>{v.modifier}</span>
                                         </div>
                                     ))}
+                                </div>
+                                <div style={{ 
+                                    marginTop: '12px', 
+                                    padding: '10px 15px', 
+                                    background: '#f8f9fa', 
+                                    borderRadius: '10px', 
+                                    border: '1px dashed #ddd',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px'
+                                }}>
+                                    <i className="bi bi-briefcase-fill" style={{ color: 'var(--primary-green)' }}></i>
+                                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#555' }}>
+                                        Baggage Allowance: <span style={{ color: '#111' }}>{getBaggageInfo()}</span>
+                                    </span>
                                 </div>
                             </div>
 

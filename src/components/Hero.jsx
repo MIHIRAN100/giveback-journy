@@ -5,7 +5,6 @@ import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
 
-import heroVideo from '../assets/SRI LANKA - Pearl Of The Indian Ocean  Cinematic Travel Film - JRDY Films (720p, h264).mp4';
 
 const mobileImages = [img1, img2, img3];
 
@@ -15,6 +14,64 @@ const Hero = ({ onSearch }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMuted, setIsMuted] = useState(true);
+    const playerRef = React.useRef(null);
+
+    React.useEffect(() => {
+        // Load YouTube API if not already loaded
+        if (!window.YT) {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+
+        const initPlayer = () => {
+            new window.YT.Player('hero-youtube-player', {
+                events: {
+                    'onReady': (event) => {
+                        playerRef.current = event.target;
+                        if (isMuted) event.target.mute();
+                        else event.target.unMute();
+                        event.target.playVideo();
+                    },
+                    'onStateChange': (event) => {
+                        if (event.data === window.YT.PlayerState.ENDED) {
+                            event.target.seekTo(0);
+                            event.target.playVideo();
+                        }
+                    }
+                }
+            });
+        };
+
+        if (window.YT && window.YT.Player) {
+            initPlayer();
+        } else {
+            window.onYouTubeIframeAPIReady = initPlayer;
+        }
+
+        // Precision loop at 31s
+        const checkTime = setInterval(() => {
+            if (playerRef.current && playerRef.current.getCurrentTime) {
+                const currentTime = playerRef.current.getCurrentTime();
+                if (currentTime >= 31) {
+                    playerRef.current.seekTo(0);
+                }
+            }
+        }, 500);
+
+        return () => {
+            clearInterval(checkTime);
+        };
+    }, []);
+
+    // Sync mute state with player
+    React.useEffect(() => {
+        if (playerRef.current) {
+            if (isMuted) playerRef.current.mute();
+            else playerRef.current.unMute();
+        }
+    }, [isMuted]);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -96,8 +153,9 @@ const Hero = ({ onSearch }) => {
         <section className="hero">
             <div className="hero-video-container">
                 <iframe 
+                    id="hero-youtube-player"
                     className="hero-video"
-                    src={`https://www.youtube.com/embed/TlypXY8OOIQ?autoplay=1&mute=${isMuted ? 1 : 0}&loop=1&playlist=TlypXY8OOIQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
+                    src={`https://www.youtube.com/embed/Rr6hg_2Imwc?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen

@@ -8,6 +8,15 @@ import Moment6 from '../assets/moments/traveler_moment_6_1778416969804.png';
 import TravelerVideo1 from '../assets/WhatsApp Video 2026-05-11 at 11.24.51.mp4';
 import TravelerVideo2 from '../assets/WhatsApp Video 2026-05-11 at 11.38.28.mp4';
 
+const getYouTubeId = (url) => {
+    if (!url) return null;
+    const shortsMatch = url.match(/shorts\/([^?]+)/);
+    if (shortsMatch) return shortsMatch[1];
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+};
+
 const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
     const videoRef = useRef(null);
     const [isMuted, setIsMuted] = React.useState(true);
@@ -64,14 +73,23 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
             )}
             
             {moment.video ? (
-                <video 
-                    ref={videoRef}
-                    src={moment.video} 
-                    muted={isMuted}
-                    loop 
-                    playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+                getYouTubeId(moment.video) ? (
+                    <iframe
+                        src={`https://www.youtube.com/embed/${getYouTubeId(moment.video)}?autoplay=${isPlaying ? 1 : 0}&mute=${isMuted ? 1 : 0}&controls=0&loop=1&playlist=${getYouTubeId(moment.video)}&modestbranding=1&rel=0`}
+                        style={{ width: '100%', height: '100%', border: 'none', objectFit: 'cover' }}
+                        allow="autoplay; encrypted-media"
+                        title={moment.title}
+                    />
+                ) : (
+                    <video 
+                        ref={videoRef}
+                        src={moment.video} 
+                        muted={isMuted}
+                        loop 
+                        playsInline
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                )
             ) : (
                 <img src={moment.image} alt={moment.title} />
             )}
@@ -94,7 +112,7 @@ const TravelerMoments = () => {
             user: "Dhvanil",
             avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100",
             image: Moment1,
-            video: TravelerVideo1,
+            video: "https://youtube.com/shorts/sjCngWju9ME?si=WjGjgnIvconHVB-N",
             title: "7-Day Essential Sri Lanka",
         },
         {
