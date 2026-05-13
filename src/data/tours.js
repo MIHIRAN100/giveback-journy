@@ -29,6 +29,7 @@ import routeMapEssentialDetailed from '../assets/route_map_essential_detailed.pn
 import routeMapKandyPinnawalaDetailed from '../assets/kandy_route_map_v8.png';
 import routeMapSouthernDetailed from '../assets/route_map_southern_detailed.png';
 import routeMapHighlandsInfographic from '../assets/highlands_southern_route_map_infographic_1778651740430.png';
+import routeMapMistInfographic from '../assets/mist_mountains_route_map_infographic_v2_1778655283128.png';
 import routeMapEssentialInfographic from '../assets/essential_sri_lanka_route_map_v3_1778651779812.png';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 
@@ -339,7 +340,8 @@ export const tourPackages = [
                 desc: "Start your day with <b>breakfast</b> before embarking on an exhilarating adventure on the <b>Kelani River</b>.<br/><br/><b>Included Activity:</b><br/><ul><li>🌊 <b>White water rafting</b>: Experience a safe and exciting journey through the rapids, an ideal activity for both beginners and nature lovers seeking a thrill amidst the trees.</li></ul><br/><b>Lunch included in Kitulgala</b><br/><br/>After a traditional lunch, proceed towards the misty highlands of <b>Ella</b>, enjoying the sight of endless scenic <b>tea plantations</b> and dramatic mountain views along the way.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/><ul><li>🏘️ Explore the charming and bohemian streets of <b>Ella town</b></li><li>🌤️ Enjoy the refreshing and <b>cool hill country climate</b></li></ul><br/><b>Overnight stay in Ella.</b>", 
                 activities: ["Breakfast", "White Water Rafting", "Lunch", "Private Transport"],
                 optionalActivities: [
-                    "Early morning bird watching: Set out at dawn to spot endemic species in their rich and diverse rainforest surroundings"
+                    "Waterfall and Cave Hunting: Explore hidden cascades and secret caves for a true wilderness adventure",
+                    "Early morning bird watching: Set out at dawn to spot endemic species in the rainforest surroundings"
                 ]
             },
             { 
@@ -358,7 +360,12 @@ export const tourPackages = [
                 title: "Yala Safari & Journey to the Coast", 
                 desc: "Enjoy <b>breakfast</b> before traveling south from the mountains towards the arid plains of <b>Yala National Park</b>.<br/><br/><b>Included Activity:</b><br/>• <b>Jeep safari in Yala National Park</b>: Explore one of Sri Lanka’s premier wildlife reserves, a wild sanctuary home to elephants, elusive leopards, and a vast diversity of birdlife.<br/><br/>After the excitement of the safari, continue your journey towards the turquoise waters of the southern coast.<br/><br/><b>Overnight stay near / in Hikkaduwa.</b>", 
                 activities: ["Breakfast", "Yala Jeep Safari", "Private Transport"],
-                optionalActivities: ["Visit to Sithulpawwa Ancient Rock Temple", "Morning Bird Watching in Bundala", "Wild Photography workshop"]
+                optionalActivities: [
+                    "Visit to Kirinda Beach: Discover the rugged coastal beauty and the historic temple perched on the rocks",
+                    "Visit to Sithulpawwa Ancient Rock Temple",
+                    "Morning Bird Watching in Bundala",
+                    "Wild Photography workshop"
+                ]
             },
             { 
                 day: 5, 
@@ -377,6 +384,7 @@ export const tourPackages = [
                 desc: "After <b>breakfast</b>, discover the coastal wonders and conservation efforts of the south.<br/><br/><b>Included Activity:</b><br/><ul><li>🛶 <b>Madu River safari</b>: Embark on a relaxing boat ride through the tranquil mangroves and small islands of the Madu River, witnessing traditional cinnamon peeling and local life.</li></ul><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/><ul><li>🛍️ Wander through the <b>vibrant local streets</b> of Hikkaduwa</li><li>🍹 Relax at a <b>beachside cafe</b> and enjoy the ocean breeze</li></ul><br/>Return to the relaxed atmosphere of <b>Hikkaduwa</b> for your final evening.<br/><br/><b>Overnight stay in Hikkaduwa.</b>", 
                 activities: ["Breakfast", "Madu River Safari", "Private Transport"],
                 optionalActivities: [
+                    "Visit the Tsunami Photo Museum: A moving and educational experience about the 2004 disaster and the resilience of the local community",
                     "Sea Turtle Hatchery visit: Visit a local conservation project dedicated to protecting endangered sea turtles"
                 ]
             },
@@ -421,19 +429,34 @@ export const tourPackages = [
                 day: 1, 
                 title: "Sacred Kandy & Cultural Beginnings", 
                 desc: "Your journey into the emerald heart of Sri Lanka begins in <b>Kandy</b>, the island's last royal capital. Nestled amongst rolling hills, this city is the spiritual home of the nation.<br/><br/><b>Highlights of the day:</b><br/><ul><li>🛕 Visit the sacred <b>Temple of the Tooth Relic</b>, where history and devotion come together.</li><li>🌅 Enjoy a serene evening walk around <b>Kandy Lake</b>.</li><li>🔥 Watch a vibrant <b>Cultural Dance Show</b>, a perfect introduction to Sri Lankan heritage.</li></ul><br/><b>Overnight stay in Kandy</b>", 
-                activities: ["Temple of the Tooth", "Cultural Dance Show", "Private Transport"] 
+                activities: ["Temple of the Tooth", "Cultural Dance Show", "Private Transport"],
+                optionalActivities: [
+                    "Guided walk through the Royal Botanical Gardens",
+                    "Evening meditation session at a local temple",
+                    "Traditional Gem Museum & Workshop visit"
+                ] 
             },
             { 
                 day: 2, 
                 title: "The Art of Ceylon Tea", 
                 desc: "<b>🍽️ Breakfast included.</b><br/><br/>Ascend higher into the mist-covered mountains as we journey towards <b>Nuwara Eliya</b>, often called 'Little England.' Here, the air is crisp and the landscape is a tapestry of endless tea plantations.<br/><br/><b>Highlights of the day:</b><br/><ul><li>☕ Visit a traditional <b>Tea Factory</b> to see how world-famous Ceylon tea is harvested.</li><li>🌿 Walk through the emerald fields and meet the tea pluckers.</li><li>🫖 Enjoy a fresh cup of the finest brew overlooking the rolling hills.</li></ul><br/><b>Overnight stay in Nuwara Eliya</b>", 
-                activities: ["Breakfast", "Tea Factory Tour", "Private Transport"] 
+                activities: ["Breakfast", "Tea Factory Tour", "Private Transport"],
+                optionalActivities: [
+                    "Boating on Gregory Lake",
+                    "High Tea experience at a colonial-era hotel",
+                    "Guided walk through the Nuwara Eliya town markets"
+                ] 
             },
             { 
                 day: 3, 
                 title: "The Iconic Highland Train Journey", 
                 desc: "<b>🍽️ Breakfast included.</b><br/><br/>Board the legendary <b>Blue Train</b> for what is widely considered the most beautiful rail journey in the world. As the train winds its way through the central highlands towards Ella, you'll be treated to spectacular views of waterfalls, deep valleys, and mist-shrouded forests.<br/><br/><i>(Note: Due to unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle via the same scenic route).</i><br/><br/>This is a slow-travel experience at its finest—lean out the window to feel the cool mountain breeze and witness the stunning geography of the island unfolding before your eyes.<br/><br/><b>Overnight stay in Ella</b>", 
-                activities: ["Breakfast", "Scenic Train Journey"] 
+                activities: ["Breakfast", "Scenic Train Journey"],
+                optionalActivities: [
+                    "Picnic lunch on the train with local snacks",
+                    "Sunset walk to Little Adam's Peak upon arrival in Ella",
+                    "Rejuvenating Ayurvedic head massage in Ella"
+                ] 
             },
             { 
                 day: 4, 
@@ -446,12 +469,17 @@ export const tourPackages = [
                 day: 5, 
                 title: "Mountain Farewell & Departure", 
                 desc: "<b>🍽️ Breakfast included.</b><br/><br/>Enjoy your final mountain breakfast before we begin our descent from the highlands. As you drive back towards the coast or the airport, reflect on the misty peaks and emerald valleys that have defined your mountain escape.<br/><br/>Your journey concludes with a private transfer to your next destination or the airport.", 
-                activities: ["Breakfast", "Scenic Descent", "Airport Transfer"] 
+                activities: ["Breakfast", "Scenic Descent", "Airport Transfer"],
+                optionalActivities: [
+                    "Stop at Ravana Falls for photography and a cool dip",
+                    "Visit a local spice and herbal garden en route",
+                    "Authentic Sri Lankan breakfast experience in a village home"
+                ] 
             }
         ],
         inclusions: ["Tea factory visit", "Train tickets", "Mountain hiking"],
         exclusions: ["Lunch", "Entrance fees", "Insurance"],
-        routeMap: routeMapHill,
+        routeMap: routeMapMistInfographic,
         reviews: signatureReviews,
         rating: 4.7,
         ratingLabel: "Highly Rated",

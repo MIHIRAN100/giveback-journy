@@ -27,6 +27,11 @@ import highlandsSlide3 from '../assets/ebb55250bfaa890711555fdacda07ae0.jpg';
 import highlandsSlide4 from '../assets/6fda26557bbf868bf4ea7cf71dfffe7b.jpg';
 import highlandsSlide5 from '../assets/c6470c698cb4fdc62c70539afaff8c54.jpg';
 import highlandsSlide6 from '../assets/91ec19edd6e57a947efb3641d58dcfc8.jpg';
+import mistSlide2 from '../assets/f95d0cbf13dea94618f645a39d10331e (1).jpg';
+import mistSlide3 from '../assets/6dcd6aa51e0c0ec70dff43924b8a235c.jpg';
+import mistSlide4 from '../assets/675f3b08f47062cb4c31998d09993803.jpg';
+import mistSlide5 from '../assets/028f7ad83600396f7a8e50286b0ba78c.jpg';
+import mistSlide6 from '../assets/e264a63d548ae7618df7c7db0cd9245c.jpg';
 
 const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -261,11 +266,11 @@ const TourDetails = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const galleryImages = [
         pkg?.image || '', 
-        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide2 : essentialSlide2)), 
-        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : gallerySlide3)), 
-        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : gallerySlide4)), 
-        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide5 : (pkg?.id === 3 ? highlandsSlide5 : gallerySlide5)), 
-        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : gallerySlide6))
+        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : essentialSlide2))), 
+        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : gallerySlide3))), 
+        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : gallerySlide4))), 
+        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide5 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : gallerySlide5))), 
+        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : gallerySlide6)))
     ];
     const sliderRef = React.useRef(null);
     
@@ -349,7 +354,7 @@ const TourDetails = () => {
         if (pkg.id === 2) currentBase = 650;
         
         if (transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 8 ? 35 : 300));
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : 300)));
             return `$${currentBase - discount}`;
         }
         if (transport === 'van') {
@@ -1503,7 +1508,7 @@ const TourDetails = () => {
                                     {[
                                         { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
                                         { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: '+$150' },
-                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : '-$300')) }
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : '-$300'))) }
                                     ].map(v => (
                                         <div
                                             key={v.id}
