@@ -24,7 +24,8 @@ const BookingInquiryPage = () => {
         joiningPoint: 'Katunayake Airport (CMB)',
         travelers: '2 Travelers (Couple/Friends)',
         notes: '',
-        additionalInfo: ''
+        additionalInfo: '',
+        wantsVolunteering: false
     });
     
     const pkg = tourPackages.find(p => p.id === parseInt(id));
@@ -90,6 +91,7 @@ const BookingInquiryPage = () => {
             price: getPrice(),
             notes: formData.notes,
             additional_info: formData.additionalInfo,
+            wants_volunteering: formData.wantsVolunteering ? 'Yes' : 'No',
             booking_id: `GBJ-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
             submitted_at: new Date().toLocaleString(),
             to_email: "hello@givebackjourney.com"
@@ -146,8 +148,8 @@ const BookingInquiryPage = () => {
                             color: 'var(--primary-green)',
                             display: 'block',
                             marginBottom: '10px'
-                        }}>Reservation Request</span>
-                        <h1 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Secure Your Journey</h1>
+                        }}>Your Personalized Journey</span>
+                        <h1 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Let's Design Your Experience</h1>
                     </div>
                 </ScrollReveal>
 
@@ -226,8 +228,8 @@ const BookingInquiryPage = () => {
                                     }}>
                                         <i className="bi bi-check-lg"></i>
                                     </div>
-                                    <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Request Sent!</h2>
-                                    <p style={{ color: '#666', lineHeight: 1.6 }}>Thank you for your interest. Our travel designer will contact you via WhatsApp or Email within 24 hours to finalize your {pkg.name} journey.</p>
+                                    <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Your Journey Begins Here!</h2>
+                                    <p style={{ color: '#666', lineHeight: 1.6 }}>Awesome! Our travel designers are now reviewing your request. We'll be in touch via WhatsApp or Email within 24 hours to craft your perfect {pkg.name} adventure.</p>
                                     <button 
                                         className="btn-modern btn-black" 
                                         style={{ marginTop: '30px' }}
@@ -244,38 +246,74 @@ const BookingInquiryPage = () => {
                                         <div className="step-content" style={{ flex: 1 }}>
                                             {currentStep === 1 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <h3 style={{ marginBottom: '10px' }}>Step 1: Contact Information</h3>
+                                                    <h3 style={{ marginBottom: '10px' }}>Step 1: Your Details</h3>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Full Name</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Full Name</label>
                                                         <input 
                                                             type="text" 
                                                             required 
                                                             placeholder="John Doe" 
                                                             value={formData.userName}
                                                             onChange={(e) => setFormData({...formData, userName: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }} 
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         />
                                                     </div>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Email Address</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Email Address</label>
                                                         <input 
                                                             type="email" 
                                                             required 
                                                             placeholder="john@example.com" 
                                                             value={formData.userEmail}
                                                             onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }} 
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         />
                                                     </div>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>WhatsApp / Phone</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>WhatsApp / Phone</label>
                                                         <input 
                                                             type="tel" 
                                                             required 
                                                             placeholder="+1 234 567 890" 
                                                             value={formData.userPhone}
                                                             onChange={(e) => setFormData({...formData, userPhone: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }} 
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         />
                                                     </div>
                                                     <div className="form-group">
@@ -283,7 +321,22 @@ const BookingInquiryPage = () => {
                                                         <select 
                                                             value={transport}
                                                             onChange={(e) => setTransport(e.target.value)}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem', background: '#fff' }}
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center',
+                                                                backgroundSize: '15px',
+                                                                appearance: 'none',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none',
+                                                                cursor: 'pointer'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = 'none'; }}
                                                         >
                                                             <option value="taxi">Private Car (Standard)</option>
                                                             <option value="van">Private Van (Large Group)</option>
@@ -295,15 +348,28 @@ const BookingInquiryPage = () => {
 
                                             {currentStep === 2 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <h3 style={{ marginBottom: '10px' }}>Step 2: Journey Logistics</h3>
+                                                    <h3 style={{ marginBottom: '10px' }}>Step 2: The Plan</h3>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Approx. Arrival Date</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Approx. Arrival Date</label>
                                                         <input 
                                                             type="date" 
                                                             required 
                                                             value={formData.arrivalDate}
                                                             onChange={(e) => setFormData({...formData, arrivalDate: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }} 
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none',
+                                                                cursor: 'text'
+                                                            }} 
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         />
                                                     </div>
                                                     <div className="form-group">
@@ -311,7 +377,22 @@ const BookingInquiryPage = () => {
                                                         <select 
                                                             value={formData.joiningPoint}
                                                             onChange={(e) => setFormData({...formData, joiningPoint: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }}
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center',
+                                                                backgroundSize: '15px',
+                                                                appearance: 'none',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none',
+                                                                cursor: 'pointer'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = 'none'; }}
                                                         >
                                                             <option>Katunayake Airport (CMB)</option>
                                                             <option>Colombo City</option>
@@ -321,12 +402,25 @@ const BookingInquiryPage = () => {
                                                         </select>
                                                     </div>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Traveler Birthday</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Traveler Birthday</label>
                                                         <input 
                                                             type="date" 
                                                             value={formData.birthday}
                                                             onChange={(e) => setFormData({...formData, birthday: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }} 
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '14px 20px', 
+                                                                borderRadius: '12px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem',
+                                                                fontFamily: 'inherit',
+                                                                background: '#fcfcfc',
+                                                                transition: 'all 0.3s ease',
+                                                                outline: 'none',
+                                                                cursor: 'text'
+                                                            }} 
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         />
                                                     </div>
                                                 </div>
@@ -334,14 +428,29 @@ const BookingInquiryPage = () => {
 
                                             {currentStep === 3 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <h3 style={{ marginBottom: '10px' }}>Step 3: Tour Preferences</h3>
+                                                    <h3 style={{ marginBottom: '10px' }}>Step 3: Your Preferences & Impact</h3>
                                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
                                                         <div className="form-group">
                                                             <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Number of Travelers</label>
                                                             <select 
                                                                 value={formData.travelers}
                                                                 onChange={(e) => setFormData({...formData, travelers: e.target.value})}
-                                                                style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem' }}
+                                                                style={{ 
+                                                                    width: '100%', 
+                                                                    padding: '14px 20px', 
+                                                                    borderRadius: '12px', 
+                                                                    border: '1px solid #e0e0e0', 
+                                                                    fontSize: '1rem',
+                                                                    fontFamily: 'inherit',
+                                                                    background: '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center',
+                                                                    backgroundSize: '15px',
+                                                                    appearance: 'none',
+                                                                    transition: 'all 0.3s ease',
+                                                                    outline: 'none',
+                                                                    cursor: 'pointer'
+                                                                }}
+                                                                onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
+                                                                onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = 'none'; }}
                                                             >
                                                                 <option>1 Traveler (Solo)</option>
                                                                 <option>2 Travelers (Couple/Friends)</option>
@@ -351,24 +460,76 @@ const BookingInquiryPage = () => {
                                                         </div>
                                                     </div>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Dietary Preferences / Health Notes</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Dietary Preferences & Health Notes</label>
                                                         <textarea 
-                                                            rows="2" 
-                                                            placeholder="Vegetarian, Allergies..." 
+                                                            placeholder="Vegetarian, Allergies, or specific health requirements..." 
                                                             value={formData.notes}
                                                             onChange={(e) => setFormData({...formData, notes: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem', resize: 'none' }}
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '18px 20px', 
+                                                                borderRadius: '16px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem', 
+                                                                fontFamily: 'inherit',
+                                                                lineHeight: '1.6',
+                                                                background: '#fcfcfc',
+                                                                color: '#333',
+                                                                transition: 'all 0.3s ease',
+                                                                minHeight: '120px',
+                                                                outline: 'none'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 10px 20px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         ></textarea>
                                                     </div>
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Anything Else We Should Know?</label>
+                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Anything Else We Should Know?</label>
                                                         <textarea 
-                                                            rows="2" 
-                                                            placeholder="Special requests, celebration notes, etc..." 
+                                                            placeholder="Special requests, celebration notes, or any unique details that would make your journey perfect..." 
                                                             value={formData.additionalInfo}
                                                             onChange={(e) => setFormData({...formData, additionalInfo: e.target.value})}
-                                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '10px', border: '1px solid #ddd', fontSize: '0.9rem', resize: 'none' }}
+                                                            style={{ 
+                                                                width: '100%', 
+                                                                padding: '18px 20px', 
+                                                                borderRadius: '16px', 
+                                                                border: '1px solid #e0e0e0', 
+                                                                fontSize: '1rem', 
+                                                                fontFamily: 'inherit',
+                                                                lineHeight: '1.6',
+                                                                background: '#fcfcfc',
+                                                                color: '#333',
+                                                                transition: 'all 0.3s ease',
+                                                                minHeight: '150px',
+                                                                outline: 'none'
+                                                            }}
+                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 10px 20px rgba(29, 185, 84, 0.05)'; }}
+                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
                                                         ></textarea>
+                                                    </div>
+
+                                                    <div className="form-group" style={{ marginTop: '10px' }}>
+                                                        <label style={{ 
+                                                            display: 'flex', 
+                                                            alignItems: 'center', 
+                                                            gap: '12px', 
+                                                            cursor: 'pointer', 
+                                                            padding: '15px', 
+                                                            background: 'rgba(29, 185, 84, 0.05)', 
+                                                            borderRadius: '12px', 
+                                                            border: '1px dashed rgba(29, 185, 84, 0.3)',
+                                                            transition: 'all 0.3s ease'
+                                                        }} className="impact-checkbox-label">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                checked={formData.wantsVolunteering}
+                                                                onChange={(e) => setFormData({...formData, wantsVolunteering: e.target.checked})}
+                                                                style={{ width: '20px', height: '20px', accentColor: 'var(--primary-green)', cursor: 'pointer' }}
+                                                            />
+                                                            <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111' }}>
+                                                                I would like to continue this journey in an impactful way with volunteering
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             )}

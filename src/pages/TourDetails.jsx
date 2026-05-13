@@ -13,6 +13,11 @@ import kandySlide3 from '../assets/fdc18fa1b8e4c9e72b6d4bbb0e0f44d0.jpg';
 import kandySlide4 from '../assets/736c6e4f09706ca19260e0514ce7e05e.jpg';
 import kandySlide5 from '../assets/caf37462014cf60348a30fa5d872b724.jpg';
 import kandySlide6 from '../assets/288dd8aa9ab1823a1b4254e697d9ec75.jpg';
+import southernSlide2 from '../assets/d352c66205dac0176dc451521ba72546.jpg';
+import southernSlide3 from '../assets/8eeee338cd666554a60655b357eaa8a8.jpg';
+import southernSlide4 from '../assets/1f8f75930498b2c5d3372acb2b1846b7.jpg';
+import southernSlide5 from '../assets/a735dcb73a82a89825015f4d36176403.jpg';
+import southernSlide6 from '../assets/054ff48fcfa601cd27a05ae96c945843.jpg';
 import SpotifyAdCard from '../components/SpotifyAdCard';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
@@ -76,27 +81,34 @@ const ItineraryDay = ({ step, index, forceOpen }) => {
             </div>
             {isOpen && (
                 <div style={{ padding: '0 0 30px 0', color: '#555', lineHeight: 1.8, fontSize: '1.05rem', whiteSpace: 'pre-line' }}>
-                    <div dangerouslySetInnerHTML={{ __html: step.desc }} />
+                    <div className="itinerary-desc-content" dangerouslySetInnerHTML={{ __html: step.desc }} />
                     {step.activities && (
-                        <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                        <div style={{ 
+                            marginTop: '25px', 
+                            display: 'grid', 
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', 
+                            gap: '12px',
+                            background: '#fcfcfc',
+                            padding: '20px',
+                            borderRadius: '16px',
+                            border: '1px solid #eee'
+                        }}>
                             {step.activities.map((act, i) => (
-                                <span key={i} style={{ 
-                                    background: 'rgba(29, 185, 84, 0.1)', 
-                                    color: 'var(--primary-green)',
-                                    padding: '8px 18px', 
-                                    borderRadius: '50px', 
-                                    fontSize: '0.8rem', 
-                                    fontWeight: 800,
-                                    border: '1px solid rgba(29, 185, 84, 0.2)',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.5px',
+                                <div key={i} style={{ 
                                     display: 'flex',
                                     alignItems: 'center',
-                                    gap: '6px'
+                                    gap: '10px',
+                                    fontSize: '0.9rem', 
+                                    fontWeight: 700,
+                                    color: '#333'
                                 }}>
-                                    <i className="bi bi-star-fill" style={{ fontSize: '0.6rem' }}></i>
+                                    <i className="bi bi-check2-circle" style={{ 
+                                        color: 'var(--primary-green)', 
+                                        fontSize: '1.1rem',
+                                        fontWeight: 900
+                                    }}></i>
                                     {act}
-                                </span>
+                                </div>
                             ))}
                         </div>
                     )}
@@ -187,7 +199,14 @@ const TourDetails = () => {
     
     const [activeImage, setActiveImage] = useState(pkg ? pkg.image : '');
     const [activeImageIndex, setActiveImageIndex] = useState(0);
-    const galleryImages = [pkg?.image || '', (pkg?.id === 8) ? kandySlide2 : essentialSlide2, (pkg?.id === 8) ? kandySlide3 : gallerySlide3, (pkg?.id === 8) ? kandySlide4 : gallerySlide4, (pkg?.id === 8) ? kandySlide5 : gallerySlide5, (pkg?.id === 8) ? kandySlide6 : gallerySlide6];
+    const galleryImages = [
+        pkg?.image || '', 
+        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : essentialSlide2), 
+        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : gallerySlide3), 
+        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : gallerySlide4), 
+        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide5 : gallerySlide5), 
+        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : gallerySlide6)
+    ];
     const sliderRef = React.useRef(null);
     
     // Auto-slide effect - resets on activeImageIndex change (manual or auto)
@@ -267,7 +286,7 @@ const TourDetails = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         let currentBase = basePriceVal;
         if (pkg.id === 1) currentBase = 840;
-        if (pkg.id === 2) currentBase = 600;
+        if (pkg.id === 2) currentBase = 650;
         
         if (transport === 'tuktuk') {
             const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 8 ? 35 : 300));
@@ -300,6 +319,36 @@ const TourDetails = () => {
                 .tour-details-page {
                     background: #fff;
                     padding-top: 20px;
+                }
+                .itinerary-desc-content {
+                    font-size: 1.05rem;
+                    line-height: 1.8;
+                    color: #555;
+                }
+                .itinerary-desc-content b, .itinerary-desc-content strong {
+                    color: #111;
+                    font-weight: 800;
+                }
+                .itinerary-desc-content ul {
+                    margin-top: 15px !important;
+                    padding-left: 5px !important;
+                    list-style: none !important;
+                }
+                .itinerary-desc-content li {
+                    margin-bottom: 12px !important;
+                    position: relative !important;
+                    padding-left: 28px !important;
+                    line-height: 1.6 !important;
+                }
+                .itinerary-desc-content li::before {
+                    content: '•';
+                    position: absolute;
+                    left: 0;
+                    color: var(--primary-green);
+                    font-weight: 900;
+                    font-size: 1.8rem;
+                    line-height: 1;
+                    top: -2px;
                 }
                 .tour-details-header {
                     display: flex;
@@ -506,6 +555,95 @@ const TourDetails = () => {
                 /* Ensure Chat Bot is not covered by Sticky Bar */
                 .chat-container {
                     bottom: 100px !important;
+                }
+
+                .impact-section {
+                    margin-top: 60px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 30px;
+                    margin-bottom: 60px;
+                }
+                .impact-card {
+                    background: #f8fcf9;
+                    border: 1px solid rgba(29, 185, 84, 0.1);
+                    border-radius: 24px;
+                    padding: 40px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    transition: all 0.3s ease;
+                }
+                .impact-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 20px 40px rgba(29, 185, 84, 0.08);
+                    border-color: rgba(29, 185, 84, 0.3);
+                }
+                .impact-icon {
+                    width: 60px;
+                    height: 60px;
+                    background: var(--primary-green);
+                    color: white;
+                    border-radius: 18px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.8rem;
+                    margin-bottom: 25px;
+                    box-shadow: 0 10px 20px rgba(29, 185, 84, 0.2);
+                }
+                .impact-card h3 {
+                    font-size: 1.6rem;
+                    font-weight: 800;
+                    margin: 0 0 15px 0;
+                    color: #111;
+                }
+                .impact-card p {
+                    font-size: 1.05rem;
+                    line-height: 1.6;
+                    color: #555;
+                    margin: 0 0 30px 0;
+                }
+                .impact-btn {
+                    margin-top: auto;
+                    padding: 14px 30px;
+                    border-radius: 12px;
+                    font-weight: 800;
+                    font-size: 1rem;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .btn-green {
+                    background: var(--primary-green);
+                    color: white;
+                }
+                .btn-green:hover {
+                    background: #107c41;
+                    box-shadow: 0 8px 20px rgba(29, 185, 84, 0.3);
+                }
+                .btn-outline {
+                    background: white;
+                    color: #111;
+                    border: 1px solid #ddd;
+                }
+                .btn-outline:hover {
+                    border-color: #111;
+                    background: #f9f9f9;
+                }
+
+                @media (max-width: 768px) {
+                    .impact-section {
+                        grid-template-columns: 1fr;
+                        margin-bottom: 40px;
+                    }
+                    .impact-card {
+                        padding: 30px;
+                    }
                 }
 
                 @media (max-width: 1024px) {
@@ -1228,7 +1366,7 @@ const TourDetails = () => {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                     <span style={{ color: '#f39c12', fontSize: '1.2rem' }}><i className="fa-solid fa-star"></i></span>
                                     <span style={{ fontSize: '1.4rem', fontWeight: 900 }}>4.9</span>
-                                    <a href="#" style={{ fontSize: '0.85rem', color: '#0066cc', textDecoration: 'underline', fontWeight: 600 }}>100 reviews</a>
+                                    <a href="#reviews" style={{ fontSize: '0.85rem', color: '#0066cc', textDecoration: 'underline', fontWeight: 600 }}>100 reviews</a>
                                 </div>
                                 <div style={{ textAlign: 'right' }}>
                                     <span style={{ fontSize: '0.65rem', color: '#999', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '1px' }}>Trip code: HPKS</span>
@@ -1268,7 +1406,7 @@ const TourDetails = () => {
                                     <span style={{ fontSize: '1rem', fontWeight: 900 }}>Explorer</span>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Physical rating</span>
+                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Intensity</span>
                                     <div style={{ display: 'flex', gap: '4px', marginTop: '5px' }}>
                                         {[1, 2, 3, 4, 5].map(i => (
                                             <div key={i} style={{ width: '12px', height: '4px', background: i <= 2 ? '#333' : '#eee', borderRadius: '2px' }}></div>
@@ -1693,6 +1831,31 @@ const TourDetails = () => {
                     </div>
                 </div>
 
+                {/* Impactful Way Section */}
+                <div className="impact-section">
+                    <div className="impact-card">
+                        <div className="impact-icon">
+                            <i className="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Continue in an Impactful Way</h3>
+                        <p>Join our community-driven volunteering programs to make a real difference. From wildlife conservation to local education, your journey can leave a lasting legacy.</p>
+                        <button className="impact-btn btn-green" onClick={() => navigate('/volunteer')}>
+                            Explore Volunteering <i className="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div className="impact-card" style={{ background: '#fff' }}>
+                        <div className="impact-icon" style={{ background: '#111' }}>
+                            <i className="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <h3>Customized Journeys</h3>
+                        <p>Have a specific vision for your trip? Our travel experts are here to help you craft a personalized itinerary that matches your heart's desire perfectly.</p>
+                        <button className="impact-btn btn-outline" onClick={() => navigate('/contact')}>
+                            Contact Us <i className="bi bi-chat-dots"></i>
+                        </button>
+                    </div>
+                </div>
+
                 {/* Important Notes */}
                 {pkg.importantNotes && (
                     <div className="important-notes-section" style={{ marginTop: '80px', padding: '20px 0' }}>
@@ -1710,7 +1873,7 @@ const TourDetails = () => {
 
                 {/* Guest Reviews */}
                 {pkg.reviews && (
-                    <div className="reviews-container">
+                    <div className="reviews-container" id="reviews">
                         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '50px' }}>Reviews</h2>
                         
                         <div className="reviews-summary">

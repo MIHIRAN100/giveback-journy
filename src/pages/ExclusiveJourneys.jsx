@@ -1,164 +1,352 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
-
-import img1 from '../assets/sebastian-latorre-VqPOeYqzK-M-unsplash.jpg';
-import ctaImg from '../assets/kirsty-barnby-JbZG7U093Bw-unsplash.jpg';
-import cookingImg from '../assets/Tasting Sri Lankan Cuisine .jpg';
-import wildlifeImg from '../assets/a.jpg';
-import streetFoodImg from '../assets/b.jpg';
-import trainImg from '../assets/Kandy to Ella Train Journey _ Lanka Tour Experts.jpg';
-import bohoImg from '../assets/The Kip Sri Lanka - Boho Hideaway in Ahangama - Sun Chasing Travelers.jpg';
-import resortImg from '../assets/Wild grass nature resort.jpg';
+import HeroImg from '../assets/tom-paisley-v2zEiziFb44-unsplash.jpg';
 
 const ExclusiveJourneys = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const bespokeServices = [
-        {
-            title: "Local Train Adventures",
-            desc: "Experience the world's most scenic rail journeys with pre-booked tickets in observation classes at local prices.",
-            icon: "fa-solid fa-train-subway",
-            image: trainImg
-        },
-        {
-            title: "Authentic Homestays",
-            desc: "Stay with local families in handpicked guesthouses that offer comfort, safety, and real Sri Lankan hospitality.",
-            icon: "fa-solid fa-house-user",
-            image: bohoImg
-        },
-        {
-            title: "Budget Conscious Planning",
-            desc: "Our local experts design itineraries that maximize your experience while keeping costs transparent and affordable.",
-            icon: "fa-solid fa-wallet",
-            image: resortImg
-        }
-    ];
-
-    const eliteExperiences = [
-        {
-            id: 1,
-            title: "Village Cooking & Dining",
-            location: "Hiriwadunna",
-            desc: "Learn the secrets of Sri Lankan spices from village elders and enjoy a traditional lunch in a humble mud-brick home.",
-            image: cookingImg
-        },
-        {
-            id: 2,
-            title: "Public Land Wildlife Spotting",
-            location: "Wilpattu Borders",
-            desc: "Experience the thrill of the wild in lesser-known buffer zones with local trackers who know every trail.",
-            image: wildlifeImg
-        },
-        {
-            id: 3,
-            title: "Local Market & Street Food Tour",
-            location: "Colombo/Kandy",
-            desc: "Navigate the vibrant Pettah markets and taste the best 'Kottu Roti' at authentic spots known only to locals.",
-            image: streetFoodImg
-        },
-        {
-            id: 4,
-            title: "Hidden Waterfall Expedition",
-            location: "Ella Highlands",
-            desc: "Trek through untouched tea estates to discover secret waterfalls where you can swim in crystal-clear natural pools.",
-            image: resortImg
-        }
-    ];
-
     return (
-        <div className="exclusive-page">
-            {/* Premium Hero */}
-            <section className="exclusive-hero" style={{ backgroundImage: `url(${img1})` }}>
-                <div className="exclusive-hero-overlay"></div>
-                <div className="exclusive-hero-content">
+        <div className="exclusive-joy-page">
+            {/* Centered Hero with Decorative Shapes */}
+            <section className="joy-hero" style={{ backgroundImage: `url("${HeroImg}")` }}>
+                <div className="joy-hero-overlay"></div>
+                
+                {/* Decorative Elements - Green Themed */}
+                <div className="joy-shape joy-shape-green-light"></div>
+                <div className="joy-shape joy-shape-green-dark"></div>
+                <div className="joy-squiggle">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 50C20 33.4315 33.4315 20 50 20C66.5685 20 80 33.4315 80 50C80 66.5685 66.5685 80 50 80C33.4315 80 20 66.5685 20 50Z" stroke="#1DB954" strokeWidth="6" strokeLinecap="round" strokeDasharray="10 20"/>
+                        <path d="M50 10C50 10 70 30 50 50C30 70 50 90 50 90" stroke="#1DB954" strokeWidth="6" strokeLinecap="round"/>
+                    </svg>
+                </div>
+
+                <div className="joy-hero-content">
                     <ScrollReveal>
-                        <span className="exclusive-tag">Authentic & Affordable</span>
-                        <h1>Real Journeys.<br/>True Local Value.</h1>
-                        <p>Discover the soul of Sri Lanka without the tourist price tag. We specialize in handcrafted budget adventures that give back to local communities.</p>
+                        <h1>Looking for a budget-friendly<br/>way to travel?</h1>
+                        <p>You're in the right place</p>
                     </ScrollReveal>
                 </div>
             </section>
 
-            {/* Bespoke Services Section */}
-            <section className="bespoke-services" id="bespoke">
-                <div className="container">
-                    <div className="section-header-centered">
-                        <span className="about-tag">Value Driven</span>
-                        <h2>Authentic Travel, Better Prices.</h2>
-                        <p>We believe every traveler deserves an incredible journey. Our budget-friendly approach focuses on real experiences and sustainable travel.</p>
-                    </div>
-
-                    <div className="bespoke-grid">
-                        {bespokeServices.map((service, index) => (
-                            <ScrollReveal key={index}>
-                                <div className="bespoke-card">
-                                    <div className="bespoke-img">
-                                        <img src={service.image} alt={service.title} />
-                                        <div className="bespoke-icon">
-                                            <i className={service.icon}></i>
-                                        </div>
-                                    </div>
-                                    <div className="bespoke-content">
-                                        <h3>{service.title}</h3>
-                                        <p>{service.desc}</p>
-                                    </div>
-                                </div>
-                            </ScrollReveal>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Elite Experiences */}
-            <section className="elite-experiences">
-                <div className="container">
-                    <div className="experience-flex">
-                        <div className="experience-text">
-                            <span className="about-tag">Local Secrets</span>
-                            <h2>Off-the-Beaten-Path.</h2>
-                            <p>Luxury is in the connection, not just the thread count. Join us for unique experiences that showcase the true heart of our island home.</p>
+            {/* Section 1: What is Giveback Journey? */}
+            <section className="joy-about-section">
+                <div className="joy-container">
+                    <ScrollReveal>
+                        <h2 className="joy-about-title">What is Giveback Journey?</h2>
+                        <h3 className="joy-about-subtitle">
+                            Giveback Journey is where affordable adventure meets meaningful impact.
+                        </h3>
+                        <div className="joy-about-text">
+                            <p>
+                                Looking for a budget-friendly way to explore Sri Lanka? Giveback Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities.
+                            </p>
                         </div>
-                    </div>
-
-                    <div className="experience-cards-container">
-                        {eliteExperiences.map((exp, index) => (
-                            <ScrollReveal key={exp.id}>
-                                <div className="experience-book-card">
-                                    <div className="exp-card-img">
-                                        <img src={exp.image} alt={exp.title} />
-                                        <div className="exp-card-number">{index + 1}</div>
-                                        <div className="exp-card-location">
-                                            <i className="fa-solid fa-location-dot"></i> {exp.location}
-                                        </div>
-                                    </div>
-                                    <div className="exp-card-content">
-                                        <h3>{exp.title}</h3>
-                                        <p>{exp.desc}</p>
-                                        <Link to={`/contact?package=${encodeURIComponent(exp.title)}`} className="btn-modern btn-solid-green exp-book-btn">
-                                            Inquire Now
-                                        </Link>
-                                    </div>
-                                </div>
-                            </ScrollReveal>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-
-            {/* Final CTA */}
-            <section className="exclusive-cta" style={{ backgroundImage: `url(${ctaImg})` }}>
-                <div className="cta-glass-box">
-                    <ScrollReveal>
-                        <h2>Ready for an Authentic Adventure?</h2>
-                        <p>Tell us your budget and interests, and we'll craft the perfect journey that maximizes your island experience.</p>
-                        <Link to="/contact" className="btn-modern btn-black">Get a Custom Budget Quote</Link>
                     </ScrollReveal>
                 </div>
             </section>
+
+            {/* Section 2: What we do - with dashed background */}
+            <section className="what-we-do-section">
+                <div className="dashed-bg"></div>
+                <div className="joy-container">
+                    <ScrollReveal>
+                        <h2 className="joy-about-title">What we do</h2>
+                        <h3 className="joy-about-subtitle" style={{ maxWidth: '700px', margin: '0 auto 25px' }}>
+                            We bring the world closer together by making impactful travel accessible to everyone.
+                        </h3>
+                        <div className="joy-about-text">
+                            <p>
+                                We prove that you don't need a massive budget to make a difference. Whether it's helping at a local school or participating in wildlife conservation, our journeys ensure that your budget-friendly adventure directly supports the growth and well-being of Sri Lankan communities.
+                            </p>
+                        </div>
+                    </ScrollReveal>
+                </div>
+            </section>
+
+            {/* Section 3: What we promise */}
+            <section className="promise-section">
+                <div className="joy-container">
+                    <ScrollReveal>
+                        <h2 className="joy-about-title">What we promise</h2>
+                    </ScrollReveal>
+
+                    <div className="promise-grid">
+                        <ScrollReveal>
+                            <div className="promise-card">
+                                <div className="promise-icon-box">
+                                    <div className="promise-blob"></div>
+                                    <i className="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+                                <h4>Simplicity</h4>
+                                <p>From discovering to booking and taking part, we're here to make the journey easy.</p>
+                            </div>
+                        </ScrollReveal>
+
+                        <ScrollReveal>
+                            <div className="promise-card">
+                                <div className="promise-icon-box">
+                                    <div className="promise-blob"></div>
+                                    <i className="fa-solid fa-compass"></i>
+                                </div>
+                                <h4>Authenticity</h4>
+                                <p>Our local teams have the inside knowledge for must-dos across thousands of destinations.</p>
+                            </div>
+                        </ScrollReveal>
+
+                        <ScrollReveal>
+                            <div className="promise-card">
+                                <div className="promise-icon-box">
+                                    <div className="promise-blob"></div>
+                                    <i className="fa-solid fa-camera"></i>
+                                </div>
+                                <h4>Curiosity</h4>
+                                <p>We're always on the lookout for new and unique experiences for you to enjoy.</p>
+                            </div>
+                        </ScrollReveal>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 4: Our Investors */}
+            <section className="investors-section">
+                <div className="joy-container">
+                    <ScrollReveal>
+                        <h2 className="joy-about-title">Our investors</h2>
+                        <h3 className="joy-about-subtitle" style={{ fontSize: '1.1rem', marginBottom: '50px' }}>
+                            We're proudly supported by some of the world's biggest investment firms.
+                        </h3>
+                    </ScrollReveal>
+
+                    <div className="investors-grid">
+                        <ScrollReveal>
+                            <div className="investor-logo">SEQUOIA 🌲</div>
+                        </ScrollReveal>
+                        <ScrollReveal>
+                            <div className="investor-logo">SoftBank</div>
+                        </ScrollReveal>
+                        <ScrollReveal>
+                            <div className="investor-logo">matrix<span>PARTNERS</span></div>
+                        </ScrollReveal>
+                        <ScrollReveal>
+                            <div className="investor-logo">Goldman Sachs</div>
+                        </ScrollReveal>
+                        <ScrollReveal>
+                            <div className="investor-logo">TCV</div>
+                        </ScrollReveal>
+                    </div>
+                </div>
+            </section>
+
+            <style dangerouslySetInnerHTML={{ __html: `
+                .exclusive-joy-page {
+                    background: #ffffff;
+                }
+                
+                /* Hero Styles */
+                .joy-hero {
+                    position: relative;
+                    height: 380px;
+                    background-size: cover;
+                    background-position: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    text-align: center;
+                    color: white;
+                }
+                .joy-hero-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                }
+                .joy-hero-content {
+                    position: relative;
+                    z-index: 5;
+                }
+                .joy-hero-content h1 {
+                    font-size: clamp(2rem, 4.5vw, 3.5rem);
+                    font-weight: 800;
+                    margin: 0 0 10px 0;
+                    letter-spacing: -1px;
+                }
+                .joy-hero-content p {
+                    font-size: 1.15rem;
+                    font-weight: 500;
+                    opacity: 0.95;
+                }
+
+                /* Decorative Shapes */
+                .joy-shape {
+                    position: absolute;
+                    z-index: 2;
+                }
+                .joy-shape-green-light {
+                    top: 15%;
+                    left: -50px;
+                    width: 150px;
+                    height: 200px;
+                    background: #A5D6A7;
+                    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                    transform: rotate(-15deg);
+                    opacity: 0.6;
+                }
+                .joy-shape-green-dark {
+                    bottom: 10%;
+                    right: -40px;
+                    width: 200px;
+                    height: 300px;
+                    background: #1DB954;
+                    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+                    transform: rotate(10deg);
+                    opacity: 0.7;
+                }
+                .joy-squiggle {
+                    position: absolute;
+                    top: 10%;
+                    right: 15%;
+                    z-index: 3;
+                    opacity: 0.8;
+                }
+
+                /* General Section Styles */
+                .joy-about-section, .what-we-do-section, .promise-section, .investors-section {
+                    padding: 80px 5%;
+                    text-align: center;
+                    background: #fff;
+                    position: relative;
+                }
+                .joy-container {
+                    max-width: 1100px;
+                    margin: 0 auto;
+                    position: relative;
+                    z-index: 2;
+                }
+                .joy-about-title {
+                    color: #1DB954;
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    margin-bottom: 30px;
+                }
+                .joy-about-subtitle {
+                    font-size: 1.3rem;
+                    font-weight: 800;
+                    color: #111;
+                    margin-bottom: 20px;
+                    line-height: 1.4;
+                }
+                .joy-about-text p {
+                    font-size: 1.05rem;
+                    color: #555;
+                    line-height: 1.7;
+                    margin-bottom: 20px;
+                }
+
+                /* Dashed Background Section */
+                .what-we-do-section {
+                    background: #fafafa;
+                    overflow: hidden;
+                }
+                .dashed-bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    opacity: 0.2;
+                    background-image: url("data:image/svg+xml,%3Csvg width='1000' height='400' viewBox='0 0 1000 400' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-100 100C100 50 300 150 500 100C700 50 900 150 1100 100' stroke='%231DB954' stroke-width='1.5' stroke-dasharray='10 15'/%3E%3Cpath d='M-100 300C100 250 300 350 500 300C700 250 900 350 1100 300' stroke='%231DB954' stroke-width='1.5' stroke-dasharray='10 15'/%3E%3C/svg%3E");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                /* Promise Section */
+                .promise-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 40px;
+                    margin-top: 50px;
+                }
+                .promise-icon-box {
+                    position: relative;
+                    width: 100px;
+                    height: 100px;
+                    margin: 0 auto 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .promise-blob {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 80px;
+                    height: 80px;
+                    background: #f0f7f2;
+                    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+                    z-index: 1;
+                }
+                .promise-icon-box i {
+                    position: relative;
+                    z-index: 2;
+                    font-size: 2.2rem;
+                    color: #1DB954;
+                }
+                .promise-card h4 {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    margin-bottom: 15px;
+                }
+                .promise-card p {
+                    font-size: 0.95rem;
+                    color: #666;
+                }
+
+                /* Investors Section */
+                .investors-section {
+                    background: #fdfdfd;
+                    border-top: 1px solid #eee;
+                }
+                .investors-grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 60px;
+                    opacity: 0.7;
+                }
+                .investor-logo {
+                    font-size: 1.5rem;
+                    font-weight: 900;
+                    color: #333;
+                    letter-spacing: -1px;
+                    font-family: 'Inter', sans-serif;
+                }
+                .investor-logo span {
+                    font-weight: 300;
+                    font-size: 0.8rem;
+                    display: block;
+                    letter-spacing: 2px;
+                    margin-top: -5px;
+                }
+
+                @media (max-width: 900px) {
+                    .promise-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    .investors-grid {
+                        gap: 40px;
+                    }
+                }
+            `}} />
         </div>
     );
 };

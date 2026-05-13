@@ -1,174 +1,295 @@
-import React, { useRef } from 'react';
-import Moment1 from '../assets/moments/traveler_moment_1_1778416676983.png';
-import Moment2 from '../assets/moments/traveler_moment_2_1778416701947.png';
-import Moment3 from '../assets/moments/traveler_moment_3_1778416724035.png';
-import Moment4 from '../assets/moments/traveler_moment_4_1778416747167.png';
-import Moment5 from '../assets/moments/traveler_moment_5_1778416936594.png';
-import Moment6 from '../assets/moments/traveler_moment_6_1778416969804.png';
-import TravelerVideo1 from '../assets/WhatsApp Video 2026-05-11 at 11.24.51.mp4';
-import TravelerVideo2 from '../assets/WhatsApp Video 2026-05-11 at 11.38.28.mp4';
-
-const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
-    const videoRef = useRef(null);
-    const [isMuted, setIsMuted] = React.useState(true);
-    const isPlaying = activeCardId === moment.id;
-
-    React.useEffect(() => {
-        if (videoRef.current) {
-            if (isPlaying) {
-                videoRef.current.play().catch(err => console.log("Autoplay blocked", err));
-            } else {
-                videoRef.current.pause();
-            }
-        }
-    }, [isPlaying]);
-
-    const togglePlay = (e) => {
-        e.stopPropagation();
-        if (isPlaying) {
-            setActiveCardId(null);
-        } else {
-            setActiveCardId(moment.id);
-        }
-    };
-
-    const toggleMute = (e) => {
-        e.stopPropagation();
-        if (videoRef.current) {
-            videoRef.current.muted = !isMuted;
-            setIsMuted(!isMuted);
-        }
-    };
-
-    return (
-        <div key={moment.id} className={`moment-card feedback-video ${isPlaying ? 'is-playing' : ''}`}>
-            <div className="moment-user">
-                <div className="moment-avatar">
-                    {typeof moment.avatar === 'string' && moment.avatar.startsWith('http') ? (
-                        <img src={moment.avatar} alt={moment.user} style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}} />
-                    ) : (
-                        moment.avatar
-                    )}
-                </div>
-                <span className="moment-username">{moment.user}</span>
-            </div>
-            
-            <div className="play-button-overlay" onClick={togglePlay}>
-                <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
-            </div>
-
-            {moment.video && (
-                <div className="mute-button-overlay" onClick={toggleMute}>
-                    <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
-                </div>
-            )}
-            
-            {moment.video ? (
-                <video 
-                    ref={videoRef}
-                    src={moment.video} 
-                    muted={isMuted}
-                    loop 
-                    playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-            ) : (
-                <img src={moment.image} alt={moment.title} />
-            )}
-            
-            <div className="moment-footer">
-                <span className="moment-title">{moment.title}</span>
-                <i className="fa-solid fa-video" style={{fontSize: '0.8rem', opacity: 0.7}}></i>
-            </div>
-        </div>
-    );
-};
+import React from 'react';
+import { Link } from 'react-router-dom';
+import CultureImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
+import NatureImg from '../assets/Little Adam’s Peak.jpg';
+import FoodImg from '../assets/Tasting Sri Lankan Cuisine .jpg';
+import WildlifeImg from '../assets/Elephants in Sri Lanka (1).jpg';
 
 const WhoWeAre = () => {
-    const scrollRef = useRef(null);
-    const [activeCardId, setActiveCardId] = React.useState(null);
-
-    const moments = [
-        {
-            id: 1,
-            user: "Dhvanil",
-            avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100",
-            image: Moment1,
-            video: TravelerVideo1,
-            title: "7-Day Essential Sri Lanka",
-        },
-        {
-            id: 2,
-            user: "Kelvin",
-            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
-            image: Moment2,
-            video: TravelerVideo2,
-            title: "Scenic Highlands Train",
-        },
-        {
-            id: 3,
-            user: "Sarah",
-            avatar: "S",
-            image: Moment3,
-            title: "Tropical Beach Bliss",
-        },
-        {
-            id: 4,
-            user: "Kai",
-            avatar: "K",
-            image: Moment4,
-            title: "Authentic Village Life",
-        },
-        {
-            id: 5,
-            user: "Elena",
-            avatar: "E",
-            image: Moment5,
-            title: "Traditional Fishing Experience",
-        },
-        {
-            id: 6,
-            user: "Marcus",
-            avatar: "M",
-            image: Moment6,
-            title: "Nuwara Eliya Tea Retreat",
-        }
-    ];
-
-    const scroll = (direction) => {
-        if (scrollRef.current) {
-            const scrollAmount = 350;
-            scrollRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    };
-
     return (
-        <section className="who-we-are-section">
-            <div className="who-we-are-header">
-                <h2>Traveler Feedback</h2>
-                <div className="who-nav-btns">
-                    <button className="who-nav-btn" onClick={() => scroll('left')}>
-                        <i className="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button className="who-nav-btn" onClick={() => scroll('right')}>
-                        <i className="fa-solid fa-chevron-right"></i>
-                    </button>
+        <section className="who-we-are-modern" id="about-us">
+            <div className="who-container">
+                <div className="who-grid-layout">
+                    
+                    {/* Left Column: Brand Story & Values */}
+                    <div className="who-content-side">
+                        <h2 className="who-main-title">
+                            The experts in budget-friendly travel & local volunteering
+                        </h2>
+                        <p className="who-subtitle">
+                            We redefine island exploration by proving that impactful travel can be accessible to everyone. Our mission is to combine affordable, authentic adventures with meaningful volunteering that directly supports Sri Lankan communities.
+                        </p>
+                        
+                        <div className="who-features-list">
+                            <div className="who-feature-item">
+                                <div className="who-feature-icon">
+                                    <i className="fa-solid fa-wallet"></i>
+                                </div>
+                                <div className="who-feature-text">
+                                    <h4>Budget-Friendly Value</h4>
+                                    <p>Experience the best of Sri Lanka without the tourist price tag. We curate low-cost, high-value journeys for every traveler.</p>
+                                </div>
+                            </div>
+
+                            <div className="who-feature-item">
+                                <div className="who-feature-icon">
+                                    <i className="fa-solid fa-hand-holding-heart"></i>
+                                </div>
+                                <div className="who-feature-text">
+                                    <h4>Meaningful Volunteering</h4>
+                                    <p>Join hands with local projects in schools, conservation, and community development for a truly life-changing trip.</p>
+                                </div>
+                            </div>
+
+                            <div className="who-feature-item">
+                                <div className="who-feature-icon">
+                                    <i className="fa-solid fa-people-carry-box"></i>
+                                </div>
+                                <div className="who-feature-text">
+                                    <h4>Direct Local Impact</h4>
+                                    <p>Every dollar you spend and every hour you volunteer leaves a positive footprint on the heart of our island.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <Link to="/exclusive-journeys" className="who-explore-btn">
+                            Explore More
+                        </Link>
+                    </div>
+
+                    {/* Middle Column: Featured Vertical Image */}
+                    <div className="who-middle-column">
+                        <div className="who-tall-card">
+                            <img src={NatureImg} alt="Sri Lankan Nature" className="who-card-img" />
+                            <div className="who-card-overlay">
+                                <h3>The Soul of Nature</h3>
+                                <p>Discover the untouched beauty of Sri Lanka's highlands and hidden waterfalls that take your breath away.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Stacked Images */}
+                    <div className="who-right-column">
+                        <div className="who-small-card">
+                            <div className="who-img-wrapper">
+                                <img src={CultureImg} alt="Sri Lankan Culture" />
+                                <span className="who-badge">Full Day</span>
+                            </div>
+                            <div className="who-card-info">
+                                <h5>True People And Soul</h5>
+                            </div>
+                        </div>
+
+                        <div className="who-small-card">
+                            <div className="who-img-wrapper">
+                                <img src={WildlifeImg} alt="Sri Lankan Wildlife" />
+                            </div>
+                            <div className="who-card-info">
+                                <h5>Wildlife Treasures</h5>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <div className={`who-moments-grid scroll-row ${activeCardId !== null ? 'has-active-video' : ''}`} ref={scrollRef}>
-                {moments.map((moment) => (
-                    <MomentCard 
-                        key={moment.id} 
-                        moment={moment} 
-                        activeCardId={activeCardId}
-                        setActiveCardId={setActiveCardId}
-                    />
-                ))}
-            </div>
+            <style dangerouslySetInnerHTML={{ __html: `
+                .who-we-are-modern {
+                    padding: 100px 5%;
+                    background: #ffffff;
+                    overflow: hidden;
+                }
+                .who-container {
+                    max-width: 1400px;
+                    margin: 0 auto;
+                }
+                .who-grid-layout {
+                    display: grid;
+                    grid-template-columns: 1.2fr 1fr 1fr;
+                    gap: 60px;
+                    align-items: flex-start;
+                }
+
+                /* Content Column */
+                .who-main-title {
+                    font-size: clamp(2rem, 3.5vw, 3rem);
+                    font-weight: 800;
+                    color: #111;
+                    line-height: 1.2;
+                    margin-bottom: 20px;
+                    letter-spacing: -1px;
+                }
+                .who-subtitle {
+                    font-size: 1.1rem;
+                    color: #555;
+                    line-height: 1.6;
+                    margin-bottom: 40px;
+                    max-width: 90%;
+                }
+                .who-features-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 35px;
+                    margin-bottom: 45px;
+                }
+                .who-feature-item {
+                    display: flex;
+                    gap: 20px;
+                }
+                .who-feature-icon {
+                    width: 45px;
+                    height: 45px;
+                    background: #f0f7f2;
+                    color: #1DB954;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    font-size: 1.2rem;
+                }
+                .who-feature-text h4 {
+                    margin: 0 0 8px 0;
+                    font-size: 1.15rem;
+                    font-weight: 700;
+                    color: #222;
+                }
+                .who-feature-text p {
+                    margin: 0;
+                    font-size: 0.95rem;
+                    color: #666;
+                    line-height: 1.6;
+                }
+                .who-explore-btn {
+                    display: inline-block;
+                    padding: 16px 40px;
+                    background: #e8f5e9;
+                    color: #2e7d32;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    transition: all 0.3s ease;
+                }
+                .who-explore-btn:hover {
+                    background: #c8e6c9;
+                    transform: translateY(-2px);
+                }
+
+                /* Middle Column */
+                .who-tall-card {
+                    position: relative;
+                    height: 650px;
+                    border-radius: 30px;
+                    overflow: hidden;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+                }
+                .who-card-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .who-card-overlay {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 40px 30px;
+                    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+                    color: white;
+                }
+                .who-card-overlay h3 {
+                    margin: 0 0 10px 0;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+                .who-card-overlay p {
+                    margin: 0;
+                    font-size: 0.9rem;
+                    opacity: 0.9;
+                    line-height: 1.5;
+                }
+
+                /* Right Column */
+                .who-right-column {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                }
+                .who-small-card {
+                    border-radius: 24px;
+                    overflow: hidden;
+                }
+                .who-img-wrapper {
+                    position: relative;
+                    height: 250px;
+                    border-radius: 24px;
+                    overflow: hidden;
+                    margin-bottom: 15px;
+                    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+                }
+                .who-img-wrapper img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .who-badge {
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                    background: white;
+                    color: #333;
+                    padding: 6px 16px;
+                    border-radius: 100px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                }
+                .who-card-info h5 {
+                    margin: 0;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #333;
+                    text-align: center;
+                }
+
+                /* Responsive */
+                @media (max-width: 1200px) {
+                    .who-grid-layout {
+                        grid-template-columns: 1fr 1fr;
+                        gap: 40px;
+                    }
+                    .who-right-column {
+                        grid-column: span 2;
+                        flex-direction: row;
+                    }
+                    .who-small-card {
+                        flex: 1;
+                    }
+                }
+                @media (max-width: 900px) {
+                    .who-grid-layout {
+                        grid-template-columns: 1fr;
+                    }
+                    .who-right-column {
+                        grid-column: span 1;
+                        flex-direction: column;
+                    }
+                    .who-tall-card {
+                        height: 500px;
+                    }
+                }
+                @media (max-width: 600px) {
+                    .who-main-title {
+                        font-size: 1.8rem;
+                    }
+                    .who-tall-card {
+                        height: 400px;
+                    }
+                    .who-img-wrapper {
+                        height: 200px;
+                    }
+                }
+            `}} />
         </section>
     );
 };

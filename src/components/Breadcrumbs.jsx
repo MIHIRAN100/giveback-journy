@@ -33,7 +33,7 @@ const Breadcrumbs = ({ customName = null }) => {
         } else if (path === '/compare') {
             crumbs.push({ label: 'Compare Tours', path: '/compare', active: true });
         } else if (path === '/exclusive-journeys') {
-            crumbs.push({ label: 'Exclusive Journeys', path: '/exclusive-journeys', active: true });
+            crumbs.push({ label: 'About Us', path: '/exclusive-journeys', active: true });
         } else if (path.startsWith('/inquiry/')) {
             const id = path.split('/').pop();
             const pkg = tourPackages.find(p => p.id === parseInt(id));
