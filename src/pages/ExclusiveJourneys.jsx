@@ -41,7 +41,10 @@ const ExclusiveJourneys = () => {
                         </h3>
                         <div className="joy-about-text">
                             <p>
-                                Looking for a budget-friendly way to explore Sri Lanka? Giveback Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities.
+                                Looking for a budget-friendly way to explore Sri Lanka? Giveback Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities. We believe that everyone should have the chance to see the world's beauty while contributing to its preservation, which is why our journeys are designed to be as impactful as they are affordable. From the misty highlands to the golden southern shores, our mission is to ensure that your adventure leaves a lasting, positive legacy on the hearts of the people you meet and the land you explore.
+                            </p>
+                            <p>
+                                Our approach is rooted in transparency and local expertise. By working directly with grassroots organizations and local families, we cut out the middleman, ensuring that more of your travel funds reach the people who need it most. This allows us to provide you with an unfiltered, raw look at the island's culture while maintaining the high safety and comfort standards that every traveler deserves.
                             </p>
                         </div>
                     </ScrollReveal>
@@ -59,7 +62,10 @@ const ExclusiveJourneys = () => {
                         </h3>
                         <div className="joy-about-text">
                             <p>
-                                We prove that you don't need a massive budget to make a difference. Whether it's helping at a local school or participating in wildlife conservation, our journeys ensure that your budget-friendly adventure directly supports the growth and well-being of Sri Lankan communities.
+                                We bridge the gap between global curiosity and local necessity by curating travel experiences that are intrinsically linked to social and environmental responsibility. We prove that you don't need a massive budget to make a tangible difference in the world. Whether it's assisting teachers in rural village schools, participating in reforestation efforts in the rainforests, or supporting sustainable farming initiatives, our journeys ensure that your presence in Sri Lanka directly translates into resources and support for the growth and well-being of local communities.
+                            </p>
+                            <p>
+                                Our work goes far beyond simply organizing logistics; we are dedicated to fostering deep, long-term relationships between our travelers and our project partners on the ground. We don't believe in "voluntourism" that provides only surface-level interaction. Instead, we facilitate immersion that allows for genuine cultural exchange and skill-sharing. Many of our guests find themselves returning year after year, not just as tourists, but as mentors, friends, and active supporters, creating a powerful global network of "Givebackers" who are united by their love for the island and their commitment to its future.
                             </p>
                         </div>
                     </ScrollReveal>
@@ -110,35 +116,6 @@ const ExclusiveJourneys = () => {
                 </div>
             </section>
 
-            {/* Section 4: Our Investors */}
-            <section className="investors-section">
-                <div className="joy-container">
-                    <ScrollReveal>
-                        <h2 className="joy-about-title">Our investors</h2>
-                        <h3 className="joy-about-subtitle" style={{ fontSize: '1.1rem', marginBottom: '50px' }}>
-                            We're proudly supported by some of the world's biggest investment firms.
-                        </h3>
-                    </ScrollReveal>
-
-                    <div className="investors-grid">
-                        <ScrollReveal>
-                            <div className="investor-logo">SEQUOIA 🌲</div>
-                        </ScrollReveal>
-                        <ScrollReveal>
-                            <div className="investor-logo">SoftBank</div>
-                        </ScrollReveal>
-                        <ScrollReveal>
-                            <div className="investor-logo">matrix<span>PARTNERS</span></div>
-                        </ScrollReveal>
-                        <ScrollReveal>
-                            <div className="investor-logo">Goldman Sachs</div>
-                        </ScrollReveal>
-                        <ScrollReveal>
-                            <div className="investor-logo">TCV</div>
-                        </ScrollReveal>
-                    </div>
-                </div>
-            </section>
 
             <style dangerouslySetInnerHTML={{ __html: `
                 .exclusive-joy-page {
@@ -310,40 +287,10 @@ const ExclusiveJourneys = () => {
                     color: #666;
                 }
 
-                /* Investors Section */
-                .investors-section {
-                    background: #fdfdfd;
-                    border-top: 1px solid #eee;
-                }
-                .investors-grid {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 60px;
-                    opacity: 0.7;
-                }
-                .investor-logo {
-                    font-size: 1.5rem;
-                    font-weight: 900;
-                    color: #333;
-                    letter-spacing: -1px;
-                    font-family: 'Inter', sans-serif;
-                }
-                .investor-logo span {
-                    font-weight: 300;
-                    font-size: 0.8rem;
-                    display: block;
-                    letter-spacing: 2px;
-                    margin-top: -5px;
-                }
 
                 @media (max-width: 900px) {
                     .promise-grid {
                         grid-template-columns: 1fr;
-                    }
-                    .investors-grid {
-                        gap: 40px;
                     }
                 }
             `}} />

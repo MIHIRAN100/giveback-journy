@@ -17,7 +17,7 @@ const WhoWeAre = () => {
                             The experts in budget-friendly travel & local volunteering
                         </h2>
                         <p className="who-subtitle">
-                            We redefine island exploration by proving that impactful travel can be accessible to everyone. Our mission is to combine affordable, authentic adventures with meaningful volunteering that directly supports Sri Lankan communities.
+                            We redefine island exploration by proving that impactful travel can be accessible to everyone. Our mission is to combine affordable, authentic adventures with meaningful volunteering that directly supports Sri Lankan communities—this is how our <b>'Giveback Journey'</b> name was born: a promise to ensure every step you take on this island helps it flourish.
                         </p>
                         
                         <div className="who-features-list">
@@ -80,12 +80,14 @@ const WhoWeAre = () => {
                             </div>
                         </div>
 
-                        <div className="who-small-card">
-                            <div className="who-img-wrapper">
-                                <img src={WildlifeImg} alt="Sri Lankan Wildlife" />
-                            </div>
-                            <div className="who-card-info">
-                                <h5>Wildlife Treasures</h5>
+                        <div className="who-small-card who-impact-card">
+                            <div className="who-impact-content">
+                                <div className="who-impact-icon">
+                                    <i className="fa-solid fa-heart-pulse"></i>
+                                </div>
+                                <div className="who-impact-number">150+</div>
+                                <h5>Community Projects</h5>
+                                <p>Directly supported by our travelers since 2021.</p>
                             </div>
                         </div>
                     </div>
@@ -250,6 +252,51 @@ const WhoWeAre = () => {
                     font-weight: 700;
                     color: #333;
                     text-align: center;
+                }
+
+                /* Impact Card Styling */
+                .who-impact-card {
+                    background: linear-gradient(145deg, #1DB954 0%, #158a3d 100%);
+                    color: white;
+                    padding: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 250px;
+                    box-shadow: 0 15px 35px rgba(29, 185, 84, 0.2);
+                }
+                .who-impact-content {
+                    text-align: center;
+                }
+                .who-impact-icon {
+                    font-size: 2rem;
+                    margin-bottom: 15px;
+                    animation: heartBeat 2s infinite;
+                }
+                .who-impact-number {
+                    font-size: 2.5rem;
+                    font-weight: 900;
+                    line-height: 1;
+                    margin-bottom: 10px;
+                }
+                .who-impact-card h5 {
+                    color: white;
+                    font-size: 1.1rem;
+                    margin-bottom: 8px;
+                }
+                .who-impact-card p {
+                    font-size: 0.85rem;
+                    opacity: 0.9;
+                    line-height: 1.5;
+                    margin: 0;
+                }
+
+                @keyframes heartBeat {
+                    0% { transform: scale(1); }
+                    14% { transform: scale(1.1); }
+                    28% { transform: scale(1); }
+                    42% { transform: scale(1.1); }
+                    70% { transform: scale(1); }
                 }
 
                 /* Responsive */

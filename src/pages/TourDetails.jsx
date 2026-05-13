@@ -22,8 +22,13 @@ import SpotifyAdCard from '../components/SpotifyAdCard';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import highlandsSlide2 from '../assets/f0c858e7c16fbcb3fec67bc7621d7404.jpg';
+import highlandsSlide3 from '../assets/ebb55250bfaa890711555fdacda07ae0.jpg';
+import highlandsSlide4 from '../assets/6fda26557bbf868bf4ea7cf71dfffe7b.jpg';
+import highlandsSlide5 from '../assets/c6470c698cb4fdc62c70539afaff8c54.jpg';
+import highlandsSlide6 from '../assets/91ec19edd6e57a947efb3641d58dcfc8.jpg';
 
-const ItineraryDay = ({ step, index, forceOpen }) => {
+const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
     const [showOptional, setShowOptional] = useState(false);
 
@@ -172,6 +177,61 @@ const ItineraryDay = ({ step, index, forceOpen }) => {
                             )}
                         </div>
                     )}
+                    {isLastDay && (
+                        <div style={{
+                            marginTop: '35px',
+                            padding: '30px',
+                            background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(29, 185, 84, 0.3)',
+                            boxShadow: '0 10px 25px rgba(29, 185, 84, 0.05)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '15px'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <div style={{ 
+                                    background: 'var(--primary-green)', 
+                                    color: 'white', 
+                                    width: '32px', 
+                                    height: '32px', 
+                                    borderRadius: '50%', 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center',
+                                    fontSize: '1rem'
+                                }}>
+                                    <i className="fa-solid fa-heart"></i>
+                                </div>
+                                <h4 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 900, color: '#111' }}>Continue in an Impactful Way</h4>
+                            </div>
+                            <p style={{ margin: 0, fontSize: '1rem', color: '#444', lineHeight: 1.6, fontWeight: 500 }}>
+                                Join our community-driven volunteering programs to make a real difference. From wildlife conservation to local education, your journey can leave a lasting legacy.
+                            </p>
+                            <a 
+                                href="/volunteer"
+                                style={{
+                                    alignSelf: 'flex-start',
+                                    background: 'var(--primary-green)',
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                    padding: '12px 25px',
+                                    borderRadius: '12px',
+                                    fontWeight: 800,
+                                    fontSize: '0.9rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 4px 12px rgba(29, 185, 84, 0.2)'
+                                }}
+                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(29, 185, 84, 0.3)'; }}
+                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(29, 185, 84, 0.2)'; }}
+                            >
+                                Explore Volunteering Programs <i className="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    )}
                 </div>
             )}
         </div>
@@ -201,11 +261,11 @@ const TourDetails = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const galleryImages = [
         pkg?.image || '', 
-        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : essentialSlide2), 
-        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : gallerySlide3), 
-        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : gallerySlide4), 
-        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide5 : gallerySlide5), 
-        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : gallerySlide6)
+        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide2 : essentialSlide2)), 
+        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : gallerySlide3)), 
+        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : gallerySlide4)), 
+        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide5 : (pkg?.id === 3 ? highlandsSlide5 : gallerySlide5)), 
+        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : gallerySlide6))
     ];
     const sliderRef = React.useRef(null);
     
@@ -1407,10 +1467,24 @@ const TourDetails = () => {
                                 </div>
                                 <div>
                                     <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Intensity</span>
-                                    <div style={{ display: 'flex', gap: '4px', marginTop: '5px' }}>
-                                        {[1, 2, 3, 4, 5].map(i => (
-                                            <div key={i} style={{ width: '12px', height: '4px', background: i <= 2 ? '#333' : '#eee', borderRadius: '2px' }}></div>
-                                        ))}
+                                    <div style={{ display: 'flex', gap: '6px', marginTop: '5px' }}>
+                                        {[1, 2, 3].map(i => {
+                                            const rawIntensity = pkg.physicalIntensity || 2;
+                                            // Map 1-5 scale to 1-3
+                                            const intensity = rawIntensity <= 2 ? 1 : (rawIntensity <= 4 ? 2 : 3);
+                                            const colors = ['#27ae60', '#f39c12', '#e74c3c'];
+                                            const activeColor = colors[intensity - 1];
+                                            
+                                            return (
+                                                <div key={i} style={{ 
+                                                    width: '20px', 
+                                                    height: '5px', 
+                                                    background: i <= intensity ? activeColor : '#eee', 
+                                                    borderRadius: '3px',
+                                                    transition: 'all 0.3s ease'
+                                                }}></div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>
@@ -1825,7 +1899,13 @@ const TourDetails = () => {
                         {/* Right Column: Accordion */}
                         <div>
                             {pkg.itinerary.map((step, index) => (
-                                <ItineraryDay key={step.day} step={step} index={index} forceOpen={allOpen} />
+                                <ItineraryDay 
+                                    key={step.day} 
+                                    step={step} 
+                                    index={index} 
+                                    forceOpen={allOpen} 
+                                    isLastDay={index === pkg.itinerary.length - 1}
+                                />
                             ))}
                         </div>
                     </div>
