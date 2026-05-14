@@ -75,7 +75,29 @@ const coastalReviews = [
     { id: 5, name: "Leo Rossi", rating: 5, date: "June 2025", profile: "Italian", trip: "Southern Escape", comment: "Sunset at Coconut Tree Hill is a must-see. The southern coast is beautiful.", color: "#e8f5e9" },
     { id: 6, name: "Sandro Moretti", rating: 3, date: "May 2025", profile: "Italy", trip: "Southern Escape", comment: "The beaches were beautiful, but the travel times between coastal towns were longer than expected due to local traffic.", color: "#fff" },
     { id: 7, name: "Anna Schmidt", rating: 4, date: "April 2025", profile: "Germany", trip: "Southern Escape", comment: "Well-organized tour with great guesthouse selections. Some locations were a bit crowded.", color: "#fff" },
-    { id: 8, name: "Robert Klein", rating: 1, date: "March 2025", profile: "Netherlands", trip: "Southern Escape", comment: "Unfortunately, the extreme humidity during this season made the outdoor treks very difficult for me personally.", color: "#fff" }
+    { id: 8, name: "Robert Klein", rating: 2, date: "March 2025", profile: "Netherlands", trip: "Southern Escape", comment: "Unfortunately, the extreme humidity during this season made the outdoor activities very difficult for me personally.", color: "#fff" },
+    // Adding 142 more reviews with a mix to reach 150 total
+    ...Array(142).fill().map((_, i) => ({
+        id: i + 9,
+        name: ["James L.", "Elena P.", "Chen W.", "Sarah J.", "Ahmed K.", "Linda M.", "Hiroshi T.", "Clara S.", "David R.", "Emma B."][i % 10],
+        rating: (i % 12 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 4 === 0) ? 4 : 5)), // Mix of 2, 3, 4, and 5 stars
+        date: "2024-2025",
+        profile: ["Traveler", "Solo Explorer", "Family Trip", "Couple", "Backpacker"][i % 5],
+        trip: "Southern Escape",
+        comment: [
+            "Amazing coastal experience! The sunsets were unforgettable.",
+            "Great value for money. The local seafood is a must-try.",
+            "A bit hot and humid, but the beaches make up for it.",
+            "Well paced tour. Galle Fort was my favorite part.",
+            "Wonderful guide and comfortable transport throughout.",
+            "The whale watching was incredible, saw three different whales!",
+            "Beautiful beaches but some areas were quite busy with tourists.",
+            "Loved the surf lessons in Weligama, the instructors were great.",
+            "A very relaxing week by the ocean. Highly recommended.",
+            "The hospitality of the guesthouse owners was heartwarming."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const adventureReviews = [
@@ -186,7 +208,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival in Negombo", 
-                desc: "Welcome to the tropical paradise of <b>Sri Lanka!</b><br/><br/>Upon arrival at the international airport, you will be warmly greeted and transferred to the vibrant coastal town of <b>Negombo</b>.<br/><br/>This relaxed <b>beachside sanctuary</b>, with its swaying palms and salty breeze, is the perfect place to recover from your flight and prepare for the incredible adventure ahead.<br/><br/>Take the day at your own pace to <b>unwind</b> and soak in the island atmosphere.<br/><br/><b>Overnight stay in Negombo.</b>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining point for this tour is <b>Katunayake Airport (CMB)</b> or any hotel located in the immediate vicinity of the airport. We will provide a complimentary pick-up from these locations. If you are arriving independently, please ensure you are at the airport at least <b>30 minutes</b> before your scheduled start time. We also offer private pick-ups from any other location across the country for an additional fee.</div>Welcome to the tropical paradise of <b>Sri Lanka!</b><br/><br/>Upon arrival at the international airport, you will be warmly greeted and transferred to the vibrant coastal town of <b>Negombo</b>.<br/><br/>This relaxed <b>beachside sanctuary</b>, with its swaying palms and salty breeze, is the perfect place to recover from your flight and prepare for the incredible adventure ahead.<br/><br/>Take the day at your own pace to <b>unwind</b> and soak in the island atmosphere.<br/><br/><b>Overnight stay in Negombo.</b>", 
                 activities: ["Airport Transfer", "Private Transport", "Beachside Relaxation", "Island Welcome", "Coastal Walk"], 
                 optionalActivities: [
                     "A serene beach walk along the golden Negombo coastline",
@@ -268,7 +290,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Pinnawala & Kandy Scenic Day Tour", 
-                desc: "Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments.<br/><br/><strong>Key Highlights & Activities:</strong><ul style='margin-top: 10px; padding-left: 20px; list-style-type: disc;'><li><strong>Pinnawala Elephant Orphanage:</strong> Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath—a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.</li><li style='margin-top: 8px;'><strong>Dung Paper Recycling Factory:</strong> Following the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling.</li><li style='margin-top: 8px;'><strong>Traditional Ceylon Tea Factory:</strong> On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.</li></ul>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Pickup Information:</b> Complimentary pickup is provided from your accommodation within the local area. If you are coming from outside the city or require nationwide pickup from any other location across the country, an additional fee will apply. Please contact us to arrange your personalized transfer.</div>Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments.<br/><br/><strong>Key Highlights & Activities:</strong><ul style='margin-top: 10px; padding-left: 20px; list-style-type: disc;'><li><strong>Pinnawala Elephant Orphanage:</strong> Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath—a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.</li><li style='margin-top: 8px;'><strong>Dung Paper Recycling Factory:</strong> Following the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling.</li><li style='margin-top: 8px;'><strong>Traditional Ceylon Tea Factory:</strong> On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.</li></ul>", 
                 activities: ["Elephant Feeding & Bathing", "Riverside Interaction", "Dung Paper Recycling", "Tea Factory Visit", "Fresh Ceylon Tea Tasting"],
                 optionalActivities: ["Kandy Cultural Dance Show", "Royal Botanical Gardens stroll", "Sacred Temple of the Tooth visit"]
             }
@@ -292,7 +314,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival in Hikkaduwa", 
-                desc: "Welcome to the golden shores of <b>Hikkaduwa!</b><br/><br/>Upon your arrival, you'll be transferred to your <b>charming coastal guesthouse in Hikkaduwa</b>.<br/><br/><b>Hikkaduwa</b> is famous for its laid-back vibe and vibrant beach culture, making it the perfect starting point for your southern escape.<br/><br/>Spend your first afternoon settling in—<b>sink your toes into the soft sand</b>, enjoy a refreshing drink as you watch the waves, or take a <b>gentle stroll along the shoreline</b>.<br/><br/>As evening falls, the town comes alive with the scent of <b>fresh seafood</b> and the sound of the ocean, offering a relaxing introduction to island life.<br/><br/><b>Overnight stay in Hikkaduwa</b>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining points for this tour include <b>Katunayake Airport (CMB)</b>, <b>Hikkaduwa</b>, and <b>Galle</b>. We provide complimentary pick-ups from these locations. If you are arriving independently, please ensure you are at the designated meeting point at least <b>30 minutes</b> before your scheduled start time. We also offer private pick-ups from any other location across the country for an additional fee.</div>Welcome to the golden shores of <b>Hikkaduwa!</b><br/><br/>Upon your arrival, you'll be transferred to your <b>charming coastal guesthouse in Hikkaduwa</b>.<br/><br/><b>Hikkaduwa</b> is famous for its laid-back vibe and vibrant beach culture, making it the perfect starting point for your southern escape.<br/><br/>Spend your first afternoon settling in—<b>sink your toes into the soft sand</b>, enjoy a refreshing drink as you watch the waves, or take a <b>gentle stroll along the shoreline</b>.<br/><br/>As evening falls, the town comes alive with the scent of <b>fresh seafood</b> and the sound of the ocean, offering a relaxing introduction to island life.<br/><br/><b>Overnight stay in Hikkaduwa</b>", 
                 activities: ["Airport Transfer", "Private Transport"],
                 optionalActivities: [
                     "Morning Whale Watching Safari in the deep blue",
@@ -393,7 +415,7 @@ export const tourPackages = [
         exclusions: ["Lunch & Dinner", "Personal expenses", "Entrance fees"],
         routeMap: routeMapSouthernPremium,
         reviews: coastalReviews,
-        rating: 4.9,
+        rating: 4.6,
         ratingLabel: "Bestseller",
         physicalIntensity: 2,
         importantNotes: COMMON_NOTES
@@ -409,7 +431,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival & Transfer to Kitulgala", 
-                desc: "Welcome to the island of <b>Sri Lanka!</b><br/><br/>Upon your arrival, you will be warmly greeted and transferred to <b>Kitulgala</b>, a riverside destination nestled within a lush and vibrant rainforest. This serene landscape, where the air is thick with the scent of tropical greenery, provides the perfect tranquil introduction to your journey.<br/><br/>Check into your guesthouse and take some time to unwind and relax after your travels.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/><ul><li>🚣 Relax by the banks of the flowing <b>Kelani River</b></li><li>👣 Take a short, peaceful <b>village walk</b> to observe local life</li><li>🧘 Simply sit back and enjoy the <b>peaceful jungle atmosphere</b></li></ul><br/><b>Dinner included at the guesthouse</b><br/><b>Overnight stay in Kitulgala.</b>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining point for this tour is <b>Katunayake Airport (CMB)</b> or any hotel located around <b>Kitulgala</b>. We provide complimentary pick-ups from these locations. If you are arriving independently, please ensure you are at the designated meeting point at least <b>30 minutes</b> before your scheduled start time. We also offer private pick-ups from any other location across the country for an additional fee.</div>Welcome to the island of <b>Sri Lanka!</b><br/><br/>Upon your arrival, you will be warmly greeted and transferred to <b>Kitulgala</b>, a riverside destination nestled within a lush and vibrant rainforest. This serene landscape, where the air is thick with the scent of tropical greenery, provides the perfect tranquil introduction to your journey.<br/><br/>Check into your guesthouse and take some time to unwind and relax after your travels.<br/><br/><b>Discoveries at Your Own Leisure (Should your schedule allow):</b><br/><ul><li>🚣 Relax by the banks of the flowing <b>Kelani River</b></li><li>👣 Take a short, peaceful <b>village walk</b> to observe local life</li><li>🧘 Simply sit back and enjoy the <b>peaceful jungle atmosphere</b></li></ul><br/><b>Dinner included at the guesthouse</b><br/><b>Overnight stay in Kitulgala.</b>", 
                 activities: ["Airport Transfer", "Private Transport", "Dinner"],
                 optionalActivities: [
                     "Join a guided nature walk to discover local flora and fauna",
@@ -579,7 +601,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Colonial Grandeur & Sunset Ramparts", 
-                desc: "Your escape begins in the historic UNESCO World Heritage site of <b>Galle Fort</b>. This beautifully preserved Dutch-era fortress is a labyrinth of narrow streets, colonial villas, and vibrant culture.<br/><br/>After checking into your stay, take your first walk along the <b>ancient ramparts</b> as the sun begins to set over the <b>Indian Ocean</b>.<br/><br/>The <b>iconic lighthouse</b> and the <b>old Dutch hospital</b> provide a stunning backdrop for your evening. Wander through the fort's lanes, where you'll find charming cafes and artisan shops tucked away in historic buildings, offering a peaceful and sophisticated start to your journey.", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining point for this tour is <b>Galle Fort</b> or your accommodation within the Galle area. We offer a complimentary pick-up from locations within the Fort vicinity. If you are arriving independently, please ensure you are at the meeting point <b>30 minutes</b> before the tour start time. Private transport from any other location across the country is available for an additional fee.</div>Your escape begins in the historic UNESCO World Heritage site of <b>Galle Fort</b>. This beautifully preserved Dutch-era fortress is a labyrinth of narrow streets, colonial villas, and vibrant culture.<br/><br/>After checking into your stay, take your first walk along the <b>ancient ramparts</b> as the sun begins to set over the <b>Indian Ocean</b>.<br/><br/>The <b>iconic lighthouse</b> and the <b>old Dutch hospital</b> provide a stunning backdrop for your evening. Wander through the fort's lanes, where you'll find charming cafes and artisan shops tucked away in historic buildings, offering a peaceful and sophisticated start to your journey.", 
                 activities: ["Fort Check-in", "Sunset Rampart Walk", "Colonial Sights"],
                 optionalActivities: ["Cocktails at a heritage hotel", "Photography tour of colonial buildings", "Local street food tasting"]
             },
@@ -617,7 +639,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Kandy Highlights", 
-                desc: "Your immersive day in the <b>cultural capital</b> begins with a 9:00 AM pick-up from your accommodation.<br/><br/>We first visit the sacred <b>Temple of the Tooth Relic</b>, the spiritual heart of Sri Lanka, where you'll witness the deep devotion of local pilgrims. Afterward, enjoy a peaceful stroll around the iconic <b>Kandy Lake</b>, taking in the views of the surrounding hills and the white-washed temple walls.<br/><br/>The journey continues to the <b>Royal Botanical Gardens</b> in Peradeniya, home to over 4,000 species of plants and a spectacular orchid collection. As evening falls, witness a vibrant <b>Sri Lankan cultural show</b>, where traditional drummers and fire-dancers bring the island's rich history to life in a high-energy performance.", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Pickup Information:</b> Complimentary pickup is provided from your accommodation within the local area. If you are coming from outside the city or require nationwide pickup from any other location across the country, an additional fee will apply. Please contact us to arrange your personalized transfer.</div>Your immersive day in the <b>cultural capital</b> begins with a 9:00 AM pick-up from your accommodation.<br/><br/>We first visit the sacred <b>Temple of the Tooth Relic</b>, the spiritual heart of Sri Lanka, where you'll witness the deep devotion of local pilgrims. Afterward, enjoy a peaceful stroll around the iconic <b>Kandy Lake</b>, taking in the views of the surrounding hills and the white-washed temple walls.<br/><br/>The journey continues to the <b>Royal Botanical Gardens</b> in Peradeniya, home to over 4,000 species of plants and a spectacular orchid collection. As evening falls, witness a vibrant <b>Sri Lankan cultural show</b>, where traditional drummers and fire-dancers bring the island's rich history to life in a high-energy performance.", 
                 activities: ["Temple of the Tooth Visit", "Royal Botanical Gardens", "Cultural Dance Show", "Private Transport"] 
             }
         ],
@@ -633,7 +655,7 @@ export const tourPackages = [
         id: 10,
         name: "Adam’s Peak Sunrise Quest",
         days: "2 Days / 1 Night",
-        description: "A spiritual and scenic journey to the sacred Adam's Peak (Sri Pada). Experience a magical night climb and witness a breathtaking sunrise from the summit.",
+        description: "Embark on a soul-stirring pilgrimage to the sacred summit of Adam’s Peak (Sri Pada), a mountain revered by multiple faiths for centuries.\n\nThis immersive 2-day journey takes you through the lush tea country to the base at Dalhousie, where your quest begins in the quiet of the night. Join thousands of pilgrims on an ancient stone path illuminated by lanterns, reaching the 2,243m summit just as the first rays of light break over the horizon.\n\nWitness the legendary sunrise and the mountain's perfect triangular shadow cast across the misty plains below—a moment of profound beauty and spiritual reflection that stays with you forever.",
         price: "$280",
         image: adamsPeakImg,
         itinerary: [
@@ -647,7 +669,7 @@ export const tourPackages = [
             { 
                 day: 2, 
                 title: "The Sacred Sunrise & Descent", 
-                desc: "The climb begins in the silence of the night, joining thousands of pilgrims on the <b>ancient stone path</b>. The way is illuminated by lanterns and the collective spirit of those seeking the summit.<br/><br/>Reach the peak in the pre-dawn hours to witness a <b>breathtaking sunrise</b> that illuminates the entire island—a spiritual experience like no other. After the descent, enjoy <b>breakfast</b> before your return transfer to Kandy, carrying the light of the sunrise with you.", 
+                desc: "The climb begins at 2AM in the silence of the night, joining thousands of pilgrims on the <b>ancient stone path</b>. During the pilgrimage season (December to May), the way is beautifully illuminated by lanterns; if you are climbing outside of this season, we highly recommend hiring a local guide for safety and navigation.<br/><br/>Reach the peak in the pre-dawn hours to witness a <b>breathtaking sunrise</b> that illuminates the entire island—a spiritual experience like no other. After the descent, enjoy <b>breakfast</b> before your return transfer to Kandy, carrying the light of the sunrise with you.", 
                 activities: ["Breakfast", "Adam's Peak Climb", "Private Transfer"] 
             }
         ],
@@ -671,7 +693,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "River Rapids Adventure", 
-                desc: "Depart from Kandy for a thrilling day on the <b>Kelani River</b> in Kitulgala, the famous filming location for 'The Bridge on the River Kwai.'<br/><br/>Experience the adrenaline rush of tackling <b>white-water rapids</b> through a lush <b>tropical rainforest</b>, an adventure suitable for both beginners and thrill-seekers.<br/><br/>After your river journey, enjoy a traditional <b>Sri Lankan riverside lunch</b>, served in a beautiful jungle setting. Relax by the river and soak in the natural beauty before your return transfer to Kandy, feeling the exhilarating energy of the forest.", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Pickup Information:</b> Complimentary pickup is provided from your accommodation within the local area. If you are coming from outside the city or require nationwide pickup from any other location across the country, an additional fee will apply. Please contact us to arrange your personalized transfer.</div>Depart from Kandy for a thrilling day on the <b>Kelani River</b> in Kitulgala, the famous filming location for 'The Bridge on the River Kwai.'<br/><br/>Experience the adrenaline rush of tackling <b>white-water rapids</b> through a lush <b>tropical rainforest</b>, an adventure suitable for both beginners and thrill-seekers.<br/><br/>After your river journey, enjoy a traditional <b>Sri Lankan riverside lunch</b>, served in a beautiful jungle setting. Relax by the river and soak in the natural beauty before your return transfer to Kandy, feeling the exhilarating energy of the forest.", 
                 activities: ["White Water Rafting", "Lunch", "Private Transfer"] 
             }
         ],

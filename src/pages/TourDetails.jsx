@@ -46,6 +46,7 @@ import adamsPeakSlide3 from '../assets/96b8916547406115ee3f1240359a92af.jpg';
 import adamsPeakSlide4 from '../assets/548ca78544e5070b59f558a0b02cf606.jpg';
 import adamsPeakSlide5 from '../assets/0c3aa6595f8fa9d7304e54d629d024c5.jpg';
 import adamsPeakSlide6 from '../assets/c826dc63ec0b07b44bbfd80e148a8f03.jpg';
+import southernSlide2_new from '../assets/a41fa4f67a6e315638179b50d03d0198.jpg';
 
 const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -281,7 +282,7 @@ const TourDetails = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const galleryImages = [
         pkg?.image || '', 
-        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2)))))), 
+        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2_new : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2)))))), 
         (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : (pkg?.id === 6 ? galleSlide3 : (pkg?.id === 9 ? kandyHighSlide3 : (pkg?.id === 10 ? adamsPeakSlide3 : gallerySlide3)))))), 
         (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : (pkg?.id === 6 ? galleSlide4 : (pkg?.id === 9 ? kandyHighSlide4 : (pkg?.id === 10 ? adamsPeakSlide4 : gallerySlide4)))))), 
         (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : (pkg?.id === 6 ? galleSlide5 : (pkg?.id === 10 ? adamsPeakSlide5 : gallerySlide5))))), 
@@ -556,7 +557,7 @@ const TourDetails = () => {
 
                 .slider-dots {
                     position: absolute;
-                    bottom: 40px;
+                    bottom: 25px;
                     left: 50%;
                     transform: translateX(-50%);
                     display: flex;
@@ -1412,17 +1413,17 @@ const TourDetails = () => {
                             >
                                 <i className="bi bi-chevron-right"></i>
                             </button>
-                        </div>
 
-                        {/* Sliding Dots Indicator */}
-                        <div className="slider-dots">
-                            {galleryImages.map((_, i) => (
-                                <div 
-                                    key={i} 
-                                    className={`dot ${activeImageIndex === i ? 'active' : ''}`}
-                                    onClick={() => setActiveImageIndex(i)}
-                                ></div>
-                            ))}
+                            {/* Sliding Dots Indicator */}
+                            <div className="slider-dots">
+                                {galleryImages.map((_, i) => (
+                                    <div 
+                                        key={i} 
+                                        className={`dot ${activeImageIndex === i ? 'active' : ''}`}
+                                        onClick={() => setActiveImageIndex(i)}
+                                    ></div>
+                                ))}
+                            </div>
                         </div>
                         
                         {/* Desktop Thumbnails */}
@@ -1560,7 +1561,7 @@ const TourDetails = () => {
                                             )}
                                             <span style={{ fontSize: '0.85rem', fontWeight: 800, lineHeight: 1.1 }}>{v.label}</span>
                                             <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                                                {v.id === 'taxi' ? 'Standard' : (v.id === 'van' ? 'Premium' : 'Economic')}
+                                                {v.id === 'taxi' ? 'Standard' : (v.id === 'van' ? 'Budget Friendly' : 'Economic')}
                                             </span>
                                         </div>
                                     ))}
