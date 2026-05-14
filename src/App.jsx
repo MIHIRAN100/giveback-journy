@@ -51,7 +51,7 @@ const AppContent = () => {
         </Routes>
       </main>
       <Footer />
-      <ChatBot cookieVisible={cookieVisible} />
+      <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} />
       <CookieBar onVisibilityChange={setCookieVisible} />
       <AdBanner />
 

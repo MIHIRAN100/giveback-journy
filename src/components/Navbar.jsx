@@ -50,7 +50,7 @@ const Navbar = () => {
                     <div className="logo-image-container">
                         <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
                     </div>
-                    <span className="logo-text">Giveback journny<span className="logo-dot">.</span></span>
+                    <span className="logo-text">Giveback Journey<span className="logo-dot">.</span></span>
                 </Link>
 
                 <div className="nav-center-wrapper" style={{flex: 2}}>

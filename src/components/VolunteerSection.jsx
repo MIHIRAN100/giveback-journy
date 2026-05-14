@@ -26,7 +26,7 @@ const VolunteerSection = () => {
                     <div className="volunteer-grid-item tall-card video-card" style={{ overflow: 'hidden', position: 'relative', marginBottom: '20px' }}>
                         <iframe 
                             ref={iframeRef}
-                            src="https://www.youtube.com/embed/cSBzHuvubQQ?autoplay=1&mute=1&loop=1&playlist=cSBzHuvubQQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1" 
+                            src="https://www.youtube.com/embed/KeoRicNwxtA?autoplay=1&mute=1&loop=1&playlist=KeoRicNwxtA&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1" 
                             title="Volunteering in Sri Lanka"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -37,40 +37,85 @@ const VolunteerSection = () => {
                                 left: '50%',
                                 width: '100%',
                                 height: '100%',
-                                transform: 'translate(-50%, -50%) scale(1.5)', // Scale up to cover edges and hide black bars
+                                transform: 'translate(-50%, -50%) scale(1.5)',
                                 pointerEvents: 'none'
                             }}
                         ></iframe>
                         <div className="volunteer-image-overlay" style={{ zIndex: 5 }}>
                             <div className="experience-badge">Impactful Journeys</div>
                             
-                            {/* Mute/Unmute Toggle */}
-                            <button 
-                                onClick={toggleMute}
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '20px',
-                                    right: '20px',
-                                    width: '45px',
-                                    height: '45px',
-                                    borderRadius: '50%',
-                                    background: 'rgba(255, 255, 255, 0.15)',
-                                    backdropFilter: 'blur(10px)',
-                                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                                    color: 'white',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    zIndex: 10
-                                }}
-                                onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.25)'}
-                                onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.15)'}
-                            >
-                                <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`} style={{ fontSize: '1.1rem' }}></i>
-                            </button>
+                            {/* Bottom Controls Row */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '0',
+                                left: '0',
+                                right: '0',
+                                padding: '15px 20px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '12px',
+                                zIndex: 10
+                            }}>
+
+                                {/* Control Buttons */}
+                                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+                                    {/* Fullscreen Button */}
+                                    <button 
+                                        onClick={() => {
+                                            if (iframeRef.current) {
+                                                if (iframeRef.current.requestFullscreen) {
+                                                    iframeRef.current.requestFullscreen();
+                                                } else if (iframeRef.current.webkitRequestFullscreen) {
+                                                    iframeRef.current.webkitRequestFullscreen();
+                                                }
+                                            }
+                                        }}
+                                        style={{
+                                            width: '50px',
+                                            height: '50px',
+                                            borderRadius: '50%',
+                                            background: 'rgba(255, 255, 255, 0.15)',
+                                            backdropFilter: 'blur(10px)',
+                                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                                            color: 'white',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'}
+                                    >
+                                        <i className="fa-solid fa-expand" style={{ fontSize: '1.4rem' }}></i>
+                                    </button>
+
+                                    {/* Mute/Unmute Toggle */}
+                                    <button 
+                                        onClick={toggleMute}
+                                        style={{
+                                            width: '50px',
+                                            height: '50px',
+                                            borderRadius: '50%',
+                                            background: 'rgba(255, 255, 255, 0.15)',
+                                            backdropFilter: 'blur(10px)',
+                                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                                            color: 'white',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'}
+                                    >
+                                        <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`} style={{ fontSize: '1.2rem' }}></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                     <div style={{ display: 'flex', gap: '20px' }}>

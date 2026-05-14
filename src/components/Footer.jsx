@@ -12,7 +12,7 @@ const Footer = () => {
                         <div className="logo-image-container">
                             <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
                         </div>
-                        <span className="logo-text" style={{color: 'white'}}>Giveback journny<span className="logo-dot">.</span></span>
+                        <span className="logo-text" style={{color: 'white'}}>Giveback Journey<span className="logo-dot">.</span></span>
                     </Link>
                     <p style={{color: 'rgba(255,255,255,0.6)', lineHeight: 1.8}}>
                         Sri Lanka's leading boutique travel agency. We reveal the island's soul through curated heritage, wilderness, and luxury experiences.
@@ -63,7 +63,7 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom">
-                <div>© 2024 Giveback journny. Tour Agency Sri Lanka. All rights reserved.</div>
+                <div>© 2024 Giveback Journey. Tour Agency Sri Lanka. All rights reserved.</div>
                 <div className="footer-bottom-links" style={{display: 'flex', gap: '30px'}}>
                     <Link to="/privacy-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Privacy Policy</Link>
                     <Link to="/terms-and-conditions" className="footer-link" style={{fontSize: '0.75rem'}}>Terms & Conditions</Link>

@@ -31,6 +31,13 @@ import routeMapSouthernDetailed from '../assets/route_map_southern_detailed.png'
 import routeMapHighlandsInfographic from '../assets/highlands_southern_route_map_infographic_1778651740430.png';
 import routeMapMistInfographic from '../assets/mist_mountains_route_map_infographic_v2_1778655283128.png';
 import routeMapEssentialInfographic from '../assets/essential_sri_lanka_route_map_v3_1778651779812.png';
+import routeMapGallePremium from '../assets/route_map_galle_premium.png';
+import routeMapSouthernPremium from '../assets/route_map_southern_premium.png';
+import routeMapHighlandsPremium from '../assets/route_map_highlands_premium.png';
+import routeMapKandyPinnawalaPremium from '../assets/route_map_kandy_pinnawala_premium.png';
+import routeMapAdamsPeakPremium from '../assets/route_map_adams_peak_premium.png';
+import routeMapKandyPremium from '../assets/route_map_kandy_premium.png';
+import routeMapKitulgalaPremium from '../assets/route_map_kitulgala_premium.png';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 
 const signatureReviews = [
@@ -76,7 +83,82 @@ const adventureReviews = [
     { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2025", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the rainforest to the mountains of Ella was spectacular.", color: "#e3f2fd" },
     { id: 3, name: "Ryan Reyn", rating: 5, date: "August 2025", profile: "Canadian", trip: "Highlands & Coast", comment: "Seeing a leopard in Yala was the highlight of my trip. The guide was expert.", color: "#fff3e0" },
     { id: 4, name: "Gal Gadot", rating: 5, date: "July 2025", profile: "Israel", trip: "Highlands & Coast", comment: "Little Adam's Peak hike was easy but offered the most incredible views of Ella.", color: "#f3e5f5" },
-    { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" }
+    { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" },
+    { id: 6, name: "Priya Kapoor", rating: 5, date: "May 2025", profile: "India", trip: "Highlands & Coast", comment: "The Madu River safari was so peaceful. Seeing the cinnamon peeling was a unique experience I'll never forget.", color: "#fff3e0" },
+    { id: 7, name: "Oliver Hughes", rating: 4, date: "April 2025", profile: "Australian, 27", trip: "Highlands & Coast", comment: "Yala safari was incredible but the early morning start was tough. Totally worth it when we spotted elephants and a sloth bear!", color: "#e3f2fd" },
+    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2025", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week—this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" }
+];
+
+const galleReviews = [
+    { id: 1, name: "Isabella Müller", rating: 5, date: "October 2025", profile: "German, 28", trip: "Galle Fort Escape", comment: "Walking along the fort ramparts at sunset was absolutely magical. The boutique cafes inside the fort are charming!", color: "#fff3e0" },
+    { id: 2, name: "Luca Bianchi", rating: 5, date: "September 2025", profile: "Italian, 32", trip: "Galle Fort Escape", comment: "Galle Fort is a hidden gem. The colonial architecture, the lighthouse, and the local artisan shops made this a perfect short getaway.", color: "#e0f2f1" },
+    { id: 3, name: "Charlotte Brown", rating: 4, date: "August 2025", profile: "UK, 26", trip: "Galle Fort Escape", comment: "Loved the history and the slow pace of life inside the fort. The cliff divers were so entertaining to watch!", color: "#f3e5f5" },
+    { id: 4, name: "Hiroshi Tanaka", rating: 5, date: "July 2025", profile: "Japanese, 30", trip: "Galle Fort Escape", comment: "Three days was the perfect amount of time. The Dutch hospital area has amazing restaurants and the jewelry workshops were fascinating.", color: "#e8f5e9" }
+];
+
+const mistReviews = [
+    { id: 1, name: "Freya Andersen", rating: 5, date: "October 2025", profile: "Danish, 24", trip: "Mist & Mountains", comment: "The Blue Train journey was the most beautiful rail experience of my life. Leaning out the window through the tea estates was pure magic.", color: "#e8f5e9" },
+    { id: 2, name: "Tomás García", rating: 5, date: "September 2025", profile: "Spanish, 29", trip: "Mist & Mountains", comment: "Nuwara Eliya felt like stepping into another world. The tea factory visit and tasting were highlights I didn't expect to love so much.", color: "#e3f2fd" },
+    { id: 3, name: "Sophie Taylor", rating: 4, date: "August 2025", profile: "Australian, 27", trip: "Mist & Mountains", comment: "Ella Rock hike was challenging but the view from the top was absolutely worth every step. Nine Arches Bridge is iconic!", color: "#fff3e0" },
+    { id: 4, name: "Henrik Johansson", rating: 5, date: "July 2025", profile: "Swedish, 33", trip: "Mist & Mountains", comment: "Kandy's Temple of the Tooth was deeply spiritual. The entire 5-day journey through the highlands felt like a dream.", color: "#f3e5f5" }
+];
+
+const kandyHighlightsReviews = [
+    { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2025", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were absolutely stunning—the orchid collection alone is worth the visit. Our guide was so knowledgeable!", color: "#e8f5e9" },
+    { id: 2, name: "Ben Carter", rating: 5, date: "September 2025", profile: "USA, 31", trip: "Kandy Highlights", comment: "The cultural dance show was electrifying! The fire-walkers were incredible. Perfect introduction to Sri Lankan culture.", color: "#e3f2fd" },
+    { id: 3, name: "Yuki Nakamura", rating: 4, date: "August 2025", profile: "Japanese, 28", trip: "Kandy Highlights", comment: "Kandy Lake at sunset is so peaceful. A great day trip that covers all the must-see spots without feeling rushed.", color: "#fff3e0" },
+    // 2-star reviews (5 requested)
+    { id: 4, name: "Mark Wilson", rating: 2, date: "July 2025", profile: "UK", trip: "Kandy Highlights", comment: "The temple was beautiful but way too crowded. We spent more time in traffic than actually seeing the sights.", color: "#fff" },
+    { id: 5, name: "Elena Schmidt", rating: 2, date: "June 2025", profile: "Germany", trip: "Kandy Highlights", comment: "The botanical gardens were nice, but the guide rushed us through. Felt like a tourist trap at the spice garden.", color: "#fff" },
+    { id: 6, name: "John Doe", rating: 2, date: "May 2025", profile: "USA", trip: "Kandy Highlights", comment: "Too much driving for a one-day trip. Kandy is chaotic and the humidity was unbearable.", color: "#fff" },
+    { id: 7, name: "Sarah Miller", rating: 2, date: "April 2025", profile: "Canada", trip: "Kandy Highlights", comment: "The cultural show was okay, but the seating was very uncomfortable and it was extremely loud.", color: "#fff" },
+    { id: 8, name: "Pierre Dubois", rating: 2, date: "March 2025", profile: "France", trip: "Kandy Highlights", comment: "Disappointed with the lunch options provided. The 'authentic' meal was way too spicy and made me feel unwell.", color: "#fff" },
+    // 1-star reviews (4 requested)
+    { id: 9, name: "Robert Taylor", rating: 1, date: "February 2025", profile: "Australia", trip: "Kandy Highlights", comment: "Our driver was late and spoke very little English. We missed half the itinerary due to poor planning.", color: "#fff" },
+    { id: 10, name: "Linda Brown", rating: 1, date: "January 2025", profile: "UK", trip: "Kandy Highlights", comment: "Waste of money. The Pinnawala experience felt unethical and the city of Kandy was just dirty and loud.", color: "#fff" },
+    { id: 11, name: "Michael Chen", rating: 1, date: "December 2024", profile: "Singapore", trip: "Kandy Highlights", comment: "It rained the whole day and there was no backup plan. We just sat in the car for 4 hours.", color: "#fff" },
+    { id: 12, name: "Sophia Rossi", rating: 1, date: "November 2024", profile: "Italy", trip: "Kandy Highlights", comment: "The tour was cancelled last minute with no proper explanation. Very unprofessional service.", color: "#fff" }
+];
+
+const adamsPeakReviews = [
+    { id: 1, name: "Marcus Weber", rating: 5, date: "October 2025", profile: "German, 27", trip: "Adam's Peak Quest", comment: "The night climb was grueling but watching the sunrise from the summit made everything worth it. A truly spiritual experience.", color: "#e8f5e9" },
+    { id: 2, name: "Anika Patel", rating: 5, date: "September 2025", profile: "Indian, 25", trip: "Adam's Peak Quest", comment: "Climbing alongside thousands of pilgrims with lanterns lighting the path was unforgettable. The shadow of the peak at sunrise is mystical.", color: "#e3f2fd" },
+    { id: 3, name: "James O'Brien", rating: 4, date: "August 2025", profile: "Irish, 30", trip: "Adam's Peak Quest", comment: "Physically demanding but one of the most rewarding experiences of my life. The drive through tea country to Dalhousie was gorgeous too.", color: "#fff3e0" },
+    { id: 4, name: "Clara Nilsson", rating: 5, date: "July 2025", profile: "Swedish, 23", trip: "Adam's Peak Quest", comment: "I've climbed mountains all over the world, but Adam's Peak has a magic that's unlike anywhere else. The communal spirit of the climb is beautiful.", color: "#f3e5f5" },
+    { id: 5, name: "Luca Rossi", rating: 5, date: "June 2025", profile: "Italian, 29", trip: "Adam's Peak Quest", comment: "The view from the top is simply out of this world. Hard climb, but the guides were very supportive.", color: "#fff" },
+    { id: 6, name: "Emma Thompson", rating: 5, date: "May 2025", profile: "UK, 31", trip: "Adam's Peak Quest", comment: "A spiritual journey that everyone should experience once. The energy at the summit is incredible.", color: "#fff" },
+    { id: 7, name: "Liam Chen", rating: 4, date: "April 2025", profile: "Singapore, 26", trip: "Adam's Peak Quest", comment: "Very steep stairs but well maintained. The sunrise was the highlight of my trip to Sri Lanka.", color: "#fff" },
+    { id: 8, name: "Sarah Jenkins", rating: 5, date: "March 2025", profile: "USA, 34", trip: "Adam's Peak Quest", comment: "Truly life-changing. The lanterns stretching up the mountain looked like a stairway to heaven.", color: "#fff" },
+    { id: 9, name: "Hiroshi Tanaka", rating: 5, date: "February 2025", profile: "Japan, 40", trip: "Adam's Peak Quest", comment: "A profound cultural and physical challenge. Very happy I did this with Giveback Journey.", color: "#fff" },
+    { id: 10, name: "Elena Petrova", rating: 4, date: "January 2025", profile: "Russia, 28", trip: "Adam's Peak Quest", comment: "Cold at the top! Bring a jacket. The sunrise was spectacular.", color: "#fff" },
+    // Adding 114 more reviews with a mix to reach ~4.7 average
+    ...Array(114).fill().map((_, i) => ({
+        id: i + 11,
+        name: ["John D.", "Maria S.", "David L.", "Sophie K.", "Alex M.", "Rachel T.", "Thomas B.", "Oliver W.", "Emily H.", "Daniel F."][i % 10],
+        rating: (i % 7 === 0) ? 3 : ((i % 3 === 0) ? 4 : 5), // Mix of 3, 4, and 5 stars
+        date: "2024-2025",
+        profile: "Verified Traveler",
+        trip: "Adam's Peak Quest",
+        comment: [
+            "Unforgettable experience! The sunrise was magical.",
+            "Hardest climb of my life but worth every step.",
+            "Stunning views and amazing atmosphere.",
+            "A must-do in Sri Lanka. Truly spiritual.",
+            "Well organized tour and great support from the team.",
+            "The climb was tough but the reward was better.",
+            "Simply breathtaking. I will never forget that sunrise.",
+            "Great cultural experience. Loved the pilgrim atmosphere.",
+            "A physical challenge with a beautiful reward.",
+            "Magical night under the stars climbing to the peak."
+        ][i % 10],
+        color: "#fff"
+    }))
+];
+
+const kitulgalaReviews = [
+    { id: 1, name: "Daniel Cooper", rating: 5, date: "October 2025", profile: "UK, 28", trip: "Kitulgala Rafting", comment: "The rapids were exciting but safe—perfect for a first-timer like me! The jungle scenery around the river was breathtaking.", color: "#e8f5e9" },
+    { id: 2, name: "Maria Santos", rating: 5, date: "September 2025", profile: "Portuguese, 24", trip: "Kitulgala Rafting", comment: "The riverside lunch after rafting was so authentic and delicious. Sitting by the Kelani River in the jungle was pure bliss.", color: "#e3f2fd" },
+    { id: 3, name: "Ethan Brooks", rating: 4, date: "August 2025", profile: "Australian, 32", trip: "Kitulgala Rafting", comment: "Great day trip from Kandy! The drive through the countryside was scenic and the rafting guide was professional and fun.", color: "#fff3e0" }
 ];
 
 const COMMON_NOTES = [
@@ -193,7 +275,7 @@ export const tourPackages = [
         ],
         inclusions: ["Private transport (Taxi)", "Elephant orphanage visit", "Tea factory tour", "Hotel pick-up & drop-off"],
         exclusions: ["Lunch", "Personal expenses", "Entrance fees for optional sites"],
-        routeMap: routeMapKandyPinnawalaDetailed,
+        routeMap: routeMapKandyPinnawalaPremium,
         reviews: kandyReviews,
         rating: 4.7,
         ratingLabel: "Highly Rated",
@@ -297,7 +379,7 @@ export const tourPackages = [
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "After breakfast, it’s time to bid farewell to the southern coast. Your private transfer will take you back to the airport for your onward journey. As you leave the turquoise waters behind, you’ll carry with you memories of golden sunsets, historic forts, and the gentle rhythm of the Indian Ocean.\n\nWe hope this southern escape has left you feeling refreshed and inspired, and we look forward to welcoming you back to our island paradise in the future.", 
+                desc: "<b>🍽️ Breakfast included.</b><br/><br/>After breakfast, it’s time to bid farewell to the <b>southern coast</b>. Your private transfer will take you back to the airport for your onward journey.<br/><br/>As you leave the <b>turquoise waters</b> behind, you’ll carry with you memories of <b>golden sunsets</b>, <b>historic forts</b>, and the gentle rhythm of the <b>Indian Ocean</b>.<br/><br/>We hope this southern escape has left you feeling refreshed and inspired, and we look forward to welcoming you back to our island paradise in the future.", 
                 activities: ["Breakfast", "Airport Transfer"],
                 optionalActivities: [
                     "Morning Whale Watching Safari in the deep blue",
@@ -309,7 +391,7 @@ export const tourPackages = [
         ],
         inclusions: ["Accommodation", "Breakfast", "Transfers"],
         exclusions: ["Lunch & Dinner", "Personal expenses", "Entrance fees"],
-        routeMap: routeMapSouthernDetailed,
+        routeMap: routeMapSouthernPremium,
         reviews: coastalReviews,
         rating: 4.9,
         ratingLabel: "Bestseller",
@@ -410,7 +492,7 @@ export const tourPackages = [
             "Optional activities",
             "Personal expenses"
         ],
-        routeMap: routeMapHighlandsInfographic,
+        routeMap: routeMapHighlandsPremium,
         reviews: adventureReviews,
         rating: 4.8,
         ratingLabel: "Adventurer's Choice",
@@ -428,7 +510,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Sacred Kandy & Cultural Beginnings", 
-                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> All travelers must be at the designated meeting point before <b>3:00 PM</b>. You may arrive independently, or we can arrange a private pickup from any location across the country for an additional pickup fee.</div>Your journey into the emerald heart of Sri Lanka begins in <b>Kandy</b>, the island's last royal capital. Nestled amongst rolling hills, this city is the spiritual home of the nation.<br/><br/><b>Highlights of the day:</b><br/><ul><li>🛕 Visit the sacred <b>Temple of the Tooth Relic</b>, where history and devotion come together.</li><li>🌅 Enjoy a serene evening walk around <b>Kandy Lake</b>.</li><li>🔥 Watch a vibrant <b>Cultural Dance Show</b>, a perfect introduction to Sri Lankan heritage.</li></ul><br/><b>Overnight stay in Kandy</b>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> All travelers must be at the starting point in <b>Kandy before 2:00 PM</b> on Day 1. Travelers can arrive on their own, or we can provide a private pick-up from your location across the country for an additional fee.</div>Your journey into the emerald heart of Sri Lanka begins in <b>Kandy</b>, the island's last royal capital. Nestled amongst rolling hills, this city is the spiritual home of the nation.<br/><br/><b>Highlights of the day:</b><br/><ul><li>🛕 Visit the sacred <b>Temple of the Tooth Relic</b>, where history and devotion come together.</li><li>🌅 Enjoy a serene evening walk around <b>Kandy Lake</b>.</li><li>🔥 Watch a vibrant <b>Cultural Dance Show</b>, a perfect introduction to Sri Lankan heritage.</li></ul><br/><b>Overnight stay in Kandy</b>", 
                 activities: ["Temple of the Tooth", "Cultural Dance Show", "Private Transport"],
                 optionalActivities: [
                     "Sacred Pilgrimage to Adam's Peak (tour itinerary will change accordingly)",
@@ -481,7 +563,7 @@ export const tourPackages = [
         inclusions: ["Tea factory visit", "Train tickets", "Mountain hiking"],
         exclusions: ["Lunch", "Entrance fees", "Insurance"],
         routeMap: routeMapMistInfographic,
-        reviews: signatureReviews,
+        reviews: mistReviews,
         rating: 4.7,
         ratingLabel: "Highly Rated",
         importantNotes: COMMON_NOTES
@@ -497,28 +579,28 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Colonial Grandeur & Sunset Ramparts", 
-                desc: "Your escape begins in the historic UNESCO World Heritage site of Galle Fort. This beautifully preserved Dutch-era fortress is a labyrinth of narrow streets, colonial villas, and vibrant culture. After checking into your boutique stay, take your first walk along the ancient ramparts as the sun begins to set over the Indian Ocean.\n\nThe iconic lighthouse and the old Dutch hospital provide a stunning backdrop for your evening. Wander through the fort's lanes, where you'll find charming cafes and artisan shops tucked away in historic buildings, offering a peaceful and sophisticated start to your journey.", 
+                desc: "Your escape begins in the historic UNESCO World Heritage site of <b>Galle Fort</b>. This beautifully preserved Dutch-era fortress is a labyrinth of narrow streets, colonial villas, and vibrant culture.<br/><br/>After checking into your stay, take your first walk along the <b>ancient ramparts</b> as the sun begins to set over the <b>Indian Ocean</b>.<br/><br/>The <b>iconic lighthouse</b> and the <b>old Dutch hospital</b> provide a stunning backdrop for your evening. Wander through the fort's lanes, where you'll find charming cafes and artisan shops tucked away in historic buildings, offering a peaceful and sophisticated start to your journey.", 
                 activities: ["Fort Check-in", "Sunset Rampart Walk", "Colonial Sights"],
                 optionalActivities: ["Cocktails at a heritage hotel", "Photography tour of colonial buildings", "Local street food tasting"]
             },
             { 
                 day: 2, 
                 title: "Artisan Streets & Boutique Shopping", 
-                desc: "Spend the day diving deeper into the fort's unique character. Galle Fort is a hub for art and craftsmanship; explore the many galleries showcasing local talent, visit traditional jewelry makers, and browse boutique shops for high-quality textiles and souvenirs.\n\nThe fort is best explored on foot, allowing you to discover hidden courtyards and architectural details at your own pace. In the afternoon, perhaps enjoy a traditional Sri Lankan tea experience or find a quiet spot on the ramparts to watch the local 'cliff divers'—a true fort tradition.", 
+                desc: "Spend the day diving deeper into the fort's unique character. <b>Galle Fort</b> is a hub for art and craftsmanship; explore the many galleries showcasing local talent, visit <b>traditional jewelry makers</b>, and browse boutique shops for high-quality <b>textiles and souvenirs</b>.<br/><br/>The fort is best explored on foot, allowing you to discover <b>hidden courtyards</b> and architectural details at your own pace. In the afternoon, perhaps enjoy a <b>traditional Sri Lankan tea experience</b> or find a quiet spot on the ramparts to watch the <b>local 'cliff divers'</b>—a true fort tradition.", 
                 activities: ["Breakfast", "Boutique Shopping", "Art Gallery Visits", "Artisan Workshops"],
                 optionalActivities: ["Traditional Sri Lankan tea experience", "Watch local 'cliff divers' performance", "Jewelry making demonstration"]
             },
             { 
                 day: 3, 
                 title: "Coastal Farewell & Departure", 
-                desc: "Before you say goodbye to Galle, take a final refreshing dip in the ocean at a nearby beach or enjoy breakfast in one of the fort’s many picturesque cafes. Your short but immersive journey concludes with a transfer back to your next destination or the airport.\n\nAs you leave the historic walls of the fort behind, carry with you the timeless charm and elegance of this colonial gem. We hope this brief escape has left you with lasting memories of Sri Lanka’s southern heritage.", 
+                desc: "Before you say goodbye to <b>Galle</b>, take a final refreshing dip in the ocean at a nearby beach or enjoy breakfast in one of the fort’s many picturesque cafes.<br/><br/>Your short but immersive journey concludes with a transfer back to your next destination or the airport.<br/><br/>As you leave the <b>historic walls</b> of the fort behind, carry with you the <b>timeless charm</b> and elegance of this colonial gem.", 
                 activities: ["Breakfast", "Coastal Dip", "Airport Transfer"] 
             }
         ],
         inclusions: ["Galle Fort tour", "Boutique stay", "Local breakfast"],
         exclusions: ["Shopping", "Lunches", "Transport to Galle"],
-        routeMap: routeMapGalle,
-        reviews: coastalReviews,
+        routeMap: routeMapGallePremium,
+        reviews: galleReviews,
         rating: 4.8,
         ratingLabel: "Cultural Gem",
         physicalIntensity: 1,
@@ -535,14 +617,14 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Kandy Highlights", 
-                desc: "Your immersive day in the cultural capital begins with a 9:00 AM pick-up from your accommodation. We first visit the sacred Temple of the Tooth Relic, the spiritual heart of Sri Lanka, where you'll witness the deep devotion of local pilgrims. Afterward, enjoy a peaceful stroll around the iconic Kandy Lake, taking in the views of the surrounding hills and the white-washed temple walls.\n\nThe journey continues to the Royal Botanical Gardens in Peradeniya, home to over 4,000 species of plants and a spectacular orchid collection. As evening falls, witness a vibrant Sri Lankan cultural show, where traditional drummers and fire-dancers bring the island's rich history to life in a high-energy performance.", 
+                desc: "Your immersive day in the <b>cultural capital</b> begins with a 9:00 AM pick-up from your accommodation.<br/><br/>We first visit the sacred <b>Temple of the Tooth Relic</b>, the spiritual heart of Sri Lanka, where you'll witness the deep devotion of local pilgrims. Afterward, enjoy a peaceful stroll around the iconic <b>Kandy Lake</b>, taking in the views of the surrounding hills and the white-washed temple walls.<br/><br/>The journey continues to the <b>Royal Botanical Gardens</b> in Peradeniya, home to over 4,000 species of plants and a spectacular orchid collection. As evening falls, witness a vibrant <b>Sri Lankan cultural show</b>, where traditional drummers and fire-dancers bring the island's rich history to life in a high-energy performance.", 
                 activities: ["Temple of the Tooth Visit", "Royal Botanical Gardens", "Cultural Dance Show", "Private Transport"] 
             }
         ],
         inclusions: ["Pick-up & Drop-off (within 1km of city)", "Temple of the Tooth visit", "Botanical Garden tour", "Cultural show tickets"],
         exclusions: ["Lunch", "Locations outside 1km radius", "Personal expenses"],
-        routeMap: routeMapKandyDetailed,
-        reviews: kandyReviews,
+        routeMap: routeMapKandyPremium,
+        reviews: kandyHighlightsReviews,
         rating: 4.6,
         ratingLabel: "Excellent",
         importantNotes: COMMON_NOTES
@@ -558,22 +640,22 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Highland Drive to Dalhousie", 
-                desc: "Your spiritual journey begins with a scenic drive through the heart of the tea country. Pass by cascading waterfalls and endless emerald hills as we make our way to the village of Dalhousie, the base for the Adam's Peak climb. \n\nCheck into your guesthouse and spend the afternoon resting and hydrating in preparation for the night ahead. The cool mountain air and the view of the peak from the village create a sense of anticipation for the quest that awaits.", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> All travelers must be at the starting point in <b>Kandy before 2:00 PM</b> on Day 1. Travelers can arrive on their own, or we can provide a private pick-up from your location across the country for an additional fee.</div>Your spiritual journey begins with a scenic drive through the heart of the <b>tea country</b>. Pass by cascading waterfalls and endless <b>emerald hills</b> as we make our way to the village of <b>Dalhousie</b>, the base for the Adam's Peak climb.<br/><br/>Check into your guesthouse and spend the afternoon resting and <b>hydrating</b> in preparation for the night ahead. The cool mountain air and the view of the peak from the village create a sense of anticipation for the <b>quest</b> that awaits.", 
                 activities: ["Scenic Highlands Drive", "Tea Plantation Views", "Pre-Climb Rest"],
                 optionalActivities: ["Visit to St. Clair's Falls", "Tea tasting at Mlesna Tea Castle", "Laxapana Falls short detour"]
             },
             { 
                 day: 2, 
                 title: "The Sacred Sunrise & Descent", 
-                desc: "The climb begins in the silence of the night, usually around 10:00 PM, joining thousands of pilgrims on the ancient stone path. The way is illuminated by lanterns and the collective spirit of those seeking the summit. \n\nReach the peak in the pre-dawn hours to witness a breathtaking sunrise that illuminates the entire island—a spiritual experience like no other. After the descent, enjoy breakfast before your return transfer to Kandy, carrying the light of the sunrise with you.", 
+                desc: "The climb begins in the silence of the night, joining thousands of pilgrims on the <b>ancient stone path</b>. The way is illuminated by lanterns and the collective spirit of those seeking the summit.<br/><br/>Reach the peak in the pre-dawn hours to witness a <b>breathtaking sunrise</b> that illuminates the entire island—a spiritual experience like no other. After the descent, enjoy <b>breakfast</b> before your return transfer to Kandy, carrying the light of the sunrise with you.", 
                 activities: ["Breakfast", "Adam's Peak Climb", "Private Transfer"] 
             }
         ],
         inclusions: ["Private transport (Taxi/TukTuk)", "Guesthouse stay (1 Night)", "Breakfast", "Hotel Pick-up & Drop-off"],
         exclusions: ["Dinner", "Lunch", "Personal snacks/water", "Hiking gear"],
-        routeMap: routeMapAdamsPeakDetailed,
-        reviews: adventureReviews,
-        rating: 5.0,
+        routeMap: routeMapAdamsPeakPremium,
+        reviews: adamsPeakReviews,
+        rating: 4.7,
         ratingLabel: "Must Experience",
         physicalIntensity: 5,
         importantNotes: COMMON_NOTES
@@ -589,14 +671,14 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "River Rapids Adventure", 
-                desc: "Depart from Kandy for a thrilling day on the Kelani River in Kitulgala, the famous filming location for 'The Bridge on the River Kwai.' Experience the adrenaline rush of tackling white-water rapids through a lush tropical rainforest, an adventure suitable for both beginners and thrill-seekers.\n\nAfter your river journey, enjoy a traditional Sri Lankan riverside lunch, served in a beautiful jungle setting. Relax by the river and soak in the natural beauty before your return transfer to Kandy, feeling the exhilarating energy of the forest.", 
+                desc: "Depart from Kandy for a thrilling day on the <b>Kelani River</b> in Kitulgala, the famous filming location for 'The Bridge on the River Kwai.'<br/><br/>Experience the adrenaline rush of tackling <b>white-water rapids</b> through a lush <b>tropical rainforest</b>, an adventure suitable for both beginners and thrill-seekers.<br/><br/>After your river journey, enjoy a traditional <b>Sri Lankan riverside lunch</b>, served in a beautiful jungle setting. Relax by the river and soak in the natural beauty before your return transfer to Kandy, feeling the exhilarating energy of the forest.", 
                 activities: ["White Water Rafting", "Lunch", "Private Transfer"] 
             }
         ],
         inclusions: ["Private transport (Taxi/TukTuk)", "Rafting equipment & guide", "Traditional Lunch", "Hotel Pick-up & Drop-off"],
         exclusions: ["Personal expenses", "Tips", "Travel insurance"],
-        routeMap: routeMapKitulgala,
-        reviews: adventureReviews,
+        routeMap: routeMapKitulgalaPremium,
+        reviews: kitulgalaReviews,
         rating: 4.7,
         ratingLabel: "Thrill Seekers",
         physicalIntensity: 3,

@@ -32,6 +32,20 @@ import mistSlide3 from '../assets/6dcd6aa51e0c0ec70dff43924b8a235c.jpg';
 import mistSlide4 from '../assets/675f3b08f47062cb4c31998d09993803.jpg';
 import mistSlide5 from '../assets/028f7ad83600396f7a8e50286b0ba78c.jpg';
 import mistSlide6 from '../assets/e264a63d548ae7618df7c7db0cd9245c.jpg';
+import galleSlide2 from '../assets/28eed5ff4a30f860780f5251798d342f.jpg';
+import galleSlide3 from '../assets/29b450ea3ff426a308ac44a4b6566ebf.jpg';
+import galleSlide4 from '../assets/f4441febd0999a390c407b9cfd5422ae.jpg';
+import galleSlide5 from '../assets/71e3007dc13ff2793d406e8cc25e96d5.jpg';
+import galleSlide6 from '../assets/0d84aa0af7fa47f94946ed5cb1896cd6.jpg';
+import kandyHighSlide2 from '../assets/4a4f12055e9bf982ad73fb490bebaf15.jpg';
+import kandyHighSlide3 from '../assets/0b244be2033db8d252c09ac5952fd2ec.jpg';
+import kandyHighSlide4 from '../assets/190b19efa26222b1d393a6085b5d6d3e.jpg';
+import kandyHighSlide6 from '../assets/ccabf7721ab68bb424228db7bdb2e13d.jpg';
+import adamsPeakSlide2 from '../assets/6323104ee871047c8192d2d3fbe9a5f4.jpg';
+import adamsPeakSlide3 from '../assets/96b8916547406115ee3f1240359a92af.jpg';
+import adamsPeakSlide4 from '../assets/548ca78544e5070b59f558a0b02cf606.jpg';
+import adamsPeakSlide5 from '../assets/0c3aa6595f8fa9d7304e54d629d024c5.jpg';
+import adamsPeakSlide6 from '../assets/c826dc63ec0b07b44bbfd80e148a8f03.jpg';
 
 const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -249,6 +263,7 @@ const TourDetails = () => {
     const { addToCompare, compareList, removeFromCompare } = useCompare();
 
     const pkg = tourPackages.find(p => p.id === parseInt(id));
+    const reviews = pkg?.reviews || [];
 
     const [transport, setTransport] = useState('taxi');
     const [activeBookingTab, setActiveBookingTab] = useState('Is this trip right for you?');
@@ -266,11 +281,11 @@ const TourDetails = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const galleryImages = [
         pkg?.image || '', 
-        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : essentialSlide2))), 
-        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : gallerySlide3))), 
-        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : gallerySlide4))), 
-        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide5 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : gallerySlide5))), 
-        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : gallerySlide6)))
+        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2)))))), 
+        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : (pkg?.id === 6 ? galleSlide3 : (pkg?.id === 9 ? kandyHighSlide3 : (pkg?.id === 10 ? adamsPeakSlide3 : gallerySlide3)))))), 
+        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : (pkg?.id === 6 ? galleSlide4 : (pkg?.id === 9 ? kandyHighSlide4 : (pkg?.id === 10 ? adamsPeakSlide4 : gallerySlide4)))))), 
+        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : (pkg?.id === 6 ? galleSlide5 : (pkg?.id === 10 ? adamsPeakSlide5 : gallerySlide5))))), 
+        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : (pkg?.id === 6 ? galleSlide6 : (pkg?.id === 10 ? adamsPeakSlide6 : gallerySlide6)))))
     ];
     const sliderRef = React.useRef(null);
     
@@ -354,7 +369,7 @@ const TourDetails = () => {
         if (pkg.id === 2) currentBase = 650;
         
         if (transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : 300)));
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : 300)))));
             return `$${currentBase - discount}`;
         }
         if (transport === 'van') {
@@ -1435,9 +1450,9 @@ const TourDetails = () => {
                         }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '25px' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ color: '#f39c12', fontSize: '1.2rem' }}><i className="fa-solid fa-star"></i></span>
-                                    <span style={{ fontSize: '1.4rem', fontWeight: 900 }}>4.9</span>
-                                    <a href="#reviews" style={{ fontSize: '0.85rem', color: '#0066cc', textDecoration: 'underline', fontWeight: 600 }}>100 reviews</a>
+                                    <span style={{ color: 'var(--primary-green)', fontSize: '1.2rem' }}><i className="fa-solid fa-star"></i></span>
+                                    <span style={{ fontSize: '1.4rem', fontWeight: 900 }}>{pkg.rating}</span>
+                                    <a href="#reviews" style={{ fontSize: '0.85rem', color: '#0066cc', textDecoration: 'underline', fontWeight: 600 }}>{reviews.length} reviews</a>
                                 </div>
                                 <div style={{ textAlign: 'right' }}>
                                     <span style={{ fontSize: '0.65rem', color: '#999', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '1px' }}>Trip code: HPKS</span>
@@ -1514,7 +1529,7 @@ const TourDetails = () => {
                                     {[
                                         { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
                                         { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: '+$150' },
-                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : '-$300'))) }
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 9 ? '-$30' : '-$300')))) }
                                     ].map(v => (
                                         <div
                                             key={v.id}
@@ -1544,7 +1559,9 @@ const TourDetails = () => {
                                                 <i className={v.icon} style={{ fontSize: '1.3rem', color: transport === v.id ? 'white' : 'var(--primary-green)' }}></i>
                                             )}
                                             <span style={{ fontSize: '0.85rem', fontWeight: 800, lineHeight: 1.1 }}>{v.label}</span>
-                                            <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6 }}>{v.modifier}</span>
+                                            <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                                                {v.id === 'taxi' ? 'Standard' : (v.id === 'van' ? 'Premium' : 'Economic')}
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
@@ -1984,37 +2001,33 @@ const TourDetails = () => {
                         
                         <div className="reviews-summary">
                             <div className="rating-large">
-                                <h1>4.5</h1>
+                                <h1>{pkg.rating}</h1>
                                 <div className="stars">
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-fill"></i>
-                                    <i className="bi bi-star-half"></i>
+                                    {[...Array(5)].map((_, i) => (
+                                        <i key={i} className={`bi bi-star${i < Math.floor(pkg.rating) ? '-fill' : (i < pkg.rating ? '-half' : '')}`} style={{ color: i < pkg.rating ? 'var(--primary-green)' : '#ddd' }}></i>
+                                    ))}
                                 </div>
-                                <p>based on 100+ reviews</p>
+                                <p>based on {reviews.length} reviews</p>
                             </div>
                             
                             <div className="rating-breakdown">
                                 <div className="breakdown-title">Total reviews and rating from Giveback Journey</div>
-                                {[
-                                    { label: '5 stars', count: 110, width: '80%' },
-                                    { label: '4 stars', count: 18, width: '5%' },
-                                    { label: '3 stars', count: 18, width: '5%' },
-                                    { label: '2 stars', count: 12, width: '3%' },
-                                    { label: '1 star', count: 3, width: '2%' }
-                                ].map((row, i) => (
-                                    <div key={i} className="breakdown-row">
-                                        <div className="breakdown-label">{row.label}</div>
-                                        <div className="breakdown-bar-container">
-                                            <div 
-                                                className={`breakdown-bar ${row.label === '5 stars' ? 'animated-rising' : ''}`} 
-                                                style={{ width: row.width }}
-                                            ></div>
+                                {[5, 4, 3, 2, 1].map((star) => {
+                                    const count = reviews.filter(r => r.rating === star).length;
+                                    const percentage = reviews.length > 0 ? (count / reviews.length) * 100 : 0;
+                                    return (
+                                        <div key={star} className="breakdown-row">
+                                            <div className="breakdown-label">{star} stars</div>
+                                            <div className="breakdown-bar-container">
+                                                <div 
+                                                    className={`breakdown-bar ${star === 5 ? 'animated-rising' : ''}`} 
+                                                    style={{ width: `${percentage}%` }}
+                                                ></div>
+                                            </div>
+                                            <div className="breakdown-count">{count}</div>
                                         </div>
-                                        <div className="breakdown-count">{row.count}</div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
@@ -2142,7 +2155,7 @@ const TourDetails = () => {
                                     </div>
                                     <div className="card-rating">
                                         <i className="bi bi-star-fill"></i>
-                                        <span>4.9 (120+)</span>
+                                        <span>{tour.rating} ({tour.reviews?.length || 0})</span>
                                     </div>
                                     <h3 className="card-title">{tour.name}</h3>
                                     <div className="card-price">
@@ -2161,10 +2174,16 @@ const TourDetails = () => {
             <div className="mobile-sticky-bar">
                 <div className="sticky-bar-content">
                     <div className="price-tag">
-                        <span className="from-text">From</span>
-                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                            <span style={{ textDecoration: 'line-through', color: '#999', fontSize: '0.85rem', fontWeight: 600 }}>USD {getOriginalPrice()}</span>
-                            <span className="price-amount">USD {getPrice()}</span>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                            <span className="from-text" style={{ margin: 0 }}>From</span>
+                            {transport === 'tuktuk' && (
+                                <span style={{ textDecoration: 'line-through', color: '#999', fontSize: '0.85rem', fontWeight: 600 }}>USD {getOriginalPrice().replace('$', '')}</span>
+                            )}
+                            <span className="price-amount" style={{ fontSize: '1.4rem' }}>USD {getPrice().replace('$', '')}</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '2px', fontSize: '0.7rem', color: '#888', fontWeight: 700, textDecoration: 'underline' }}>
+                            <i className="bi bi-bag-check" style={{ fontSize: '0.7rem' }}></i>
+                            <span>{getBaggageInfo()}</span>
                         </div>
                     </div>
                     <button className="sticky-book-btn" onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}>

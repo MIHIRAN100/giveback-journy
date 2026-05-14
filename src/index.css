@@ -3012,7 +3012,7 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .chat-container {
-        bottom: calc(85px + env(safe-area-inset-bottom)) !important; /* Raised to sit above mobile bottom bar */
+        bottom: calc(160px + env(safe-area-inset-bottom)) !important; /* Raised even further as requested */
         right: 20px;
     }
     
@@ -3249,7 +3249,7 @@ h1, h2, h3, .logo-text {
     
     .chat-container {
         right: 15px;
-        bottom: 15px;
+        bottom: 160px !important;
         pointer-events: none; /* Reinforce: container must not intercept */
     }
     

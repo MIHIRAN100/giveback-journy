@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ChatBot = ({ cookieVisible }) => {
+const ChatBot = ({ cookieVisible, isTourDetails }) => {
     const [isOpen, setIsOpen] = useState(false);
     const whatsappNumber = "94754154119";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi!%20I'm%20interested%20in%20your%20Sri%20Lanka%20tour%20packages.`;
@@ -28,7 +28,7 @@ const ChatBot = ({ cookieVisible }) => {
     }, []);
 
     return (
-        <div className="chat-container" style={{ bottom: cookieVisible ? '100px' : '30px' }}>
+        <div className="chat-container" style={{ bottom: (cookieVisible || isTourDetails) ? '160px' : '30px' }}>
             {/* Popup Window */}
             <div className={`chat-window ${isOpen ? 'open' : ''}`}>
                 <div className="chat-header">
