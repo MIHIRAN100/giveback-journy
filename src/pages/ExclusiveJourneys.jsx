@@ -31,17 +31,17 @@ const ExclusiveJourneys = () => {
                 </div>
             </section>
 
-            {/* Section 1: What is Giveback Journey? */}
+            {/* Section 1: What is Give Back Journey? */}
             <section className="joy-about-section">
                 <div className="joy-container">
                     <ScrollReveal>
-                        <h2 className="joy-about-title">What is Giveback Journey?</h2>
+                        <h2 className="joy-about-title">What is Give Back Journey?</h2>
                         <h3 className="joy-about-subtitle">
-                            Giveback Journey is where affordable adventure meets meaningful impact.
+                            Give Back Journey is where affordable adventure meets meaningful impact.
                         </h3>
                         <div className="joy-about-text">
                             <p>
-                                Looking for a budget-friendly way to explore Sri Lanka? Giveback Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities. We believe that everyone should have the chance to see the world's beauty while contributing to its preservation, which is why our journeys are designed to be as impactful as they are affordable. From the misty highlands to the golden southern shores, our mission is to ensure that your adventure leaves a lasting, positive legacy on the hearts of the people you meet and the land you explore.
+                                Looking for a budget-friendly way to explore Sri Lanka? Give Back Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities. We believe that everyone should have the chance to see the world's beauty while contributing to its preservation, which is why our journeys are designed to be as impactful as they are affordable. From the misty highlands to the golden southern shores, our mission is to ensure that your adventure leaves a lasting, positive legacy on the hearts of the people you meet and the land you explore.
                             </p>
                             <p>
                                 Our approach is rooted in transparency and local expertise. By working directly with grassroots organizations and local families, we cut out the middleman, ensuring that more of your travel funds reach the people who need it most. This allows us to provide you with an unfiltered, raw look at the island's culture while maintaining the high safety and comfort standards that every traveler deserves.

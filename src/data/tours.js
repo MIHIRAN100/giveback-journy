@@ -10,6 +10,7 @@ import kandyDayImg from '../assets/download (4).jpg';
 import adamsPeakImg from '../assets/download (5).jpg';
 import raftingImg from '../assets/Rafting.jpg';
 import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
+import islandCrossoverCover from '../assets/island_crossover_cover.png';
 
 import routeMapEssential from '../assets/route_map_essential_v2.png';
 import routeMapSouthernNew from '../assets/route_map_southern_v2.png';
@@ -151,7 +152,7 @@ const adamsPeakReviews = [
     { id: 6, name: "Emma Thompson", rating: 5, date: "May 2025", profile: "UK, 31", trip: "Adam's Peak Quest", comment: "A spiritual journey that everyone should experience once. The energy at the summit is incredible.", color: "#fff" },
     { id: 7, name: "Liam Chen", rating: 4, date: "April 2025", profile: "Singapore, 26", trip: "Adam's Peak Quest", comment: "Very steep stairs but well maintained. The sunrise was the highlight of my trip to Sri Lanka.", color: "#fff" },
     { id: 8, name: "Sarah Jenkins", rating: 5, date: "March 2025", profile: "USA, 34", trip: "Adam's Peak Quest", comment: "Truly life-changing. The lanterns stretching up the mountain looked like a stairway to heaven.", color: "#fff" },
-    { id: 9, name: "Hiroshi Tanaka", rating: 5, date: "February 2025", profile: "Japan, 40", trip: "Adam's Peak Quest", comment: "A profound cultural and physical challenge. Very happy I did this with Giveback Journey.", color: "#fff" },
+    { id: 9, name: "Hiroshi Tanaka", rating: 5, date: "February 2025", profile: "Japan, 40", trip: "Adam's Peak Quest", comment: "A profound cultural and physical challenge. Very happy I did this with Give Back Journey.", color: "#fff" },
     { id: 10, name: "Elena Petrova", rating: 4, date: "January 2025", profile: "Russia, 28", trip: "Adam's Peak Quest", comment: "Cold at the top! Bring a jacket. The sunrise was spectacular.", color: "#fff" },
     // Adding 114 more reviews with a mix to reach ~4.7 average
     ...Array(114).fill().map((_, i) => ({
@@ -184,7 +185,7 @@ const kitulgalaReviews = [
 ];
 
 const COMMON_NOTES = [
-    "Some travellers have reported being approached by locals offering excursions before their Giveback Journey trip commences. This has been particularly prevalent in and around the hotels used by Giveback Journey. These guides are in no way connected to Giveback Journey and we cannot guarantee the safety or quality standards of their tours. We advise customers against joining any tour offered by the unauthorised guides.",
+    "Some travellers have reported being approached by locals offering excursions before their Give Back Journey trip commences. This has been particularly prevalent in and around the hotels used by Give Back Journey. These guides are in no way connected to Give Back Journey and we cannot guarantee the safety or quality standards of their tours. We advise customers against joining any tour offered by the unauthorised guides.",
     "A single supplement is available if you'd prefer not to share a room on this trip. The single supplement is subject to availability. Please speak to your booking agent for further information.",
     "A complimentary airport arrival transfer is included; valid if you are arriving on Day 1 or if you have booked pre-tour accommodation through us. You must provide your flight details to us at least 14 days prior to travel.",
     "Sri Lanka is a deeply religious country. Always cover your shoulders and knees when visiting temples. Modest dress is not just expected—it's required for entry. Avoid wearing clothing with religious symbols as fashion, and if you have tattoos of Buddhist or other religious figures, make sure to cover them before entering any religious site.",
@@ -706,4 +707,73 @@ export const tourPackages = [
         physicalIntensity: 3,
         importantNotes: COMMON_NOTES
     },
+    {
+        id: 12,
+        name: "10-Day Island Cross-Over: South to North",
+        days: "10 Days / 9 Nights",
+        description: "A breathtaking cross-island journey from the misty southern highlands to the untouched white sands of the north-east coast. This 10-day odyssey captures the soul of Sri Lanka—from the rolling tea estates of Ella to the historic shores of Trincomalee and the ancient wonders of Anuradhapura.",
+        price: "$890",
+        image: islandCrossoverCover,
+        itinerary: [
+            { 
+                day: 1, 
+                title: "Arrival & Transfer to Ramboda", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining point for this tour is <b>Katunayake Airport (CMB)</b> or any hotel located around <b>Ramboda</b>. We provide complimentary pick-ups from these locations. Private pick-ups from any other location across the country are available for an additional fee.</div>Welcome to Sri Lanka! Upon arrival, we transfer you to the misty heights of <b>Ramboda</b>, known for its majestic waterfalls and cool mountain air. Settle into your accommodation and enjoy the serene atmosphere of the central highlands as you prepare for your island odyssey." 
+            },
+            { 
+                day: 2, 
+                title: "Exploring Ramboda Waterfalls", 
+                desc: "Spend the day exploring the cascading waterfalls of <b>Ramboda</b>. Visit the Ramboda Falls, one of the highest in the country, and take in the panoramic views of the Kotmale valley. This day is dedicated to relaxation and soaking in the natural beauty of the hills." 
+            },
+            { 
+                day: 3, 
+                title: "Nuwara Eliya | Little England", 
+                desc: "Travel to <b>Nuwara Eliya</b>, the heart of the tea country. Walk through the colonial-style town, visit Gregory Lake, and enjoy the crisp mountain breeze. You'll learn about the history of tea production and enjoy the 'Little England' vibes of this historic town." 
+            },
+            { 
+                day: 4, 
+                title: "Misty Ella & Nine Arches", 
+                desc: "Head to <b>Ella</b>, the bohemian mountain village. Visit the iconic <b>Nine Arches Bridge</b> and hike <b>Little Adam's Peak</b> for stunning views of the Ella Gap. The atmosphere here is relaxed and filled with the energy of global travelers." 
+            },
+            { 
+                day: 5, 
+                title: "Panoramic Train & Transfer to Naula", 
+                desc: "Board the <b>panoramic train to Ambewela</b> for a stunning highland rail experience. Your driver will pick you up at Ambewela station and transfer you north towards <b>Naula</b>, transitioning from the mountains to the dry zone plains of the cultural triangle." 
+            },
+            { 
+                day: 6, 
+                title: "Sigiriya Lion Rock", 
+                desc: "Scale the magnificent <b>Sigiriya Rock Fortress</b> at sunrise. In the afternoon, explore the ancient irrigation wonders of the area or enjoy a peaceful village safari. This is the heart of the island's ancient history." 
+            },
+            { 
+                day: 7, 
+                title: "Trincomalee | The North-East Coast", 
+                desc: "Journey to the pristine shores of <b>Trincomalee</b>. Visit the <b>Koneswaram Temple</b> perched on a cliff and relax on the white sands of Uppuveli beach. The atmosphere here is vastly different from the south—quiet, untouched, and serene." 
+            },
+            { 
+                day: 8, 
+                title: "Trincomalee | Beach & Marine Life", 
+                desc: "A full day to relax in <b>Trincomalee</b>. Optional activities include whale watching or snorkeling at <b>Pigeon Island National Park</b>. Enjoy the crystal clear waters and the unique culture of the north-east." 
+            },
+            { 
+                day: 9, 
+                title: "Anuradhapura | The Ancient Capital", 
+                desc: "Travel to the UNESCO World Heritage site of <b>Anuradhapura</b>. Explore the sprawling ruins of the island's first ancient capital, including giant stupas and sacred Bo trees that have stood for millennia." 
+            },
+            { 
+                day: 10, 
+                title: "Colombo | The Final Chapter", 
+                desc: "Conclude your journey in the vibrant capital of <b>Colombo</b>. Enjoy a city tour, visit the Dutch Hospital area, and prepare for your departure after a truly epic cross-island adventure." 
+            }
+        ],
+        inclusions: ["9 nights accommodation", "Daily breakfast", "Train tickets (Panoramic)", "Private transport", "Entrance fees to core sites"],
+        exclusions: ["Lunches & Dinners", "Personal expenses", "Optional marine activities in Trincomalee"],
+        routeMap: routeMapGrandLoop,
+        reviews: signatureReviews,
+        rating: 4.9,
+        ratingLabel: "New Experience",
+        physicalIntensity: 3,
+        importantNotes: COMMON_NOTES
+    },
+
 ];

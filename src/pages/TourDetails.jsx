@@ -2012,7 +2012,7 @@ const TourDetails = () => {
                             </div>
                             
                             <div className="rating-breakdown">
-                                <div className="breakdown-title">Total reviews and rating from Giveback Journey</div>
+                                <div className="breakdown-title">Total reviews and rating from Give Back Journey</div>
                                 {[5, 4, 3, 2, 1].map((star) => {
                                     const count = reviews.filter(r => r.rating === star).length;
                                     const percentage = reviews.length > 0 ? (count / reviews.length) * 100 : 0;

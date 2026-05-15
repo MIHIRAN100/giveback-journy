@@ -19,7 +19,6 @@ import Compare from './pages/Compare';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
 import Breadcrumbs from './components/Breadcrumbs';
-import AdBanner from './components/AdBanner';
 
 import { CompareProvider } from './context/CompareContext';
 
@@ -53,7 +52,6 @@ const AppContent = () => {
       <Footer />
       <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} />
       <CookieBar onVisibilityChange={setCookieVisible} />
-      <AdBanner />
 
       {!isTourDetails && <MobileBottomBar />}
     </div>

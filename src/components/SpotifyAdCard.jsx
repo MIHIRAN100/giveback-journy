@@ -73,7 +73,7 @@ const SpotifyAdCard = ({ margin = '0' }) => {
                     <div style={{ color: '#1DB954', fontSize: '1.6rem' }}>
                         <i className="fa-solid fa-hand-holding-heart"></i>
                     </div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 900, letterSpacing: '1px', textTransform: 'none', color: '#fff', opacity: 0.9 }}>Giveback Journey<span style={{color: '#1DB954'}}>.</span></span>
+                    <span style={{ fontSize: '0.9rem', fontWeight: 900, letterSpacing: '1px', textTransform: 'none', color: '#fff', opacity: 0.9 }}>Give Back Journey<span style={{color: '#1DB954'}}>.</span></span>
                 </div>
                 
                 <h3 style={{ 

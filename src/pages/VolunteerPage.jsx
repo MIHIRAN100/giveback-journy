@@ -386,7 +386,7 @@ const VolunteerPage = () => {
                     <h2 className="intro-title">Make a Lasting Impact</h2>
                     <div className="intro-text">
                         <p style={{ marginBottom: '20px' }}>
-                            Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
+                            Volunteering in Sri Lanka is a journey of the heart. At Give Back Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
                         </p>
                         <p>
                             Whether you're teaching English to enthusiastic students, supporting woman empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.

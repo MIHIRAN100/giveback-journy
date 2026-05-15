@@ -1,12 +1,10 @@
 import React, { useRef } from 'react';
 import Moment1 from '../assets/moments/traveler_moment_1_1778416676983.png';
-import Moment2 from '../assets/moments/traveler_moment_2_1778416701947.png';
-import Moment3 from '../assets/moments/traveler_moment_3_1778416724035.png';
-import Moment4 from '../assets/moments/traveler_moment_4_1778416747167.png';
-import Moment5 from '../assets/moments/traveler_moment_5_1778416936594.png';
-import Moment6 from '../assets/moments/traveler_moment_6_1778416969804.png';
-import TravelerVideo1 from '../assets/WhatsApp Video 2026-05-11 at 11.24.51.mp4';
-import TravelerVideo2 from '../assets/WhatsApp Video 2026-05-11 at 11.38.28.mp4';
+import TravelerVideo3 from '../assets/IMG_5706 (1).MOV';
+import Volunteer1 from '../assets/volunteer_1.png';
+import Volunteer2 from '../assets/volunteer_2.png';
+import Volunteer3 from '../assets/volunteer_3.png';
+import Volunteer4 from '../assets/volunteer_4.png';
 
 const getYouTubeId = (url) => {
     if (!url) return null;
@@ -109,47 +107,39 @@ const TravelerMoments = () => {
     const moments = [
         {
             id: 1,
-            user: "Dhvanil",
-            avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100",
+            user: "Piper",
+            avatar: "P",
             image: Moment1,
-            video: "https://youtube.com/shorts/sjCngWju9ME?si=WjGjgnIvconHVB-N",
-            title: "7-Day Essential Sri Lanka",
+            video: TravelerVideo3,
+            title: "Volunteer Experience in Kandy",
         },
         {
             id: 2,
-            user: "Kelvin",
-            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
-            image: Moment2,
-            video: TravelerVideo2,
-            title: "Scenic Highlands Train",
+            user: "Jake",
+            avatar: "J",
+            image: Volunteer1,
+            title: "My Journey in Ella",
         },
         {
             id: 3,
-            user: "Sarah",
-            avatar: "S",
-            image: Moment3,
-            title: "Tropical Beach Bliss",
+            user: "Chloe",
+            avatar: "C",
+            image: Volunteer2,
+            title: "Teaching in Galle",
         },
         {
             id: 4,
-            user: "Kai",
-            avatar: "K",
-            image: Moment4,
-            title: "Authentic Village Life",
+            user: "Noah",
+            avatar: "N",
+            image: Volunteer3,
+            title: "Wildlife Rescue Story",
         },
         {
             id: 5,
-            user: "Elena",
-            avatar: "E",
-            image: Moment5,
-            title: "Traditional Fishing Experience",
-        },
-        {
-            id: 6,
-            user: "Marcus",
+            user: "Mia",
             avatar: "M",
-            image: Moment6,
-            title: "Nuwara Eliya Tea Retreat",
+            image: Volunteer4,
+            title: "Village Life Experience",
         }
     ];
 
@@ -166,7 +156,7 @@ const TravelerMoments = () => {
     return (
         <section className="who-we-are-section">
             <div className="who-we-are-header">
-                <h2>Traveler Feedback</h2>
+                <h2>Traveler Feedback Shorts</h2>
                 <div className="who-nav-btns">
                     <button className="who-nav-btn" onClick={() => scroll('left')}>
                         <i className="fa-solid fa-chevron-left"></i>
@@ -177,8 +167,11 @@ const TravelerMoments = () => {
                 </div>
             </div>
 
-            <div className={`who-moments-grid scroll-row ${activeCardId !== null ? 'has-active-video' : ''}`} ref={scrollRef}>
-                {moments.map((moment) => (
+            <div 
+                className={`who-moments-grid scroll-row ${activeCardId !== null ? 'has-active-video' : ''}`} 
+                ref={scrollRef}
+                style={moments.length === 1 ? { justifyContent: 'center' } : {}}
+            >                {moments.map((moment) => (
                     <MomentCard 
                         key={moment.id} 
                         moment={moment} 

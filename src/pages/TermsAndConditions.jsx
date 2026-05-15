@@ -12,7 +12,7 @@ const TermsAndConditions = () => {
                 <ScrollReveal>
                     <div className="policy-hero-content">
                         <h1>Terms & Conditions</h1>
-                        <p>The clear agreement between you and Giveback Journeys for a safe and fair travel experience.</p>
+                        <p>The clear agreement between you and Give Back Journeys for a safe and fair travel experience.</p>
                     </div>
                 </ScrollReveal>
             </div>
@@ -22,7 +22,7 @@ const TermsAndConditions = () => {
                     <ScrollReveal>
                         <div className="policy-block">
                             <h2>1. The Contract</h2>
-                            <p>By booking a trip with Giveback Journeys, you are agreeing to these Terms and Conditions. A contract exists between us once we have received your deposit and sent a confirmation email. You must be at least 18 years of age to make a booking.</p>
+                            <p>By booking a trip with Give Back Journeys, you are agreeing to these Terms and Conditions. A contract exists between us once we have received your deposit and sent a confirmation email. You must be at least 18 years of age to make a booking.</p>
                         </div>
 
                         <div className="policy-block">
@@ -47,17 +47,17 @@ const TermsAndConditions = () => {
 
                         <div className="policy-block">
                             <h2>4. Travel Insurance</h2>
-                            <p>It is a mandatory requirement that all travelers with Giveback Journeys have comprehensive travel insurance. This insurance must cover personal accident, medical expenses, emergency repatriation, and personal liability. We also strongly recommend coverage for trip cancellation and loss of luggage.</p>
+                            <p>It is a mandatory requirement that all travelers with Give Back Journeys have comprehensive travel insurance. This insurance must cover personal accident, medical expenses, emergency repatriation, and personal liability. We also strongly recommend coverage for trip cancellation and loss of luggage.</p>
                         </div>
 
                         <div className="policy-block">
                             <h2>5. Liability & Risk</h2>
-                            <p>While we take every precaution to ensure your safety, adventure travel in Sri Lanka involves inherent risks. Giveback Journeys acts as an agent for transport providers, hotels, and other contractors. We are not liable for any injury, damage, loss, delay, or irregularity which may be occasioned by the error or negligence of any company or person engaged in conveying the passenger or carrying out the arrangements of the tour.</p>
+                            <p>While we take every precaution to ensure your safety, adventure travel in Sri Lanka involves inherent risks. Give Back Journeys acts as an agent for transport providers, hotels, and other contractors. We are not liable for any injury, damage, loss, delay, or irregularity which may be occasioned by the error or negligence of any company or person engaged in conveying the passenger or carrying out the arrangements of the tour.</p>
                         </div>
 
                         <div className="policy-block">
                             <h2>6. Force Majeure</h2>
-                            <p>Giveback Journeys shall not be liable for any failure to perform its obligations where such failure results from any cause beyond our reasonable control, including but not limited to: acts of God, strikes, pandemics, civil unrest, or changes in government regulations.</p>
+                            <p>Give Back Journeys shall not be liable for any failure to perform its obligations where such failure results from any cause beyond our reasonable control, including but not limited to: acts of God, strikes, pandemics, civil unrest, or changes in government regulations.</p>
                         </div>
 
                         <div className="policy-block">

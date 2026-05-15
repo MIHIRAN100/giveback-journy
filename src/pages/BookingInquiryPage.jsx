@@ -12,40 +12,60 @@ const BookingInquiryPage = () => {
     
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [transport, setTransport] = useState(initialTransport);
     const [currentStep, setCurrentStep] = useState(1);
     
     const [formData, setFormData] = useState({
+        // Step 1: The Traveler
+        travelerType: 'Couple / Friends',
         userName: '',
         userEmail: '',
         userPhone: '',
+        emergencyContact: '',
+        
+        // Step 2: Logistics & Timing
         arrivalDate: '',
-        birthday: '',
+        flightNumber: '',
         joiningPoint: 'Katunayake Airport (CMB)',
-        travelers: '2 Travelers (Couple/Friends)',
-        notes: '',
+        joiningTime: '',
+        transport: initialTransport,
+        
+        // Step 3: Group & Stay
+        adults: 2,
+        kids: 0, // 5-10 years (50% off)
+        infants: 0, // 1-5 years (Free)
+        roomPreference: 'Double Room',
+        
+        // Step 4: Requirements & Impact
+        dietary: '',
+        fitnessLevel: 'Moderate',
+        specialOccasion: '',
+        wantsVolunteering: false,
         additionalInfo: '',
-        wantsVolunteering: false
+        referral: ''
     });
     
     const pkg = tourPackages.find(p => p.id === parseInt(id));
 
-    const getPrice = () => {
-        if (!pkg) return '';
+    const getPriceData = () => {
+        if (!pkg) return { perAdult: 0, total: 0 };
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         let currentBase = basePriceVal;
         if (pkg.id === 1) currentBase = 840;
         if (pkg.id === 2) currentBase = 600;
         
-        if (transport === 'tuktuk') {
+        let perAdult = currentBase;
+        if (formData.transport === 'tuktuk') {
             const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : 300);
-            return `$${currentBase - discount}`;
+            perAdult -= discount;
+        } else if (formData.transport === 'van') {
+            perAdult += 150;
         }
-        if (transport === 'van') {
-            return `$${currentBase + 150}`;
-        }
-        return `$${currentBase}`;
+
+        const total = (formData.adults * perAdult) + (formData.kids * perAdult * 0.5) + (formData.infants * 0);
+        return { perAdult, total };
     };
+
+    const priceData = getPriceData();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -65,7 +85,7 @@ const BookingInquiryPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (currentStep < 3) {
+        if (currentStep < 4) {
             nextStep();
             return;
         }
@@ -73,25 +93,37 @@ const BookingInquiryPage = () => {
         setLoading(true);
 
         const SERVICE_ID = "service_95ud991";
-        const TEMPLATE_ID_ADMIN = "template_84lczai"; // Notification to Company
-        const TEMPLATE_ID_USER = "template_j0pdjea";   // Confirmation to User
+        const TEMPLATE_ID_ADMIN = "template_84lczai"; 
+        const TEMPLATE_ID_USER = "template_j0pdjea";   
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
         const templateParams = {
             name: formData.userName,
-            first_name: formData.userName.split(' ')[0] || '',
-            last_name: formData.userName.split(' ').slice(1).join(' ') || '',
             email: formData.userEmail,
             phone: formData.userPhone,
-            birthday: formData.birthday,
+            emergency_contact: formData.emergencyContact,
+            traveler_type: formData.travelerType,
+            
             tour_package: pkg.name,
             booking_date: formData.arrivalDate,
-            travelers: formData.travelers,
+            flight_number: formData.flightNumber,
             joining_point: formData.joiningPoint,
-            price: getPrice(),
-            notes: formData.notes,
-            additional_info: formData.additionalInfo,
+            joining_time: formData.joiningTime,
+            transport: formData.transport,
+            
+            adults: formData.adults,
+            children: formData.children,
+            children_ages: formData.childrenAges,
+            room_preference: formData.roomPreference,
+            
+            dietary: formData.dietary,
+            fitness_level: formData.fitnessLevel,
+            special_occasion: formData.specialOccasion,
             wants_volunteering: formData.wantsVolunteering ? 'Yes' : 'No',
+            additional_info: formData.additionalInfo,
+            referral: formData.referral,
+            
+            price: priceData.total,
             booking_id: `GBJ-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
             submitted_at: new Date().toLocaleString(),
             to_email: "hello@givebackjourney.com"
@@ -110,27 +142,12 @@ const BookingInquiryPage = () => {
     };
 
     const renderStepIndicator = () => (
-        <div className="step-indicator" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '40px', position: 'relative' }}>
-            <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: '2px', background: '#eee', zIndex: 0, transform: 'translateY(-50%)' }}></div>
-            <div style={{ position: 'absolute', top: '50%', left: 0, width: `${(currentStep - 1) * 50}%`, height: '2px', background: 'var(--primary-green)', zIndex: 0, transform: 'translateY(-50%)', transition: 'width 0.3s ease' }}></div>
-            {[1, 2, 3].map(step => (
-                <div key={step} style={{ 
-                    width: '40px', 
-                    height: '40px', 
-                    borderRadius: '50%', 
-                    background: currentStep >= step ? 'var(--primary-green)' : 'white',
-                    border: `2px solid ${currentStep >= step ? 'var(--primary-green)' : '#eee'}`,
-                    color: currentStep >= step ? 'white' : '#999',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: 800,
-                    fontSize: '0.9rem',
-                    zIndex: 1,
-                    transition: 'all 0.3s ease'
-                }}>
-                    {currentStep > step ? <i className="bi bi-check-lg"></i> : step}
-                </div>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '40px', justifyContent: 'center' }}>
+            {[1, 2, 3, 4].map(step => (
+                <div 
+                    key={step} 
+                    className={`step-dot ${currentStep === step ? 'active' : ''}`}
+                />
             ))}
         </div>
     );
@@ -148,14 +165,14 @@ const BookingInquiryPage = () => {
                             color: 'var(--primary-green)',
                             display: 'block',
                             marginBottom: '10px'
-                        }}>Your Personalized Journey</span>
-                        <h1 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Let's Design Your Experience</h1>
+                        }}>Very Detailed Booking Inquiry</span>
+                        <h1 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Craft Your Perfect Journey</h1>
                     </div>
                 </ScrollReveal>
 
                 <div className="inquiry-grid" style={{ 
                     display: 'grid', 
-                    gridTemplateColumns: '1fr 1.5fr', 
+                    gridTemplateColumns: '1fr 1.8fr', 
                     gap: '40px',
                     alignItems: 'start'
                 }}>
@@ -166,35 +183,58 @@ const BookingInquiryPage = () => {
                             borderRadius: '24px', 
                             overflow: 'hidden', 
                             boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
-                            border: '1px solid #eee'
+                            border: '1px solid #eee',
+                            position: 'sticky',
+                            top: '120px'
                         }}>
                             <img src={pkg.image} alt={pkg.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                             <div style={{ padding: '30px' }}>
                                 <h3 style={{ fontSize: '1.25rem', marginBottom: '15px' }}>{pkg.name}</h3>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#666' }}>
-                                        <i className="bi bi-clock" style={{ color: 'var(--primary-green)' }}></i>
+                                        <i className="bi bi-calendar3" style={{ color: 'var(--primary-green)' }}></i>
                                         <span>{pkg.days}</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#666' }}>
-                                        <i className="bi bi-tag" style={{ color: 'var(--primary-green)' }}></i>
-                                        <span style={{ fontWeight: 700, color: 'var(--primary-green)', fontSize: '1.1rem' }}>{getPrice()}</span>
-                                        <span>per person ({transport.charAt(0).toUpperCase() + transport.slice(1)})</span>
+                                        <i className="bi bi-person-check" style={{ color: 'var(--primary-green)' }}></i>
+                                        <span>{formData.travelerType}</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#666' }}>
-                                        <i className="bi bi-check2-circle" style={{ color: 'var(--primary-green)' }}></i>
-                                        <span>Breakfast & Transfers Included</span>
+                                        <i className="bi bi-tag" style={{ color: 'var(--primary-green)' }}></i>
+                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                            <span style={{ fontWeight: 700, color: 'var(--primary-green)', fontSize: '1.2rem' }}>${priceData.total}</span>
+                                            <span style={{ fontSize: '0.75rem' }}>Total Estimated Price</span>
+                                        </div>
                                     </div>
+                                </div>
+                                
+                                <div style={{ marginTop: '20px', padding: '15px', background: '#f9f9f9', borderRadius: '12px', fontSize: '0.8rem' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                                        <span>{formData.adults} Adults</span>
+                                        <span>${formData.adults * priceData.perAdult}</span>
+                                    </div>
+                                    {formData.kids > 0 && (
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                                            <span>{formData.kids} Kids (50% Off)</span>
+                                            <span>${formData.kids * priceData.perAdult * 0.5}</span>
+                                        </div>
+                                    )}
+                                    {formData.infants > 0 && (
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--primary-green)' }}>
+                                            <span>{formData.infants} Infants (Free)</span>
+                                            <span>$0</span>
+                                        </div>
+                                    )}
                                 </div>
                                 <div style={{ 
                                     marginTop: '25px', 
                                     paddingTop: '20px', 
                                     borderTop: '1px solid #eee',
-                                    fontSize: '0.85rem',
+                                    fontSize: '0.8rem',
                                     color: '#888',
                                     lineHeight: 1.6
                                 }}>
-                                    Your request will be processed by our travel experts who will customize the plan to your needs.
+                                    <p><i className="bi bi-info-circle" style={{ marginRight: '5px' }}></i> This detailed form helps us tailor every aspect of your trip, from pick-up times to room preferences.</p>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +248,7 @@ const BookingInquiryPage = () => {
                             padding: '40px',
                             boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
                             border: '1px solid #eee',
-                            minHeight: '500px',
+                            minHeight: '600px',
                             display: 'flex',
                             flexDirection: 'column'
                         }}>
@@ -228,8 +268,8 @@ const BookingInquiryPage = () => {
                                     }}>
                                         <i className="bi bi-check-lg"></i>
                                     </div>
-                                    <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Your Journey Begins Here!</h2>
-                                    <p style={{ color: '#666', lineHeight: 1.6 }}>Awesome! Our travel designers are now reviewing your request. We'll be in touch via WhatsApp or Email within 24 hours to craft your perfect {pkg.name} adventure.</p>
+                                    <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Request Received!</h2>
+                                    <p style={{ color: '#666', lineHeight: 1.6 }}>Thank you for providing such detailed information. Our travel experts are now crafting your perfect {pkg.name} itinerary. We'll be in touch via WhatsApp or Email within 24 hours.</p>
                                     <button 
                                         className="btn-modern btn-black" 
                                         style={{ marginTop: '30px' }}
@@ -246,290 +286,277 @@ const BookingInquiryPage = () => {
                                         <div className="step-content" style={{ flex: 1 }}>
                                             {currentStep === 1 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <h3 style={{ marginBottom: '10px' }}>Step 1: Your Details</h3>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                                                        <div style={{ width: '40px', height: '40px', background: '#121212', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+                                                            <i className="bi bi-person"></i>
+                                                        </div>
+                                                        <h3 style={{ margin: 0, fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Traveler Profile</h3>
+                                                    </div>
+
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Full Name</label>
+                                                        <label className="modern-label">Who are you traveling as?</label>
+                                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+                                                            {['Solo Traveler', 'Couple / Friends', 'Family', 'Small Group', 'Large Group'].map(type => (
+                                                                <div 
+                                                                    key={type}
+                                                                    onClick={() => setFormData({...formData, travelerType: type})}
+                                                                    style={{
+                                                                        padding: '14px',
+                                                                        borderRadius: '8px',
+                                                                        border: `2px solid ${formData.travelerType === type ? '#1DB954' : '#727272'}`,
+                                                                        background: formData.travelerType === type ? 'rgba(29, 185, 84, 0.05)' : 'white',
+                                                                        cursor: 'pointer',
+                                                                        textAlign: 'center',
+                                                                        fontSize: '0.85rem',
+                                                                        fontWeight: 700,
+                                                                        color: formData.travelerType === type ? '#1DB954' : '#121212',
+                                                                        transition: 'all 0.2s ease'
+                                                                    }}
+                                                                >
+                                                                    {type}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <label className="modern-label">Lead Traveler Full Name</label>
                                                         <input 
-                                                            type="text" 
-                                                            required 
-                                                            placeholder="John Doe" 
+                                                            type="text" required placeholder="Enter your full name" 
                                                             value={formData.userName}
                                                             onChange={(e) => setFormData({...formData, userName: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
+                                                            className="modern-input"
                                                         />
                                                     </div>
+
+                                                    <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                                                        <div className="form-group">
+                                                            <label className="modern-label">Email Address</label>
+                                                            <input 
+                                                                type="email" required placeholder="email@example.com" 
+                                                                value={formData.userEmail}
+                                                                onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
+                                                                className="modern-input"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className="modern-label">WhatsApp / Phone</label>
+                                                            <input 
+                                                                type="tel" required placeholder="+1 234 567 890" 
+                                                                value={formData.userPhone}
+                                                                onChange={(e) => setFormData({...formData, userPhone: e.target.value})}
+                                                                className="modern-input"
+                                                            />
+                                                        </div>
+                                                    </div>
+
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Email Address</label>
+                                                        <label className="modern-label">Emergency Contact Info</label>
                                                         <input 
-                                                            type="email" 
-                                                            required 
-                                                            placeholder="john@example.com" 
-                                                            value={formData.userEmail}
-                                                            onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
+                                                            type="text" placeholder="Name & Number (Relationship)" 
+                                                            value={formData.emergencyContact}
+                                                            onChange={(e) => setFormData({...formData, emergencyContact: e.target.value})}
+                                                            className="modern-input"
                                                         />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>WhatsApp / Phone</label>
-                                                        <input 
-                                                            type="tel" 
-                                                            required 
-                                                            placeholder="+1 234 567 890" 
-                                                            value={formData.userPhone}
-                                                            onChange={(e) => setFormData({...formData, userPhone: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
-                                                        />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Vehicle Type</label>
-                                                        <select 
-                                                            value={transport}
-                                                            onChange={(e) => setTransport(e.target.value)}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center',
-                                                                backgroundSize: '15px',
-                                                                appearance: 'none',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none',
-                                                                cursor: 'pointer'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = 'none'; }}
-                                                        >
-                                                            <option value="taxi">Private Car (Standard)</option>
-                                                            <option value="van">Private Van (Large Group)</option>
-                                                            <option value="tuktuk">Tuk Tuk Adventure</option>
-                                                        </select>
                                                     </div>
                                                 </div>
                                             )}
 
                                             {currentStep === 2 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <h3 style={{ marginBottom: '10px' }}>Step 2: The Plan</h3>
-                                                    <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Approx. Arrival Date</label>
-                                                        <input 
-                                                            type="date" 
-                                                            required 
-                                                            value={formData.arrivalDate}
-                                                            onChange={(e) => setFormData({...formData, arrivalDate: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none',
-                                                                cursor: 'text'
-                                                            }} 
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
-                                                        />
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                                                        <div style={{ width: '40px', height: '40px', background: '#121212', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+                                                            <i className="bi bi-geo-alt"></i>
+                                                        </div>
+                                                        <h3 style={{ margin: 0, fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Logistics & Timing</h3>
                                                     </div>
+
+                                                    <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                                                        <div className="form-group">
+                                                            <label className="modern-label">Arrival Date</label>
+                                                            <input 
+                                                                type="date" required 
+                                                                value={formData.arrivalDate}
+                                                                onChange={(e) => setFormData({...formData, arrivalDate: e.target.value})}
+                                                                className="modern-input"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className="modern-label">Flight Number</label>
+                                                            <input 
+                                                                type="text" placeholder="e.g. EK650" 
+                                                                value={formData.flightNumber}
+                                                                onChange={(e) => setFormData({...formData, flightNumber: e.target.value})}
+                                                                className="modern-input"
+                                                            />
+                                                        </div>
+                                                    </div>
+
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Joining Point</label>
+                                                        <label className="modern-label">Where should we pick you up?</label>
                                                         <select 
                                                             value={formData.joiningPoint}
                                                             onChange={(e) => setFormData({...formData, joiningPoint: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center',
-                                                                backgroundSize: '15px',
-                                                                appearance: 'none',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none',
-                                                                cursor: 'pointer'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = 'none'; }}
+                                                            className="modern-select"
                                                         >
                                                             <option>Katunayake Airport (CMB)</option>
-                                                            <option>Colombo City</option>
-                                                            <option>Kandy</option>
-                                                            <option>Galle / Hikkaduwa</option>
-                                                            <option>Other (Specify in notes)</option>
+                                                            <option>Negombo Hotel</option>
+                                                            <option>Colombo Hotel</option>
+                                                            <option>Other (Please specify in notes)</option>
                                                         </select>
                                                     </div>
+
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Traveler Birthday</label>
-                                                        <input 
-                                                            type="date" 
-                                                            value={formData.birthday}
-                                                            onChange={(e) => setFormData({...formData, birthday: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '14px 20px', 
-                                                                borderRadius: '12px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem',
-                                                                fontFamily: 'inherit',
-                                                                background: '#fcfcfc',
-                                                                transition: 'all 0.3s ease',
-                                                                outline: 'none',
-                                                                cursor: 'text'
-                                                            }} 
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
-                                                        />
+                                                        <label className="modern-label">Transport Preference</label>
+                                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+                                                            {[
+                                                                { id: 'taxi', label: 'Private Car / SUV', icon: 'bi-car-front' },
+                                                                { id: 'van', label: 'Private Van', icon: 'bi-bus-front' },
+                                                                { id: 'tuktuk', label: 'Tuk Tuk', icon: 'bi-bicycle' }
+                                                            ].map(opt => (
+                                                                <div 
+                                                                    key={opt.id}
+                                                                    onClick={() => setFormData({...formData, transport: opt.id})}
+                                                                    style={{
+                                                                        padding: '15px 10px',
+                                                                        borderRadius: '8px',
+                                                                        border: `2px solid ${formData.transport === opt.id ? '#1DB954' : '#727272'}`,
+                                                                        background: formData.transport === opt.id ? 'rgba(29, 185, 84, 0.05)' : 'white',
+                                                                        cursor: 'pointer',
+                                                                        textAlign: 'center',
+                                                                        transition: 'all 0.2s ease'
+                                                                    }}
+                                                                >
+                                                                    <i className={`bi ${opt.icon}`} style={{ display: 'block', fontSize: '1.2rem', marginBottom: '5px', color: formData.transport === opt.id ? '#1DB954' : '#121212' }}></i>
+                                                                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: formData.transport === opt.id ? '#1DB954' : '#121212' }}>{opt.label}</span>
+                                                                </div>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             )}
 
                                             {currentStep === 3 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <h3 style={{ marginBottom: '10px' }}>Step 3: Your Preferences & Impact</h3>
-                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
-                                                        <div className="form-group">
-                                                            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '8px', color: '#444' }}>Number of Travelers</label>
-                                                            <select 
-                                                                value={formData.travelers}
-                                                                onChange={(e) => setFormData({...formData, travelers: e.target.value})}
-                                                                style={{ 
-                                                                    width: '100%', 
-                                                                    padding: '14px 20px', 
-                                                                    borderRadius: '12px', 
-                                                                    border: '1px solid #e0e0e0', 
-                                                                    fontSize: '1rem',
-                                                                    fontFamily: 'inherit',
-                                                                    background: '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center',
-                                                                    backgroundSize: '15px',
-                                                                    appearance: 'none',
-                                                                    transition: 'all 0.3s ease',
-                                                                    outline: 'none',
-                                                                    cursor: 'pointer'
-                                                                }}
-                                                                onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = '0 8px 15px rgba(29, 185, 84, 0.05)'; }}
-                                                                onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 15px center'; e.target.style.backgroundSize = '15px'; e.target.style.boxShadow = 'none'; }}
-                                                            >
-                                                                <option>1 Traveler (Solo)</option>
-                                                                <option>2 Travelers (Couple/Friends)</option>
-                                                                <option>3-5 Travelers (Small Group)</option>
-                                                                <option>6+ Travelers (Large Group)</option>
-                                                            </select>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                                                        <div style={{ width: '40px', height: '40px', background: '#121212', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+                                                            <i className="bi bi-people"></i>
                                                         </div>
+                                                        <h3 style={{ margin: 0, fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Group & Stay</h3>
                                                     </div>
+
+                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', background: '#ffffff', padding: '24px', borderRadius: '12px', border: '1px solid #727272' }}>
+                                                        {[
+                                                            { id: 'adults', label: 'Adults', sub: '10 years and above', count: formData.adults, min: 1 },
+                                                            { id: 'kids', label: 'Children', sub: '5 - 10 years (50% Off)', count: formData.kids, min: 0 },
+                                                            { id: 'infants', label: 'Infants', sub: '1 - 5 years (Free)', count: formData.infants, min: 0 }
+                                                        ].map(item => (
+                                                            <div key={item.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                                                <div>
+                                                                    <div style={{ fontWeight: 800, fontSize: '1rem', letterSpacing: '-0.02em' }}>{item.label}</div>
+                                                                    <div style={{ fontSize: '0.75rem', color: '#727272', fontWeight: 700 }}>{item.sub}</div>
+                                                                </div>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+                                                                    <button 
+                                                                        type="button"
+                                                                        onClick={() => setFormData({...formData, [item.id]: Math.max(item.min, item.count - 1)})}
+                                                                        style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid #727272', background: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 700 }}
+                                                                    >-</button>
+                                                                    <span style={{ fontWeight: 800, minWidth: '24px', textAlign: 'center', fontSize: '1.1rem' }}>{item.count}</span>
+                                                                    <button 
+                                                                        type="button"
+                                                                        onClick={() => setFormData({...formData, [item.id]: item.count + 1})}
+                                                                        style={{ width: '36px', height: '36px', borderRadius: '50%', border: '2px solid #1DB954', background: 'white', color: '#1DB954', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 700 }}
+                                                                    >+</button>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+
                                                     <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Dietary Preferences & Health Notes</label>
+                                                        <label className="modern-label">Room Preference</label>
+                                                        <select 
+                                                            value={formData.roomPreference}
+                                                            onChange={(e) => setFormData({...formData, roomPreference: e.target.value})}
+                                                            className="modern-select"
+                                                        >
+                                                            <option>Double Room</option>
+                                                            <option>Twin Room (2 Single Beds)</option>
+                                                            <option>Single Room (Solo)</option>
+                                                            <option>Triple Room</option>
+                                                            <option>Family Room (Large)</option>
+                                                            <option>Suite / Premium</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {currentStep === 4 && (
+                                                <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                                                        <div style={{ width: '40px', height: '40px', background: '#121212', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+                                                            <i className="bi bi-heart"></i>
+                                                        </div>
+                                                        <h3 style={{ margin: 0, fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Requirements & Impact</h3>
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <label className="modern-label">Dietary & Health Notes</label>
                                                         <textarea 
                                                             placeholder="Vegetarian, Allergies, or specific health requirements..." 
-                                                            value={formData.notes}
-                                                            onChange={(e) => setFormData({...formData, notes: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '18px 20px', 
-                                                                borderRadius: '16px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem', 
-                                                                fontFamily: 'inherit',
-                                                                lineHeight: '1.6',
-                                                                background: '#fcfcfc',
-                                                                color: '#333',
-                                                                transition: 'all 0.3s ease',
-                                                                minHeight: '120px',
-                                                                outline: 'none'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 10px 20px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
-                                                        ></textarea>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '10px', color: '#111' }}>Anything Else We Should Know?</label>
-                                                        <textarea 
-                                                            placeholder="Special requests, celebration notes, or any unique details that would make your journey perfect..." 
-                                                            value={formData.additionalInfo}
-                                                            onChange={(e) => setFormData({...formData, additionalInfo: e.target.value})}
-                                                            style={{ 
-                                                                width: '100%', 
-                                                                padding: '18px 20px', 
-                                                                borderRadius: '16px', 
-                                                                border: '1px solid #e0e0e0', 
-                                                                fontSize: '1rem', 
-                                                                fontFamily: 'inherit',
-                                                                lineHeight: '1.6',
-                                                                background: '#fcfcfc',
-                                                                color: '#333',
-                                                                transition: 'all 0.3s ease',
-                                                                minHeight: '150px',
-                                                                outline: 'none'
-                                                            }}
-                                                            onFocus={(e) => { e.target.style.borderColor = 'var(--primary-green)'; e.target.style.background = '#fff'; e.target.style.boxShadow = '0 10px 20px rgba(29, 185, 84, 0.05)'; }}
-                                                            onBlur={(e) => { e.target.style.borderColor = '#e0e0e0'; e.target.style.background = '#fcfcfc'; e.target.style.boxShadow = 'none'; }}
+                                                            value={formData.dietary}
+                                                            onChange={(e) => setFormData({...formData, dietary: e.target.value})}
+                                                            className="modern-textarea"
+                                                            style={{ minHeight: '80px' }}
                                                         ></textarea>
                                                     </div>
 
-                                                    <div className="form-group" style={{ marginTop: '10px' }}>
-                                                        <label style={{ 
-                                                            display: 'flex', 
-                                                            alignItems: 'center', 
-                                                            gap: '12px', 
-                                                            cursor: 'pointer', 
-                                                            padding: '15px', 
-                                                            background: 'rgba(29, 185, 84, 0.05)', 
-                                                            borderRadius: '12px', 
-                                                            border: '1px dashed rgba(29, 185, 84, 0.3)',
-                                                            transition: 'all 0.3s ease'
-                                                        }} className="impact-checkbox-label">
+                                                    <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                                                        <div className="form-group">
+                                                            <label className="modern-label">Physical Fitness Level</label>
+                                                            <select 
+                                                                value={formData.fitnessLevel}
+                                                                onChange={(e) => setFormData({...formData, fitnessLevel: e.target.value})}
+                                                                className="modern-select"
+                                                            >
+                                                                <option>Low (Easy walks)</option>
+                                                                <option>Moderate (Standard hikes)</option>
+                                                                <option>High (Challenging treks)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className="modern-label">Special Occasion?</label>
                                                             <input 
-                                                                type="checkbox" 
-                                                                checked={formData.wantsVolunteering}
-                                                                onChange={(e) => setFormData({...formData, wantsVolunteering: e.target.checked})}
-                                                                style={{ width: '20px', height: '20px', accentColor: 'var(--primary-green)', cursor: 'pointer' }}
+                                                                type="text" placeholder="Honeymoon, Birthday..." 
+                                                                value={formData.specialOccasion}
+                                                                onChange={(e) => setFormData({...formData, specialOccasion: e.target.value})}
+                                                                className="modern-input"
                                                             />
-                                                            <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111' }}>
-                                                                I would like to continue this journey in an impactful way with volunteering
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <label style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', padding: '16px', border: '1px solid #727272', borderRadius: '8px' }}>
+                                                            <input 
+                                                                type="checkbox" checked={formData.wantsVolunteering}
+                                                                onChange={(e) => setFormData({...formData, wantsVolunteering: e.target.checked})}
+                                                                style={{ width: '20px', height: '20px', accentColor: '#1DB954' }}
+                                                            />
+                                                            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#121212' }}>
+                                                                I'm interested in impactful volunteering activities during my journey.
                                                             </span>
                                                         </label>
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <label className="modern-label">Additional Information</label>
+                                                        <textarea 
+                                                            placeholder="Anything else we should know to make your trip perfect..." 
+                                                            value={formData.additionalInfo}
+                                                            onChange={(e) => setFormData({...formData, additionalInfo: e.target.value})}
+                                                            className="modern-textarea"
+                                                            style={{ minHeight: '100px' }}
+                                                        ></textarea>
                                                     </div>
                                                 </div>
                                             )}
@@ -542,12 +569,11 @@ const BookingInquiryPage = () => {
                                                 </button>
                                             )}
                                             <button type="submit" className="btn-modern btn-black" disabled={loading} style={{ flex: 2, padding: '14px' }}>
-                                                {loading ? 'Submitting...' : (currentStep === 3 ? 'Send Inquiry Request' : 'Next Step')}
+                                                {loading ? 'Submitting...' : (currentStep === 4 ? 'Confirm & Send Detailed Inquiry' : 'Continue to Next Step')}
                                             </button>
                                         </div>
-
                                         <p style={{ fontSize: '0.75rem', color: '#999', textAlign: 'center', marginTop: '20px' }}>
-                                            {currentStep === 3 && 'By clicking "Send Inquiry Request", you agree to be contacted by our travel team.'}
+                                            {currentStep === 4 && 'By clicking "Confirm & Send Detailed Inquiry", you agree to be contacted by our travel team.'}
                                         </p>
                                     </form>
                                 </>
@@ -562,24 +588,107 @@ const BookingInquiryPage = () => {
                     animation: fadeIn 0.4s ease forwards;
                 }
                 @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(10px); }
+                    from { opacity: 0; transform: translateY(12px); }
                     to { opacity: 1; transform: translateY(0); }
                 }
+
+                /* Spotify-inspired Form Styles */
+                .modern-input, .modern-select, .modern-textarea {
+                    width: 100%;
+                    padding: 14px 18px;
+                    background: #ffffff;
+                    border: 1px solid #727272;
+                    border-radius: 4px;
+                    font-size: 1rem;
+                    color: #121212;
+                    transition: all 0.2s ease;
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                }
+
+                .modern-input:hover, .modern-select:hover, .modern-textarea:hover {
+                    border-color: #111;
+                }
+
+                .modern-input:focus, .modern-select:focus, .modern-textarea:focus {
+                    outline: none;
+                    border: 2px solid #1DB954;
+                    padding: 13px 17px; /* Adjust for border width change */
+                }
+
+                .modern-label {
+                    display: block;
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    margin-bottom: 8px;
+                    color: #121212;
+                    letter-spacing: -0.02em;
+                }
+
+                .btn-modern {
+                    border-radius: 500px; /* Spotify Pill Shape */
+                    font-weight: 700;
+                    text-transform: none;
+                    letter-spacing: 0.5px;
+                    transition: transform 0.1s ease, background 0.2s ease;
+                    cursor: pointer;
+                    border: none;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .btn-modern:active {
+                    transform: scale(0.95);
+                }
+
+                .btn-black {
+                    background: #121212;
+                    color: white;
+                }
+
+                .btn-black:hover {
+                    background: #282828;
+                }
+
                 .btn-outline {
                     background: transparent;
-                    border: 1px solid #ddd;
-                    color: #666;
+                    border: 1px solid #727272 !important;
+                    color: #121212;
                 }
+
                 .btn-outline:hover {
-                    background: #f9f9f9;
-                    border-color: #ccc;
+                    border-color: #121212 !important;
+                    background: #f6f6f6;
                 }
+
+                .btn-modern:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                /* Step Indicators */
+                .step-dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: #b3b3b3;
+                    transition: all 0.3s ease;
+                }
+                .step-dot.active {
+                    background: #1DB954;
+                    transform: scale(1.3);
+                }
+
                 @media (max-width: 768px) {
                     .inquiry-grid {
                         grid-template-columns: 1fr !important;
+                        gap: 20px !important;
                     }
                     .inquiry-page h1 {
-                        font-size: 2rem !important;
+                        font-size: 2.2rem !important;
+                    }
+                    .modern-input, .modern-select, .modern-textarea {
+                        font-size: 16px; /* Prevent zoom on iOS */
                     }
                 }
             `}} />

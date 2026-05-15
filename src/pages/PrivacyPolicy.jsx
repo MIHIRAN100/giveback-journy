@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
                 <ScrollReveal>
                     <div className="policy-hero-content">
                         <h1>Privacy Policy</h1>
-                        <p>How we protect your personal data and ensure your peace of mind at Giveback Journeys.</p>
+                        <p>How we protect your personal data and ensure your peace of mind at Give Back Journeys.</p>
                     </div>
                 </ScrollReveal>
             </div>
@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
                     <ScrollReveal>
                         <div className="policy-block">
                             <h2>1. Introduction</h2>
-                            <p>Giveback Journeys ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. This privacy policy informs you how we look after your personal data when you visit our website (regardless of where you visit it from) and tells you about your privacy rights and how the law protects you.</p>
+                            <p>Give Back Journeys ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. This privacy policy informs you how we look after your personal data when you visit our website (regardless of where you visit it from) and tells you about your privacy rights and how the law protects you.</p>
                         </div>
 
                         <div className="policy-block">
