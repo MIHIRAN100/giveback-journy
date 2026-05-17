@@ -1,12 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCurrency } from '../context/CurrencyContext';
-import realExpImg from '../assets/real_sri_lanka_exp_volunteer_1778937381707.png';
-import childcareImg from '../assets/sri_lanka_childcare_volunteer_1778937399157.png';
-import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
-import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
-import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
-import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
+import { volunteerPrograms as opportunities } from '../data/volunteerPrograms';
 
 const VolunteerOpportunities = () => {
     const { formatPrice } = useCurrency();
@@ -21,87 +16,6 @@ const VolunteerOpportunities = () => {
             });
         }
     };
-
-    const opportunities = [
-        {
-            title: "Real Sri Lanka Experience",
-            location: "Kandy District",
-            duration: "4 Weeks",
-            housing: "Shared Rooms",
-            price: "1,155",
-            image: realExpImg,
-            minAge: "18+",
-            pickup: "Included",
-            meals: "3 Daily",
-            shortDesc: "A complete island immersion combining culture, adventure, and meaningful community work.",
-            color: "#1DB954"
-        },
-        {
-            title: "Sri Lanka Childcare Volunteers",
-            location: "Galle District",
-            duration: "1-24 Weeks",
-            housing: "Shared or Private",
-            price: "270",
-            image: childcareImg,
-            minAge: "16+",
-            pickup: "Included",
-            meals: "3 Daily",
-            shortDesc: "Support local preschools and community centers in the vibrant southern coast.",
-            color: "#ff6b6b"
-        },
-        {
-            title: "Special Needs Support",
-            location: "Kandy District",
-            duration: "2-8 Weeks",
-            housing: "Private or Shared",
-            price: "320",
-            image: specialNeedsImg,
-            minAge: "18+",
-            pickup: "Included",
-            meals: "3 Daily",
-            shortDesc: "Provide essential assistance and therapy support for children with special needs.",
-            color: "#4e73df"
-        },
-        {
-            title: "Sri Lanka Dog Volunteers",
-            location: "Galle District",
-            duration: "1-24 Weeks",
-            housing: "Shared or Private",
-            price: "300",
-            image: dogImg,
-            minAge: "18+",
-            pickup: "Included",
-            meals: "3 Daily",
-            shortDesc: "Work with local clinics to rescue, treat, and rehabilitate street dogs.",
-            color: "#ffd93d"
-        },
-        {
-            title: "Village School Renovation",
-            location: "Kandy District",
-            duration: "1-4 Weeks",
-            housing: "Shared Village Stay",
-            price: "250",
-            image: renovationImg,
-            minAge: "18+",
-            pickup: "Included",
-            meals: "3 Daily",
-            shortDesc: "Help transform rural school environments through painting and repair work.",
-            color: "#f6ad55"
-        },
-        {
-            title: "Zen & Temple: Yoga",
-            location: "Kandy District",
-            duration: "1-2 Weeks",
-            housing: "Traditional Temple Stay",
-            price: "350",
-            image: yogaImg,
-            minAge: "18+",
-            pickup: "Included",
-            meals: "2 Daily",
-            shortDesc: "Combine mindfulness with temple service in the heart of the cultural triangle.",
-            color: "#9b59b6"
-        }
-    ];
 
     return (
         <section className="volunteer-opp-section" style={{ padding: '80px 0', background: '#fff', position: 'relative' }}>
@@ -275,7 +189,7 @@ const VolunteerOpportunities = () => {
                                     </div>
                                 </div>
 
-                                <Link to={`/volunteer-inquiry?program=${opp.title}`} className="opp-card-btn" style={{
+                                <Link to={`/volunteer-program/${opp.id}`} className="opp-card-btn" style={{
                                     marginTop: 'auto',
                                     background: '#111',
                                     color: 'white',
@@ -288,7 +202,7 @@ const VolunteerOpportunities = () => {
                                     display: 'block',
                                     transition: 'all 0.3s ease'
                                 }}>
-                                    Apply to Volunteer
+                                    Learn More
                                 </Link>
                             </div>
                         </div>

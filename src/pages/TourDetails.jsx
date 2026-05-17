@@ -1563,7 +1563,7 @@ const TourDetails = () => {
                                             )}
                                             <span style={{ fontSize: '0.85rem', fontWeight: 800, lineHeight: 1.1 }}>{v.label}</span>
                                             <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                                                {v.id === 'taxi' ? 'Standard' : (v.id === 'van' ? 'Budget Friendly' : 'Economic')}
+                                                {v.id === 'taxi' ? 'Standard' : (v.id === 'van' ? 'Spacious' : 'Friendly')}
                                             </span>
                                         </div>
                                     ))}
