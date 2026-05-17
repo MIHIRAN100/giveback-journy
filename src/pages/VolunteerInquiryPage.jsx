@@ -151,7 +151,7 @@ const VolunteerInquiryPage = () => {
 
     return (
         <div className="volunteer-inquiry-page" style={{ background: '#fcfcfc', minHeight: '100vh', padding: '120px 20px 80px' }}>
-            <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
                 <ScrollReveal>
                     <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                         <span style={{ 
@@ -167,7 +167,8 @@ const VolunteerInquiryPage = () => {
                     </div>
                 </ScrollReveal>
 
-                <div style={{ 
+                <div className="form-layout-grid">
+                    <div style={{ 
                     background: 'white', 
                     borderRadius: '40px', 
                     padding: '60px',
@@ -380,6 +381,67 @@ const VolunteerInquiryPage = () => {
                 </div>
                 
                 {!submitted && (
+                    <div className="summary-card">
+                        <h3 className="summary-title">Application Summary</h3>
+                        
+                        <div className="summary-content">
+                            <div className="summary-section">
+                                <div className="summary-section-title"><i className="fa-solid fa-earth-asia"></i> Program</div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Selected:</span>
+                                    <span className="summary-value highlight">{formData.program}</span>
+                                </div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Focus:</span>
+                                    <span className="summary-value">{formData.projectFocus}</span>
+                                </div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Start Date:</span>
+                                    <span className="summary-value">{formData.startDate ? new Date(formData.startDate).toLocaleDateString() : 'Not selected'}</span>
+                                </div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Duration:</span>
+                                    <span className="summary-value">{formData.duration}</span>
+                                </div>
+                            </div>
+
+                            <div className="summary-section">
+                                <div className="summary-section-title"><i className="fa-solid fa-user"></i> Personal</div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Name:</span>
+                                    <span className="summary-value">{formData.userName || '—'}</span>
+                                </div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Country:</span>
+                                    <span className="summary-value">{formData.userCountry || '—'}</span>
+                                </div>
+                            </div>
+
+                            <div className="summary-section">
+                                <div className="summary-section-title"><i className="fa-solid fa-clipboard-check"></i> Checklist</div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Emergency Contact:</span>
+                                    <span className="summary-value">
+                                        {formData.emergencyName && formData.emergencyPhone ? 
+                                            <i className="fa-solid fa-check" style={{color: '#fff'}}></i> : 
+                                            <span style={{opacity: 0.5}}>Pending</span>}
+                                    </span>
+                                </div>
+                                <div className="summary-item">
+                                    <span className="summary-label">Declarations:</span>
+                                    <span className="summary-value">
+                                        {formData.hasBackgroundCheck && formData.hasInsurance ? 
+                                            <i className="fa-solid fa-check" style={{color: '#fff'}}></i> : 
+                                            <span style={{opacity: 0.5}}>Pending</span>}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                </div>
+                
+                {!submitted && (
                     <div style={{ marginTop: '40px', textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '30px', opacity: 0.6 }}>
                         <div style={{ fontSize: '0.8rem', fontWeight: 700 }}><i className="bi bi-shield-check" style={{ marginRight: '5px' }}></i> SSL Encrypted</div>
                         <div style={{ fontSize: '0.8rem', fontWeight: 700 }}><i className="bi bi-lock" style={{ marginRight: '5px' }}></i> Secure Data</div>
@@ -426,6 +488,79 @@ const VolunteerInquiryPage = () => {
                 @keyframes profFadeIn {
                     from { opacity: 0; transform: translateY(15px); }
                     to { opacity: 1; transform: translateY(0); }
+                }
+
+                .form-layout-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 380px;
+                    gap: 40px;
+                    align-items: start;
+                }
+                
+                .summary-card {
+                    background: linear-gradient(145deg, #1DB954 0%, #0a2e1a 100%);
+                    border-radius: 35px;
+                    padding: 45px 35px;
+                    color: white;
+                    position: sticky;
+                    top: 120px;
+                    box-shadow: 0 20px 50px rgba(29, 185, 84, 0.2);
+                }
+
+                .summary-title {
+                    font-size: 1.6rem;
+                    font-weight: 900;
+                    margin-bottom: 30px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid rgba(255,255,255,0.15);
+                }
+
+                .summary-section {
+                    margin-bottom: 30px;
+                }
+
+                .summary-section-title {
+                    font-size: 0.85rem;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: rgba(255,255,255,0.6);
+                    margin-bottom: 18px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .summary-item {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 12px;
+                    font-size: 0.95rem;
+                    line-height: 1.4;
+                }
+
+                .summary-label {
+                    color: rgba(255,255,255,0.7);
+                    font-weight: 600;
+                }
+
+                .summary-value {
+                    font-weight: 800;
+                    text-align: right;
+                    max-width: 60%;
+                }
+
+                .summary-value.highlight {
+                    color: #fff;
+                }
+
+                @media (max-width: 1024px) {
+                    .form-layout-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    .summary-card {
+                        position: static;
+                    }
                 }
             `}} />
         </div>

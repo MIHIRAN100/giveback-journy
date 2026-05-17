@@ -274,6 +274,19 @@ h1, h2, h3, .logo-text {
     opacity: 0.9;
 }
 
+.bottom-ad-content .btn-white {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.bottom-ad-content .btn-white:hover {
+    background: var(--primary-green) !important;
+    color: var(--pitch-black) !important;
+    transform: scale(1.08) translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.4);
+    border-color: transparent;
+}
+
 .bottom-ad-close {
     cursor: pointer;
     width: 28px;

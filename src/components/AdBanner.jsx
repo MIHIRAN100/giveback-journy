@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const AdBanner = () => {
+const AdBanner = ({ isScrolled }) => {
     const [visible, setVisible] = useState(true);
     const location = useLocation();
     const isTourDetails = location.pathname.startsWith('/package/');
@@ -19,7 +19,7 @@ const AdBanner = () => {
     };
 
     return (
-        <div className={`banner-wrapper ${!visible || isTourDetails ? 'banner-hidden' : ''}`}>
+        <div className={`banner-wrapper ${(!visible || isTourDetails || isScrolled) ? 'banner-hidden' : ''}`}>
             <div className="banner">
                 <span className="banner-tag">NEW</span>
                 <p className="banner-text">

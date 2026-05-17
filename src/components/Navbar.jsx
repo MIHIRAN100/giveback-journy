@@ -134,7 +134,7 @@ const Navbar = () => {
             ></div>
 
             <header className={`brand-header ${(activeMegaMenu || !isHomePage || isScrolled) ? 'header-scrolled' : ''}`}>
-                <AdBanner />
+                <AdBanner isScrolled={isScrolled} />
                 <nav className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}>
                     <Link to="/" className="logo-area" onMouseEnter={() => setActiveMegaMenu(null)}>
                         <div className="logo-image-container">
