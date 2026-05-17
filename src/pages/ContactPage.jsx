@@ -16,13 +16,19 @@ const ContactPage = () => {
         e.preventDefault();
         setLoading(true);
         
+        // Auto-fix common email typos to prevent delivery failure
+        let cleanEmail = formData.email.trim().toLowerCase();
+        if (cleanEmail.endsWith('@gmai.com')) cleanEmail = cleanEmail.replace('@gmai.com', '@gmail.com');
+
         const SERVICE_ID = "service_95ud991";
         const TEMPLATE_ID = "template_84lczai";
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
         const templateParams = {
             name: formData.name,
-            email: formData.email,
+            email: cleanEmail,
+            reply_to: cleanEmail,
+            admin_email: "hello@givebackjourney.com",
             phone: 'N/A',
             birthday: 'N/A',
             notes: formData.details,

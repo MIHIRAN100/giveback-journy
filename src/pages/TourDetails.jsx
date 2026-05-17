@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { tourPackages, BUDGET_PROMO_IMG } from '../data/tours';
+import { useCurrency } from '../context/CurrencyContext';
 import SriLankaGlance from '../components/SriLankaGlance';
 import gallerySlide5 from '../assets/e00c2772910971201b0e48853af8577a.jpg';
 import gallerySlide6 from '../assets/galle.jpg';
@@ -262,6 +263,7 @@ const TourDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { addToCompare, compareList, removeFromCompare } = useCompare();
+    const { formatPrice } = useCurrency();
 
     const pkg = tourPackages.find(p => p.id === parseInt(id));
     const reviews = pkg?.reviews || [];
@@ -367,16 +369,16 @@ const TourDetails = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         let currentBase = basePriceVal;
         if (pkg.id === 1) currentBase = 840;
-        if (pkg.id === 2) currentBase = 650;
+        if (pkg.id === 2) currentBase = 600;
         
         if (transport === 'tuktuk') {
             const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : 300)))));
-            return `$${currentBase - discount}`;
+            return currentBase - discount;
         }
         if (transport === 'van') {
-            return `$${currentBase + 150}`;
+            return currentBase + 150;
         }
-        return `$${currentBase}`;
+        return currentBase;
     };
 
     const getBaggageInfo = () => {
@@ -396,7 +398,7 @@ const TourDetails = () => {
             currentBase = Math.round(basePriceVal * 1.25);
         }
         
-        return `$${currentBase}`;
+        return currentBase;
     };
 
     return (
@@ -1518,7 +1520,7 @@ const TourDetails = () => {
 
                             <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', gap: '10px', marginBottom: '25px' }}>
                                 <span style={{ fontSize: '0.8rem', color: '#666', fontWeight: 700, marginBottom: '8px' }}>From</span>
-                                <span style={{ fontSize: '2.2rem', fontWeight: 900, color: '#111', lineHeight: 1 }}>USD {getPrice()}</span>
+                                <span style={{ fontSize: '2.2rem', fontWeight: 900, color: '#111', lineHeight: 1 }}>{formatPrice(getPrice())}</span>
                             </div>
 
                             {/* Vehicle Type Selector Row */}
@@ -2160,7 +2162,7 @@ const TourDetails = () => {
                                     </div>
                                     <h3 className="card-title">{tour.name}</h3>
                                     <div className="card-price">
-                                        from <strong>USD {tour.price.replace('$', '')}</strong>
+                                        from <strong>{formatPrice(tour.price)}</strong>
                                     </div>
                                 </div>
                             </div>
@@ -2178,9 +2180,9 @@ const TourDetails = () => {
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
                             <span className="from-text" style={{ margin: 0 }}>From</span>
                             {transport === 'tuktuk' && (
-                                <span style={{ textDecoration: 'line-through', color: '#999', fontSize: '0.85rem', fontWeight: 600 }}>USD {getOriginalPrice().replace('$', '')}</span>
+                                <span style={{ textDecoration: 'line-through', color: '#999', fontSize: '0.85rem', fontWeight: 600 }}>{formatPrice(getOriginalPrice())}</span>
                             )}
-                            <span className="price-amount" style={{ fontSize: '1.4rem' }}>USD {getPrice().replace('$', '')}</span>
+                            <span className="price-amount" style={{ fontSize: '1.4rem' }}>{formatPrice(getPrice())}</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '2px', fontSize: '0.7rem', color: '#888', fontWeight: 700, textDecoration: 'underline' }}>
                             <i className="bi bi-bag-check" style={{ fontSize: '0.7rem' }}></i>

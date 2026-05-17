@@ -298,11 +298,11 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .bottom-ad-banner {
-        bottom: 0;
+        bottom: 75px; /* Above MobileBottomBar */
     }
     .bottom-ad-inner {
         padding: 12px 15px;
-        padding-bottom: calc(12px + env(safe-area-inset-bottom)); /* Account for safe area */
+        padding-bottom: 12px;
     }
     .bottom-ad-text {
         font-size: 0.75rem;
@@ -6604,6 +6604,80 @@ h1, h2, h3, .logo-text {
     .stays-cta-buttons {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* Welcome Sri Lanka Section */
+.welcome-sri-lanka {
+    padding: 100px 5%;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-content-centered {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.welcome-text {
+    width: 100%;
+}
+
+.welcome-tag {
+    color: var(--primary-green);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.welcome-text h2 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 35px;
+    letter-spacing: -2px;
+}
+
+.text-highlight {
+    color: var(--primary-green);
+}
+
+.welcome-description {
+    max-width: 850px;
+    margin: 0 auto 50px;
+}
+
+.welcome-description p {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #6e6e73;
+    margin-bottom: 20px;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+}
+
+.welcome-description p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .welcome-sri-lanka {
+        padding: 80px 20px;
+    }
+    .welcome-text h2 {
+        font-size: 2.8rem;
+    }
+    .welcome-description p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        text-align: left;
     }
 }
 

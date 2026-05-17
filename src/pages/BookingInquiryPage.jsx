@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
+import { useCurrency } from '../context/CurrencyContext';
 import ScrollReveal from '../components/ScrollReveal';
 import emailjs from '@emailjs/browser';
 
@@ -8,6 +9,7 @@ const BookingInquiryPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+    const { formatPrice } = useCurrency();
     const initialTransport = searchParams.get('transport') || 'taxi';
     
     const [submitted, setSubmitted] = useState(false);
@@ -92,6 +94,11 @@ const BookingInquiryPage = () => {
         
         setLoading(true);
 
+        // Auto-fix common email typos to prevent delivery failure
+        let cleanEmail = formData.userEmail.trim().toLowerCase();
+        if (cleanEmail.endsWith('@gmai.com')) cleanEmail = cleanEmail.replace('@gmai.com', '@gmail.com');
+        if (cleanEmail.endsWith('@yaho.com')) cleanEmail = cleanEmail.replace('@yaho.com', '@yahoo.com');
+
         const SERVICE_ID = "service_95ud991";
         const TEMPLATE_ID_ADMIN = "template_84lczai"; 
         const TEMPLATE_ID_USER = "template_j0pdjea";   
@@ -99,7 +106,9 @@ const BookingInquiryPage = () => {
 
         const templateParams = {
             name: formData.userName,
-            email: formData.userEmail,
+            email: cleanEmail,
+            reply_to: cleanEmail, // Used in Admin template
+            admin_email: "hello@givebackjourney.com", // Use this in User template for Reply-To
             phone: formData.userPhone,
             emergency_contact: formData.emergencyContact,
             traveler_type: formData.travelerType,
@@ -202,7 +211,7 @@ const BookingInquiryPage = () => {
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#666' }}>
                                         <i className="bi bi-tag" style={{ color: 'var(--primary-green)' }}></i>
                                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <span style={{ fontWeight: 700, color: 'var(--primary-green)', fontSize: '1.2rem' }}>${priceData.total}</span>
+                                            <span style={{ fontWeight: 700, color: 'var(--primary-green)', fontSize: '1.2rem' }}>{formatPrice(priceData.total)}</span>
                                             <span style={{ fontSize: '0.75rem' }}>Total Estimated Price</span>
                                         </div>
                                     </div>
@@ -211,18 +220,18 @@ const BookingInquiryPage = () => {
                                 <div style={{ marginTop: '20px', padding: '15px', background: '#f9f9f9', borderRadius: '12px', fontSize: '0.8rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
                                         <span>{formData.adults} Adults</span>
-                                        <span>${formData.adults * priceData.perAdult}</span>
+                                        <span>{formatPrice(formData.adults * priceData.perAdult)}</span>
                                     </div>
                                     {formData.kids > 0 && (
                                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
                                             <span>{formData.kids} Kids (50% Off)</span>
-                                            <span>${formData.kids * priceData.perAdult * 0.5}</span>
+                                            <span>{formatPrice(formData.kids * priceData.perAdult * 0.5)}</span>
                                         </div>
                                     )}
                                     {formData.infants > 0 && (
                                         <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--primary-green)' }}>
                                             <span>{formData.infants} Infants (Free)</span>
-                                            <span>$0</span>
+                                            <span>{formatPrice(0)}</span>
                                         </div>
                                     )}
                                 </div>

@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
+import { useCurrency } from '../context/CurrencyContext';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/brand_logo.jpg';
 import AdBanner from './AdBanner';
 
 
 const Navbar = () => {
     const { compareList } = useCompare();
+    const { currency, setCurrency, currencies } = useCurrency();
     const location = useLocation();
     const isHomePage = location.pathname === '/';
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
     const [activeMegaMenu, setActiveMegaMenu] = useState(null);
 
     useEffect(() => {
@@ -22,8 +26,16 @@ const Navbar = () => {
             }
         };
 
+        const handleClickOutside = () => {
+            setIsCurrencyOpen(false);
+        };
+
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('click', handleClickOutside);
+        };
     }, []);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -148,7 +160,78 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <div className="nav-actions" onMouseEnter={() => setActiveMegaMenu(null)}>
+                    <div className="nav-actions" onMouseEnter={() => { setActiveMegaMenu(null); setIsCurrencyOpen(false); }}>
+                        <div className="nav-currency-selector" style={{ position: 'relative', marginRight: '15px' }}>
+                            <div 
+                                onClick={(e) => { e.stopPropagation(); setIsCurrencyOpen(!isCurrencyOpen); }}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    padding: '6px 12px',
+                                    background: 'rgba(0,0,0,0.03)',
+                                    borderRadius: '50px',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s ease',
+                                    border: '1px solid rgba(0,0,0,0.05)',
+                                    color: 'var(--pitch-black)',
+                                    fontSize: '0.8rem',
+                                    fontWeight: 700
+                                }}
+                            >
+                                <span>{currencies[currency].icon}</span>
+                                <span>{currency}</span>
+                                <i className={`bi bi-chevron-down`} style={{ fontSize: '0.6rem', transition: 'transform 0.3s ease', transform: isCurrencyOpen ? 'rotate(180deg)' : 'rotate(0)' }}></i>
+                            </div>
+
+                            <AnimatePresence>
+                                {isCurrencyOpen && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        style={{
+                                            position: 'absolute',
+                                            top: '120%',
+                                            right: 0,
+                                            background: 'rgba(255, 255, 255, 0.9)',
+                                            backdropFilter: 'blur(10px)',
+                                            borderRadius: '16px',
+                                            boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+                                            padding: '8px',
+                                            minWidth: '150px',
+                                            zIndex: 1000,
+                                            border: '1px solid rgba(0,0,0,0.05)'
+                                        }}
+                                    >
+                                        {Object.values(currencies).map(c => (
+                                            <div 
+                                                key={c.label}
+                                                onClick={() => { setCurrency(c.label); setIsCurrencyOpen(false); }}
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '10px',
+                                                    padding: '10px 15px',
+                                                    borderRadius: '10px',
+                                                    cursor: 'pointer',
+                                                    transition: 'all 0.2s ease',
+                                                    background: currency === c.label ? 'rgba(29, 185, 84, 0.1)' : 'transparent',
+                                                    color: currency === c.label ? 'var(--primary-green)' : '#333',
+                                                    fontSize: '0.85rem',
+                                                    fontWeight: currency === c.label ? 800 : 600
+                                                }}
+                                                className="currency-option"
+                                            >
+                                                <span style={{ fontSize: '1.1rem' }}>{c.icon}</span>
+                                                <span>{c.label} ({c.symbol})</span>
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                         <Link to="/compare" className="nav-icon-link" style={{ position: 'relative', marginRight: '15px', color: 'var(--pitch-black)', fontSize: '1.2rem' }}>
                             <i className="bi bi-shuffle"></i>
                             {compareList.length > 0 && <span className="compare-badge">{compareList.length}</span>}
@@ -208,6 +291,36 @@ const Navbar = () => {
                         )}
                     </div>
                 ))}
+                <div className="mobile-nav-group" style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid #eee' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                        <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#999', letterSpacing: '1px' }}>Preferred Currency</label>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+                            {Object.values(currencies).map(c => (
+                                <div 
+                                    key={c.label}
+                                    onClick={() => {
+                                        setCurrency(c.label);
+                                        toggleMenu();
+                                    }}
+                                    style={{
+                                        padding: '15px',
+                                        borderRadius: '16px',
+                                        border: `2px solid ${currency === c.label ? 'var(--primary-green)' : '#eee'}`,
+                                        background: currency === c.label ? 'rgba(29, 185, 84, 0.05)' : 'white',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    <span style={{ fontSize: '1.5rem' }}>{c.icon}</span>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 800, color: currency === c.label ? 'var(--primary-green)' : '#333' }}>{c.label}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );

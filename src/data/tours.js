@@ -109,7 +109,7 @@ const adventureReviews = [
     { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" },
     { id: 6, name: "Priya Kapoor", rating: 5, date: "May 2025", profile: "India", trip: "Highlands & Coast", comment: "The Madu River safari was so peaceful. Seeing the cinnamon peeling was a unique experience I'll never forget.", color: "#fff3e0" },
     { id: 7, name: "Oliver Hughes", rating: 4, date: "April 2025", profile: "Australian, 27", trip: "Highlands & Coast", comment: "Yala safari was incredible but the early morning start was tough. Totally worth it when we spotted elephants and a sloth bear!", color: "#e3f2fd" },
-    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2025", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week—this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" }
+    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2025", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week, this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" }
 ];
 
 const galleReviews = [
@@ -127,7 +127,7 @@ const mistReviews = [
 ];
 
 const kandyHighlightsReviews = [
-    { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2025", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were absolutely stunning—the orchid collection alone is worth the visit. Our guide was so knowledgeable!", color: "#e8f5e9" },
+    { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2025", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were absolutely stunning, the orchid collection alone is worth the visit. Our guide was so knowledgeable!", color: "#e8f5e9" },
     { id: 2, name: "Ben Carter", rating: 5, date: "September 2025", profile: "USA, 31", trip: "Kandy Highlights", comment: "The cultural dance show was electrifying! The fire-walkers were incredible. Perfect introduction to Sri Lankan culture.", color: "#e3f2fd" },
     { id: 3, name: "Yuki Nakamura", rating: 4, date: "August 2025", profile: "Japanese, 28", trip: "Kandy Highlights", comment: "Kandy Lake at sunset is so peaceful. A great day trip that covers all the must-see spots without feeling rushed.", color: "#fff3e0" },
     // 2-star reviews (5 requested)
@@ -179,7 +179,7 @@ const adamsPeakReviews = [
 ];
 
 const kitulgalaReviews = [
-    { id: 1, name: "Daniel Cooper", rating: 5, date: "October 2025", profile: "UK, 28", trip: "Kitulgala Rafting", comment: "The rapids were exciting but safe—perfect for a first-timer like me! The jungle scenery around the river was breathtaking.", color: "#e8f5e9" },
+    { id: 1, name: "Daniel Cooper", rating: 5, date: "October 2025", profile: "UK, 28", trip: "Kitulgala Rafting", comment: "The rapids were exciting but safe, perfect for a first-timer like me! The jungle scenery around the river was breathtaking.", color: "#e8f5e9" },
     { id: 2, name: "Maria Santos", rating: 5, date: "September 2025", profile: "Portuguese, 24", trip: "Kitulgala Rafting", comment: "The riverside lunch after rafting was so authentic and delicious. Sitting by the Kelani River in the jungle was pure bliss.", color: "#e3f2fd" },
     { id: 3, name: "Ethan Brooks", rating: 4, date: "August 2025", profile: "Australian, 32", trip: "Kitulgala Rafting", comment: "Great day trip from Kandy! The drive through the countryside was scenic and the rafting guide was professional and fun.", color: "#fff3e0" }
 ];
@@ -188,11 +188,11 @@ const COMMON_NOTES = [
     "Some travellers have reported being approached by locals offering excursions before their Give Back Journey trip commences. This has been particularly prevalent in and around the hotels used by Give Back Journey. These guides are in no way connected to Give Back Journey and we cannot guarantee the safety or quality standards of their tours. We advise customers against joining any tour offered by the unauthorised guides.",
     "A single supplement is available if you'd prefer not to share a room on this trip. The single supplement is subject to availability. Please speak to your booking agent for further information.",
     "A complimentary airport arrival transfer is included; valid if you are arriving on Day 1 or if you have booked pre-tour accommodation through us. You must provide your flight details to us at least 14 days prior to travel.",
-    "Sri Lanka is a deeply religious country. Always cover your shoulders and knees when visiting temples. Modest dress is not just expected—it's required for entry. Avoid wearing clothing with religious symbols as fashion, and if you have tattoos of Buddhist or other religious figures, make sure to cover them before entering any religious site.",
+    "Sri Lanka is a deeply religious country. Always cover your shoulders and knees when visiting temples. Modest dress is not just expected: it's required for entry. Avoid wearing clothing with religious symbols as fashion, and if you have tattoos of Buddhist or other religious figures, make sure to cover them before entering any religious site.",
     "Sri Lanka operates largely on a cash economy for local purchases. While major hotels and restaurants accept credit cards, we highly recommend carrying local currency (Sri Lankan Rupees) for small purchases, local markets, and cafes. ATMs are widely available in all main towns.",
     "Every full moon is a 'Poya' holiday. Alcohol and meat are generally not sold in shops or served in public restaurants on these days. It's a day for spiritual reflection across the island.",
     "To avoid stomach issues, never drink tap water. Use bottled or filtered water even for brushing teeth if you have a sensitive stomach. Look for the SLS certification on water bottles.",
-    "Sri Lanka uses Type D and G plugs. We recommend buying a local SIM card (Dialog/Mobitel) at the airport—it's incredibly cheap ($5-10 for 30GB+) and has better coverage than hotel Wi-Fi.",
+    "Sri Lanka uses Type D and G plugs. We recommend buying a local SIM card (Dialog/Mobitel) at the airport, it's incredibly cheap ($5-10 for 30GB+) and has better coverage than hotel Wi-Fi.",
     "Bargaining is common in street markets but rare in fixed-price shops. Keep it friendly and fair; saving a few cents might mean more to the vendor than to your budget."
 ];
 
@@ -202,7 +202,7 @@ export const tourPackages = [
         id: 1,
         name: "7-Day Essential Sri Lanka",
         days: "7 Days / 6 Nights",
-        description: "A carefully designed journey blending culture, nature, and adventure—perfect for travelers who want to experience the best of Sri Lanka in a short time.\n\nFrom the ancient heights of Sigiriya Lion Rock to the misty emerald hills of Ella, this tour captures the island's most iconic landscapes. You'll wander through the sacred temples of Kandy and end your journey on the golden palm-fringed beaches of the south coast.\n\nExperience authentic Sri Lankan hospitality and create memories that will last a lifetime in just seven extraordinary days.",
+        description: "A carefully designed journey blending culture, nature, and adventure: perfect for travelers who want to experience the best of Sri Lanka in a short time.\n\nFrom the ancient heights of Sigiriya Lion Rock to the misty emerald hills of Ella, this tour captures the island's most iconic landscapes. You'll wander through the sacred temples of Kandy and end your journey on the golden palm-fringed beaches of the south coast.\n\nExperience authentic Sri Lankan hospitality and create memories that will last a lifetime in just seven extraordinary days.",
         price: "$650",
         image: essentialCover,
         itinerary: [
@@ -235,7 +235,7 @@ export const tourPackages = [
             { 
                 day: 4, 
                 title: "Kandy to Ella | Scenic Train Experience", 
-                desc: "<b>🍽️ Breakfast included.</b><br/><br/>In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous rail journey by taking the <b>Ambewela to Ella train ride</b> as a local—winding through <b>emerald tea estates</b> and cascading waterfalls.<br/><br/><i>(Note: Due to unstable and unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle via the same scenic route).</i><br/><br/>Arrive in the charming village of Ella and transfer to your <b>accommodation nestled in the hills</b>.<br/><br/><b>Evening free to:</b><br/><ul><li>🚶 Wander through the bohemian streets of <b>Ella town</b></li><li>☕ Relax in cozy local cafés and enjoy the cool mountain air</li></ul><br/><b>Overnight stay in Ella.</b>", 
+                desc: "<b>🍽️ Breakfast included.</b><br/><br/>In the morning, visit the sacred <b>Temple of the Tooth</b>, the most revered Buddhist site in Sri Lanka, nestled in the heart of the city.<br/><br/>Then, proceed towards the misty highlands of <b>Ella</b>. You will experience a portion of the world-famous rail journey by taking the <b>Ambewela to Ella train ride</b> as a local, winding through <b>emerald tea estates</b> and cascading waterfalls.<br/><br/><i>(Note: Due to unstable and unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle via the same scenic route).</i><br/><br/>Arrive in the charming village of Ella and transfer to your <b>accommodation nestled in the hills</b>.<br/><br/><b>Evening free to:</b><br/><ul><li>🚶 Wander through the bohemian streets of <b>Ella town</b></li><li>☕ Relax in cozy local cafés and enjoy the cool mountain air</li></ul><br/><b>Overnight stay in Ella.</b>", 
                 activities: ["Breakfast", "Temple of the Tooth", "Scenic Train Ride", "Ambewela to Ella Rail", "Tea Estate Views", "Private Transport"],
                 optionalActivities: ["Evening Yoga Session overlooking the hills", "Traditional Sri Lankan Cooking Class in Ella", "High Tea experience at a colonial estate"]
             },
@@ -291,7 +291,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Pinnawala & Kandy Scenic Day Tour", 
-                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Pickup Information:</b> Complimentary pickup is provided from your accommodation within the local area. If you are coming from outside the city or require nationwide pickup from any other location across the country, an additional fee will apply. Please contact us to arrange your personalized transfer.</div>Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments.<br/><br/><strong>Key Highlights & Activities:</strong><ul style='margin-top: 10px; padding-left: 20px; list-style-type: disc;'><li><strong>Pinnawala Elephant Orphanage:</strong> Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath—a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.</li><li style='margin-top: 8px;'><strong>Dung Paper Recycling Factory:</strong> Following the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling.</li><li style='margin-top: 8px;'><strong>Traditional Ceylon Tea Factory:</strong> On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.</li></ul>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Pickup Information:</b> Complimentary pickup is provided from your accommodation within the local area. If you are coming from outside the city or require nationwide pickup from any other location across the country, an additional fee will apply. Please contact us to arrange your personalized transfer.</div>Your adventure begins with an early 7:00 AM pick-up to ensure we reach the Pinnawala Elephant Orphanage in time for the morning's most magical moments.<br/><br/><strong>Key Highlights & Activities:</strong><ul style='margin-top: 10px; padding-left: 20px; list-style-type: disc;'><li><strong>Pinnawala Elephant Orphanage:</strong> Witness the incredible sight of the elephant herd as they are led to the nearby river for their daily bath, a truly heart-warming experience where you can observe these gentle giants playing and splashing in the water.</li><li style='margin-top: 8px;'><strong>Dung Paper Recycling Factory:</strong> Following the riverside interaction, we visit a unique local factory to see the fascinating process of eco-friendly elephant dung paper recycling.</li><li style='margin-top: 8px;'><strong>Traditional Ceylon Tea Factory:</strong> On the scenic return journey towards Kandy, we stop at a traditional Ceylon tea factory. Here, you'll learn about the intricate art of tea production and enjoy a fresh tasting session of the world's finest brew before being transferred back to your accommodation.</li></ul>", 
                 activities: ["Elephant Feeding & Bathing", "Riverside Interaction", "Dung Paper Recycling", "Tea Factory Visit", "Fresh Ceylon Tea Tasting"],
                 optionalActivities: ["Kandy Cultural Dance Show", "Royal Botanical Gardens stroll", "Sacred Temple of the Tooth visit"]
             }
@@ -315,7 +315,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Arrival in Hikkaduwa", 
-                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining points for this tour include <b>Katunayake Airport (CMB)</b>, <b>Hikkaduwa</b>, and <b>Galle</b>. We provide complimentary pick-ups from these locations. If you are arriving independently, please ensure you are at the designated meeting point at least <b>30 minutes</b> before your scheduled start time. We also offer private pick-ups from any other location across the country for an additional fee.</div>Welcome to the golden shores of <b>Hikkaduwa!</b><br/><br/>Upon your arrival, you'll be transferred to your <b>charming coastal guesthouse in Hikkaduwa</b>.<br/><br/><b>Hikkaduwa</b> is famous for its laid-back vibe and vibrant beach culture, making it the perfect starting point for your southern escape.<br/><br/>Spend your first afternoon settling in—<b>sink your toes into the soft sand</b>, enjoy a refreshing drink as you watch the waves, or take a <b>gentle stroll along the shoreline</b>.<br/><br/>As evening falls, the town comes alive with the scent of <b>fresh seafood</b> and the sound of the ocean, offering a relaxing introduction to island life.<br/><br/><b>Overnight stay in Hikkaduwa</b>", 
+                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining points for this tour include <b>Katunayake Airport (CMB)</b>, <b>Hikkaduwa</b>, and <b>Galle</b>. We provide complimentary pick-ups from these locations. If you are arriving independently, please ensure you are at the designated meeting point at least <b>30 minutes</b> before your scheduled start time. We also offer private pick-ups from any other location across the country for an additional fee.</div>Welcome to the golden shores of <b>Hikkaduwa!</b><br/><br/>Upon your arrival, you'll be transferred to your <b>charming coastal guesthouse in Hikkaduwa</b>.<br/><br/><b>Hikkaduwa</b> is famous for its laid-back vibe and vibrant beach culture, making it the perfect starting point for your southern escape.<br/><br/>Spend your first afternoon settling in, <b>sink your toes into the soft sand</b>, enjoy a refreshing drink as you watch the waves, or take a <b>gentle stroll along the shoreline</b>.<br/><br/>As evening falls, the town comes alive with the scent of <b>fresh seafood</b> and the sound of the ocean, offering a relaxing introduction to island life.<br/><br/><b>Overnight stay in Hikkaduwa</b>", 
                 activities: ["Airport Transfer", "Private Transport"],
                 optionalActivities: [
                     "Morning Whale Watching Safari in the deep blue",
@@ -358,7 +358,7 @@ export const tourPackages = [
             { 
                 day: 4, 
                 title: "Unawatuna & Jungle Beach", 
-                desc: "<b>🍽️ Breakfast included.</b><br/><br/>Discover the crescent-shaped bay of <b>Unawatuna</b>, often cited as one of the most beautiful beaches in the world. Today is about exploring the <b>diverse coastal landscapes</b> of the south.<br/><br/>You can choose to relax on the main beach or take a <b>short trek</b> through the lush greenery to reach <b>Jungle Beach</b>—a hidden gem where the forest meets the sea in a secluded, tranquil cove.<br/><br/>The waters here are calm and <b>perfect for swimming</b>. In the evening, Unawatuna’s beachfront transforms into a <b>vibrant dining scene</b>, where you can enjoy a <b>candlelit dinner on the sand</b> with the sound of the waves as your soundtrack.<br/><br/><b>Overnight stay in Unawatuna</b>", 
+                desc: "<b>🍽️ Breakfast included.</b><br/><br/>Discover the crescent-shaped bay of <b>Unawatuna</b>, often cited as one of the most beautiful beaches in the world. Today is about exploring the <b>diverse coastal landscapes</b> of the south.<br/><br/>You can choose to relax on the main beach or take a <b>short trek</b> through the lush greenery to reach <b>Jungle Beach</b>, a hidden gem where the forest meets the sea in a secluded, tranquil cove.<br/><br/>The waters here are calm and <b>perfect for swimming</b>. In the evening, Unawatuna’s beachfront transforms into a <b>vibrant dining scene</b>, where you can enjoy a <b>candlelit dinner on the sand</b> with the sound of the waves as your soundtrack.<br/><br/><b>Overnight stay in Unawatuna</b>", 
                 activities: ["Breakfast", "Private Transport", "Unawatuna Beach", "Beach Swimming"],
                 optionalActivities: [
                     "Morning Whale Watching Safari in the deep blue",
@@ -425,7 +425,7 @@ export const tourPackages = [
         id: 3, 
         name: "Highlands & Southern Coast", 
         days: "7 Days / 6 Nights",
-        description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches—designed for travelers who want maximum experience with great value.\n\nFrom white-water rafting in the jungle rivers of Kitulgala to the cool, tea-scented air of the Ella highlands, this tour is an adventure for the soul. You'll explore the wild landscapes of Yala in search of leopards and finally unwind on the vibrant beaches of Hikkaduwa.\n\nIt's the perfect fusion of thrill and tranquility, capturing the very essence of the island's diverse natural beauty.",
+        description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches, designed for travelers who want maximum experience with great value.\n\nFrom white-water rafting in the jungle rivers of Kitulgala to the cool, tea-scented air of the Ella highlands, this tour is an adventure for the soul. You'll explore the wild landscapes of Yala in search of leopards and finally unwind on the vibrant beaches of Hikkaduwa.\n\nIt's the perfect fusion of thrill and tranquility, capturing the very essence of the island's diverse natural beauty.",
         price: "$680",
         image: adventureCover,
         itinerary: [
@@ -556,7 +556,7 @@ export const tourPackages = [
             { 
                 day: 3, 
                 title: "The Iconic Highland Train Journey", 
-                desc: "<b>🍽️ Breakfast included.</b><br/><br/>Board the legendary <b>Blue Train</b> for what is widely considered the most beautiful rail journey in the world. As the train winds its way through the central highlands towards Ella, you'll be treated to spectacular views of waterfalls, deep valleys, and mist-shrouded forests.<br/><br/><i>(Note: Due to unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle via the same scenic route).</i><br/><br/>This is a slow-travel experience at its finest—lean out the window to feel the cool mountain breeze and witness the stunning geography of the island unfolding before your eyes.<br/><br/><b>Overnight stay in Ella</b>", 
+                desc: "<b>🍽️ Breakfast included.</b><br/><br/>Board the legendary <b>Blue Train</b> for what is widely considered the most beautiful rail journey in the world. As the train winds its way through the central highlands towards Ella, you'll be treated to spectacular views of waterfalls, deep valleys, and mist-shrouded forests.<br/><br/><i>(Note: Due to unpredictable circumstances, this train experience may occasionally be unavailable; in such cases, your journey will continue by private vehicle via the same scenic route).</i><br/><br/>This is a slow-travel experience at its finest, lean out the window to feel the cool mountain breeze and witness the stunning geography of the island unfolding before your eyes.<br/><br/><b>Overnight stay in Ella</b>", 
                 activities: ["Breakfast", "Scenic Train Journey"],
                 optionalActivities: [
                     "Picnic lunch on the train with local snacks",
@@ -609,7 +609,7 @@ export const tourPackages = [
             { 
                 day: 2, 
                 title: "Artisan Streets & Boutique Shopping", 
-                desc: "Spend the day diving deeper into the fort's unique character. <b>Galle Fort</b> is a hub for art and craftsmanship; explore the many galleries showcasing local talent, visit <b>traditional jewelry makers</b>, and browse boutique shops for high-quality <b>textiles and souvenirs</b>.<br/><br/>The fort is best explored on foot, allowing you to discover <b>hidden courtyards</b> and architectural details at your own pace. In the afternoon, perhaps enjoy a <b>traditional Sri Lankan tea experience</b> or find a quiet spot on the ramparts to watch the <b>local 'cliff divers'</b>—a true fort tradition.", 
+                desc: "Spend the day diving deeper into the fort's unique character. <b>Galle Fort</b> is a hub for art and craftsmanship; explore the many galleries showcasing local talent, visit <b>traditional jewelry makers</b>, and browse boutique shops for high-quality <b>textiles and souvenirs</b>.<br/><br/>The fort is best explored on foot, allowing you to discover <b>hidden courtyards</b> and architectural details at your own pace. In the afternoon, perhaps enjoy a <b>traditional Sri Lankan tea experience</b> or find a quiet spot on the ramparts to watch the <b>local 'cliff divers'</b>, a true fort tradition.", 
                 activities: ["Breakfast", "Boutique Shopping", "Art Gallery Visits", "Artisan Workshops"],
                 optionalActivities: ["Traditional Sri Lankan tea experience", "Watch local 'cliff divers' performance", "Jewelry making demonstration"]
             },
@@ -656,7 +656,7 @@ export const tourPackages = [
         id: 10,
         name: "Adam’s Peak Sunrise Quest",
         days: "2 Days / 1 Night",
-        description: "Embark on a soul-stirring pilgrimage to the sacred summit of Adam’s Peak (Sri Pada), a mountain revered by multiple faiths for centuries.\n\nThis immersive 2-day journey takes you through the lush tea country to the base at Dalhousie, where your quest begins in the quiet of the night. Join thousands of pilgrims on an ancient stone path illuminated by lanterns, reaching the 2,243m summit just as the first rays of light break over the horizon.\n\nWitness the legendary sunrise and the mountain's perfect triangular shadow cast across the misty plains below—a moment of profound beauty and spiritual reflection that stays with you forever.",
+        description: "Embark on a soul-stirring pilgrimage to the sacred summit of Adam’s Peak (Sri Pada), a mountain revered by multiple faiths for centuries.\n\nThis immersive 2-day journey takes you through the lush tea country to the base at Dalhousie, where your quest begins in the quiet of the night. Join thousands of pilgrims on an ancient stone path illuminated by lanterns, reaching the 2,243m summit just as the first rays of light break over the horizon.\n\nWitness the legendary sunrise and the mountain's perfect triangular shadow cast across the misty plains below, a moment of profound beauty and spiritual reflection that stays with you forever.",
         price: "$280",
         image: adamsPeakImg,
         itinerary: [
@@ -670,7 +670,7 @@ export const tourPackages = [
             { 
                 day: 2, 
                 title: "The Sacred Sunrise & Descent", 
-                desc: "The climb begins at 2AM in the silence of the night, joining thousands of pilgrims on the <b>ancient stone path</b>. During the pilgrimage season (December to May), the way is beautifully illuminated by lanterns; if you are climbing outside of this season, we highly recommend hiring a local guide for safety and navigation.<br/><br/>Reach the peak in the pre-dawn hours to witness a <b>breathtaking sunrise</b> that illuminates the entire island—a spiritual experience like no other. After the descent, enjoy <b>breakfast</b> before your return transfer to Kandy, carrying the light of the sunrise with you.", 
+                desc: "The climb begins at 2AM in the silence of the night, joining thousands of pilgrims on the <b>ancient stone path</b>. During the pilgrimage season (December to May), the way is beautifully illuminated by lanterns; if you are climbing outside of this season, we highly recommend hiring a local guide for safety and navigation.<br/><br/>Reach the peak in the pre-dawn hours to witness a <b>breathtaking sunrise</b> that illuminates the entire island, a spiritual experience like no other. After the descent, enjoy <b>breakfast</b> before your return transfer to Kandy, carrying the light of the sunrise with you.", 
                 activities: ["Breakfast", "Adam's Peak Climb", "Private Transfer"] 
             }
         ],
@@ -707,73 +707,8 @@ export const tourPackages = [
         physicalIntensity: 3,
         importantNotes: COMMON_NOTES
     },
-    {
-        id: 12,
-        name: "10-Day Island Cross-Over: South to North",
-        days: "10 Days / 9 Nights",
-        description: "A breathtaking cross-island journey from the misty southern highlands to the untouched white sands of the north-east coast. This 10-day odyssey captures the soul of Sri Lanka—from the rolling tea estates of Ella to the historic shores of Trincomalee and the ancient wonders of Anuradhapura.",
-        price: "$890",
-        image: islandCrossoverCover,
-        itinerary: [
-            { 
-                day: 1, 
-                title: "Arrival & Transfer to Ramboda", 
-                desc: "<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-clock-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Important Arrival Note:</b> The joining point for this tour is <b>Katunayake Airport (CMB)</b> or any hotel located around <b>Ramboda</b>. We provide complimentary pick-ups from these locations. Private pick-ups from any other location across the country are available for an additional fee.</div>Welcome to Sri Lanka! Upon arrival, we transfer you to the misty heights of <b>Ramboda</b>, known for its majestic waterfalls and cool mountain air. Settle into your accommodation and enjoy the serene atmosphere of the central highlands as you prepare for your island odyssey." 
-            },
-            { 
-                day: 2, 
-                title: "Exploring Ramboda Waterfalls", 
-                desc: "Spend the day exploring the cascading waterfalls of <b>Ramboda</b>. Visit the Ramboda Falls, one of the highest in the country, and take in the panoramic views of the Kotmale valley. This day is dedicated to relaxation and soaking in the natural beauty of the hills." 
-            },
-            { 
-                day: 3, 
-                title: "Nuwara Eliya | Little England", 
-                desc: "Travel to <b>Nuwara Eliya</b>, the heart of the tea country. Walk through the colonial-style town, visit Gregory Lake, and enjoy the crisp mountain breeze. You'll learn about the history of tea production and enjoy the 'Little England' vibes of this historic town." 
-            },
-            { 
-                day: 4, 
-                title: "Misty Ella & Nine Arches", 
-                desc: "Head to <b>Ella</b>, the bohemian mountain village. Visit the iconic <b>Nine Arches Bridge</b> and hike <b>Little Adam's Peak</b> for stunning views of the Ella Gap. The atmosphere here is relaxed and filled with the energy of global travelers." 
-            },
-            { 
-                day: 5, 
-                title: "Panoramic Train & Transfer to Naula", 
-                desc: "Board the <b>panoramic train to Ambewela</b> for a stunning highland rail experience. Your driver will pick you up at Ambewela station and transfer you north towards <b>Naula</b>, transitioning from the mountains to the dry zone plains of the cultural triangle." 
-            },
-            { 
-                day: 6, 
-                title: "Sigiriya Lion Rock", 
-                desc: "Scale the magnificent <b>Sigiriya Rock Fortress</b> at sunrise. In the afternoon, explore the ancient irrigation wonders of the area or enjoy a peaceful village safari. This is the heart of the island's ancient history." 
-            },
-            { 
-                day: 7, 
-                title: "Trincomalee | The North-East Coast", 
-                desc: "Journey to the pristine shores of <b>Trincomalee</b>. Visit the <b>Koneswaram Temple</b> perched on a cliff and relax on the white sands of Uppuveli beach. The atmosphere here is vastly different from the south—quiet, untouched, and serene." 
-            },
-            { 
-                day: 8, 
-                title: "Trincomalee | Beach & Marine Life", 
-                desc: "A full day to relax in <b>Trincomalee</b>. Optional activities include whale watching or snorkeling at <b>Pigeon Island National Park</b>. Enjoy the crystal clear waters and the unique culture of the north-east." 
-            },
-            { 
-                day: 9, 
-                title: "Anuradhapura | The Ancient Capital", 
-                desc: "Travel to the UNESCO World Heritage site of <b>Anuradhapura</b>. Explore the sprawling ruins of the island's first ancient capital, including giant stupas and sacred Bo trees that have stood for millennia." 
-            },
-            { 
-                day: 10, 
-                title: "Colombo | The Final Chapter", 
-                desc: "Conclude your journey in the vibrant capital of <b>Colombo</b>. Enjoy a city tour, visit the Dutch Hospital area, and prepare for your departure after a truly epic cross-island adventure." 
-            }
-        ],
-        inclusions: ["9 nights accommodation", "Daily breakfast", "Train tickets (Panoramic)", "Private transport", "Entrance fees to core sites"],
-        exclusions: ["Lunches & Dinners", "Personal expenses", "Optional marine activities in Trincomalee"],
-        routeMap: routeMapGrandLoop,
-        reviews: signatureReviews,
-        rating: 4.9,
-        ratingLabel: "New Experience",
-        physicalIntensity: 3,
-        importantNotes: COMMON_NOTES
-    },
+
 
 ];
+
+export const TOURS_DATA = tourPackages;

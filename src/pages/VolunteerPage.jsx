@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import puppyImg from '../assets/dominican puppy.jpg';
 import effortImg from '../assets/This Moment Shows Effort Beyond Words.webp';
 import hihiImg from '../assets/hihi.webp';
-import VolunteerPackages from '../components/VolunteerPackages';
+import VolunteerOpportunities from '../components/VolunteerOpportunities';
 
 const VolunteerPage = () => {
     const testimonials = [
@@ -397,24 +397,24 @@ const VolunteerPage = () => {
                 {/* Experience Focus Areas */}
                 <div className="focus-areas-grid">
                     <div className="focus-card">
-                        <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px', color: 'var(--primary-green)' }}>Woman Empowerment</h3>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px', color: 'var(--primary-green)' }}>Zen & Temple Service</h3>
                         <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '25px' }}>
-                            Support local women in gaining financial independence. Our projects involve vocational training and English literacy programs tailored for women in rural areas.
+                            Experience the spiritual heart of Sri Lanka. Join local monks in temple maintenance, learn meditation, and help preserve ancient heritage.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-                            {["Skills Training", "Economic Literacy", "Mentorship"].map((item, i) => (
+                            {["Meditation", "Temple Care", "Buddhist Arts"].map((item, i) => (
                                 <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '8px 18px', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700 }}>{item}</span>
                             ))}
                         </div>
                     </div>
 
                     <div className="focus-card">
-                        <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px', color: '#111' }}>Special Needs Support</h3>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px', color: '#111' }}>Education & Childcare</h3>
                         <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '25px' }}>
-                            Work in dedicated centers providing care for children and adults with special needs, assisting with therapeutic play and creative arts.
+                            Make a direct impact in rural village preschools and special needs centers. Assist with English teaching, creative play, and basic therapy.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-                            {["Therapeutic Play", "Individual Care", "Art Therapy"].map((item, i) => (
+                            {["Rural Teaching", "Special Needs", "School Support"].map((item, i) => (
                                 <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '8px 18px', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700 }}>{item}</span>
                             ))}
                         </div>
@@ -471,9 +471,8 @@ const VolunteerPage = () => {
                         ))}
                     </div>
                 </section>
-
-                {/* Volunteer Packages */}
-                <VolunteerPackages />
+                {/* Volunteer Opportunities */}
+                <VolunteerOpportunities />
 
                 {/* Journey Steps */}
                 <section style={{ margin: '120px 0' }}>
@@ -529,7 +528,7 @@ const VolunteerPage = () => {
                 {/* Final CTA */}
                 <div style={{ textAlign: 'center' }}>
                     <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '30px' }}>Ready to Make a Difference?</h2>
-                    <Link to="/contact" className="btn-modern" style={{ 
+                    <Link to="/volunteer-inquiry" className="btn-modern" style={{ 
                         padding: '20px 60px', 
                         background: 'var(--primary-green)', 
                         color: 'white', 

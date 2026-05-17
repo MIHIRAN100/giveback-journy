@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { TOURS_DATA } from '../data/tours';
+import { useCurrency } from '../context/CurrencyContext';
 
 const ToursGrid = ({ searchTerm }) => {
     const [filter, setFilter] = useState('All');
+    const { formatPrice } = useCurrency();
 
     // Filter by Category first, then by search term (title or category)
     const filteredTours = TOURS_DATA.filter(tour => {
@@ -63,7 +65,7 @@ const ToursGrid = ({ searchTerm }) => {
                                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '20px'}}>
                                         <div className="price-box">
                                             <label style={{fontSize: '0.7rem', fontWeight: 800, color: 'var(--light-gray)', textTransform: 'uppercase', display: 'block'}}>From</label>
-                                            <span style={{fontSize: '1.3rem', fontWeight: 800, color: 'var(--pitch-black)'}}>{tour.price}</span>
+                                            <span style={{fontSize: '1.3rem', fontWeight: 800, color: 'var(--pitch-black)'}}>{formatPrice(tour.price)}</span>
                                         </div>
                                         <button className="btn-login" style={{padding: '10px 20px'}}>Book Now</button>
                                     </div>

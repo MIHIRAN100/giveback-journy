@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
+import { useCurrency } from '../context/CurrencyContext';
 
 const ExclusiveExperiences = () => {
+    const { formatPrice } = useCurrency();
     const [activeTab, setActiveTab] = useState("Only Giveback experiences");
 
     const tabs = ["Only Giveback experiences", "New trips", "Popular trips"];
@@ -73,8 +75,8 @@ const ExclusiveExperiences = () => {
                                 <span className="exp-days">{exp.days} days</span>
                                 <h4 className="exp-title">{exp.title}</h4>
                                 <div className="exp-price-box">
-                                    <span className="exp-price-from">From USD <del>${exp.originalPrice}</del></span>
-                                    <span className="exp-price-current">USD ${exp.currentPrice}</span>
+                                    <span className="exp-price-from">From <del>{formatPrice(exp.originalPrice)}</del></span>
+                                    <span className="exp-price-current">{formatPrice(exp.currentPrice)}</span>
                                 </div>
                             </div>
                         </div>

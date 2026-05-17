@@ -15,12 +15,16 @@ import VolunteerPage from './pages/VolunteerPage';
 import TourDetails from './pages/TourDetails';
 import BookingPage from './pages/BookingPage';
 import BookingInquiryPage from './pages/BookingInquiryPage';
+import VolunteerInquiryPage from './pages/VolunteerInquiryPage';
 import Compare from './pages/Compare';
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
+import BottomAdBanner from './components/BottomAdBanner';
 import Breadcrumbs from './components/Breadcrumbs';
+import ScrollToTop from './components/ScrollToTop';
 
 import { CompareProvider } from './context/CompareContext';
+import { CurrencyProvider } from './context/CurrencyContext';
 
 const AppContent = () => {
   const [cookieVisible, setCookieVisible] = useState(false);
@@ -45,6 +49,7 @@ const AppContent = () => {
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/exclusive-journeys" element={<ExclusiveJourneys />} />
           <Route path="/volunteer" element={<VolunteerPage />} />
+          <Route path="/volunteer-inquiry" element={<VolunteerInquiryPage />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/booking" element={<BookingPage />} />
         </Routes>
@@ -54,6 +59,7 @@ const AppContent = () => {
       <CookieBar onVisibilityChange={setCookieVisible} />
 
       {!isTourDetails && <MobileBottomBar />}
+      <BottomAdBanner isCookieVisible={cookieVisible} />
     </div>
   );
 };
@@ -61,9 +67,12 @@ const AppContent = () => {
 function App() {
   return (
     <Router>
-      <CompareProvider>
-        <AppContent />
-      </CompareProvider>
+      <ScrollToTop />
+      <CurrencyProvider>
+        <CompareProvider>
+          <AppContent />
+        </CompareProvider>
+      </CurrencyProvider>
     </Router>
   );
 }

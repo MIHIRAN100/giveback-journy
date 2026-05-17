@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
+import { useCurrency } from '../context/CurrencyContext';
 
 export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
+    const { formatPrice } = useCurrency();
     const getPriceVal = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         if (pkg.id === 1) return 840;
@@ -17,8 +19,8 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 
     const originalPrice = Math.floor(getPriceVal() / getDiscountFactor());
     const discountPercent = Math.round((1 - getPriceVal() / originalPrice) * 100);
-    const getPrice = () => `US$ ${getPriceVal().toLocaleString()}.00`;
-    const getOriginalPrice = () => `US$ ${originalPrice.toLocaleString()}.00`;
+    const getPrice = () => formatPrice(getPriceVal());
+    const getOriginalPrice = () => formatPrice(originalPrice);
 
     // Days & nights
     const daysNum = parseInt(pkg.days);

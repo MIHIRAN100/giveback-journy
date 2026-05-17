@@ -38,7 +38,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                     <div>
                         <div className="chat-title">Giveback Concierge</div>
                         <div className="chat-status">
-                            <div className="status-dot"></div> Online — Typically replies instantly
+                            <div className="status-dot"></div> Online: Typically replies instantly
                         </div>
                     </div>
                 </div>

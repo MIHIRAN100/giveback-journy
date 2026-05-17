@@ -13,6 +13,22 @@ const FeaturesScroll = () => {
 
     return (
         <section className="features-scroll-section">
+            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <span style={{ 
+                    display: 'inline-block',
+                    padding: '6px 20px',
+                    background: 'rgba(29, 185, 84, 0.1)',
+                    color: 'var(--primary-green)',
+                    borderRadius: '100px',
+                    fontSize: '0.8rem',
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    letterSpacing: '1.5px',
+                    border: '1px solid rgba(29, 185, 84, 0.15)'
+                }}>
+                    Our Identity
+                </span>
+            </div>
             <div className="features-scroll-container">
                 {features.map((feature) => (
                     <div key={feature.id} className="feature-circle-item">

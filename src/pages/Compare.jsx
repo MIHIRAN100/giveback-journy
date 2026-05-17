@@ -1,9 +1,11 @@
 import React from 'react';
 import { useCompare } from '../context/CompareContext';
 import { Link } from 'react-router-dom';
+import { useCurrency } from '../context/CurrencyContext';
 
 const Compare = () => {
     const { compareList, removeFromCompare, clearCompare } = useCompare();
+    const { formatPrice } = useCurrency();
 
     if (compareList.length === 0) {
         return (
@@ -83,7 +85,7 @@ const Compare = () => {
                                 
                                 <div style={{ marginBottom: '30px' }}>
                                     <span style={{ fontSize: '0.8rem', color: '#999', fontWeight: 700, display: 'block' }}>Trip Total</span>
-                                    <span style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--primary-green)' }}>{tour.price}</span>
+                                    <span style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--primary-green)' }}>{formatPrice(tour.price)}</span>
                                 </div>
                                 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>

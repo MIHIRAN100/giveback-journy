@@ -1,55 +1,81 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import puppyImg from '../assets/dominican puppy.jpg';
-import hihiImg from '../assets/hihi.webp';
-import communityImg from '../assets/volunteer-community.png';
+import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
+import teachingImg from '../assets/teaching_english_preschool_sri_lanka_1778936461399.png';
+import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
+import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
+import cultureImg from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
 import wildlifeImg from '../assets/volunteer-wildlife.png';
+import { useCurrency } from '../context/CurrencyContext';
 
 const VolunteerPackages = ({ lightTheme = true }) => {
+    const { formatPrice } = useCurrency();
     const packages = [
         {
-            duration: "1 Week",
-            title: "Short-Term Impact",
-            price: "$450",
-            originalPrice: "$590",
-            image: communityImg,
-            features: ["Orientation & Training", "1 Primary Project", "Shared Volunteer House", "Airport Pickup"],
+            duration: "2 Weeks",
+            title: "Special Needs Care",
+            price: "$320",
+            originalPrice: "$480",
+            image: specialNeedsImg,
+            features: ["School Support", "Therapy Assistance", "Home Visits", "Daily Orientation"],
             color: "#1DB954",
-            rating: 4.8,
+            rating: 4.9,
             gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
         },
         {
-            duration: "2 Weeks",
-            title: "Community Connection",
-            price: "$750",
-            originalPrice: "$950",
-            image: hihiImg,
-            features: ["2 Project Rotations", "Host Family Stay", "Weekend Cultural Tour", "Local Language Basics"],
+            duration: "2-4 Weeks",
+            title: "Teaching in Rural Villages",
+            price: "$290",
+            originalPrice: "$450",
+            image: teachingImg,
+            features: ["Preschool Teaching", "Conversational English", "School Renovation", "Village Immersion"],
             color: "#111",
             popular: true,
-            rating: 4.9,
+            rating: 4.8,
             gradient: "linear-gradient(135deg, #111 0%, #333 100%)"
         },
         {
-            duration: "4 Weeks",
-            title: "Sustainable Immersion",
-            price: "$1,250",
-            originalPrice: "$1,600",
-            image: puppyImg,
-            features: ["Lead a Small Project", "Full Board (Meals)", "Community Internship Cert", "Weekly Language Lessons"],
+            duration: "1-2 Weeks",
+            title: "Community Renovation",
+            price: "$250",
+            originalPrice: "$380",
+            image: renovationImg,
+            features: ["Painting & Repairs", "Community Centers", "School Building", "Skill Workshops"],
             color: "#1DB954",
             rating: 4.7,
             gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
         },
         {
-            duration: "8+ Weeks",
-            title: "Impact Leader",
-            price: "$2,200",
-            originalPrice: "$2,800",
-            image: wildlifeImg,
-            features: ["Project Management Role", "Research Opportunities", "Advanced Impact Cert", "Private Room Option"],
+            duration: "1-2 Weeks",
+            title: "Zen & Service: Yoga",
+            price: "$350",
+            originalPrice: "$520",
+            image: yogaImg,
+            features: ["Daily Meditation", "Yoga Sessions", "Temple Service", "Spiritual Guidance"],
             color: "#111",
             rating: 5.0,
+            gradient: "linear-gradient(135deg, #111 0%, #333 100%)"
+        },
+        {
+            duration: "1 Week",
+            title: "Ancient Temple Experience",
+            price: "$220",
+            originalPrice: "$340",
+            image: wildlifeImg, // Reuse or replace if needed
+            features: ["Temple Maintenance", "Buddhist Teachings", "Local Ceremony Help", "Monastic Life Intro"],
+            color: "#1DB954",
+            rating: 4.6,
+            gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
+        },
+        {
+            duration: "2 Weeks",
+            title: "Cultural Immersion",
+            price: "$380",
+            originalPrice: "$550",
+            image: cultureImg,
+            features: ["Artisan Crafts", "Village Cooking", "Farming Support", "Traditional Arts"],
+            color: "#111",
+            rating: 4.9,
             gradient: "linear-gradient(135deg, #111 0%, #333 100%)"
         }
     ];
@@ -60,6 +86,10 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                 <div>
                     <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Our Programs</span>
                     <h2 style={{ fontSize: '3rem', fontWeight: 900, letterSpacing: '-0.03em', marginTop: '10px', color: lightTheme ? '#111' : 'white' }}>Volunteer Packages</h2>
+                    <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '5px' }}>
+                        <i className="fa-solid fa-tag" style={{ color: 'var(--primary-green)', marginRight: '5px' }}></i>
+                        <b>Budget-Friendly Guarantee:</b> 100% of your fee goes directly to local project support and your basic living costs.
+                    </p>
                 </div>
                 <div style={{ display: 'flex', gap: '10px', paddingBottom: '10px' }}>
                     <div style={{ color: lightTheme ? '#999' : 'rgba(255,255,255,0.6)', fontSize: '0.9rem', fontWeight: 600 }}>Scroll for more <i className="fa-solid fa-arrow-right"></i></div>
@@ -136,9 +166,9 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                             
                             <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                    <span style={{ fontSize: '1.2rem', fontWeight: 600, color: '#ccc', textDecoration: 'line-through' }}>{pkg.originalPrice}</span>
+                                    <span style={{ fontSize: '1.2rem', fontWeight: 600, color: '#ccc', textDecoration: 'line-through' }}>{formatPrice(pkg.originalPrice)}</span>
                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#aaa' }}>USD</span>
+                                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#aaa' }}></span>
                                         <span style={{ 
                                             fontSize: '2.2rem', 
                                             fontWeight: 900, 
@@ -146,7 +176,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                                             WebkitBackgroundClip: 'text',
                                             WebkitTextFillColor: 'transparent',
                                             lineHeight: 1
-                                        }}>{pkg.price.replace('$', '')}</span>
+                                        }}>{formatPrice(pkg.price)}</span>
                                     </div>
                                 </div>
                                 <span style={{ color: '#bbb', fontSize: '0.75rem', fontWeight: 700 }}>Total program fee</span>
@@ -163,7 +193,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                                 </ul>
                             </div>
 
-                                    <Link to={`/contact?subject=Volunteer Inquiry: ${pkg.title}`} className="modern-card-btn" style={{ 
+                                    <Link to={`/volunteer-inquiry?program=${pkg.title}`} className="modern-card-btn" style={{ 
                                         background: '#111',
                                         color: 'white',
                                         textAlign: 'center',

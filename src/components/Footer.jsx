@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/brand_logo.jpg';
+import { useCurrency } from '../context/CurrencyContext';
 
 const Footer = () => {
+    const { currency, setCurrency, currencies } = useCurrency();
     return (
         <footer className="brand-footer">
             <div className="footer-grid">
@@ -82,9 +84,11 @@ const Footer = () => {
 
             <div className="footer-bottom">
                 <div>© 2026 Give Back Journey (Pvt) Ltd. All rights reserved.</div>
-                <div className="footer-bottom-links" style={{display: 'flex', gap: '30px'}}>
-                    <Link to="/privacy-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Privacy Policy</Link>
-                    <Link to="/terms-and-conditions" className="footer-link" style={{fontSize: '0.75rem'}}>Terms & Conditions</Link>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+                    <div className="footer-bottom-links" style={{display: 'flex', gap: '30px'}}>
+                        <Link to="/privacy-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Privacy Policy</Link>
+                        <Link to="/terms-and-conditions" className="footer-link" style={{fontSize: '0.75rem'}}>Terms & Conditions</Link>
+                    </div>
                 </div>
             </div>
         </footer>

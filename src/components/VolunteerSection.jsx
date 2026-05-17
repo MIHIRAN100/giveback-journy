@@ -176,27 +176,27 @@ const VolunteerSection = () => {
                     <div className="volunteer-perks">
                         <div className="perk-item">
                             <i className="fa-solid fa-graduation-cap"></i>
-                            <span>English Teaching</span>
+                            <span>Rural Teaching</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-person-breastfeeding"></i>
-                            <span>Woman Empowerment</span>
+                            <i className="fa-solid fa-om"></i>
+                            <span>Yoga & Zen</span>
                         </div>
                         <div className="perk-item">
                             <i className="fa-solid fa-hands-holding-child"></i>
-                            <span>Special Needs Care</span>
+                            <span>Special Needs</span>
                         </div>
                         <div className="perk-item">
                             <i className="fa-solid fa-trowel-bricks"></i>
-                            <span>Renovation Projects</span>
+                            <span>Renovation</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-user-doctor"></i>
-                            <span>Medical Projects</span>
+                            <i className="fa-solid fa-landmark-dome"></i>
+                            <span>Temple Experience</span>
                         </div>
                         <div className="perk-item">
-                            <i className="fa-solid fa-handshake-angle"></i>
-                            <span>Local Support</span>
+                            <i className="fa-solid fa-masks-theater"></i>
+                            <span>Culture Immersion</span>
                         </div>
                     </div>
 

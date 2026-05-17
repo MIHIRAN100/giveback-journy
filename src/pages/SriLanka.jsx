@@ -76,7 +76,7 @@ const SriLanka = () => {
             title: "Minneriya: The Gathering",
             period: "3rd Century BC",
             image: minneriyaImg,
-            description: "Home to one of nature's greatest spectacles — the annual 'Gathering' where hundreds of wild Asian elephants converge on the ancient Minneriya reservoir. Built by King Mahasena, the tank is a marvel of ancient hydraulic engineering surrounded by lush jungle.",
+            description: "Home to one of nature's greatest spectacles: the annual 'Gathering' where hundreds of wild Asian elephants converge on the ancient Minneriya reservoir. Built by King Mahasena, the tank is a marvel of ancient hydraulic engineering surrounded by lush jungle.",
             highlights: ["The Elephant Gathering (July–October)", "King Mahasena's Ancient Reservoir", "Jeep Safari through the National Park"]
         }
     ];

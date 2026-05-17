@@ -9,6 +9,22 @@ const WhoWeAre = () => {
     return (
         <section className="who-we-are-modern" id="about-us">
             <div className="who-container">
+                <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                    <span style={{ 
+                        display: 'inline-block',
+                        padding: '8px 24px',
+                        background: 'rgba(29, 185, 84, 0.1)',
+                        color: 'var(--primary-green)',
+                        borderRadius: '100px',
+                        fontSize: '0.9rem',
+                        fontWeight: 900,
+                        textTransform: 'uppercase',
+                        letterSpacing: '2px',
+                        border: '1px solid rgba(29, 185, 84, 0.2)'
+                    }}>
+                        Our Identity
+                    </span>
+                </div>
                 <div className="who-grid-layout">
                     
                     {/* Left Column: Brand Story & Values */}
@@ -17,7 +33,7 @@ const WhoWeAre = () => {
                             The experts in budget-friendly travel & local volunteering
                         </h2>
                         <p className="who-subtitle">
-                            We redefine island exploration by proving that impactful travel can be accessible to everyone. Our mission is to combine affordable, authentic adventures with meaningful volunteering that directly supports Sri Lankan communities—this is how our <b>'Give Back Journey'</b> name was born: a promise to ensure every step you take on this island helps it flourish.
+                            We redefine island exploration by proving that impactful travel can be accessible to everyone. Our mission is to combine affordable, authentic adventures with meaningful volunteering that directly supports Sri Lankan communities. This is how our <b>'Give Back Journey'</b> name was born: a promise to ensure every step you take on this island helps it flourish.
                         </p>
                         
                         <div className="who-features-list">
