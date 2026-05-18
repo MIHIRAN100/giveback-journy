@@ -11,8 +11,15 @@ const TermsAndConditions = () => {
             <div className="policy-hero">
                 <ScrollReveal>
                     <div className="policy-hero-content">
-                        <h1>Terms & Conditions</h1>
-                        <p>The clear agreement between you and Give Back Journeys for a safe and fair travel experience.</p>
+                        <button className="policy-share-btn" onClick={() => {
+                            navigator.clipboard.writeText(window.location.href);
+                            alert('Link copied to clipboard!');
+                        }}>
+                            <i className="bi bi-share"></i> Share
+                        </button>
+                        <h1>Terms and Conditions of Service</h1>
+                        <div className="policy-version-text">Version 5.24</div>
+                        <p>Please read the Terms and Conditions of Give Back Journeys carefully before submitting your online application. By submitting your application, you confirm your acceptance of, and agree to be bound by the following Terms and Conditions of Service:</p>
                     </div>
                 </ScrollReveal>
             </div>
@@ -20,6 +27,24 @@ const TermsAndConditions = () => {
             <div className="policy-content-section">
                 <div className="policy-container">
                     <ScrollReveal>
+                        <div className="policy-block">
+                            <h2>Definitions</h2>
+                            <ul>
+                                <li>All prices referenced are in US dollars.</li>
+                                <li>All timing referred to in these terms and conditions is based on Sri Lanka standard time (SLST).</li>
+                                <li><strong>'Give Back Journeys'</strong> refers to the local Sri Lankan custom travel network which facilitates travel and social impact experiences.</li>
+                                <li><strong>'Volunteer'</strong> refers to the traveler who has applied to participate in a sustainable volunteer program or journey.</li>
+                                <li><strong>'Independent Local Team'</strong> refers to the local hosts, school leaders, and guides who facilitate the programs in chosen communities.</li>
+                                <li>The <strong>'Give Back Journeys website'</strong> refers to <a href="https://www.givebackjourney.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>www.givebackjourney.com</a>.</li>
+                            </ul>
+                        </div>
+
+                        <div className="policy-block">
+                            <h2>Acceptance onto a Program</h2>
+                            <p>Give Back Journeys reserves the right to refuse acceptance of any application.</p>
+                            <p>The traveler certifies that all information provided to Give Back Journeys relating to their personal background, qualifications, experience, medical history, and current state of health is accurate and truthful, and that no information relating to the aforementioned areas is withheld. Give Back Journeys accepts no liability for errors or omission of information provided by the traveler.</p>
+                        </div>
+
                         <div className="policy-block">
                             <h2>1. The Contract</h2>
                             <p>By booking a trip with Give Back Journeys, you are agreeing to these Terms and Conditions. A contract exists between us once we have received your deposit and sent a confirmation email. You must be at least 18 years of age to make a booking.</p>

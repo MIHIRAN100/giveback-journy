@@ -34,6 +34,12 @@ const Breadcrumbs = ({ customName = null }) => {
             crumbs.push({ label: 'Compare Tours', path: '/compare', active: true });
         } else if (path === '/exclusive-journeys') {
             crumbs.push({ label: 'About Us', path: '/exclusive-journeys', active: true });
+        } else if (path === '/terms-and-conditions') {
+            crumbs.push({ label: 'Terms and Conditions of Service', path: '/terms-and-conditions', active: true });
+        } else if (path === '/privacy-policy') {
+            crumbs.push({ label: 'Privacy Policy', path: '/privacy-policy', active: true });
+        } else if (path === '/nda') {
+            crumbs.push({ label: 'Mutual Non-Disclosure Agreement (NDA)', path: '/nda', active: true });
         } else if (path.startsWith('/inquiry/')) {
             const id = path.split('/').pop();
             const pkg = tourPackages.find(p => p.id === parseInt(id));

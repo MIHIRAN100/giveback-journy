@@ -88,6 +88,7 @@ const Footer = () => {
                     <div className="footer-bottom-links" style={{display: 'flex', gap: '30px'}}>
                         <Link to="/privacy-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Privacy Policy</Link>
                         <Link to="/terms-and-conditions" className="footer-link" style={{fontSize: '0.75rem'}}>Terms & Conditions</Link>
+                        <Link to="/nda" className="footer-link" style={{fontSize: '0.75rem'}}>Non-Disclosure Agreement (NDA)</Link>
                     </div>
                 </div>
             </div>

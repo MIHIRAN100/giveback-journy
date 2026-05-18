@@ -1,0 +1,1007 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Pacifico&family=Playball&family=Inter:wght@300;400;600;700;900&display=swap');
+
+/* =====================================================
+   DOCUSIGN MODAL OVERLAY & CONTAINER
+   ===================================================== */
+.docusign-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+    box-sizing: border-box;
+}
+
+.docusign-modal-overlay * {
+    box-sizing: border-box;
+}
+
+.docusign-modal-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh;
+    background: #f4f5f8;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: dsFadeScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dsFadeScale {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* =====================================================
+   DOCUSIGN MODAL HEADER
+   ===================================================== */
+.docusign-ds-header {
+    background: #1e1e1e;
+    padding: 15px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    border-bottom: 3px solid #fecb2f; /* DocuSign signature yellow */
+}
+
+.docusign-ds-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.docusign-ds-icon {
+    background: #ffcc00;
+    color: #1e1e1e;
+    font-weight: 900;
+    font-size: 0.9rem;
+    padding: 4px 6px;
+    border-radius: 4px;
+    letter-spacing: -0.5px;
+}
+
+.docusign-ds-title {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.5px;
+}
+
+.docusign-ds-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.docusign-envelope-badge {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.docusign-ds-btn {
+    padding: 10px 24px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.docusign-btn-finish {
+    background: #ffcc00;
+    color: #111;
+}
+
+.docusign-btn-finish:hover {
+    background: #e6b800;
+    transform: translateY(-1px);
+}
+
+.docusign-btn-disabled {
+    background: #4a4a4a;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.docusign-close-x {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    padding: 0 5px;
+}
+
+.docusign-close-x:hover {
+    color: white;
+}
+
+/* =====================================================
+   MODAL BODY LAYOUT
+   ===================================================== */
+.docusign-modal-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =====================================================
+   STEP 1: DETAILS INTRO FORM
+   ===================================================== */
+.docusign-step-one {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.docusign-step-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.docusign-step-header h2 {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.docusign-step-header p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.docusign-intro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ds-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ds-form-group label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #475569;
+    letter-spacing: 0.5px;
+}
+
+.ds-form-group input {
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    color: #0f172a;
+}
+
+.ds-form-group input:focus {
+    outline: none;
+    border-color: #ffcc00;
+    box-shadow: 0 0 0 3px rgba(254, 203, 47, 0.2);
+}
+
+.ds-disclosure-notice {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    border: 1px dashed #cbd5e1;
+}
+
+.ds-disclosure-notice i {
+    color: #64748b;
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.ds-disclosure-notice span {
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.docusign-submit-intro {
+    background: #0f172a;
+    color: white;
+    padding: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.docusign-submit-intro:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+/* =====================================================
+   STEP 2: SPINNING LOADING SCREEN
+   ===================================================== */
+.docusign-loading-screen {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.ds-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #e2e8f0;
+    border-top: 5px solid #ffcc00;
+    border-radius: 50%;
+    animation: dsSpin 1s linear infinite;
+}
+
+@keyframes dsSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.docusign-loading-screen h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    max-width: 400px;
+}
+
+.ds-security-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #15803d;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0fdf4;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1px solid #bbf7d0;
+}
+
+/* =====================================================
+   STEP 3: DOCUMENT VIEW AND SIGNING
+   ===================================================== */
+.docusign-step-three {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.docusign-toolbar-helper {
+    background: #e2e8f0;
+    padding: 10px 24px;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.ds-alert-tip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+.ds-alert-tip i {
+    color: #ffaa00;
+    font-size: 1rem;
+}
+
+.docusign-document-viewer {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 24px;
+    display: flex;
+    justify-content: center;
+    background: #f4f5f8;
+}
+
+.docusign-paper {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    padding: 80px;
+    min-height: 1000px;
+    position: relative;
+}
+
+/* Document content styles */
+.ds-doc-header {
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 30px;
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.ds-doc-watermark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 3px solid #ef4444;
+    color: #ef4444;
+    font-weight: 900;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transform: rotate(5deg);
+}
+
+.ds-doc-header h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.ds-doc-subtitle {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.ds-doc-body {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #334155;
+    text-align: justify;
+}
+
+.ds-doc-body h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+.ds-doc-body h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.ds-doc-body p {
+    margin-bottom: 16px;
+}
+
+.ds-doc-body ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.ds-doc-body ul li {
+    margin-bottom: 8px;
+}
+
+/* Signature Block inside doc */
+.ds-signature-block {
+    margin-top: 60px;
+    border-top: 2px solid #e2e8f0;
+    padding-top: 40px;
+}
+
+.ds-sig-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.ds-sig-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.ds-sig-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.ds-signature-line {
+    height: 90px;
+    border-bottom: 2px solid #94a3b8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+    position: relative;
+    background: #f8fafc;
+    border-radius: 4px 4px 0 0;
+}
+
+.disclosing-applied {
+    background: transparent;
+    padding-left: 10px;
+}
+
+.disclosing-signature {
+    font-family: 'Playball', cursive;
+    font-size: 1.8rem;
+    color: #0d5c3a;
+}
+
+.disclosing-watermark {
+    font-size: 0.55rem;
+    color: #10b981;
+    font-weight: 800;
+    border: 1px solid #10b981;
+    padding: 1px 4px;
+    border-radius: 2px;
+    width: max-content;
+    margin-top: 2px;
+    text-transform: uppercase;
+}
+
+.receiving-applied {
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.receiving-applied img {
+    max-height: 50px;
+    object-fit: contain;
+}
+
+.ds-secure-stamp {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: monospace;
+    font-size: 0.52rem;
+    color: #10b981;
+    font-weight: 700;
+    line-height: 1.2;
+    background: rgba(16, 185, 129, 0.05);
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.ds-signature-placeholder-btn {
+    height: 90px;
+    border: 2px dashed #ffb700;
+    border-radius: 6px;
+    background: #fffdf5;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.ds-signature-placeholder-btn:hover {
+    background: #fffae6;
+    border-color: #ffaa00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 203, 47, 0.15);
+}
+
+/* Flashing Signature Indicator */
+.flashing-sign-btn {
+    animation: dsPulseFlag 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes dsPulseFlag {
+    0% { border-color: #ffcc00; box-shadow: 0 0 0 0px rgba(254, 203, 47, 0.4); }
+    100% { border-color: #e69d00; box-shadow: 0 0 15px 4px rgba(254, 203, 47, 0.2); }
+}
+
+.yellow-tab-pointer {
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffcc00;
+    color: #111;
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+}
+
+.yellow-tab-pointer::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 6px solid #ffcc00;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+.ds-placeholder-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #b58100;
+}
+
+.ds-sig-meta {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.ds-sig-meta p {
+    margin: 0;
+}
+
+/* =====================================================
+   STEP 5: COMPLETED ENVELOPE SCREEN
+   ===================================================== */
+.docusign-completed-screen {
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.ds-completed-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.ds-success-icon-circle {
+    width: 72px;
+    height: 72px;
+    background: #ecfdf5;
+    color: #10b981;
+    font-size: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.ds-completed-card h2 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.ds-success-desc {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.ds-completed-meta-box {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 16px 24px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.ds-completed-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.ds-completed-label {
+    font-weight: 700;
+    color: #64748b;
+}
+
+.ds-completed-val {
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ds-completed-val.code-font {
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #475569;
+}
+
+.ds-completed-val.status-green {
+    color: #10b981;
+}
+
+.ds-download-action {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ds-download-receipt-btn {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.ds-download-receipt-btn:hover {
+    background: #d1fae5;
+    transform: translateY(-1px);
+}
+
+.ds-download-subtext {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+.ds-return-form-btn {
+    background: #10b981;
+    color: white;
+    padding: 14px 28px;
+    font-weight: 800;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.ds-return-form-btn:hover {
+    background: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* =====================================================
+   ADOPT SIGNATURE MODAL (CHOOSE/DRAW DIALOG)
+   ===================================================== */
+.adopt-sig-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.adopt-sig-container {
+    width: 100%;
+    max-width: 580px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: dsFadeScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.adopt-sig-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adopt-sig-header h3 {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0;
+}
+
+.adopt-sig-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #94a3b8;
+    line-height: 1;
+}
+
+.adopt-sig-close:hover {
+    color: #0f172a;
+}
+
+.adopt-sig-tabs {
+    background: #f8fafc;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    padding: 0 24px;
+}
+
+.adopt-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.adopt-tab-btn:hover {
+    color: #0f172a;
+}
+
+.adopt-tab-btn.active {
+    color: #003366;
+    border-color: #003366;
+}
+
+.adopt-sig-content {
+    padding: 24px;
+    flex: 1;
+}
+
+/* Styles Options Grid */
+.styles-chooser-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.style-card-option {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    background: #fdfdfd;
+}
+
+.style-card-option:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+}
+
+.style-card-option.selected {
+    border-color: #003366;
+    background: #f0f7ff;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.05);
+}
+
+.style-option-label {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.style-option-preview {
+    font-size: 1.8rem;
+    color: #003366;
+    text-align: center;
+    padding: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.style-option-selected-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid #cbd5e1;
+}
+
+.style-card-option.selected .style-option-selected-dot {
+    border-color: #003366;
+    background: #003366;
+}
+
+.style-card-option.selected .style-option-selected-dot::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* HTML5 Draw Pad styling */
+.drawing-pad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.drawing-pad-wrapper {
+    width: 100%;
+    height: 180px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    position: relative;
+}
+
+.drawing-canvas-element {
+    position: absolute;
+    inset: 0;
+    cursor: crosshair;
+}
+
+.clear-pad-btn {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    align-self: flex-end;
+}
+
+.clear-pad-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+/* Footers disclosures */
+.adopt-disclosure {
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: #64748b;
+    padding: 0 24px;
+    text-align: justify;
+}
+
+.adopt-sig-footer {
+    padding: 20px 24px 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.adopt-cancel-btn {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+}
+
+.adopt-cancel-btn:hover {
+    background: #f8fafc;
+}
+
+.adopt-submit-btn {
+    background: #003366; /* DocuSign primary blue */
+    color: white;
+    font-weight: 800;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+}
+
+.adopt-submit-btn:hover {
+    background: #002244;
+}
+
+/* =====================================================
+   RESPONSIVE LAYOUT
+   ===================================================== */
+@media (max-width: 768px) {
+    .docusign-modal-container {
+        height: 100vh;
+        max-height: 100%;
+        border-radius: 0;
+    }
+    .docusign-paper {
+        padding: 40px 20px;
+    }
+    .ds-sig-row {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .styles-chooser-grid {
+        grid-template-columns: 1fr;
+    }
+}

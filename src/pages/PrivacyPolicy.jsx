@@ -11,7 +11,14 @@ const PrivacyPolicy = () => {
             <div className="policy-hero">
                 <ScrollReveal>
                     <div className="policy-hero-content">
+                        <button className="policy-share-btn" onClick={() => {
+                            navigator.clipboard.writeText(window.location.href);
+                            alert('Link copied to clipboard!');
+                        }}>
+                            <i className="bi bi-share"></i> Share
+                        </button>
                         <h1>Privacy Policy</h1>
+                        <div className="policy-version-text">Version 3.12</div>
                         <p>How we protect your personal data and ensure your peace of mind at Give Back Journeys.</p>
                     </div>
                 </ScrollReveal>

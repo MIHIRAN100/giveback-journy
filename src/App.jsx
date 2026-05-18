@@ -18,6 +18,8 @@ import BookingInquiryPage from './pages/BookingInquiryPage';
 import VolunteerInquiryPage from './pages/VolunteerInquiryPage';
 import VolunteerProgramDetails from './pages/VolunteerProgramDetails';
 import Compare from './pages/Compare';
+import NDAPage from './pages/NDAPage';
+
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
 import BottomAdBanner from './components/BottomAdBanner';
@@ -54,6 +56,7 @@ const AppContent = () => {
           <Route path="/volunteer-inquiry" element={<VolunteerInquiryPage />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/booking" element={<BookingPage />} />
+          <Route path="/nda" element={<NDAPage />} />
         </Routes>
       </main>
       <Footer />

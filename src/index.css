@@ -5889,131 +5889,176 @@ h1, h2, h3, .logo-text {
    LEGAL & STAYS PAGES (Modern Refined)
    ========================================== */
 .policy-page-wrapper {
-    background: #f8fafc;
+    background: #ffffff;
     min-height: 100vh;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #2d2d2d;
+    padding: 0 0 100px;
 }
 
 .policy-hero {
-    height: 60vh;
-    min-height: 450px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
+    background: transparent;
+    height: auto;
+    min-height: auto;
+    display: block;
+    text-align: left;
+    color: #121212;
+    padding: 50px 5% 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .policy-hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(29, 185, 84, 0.15) 0%, transparent 40%);
-    animation: pulseGlow 10s infinite alternate;
-    pointer-events: none;
+    display: none;
 }
 
-@keyframes pulseGlow {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.2); opacity: 0.8; }
+.policy-hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.policy-share-btn {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #444444;
+    cursor: pointer;
+    background: #f4f5f6;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.policy-share-btn:hover {
+    background: #eaeaea;
+    color: #111;
 }
 
 .policy-hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 900;
-    margin-bottom: 25px;
-    letter-spacing: -2px;
-    background: linear-gradient(to bottom, #fff, #cbd5e1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.03em;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: #121212;
+    color: #121212;
+    line-height: 1.2;
+}
+
+.policy-version-text {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .policy-hero p {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: #94a3b8;
+    font-size: 1.1rem;
+    opacity: 1;
+    max-width: 800px;
+    margin: 0;
+    line-height: 1.7;
+    color: #555555;
 }
 
 .policy-content-section {
-    padding: 0 5% 120px;
-    margin-top: -100px;
+    padding: 40px 5% 80px;
+    margin-top: 0;
     position: relative;
     z-index: 10;
 }
 
 .policy-container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    padding: 100px;
-    border-radius: 48px;
-    box-shadow: 0 50px 100px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
 }
 
 .policy-block {
-    margin-bottom: 80px;
+    margin-bottom: 45px;
 }
 
 .policy-block h2 {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: #0f172a;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    letter-spacing: -1px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #121212;
+    margin-top: 35px;
+    margin-bottom: 18px;
+    display: block;
+    letter-spacing: -0.02em;
 }
 
 .policy-block h2::before {
-    content: '';
-    width: 40px;
-    height: 6px;
-    background: var(--primary-green);
-    border-radius: 10px;
+    display: none;
 }
 
 .policy-block p {
-    font-size: 1.15rem;
-    line-height: 1.9;
-    color: #475569;
-    margin-bottom: 25px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444444;
+    margin-bottom: 20px;
 }
 
 .policy-block ul {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0;
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 20px 0;
 }
 
 .policy-block ul li {
-    padding-left: 40px;
+    padding-left: 0;
     position: relative;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: #475569;
-    line-height: 1.7;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    color: #444444;
+    line-height: 1.8;
 }
 
 .policy-block ul li::before {
-    content: '\f00c';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    left: 0;
-    color: var(--primary-green);
-    font-size: 1rem;
+    display: none;
+}
+
+.policy-block ul li strong {
+    color: #121212;
+}
+
+.policy-block ol {
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.policy-block ol li {
+    font-size: 1.05rem;
+    color: #444444;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.policy-last-updated {
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #eaeaea;
+    font-size: 0.9rem;
+    color: #666666;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: normal;
 }
 
 /* Stays Specific Enhancements */
@@ -6147,30 +6192,20 @@ h1, h2, h3, .logo-text {
     line-height: 1.6;
 }
 
-.policy-last-updated {
-    margin-top: 100px;
-    padding-top: 50px;
-    border-top: 1px solid #e2e8f0;
-    font-size: 0.95rem;
-    color: #94a3b8;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
 @media (max-width: 1024px) {
-    .policy-container { padding: 60px; }
-    .policy-hero h1 { font-size: 3.5rem; }
+    .policy-hero h1 { font-size: 2.8rem; }
 }
 
 @media (max-width: 768px) {
-    .policy-hero { height: 50vh; }
-    .policy-hero h1 { font-size: 2.8rem; }
-    .policy-container { padding: 40px 30px; border-radius: 32px; }
-    .policy-content-section { margin-top: -60px; }
+    .policy-hero { padding: 30px 5% 0; }
+    .policy-hero-content { padding-bottom: 20px; }
+    .policy-share-btn { position: static; margin-bottom: 15px; display: inline-flex; }
+    .policy-hero h1 { font-size: 2.2rem; }
+    .policy-content-section { padding: 25px 5% 60px; }
     .stays-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     .feature-item { padding: 30px 20px; }
-    .policy-block h2 { font-size: 1.6rem; }
+    .policy-block h2 { font-size: 1.3rem; margin-top: 25px; }
 }
 
 /* =====================================================

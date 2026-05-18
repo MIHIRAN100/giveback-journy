@@ -65,7 +65,29 @@ const kandyReviews = [
     { id: 2, name: "David Miller", rating: 5, date: "September 2025", profile: "Traveler", trip: "Kandy Day Trip", comment: "The Temple of the Tooth is so spiritual and peaceful. Kandy is a beautiful city.", color: "#e3f2fd" },
     { id: 3, name: "Emma Watson", rating: 5, date: "August 2025", profile: "UK", trip: "Kandy Day Trip", comment: "Botanical gardens were stunning. Our driver was very helpful with picking us up.", color: "#fff3e0" },
     { id: 4, name: "Hans Zimmer", rating: 5, date: "July 2025", profile: "German", trip: "Kandy Day Trip", comment: "The cultural show music and dance were very impressive. Great way to spend a day.", color: "#f3e5f5" },
-    { id: 5, name: "Sofia Loren", rating: 5, date: "June 2025", profile: "Italy", trip: "Kandy Day Trip", comment: "Short but very comprehensive. We saw all the major sights in just one day.", color: "#e0f2f1" }
+    { id: 5, name: "Sofia Loren", rating: 5, date: "June 2025", profile: "Italy", trip: "Kandy Day Trip", comment: "Short but very comprehensive. We saw all the major sights in just one day.", color: "#e0f2f1" },
+    // Adding 125 more reviews with a mix of 5, 4, 3, and 2 stars
+    ...Array(125).fill().map((_, i) => ({
+        id: i + 6,
+        name: ["John D.", "Sarah M.", "David L.", "Emily W.", "Michael K.", "Anna S.", "James B.", "Elena P.", "Robert C.", "Laura G."][i % 10],
+        rating: (i % 15 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)),
+        date: "2024-2025",
+        profile: ["Traveler", "Solo Explorer", "Family Trip", "Couple", "Backpacker"][i % 5],
+        trip: "Kandy Day Trip",
+        comment: [
+            "Had an amazing time in Kandy. The Pinnawala experience was absolutely beautiful!",
+            "Great tour with professional guide. The tea factory visit was very educational.",
+            "Really enjoyed seeing the elephants bath in the river. Truly a unique experience.",
+            "Highly recommended day trip. Covered all key sights comfortably.",
+            "Loved the botanical gardens and the scenic drive up the hills.",
+            "Elephants were wonderful to watch, but the driving in Kandy can be slow due to traffic.",
+            "Well organised trip, worth the money. Driver was friendly and knowledgeable.",
+            "Ceylon tea tasting was superb! A great introduction to Sri Lankan tea culture.",
+            "Fascinating process at the dung paper factory. Highly recommend seeing it.",
+            "A packed day full of beautiful sights, culture, and nature. Very happy we booked."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const coastalReviews = [

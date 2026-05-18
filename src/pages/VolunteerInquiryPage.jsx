@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import emailjs from '@emailjs/browser';
+import DocuSignModal from '../components/DocuSignModal';
+
 
 const VolunteerInquiryPage = () => {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ const VolunteerInquiryPage = () => {
     const [loading, setLoading] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
     const totalSteps = 5;
+    const isSending = useRef(false);
     
     const [formData, setFormData] = useState({
         // Step 1: Personal
@@ -46,9 +49,37 @@ const VolunteerInquiryPage = () => {
         medicalNotes: ''
     });
 
+    const [termsAccepted, setTermsAccepted] = useState(false);
+    const [ndaAccepted, setNdaAccepted] = useState(false);
+    const [isNdaModalOpen, setIsNdaModalOpen] = useState(false);
+    const [ndaDetails, setNdaDetails] = useState({ signed: false, envelopeId: '' });
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        // Check NDA signed status
+        const hasSigned = localStorage.getItem('nda_signed') === 'true';
+        if (hasSigned) {
+            setNdaAccepted(true);
+            setNdaDetails({
+                signed: true,
+                envelopeId: localStorage.getItem('nda_docusign_envelope') || ''
+            });
+        }
     }, []);
+
+    const handleNdaSignComplete = (envelopeId, signerName, signedDate) => {
+        localStorage.setItem('nda_signed', 'true');
+        localStorage.setItem('nda_signed_name', signerName);
+        localStorage.setItem('nda_signed_date', signedDate);
+        localStorage.setItem('nda_docusign_envelope', envelopeId);
+
+        setNdaAccepted(true);
+        setNdaDetails({
+            signed: true,
+            envelopeId: envelopeId
+        });
+    };
+
 
     const nextStep = () => {
         if (currentStep < totalSteps) setCurrentStep(prev => prev + 1);
@@ -62,6 +93,17 @@ const VolunteerInquiryPage = () => {
             return;
         }
         
+        if (!termsAccepted) {
+            alert('Please agree to the Terms & Conditions and Privacy Policy.');
+            return;
+        }
+        if (!ndaAccepted) {
+            alert('Please review and sign the Non-Disclosure Agreement (NDA) using DocuSign.');
+            return;
+        }
+        
+        if (isSending.current) return;
+        isSending.current = true;
         setLoading(true);
 
         // Auto-fix typos
@@ -113,14 +155,17 @@ const VolunteerInquiryPage = () => {
         };
 
         try {
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY);
+            await Promise.all([
+                emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY),
+                emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY)
+            ]);
             setSubmitted(true);
         } catch (err) {
             console.error('Email error:', err);
             setSubmitted(true); 
         } finally {
             setLoading(false);
+            isSending.current = false;
         }
     };
 
@@ -333,14 +378,45 @@ const VolunteerInquiryPage = () => {
 
                                     {currentStep === 5 && (
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                                            <div style={{ background: '#f8f9fa', padding: '25px', borderRadius: '15px', border: '1px solid #eee' }}>
-                                                <label style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', marginBottom: '15px' }}>
-                                                    <input type="checkbox" checked={formData.hasBackgroundCheck} onChange={(e) => setFormData({...formData, hasBackgroundCheck: e.target.checked})} style={{ width: '20px', height: '20px', accentColor: 'var(--primary-green)' }} />
+                                            <div style={{ background: '#f8f9fa', padding: '25px', borderRadius: '15px', border: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', cursor: 'pointer' }}>
+                                                    <input type="checkbox" checked={formData.hasBackgroundCheck} onChange={(e) => setFormData({...formData, hasBackgroundCheck: e.target.checked})} style={{ width: '20px', height: '20px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} />
                                                     <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>I confirm that I can provide a Criminal Background Check if requested.</span>
                                                 </label>
-                                                <label style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer' }}>
-                                                    <input type="checkbox" checked={formData.hasInsurance} onChange={(e) => setFormData({...formData, hasInsurance: e.target.checked})} style={{ width: '20px', height: '20px', accentColor: 'var(--primary-green)' }} />
+                                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', cursor: 'pointer' }}>
+                                                    <input type="checkbox" checked={formData.hasInsurance} onChange={(e) => setFormData({...formData, hasInsurance: e.target.checked})} style={{ width: '20px', height: '20px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} />
                                                     <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>I understand that Travel Insurance is mandatory for all volunteers.</span>
+                                                </label>
+
+                                                <hr style={{ border: '0', borderTop: '1px solid #eee', margin: '10px 0' }} />
+
+                                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', cursor: 'pointer' }}>
+                                                    <input 
+                                                        type="checkbox" 
+                                                        checked={termsAccepted} 
+                                                        onChange={(e) => setTermsAccepted(e.target.checked)} 
+                                                        required 
+                                                        style={{ width: '20px', height: '20px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} 
+                                                    />
+                                                    <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>I agree to the <Link to="/terms-and-conditions" target="_blank" style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>Terms & Conditions</Link> and <Link to="/privacy-policy" target="_blank" style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>Privacy Policy</Link>. *</span>
+                                                </label>
+
+                                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', cursor: 'pointer' }}>
+                                                    <input 
+                                                        type="checkbox" 
+                                                        checked={ndaAccepted} 
+                                                        onChange={(e) => setNdaAccepted(e.target.checked)} 
+                                                        disabled={ndaDetails.signed} 
+                                                        required 
+                                                        style={{ width: '20px', height: '20px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} 
+                                                    />
+                                                    {ndaDetails.signed ? (
+                                                        <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#15803d', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                            <i className="fa-solid fa-circle-check"></i> Verified DocuSign Signature Applied <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', opacity: 0.8 }}>({ndaDetails.envelopeId.slice(0, 11)}...)</span>
+                                                        </span>
+                                                    ) : (
+                                                        <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>I agree to the <Link to="/nda" target="_blank" onClick={(e) => { e.preventDefault(); setIsNdaModalOpen(true); }} style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>Non-Disclosure Agreement (NDA)</Link> (DocuSign Required). *</span>
+                                                    )}
                                                 </label>
                                             </div>
                                             <div className="form-group">
@@ -449,6 +525,14 @@ const VolunteerInquiryPage = () => {
                     </div>
                 )}
             </div>
+
+            <DocuSignModal 
+                isOpen={isNdaModalOpen} 
+                onClose={() => setIsNdaModalOpen(false)} 
+                onSignComplete={handleNdaSignComplete} 
+                defaultName={formData.userName}
+                defaultEmail={formData.userEmail}
+            />
 
             <style dangerouslySetInnerHTML={{ __html: `
                 .prof-label {
