@@ -77,6 +77,21 @@ const BookingInquiryPage = () => {
     const [isNdaModalOpen, setIsNdaModalOpen] = useState(false);
     const [ndaDetails, setNdaDetails] = useState({ signed: false, envelopeId: '' });
 
+    const getDerivedJoiningPoint = (tour) => {
+        if (!tour) return 'Katunayake Airport (CMB)';
+        const tourId = tour.id;
+        if (tourId === 1) return 'Katunayake Airport (CMB)';
+        if (tourId === 2) return 'Katunayake Airport, Hikkaduwa or Galle';
+        if (tourId === 3) return 'Katunayake Airport (CMB) or Kitulgala';
+        if (tourId === 4) return 'Kandy';
+        if (tourId === 6) return 'Galle Fort';
+        if (tourId === 8) return 'Kandy or Pinnawala';
+        if (tourId === 9) return 'Kandy';
+        if (tourId === 10) return 'Kandy';
+        if (tourId === 11) return 'Kandy';
+        return 'Katunayake Airport (CMB)';
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
         // Check NDA signed status
@@ -88,7 +103,15 @@ const BookingInquiryPage = () => {
                 envelopeId: localStorage.getItem('nda_docusign_envelope') || ''
             });
         }
-    }, []);
+
+        // Pre-fill derived joining point
+        if (pkg) {
+            setFormData(prev => ({
+                ...prev,
+                joiningPoint: getDerivedJoiningPoint(pkg)
+            }));
+        }
+    }, [pkg]);
 
     const handleNdaSignComplete = (envelopeId, signerName, signedDate) => {
         localStorage.setItem('nda_signed', 'true');
@@ -146,6 +169,19 @@ const BookingInquiryPage = () => {
         const TEMPLATE_ID_USER = "template_j0pdjea";   
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
+        const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
+        const ndaSignedDate = localStorage.getItem('nda_signed_date') || '';
+        const ndaEnvelopeId = localStorage.getItem('nda_docusign_envelope') || '';
+        
+        const ndaManifest = `
+--- VERIFIED MUTUAL NDA DETAILS (DOCUSIGN COMPLIANCE) ---
+Status: SIGNED & SECURE
+Signer Legal Name: ${ndaSignedName}
+Signature Timestamp: ${ndaSignedDate}
+DocuSign Envelope ID: ${ndaEnvelopeId}
+=========================================================
+`;
+
         const templateParams = {
             name: formData.userName,
             email: cleanEmail,
@@ -171,7 +207,7 @@ const BookingInquiryPage = () => {
             fitness_level: formData.fitnessLevel,
             special_occasion: formData.specialOccasion,
             wants_volunteering: formData.wantsVolunteering ? 'Yes' : 'No',
-            additional_info: formData.additionalInfo,
+            additional_info: `${formData.additionalInfo}\n\n${ndaManifest}`,
             referral: formData.referral,
             
             price: priceData.total,
@@ -181,10 +217,8 @@ const BookingInquiryPage = () => {
         };
 
         try {
-            await Promise.all([
-                emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY),
-                emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY)
-            ]);
+            // Dashboard handles customer confirmation automatically via Auto-Reply
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
             setSubmitted(true);
         } catch (err) {
             console.error('Email error:', err);
@@ -577,7 +611,7 @@ const BookingInquiryPage = () => {
                                                             />
                                                         </div>
                                                         <div className="form-group">
-                                                            <label className="modern-label">Flight Number</label>
+                                                            <label className="modern-label">Flight Number (Optional)</label>
                                                             <input 
                                                                 type="text" placeholder="e.g. EK650" 
                                                                 value={formData.flightNumber}
@@ -589,16 +623,16 @@ const BookingInquiryPage = () => {
 
                                                     <div className="form-group">
                                                         <label className="modern-label">Where should we pick you up?</label>
-                                                        <select 
+                                                        <input 
+                                                            type="text" required
                                                             value={formData.joiningPoint}
                                                             onChange={(e) => setFormData({...formData, joiningPoint: e.target.value})}
-                                                            className="modern-select"
-                                                        >
-                                                            <option>Katunayake Airport (CMB)</option>
-                                                            <option>Negombo Hotel</option>
-                                                            <option>Colombo Hotel</option>
-                                                            <option>Other (Please specify in notes)</option>
-                                                        </select>
+                                                            className="modern-input"
+                                                            placeholder="e.g. Katunayake Airport, Hotel name..."
+                                                        />
+                                                        <span style={{ fontSize: '0.75rem', color: '#666', marginTop: '6px', display: 'block' }}>
+                                                            Derived from this journey's official start point. Feel free to customize your exact hotel or pickup address.
+                                                        </span>
                                                     </div>
 
                                                     <div className="form-group">
@@ -622,7 +656,19 @@ const BookingInquiryPage = () => {
                                                                         transition: 'all 0.2s ease'
                                                                     }}
                                                                 >
-                                                                    <i className={`bi ${opt.icon}`} style={{ display: 'block', fontSize: '1.2rem', marginBottom: '5px', color: formData.transport === opt.id ? '#1DB954' : '#121212' }}></i>
+                                                                    {opt.id === 'tuktuk' ? (
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', margin: '0 auto 5px auto', color: formData.transport === opt.id ? '#1DB954' : '#121212' }}>
+                                                                            <path d="M6 7c0-2 2-3 6-3s6 1 6 3v4H6V7z" />
+                                                                            <rect x="7" y="7" width="10" height="4" rx="0.5" />
+                                                                            <path d="M5 11h14l-2 7H7l-2-7z" />
+                                                                            <rect x="11.2" y="18" width="1.6" height="4" rx="0.5" fill="currentColor" stroke="none" />
+                                                                            <rect x="4.5" y="17" width="1.6" height="4" rx="0.5" fill="currentColor" stroke="none" />
+                                                                            <rect x="17.9" y="17" width="1.6" height="4" rx="0.5" fill="currentColor" stroke="none" />
+                                                                            <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none" />
+                                                                        </svg>
+                                                                    ) : (
+                                                                        <i className={`bi ${opt.icon}`} style={{ display: 'block', fontSize: '1.2rem', marginBottom: '5px', color: formData.transport === opt.id ? '#1DB954' : '#121212' }}></i>
+                                                                    )}
                                                                     <span style={{ fontSize: '0.75rem', fontWeight: 700, color: formData.transport === opt.id ? '#1DB954' : '#121212' }}>{opt.label}</span>
                                                                 </div>
                                                             ))}

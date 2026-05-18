@@ -5897,15 +5897,20 @@ h1, h2, h3, .logo-text {
 }
 
 .policy-hero {
-    background: transparent;
-    height: auto;
-    min-height: auto;
-    display: block;
+    background: radial-gradient(circle at 15% 15%, rgba(29, 185, 84, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(21, 128, 61, 0.15) 0%, transparent 45%),
+                linear-gradient(135deg, #0a110c 0%, #152219 50%, #0d1611 100%);
+    min-height: 380px;
+    display: flex;
+    align-items: center;
     text-align: left;
-    color: #121212;
-    padding: 50px 5% 0;
+    color: #ffffff;
+    padding: 120px 5% 90px;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(29, 185, 84, 0.15);
 }
 
 .policy-hero::before {
@@ -5915,61 +5920,77 @@ h1, h2, h3, .logo-text {
 .policy-hero-content {
     max-width: 1000px;
     margin: 0 auto;
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 30px;
+    width: 100%;
+    border-bottom: none;
+    padding-bottom: 0;
     position: relative;
+    z-index: 2;
+}
+
+.policy-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .policy-share-btn {
-    position: absolute;
-    right: 0;
-    top: 5px;
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 0.85rem;
     font-weight: 700;
-    color: #444444;
+    color: #ffffff !important;
     cursor: pointer;
-    background: #f4f5f6;
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid #e2e8f0;
-    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
 }
 
 .policy-share-btn:hover {
-    background: #eaeaea;
-    color: #111;
+    background: rgba(29, 185, 84, 0.2);
+    border-color: var(--primary-green);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(29, 185, 84, 0.25);
 }
 
 .policy-hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: 800;
-    margin-bottom: 12px;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-weight: 900;
+    margin-bottom: 15px;
     letter-spacing: -0.03em;
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: #121212;
-    color: #121212;
-    line-height: 1.2;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    line-height: 1.15;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .policy-version-text {
-    font-size: 0.95rem;
-    font-style: italic;
-    color: #666666;
-    margin-bottom: 20px;
-    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary-green) !important;
+    font-weight: 800;
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(29, 185, 84, 0.12);
+    border: 1px solid rgba(29, 185, 84, 0.3);
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
 }
 
 .policy-hero p {
-    font-size: 1.1rem;
-    opacity: 1;
-    max-width: 800px;
+    font-size: 1.15rem;
+    max-width: 750px;
     margin: 0;
     line-height: 1.7;
-    color: #555555;
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .policy-content-section {
@@ -7186,7 +7207,7 @@ h1, h2, h3, .logo-text {
 
 /* Premium Filter Bar Modernization */
 .premium-filter-section {
-    padding: 40px 5% 0 5%;
+    padding: 40px 5% 100px 5%;
     background: #fff;
 }
 
@@ -7299,7 +7320,7 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .premium-filter-section {
-        padding: 40px 5% 0 5%;
+        padding: 40px 5% 60px 5%;
     }
     
     .premium-filter-header h1 {

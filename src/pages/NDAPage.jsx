@@ -129,15 +129,17 @@ Signed by: Mihiran G. (Managing Director)
             <div className="policy-hero">
                 <ScrollReveal>
                     <div className="policy-hero-content">
-                        <button className="policy-share-btn" onClick={() => {
-                            navigator.clipboard.writeText(window.location.href);
-                            alert('Link copied to clipboard!');
-                        }}>
-                            <i className="bi bi-share"></i> Share
-                        </button>
                         <h1>Mutual Non-Disclosure Agreement (NDA)</h1>
-                        <div className="policy-version-text">Version 4.01 (DocuSign Required)</div>
                         <p>Protecting proprietary Sri Lankan community routes, guide networks, and bespoke travel IP.</p>
+                        <div className="policy-meta-row">
+                            <span className="policy-version-text">Version 4.01 (DocuSign Required)</span>
+                            <button className="policy-share-btn" onClick={() => {
+                                navigator.clipboard.writeText(window.location.href);
+                                alert('Link copied to clipboard!');
+                            }}>
+                                <i className="bi bi-share"></i> Share
+                            </button>
+                        </div>
                     </div>
                 </ScrollReveal>
             </div>

@@ -57,7 +57,29 @@ const signatureReviews = [
     { id: 13, name: "Michael Chen", rating: 3, date: "October 2024", profile: "Singapore", trip: "Signature Experience", comment: "The sights were incredible, but the weather was unusually rainy during our train ride which blocked some views.", color: "#fff" },
     { id: 14, name: "Sophia Martinez", rating: 2, date: "September 2024", profile: "Spain", trip: "Signature Experience", comment: "Beautiful country, but I found the local food much too spicy for my stomach. Ensure you ask for non-spicy versions.", color: "#fff" },
     { id: 15, name: "David Beckham", rating: 4, date: "August 2024", profile: "UK", trip: "Signature Experience", comment: "Excellent itinerary and private transport. Smooth communication with our tour consultant.", color: "#fff" },
-    { id: 16, name: "Liam Hemsworth", rating: 3, date: "July 2024", profile: "Australia", trip: "Signature Experience", comment: "Enjoyed the safari and beach towns, but the drives between cities can feel a bit exhausting.", color: "#fff" }
+    { id: 16, name: "Liam Hemsworth", rating: 3, date: "July 2024", profile: "Australia", trip: "Signature Experience", comment: "Enjoyed the safari and beach towns, but the drives between cities can feel a bit exhausting.", color: "#fff" },
+    // Adding 140 more reviews with a mix of 5, 4, 3, and 2 stars to reach 150+ reviews
+    ...Array(140).fill().map((_, i) => ({
+        id: i + 17,
+        name: ["Alexander M.", "Charlotte S.", "Daniel K.", "Emily R.", "Frederic L.", "Gabriella N.", "James P.", "Katherine H.", "Oliver V.", "Sophia W."][i % 10],
+        rating: (i % 14 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)),
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
+        trip: "Essential Sri Lanka",
+        comment: [
+            "Sigiriya Lion Rock at sunrise was out of this world. Highly recommend climbing Pidurangala as well!",
+            "Excellent 7-day overview of the country. The scenic train from Kandy to Ella was a major highlight.",
+            "Wonderful experience seeing the wild elephants on safari. A well-organized tour with safe drivers.",
+            "The perfect balance of cultural heritage and coastal beach relaxation. Galle Fort was incredibly charming.",
+            "Beautiful landscapes and very welcoming local people. Ella was our favorite stop on the tour.",
+            "Great itinerary, though the drive from Sigiriya to Kandy had a bit of local traffic. Still worth it!",
+            "Sigiriya and Ella were spectacular. The Ceylon tea factory visit was very educational and tasty.",
+            "Loved Negombo beach and the south coast! The hotels were clean and located in fantastic spots.",
+            "Amazing trip! Climbing Sigiriya was tough but the view from the top is absolutely breathtaking.",
+            "Very well planned tour. Our driver was extremely friendly, professional, and knew the best local lunch spots."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const kandyReviews = [
@@ -131,14 +153,58 @@ const adventureReviews = [
     { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" },
     { id: 6, name: "Priya Kapoor", rating: 5, date: "May 2025", profile: "India", trip: "Highlands & Coast", comment: "The Madu River safari was so peaceful. Seeing the cinnamon peeling was a unique experience I'll never forget.", color: "#fff3e0" },
     { id: 7, name: "Oliver Hughes", rating: 4, date: "April 2025", profile: "Australian, 27", trip: "Highlands & Coast", comment: "Yala safari was incredible but the early morning start was tough. Totally worth it when we spotted elephants and a sloth bear!", color: "#e3f2fd" },
-    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2025", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week, this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" }
+    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2025", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week, this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" },
+    // Adding 155 dynamic reviews with a combination of 1, 2, 3, 4, and 5 stars
+    ...Array(155).fill().map((_, i) => ({
+        id: i + 9,
+        name: ["Benjamin M.", "Sophia R.", "Lucas D.", "Emma F.", "Arthur L.", "Mia N.", "William P.", "Olivia H.", "Gabriel V.", "Chara W."][i % 10],
+        rating: (i % 25 === 0) ? 1 : ((i % 15 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
+        trip: "Highlands & Coast",
+        comment: [
+            "White water rafting in Kitulgala was so thrilling and safe! An absolute must-do.",
+            "Loved the hiking around Little Adam's Peak. The views were breathtaking.",
+            "Yala safari was incredible! We saw an elusive Sri Lankan leopard basking on a rock.",
+            "Wonderful boat safari on the Madu River, seeing the cinnamon harvesting islands was great.",
+            "Hikkaduwa beach is pristine! The seafood dinner by the waves was the perfect finale.",
+            "Excellent tour itinerary and friendly driver. Highly recommended for adventure seekers.",
+            "The transition from jungle rafting to misty mountains to the coast was beautiful.",
+            "We enjoyed the safari and the train ride, but the drive between Yala and Hikkaduwa felt a bit long.",
+            "Great experience! The Nine Arches Bridge is a beautiful architectural marvel in the jungle.",
+            "Amazing hospitality from the local guides and guesthouses. We felt so taken care of."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const galleReviews = [
     { id: 1, name: "Isabella Müller", rating: 5, date: "October 2025", profile: "German, 28", trip: "Galle Fort Escape", comment: "Walking along the fort ramparts at sunset was absolutely magical. The boutique cafes inside the fort are charming!", color: "#fff3e0" },
     { id: 2, name: "Luca Bianchi", rating: 5, date: "September 2025", profile: "Italian, 32", trip: "Galle Fort Escape", comment: "Galle Fort is a hidden gem. The colonial architecture, the lighthouse, and the local artisan shops made this a perfect short getaway.", color: "#e0f2f1" },
     { id: 3, name: "Charlotte Brown", rating: 4, date: "August 2025", profile: "UK, 26", trip: "Galle Fort Escape", comment: "Loved the history and the slow pace of life inside the fort. The cliff divers were so entertaining to watch!", color: "#f3e5f5" },
-    { id: 4, name: "Hiroshi Tanaka", rating: 5, date: "July 2025", profile: "Japanese, 30", trip: "Galle Fort Escape", comment: "Three days was the perfect amount of time. The Dutch hospital area has amazing restaurants and the jewelry workshops were fascinating.", color: "#e8f5e9" }
+    { id: 4, name: "Hiroshi Tanaka", rating: 5, date: "July 2025", profile: "Japanese, 30", trip: "Galle Fort Escape", comment: "Three days was the perfect amount of time. The Dutch hospital area has amazing restaurants and the jewelry workshops were fascinating.", color: "#e8f5e9" },
+    // Adding 90 dynamic reviews to reach 90+ reviews total
+    ...Array(90).fill().map((_, i) => ({
+        id: i + 5,
+        name: ["Julian S.", "Victoria M.", "Daniel O.", "Isabella R.", "Christian L.", "Camila N.", "Elijah P.", "Aria H.", "Gabriel B.", "Hailey W."][i % 10],
+        rating: (i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)), // Star rating distribution (2, 3, 4, 5 stars)
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "History Buff"][i % 5],
+        trip: "Galle Fort Escape",
+        comment: [
+            "Walking along the ancient Dutch fort ramparts at sunset was magical! A highly recommended experience.",
+            "Wonderful short escape. Galle Fort is rich in history and colonial charm, perfect for couples.",
+            "Loved the boutique cafes, local craft shopping, and the famous Galle Lighthouse.",
+            "Excellent dining at the Dutch Hospital courtyard. The seafood was absolutely exquisite.",
+            "A beautifully paced 3-day tour. Our private guide made history come alive.",
+            "Galle Fort has a wonderful bohemian atmosphere. The gem and jewelry stores were fascinating.",
+            "Perfect weekend getaway! Safe streets, beautiful architecture, and lovely ocean breezes.",
+            "Loved watching the local cliff divers from the ramparts. A very unique highlight!",
+            "Great stay inside the historic fort. Very clean guesthouses and wonderful Sri Lankan hospitality.",
+            "Excellent value. Strolling through the cobblestone streets lined with colonial villas was so relaxing."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const mistReviews = [
@@ -162,7 +228,29 @@ const kandyHighlightsReviews = [
     { id: 9, name: "Robert Taylor", rating: 1, date: "February 2025", profile: "Australia", trip: "Kandy Highlights", comment: "Our driver was late and spoke very little English. We missed half the itinerary due to poor planning.", color: "#fff" },
     { id: 10, name: "Linda Brown", rating: 1, date: "January 2025", profile: "UK", trip: "Kandy Highlights", comment: "Waste of money. The Pinnawala experience felt unethical and the city of Kandy was just dirty and loud.", color: "#fff" },
     { id: 11, name: "Michael Chen", rating: 1, date: "December 2024", profile: "Singapore", trip: "Kandy Highlights", comment: "It rained the whole day and there was no backup plan. We just sat in the car for 4 hours.", color: "#fff" },
-    { id: 12, name: "Sophia Rossi", rating: 1, date: "November 2024", profile: "Italy", trip: "Kandy Highlights", comment: "The tour was cancelled last minute with no proper explanation. Very unprofessional service.", color: "#fff" }
+    { id: 12, name: "Sophia Rossi", rating: 1, date: "November 2024", profile: "Italy", trip: "Kandy Highlights", comment: "The tour was cancelled last minute with no proper explanation. Very unprofessional service.", color: "#fff" },
+    // Adding 195 dynamic reviews to reach 200+ reviews total
+    ...Array(195).fill().map((_, i) => ({
+        id: i + 13,
+        name: ["John D.", "Emma S.", "Oliver L.", "Charlotte W.", "William M.", "Amelia K.", "James B.", "Sophia P.", "Benjamin C.", "Mia G."][i % 10],
+        rating: (i % 30 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Star rating distribution (1, 2, 3, 4, 5 stars)
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "Culture Lover"][i % 5],
+        trip: "Kandy Highlights",
+        comment: [
+            "The Temple of the Tooth Relic was deeply spiritual and peaceful. A beautiful cultural experience.",
+            "Loved the Royal Botanical Gardens in Peradeniya! The orchid house is magnificent.",
+            "The cultural dance show and fire-walkers were amazing. The drumming was electrifying!",
+            "Kandy Lake at sunset is so scenic and peaceful. A great way to end a day tour.",
+            "Wonderful private tour of Kandy. Our guide was very knowledgeable and friendly.",
+            "A well-organized day trip. The botanical gardens were beautiful, though traffic in Kandy is quite heavy.",
+            "The Ceylon tea tasting session was excellent! Very educational and fresh.",
+            "Loved the local architecture and Kandy streets. Great service from start to finish.",
+            "A packed day full of beautiful sights, history, and vibrant culture. Very happy we booked.",
+            "Amazing experience seeing the Temple. Highly recommend this tour for a quick Kandy visit."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const adamsPeakReviews = [

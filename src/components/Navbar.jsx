@@ -140,7 +140,7 @@ const Navbar = () => {
                         <div className="logo-image-container">
                             <img src={logo} alt="Give Back Journey Logo" className="logo-image" />
                         </div>
-                        <span className="logo-text">Give Back Journey<span className="logo-dot">.</span></span>
+                        <span className="logo-text">Giveback Journey<span className="logo-dot">.</span></span>
                     </Link>
 
                     <div className="nav-center-wrapper">

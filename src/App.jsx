@@ -19,6 +19,7 @@ import VolunteerInquiryPage from './pages/VolunteerInquiryPage';
 import VolunteerProgramDetails from './pages/VolunteerProgramDetails';
 import Compare from './pages/Compare';
 import NDAPage from './pages/NDAPage';
+import CookiePolicy from './pages/CookiePolicy';
 
 import LoadingScreen from './components/LoadingScreen';
 import MobileBottomBar from './components/MobileBottomBar';
@@ -57,6 +58,7 @@ const AppContent = () => {
           <Route path="/compare" element={<Compare />} />
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/nda" element={<NDAPage />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
         </Routes>
       </main>
       <Footer />

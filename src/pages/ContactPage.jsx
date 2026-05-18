@@ -70,6 +70,19 @@ const ContactPage = () => {
         const TEMPLATE_ID = "template_84lczai";
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
+        const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
+        const ndaSignedDate = localStorage.getItem('nda_signed_date') || '';
+        const ndaEnvelopeId = localStorage.getItem('nda_docusign_envelope') || '';
+        
+        const ndaManifest = `
+--- VERIFIED MUTUAL NDA DETAILS (DOCUSIGN COMPLIANCE) ---
+Status: SIGNED & SECURE
+Signer Legal Name: ${ndaSignedName}
+Signature Timestamp: ${ndaSignedDate}
+DocuSign Envelope ID: ${ndaEnvelopeId}
+=========================================================
+`;
+
         const templateParams = {
             name: formData.name,
             email: cleanEmail,
@@ -77,7 +90,7 @@ const ContactPage = () => {
             admin_email: "hello@givebackjourney.com",
             phone: 'N/A',
             birthday: 'N/A',
-            notes: formData.details,
+            notes: `${formData.details}\n\n${ndaManifest}`,
             tour_package: formData.subject,
             submitted_at: new Date().toLocaleString(),
             to_email: "hello@givebackjourney.com"

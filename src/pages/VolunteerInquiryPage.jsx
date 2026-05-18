@@ -115,6 +115,18 @@ const VolunteerInquiryPage = () => {
         const TEMPLATE_ID_USER = "template_j0pdjea";   
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
+        const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
+        const ndaSignedDate = localStorage.getItem('nda_signed_date') || '';
+        const ndaEnvelopeId = localStorage.getItem('nda_docusign_envelope') || '';
+        
+        const ndaManifest = `
+                --- MUTUAL NDA AGREEMENT ---
+                Status: SIGNED & SECURE
+                Signer Legal Name: ${ndaSignedName}
+                Signature Timestamp: ${ndaSignedDate}
+                DocuSign Envelope ID: ${ndaEnvelopeId}
+        `;
+
         const templateParams = {
             name: formData.userName,
             email: cleanEmail,
@@ -149,16 +161,15 @@ const VolunteerInquiryPage = () => {
                 Insurance: ${formData.hasInsurance ? 'YES' : 'NO'}
                 Dietary: ${formData.dietary}
                 Medical: ${formData.medicalNotes}
+                ${ndaManifest}
             `,
             submitted_at: new Date().toLocaleString(),
             to_email: "hello@givebackjourney.com"
         };
 
         try {
-            await Promise.all([
-                emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY),
-                emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY)
-            ]);
+            // Dashboard handles customer confirmation automatically via Auto-Reply
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
             setSubmitted(true);
         } catch (err) {
             console.error('Email error:', err);

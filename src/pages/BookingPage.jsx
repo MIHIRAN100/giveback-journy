@@ -44,6 +44,21 @@ const BookingPage = () => {
     const [isNdaModalOpen, setIsNdaModalOpen] = useState(false);
     const [ndaDetails, setNdaDetails] = useState({ signed: false, envelopeId: '' });
 
+    const getDerivedJoiningPoint = (tour) => {
+        if (!tour) return 'Katunayake Airport';
+        const tourId = tour.id;
+        if (tourId === 1) return 'Katunayake Airport';
+        if (tourId === 2) return 'Katunayake Airport, Hikkaduwa or Galle';
+        if (tourId === 3) return 'Katunayake Airport or Kitulgala';
+        if (tourId === 4) return 'Kandy';
+        if (tourId === 6) return 'Galle Fort';
+        if (tourId === 8) return 'Kandy or Pinnawala';
+        if (tourId === 9) return 'Kandy';
+        if (tourId === 10) return 'Kandy';
+        if (tourId === 11) return 'Kandy';
+        return 'Katunayake Airport';
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
         // Check NDA signed status
@@ -55,7 +70,15 @@ const BookingPage = () => {
                 envelopeId: localStorage.getItem('nda_docusign_envelope') || ''
             });
         }
-    }, []);
+
+        // Prefill derived joining point
+        if (selectedPkg) {
+            setFormData(prev => ({
+                ...prev,
+                joining_point: getDerivedJoiningPoint(selectedPkg)
+            }));
+        }
+    }, [selectedPkg]);
 
     const handleNdaSignComplete = (envelopeId, signerName, signedDate) => {
         localStorage.setItem('nda_signed', 'true');
@@ -99,31 +122,36 @@ const BookingPage = () => {
         const booking_id = generateBookingId();
         const submitted_at = new Date().toLocaleString();
 
+        const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
+        const ndaSignedDate = localStorage.getItem('nda_signed_date') || '';
+        const ndaEnvelopeId = localStorage.getItem('nda_docusign_envelope') || '';
+        
+        const ndaManifest = `
+--- VERIFIED MUTUAL NDA DETAILS (DOCUSIGN COMPLIANCE) ---
+Status: SIGNED & SECURE
+Signer Legal Name: ${ndaSignedName}
+Signature Timestamp: ${ndaSignedDate}
+DocuSign Envelope ID: ${ndaEnvelopeId}
+=========================================================
+`;
+
         const templateParams = {
             ...formData,
             name: `${formData.first_name} ${formData.last_name}`,
+            notes: `${formData.notes}\n\n${ndaManifest}`,
             booking_id,
             submitted_at,
             to_email: "hello@givebackjourney.com"
         };
 
         try {
-            await Promise.all([
-                // Send to Admin
-                emailjs.send(
-                    EMAILJS_SERVICE_ID,
-                    ADMIN_TEMPLATE_ID,
-                    templateParams,
-                    EMAILJS_PUBLIC_KEY
-                ),
-                // Send to Customer
-                emailjs.send(
-                    EMAILJS_SERVICE_ID,
-                    CUSTOMER_TEMPLATE_ID,
-                    templateParams,
-                    EMAILJS_PUBLIC_KEY
-                )
-            ]);
+            // Dashboard handles customer confirmation automatically via Auto-Reply
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                ADMIN_TEMPLATE_ID,
+                templateParams,
+                EMAILJS_PUBLIC_KEY
+            );
 
             setStatus({ type: 'success', message: 'Booking submitted successfully!' });
             setFormData({
@@ -306,17 +334,15 @@ const BookingPage = () => {
                         </div>
                         <div className="form-group">
                             <label style={labelStyle}>Joining Point *</label>
-                            <select 
+                            <input 
+                                type="text" 
                                 name="joining_point" 
                                 value={formData.joining_point} 
                                 onChange={handleChange} 
+                                required
                                 style={inputStyle}
-                            >
-                                <option value="Katunayake Airport">Katunayake Airport</option>
-                                <option value="Kandy">Kandy</option>
-                                <option value="Galle">Galle</option>
-                                <option value="Hikkaduwa">Hikkaduwa</option>
-                            </select>
+                                placeholder="e.g. Katunayake Airport, Hotel name..."
+                            />
                         </div>
                     </div>
 

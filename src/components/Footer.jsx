@@ -12,9 +12,9 @@ const Footer = () => {
                 <div className="footer-column">
                     <Link to="/" className="logo-area" style={{marginBottom: '25px', display: 'inline-flex'}}>
                         <div className="logo-image-container">
-                            <img src={logo} alt="Give Back Journey Logo" className="logo-image" />
+                            <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
                         </div>
-                        <span className="logo-text" style={{color: 'white'}}>Give Back Journey<span className="logo-dot">.</span></span>
+                        <span className="logo-text" style={{color: 'white'}}>Giveback Journey<span className="logo-dot">.</span></span>
                     </Link>
                     <p style={{color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: '20px'}}>
                         Empowering local communities through meaningful travel. We reveal Sri Lanka's soul through curated heritage, wilderness, and impactful experiences.
@@ -83,11 +83,12 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom">
-                <div>© 2026 Give Back Journey (Pvt) Ltd. All rights reserved.</div>
+                <div>© 2026 Giveback Journey (Pvt) Ltd. All rights reserved.</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
-                    <div className="footer-bottom-links" style={{display: 'flex', gap: '30px'}}>
+                    <div className="footer-bottom-links" style={{display: 'flex', gap: '20px'}}>
                         <Link to="/privacy-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Privacy Policy</Link>
                         <Link to="/terms-and-conditions" className="footer-link" style={{fontSize: '0.75rem'}}>Terms & Conditions</Link>
+                        <Link to="/cookie-policy" className="footer-link" style={{fontSize: '0.75rem'}}>Cookie Policy</Link>
                         <Link to="/nda" className="footer-link" style={{fontSize: '0.75rem'}}>Non-Disclosure Agreement (NDA)</Link>
                     </div>
                 </div>

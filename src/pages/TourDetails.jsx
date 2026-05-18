@@ -1555,8 +1555,14 @@ const TourDetails = () => {
                                             }}
                                         >
                                             {v.id === 'tuktuk' ? (
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" style={{ color: transport === v.id ? 'white' : 'var(--primary-green)' }}>
-                                                    <path d="M5 11V8c0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3v3h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1H10v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1zm2-3v2h10V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1zm0 5v3h2v-3H7zm8 0v3h2v-3h-2z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: transport === v.id ? 'white' : 'var(--primary-green)' }}>
+                                                    <path d="M6 7c0-2 2-3 6-3s6 1 6 3v4H6V7z" />
+                                                    <rect x="7" y="7" width="10" height="4" rx="0.5" />
+                                                    <path d="M5 11h14l-2 7H7l-2-7z" />
+                                                    <rect x="11.2" y="18" width="1.6" height="4" rx="0.5" fill="currentColor" stroke="none" />
+                                                    <rect x="4.5" y="17" width="1.6" height="4" rx="0.5" fill="currentColor" stroke="none" />
+                                                    <rect x="17.9" y="17" width="1.6" height="4" rx="0.5" fill="currentColor" stroke="none" />
+                                                    <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none" />
                                                 </svg>
                                             ) : (
                                                 <i className={v.icon} style={{ fontSize: '1.3rem', color: transport === v.id ? 'white' : 'var(--primary-green)' }}></i>
