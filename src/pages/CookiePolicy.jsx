@@ -91,7 +91,7 @@ const CookiePolicy = () => {
                         <div className="policy-block">
                             <h2>6. Contact Us</h2>
                             <p>
-                                If you have any questions or concerns about our use of cookies, please email our sustainable travel operations team at: <a href="mailto:hello@givebackjourney.com">hello@givebackjourney.com</a>.
+                                If you have any questions or concerns about our use of cookies, please email our sustainable travel operations team at: <a href="mailto:journeygiveback@gmail.com">journeygiveback@gmail.com</a>.
                             </p>
                         </div>
 

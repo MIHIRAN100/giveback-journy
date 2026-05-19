@@ -18,8 +18,109 @@ export const volunteerPrograms = [
         pickup: "Included",
         meals: "3 Daily",
         shortDesc: "A complete island immersion combining culture, adventure, and meaningful community work.",
-        description: "Immerse yourself in the true essence of Sri Lanka with our comprehensive 4-week program. This unique experience blends hands-on community service with deep cultural exploration. You will participate in various local projects, including community development and education, while exploring the lush landscapes and ancient heritage of the Kandy District. Discover the vibrant local lifestyle, participate in cultural workshops, and build lasting connections with the community.",
-        color: "#1DB954"
+        description: "Embark on a life-changing adventure with the Real Sri Lanka Experience, where you’ll discover a whole new world of inspiration. Over four unforgettable weeks, immerse yourself in the wonders of this stunning island, from its rich cultural treasures to its breathtaking paradise beaches. While exploring, you’ll also make a meaningful impact by contributing to wildlife and community projects along the south coast. Sri Lanka is a spectacular, budget-friendly destination that remains refreshingly uncrowded, making this a wonderful time to visit.",
+        color: "#1DB954",
+        highlights: [
+            "Join Us In 2026 - Monthly Start Dates - Selected Mondays Of Every Month",
+            "Marvel At The Famous Kandyan Dancing & The Iconic Temple Of The Tooth Relic",
+            "Explore The Cultural Triangle – A Treasure Trove Of Ancient Ruins & Wildlife",
+            "Pick Tea Leaves & Step Back In Time In ‘Little England’",
+            "Enjoy Breathtaking Views From Little Adam’s Peak To The Nine Arch Bridge",
+            "Count Wild Elephants On Safari In One Of Sri Lanka’s Famous National Parks",
+            "Chill By The Beach In Mirissa & Experience Stick Fishing In Weligama",
+            "Visit The Grand Colonial Buildings & UNESCO World Heritage Site Of Galle Fort",
+            "Volunteer In Sri Lanka Amongst The Bustling Coastal Town Of Ambalangoda",
+            "Practice Your New Sinhalese Phrases With The Locals"
+        ],
+        sections: [
+            {
+                title: "Summary of The Real Sri Lanka Experience",
+                paragraphs: [
+                    "The Real Sri Lanka Experience offers adventurous individuals the chance to come together and embark on an incredible journey across Sri Lanka. Our local team has designed a structured, fast-paced, and exciting group itinerary, showcasing the country’s most amazing destinations. Along the way, your group will dedicate time to volunteering projects, giving back to local communities while developing and sharing your skills. The Real Sri Lanka Experience begins with your arrival on a set date, where you’ll meet your group and embark on four weeks of travel and volunteering. This makes the PMGY Experience trips ideal for anyone seeking adventure and meaningful engagement in a supportive group setting.",
+                    "On this experience, you’ll explore the diversity of Sri Lanka, from the ancient wonders of the Cultural Triangle to the serene beaches of Mirissa and the lush green landscapes of the hill country. Your itinerary will cover the country’s most iconic locations before concluding with impactful volunteer work on the south coast.",
+                    "Over the course of 27 days, you can expect breathtaking sights, lifelong friendships, and full cultural immersion. The Real Sri Lanka Experience is perfect for those looking to travel in a safe, well-structured, and social environment.",
+                    "With everything organised for you, including in-country transport and accommodation, you can relax and focus on enjoying your adventure. Our local team ensures your trip is as smooth as possible and will arrange plenty of activities for you to enjoy. During your free time, they’ll help you discover an impressive range of additional experiences to make the most of your stay. A portion of your trip is also dedicated to making a meaningful impact through community volunteering, allowing you to channel your skills and enthusiasm into making a real difference.",
+                    "The group-based nature of the Real Sri Lanka Experience makes it a uniquely social adventure. You’ll connect with people from around the world, forming friendships and creating memories that will last a lifetime. Alongside your group, you’ll have opportunities to engage with the local community, making your gap year program in Sri Lanka even more rewarding."
+                ]
+            },
+            {
+                title: "Exploring Sri Lanka",
+                paragraphs: [
+                    "Sri Lanka may be a small island, but it offers an extraordinary blend of history, culture, and natural beauty. Despite facing challenges such as years of war and devastating tsunamis, the country has made incredible strides forward, securing its place on many travellers’ itineraries. For years, Sri Lanka has been a favourite destination for PMGY volunteers and adventurous travellers, often described as a best-kept secret.",
+                    "Sri Lanka boasts over 2,000 years of rich culture, eight UNESCO World Heritage Sites, stunning beaches, lush rainforests, welcoming locals, rolling surf, affordable prices, iconic train journeys, world-renowned tea, an abundance of elephants, delectable cuisine, and so much more. With short travel distances and countless attractions, your first two weeks on the Real Sri Lanka Experience will be filled with exploration and excitement, without spending hours in transit.",
+                    "Your journey begins with a dive into the country’s rich history and ancient kingdoms in the Cultural Triangle. Highlights include visits to the renowned Temple of the Tooth, a cultural dance show, Sigiriya Rock, and Polonnaruwa. Next, you’ll explore the lush tea plantations of Nuwara Eliya and take in breathtaking views, walks, and waterfalls in Ella. A wildlife safari at one of Sri Lanka's famous national parks will give you the chance to spot elephants, followed by a relaxing time at Mirissa beach, where you can try bodyboarding and wander the historic streets of Galle Fort.",
+                    "The final two weeks of the Real Sri Lanka Experience will be based in Ambalangoda, a coastal town known for its fishing heritage and as the hub for traditional wooden demon mask production. Here, you’ll join other participants in the Sri Lanka volunteer program, dedicating your time to meaningful community projects.",
+                    "Throughout your travels, your group will journey by private minibus, visiting Sri Lanka’s must-see destinations alongside hidden gems that most tourists miss. Accompanied by a PMGY coordinator, you’ll gain a deeper understanding of Sri Lanka’s fascinating culture and history, making this a truly enriching experience."
+                ]
+            },
+            {
+                title: "Volunteer Placement",
+                paragraphs: [
+                    "PMGY’s volunteer work in Sri Lanka runs year-round, allowing you to join ongoing development projects in Ambalangoda alongside current PMGY volunteers. During the final two weeks of the Real Sri Lanka Experience, you’ll have the chance to participate in our English teaching projects. Alternatively, you can opt to join Childcare, Wildlife, or Medical projects based on your interests.",
+                    "Volunteer in Sri Lanka to gain a deeper understanding of the local culture by working closely within the community. Spending time on these meaningful projects gives you the opportunity to learn what life is like for Sri Lankan people while making a positive and lasting impact during the Real Sri Lanka Experience. What truly sets this experience apart is the genuine friendliness and warmth of the locals. Everywhere you go, you’ll be greeted with smiles and waves, creating a heartfelt connection that makes Ambalangoda feel like a home away from home on the Real Sri Lanka Experience."
+                ]
+            },
+            {
+                title: "Itinerary",
+                paragraphs: [
+                    "**Day 1 (Monday)** - Welcome to Sri Lanka",
+                    "**Days 2-3 (Tuesday-Wednesday)** - Kandy - Temples & Cultural Dance Show",
+                    "**Day 4 (Thursday)** - Dambulla - Spice Plantation & Elephant Safari",
+                    "**Day 5 (Friday)** - Sigiriya - Lion Rock & Village Day Safari",
+                    "**Day 6 (Saturday)** - Polonnaruwa - The Ancient City",
+                    "**Day 7 (Sunday)** - Polonnaruwa - Rest & Relaxation",
+                    "**Day 8 (Monday)** - Tea Plantations & Little England",
+                    "**Day 9 (Tuesday)** - Ella - Little Adam’s Peak & Nine Arch Bridge",
+                    "**Day 10 (Wednesday)** - Ella Rock & Off to the Beach!",
+                    "**Days 11-12 (Thursday-Friday)** - Relaxing in Mirissa",
+                    "**Day 13 (Saturday)** - Stick Fishing & Galle Fort",
+                    "**Days 14-26 (Sunday-Friday)** - Volunteering in Ambalangoda",
+                    "**Day 27 (Saturday)** - Departure & Farewell"
+                ]
+            },
+            {
+                title: "Other Things to Consider on the Real Sri Lanka Experience",
+                paragraphs: [
+                    "**Return Airport Transfer** - Your return airport transfer is not included in the Program Fee. However, our local team can assist with arranging onward transport to the airport or another destination. Making arrangements once you’re in-country allows for flexibility, especially as plans can often change, and some participants may share similar flight schedules. Costs will vary depending on your chosen method of transport and destination, and they can often be split if you’re travelling with fellow trip participants. We strongly advise against using public transport or ridesharing apps for the return journey to the airport due to safety risks and potential inconvenience.",
+                    "**Itinerary Schedule** – The itineraries for our PMGY experience trips are subject to change due to unforeseen circumstances. While we strive to inform participants of any changes ahead of the program start date, daily activities during your time in-country may still be subject to last-minute adjustments.",
+                    "**Top PMGY Destination** - Sri Lanka is frequently rated as the best PMGY volunteer destination, thanks to the exceptional local support, affordability, and overall experience in Ambalangoda. The Sri Lankan team goes above and beyond to ensure every volunteer has an incredible stay, and this dedication is reflected in glowing feedback from participants. For first-time travellers looking for additional support, well-organised weekend trips, and meaningful community projects in a vibrant and exotic location, Sri Lanka is an ideal choice.",
+                    "**TEFL Course** – We recommend that volunteers prepare thoroughly for their teaching program overseas. To maximise your impact, consider completing our convenient, affordable, and internationally accredited 60-hour Online TEFL Course."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "All your accommodation is organised by PMGY on the Real Sri Lanka Experience. During the travelling part of your trip, you will stay in guesthouses or hotels, sharing a room with fellow travellers. All rooms are single-sex, fanned, and come with western bathrooms.",
+            options: [
+                {
+                    title: "Travelling Accommodation",
+                    subtitle: "Included in First 2 Weeks",
+                    icon: "🏨",
+                    description: "While travelling, our team will do their best to arrange twin rooms or single beds. This is guaranteed for the first night of the Real Sri Lanka Experience. However, some volunteers may occasionally need to share double beds depending on availability. The guesthouses are basic but clean, comfortable, and equipped with the amenities you need."
+                },
+                {
+                    title: "Shared Volunteer House",
+                    subtitle: "Recommended for 18-25 Year Olds",
+                    icon: "🛏️",
+                    description: "During the final two weeks of the Real Sri Lanka Experience, you will stay in our Volunteer House located just outside central Ambalangoda, in a quiet part of town on Sri Lanka’s south coast. The house is only a 10-minute tuk-tuk journey into the main town, where you can find ATMs, supermarkets, and local restaurants. You’ll share the house with other PMGY volunteers from around the world. The Volunteer House is basic but comfortable and clean, with single-sex bedrooms accommodating up to 12 people in bunk beds. Each room has air conditioning, bed linen, cupboard space for clothes and accessories, and a personal locker for valuables."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Yes (Free)" },
+                { label: "People Per Room", value: "Up To 12 (Shared)" },
+                { label: "Single Sex Rooms", value: "Yes" },
+                { label: "Western Bathroom Facilities", value: "Yes" },
+                { label: "Airport Transfer", value: "2 Hours" },
+                { label: "Nearest ATM & Shops", value: "10 Minute Drive" }
+            ]
+        },
+        mealsInfo: {
+            description: "Participants receive breakfast, lunch, and dinner each day during the four-week Real Sri Lanka Experience. Sri Lankan cuisine includes plenty of rice, with fish or chicken as the main meats, although vegetarian options are always available. During the first two weeks of travelling, meals are typically served buffet-style, allowing volunteers to choose what they prefer. Bottled water will be provided with meals while travelling, but water outside of meals and any soft drinks will be at your own expense. You will be served three freshly prepared meals daily at the Volunteer House. The meals blend local and western cuisine, and a weekly menu is provided so you can know in advance what’s on offer. For those craving western comforts, restaurants in the nearby town of Hikkaduwa serve a range of western meals. * Our team will do their best to cater for dietary requirements, but this cannot always be guaranteed.",
+            examples: {
+                breakfast: "Eggs, Toast, Jam, Fruit, Pancakes, Tea",
+                lunch: "Dhal, Spinach Curry, Poppadoms, Paprika Tofu, Rice",
+                dinner: "Vegetables, Noodles, Tomato Curry, Omelette"
+            }
+        }
     },
     {
         id: "sri-lanka-childcare",

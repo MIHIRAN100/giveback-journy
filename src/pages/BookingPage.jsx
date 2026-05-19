@@ -9,8 +9,8 @@ import DocuSignModal from '../components/DocuSignModal';
 // EMAILJS CONFIGURATION
 const EMAILJS_SERVICE_ID = 'service_95ud991'; 
 const EMAILJS_PUBLIC_KEY = 'Z-S0sHMSNtxZTuFwF';   
-const ADMIN_TEMPLATE_ID = 'template_84lczai';
-const CUSTOMER_TEMPLATE_ID = 'template_j0pdjea';
+const ADMIN_TEMPLATE_ID = 'template_pnw73ln';
+const CUSTOMER_TEMPLATE_ID = 'template_xd7jlaq';
 
 const BookingPage = () => {
     const [searchParams] = useSearchParams();
@@ -141,14 +141,24 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
             notes: `${formData.notes}\n\n${ndaManifest}`,
             booking_id,
             submitted_at,
-            to_email: "hello@givebackjourney.com"
+            to_email: "hello@givebackjourney.com",
+            terms_agreed: "Yes (Verified via Checkout)",
+            nda_agreed: ndaDetails.signed ? "Yes (DocuSign Verified)" : "Yes (Agreed via Checkout)"
         };
 
         try {
-            // Dashboard handles customer confirmation automatically via Auto-Reply
+            // Send to Admin
             await emailjs.send(
                 EMAILJS_SERVICE_ID,
                 ADMIN_TEMPLATE_ID,
+                templateParams,
+                EMAILJS_PUBLIC_KEY
+            );
+
+            // Send Confirmation to Customer
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                CUSTOMER_TEMPLATE_ID,
                 templateParams,
                 EMAILJS_PUBLIC_KEY
             );

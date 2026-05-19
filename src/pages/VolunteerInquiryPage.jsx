@@ -112,7 +112,7 @@ const VolunteerInquiryPage = () => {
 
         const SERVICE_ID = "service_95ud991";
         const TEMPLATE_ID_ADMIN = "template_84lczai"; 
-        const TEMPLATE_ID_USER = "template_j0pdjea";   
+        const TEMPLATE_ID_USER = "template_xd7jlaq";   
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
         const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
@@ -131,7 +131,7 @@ const VolunteerInquiryPage = () => {
             name: formData.userName,
             email: cleanEmail,
             reply_to: cleanEmail,
-            admin_email: "hello@givebackjourney.com",
+            admin_email: "journeygiveback@gmail.com",
             phone: formData.userPhone,
             
             tour_package: `VOLUNTEER APPLICATION: ${formData.program}`,
@@ -164,7 +164,7 @@ const VolunteerInquiryPage = () => {
                 ${ndaManifest}
             `,
             submitted_at: new Date().toLocaleString(),
-            to_email: "hello@givebackjourney.com"
+            to_email: "journeygiveback@gmail.com"
         };
 
         try {

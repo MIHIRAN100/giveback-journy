@@ -87,13 +87,13 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
             name: formData.name,
             email: cleanEmail,
             reply_to: cleanEmail,
-            admin_email: "hello@givebackjourney.com",
+            admin_email: "journeygiveback@gmail.com",
             phone: 'N/A',
             birthday: 'N/A',
             notes: `${formData.details}\n\n${ndaManifest}`,
             tour_package: formData.subject,
             submitted_at: new Date().toLocaleString(),
-            to_email: "hello@givebackjourney.com"
+            to_email: "journeygiveback@gmail.com"
         };
 
         try {
@@ -157,7 +157,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                     <div className="channel-info">
                                         <h4>Email Inquiries</h4>
                                         <p>Detailed plans & quotes</p>
-                                        <a href="mailto:hello@givebackjourney.com">hello@givebackjourney.com</a>
+                                        <a href="mailto:journeygiveback@gmail.com">journeygiveback@gmail.com</a>
                                     </div>
                                 </div>
                             </div>

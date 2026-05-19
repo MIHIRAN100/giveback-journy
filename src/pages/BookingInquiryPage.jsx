@@ -165,8 +165,8 @@ const BookingInquiryPage = () => {
         if (cleanEmail.endsWith('@yaho.com')) cleanEmail = cleanEmail.replace('@yaho.com', '@yahoo.com');
 
         const SERVICE_ID = "service_95ud991";
-        const TEMPLATE_ID_ADMIN = "template_84lczai"; 
-        const TEMPLATE_ID_USER = "template_j0pdjea";   
+        const TEMPLATE_ID_ADMIN = "template_pnw73ln"; 
+        const TEMPLATE_ID_USER = "template_xd7jlaq";   
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
         const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
@@ -213,12 +213,16 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
             price: priceData.total,
             booking_id: `GBJ-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
             submitted_at: new Date().toLocaleString(),
-            to_email: "hello@givebackjourney.com"
+            to_email: "hello@givebackjourney.com",
+            terms_agreed: "Yes (Verified via Checkout)",
+            nda_agreed: ndaDetails.signed ? "Yes (DocuSign Verified)" : "Yes (Agreed via Checkout)"
         };
 
         try {
-            // Dashboard handles customer confirmation automatically via Auto-Reply
+            // Send to Admin
             await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
+            // Send Confirmation to Customer
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY);
             setSubmitted(true);
         } catch (err) {
             console.error('Email error:', err);

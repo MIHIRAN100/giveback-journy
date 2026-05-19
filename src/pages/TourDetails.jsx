@@ -48,6 +48,11 @@ import adamsPeakSlide4 from '../assets/548ca78544e5070b59f558a0b02cf606.jpg';
 import adamsPeakSlide5 from '../assets/0c3aa6595f8fa9d7304e54d629d024c5.jpg';
 import adamsPeakSlide6 from '../assets/c826dc63ec0b07b44bbfd80e148a8f03.jpg';
 import southernSlide2_new from '../assets/a41fa4f67a6e315638179b50d03d0198.jpg';
+import kitulgalaSlide6 from '../assets/LK771D0200-04-E-1280-720.jpg';
+import kitulgalaSlide5 from '../assets/fa.jpg';
+import kitulgalaSlide4 from '../assets/26.jpg';
+import kitulgalaSlide3 from '../assets/dayouting1.jpg';
+import kitulgalaSlide2 from '../assets/14914765974.jpg';
 
 const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -284,11 +289,11 @@ const TourDetails = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const galleryImages = [
         pkg?.image || '', 
-        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 2 ? southernSlide2_new : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2)))))), 
-        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : (pkg?.id === 6 ? galleSlide3 : (pkg?.id === 9 ? kandyHighSlide3 : (pkg?.id === 10 ? adamsPeakSlide3 : gallerySlide3)))))), 
-        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : (pkg?.id === 6 ? galleSlide4 : (pkg?.id === 9 ? kandyHighSlide4 : (pkg?.id === 10 ? adamsPeakSlide4 : gallerySlide4)))))), 
-        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : (pkg?.id === 6 ? galleSlide5 : (pkg?.id === 10 ? adamsPeakSlide5 : gallerySlide5))))), 
-        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : (pkg?.id === 6 ? galleSlide6 : (pkg?.id === 10 ? adamsPeakSlide6 : gallerySlide6)))))
+        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 11 ? kitulgalaSlide2 : (pkg?.id === 2 ? southernSlide2_new : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2))))))), 
+        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 11 ? kitulgalaSlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : (pkg?.id === 6 ? galleSlide3 : (pkg?.id === 9 ? kandyHighSlide3 : (pkg?.id === 10 ? adamsPeakSlide3 : gallerySlide3))))))), 
+        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 11 ? kitulgalaSlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : (pkg?.id === 6 ? galleSlide4 : (pkg?.id === 9 ? kandyHighSlide4 : (pkg?.id === 10 ? adamsPeakSlide4 : gallerySlide4))))))), 
+        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 11 ? kitulgalaSlide5 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : (pkg?.id === 6 ? galleSlide5 : (pkg?.id === 10 ? adamsPeakSlide5 : gallerySlide5)))))), 
+        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 11 ? kitulgalaSlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : (pkg?.id === 6 ? galleSlide6 : (pkg?.id === 10 ? adamsPeakSlide6 : gallerySlide6))))))
     ];
     const sliderRef = React.useRef(null);
     

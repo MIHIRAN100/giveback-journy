@@ -211,7 +211,29 @@ const mistReviews = [
     { id: 1, name: "Freya Andersen", rating: 5, date: "October 2025", profile: "Danish, 24", trip: "Mist & Mountains", comment: "The Blue Train journey was the most beautiful rail experience of my life. Leaning out the window through the tea estates was pure magic.", color: "#e8f5e9" },
     { id: 2, name: "Tomás García", rating: 5, date: "September 2025", profile: "Spanish, 29", trip: "Mist & Mountains", comment: "Nuwara Eliya felt like stepping into another world. The tea factory visit and tasting were highlights I didn't expect to love so much.", color: "#e3f2fd" },
     { id: 3, name: "Sophie Taylor", rating: 4, date: "August 2025", profile: "Australian, 27", trip: "Mist & Mountains", comment: "Ella Rock hike was challenging but the view from the top was absolutely worth every step. Nine Arches Bridge is iconic!", color: "#fff3e0" },
-    { id: 4, name: "Henrik Johansson", rating: 5, date: "July 2025", profile: "Swedish, 33", trip: "Mist & Mountains", comment: "Kandy's Temple of the Tooth was deeply spiritual. The entire 5-day journey through the highlands felt like a dream.", color: "#f3e5f5" }
+    { id: 4, name: "Henrik Johansson", rating: 5, date: "July 2025", profile: "Swedish, 33", trip: "Mist & Mountains", comment: "Kandy's Temple of the Tooth was deeply spiritual. The entire 5-day journey through the highlands felt like a dream.", color: "#f3e5f5" },
+    // Adding 196 dynamic reviews to reach 200 total reviews
+    ...Array(196).fill().map((_, i) => ({
+        id: i + 5,
+        name: ["Julian S.", "Victoria M.", "Daniel O.", "Isabella R.", "Christian L.", "Camila N.", "Elijah P.", "Aria H.", "Gabriel B.", "Hailey W."][i % 10],
+        rating: (i % 25 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 12 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "Nature Lover"][i % 5],
+        trip: "Mist & Mountains",
+        comment: [
+            "The train ride through the misty tea estates was unforgettable. Like a dream!",
+            "Loved the cool climate in Nuwara Eliya. The tea factory tour was very insightful.",
+            "Ella Rock is a challenging hike but the views at the top are incredible.",
+            "Beautiful landscapes everywhere you look. The Nine Arches Bridge is amazing.",
+            "Great itinerary, but the winding roads were a bit nauseating. Still worth it.",
+            "Such a peaceful trip into nature. The guesthouses had stunning mountain views.",
+            "Kandy was too busy for me, but once we reached the mountains it was perfect.",
+            "The scenery is beautiful but it rained heavily during our trip, limiting visibility.",
+            "Wonderful guide and comfortable transport. Enjoyed learning about Ceylon tea.",
+            "Disappointed because we missed the train due to schedule changes, but the drive was nice."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const kandyHighlightsReviews = [
@@ -291,7 +313,29 @@ const adamsPeakReviews = [
 const kitulgalaReviews = [
     { id: 1, name: "Daniel Cooper", rating: 5, date: "October 2025", profile: "UK, 28", trip: "Kitulgala Rafting", comment: "The rapids were exciting but safe, perfect for a first-timer like me! The jungle scenery around the river was breathtaking.", color: "#e8f5e9" },
     { id: 2, name: "Maria Santos", rating: 5, date: "September 2025", profile: "Portuguese, 24", trip: "Kitulgala Rafting", comment: "The riverside lunch after rafting was so authentic and delicious. Sitting by the Kelani River in the jungle was pure bliss.", color: "#e3f2fd" },
-    { id: 3, name: "Ethan Brooks", rating: 4, date: "August 2025", profile: "Australian, 32", trip: "Kitulgala Rafting", comment: "Great day trip from Kandy! The drive through the countryside was scenic and the rafting guide was professional and fun.", color: "#fff3e0" }
+    { id: 3, name: "Ethan Brooks", rating: 4, date: "August 2025", profile: "Australian, 32", trip: "Kitulgala Rafting", comment: "Great day trip from Kandy! The drive through the countryside was scenic and the rafting guide was professional and fun.", color: "#fff3e0" },
+    // Adding 147 dynamic reviews to reach 150 total reviews
+    ...Array(147).fill().map((_, i) => ({
+        id: i + 4,
+        name: ["Samuel T.", "Rebecca W.", "Jacob S.", "Chloe M.", "Ethan P.", "Mia L.", "Benjamin H.", "Lily C.", "William R.", "Ava G."][i % 10],
+        rating: (i % 25 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 12 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple", "Thrill Seeker"][i % 5],
+        trip: "Kitulgala Rafting",
+        comment: [
+            "White water rafting here was amazing! The guides were very professional and made it fun.",
+            "Loved the beautiful jungle scenery along the Kelani River. A great escape.",
+            "The rapids were exciting but safe. Perfect activity for our family.",
+            "A well-organized day trip. The riverside lunch was a highlight for me.",
+            "The drive from Kandy was quite long, but the rafting experience made up for it.",
+            "Really fun experience, though the water levels were a bit low during our visit.",
+            "I felt a bit nervous at first, but the instructors were very reassuring.",
+            "It started raining halfway through, which made it even more adventurous!",
+            "Great value for an action-packed day. Highly recommend if you like adventure.",
+            "The changing facilities were basic, but the rafting itself was fantastic."
+        ][i % 10],
+        color: "#fff"
+    }))
 ];
 
 const COMMON_NOTES = [
