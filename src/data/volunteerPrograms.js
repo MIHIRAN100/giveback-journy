@@ -147,24 +147,118 @@ export const volunteerPrograms = [
     },
     {
         id: "sri-lanka-childcare",
-        title: "Sri Lanka Childcare Volunteers",
-        location: "Galle District",
+        title: "Teaching Volunteer Program",
+        location: "Kandy District",
         duration: "1-24 Weeks",
         housing: "Shared or Private",
-        price: "270",
-        image: childcareImg,
-        minAge: "16+",
+        price: "320",
+        image: teachingImg,
+        minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
-        shortDesc: "Support local preschools and community centers in the vibrant southern coast.",
-        description: "Join our dedicated team of childcare volunteers on the beautiful southern coast of Sri Lanka. Your presence will bring joy, education, and essential support to children in local preschools and community centers. Assist teachers with daily activities, organize creative play, and help improve conversational English skills. This program is perfect for those who are passionate about early childhood development and want to make a tangible difference in the lives of enthusiastic young learners.",
+        shortDesc: "Support local preschools, schools, and Buddhist temples in the beautiful cultural capital of Kandy.",
+        description: "Our Teaching Volunteer Program in Sri Lanka provides volunteers with the opportunity to support local schools, preschools, community education centers, and English-learning programs in and around Kandy. This program is designed to support communities where access to English education, educational resources, and individual learning support can often be limited. Volunteers help create engaging, interactive, and confidence-building learning environments while experiencing authentic Sri Lankan culture and daily life. The program is ideal for volunteers who are patient, creative, adaptable, and passionate about education and cultural exchange. Previous teaching experience is helpful but not required. What matters most is a positive attitude, flexibility, and a willingness to contribute respectfully.",
         color: "#ff6b6b",
         galleryImages: [
             { src: teachingImg, caption: "Teaching English" },
             { src: volunteer1, caption: "Working With Children" },
             { src: cultureExp, caption: "Cultural Exchange" },
             { src: volunteerCommunity, caption: "Community Work" }
-        ]
+        ],
+        highlights: [
+            "Support local schools, preschools, and community education centers in Kandy",
+            "Teach conversational English to children, young adults, or Buddhist monks",
+            "Experience authentic Sri Lankan Buddhist culture and daily life",
+            "Ideal for patient, creative, and adaptable volunteers (No experience required)"
+        ],
+        sections: [
+            {
+                title: "Teaching Placement Options",
+                paragraphs: [
+                    "We offer several different teaching opportunities depending on community needs, volunteer skills, and placement availability.",
+                    "**1. Preschool Teaching Program** (Working Hours: Monday to Friday, 08:30 AM – 12:30 PM) - Volunteers assist local preschool teachers with early childhood education and daily classroom activities.",
+                    "**Volunteer Activities:** Teaching basic English words and pronunciation, Assisting with numbers, colors, shapes, and simple learning games, Singing educational songs and rhymes, Storytelling and creative play, Arts, crafts, and drawing activities, Helping children improve confidence and social interaction, Assisting teachers during classroom routines.",
+                    "**Preschool Environment:** Most preschools are located in rural or semi-rural communities and may have limited resources compared to Western standards. Volunteers should arrive with realistic expectations and an open mind. The focus is on creating a fun, supportive, and engaging learning environment rather than formal academic teaching.",
+                    "**2. Young Adult English Teaching Program** (Working Hours: Monday to Friday, 08:30 AM – 01:30 PM) - This placement supports teenagers and young adults who are eager to improve their English skills for education, tourism employment, hospitality work, and future opportunities.",
+                    "**Volunteer Activities:** Conversational English practice, Pronunciation and listening activities, Basic grammar support, Group discussions and confidence-building exercises, Role-play and interactive communication activities, Helping students practice real-life English situations, Cultural exchange sessions.",
+                    "**Teaching Environment:** Many students come from rural backgrounds and may have limited opportunities to practice English with native or fluent speakers. Volunteers help build confidence through informal and interactive learning methods.",
+                    "**3. English Teaching for Buddhist Monks** (Working Hours: Monday to Friday, 08:00 AM – 10:00 AM) - This unique placement gives volunteers the opportunity to teach conversational English to Buddhist monks studying in temples and monastic schools. Monks often learn English to continue higher education, communicate with international visitors, study religious texts, and improve future opportunities within temple education systems. This experience also offers volunteers valuable insight into Sri Lankan Buddhist culture and traditions."
+                ]
+            },
+            {
+                title: "Important Cultural Guidelines When Teaching Monks",
+                paragraphs: [
+                    "Buddhist monks are highly respected members of Sri Lankan society. Volunteers must behave respectfully and understand local cultural expectations while visiting temples and teaching monks.",
+                    "**Physical Contact** - Volunteers must never hug monks, touch monks unnecessarily, or engage in playful physical interaction. Female volunteers must be especially mindful, as physical contact between women and monks is culturally inappropriate in Sri Lanka.",
+                    "**Dress Code** - When visiting temples or monk teaching placements: Shoulders and knees must always be covered. Avoid tight, transparent, or revealing clothing. Remove hats and shoes when entering temple areas if requested. Clothing should be clean, modest, and respectful. White or light-colored clothing is appreciated but not mandatory.",
+                    "**Behavior Expectations** - Volunteers should speak calmly and respectfully, avoid loud or disruptive behavior, respect temple customs and religious practices, and follow guidance from temple staff and coordinators.",
+                    "**Activities to Avoid** - Volunteers should avoid singing inappropriate songs, excessive joking or physical games, smoking or consuming alcohol near temple areas, public displays of affection, and disrespectful discussions about religion, politics, or culture.",
+                    "**Photography** - Always ask permission before taking photographs inside temples or with monks. Some religious areas may prohibit photography entirely."
+                ]
+            },
+            {
+                title: "General Teaching Responsibilities",
+                paragraphs: [
+                    "Volunteer tasks may vary depending on the placement and student age group.",
+                    "**Common responsibilities include:** Assisting local teachers, conducting informal English sessions, helping students improve confidence, organizing educational games and activities, encouraging communication and participation, and creating a positive and supportive learning environment. Volunteers are encouraged to be creative, patient, and flexible."
+                ]
+            },
+            {
+                title: "Placement Conditions",
+                paragraphs: [
+                    "Teaching placements in Sri Lanka may differ significantly from Western classrooms.",
+                    "**Some schools and centers may have:** Limited teaching materials, large classroom sizes, basic infrastructure, and limited technology or resources. Volunteers should focus on contribution, encouragement, and cultural exchange rather than perfection. Flexibility and adaptability are essential."
+                ]
+            },
+            {
+                title: "Safety & Volunteer Conduct",
+                paragraphs: [
+                    "Volunteers are expected to behave respectfully and professionally at all times.",
+                    "**Volunteers must:** Respect students, teachers, monks, and local communities; maintain appropriate boundaries; avoid inappropriate physical contact; avoid giving gifts, money, or personal items without approval; and follow local cultural expectations and placement rules. Photography should always be respectful and approved by placement staff."
+                ]
+            },
+            {
+                title: "Your Impact as a Volunteer",
+                paragraphs: [
+                    "Teaching in Sri Lanka is about much more than language lessons.",
+                    "**Your time, encouragement, and interaction can:** Help students build confidence, improve conversational English skills, create positive learning experiences, support local teachers with limited resources, inspire children and young adults to continue learning, and build meaningful cultural connections.",
+                    "Sometimes a simple conversation, a smile, or a few words of encouragement can leave a lasting impact on someone’s future.",
+                    "At the same time, volunteers gain a deeper understanding of Sri Lankan culture, education systems, religion, and grassroots community life. This is a cultural exchange built on respect, learning, and meaningful contribution."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "Volunteers normally stay in shared volunteer accommodation in and around Kandy.",
+            options: [
+                {
+                    title: "Shared Accommodation",
+                    subtitle: "Allocated by Gender (Included)",
+                    icon: "🛏️",
+                    description: "Gender-based room allocation, normally 4–6 volunteers per room with shared bathrooms, Western-style toilets, cold water showers, and simple, basic living conditions."
+                },
+                {
+                    title: "Private Rooms",
+                    subtitle: "Upgrade Available",
+                    icon: "🔒",
+                    description: "Private room upgrades may be available within the volunteer accommodation or at a nearby local homestay (additional costs may apply)."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Available" },
+                { label: "People Per Room", value: "4–6 (Shared)" },
+                { label: "Single Sex Rooms", value: "Yes" },
+                { label: "Bathroom Facilities", value: "Western & Shared" },
+                { label: "Airport Transfer", value: "Included" }
+            ]
+        },
+        mealsInfo: {
+            description: "Three traditional Sri Lankan meals per day are included during the volunteer week. Special dietary requirements may be considered with advance notice.",
+            examples: {
+                breakfast: "Sri Lankan-style breakfast (hoppers, roti, or fruit)",
+                lunch: "Traditional Rice and Curry with vegetables",
+                dinner: "Sri Lankan-style dinner"
+            }
+        }
     },
     {
         id: "special-needs-support",
