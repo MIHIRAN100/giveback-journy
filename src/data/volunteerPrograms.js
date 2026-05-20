@@ -128,7 +128,7 @@ export const volunteerPrograms = [
                 }
             ],
             features: [
-                { label: "Wi-Fi", value: "Yes (Free)" },
+                { label: "Wi-Fi", value: "Not Available" },
                 { label: "People Per Room", value: "Up To 12 (Shared)" },
                 { label: "Single Sex Rooms", value: "Yes" },
                 { label: "Western Bathroom Facilities", value: "Yes" },
@@ -244,7 +244,7 @@ export const volunteerPrograms = [
                 }
             ],
             features: [
-                { label: "Wi-Fi", value: "Available" },
+                { label: "Wi-Fi", value: "Not Available" },
                 { label: "People Per Room", value: "4–6 (Shared)" },
                 { label: "Single Sex Rooms", value: "Yes" },
                 { label: "Bathroom Facilities", value: "Western & Shared" },
@@ -372,7 +372,7 @@ export const volunteerPrograms = [
                     title: "Shared Accommodation",
                     subtitle: "Allocated by Gender (Included)",
                     icon: "🛏️",
-                    description: "Rooms are allocated based on gender, normally with 4–6 volunteers per room. Features shared bathroom facilities with Western-style toilets and cold water showers. These are basic living conditions with simple furnishings. Wi-Fi may be limited or unstable depending on the location."
+                    description: "Rooms are allocated based on gender, normally with 4–6 volunteers per room. Features shared bathroom facilities with Western-style toilets and cold water showers. These are basic living conditions with simple furnishings. Wi-Fi is not available at the accommodation."
                 },
                 {
                     title: "Private Room Option",
@@ -382,7 +382,7 @@ export const volunteerPrograms = [
                 }
             ],
             features: [
-                { label: "Wi-Fi", value: "Limited / Unstable" },
+                { label: "Wi-Fi", value: "Not Available" },
                 { label: "People Per Room", value: "4–6 (Shared)" },
                 { label: "Single Sex Rooms", value: "Yes" },
                 { label: "Western Bathroom Facilities", value: "Yes" },
@@ -543,7 +543,7 @@ export const volunteerPrograms = [
             }
         ],
         accommodation: {
-            description: "During your time on the Sri Lanka volunteer program, you will stay in our Volunteer House located just outside central Ambalangoda, in a quiet part of town on Sri Lanka’s south coast. The house is only a 10-minute tuk-tuk journey into the main town, where you can find ATMs, supermarkets, and local restaurants. You’ll share the house with other PMGY volunteers from around the world, giving you the chance to make plenty of new friends! The house includes free Wi-Fi and a communal area where volunteers can relax, hang out with friends, or prepare lesson plans if teaching English. A refrigerator is available for storing items that need to be kept chilled. A member of the local team also lives at the house, ensuring 24/7 support and security for all volunteers. Transport to and from your placement is provided via tuk-tuk or private car, and placements are typically 5-30 minutes from the Volunteer House. This service is included in your Program Fee.",
+            description: "During your time on the Sri Lanka volunteer program, you will stay in our Volunteer House located just outside central Ambalangoda, in a quiet part of town on Sri Lanka’s south coast. The house is only a 10-minute tuk-tuk journey into the main town, where you can find ATMs, supermarkets, and local restaurants. You’ll share the house with other PMGY volunteers from around the world, giving you the chance to make plenty of new friends! The house includes a communal area where volunteers can relax, hang out with friends, or prepare lesson plans if teaching English. A refrigerator is available for storing items that need to be kept chilled. A member of the local team also lives at the house, ensuring 24/7 support and security for all volunteers. Transport to and from your placement is provided via tuk-tuk or private car, and placements are typically 5-30 minutes from the Volunteer House. This service is included in your Program Fee.",
             options: [
                 {
                     title: "Shared Option - Standard Offering",
@@ -559,7 +559,7 @@ export const volunteerPrograms = [
                 }
             ],
             features: [
-                { label: "Wi-Fi", value: "Yes (Free)" },
+                { label: "Wi-Fi", value: "Not Available" },
                 { label: "People Per Room", value: "Up To 12 (Shared) or 1 (Comfort)" },
                 { label: "Single Sex Rooms", value: "Yes" },
                 { label: "Western Bathroom Facilities", value: "Yes" },
