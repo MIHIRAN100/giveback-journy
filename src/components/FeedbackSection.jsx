@@ -122,22 +122,8 @@ const FeedbackSection = () => {
                             className="feedback-scroll-row"
                         >
                             {testimonials.map((item, index) => (
-                                <div key={index} className="feedback-card" style={{ 
-                                    flex: '0 0 calc(20% - 16px)', 
-                                    scrollSnapAlign: 'start',
-                                    background: 'white',
-                                    padding: '20px',
-                                    borderRadius: '24px',
-                                    border: '1px solid #eee',
-                                    boxShadow: '0 10px 40px rgba(0,0,0,0.03)',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    height: 'auto',
-                                    minHeight: '320px',
-                                    justifyContent: 'space-between',
-                                    boxSizing: 'border-box'
-                                }}>
-                                <div>
+                                <div key={index} className="feedback-card">
+                                    <div>
                                     {/* Header with Initials Badge */}
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
                                         <div style={{ 
@@ -150,7 +136,7 @@ const FeedbackSection = () => {
                                         </div>
                                         <div>
                                             <h4 style={{ margin: '0 0 3px 0', fontSize: '0.95rem', fontWeight: 800, color: '#111' }}>{item.name}</h4>
-                                            <div style={{ display: 'flex', gap: '2px', color: '#FFD700' }}>
+                                            <div style={{ display: 'flex', gap: '2px', color: 'var(--primary-green)' }}>
                                                 {[...Array(item.rating)].map((_, i) => (
                                                     <i key={i} className="fa-solid fa-star" style={{ fontSize: '0.7rem' }}></i>
                                                 ))}
@@ -175,8 +161,46 @@ const FeedbackSection = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
+            </div>
+        </div>
+            <style dangerouslySetInnerHTML={{ __html: `
+                .feedback-card {
+                    flex: 0 0 calc(33.333% - 14px);
+                    scroll-snap-align: start;
+                    background: white;
+                    padding: 30px;
+                    border-radius: 28px;
+                    border: 1px solid #f1f5f9;
+                    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+                    display: flex;
+                    flex-direction: column;
+                    height: auto;
+                    min-height: 280px;
+                    justify-content: space-between;
+                    box-sizing: border-box;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .feedback-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 25px 50px rgba(0,0,0,0.06);
+                    border-color: rgba(29, 185, 84, 0.15);
+                }
+
+                @media (max-width: 1024px) {
+                    .feedback-card {
+                        flex: 0 0 calc(50% - 10px);
+                        padding: 25px;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    .feedback-card {
+                        flex: 0 0 calc(100% - 10px);
+                        padding: 20px;
+                    }
+                }
+            `}} />
             </div>
         </section>
     );

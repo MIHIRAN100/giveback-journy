@@ -706,6 +706,17 @@ h1, h2, h3, .logo-text {
     transform: translate(-50%, -50%);
     object-fit: cover;
     pointer-events: none;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-video.inactive {
+    opacity: 0 !important;
+    z-index: 1;
+}
+
+.hero-video.active {
+    opacity: 1 !important;
+    z-index: 2;
 }
 
 .video-mute-toggle {

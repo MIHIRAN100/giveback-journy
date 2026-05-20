@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import puppyImg from '../assets/dominican puppy.jpg';
 import effortImg from '../assets/This Moment Shows Effort Beyond Words.webp';
 import hihiImg from '../assets/hihi.webp';
+import impactJourneyImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import VolunteerOpportunities from '../components/VolunteerOpportunities';
 
 const VolunteerPage = () => {
@@ -364,6 +365,127 @@ const VolunteerPage = () => {
                         font-size: 3.2rem;
                     }
                 }
+
+                /* Your Impact Journey Asymmetric Grid */
+                .journey-grid-container {
+                    display: grid;
+                    grid-template-columns: 1.2fr 1fr;
+                    gap: 40px;
+                    margin-bottom: 120px;
+                }
+
+                .journey-big-card {
+                    position: relative;
+                    border-radius: 40px;
+                    overflow: hidden;
+                    height: 480px;
+                    background: url(${impactJourneyImg}) no-repeat center/cover;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    padding: 50px;
+                    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+                }
+
+                .journey-big-card-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+                    z-index: 1;
+                }
+
+                .journey-big-card-content {
+                    position: relative;
+                    z-index: 2;
+                    color: white;
+                }
+
+                .journey-quote {
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    font-style: italic;
+                    line-height: 1.5;
+                    margin-bottom: 25px;
+                    letter-spacing: -0.01em;
+                }
+
+                .journey-quote-author {
+                    font-size: 0.85rem;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    color: var(--primary-green);
+                }
+
+                .journey-steps-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+                }
+
+                .journey-step-card {
+                    background: #f8fafc;
+                    border: 1px solid #f1f5f9;
+                    padding: 35px 25px;
+                    border-radius: 30px;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    min-height: 200px;
+                }
+
+                .journey-step-card:hover {
+                    transform: translateY(-8px);
+                    background: white;
+                    border-color: rgba(29, 185, 84, 0.25);
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+                }
+
+                .journey-step-number {
+                    font-size: 2.2rem;
+                    font-weight: 900;
+                    color: rgba(29, 185, 84, 0.15);
+                    line-height: 1;
+                }
+
+                .journey-step-card:hover .journey-step-number {
+                    color: var(--primary-green);
+                    transform: scale(1.05);
+                    transition: all 0.3s ease;
+                }
+
+                .journey-step-title {
+                    font-size: 1.25rem;
+                    font-weight: 800;
+                    color: #111;
+                    margin: 0;
+                    line-height: 1.3;
+                }
+
+                @media (max-width: 1024px) {
+                    .journey-grid-container {
+                        grid-template-columns: 1fr !important;
+                        gap: 30px;
+                    }
+                    .journey-big-card {
+                        height: 400px;
+                        padding: 35px;
+                    }
+                    .journey-quote {
+                        font-size: 1.35rem;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    .journey-steps-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 20px;
+                    }
+                }
                 `}
             </style>
 
@@ -477,27 +599,36 @@ const VolunteerPage = () => {
                 {/* Journey Steps */}
                 <section style={{ margin: '120px 0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 900 }}>Your Impact Journey</h2>
+                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>The Path of Giving Back</span>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 900, marginTop: '10px' }}>Your Impact Journey</h2>
                     </div>
-                    <div className="journey-steps">
-                        {[
-                            { step: "01", title: "Apply Online" },
-                            { step: "02", title: "Personal Chat" },
-                            { step: "03", title: "Preparation" },
-                            { step: "04", title: "Arrive & Act" }
-                        ].map((item, i) => (
-                            <div key={i} style={{ 
-                                background: 'linear-gradient(135deg, #1DB954 0%, #0a2e1a 100%)', 
-                                padding: '50px 35px', 
-                                borderRadius: '35px', 
-                                color: 'white',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}>
-                                <span style={{ fontSize: '0.9rem', fontWeight: 900, opacity: 0.5 }}>STEP {item.step}</span>
-                                <h4 style={{ fontSize: '1.6rem', fontWeight: 900, marginTop: '10px' }}>{item.title}</h4>
+                    <div className="journey-grid-container">
+                        {/* Big card with background image and quote */}
+                        <div className="journey-big-card">
+                            <div className="journey-big-card-overlay"></div>
+                            <div className="journey-big-card-content">
+                                <i className="fa-solid fa-quote-left" style={{ fontSize: '2rem', color: 'var(--primary-green)', opacity: 0.8, marginBottom: '15px', display: 'block' }}></i>
+                                <blockquote className="journey-quote">
+                                    "This journey isn't just about the places you visit, but the lives you touch and the legacy of kindness you leave behind."
+                                </blockquote>
+                                <cite className="journey-quote-author">— Give Back Journey</cite>
                             </div>
-                        ))}
+                        </div>
+
+                        {/* Step cards */}
+                        <div className="journey-steps-grid">
+                            {[
+                                { step: "01", title: "Apply Online" },
+                                { step: "02", title: "Personal Chat" },
+                                { step: "03", title: "Preparation" },
+                                { step: "04", title: "Arrive & Act" }
+                            ].map((item, i) => (
+                                <div key={i} className="journey-step-card">
+                                    <div className="journey-step-number">STEP {item.step}</div>
+                                    <h4 className="journey-step-title">{item.title}</h4>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </section>
 

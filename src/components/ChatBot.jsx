@@ -6,6 +6,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi!%20I'm%20interested%20in%20your%20Sri%20Lanka%20tour%20packages.`;
 
     const messages = [
+        "1 message received",
         "Hi 👋 Need help?",
         "Ready for adventure? 🌴",
         "Plan your trip now! ✨",
@@ -89,9 +90,39 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
             )}
 
             {/* Floating WhatsApp Toggle Button */}
-            <button className="chat-toggle" onClick={() => setIsOpen(!isOpen)} title="Chat with us">
+            <button className="chat-toggle" onClick={() => setIsOpen(!isOpen)} title="Chat with us" style={{ position: 'relative' }}>
                 {isOpen ? <i className="fa-solid fa-xmark"></i> : <i className="fa-brands fa-whatsapp" style={{fontSize: '1.8rem'}}></i>}
+                {!isOpen && (
+                    <span style={{
+                        position: 'absolute',
+                        top: '-5px',
+                        right: '-5px',
+                        background: '#ef4444',
+                        color: 'white',
+                        borderRadius: '50%',
+                        width: '24px',
+                        height: '24px',
+                        fontSize: '0.8rem',
+                        fontWeight: '800',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 4px 10px rgba(239, 68, 68, 0.4)',
+                        border: 'none',
+                        zIndex: 10
+                    }}>
+                        1
+                    </span>
+                )}
             </button>
+            
+            <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes whatsapp-pulse {
+                    0% { opacity: 0.4; transform: scale(0.8); }
+                    50% { opacity: 1; transform: scale(1.2); }
+                    100% { opacity: 0.4; transform: scale(0.8); }
+                }
+            `}} />
         </div>
     );
 };

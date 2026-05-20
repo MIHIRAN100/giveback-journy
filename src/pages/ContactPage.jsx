@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import emailjs from '@emailjs/browser';
-import DocuSignModal from '../components/DocuSignModal';
 
 
 const ContactPage = () => {
@@ -16,48 +15,13 @@ const ContactPage = () => {
         details: ''
     });
 
-    const [termsAccepted, setTermsAccepted] = useState(false);
-    const [ndaAccepted, setNdaAccepted] = useState(false);
-    const [isNdaModalOpen, setIsNdaModalOpen] = useState(false);
-    const [ndaDetails, setNdaDetails] = useState({ signed: false, envelopeId: '' });
-
     useEffect(() => {
         window.scrollTo(0, 0);
-        // Check NDA signed status
-        const hasSigned = localStorage.getItem('nda_signed') === 'true';
-        if (hasSigned) {
-            setNdaAccepted(true);
-            setNdaDetails({
-                signed: true,
-                envelopeId: localStorage.getItem('nda_docusign_envelope') || ''
-            });
-        }
     }, []);
-
-    const handleNdaSignComplete = (envelopeId, signerName, signedDate) => {
-        localStorage.setItem('nda_signed', 'true');
-        localStorage.setItem('nda_signed_name', signerName);
-        localStorage.setItem('nda_signed_date', signedDate);
-        localStorage.setItem('nda_docusign_envelope', envelopeId);
-
-        setNdaAccepted(true);
-        setNdaDetails({
-            signed: true,
-            envelopeId: envelopeId
-        });
-    };
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!termsAccepted) {
-            alert('Please agree to the Terms & Conditions and Privacy Policy.');
-            return;
-        }
-        if (!ndaAccepted) {
-            alert('Please review and sign the Non-Disclosure Agreement (NDA) using DocuSign.');
-            return;
-        }
         if (isSending.current) return;
         isSending.current = true;
         setLoading(true);
@@ -67,21 +31,8 @@ const ContactPage = () => {
         if (cleanEmail.endsWith('@gmai.com')) cleanEmail = cleanEmail.replace('@gmai.com', '@gmail.com');
 
         const SERVICE_ID = "service_95ud991";
-        const TEMPLATE_ID = "template_84lczai";
+        const TEMPLATE_ID = "template_fvq4czg";
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
-
-        const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
-        const ndaSignedDate = localStorage.getItem('nda_signed_date') || '';
-        const ndaEnvelopeId = localStorage.getItem('nda_docusign_envelope') || '';
-        
-        const ndaManifest = `
---- VERIFIED MUTUAL NDA DETAILS (DOCUSIGN COMPLIANCE) ---
-Status: SIGNED & SECURE
-Signer Legal Name: ${ndaSignedName}
-Signature Timestamp: ${ndaSignedDate}
-DocuSign Envelope ID: ${ndaEnvelopeId}
-=========================================================
-`;
 
         const templateParams = {
             name: formData.name,
@@ -90,7 +41,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
             admin_email: "journeygiveback@gmail.com",
             phone: 'N/A',
             birthday: 'N/A',
-            notes: `${formData.details}\n\n${ndaManifest}`,
+            notes: formData.details,
             tour_package: formData.subject,
             submitted_at: new Date().toLocaleString(),
             to_email: "journeygiveback@gmail.com"
@@ -234,49 +185,9 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                     required
                                                 ></textarea>
                                             </div>
-                                            <div className="ds-form-agreements" style={{ margin: '25px 0', display: 'flex', flexDirection: 'column', gap: '15px', background: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'left' }}>
-                                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, color: '#334155' }}>
-                                                    <input 
-                                                        type="checkbox" 
-                                                        checked={termsAccepted} 
-                                                        onChange={(e) => setTermsAccepted(e.target.checked)} 
-                                                        required 
-                                                        style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} 
-                                                    />
-                                                    <span>I agree to the <Link to="/terms-and-conditions" target="_blank" style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>Terms & Conditions</Link> and <Link to="/privacy-policy" target="_blank" style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>Privacy Policy</Link>. *</span>
-                                                </label>
-
-                                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, color: '#334155' }}>
-                                                    <input 
-                                                        type="checkbox" 
-                                                        checked={ndaAccepted} 
-                                                        onChange={(e) => setNdaAccepted(e.target.checked)} 
-                                                        disabled={ndaDetails.signed} 
-                                                        required 
-                                                        style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} 
-                                                    />
-                                                    {ndaDetails.signed ? (
-                                                        <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                            <i className="fa-solid fa-circle-check"></i> Verified DocuSign Signature Applied <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', opacity: 0.8 }}>({ndaDetails.envelopeId.slice(0, 11)}...)</span>
-                                                        </span>
-                                                    ) : (
-                                                        <span>I agree to the <Link to="/nda" target="_blank" onClick={(e) => { e.preventDefault(); setIsNdaModalOpen(true); }} style={{ color: 'var(--primary-green)', textDecoration: 'underline' }}>Non-Disclosure Agreement (NDA)</Link> (DocuSign Required). *</span>
-                                                    )}
-                                                </label>
-                                            </div>
-
                                             <button type="submit" className="btn-modern btn-black btn-block" disabled={loading}>
                                                 {loading ? 'Sending...' : 'Send My Inquiry'}
                                             </button>
-
-                                            <DocuSignModal 
-                                                isOpen={isNdaModalOpen} 
-                                                onClose={() => setIsNdaModalOpen(false)} 
-                                                onSignComplete={handleNdaSignComplete} 
-                                                defaultName={formData.name}
-                                                defaultEmail={formData.email}
-                                            />
-
                                         </form>
                                     </>
                                 )}

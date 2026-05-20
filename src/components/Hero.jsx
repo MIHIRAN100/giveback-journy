@@ -4,6 +4,7 @@ import { tourPackages } from '../data/tours';
 import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
+import heroLocalVideo from '../assets/IMG_5769.MOV';
 
 
 const mobileImages = [img1, img2, img3];
@@ -14,7 +15,15 @@ const Hero = ({ onSearch }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMuted, setIsMuted] = useState(true);
+    const [activeVideo, setActiveVideo] = useState('youtube'); // 'youtube' or 'local'
     const playerRef = React.useRef(null);
+    const localVideoRef = React.useRef(null);
+    const activeVideoRef = React.useRef(activeVideo);
+
+    // Sync activeVideo ref to avoid stale closures in the timer loop
+    React.useEffect(() => {
+        activeVideoRef.current = activeVideo;
+    }, [activeVideo]);
 
     React.useEffect(() => {
         // Load YouTube API if not already loaded
@@ -32,12 +41,19 @@ const Hero = ({ onSearch }) => {
                         playerRef.current = event.target;
                         if (isMuted) event.target.mute();
                         else event.target.unMute();
-                        event.target.playVideo();
+                        
+                        if (activeVideoRef.current === 'youtube') {
+                            event.target.playVideo();
+                        } else {
+                            event.target.pauseVideo();
+                        }
                     },
                     'onStateChange': (event) => {
                         if (event.data === window.YT.PlayerState.ENDED) {
-                            event.target.seekTo(0);
-                            event.target.playVideo();
+                            if (activeVideoRef.current === 'youtube') {
+                                event.target.seekTo(0);
+                                event.target.playVideo();
+                            }
                         }
                     }
                 }
@@ -50,28 +66,67 @@ const Hero = ({ onSearch }) => {
             window.onYouTubeIframeAPIReady = initPlayer;
         }
 
-        // Precision loop at 31s
+        // Precision timer loop to transition after 12 seconds of YouTube video playback
         const checkTime = setInterval(() => {
-            if (playerRef.current && playerRef.current.getCurrentTime) {
+            if (activeVideoRef.current === 'youtube' && playerRef.current && playerRef.current.getCurrentTime) {
                 const currentTime = playerRef.current.getCurrentTime();
-                if (currentTime >= 31) {
-                    playerRef.current.seekTo(0);
+                if (currentTime >= 12) {
+                    playerRef.current.pauseVideo();
+                    setActiveVideo('local');
                 }
             }
-        }, 500);
+        }, 250);
 
         return () => {
             clearInterval(checkTime);
         };
     }, []);
 
-    // Sync mute state with player
+    // Sync mute state with player and local video
     React.useEffect(() => {
         if (playerRef.current) {
             if (isMuted) playerRef.current.mute();
             else playerRef.current.unMute();
         }
+        if (localVideoRef.current) {
+            localVideoRef.current.muted = isMuted;
+        }
     }, [isMuted]);
+
+    // Handle local video playback based on active video state
+    React.useEffect(() => {
+        if (activeVideo === 'local') {
+            if (localVideoRef.current) {
+                localVideoRef.current.currentTime = 0;
+                localVideoRef.current.play().catch(err => console.log("Local video play failed:", err));
+            }
+        } else {
+            if (localVideoRef.current) {
+                localVideoRef.current.pause();
+            }
+        }
+    }, [activeVideo]);
+
+    const handleLocalVideoEnded = () => {
+        if (playerRef.current && playerRef.current.seekTo) {
+            playerRef.current.seekTo(0);
+            playerRef.current.playVideo();
+        }
+        setActiveVideo('youtube');
+    };
+
+    const handleLocalVideoTimeUpdate = (e) => {
+        if (activeVideo === 'local' && e.target.currentTime >= 3) {
+            if (localVideoRef.current) {
+                localVideoRef.current.pause();
+            }
+            if (playerRef.current && playerRef.current.seekTo) {
+                playerRef.current.seekTo(0);
+                playerRef.current.playVideo();
+            }
+            setActiveVideo('youtube');
+        }
+    };
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -154,13 +209,22 @@ const Hero = ({ onSearch }) => {
             <div className="hero-video-container">
                 <iframe 
                     id="hero-youtube-player"
-                    className="hero-video"
+                    className={`hero-video ${activeVideo === 'youtube' ? 'active' : 'inactive'}`}
                     src={`https://www.youtube.com/embed/Rr6hg_2Imwc?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}`}
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                     title="Hero Background Video"
                 ></iframe>
+                <video
+                    ref={localVideoRef}
+                    className={`hero-video ${activeVideo === 'local' ? 'active' : 'inactive'}`}
+                    src={heroLocalVideo}
+                    muted={isMuted}
+                    playsInline
+                    onTimeUpdate={handleLocalVideoTimeUpdate}
+                    onEnded={handleLocalVideoEnded}
+                />
                 <button 
                     className="video-mute-toggle" 
                     onClick={() => setIsMuted(!isMuted)}

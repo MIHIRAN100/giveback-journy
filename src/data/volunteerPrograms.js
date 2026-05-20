@@ -1,5 +1,5 @@
 import realExpImg from '../assets/real_sri_lanka_exp_volunteer_1778937381707.png';
-import childcareImg from '../assets/sri_lanka_childcare_volunteer_1778937399157.png';
+import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
 import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
