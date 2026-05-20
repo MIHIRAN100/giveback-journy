@@ -5,6 +5,23 @@ import specialNeedsImg from '../assets/special_needs_care_volunteer_177893644320
 import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 
+// Gallery images
+import volunteerCommunity from '../assets/volunteer-community.png';
+import volunteerWildlife from '../assets/volunteer-wildlife.png';
+import volunteer1 from '../assets/volunteer_1.png';
+import volunteer2 from '../assets/volunteer_2.png';
+import volunteer3 from '../assets/volunteer_3.png';
+import volunteer4 from '../assets/volunteer_4.png';
+import cultureExp from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
+import teachingImg from '../assets/teaching_english_preschool_sri_lanka_1778936461399.png';
+import interviewImg from '../assets/interview_volunteer.png';
+import kandyTrain from '../assets/Kandy to Ella Train Journey _ Lanka Tour Experts.jpg';
+import ellaImg from '../assets/Wanderlust Sri Lanka - Mini Adams Peak Ella.jpg';
+import galleImg from '../assets/galle.jpg';
+import elephantImg from '../assets/elephant_wildlife.png';
+import mirissaImg from '../assets/mirissa_beach.png';
+import teaPlantation from '../assets/tea_plantation.png';
+
 export const volunteerPrograms = [
     {
         id: "real-sri-lanka-experience",
@@ -20,6 +37,12 @@ export const volunteerPrograms = [
         shortDesc: "A complete island immersion combining culture, adventure, and meaningful community work.",
         description: "Embark on a life-changing adventure with the Real Sri Lanka Experience, where you’ll discover a whole new world of inspiration. Over four unforgettable weeks, immerse yourself in the wonders of this stunning island, from its rich cultural treasures to its breathtaking paradise beaches. While exploring, you’ll also make a meaningful impact by contributing to wildlife and community projects along the south coast. Sri Lanka is a spectacular, budget-friendly destination that remains refreshingly uncrowded, making this a wonderful time to visit.",
         color: "#1DB954",
+        galleryImages: [
+            { src: kandyTrain, caption: "Scenic Train Journey" },
+            { src: ellaImg, caption: "Little Adam's Peak" },
+            { src: mirissaImg, caption: "Mirissa Beach" },
+            { src: galleImg, caption: "Galle Fort" }
+        ],
         highlights: [
             "Join Us In 2026 - Monthly Start Dates - Selected Mondays Of Every Month",
             "Marvel At The Famous Kandyan Dancing & The Iconic Temple Of The Tooth Relic",
@@ -135,7 +158,13 @@ export const volunteerPrograms = [
         meals: "3 Daily",
         shortDesc: "Support local preschools and community centers in the vibrant southern coast.",
         description: "Join our dedicated team of childcare volunteers on the beautiful southern coast of Sri Lanka. Your presence will bring joy, education, and essential support to children in local preschools and community centers. Assist teachers with daily activities, organize creative play, and help improve conversational English skills. This program is perfect for those who are passionate about early childhood development and want to make a tangible difference in the lives of enthusiastic young learners.",
-        color: "#ff6b6b"
+        color: "#ff6b6b",
+        galleryImages: [
+            { src: teachingImg, caption: "Teaching English" },
+            { src: volunteer1, caption: "Working With Children" },
+            { src: cultureExp, caption: "Cultural Exchange" },
+            { src: volunteerCommunity, caption: "Community Work" }
+        ]
     },
     {
         id: "special-needs-support",
@@ -149,8 +178,132 @@ export const volunteerPrograms = [
         pickup: "Included",
         meals: "3 Daily",
         shortDesc: "Provide essential assistance and therapy support for children with special needs.",
-        description: "Make a profound impact by supporting children and young adults with special needs in the Kandy District. Volunteers in this program work alongside local staff in dedicated care centers to provide personal attention, assist with physical and occupational therapy exercises, and organize stimulating activities. Your dedication and compassion will help empower these individuals, improve their quality of life, and provide much-needed support to their caregivers.",
-        color: "#4e73df"
+        description: "Our Special Needs Support Program in Sri Lanka offers volunteers the opportunity to work alongside local teachers, caregivers, and support staff in schools and care homes around Kandy. These placements support children and adults with physical disabilities, learning difficulties, developmental conditions, and additional support needs. Many of the institutions we work with operate with limited funding, minimal resources, and not enough helping hands. Volunteers play an important role in providing extra care, attention, creativity, and emotional support to both the staff and residents. This program is ideal for people who are patient, open-minded, compassionate, and willing to learn through hands-on experience. Previous experience or qualifications in education, psychology, healthcare, therapy, or special needs support can be helpful, but they are not mandatory. We welcome volunteers from different backgrounds who are willing to contribute positively and respectfully.",
+        color: "#4e73df",
+        galleryImages: [
+            { src: volunteer2, caption: "Supporting Care" },
+            { src: interviewImg, caption: "Volunteer Orientation" },
+            { src: cultureExp, caption: "Cultural Immersion" },
+            { src: volunteer3, caption: "Making A Difference" }
+        ],
+        highlights: [
+            "Support Children And Adults With Physical Disabilities & Developmental Conditions",
+            "Work Alongside Local Teachers, Caregivers, And Support Staff In Schools & Care Homes",
+            "Ideal For Patient, Open-Minded, And Compassionate Volunteers Who Want Hands-On Experience",
+            "Includes Shared Kandy Volunteer Accommodation and 3 Traditional Meals Daily"
+        ],
+        sections: [
+            {
+                title: "Placement Information & Schedule",
+                paragraphs: [
+                    "We work with several schools, special education units, and care homes in and around Kandy.",
+                    "**Program Schedule** - Programs operate from Monday to Friday. Working hours are generally from 08:30 AM to 11:30 AM. Weekends are free for personal travel and cultural experiences.",
+                    "**Placement Availability** - Teaching placements are available throughout most of the year. During Sri Lankan school holidays and public holidays, teaching placements may be limited or temporarily unavailable. Special needs homes and residential care facilities are usually available on Thursdays and selected weekdays depending on local needs and availability. Placements may change based on school schedules, staffing, local events, and community requirements."
+                ]
+            },
+            {
+                title: "Volunteer Duties",
+                paragraphs: [
+                    "Volunteer responsibilities vary depending on the placement, the age group, and the daily needs of the institution.",
+                    "**Teaching & Educational Support** - Assisting teachers during classroom activities. Helping children practice basic English, numbers, colors, and simple learning activities. Supporting creative learning through games, music, storytelling, arts, and crafts. Encouraging participation and social interaction.",
+                    "**Care & Daily Assistance** - Assisting staff during mealtimes and feeding support. Helping with cleaning and maintaining activity areas. Supporting residents during daily routines. Helping organize materials and prepare activities.",
+                    "**Activities & Engagement** - Playing games and interactive activities. Singing, dancing, drawing, and simple exercise sessions. Helping keep children and residents active, engaged, and emotionally supported. Providing companionship, encouragement, and positive interaction.",
+                    "**General Support** - Assisting local staff who are often managing large groups with limited resources. Bringing creativity, patience, and energy into the placements. Supporting the overall wellbeing of the children and residents."
+                ]
+            },
+            {
+                title: "Placement Conditions",
+                paragraphs: [
+                    "Volunteers should arrive with an open mind and realistic expectations. Many placements are located in rural or semi-rural areas and may not reflect Western standards of infrastructure, equipment, hygiene systems, or staffing levels. Some facilities operate with very limited budgets and basic resources. Despite these challenges, local staff work extremely hard to provide care and education with what they have available.",
+                    "This experience is not about luxury or comfort — it is about meaningful cultural exchange, understanding different realities, and supporting communities that genuinely need additional help.",
+                    "**Volunteers are encouraged** - Not to compare placements with Western institutions, to remain flexible and respectful, to work collaboratively with local staff, and to focus on contribution rather than perfection."
+                ]
+            },
+            {
+                title: "Dress Code & Cultural Expectations",
+                paragraphs: [
+                    "Sri Lanka is a culturally respectful and modest country, especially within schools, temples, and care environments. All volunteers are expected to dress appropriately during placements.",
+                    "**Dress Code Requirements** - Shoulders and knees must always be covered. Avoid short shorts, crop tops, tight clothing, or revealing outfits. Clothing should be simple, clean, and comfortable. Avoid wearing expensive jewelry, luxury accessories, or flashy items.",
+                    "**Safeguarding & Distractions** - Many children and residents come from underprivileged backgrounds. Wearing expensive items or fashionable accessories may unintentionally create distractions, discomfort, or unrealistic expectations. In some situations, children may ask volunteers for personal belongings, which can place both the volunteer and the placement in an uncomfortable position. We encourage volunteers to dress modestly and respectfully to maintain a professional and culturally sensitive environment."
+                ]
+            },
+            {
+                title: "Skills, Experience & Important Notes",
+                paragraphs: [
+                    "This program offers valuable hands-on experience for: education students, psychology and social work students, occupational therapy and healthcare students, teachers and caregivers, and anyone interested in community work and special needs support.",
+                    "**Practical Exposure** - Volunteers gain practical exposure to classroom support techniques, communication across language barriers, working in multicultural environments, supporting individuals with different abilities, and understanding community-based care systems in Sri Lanka.",
+                    "**Important Notes** - Flexibility is essential, as schedules may change. English is limited in some placements. A local coordinator or teacher will help guide volunteers. Emotional resilience and patience are important. Some placements may be physically and emotionally challenging. Volunteers are expected to respect local customs, religion, and community values. This program is best suited for compassionate individuals who want to contribute meaningfully while gaining real-world experience in a very different cultural setting."
+                ]
+            },
+            {
+                title: "Volunteer Week Structure & Weekend Information",
+                paragraphs: [
+                    "**Sunday** - Arrival day: Volunteers must arrive at the accommodation and complete check-in.",
+                    "**Monday to Friday** - Volunteer placement days.",
+                    "**Saturday** - Departure day: Volunteers are required to vacate the accommodation after brunch, usually around 11:00 AM.",
+                    "**Weekend Freedom** - During weekends, volunteers are free to travel independently around Sri Lanka, explore cultural sites and nature, relax and experience local life. In some situations, if placements are available and additional support is needed, volunteers may also have the opportunity to continue participating in their project during the weekend.",
+                    "**Multiple Weeks stay** - If you continue your volunteer program for additional weeks: Weekend accommodation will be provided. Two meals per day during the weekend will also be included. This allows volunteers to stay connected with the community while preparing for the following volunteer week."
+                ]
+            },
+            {
+                title: "Your Impact as a Volunteer",
+                paragraphs: [
+                    "This program is built around grassroots community support, where even small actions can create meaningful change. Many of the schools and care homes we work with operate with limited staff, limited resources, and very little outside support. Your presence alone brings additional care, energy, encouragement, and attention to children and residents who often do not receive enough one-on-one interaction.",
+                    "As a volunteer, you are not simply visiting a project — you become part of a community.",
+                    "**Your support can help** - Create a more engaging and positive environment for children and residents. Give local staff much-needed assistance and relief in their daily responsibilities. Encourage learning, creativity, confidence, and social interaction. Bring emotional support, kindness, and human connection. Introduce new ideas, activities, and cultural exchange experiences.",
+                    "**Small Moments Matter** - Sometimes the biggest impact comes from the smallest moments: sitting with a child who needs attention, helping someone learn a new word, sharing a game, a drawing, or a smile, or giving caregivers a moment to breathe and feel supported.",
+                    "**Grassroots Perspective** - For many children and residents, meeting volunteers from around the world is something truly special. It reminds them that people care about their wellbeing beyond their local community. At the same time, volunteers gain a deeper understanding of life at a grassroots level in Sri Lanka — seeing both the challenges and the strength of local communities firsthand. This experience is not about 'saving' communities. It is about mutual learning, cultural exchange, and contributing in a respectful and meaningful way. By volunteering, you help strengthen community-based support systems while becoming part of something much bigger than yourself."
+                ]
+            },
+            {
+                title: "Safety, Protection & Volunteer Conduct",
+                paragraphs: [
+                    "The safety, dignity, and wellbeing of the children, residents, local staff, and volunteers are extremely important to us. All volunteers are expected to behave respectfully, responsibly, and professionally at all times while participating in the program. Many of the individuals in our placements are vulnerable and require safe, stable, and emotionally respectful environments. Volunteers are expected to understand that they are guests within these communities and should always follow the guidance of local staff and coordinators.",
+                    "**Volunteer Behavior Expectations** - All volunteers must respect the privacy, dignity, culture, and personal boundaries of all children, residents, and staff; follow all instructions given by the local coordinators, teachers, and placement staff; behave in a calm, respectful, and professional manner at all times; avoid any behavior that may place themselves, other volunteers, or residents at risk; and respect Sri Lankan cultural values, religious beliefs, and community standards.",
+                    "**Physical Contact & Boundaries** - To protect both volunteers and residents, appropriate boundaries must always be maintained. Volunteers are not permitted to hug, carry, kiss, or engage in unnecessary physical contact with children or residents; be alone in isolated areas with children or vulnerable individuals; engage in inappropriate conversations, behavior, or jokes; or form exclusive emotional relationships with residents or children. Simple and respectful interaction is encouraged, but physical and emotional boundaries must always be maintained.",
+                    "**Photography & Social Media Policy** - Many placements contain vulnerable individuals, including children and adults with disabilities. Their privacy and dignity must be protected at all times. Volunteers must: obtain permission from local staff before taking any photographs or videos; respect requests from placements where photography is restricted or prohibited; never post sensitive, humiliating, or inappropriate images online; avoid using children or residents for 'social media content' or personal promotion; and never share personal information about residents, children, or families online. Some placements may completely prohibit photography.",
+                    "**Gifts, Food & Donations** - Volunteers are not allowed to: give money, gifts, sweets, food, phones, clothing, or personal items directly to children or residents; promise sponsorships, financial support, or future assistance; or distribute donations without approval from the local team. Even with good intentions, direct giving can create misunderstandings, dependency, jealousy among residents, or safeguarding concerns. If volunteers wish to donate items or support a placement, this must always be discussed and approved through the local coordination team first.",
+                    "**Personal Belongings** - For safety and boundary reasons: volunteers should not allow residents or children to use their phones, cameras, laptops, jewelry, money, or other personal belongings. Expensive items should be kept secure and used responsibly. The organization is not responsible for lost, damaged, or stolen personal items.",
+                    "**Safety Within Placements** - Volunteers must understand that placements in Sri Lanka may operate differently from institutions in Western countries. Facilities may have limited infrastructure, staffing, equipment, or safety systems due to financial constraints. Volunteers are expected to: work within the guidance of local staff; avoid interfering with medical, disciplinary, or administrative matters; never attempt medical treatment or therapy unless professionally qualified and authorized; and report any concerns directly to the local coordinator rather than confronting staff or residents independently.",
+                    "**Alcohol, Drugs & Smoking** - Drug use is strictly prohibited and may result in immediate dismissal from the program. Alcohol consumption before or during placements is strictly forbidden. Smoking is only permitted in designated areas away from children and residents.",
+                    "**Confidentiality & Respect** - Volunteers may witness challenging living conditions, disabilities, or personal situations during their placement. All volunteers are expected to treat this information respectfully and confidentially. We ask volunteers to approach the experience with humility, understanding, and compassion rather than judgment or comparison.",
+                    "**Failure to Follow Guidelines** - Failure to follow safety procedures, placement rules, or volunteer conduct expectations may result in removal from the placement, termination from the volunteer program, loss of accommodation and program services, and no entitlement to refunds. These measures are in place to protect the wellbeing of the community, placements, residents, staff, and volunteers themselves. This program is built on trust, respect, cultural understanding, and responsible volunteering. By participating, volunteers agree to contribute positively and help create a safe and supportive environment for everyone involved."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "Volunteers will normally stay in shared volunteer accommodation in and around Kandy. The accommodation is simple, safe, and designed to encourage cultural exchange and community living with other international volunteers.",
+            options: [
+                {
+                    title: "Shared Accommodation",
+                    subtitle: "Allocated by Gender (Included)",
+                    icon: "🛏️",
+                    description: "Rooms are allocated based on gender, normally with 4–6 volunteers per room. Features shared bathroom facilities with Western-style toilets and cold water showers. These are basic living conditions with simple furnishings. Wi-Fi may be limited or unstable depending on the location."
+                },
+                {
+                    title: "Private Room Option",
+                    subtitle: "Homestay or Room Upgrade",
+                    icon: "🔒",
+                    description: "Private room upgrades may be available upon request depending on availability. These can be arranged within the volunteer accommodation or at a nearby local homestay. Private rooms may involve an additional cost."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Limited / Unstable" },
+                { label: "People Per Room", value: "4–6 (Shared)" },
+                { label: "Single Sex Rooms", value: "Yes" },
+                { label: "Western Bathroom Facilities", value: "Yes" },
+                { label: "Transportation to Placement", value: "Public Bus / Tuk Tuk" },
+                { label: "Nearest ATM & Shops", value: "15 Minute Drive" }
+            ]
+        },
+        mealsInfo: {
+            description: "Three traditional Sri Lankan meals per day are included during the volunteer week. Meals are usually rice and curry, vegetables, seasonal fruits, and local-style breakfasts and dinners. Sri Lankan food can be spicy, but milder options may sometimes be available. Special dietary needs such as vegetarian, vegan, gluten-free, and food allergies can often be considered if informed in advance. However, options may be limited in rural areas.",
+            examples: {
+                breakfast: "Traditional local breakfast, toast, eggs, seasonal fruits",
+                lunch: "Rice with curries, dhal, sambol, vegetables",
+                dinner: "Local-style curries, noodles, or simple Western-friendly meals"
+            }
+        }
     },
     {
         id: "sri-lanka-dog-rescue",
@@ -165,7 +318,13 @@ export const volunteerPrograms = [
         meals: "3 Daily",
         shortDesc: "Work with local clinics to rescue, treat, and rehabilitate street dogs.",
         description: "Contribute to animal welfare in Sri Lanka by volunteering at a local dog rescue clinic in the Galle District. You will play a crucial role in the rehabilitation of street dogs, assisting with feeding, bathing, walking, and basic medical care under the supervision of local veterinarians. This hands-on program is incredibly rewarding for animal lovers looking to improve the lives of vulnerable animals and promote humane treatment within the community.",
-        color: "#ffd93d"
+        color: "#ffd93d",
+        galleryImages: [
+            { src: volunteerWildlife, caption: "Animal Care" },
+            { src: volunteer4, caption: "Dog Rehabilitation" },
+            { src: volunteerCommunity, caption: "Community Impact" },
+            { src: galleImg, caption: "Galle District" }
+        ]
     },
     {
         id: "village-school-renovation",
@@ -180,7 +339,13 @@ export const volunteerPrograms = [
         meals: "3 Daily",
         shortDesc: "Help transform rural school environments through painting and repair work.",
         description: "Roll up your sleeves and help create inspiring learning environments for children in rural Sri Lanka. Our school renovation program focuses on improving the infrastructure of underfunded village schools. Tasks may include painting classrooms, repairing furniture, creating educational murals, and improving playground facilities. Your hard work will leave a lasting legacy, providing students with safe and vibrant spaces to learn and grow.",
-        color: "#f6ad55"
+        color: "#f6ad55",
+        galleryImages: [
+            { src: volunteer1, caption: "School Renovation" },
+            { src: teachingImg, caption: "Learning Spaces" },
+            { src: cultureExp, caption: "Village Life" },
+            { src: volunteerCommunity, caption: "Team Work" }
+        ]
     },
     {
         id: "zen-and-temple-yoga",
@@ -195,7 +360,13 @@ export const volunteerPrograms = [
         meals: "2 Daily",
         shortDesc: "Combine mindfulness with temple service in the heart of the cultural triangle.",
         description: "Experience spiritual rejuvenation and cultural immersion in the sacred Kandy District. This unique program blends daily yoga and meditation practices with meaningful service at a local Buddhist temple. Volunteers assist monks with daily chores, temple maintenance, and community outreach programs while learning about Buddhist philosophy and mindfulness techniques. This is an ideal journey for those seeking inner peace and a deep understanding of Sri Lankan spiritual traditions.",
-        color: "#9b59b6"
+        color: "#9b59b6",
+        galleryImages: [
+            { src: teaPlantation, caption: "Serene Landscapes" },
+            { src: kandyTrain, caption: "Journey To Kandy" },
+            { src: cultureExp, caption: "Temple Culture" },
+            { src: volunteer3, caption: "Mindful Practice" }
+        ]
     },
     {
         id: "medical-volunteer",
@@ -211,6 +382,12 @@ export const volunteerPrograms = [
         shortDesc: "Gain valuable medical experience and insight into the Sri Lankan healthcare system.",
         description: "As a medical volunteer in Sri Lanka, you can gain valuable medical experience in a new culture, an opportunity not to be missed in this gorgeous part of the world! If you are looking for a learning experience or would like to pursue a career in the medical field, then this program is the ideal way to give you an insight into the Sri Lankan healthcare system.",
         color: "#e74c3c",
+        galleryImages: [
+            { src: interviewImg, caption: "Medical Orientation" },
+            { src: volunteer2, caption: "Hospital Placement" },
+            { src: volunteerCommunity, caption: "Community Health" },
+            { src: mirissaImg, caption: "Weekend Getaway" }
+        ],
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",
             "Gain Hospital Experience & Exposure Into The Sri Lankan Healthcare System",

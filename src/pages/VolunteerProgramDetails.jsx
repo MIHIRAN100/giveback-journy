@@ -75,12 +75,12 @@ const VolunteerProgramDetails = () => {
             {/* Immersive Apple-Style Hero */}
             <div className="hero-apple" style={{
                 position: 'relative',
-                height: '70vh',
-                minHeight: '480px',
+                height: '45vh',
+                minHeight: '300px',
                 background: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65)), url(${program.image}) center/cover no-repeat`,
                 display: 'flex',
                 alignItems: 'flex-end',
-                paddingBottom: '80px',
+                paddingBottom: '40px',
                 color: 'white',
                 overflow: 'hidden'
             }}>
@@ -88,31 +88,31 @@ const VolunteerProgramDetails = () => {
                     <span style={{ 
                         background: 'rgba(255, 255, 255, 0.2)',
                         backdropFilter: 'blur(10px)',
-                        padding: '8px 20px',
+                        padding: '6px 16px',
                         borderRadius: '50px',
-                        fontSize: '0.8rem',
+                        fontSize: '0.7rem',
                         fontWeight: 800,
                         letterSpacing: '2px',
                         textTransform: 'uppercase',
-                        marginBottom: '20px',
+                        marginBottom: '14px',
                         display: 'inline-block',
                         border: '1px solid rgba(255, 255, 255, 0.3)'
                     }}>
                         ✨ {program.location}
                     </span>
                     <h1 style={{ 
-                        fontSize: 'clamp(2.8rem, 6.5vw, 5.2rem)', 
+                        fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', 
                         fontWeight: 900, 
                         lineHeight: 1.05, 
                         letterSpacing: '-0.04em', 
-                        margin: '0 0 20px 0',
+                        margin: '0 0 12px 0',
                         textShadow: '0 4px 30px rgba(0,0,0,0.3)'
                     }}>
                         {program.title}
                     </h1>
                     <p style={{ 
-                        fontSize: 'clamp(1.1rem, 2vw, 1.45rem)', 
-                        maxWidth: '750px', 
+                        fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)', 
+                        maxWidth: '650px', 
                         lineHeight: 1.5, 
                         color: 'rgba(255,255,255,0.92)', 
                         fontWeight: 500,
@@ -124,87 +124,131 @@ const VolunteerProgramDetails = () => {
                 </div>
             </div>
 
-            {/* Bento-Style "At A Glance" Specs Grid */}
-            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '60px 5% 0' }}>
+            {/* Compact Specs Strip */}
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '30px 5% 0' }}>
                 <div className="bento-grid" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                    gap: '24px',
-                    marginBottom: '60px'
+                    gridTemplateColumns: 'repeat(4, 1fr)',
+                    gap: '12px',
+                    marginBottom: '40px'
                 }}>
                     <div className="bento-card" style={{
                         background: '#f5f5f7',
-                        padding: '30px',
-                        borderRadius: '24px',
-                        border: '1px solid rgba(0,0,0,0.02)',
+                        padding: '16px 20px',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.03)',
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '14px',
                         transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
                     }}>
-                        <div style={{ color: 'var(--primary-green)', fontSize: '2rem', marginBottom: '25px' }}>
+                        <div style={{ 
+                            color: 'var(--primary-green)', 
+                            fontSize: '1.2rem',
+                            width: '36px',
+                            height: '36px',
+                            borderRadius: '10px',
+                            background: 'rgba(29, 185, 84, 0.08)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
                             <i className="bi bi-clock"></i>
                         </div>
                         <div>
-                            <div style={{ fontSize: '0.75rem', color: '#86868b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', marginBottom: '4px' }}>Duration</div>
-                            <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em' }}>{program.duration}</div>
+                            <div style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1px' }}>Duration</div>
+                            <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', lineHeight: 1.2 }}>{program.duration}</div>
                         </div>
                     </div>
 
                     <div className="bento-card" style={{
                         background: '#f5f5f7',
-                        padding: '30px',
-                        borderRadius: '24px',
-                        border: '1px solid rgba(0,0,0,0.02)',
+                        padding: '16px 20px',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.03)',
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '14px',
                         transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
                     }}>
-                        <div style={{ color: 'var(--primary-green)', fontSize: '2rem', marginBottom: '25px' }}>
+                        <div style={{ 
+                            color: 'var(--primary-green)', 
+                            fontSize: '1.2rem',
+                            width: '36px',
+                            height: '36px',
+                            borderRadius: '10px',
+                            background: 'rgba(29, 185, 84, 0.08)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
                             <i className="bi bi-house"></i>
                         </div>
                         <div>
-                            <div style={{ fontSize: '0.75rem', color: '#86868b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', marginBottom: '4px' }}>Housing</div>
-                            <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em' }}>{program.housing}</div>
+                            <div style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1px' }}>Housing</div>
+                            <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', lineHeight: 1.2 }}>{program.housing}</div>
                         </div>
                     </div>
 
                     <div className="bento-card" style={{
                         background: '#f5f5f7',
-                        padding: '30px',
-                        borderRadius: '24px',
-                        border: '1px solid rgba(0,0,0,0.02)',
+                        padding: '16px 20px',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.03)',
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '14px',
                         transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
                     }}>
-                        <div style={{ color: 'var(--primary-green)', fontSize: '2rem', marginBottom: '25px' }}>
+                        <div style={{ 
+                            color: 'var(--primary-green)', 
+                            fontSize: '1.2rem',
+                            width: '36px',
+                            height: '36px',
+                            borderRadius: '10px',
+                            background: 'rgba(29, 185, 84, 0.08)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
                             <i className="bi bi-tag"></i>
                         </div>
                         <div>
-                            <div style={{ fontSize: '0.75rem', color: '#86868b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', marginBottom: '4px' }}>Program Fee</div>
-                            <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--primary-green)', letterSpacing: '-0.02em' }}>From {formatPrice(program.price)}</div>
+                            <div style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1px' }}>Program Fee</div>
+                            <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--primary-green)', letterSpacing: '-0.02em', lineHeight: 1.2 }}>From {formatPrice(program.price)}</div>
                         </div>
                     </div>
 
                     <div className="bento-card" style={{
                         background: '#f5f5f7',
-                        padding: '30px',
-                        borderRadius: '24px',
-                        border: '1px solid rgba(0,0,0,0.02)',
+                        padding: '16px 20px',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.03)',
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '14px',
                         transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
                     }}>
-                        <div style={{ color: 'var(--primary-green)', fontSize: '2rem', marginBottom: '25px' }}>
+                        <div style={{ 
+                            color: 'var(--primary-green)', 
+                            fontSize: '1.2rem',
+                            width: '36px',
+                            height: '36px',
+                            borderRadius: '10px',
+                            background: 'rgba(29, 185, 84, 0.08)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
                             <i className="bi bi-shield-check"></i>
                         </div>
                         <div>
-                            <div style={{ fontSize: '0.75rem', color: '#86868b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.2px', marginBottom: '4px' }}>Min Age</div>
-                            <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em' }}>{program.minAge}</div>
+                            <div style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1px' }}>Min Age</div>
+                            <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', lineHeight: 1.2 }}>{program.minAge}</div>
                         </div>
                     </div>
                 </div>
@@ -221,6 +265,70 @@ const VolunteerProgramDetails = () => {
                         {program.description}
                     </p>
                 </div>
+
+                {/* Photo Gallery */}
+                {program.galleryImages && program.galleryImages.length > 0 && (
+                    <div className="section-card" style={{
+                        background: 'transparent',
+                        padding: '0 0 45px 0',
+                        marginBottom: '45px',
+                        borderBottom: '1px solid #eaeaea'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                            <div style={{
+                                width: '4px',
+                                height: '28px',
+                                borderRadius: '4px',
+                                background: 'var(--primary-green)'
+                            }}></div>
+                            <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', margin: 0 }}>Gallery</h2>
+                        </div>
+                        <div className="vol-gallery-grid" style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(4, 1fr)',
+                            gridTemplateRows: '200px',
+                            gap: '12px'
+                        }}>
+                            {program.galleryImages.map((img, idx) => (
+                                <div key={idx} className="vol-gallery-item" style={{
+                                    position: 'relative',
+                                    borderRadius: '16px',
+                                    overflow: 'hidden',
+                                    cursor: 'pointer'
+                                }}>
+                                    <img 
+                                        src={img.src} 
+                                        alt={img.caption}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            transition: 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                                        }}
+                                        className="vol-gallery-img"
+                                    />
+                                    <div className="vol-gallery-caption" style={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        padding: '24px 16px 12px',
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                                        color: 'white',
+                                        fontSize: '0.8rem',
+                                        fontWeight: 700,
+                                        letterSpacing: '0.02em',
+                                        opacity: 0,
+                                        transform: 'translateY(8px)',
+                                        transition: 'all 0.3s ease'
+                                    }}>
+                                        {img.caption}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 {/* Program Highlights Spec Grid */}
                 {program.highlights && program.highlights.length > 0 && (
@@ -264,9 +372,9 @@ const VolunteerProgramDetails = () => {
                 )}
 
                 {/* Dynamic Sections & Timeline Itinerary */}
-                {program.sections && program.sections.map((section, idx) => {
+                {program.sections && program.sections.filter(s => !s.title.toLowerCase().includes('impact')).map((section, idx, filteredArr) => {
                     const isItinerary = section.title.toLowerCase().includes('itinerary');
-                    const isLast = idx === program.sections.length - 1;
+                    const isLast = idx === filteredArr.length - 1;
                     return (
                         <div key={idx} id={isItinerary ? "itinerary" : `section-${idx}`} className="section-card" style={{
                             background: 'transparent',
@@ -352,6 +460,54 @@ const VolunteerProgramDetails = () => {
                     );
                 })}
 
+                {/* Cinematic Image Break */}
+                {program.galleryImages && program.galleryImages.length > 1 && (
+                    <div style={{
+                        margin: '20px 0 50px',
+                        borderRadius: '24px',
+                        overflow: 'hidden',
+                        position: 'relative',
+                        height: '280px'
+                    }}>
+                        <img 
+                            src={program.galleryImages[1].src} 
+                            alt="Program experience"
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover'
+                            }}
+                        />
+                        <div style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'flex-end',
+                            padding: '40px'
+                        }}>
+                            <span style={{
+                                fontSize: '0.7rem',
+                                fontWeight: 800,
+                                textTransform: 'uppercase',
+                                letterSpacing: '2px',
+                                color: 'rgba(255,255,255,0.7)',
+                                marginBottom: '8px'
+                            }}>Your Journey</span>
+                            <h3 style={{
+                                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+                                fontWeight: 900,
+                                color: 'white',
+                                margin: 0,
+                                letterSpacing: '-0.03em',
+                                lineHeight: 1.15,
+                                textShadow: '0 2px 20px rgba(0,0,0,0.3)'
+                            }}>Where you'll stay & what you'll eat</h3>
+                        </div>
+                    </div>
+                )}
+
                 {/* Accommodation Configurator Section */}
                 {program.accommodation && (
                     <div id="accommodation" className="section-card" style={{
@@ -434,28 +590,60 @@ const VolunteerProgramDetails = () => {
                         </div>
                     </div>
                 )}
+
+                {/* Your Impact Section - Bottom of Page */}
+                {program.sections && program.sections.filter(s => s.title.toLowerCase().includes('impact')).map((section, idx) => (
+                    <div key={`impact-${idx}`} className="section-card" style={{
+                        background: 'transparent',
+                        padding: '45px 0',
+                        marginBottom: '60px',
+                    }}>
+                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '30px' }}>{section.title}</h2>
+                        <div>
+                            {section.paragraphs.map((para, pIdx) => {
+                                if (para.startsWith('**')) {
+                                    const parts = para.split('**');
+                                    return (
+                                        <p key={pIdx} style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '20px' }}>
+                                            <strong style={{ color: '#1d1d1f', fontWeight: 700 }}>{parts[1]}</strong>{parts[2]}
+                                        </p>
+                                    );
+                                }
+                                return (
+                                    <p key={pIdx} style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '20px' }}>
+                                        {para}
+                                    </p>
+                                );
+                            })}
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            {/* Apple Floating Sticky Bottom Bar */}
+            {/* Modern Floating Bottom Bar */}
             <div style={{
                 position: 'fixed',
-                bottom: 0,
-                left: 0,
-                width: '100%',
-                background: 'rgba(255, 255, 255, 0.85)',
-                backdropFilter: 'saturate(180%) blur(20px)',
-                borderTop: '1px solid rgba(0,0,0,0.08)',
-                padding: '18px 5%',
+                bottom: '20px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 'calc(100% - 60px)',
+                maxWidth: '580px',
+                background: 'rgba(255, 255, 255, 0.88)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                border: '1px solid rgba(0,0,0,0.06)',
+                borderRadius: '50px',
+                padding: '14px 16px 14px 30px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 zIndex: 1000,
-                boxShadow: '0 -10px 40px rgba(0,0,0,0.04)'
+                boxShadow: '0 12px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.03)',
+                boxSizing: 'border-box'
             }}>
-                <div style={{ maxWidth: '1000px', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div className="bottom-bar-info" style={{ display: 'none' }}>
-                        <h4 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 900, color: '#1d1d1f', letterSpacing: '-0.02em' }}>{program.title}</h4>
-                        <p style={{ margin: 0, fontSize: '0.85rem', color: '#86868b', fontWeight: 600 }}>From {formatPrice(program.price)} • {program.duration}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '100%', justifyContent: 'space-between' }}>
+                    <div className="bottom-price-info" style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <span style={{ fontSize: '0.65rem', color: '#86868b', display: 'block', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
+                        <span style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--primary-green)', display: 'block', lineHeight: 1 }}>{formatPrice(program.price)}</span>
                     </div>
                     <Link 
                         to={`/volunteer-inquiry?program=${encodeURIComponent(program.title)}`} 
@@ -463,21 +651,21 @@ const VolunteerProgramDetails = () => {
                         style={{ 
                             background: '#1d1d1f', 
                             color: 'white',
-                            padding: '16px 48px', 
-                            fontSize: '1.05rem', 
+                            padding: '14px 34px', 
+                            fontSize: '0.95rem', 
                             fontWeight: 700,
                             borderRadius: '50px',
-                            width: '100%', 
-                            maxWidth: '380px', 
-                            textAlign: 'center', 
-                            margin: '0 auto',
                             textDecoration: 'none',
-                            display: 'block',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px',
                             transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                            boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
+                            boxShadow: '0 6px 20px rgba(0,0,0,0.12)',
+                            whiteSpace: 'nowrap'
                         }}
                     >
-                        Apply to Volunteer
+                        <span>Apply to Volunteer</span>
+                        <i className="bi bi-arrow-right" style={{ fontSize: '1rem' }}></i>
                     </Link>
                 </div>
             </div>
@@ -485,8 +673,19 @@ const VolunteerProgramDetails = () => {
             {/* Global Scoped Premium CSS rules */}
             <style dangerouslySetInnerHTML={{ __html: `
                 .volunteer-details-page {
-                    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+                    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
                     -webkit-font-smoothing: antialiased;
+                }
+                .volunteer-details-page h1,
+                .volunteer-details-page h2,
+                .volunteer-details-page h3,
+                .volunteer-details-page h4,
+                .volunteer-details-page strong,
+                .volunteer-details-page .subnav-cta,
+                .volunteer-details-page .btn-apple-solid {
+                    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
+                    font-weight: 800 !important;
+                    letter-spacing: -0.035em !important;
                 }
                 .subnav-link {
                     transition: color 0.3s ease !important;
@@ -522,6 +721,13 @@ const VolunteerProgramDetails = () => {
                     background: #000000 !important;
                     transform: translateY(-1px);
                 }
+                .vol-gallery-item:hover .vol-gallery-img {
+                    transform: scale(1.08);
+                }
+                .vol-gallery-item:hover .vol-gallery-caption {
+                    opacity: 1 !important;
+                    transform: translateY(0) !important;
+                }
                 .meal-card {
                     transition: all 0.3s ease !important;
                 }
@@ -541,8 +747,25 @@ const VolunteerProgramDetails = () => {
                         padding: 30px 0 !important;
                     }
                     .bento-grid {
-                        gap: 16px !important;
-                        margin-bottom: 40px !important;
+                        grid-template-columns: repeat(2, 1fr) !important;
+                        gap: 8px !important;
+                        margin-bottom: 30px !important;
+                    }
+                    .vol-gallery-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                        grid-template-rows: 150px !important;
+                    }
+                    .bottom-price-info {
+                        display: none !important;
+                    }
+                    .bottom-bar-actions {
+                        width: 100% !important;
+                        justify-content: center !important;
+                        gap: 0 !important;
+                    }
+                    .btn-apple-solid {
+                        width: 100% !important;
+                        max-width: 100% !important;
                     }
                 }
                 @media (min-width: 768px) {
@@ -551,6 +774,9 @@ const VolunteerProgramDetails = () => {
                     }
                     .btn-apple-solid {
                         margin: 0 !important;
+                    }
+                    .bottom-bar-actions {
+                        width: auto !important;
                     }
                 }
             `}} />
