@@ -422,24 +422,141 @@ export const volunteerPrograms = [
     },
     {
         id: "village-school-renovation",
-        title: "Village School Renovation",
+        title: "Construction & Renovation",
         location: "Kandy District",
         duration: "1-4 Weeks",
-        housing: "Shared Village Stay",
+        housing: "Shared or Private",
         price: "250",
         image: renovationImg,
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
-        shortDesc: "Help transform rural school environments through painting and repair work.",
-        description: "Roll up your sleeves and help create inspiring learning environments for children in rural Sri Lanka. Our school renovation program focuses on improving the infrastructure of underfunded village schools. Tasks may include painting classrooms, repairing furniture, creating educational murals, and improving playground facilities. Your hard work will leave a lasting legacy, providing students with safe and vibrant spaces to learn and grow.",
+        shortDesc: "Support grassroots community renovation, painting, and beautification projects in rural Sri Lanka.",
+        description: "Our Construction & Renovation Volunteer Program in Sri Lanka gives volunteers the opportunity to support grassroots community projects in rural and semi-rural areas around Kandy and other parts of the country. This program focuses on improving community spaces that are used daily by local families, schools, children, elderly residents, temples, and community organizations that often struggle with limited funding and very little external support. Many communities in Sri Lanka simply do not have the financial resources, equipment, or workforce needed to maintain and improve their buildings and public spaces. Even basic repairs, painting, beautification, and maintenance work can remain unfinished for years due to economic hardship and lack of manpower. By volunteering, participants directly support local communities through practical hands-on work while experiencing authentic Sri Lankan culture and community life.",
         color: "#f6ad55",
         galleryImages: [
             { src: volunteer1, caption: "School Renovation" },
             { src: teachingImg, caption: "Learning Spaces" },
             { src: cultureExp, caption: "Village Life" },
             { src: volunteerCommunity, caption: "Team Work" }
-        ]
+        ],
+        highlights: [
+            "Support grassroots community renovation and painting projects in rural areas around Kandy",
+            "Help improve classrooms, schools, Buddhist temples, and community centers",
+            "Hands-on volunteering including painting, beautification, gardening, and light repairs",
+            "Experience authentic Sri Lankan culture while working side-by-side with local villagers"
+        ],
+        sections: [
+            {
+                title: "Why Construction & Renovation Support Matters",
+                paragraphs: [
+                    "Sri Lanka is a beautiful country with strong community values and resilient people. However, many rural communities continue to face economic challenges, especially after years of financial instability, rising living costs, and limited access to resources.",
+                    "**Many schools, community centers, temples, childcare facilities, and public spaces:** Operate with very limited budgets, Cannot afford professional labor or renovation costs, Lack proper maintenance due to financial hardship, and Depend heavily on community volunteers and outside support.",
+                    "In many villages, everything is still done manually. Unlike large commercial projects, local community renovations are often completed using simple hand tools, local labor, and community cooperation. Volunteers become part of this process by working side-by-side with local people in a very grassroots and meaningful way. This program is not focused on large-scale commercial construction. Instead, it focuses on practical, community-based improvement projects that create visible and lasting impact for local people."
+                ]
+            },
+            {
+                title: "Project Focus Areas",
+                paragraphs: [
+                    "Projects vary depending on the requests and needs of the local community at the time of volunteering. Volunteer activities may include:",
+                    "**Cleaning & Community Maintenance** - Cleaning schools and community buildings, Removing overgrown vegetation, Clearing pathways and outdoor areas, Organizing and improving shared spaces, Supporting general maintenance work.",
+                    "**Painting Projects** - Painting classrooms and community buildings, Repainting old or damaged walls, Refreshing public spaces with new colors, Assisting with protective painting and finishing work. Many buildings cannot afford regular maintenance, and even simple painting projects can completely transform a space for children and the local community.",
+                    "**Beautification Projects** - Decorating community spaces, Improving outdoor environments, Creating welcoming educational spaces, Simple landscaping and visual improvements, Restoring neglected areas. These activities help create safer, cleaner, and more positive environments for local communities.",
+                    "**Murals & Creative Community Art** - Depending on local requests and volunteer skills, projects may include: Educational murals in schools, Children’s artwork walls, Inspirational paintings, Community message boards, Cultural or nature-themed artwork. Murals can help create brighter and more engaging learning spaces for children and families.",
+                    "**Gardening & Outdoor Improvements** - Community gardening, Planting flowers and trees, Cleaning and improving outdoor areas, Creating simple green spaces, Supporting environmentally friendly community initiatives. These activities improve both the appearance and wellbeing of shared spaces.",
+                    "**Soft Construction Work** - This program may also involve light or 'soft' construction activities depending on community needs and volunteer abilities. Examples may include building simple pathways, minor repairs and restoration work, basic cement mixing, sanding and surface preparation, installing shelves or classroom materials, assisting with simple renovation tasks, repairing fences or outdoor structures.",
+                    "All work is manual and community-based. Heavy machinery is generally not used, and volunteers are not expected to perform highly technical construction tasks unless professionally qualified. Projects are selected carefully based on: Community needs, Volunteer safety, Skill levels, Local weather conditions, and Available materials and timelines."
+                ]
+            },
+            {
+                title: "Community-Led Projects",
+                paragraphs: [
+                    "One of the most important parts of this program is that projects are based on real requests from local communities.",
+                    "**Grassroots Priorities** - Activities may change depending on urgent local needs, Projects are not staged for tourism purposes, Work is often simple but highly meaningful. Flexibility is essential. Volunteers should understand that community priorities may shift due to weather, school schedules, festivals, funding limitations, or local circumstances."
+                ]
+            },
+            {
+                title: "Program Schedule",
+                paragraphs: [
+                    "**Working Days:** Monday to Friday.",
+                    "**Typical Working Hours:** 08:30 AM – 01:30 PM.",
+                    "Schedules may vary depending on weather conditions, community availability, local events, and project types. Breaks will be provided throughout the day. Weekends are generally free for personal travel and cultural experiences."
+                ]
+            },
+            {
+                title: "Who Can Join?",
+                paragraphs: [
+                    "This program is suitable for individuals, students, families, school groups, corporate groups, and community organizations.",
+                    "**No professional construction experience is required.** However, volunteers should: Be physically active and prepared for manual work, Be flexible and open-minded, Be willing to work in hot weather conditions, and Have realistic expectations.",
+                    "Professional builders, painters, artists, architects, landscapers, and skilled tradespeople are also welcome and can often contribute additional expertise."
+                ]
+            },
+            {
+                title: "Placement Conditions",
+                paragraphs: [
+                    "Construction and renovation work in Sri Lanka is very different from commercial construction environments in many Western countries.",
+                    "**Volunteers should expect:** Manual labor, basic tools and equipment, simple working environments, limited resources, hot and humid conditions, and rural community settings.",
+                    "Projects may progress slowly due to: Weather, Material delays, Community coordination, and Limited infrastructure. This experience is about community contribution and cultural exchange rather than fast-paced construction output."
+                ]
+            },
+            {
+                title: "Dress Code & Safety",
+                paragraphs: [
+                    "**What to wear:** Comfortable work clothes that can get dirty or painted, closed shoes or work shoes, and modest clothing suitable for Sri Lankan culture. Shoulders and knees should remain covered during community work. Volunteers should avoid expensive jewelry, luxury accessories, or revealing clothing.",
+                    "**Safety Guidelines:** Safety guidelines must always be followed. Volunteers are expected to: Use tools responsibly, Follow staff instructions, Avoid unsafe behavior, and Respect local working practices."
+                ]
+            },
+            {
+                title: "Your Impact as a Volunteer",
+                paragraphs: [
+                    "This program is built around grassroots community support. Sometimes a fresh coat of paint, a repaired wall, a clean learning environment, or a safer pathway can completely change how a community space feels for the people who use it every day.",
+                    "**Your contribution helps:** Improve schools and community spaces, Create safer and cleaner environments, Support communities that lack funding and manpower, Reduce the workload on struggling local communities, Bring new energy, creativity, and encouragement, Help local people feel seen, valued, and supported.",
+                    "Many of the projects you work on are spaces used daily by children, families, elderly residents, and local communities. Even small improvements can create: More welcoming schools, Better learning environments, Safer public areas, Increased community pride, and Long-term positive impact.",
+                    "At the same time, volunteers gain a deeper understanding of life at a grassroots level in Sri Lanka — learning how communities work together with limited resources but strong resilience and kindness. This is not just about construction work. It is about people, community, cultural exchange, and creating meaningful impact together."
+                ]
+            },
+            {
+                title: "Project Locations",
+                paragraphs: [
+                    "Construction and renovation activities can take place in a variety of community-based locations depending on the current needs, requests, and priorities of the local community at the time of the program.",
+                    "**Projects may be carried out at:** Preschools, local schools, Buddhist temples, community centers, rural community buildings, children’s activity spaces, public gathering areas, and other locations where communities require additional support.",
+                    "Each project is selected based on genuine community requests and where volunteer assistance can create the most meaningful impact. The type of work and exact location may vary depending on: Community priorities, Urgent renovation needs, Weather conditions, Available materials and funding, Volunteer group size and skills, and Local festivals, school schedules, or religious events.",
+                    "As this is a grassroots community program, flexibility is very important. Volunteers should understand that projects are designed around real local needs rather than fixed commercial-style construction plans. Even simple improvements such as painting classrooms, cleaning neglected spaces, repairing community facilities, or helping beautify public areas can make a significant difference to the people who use these spaces every day."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "Volunteers usually stay in shared volunteer accommodation in and around Kandy.",
+            options: [
+                {
+                    title: "Shared Accommodation",
+                    subtitle: "Allocated by Gender (Included)",
+                    icon: "🛏️",
+                    description: "Gender-based room allocation, normally 4–6 volunteers per room with shared bathrooms, Western-style toilets, cold water showers, and simple, basic living conditions."
+                },
+                {
+                    title: "Private Rooms",
+                    subtitle: "Upgrade Available",
+                    icon: "🔒",
+                    description: "Private room upgrades may be available within the volunteer accommodation or at a nearby local guesthouse or homestay (additional costs may apply)."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Not Available" },
+                { label: "People Per Room", value: "4–6 (Shared)" },
+                { label: "Single Sex Rooms", value: "Yes" },
+                { label: "Bathroom Facilities", value: "Western & Shared" },
+                { label: "Transportation to Placement", value: "Public Bus / Tuk Tuk" }
+            ]
+        },
+        mealsInfo: {
+            description: "Three traditional Sri Lankan meals per day are included during the volunteer week. Meals typically include rice and curry, vegetables, seasonal fruits, and local-style breakfasts and dinners. Special dietary requirements may be considered with advance notice.",
+            examples: {
+                breakfast: "Sri Lankan-style breakfast (hoppers, roti, or fruit)",
+                lunch: "Traditional Rice and Curry with vegetables",
+                dinner: "Sri Lankan-style dinner"
+            }
+        }
     },
     {
         id: "zen-and-temple-yoga",

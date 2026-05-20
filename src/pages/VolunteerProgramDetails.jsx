@@ -641,9 +641,12 @@ const VolunteerProgramDetails = () => {
                 boxSizing: 'border-box'
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '100%', justifyContent: 'space-between' }}>
-                    <div className="bottom-price-info" style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-                        <span style={{ fontSize: '0.65rem', color: '#86868b', display: 'block', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
-                        <span style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--primary-green)', display: 'block', lineHeight: 1 }}>{formatPrice(program.price)}</span>
+                    <div className="bottom-price-info" style={{ display: 'flex', flexDirection: 'column', gap: '3px', textAlign: 'left' }}>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+                            <span style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
+                            <span style={{ fontSize: '1.3rem', fontWeight: 900, color: 'var(--primary-green)', lineHeight: 1 }}>{formatPrice(program.price)}</span>
+                        </div>
+                        <span style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>* Includes accommodation, meals & pickup</span>
                     </div>
                     <Link 
                         to={`/volunteer-inquiry?program=${encodeURIComponent(program.title)}`} 
