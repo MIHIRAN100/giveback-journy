@@ -1217,6 +1217,113 @@ h1, h2, h3, .logo-text {
     }
 }
 
+/* ── Trustpilot Badge ─────────────────────────────── */
+.hero-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.trustpilot-label {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    opacity: 0.95;
+}
+
+.trustpilot-stars {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background: #00b67a;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.trustpilot-stars i {
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.trustpilot-count {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+.trustpilot-reviews-link {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.trustpilot-reviews-link:hover {
+    color: #00b67a;
+}
+
+.trustpilot-logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 6px 14px 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.trustpilot-logo:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+.trustpilot-logo-star {
+    color: #00b67a;
+    font-size: 1rem;
+}
+
+.trustpilot-logo span {
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .hero-trustpilot {
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .trustpilot-label {
+        font-size: 0.9rem;
+    }
+
+    .trustpilot-count {
+        font-size: 0.8rem;
+    }
+
+    .trustpilot-stars {
+        padding: 5px 8px;
+    }
+
+    .trustpilot-stars i {
+        font-size: 0.8rem;
+    }
+}
+/* ── END Trustpilot Badge ─────────────────────────── */
+
 /* Company Status Bar (Partner Slider) */
 .partner-slider-section {
     background: linear-gradient(90deg, #121212 0%, #1a1a1a 100%);

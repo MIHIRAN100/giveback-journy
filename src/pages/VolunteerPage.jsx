@@ -22,7 +22,7 @@ const pricingPrograms = [
     },
     {
         name: "Teaching Volunteer Program",
-        price: 220,
+        price: 200,
         duration: "1-24 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -34,7 +34,7 @@ const pricingPrograms = [
     },
     {
         name: "Special Needs Support",
-        price: 220,
+        price: 200,
         duration: "1-8 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -46,7 +46,7 @@ const pricingPrograms = [
     },
     {
         name: "Construction & Renovation",
-        price: 250,
+        price: 200,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private",
@@ -70,7 +70,7 @@ const pricingPrograms = [
     },
     {
         name: "Zen & Temple Yoga",
-        price: 280,
+        price: 200,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private",
@@ -82,7 +82,7 @@ const pricingPrograms = [
     },
     {
         name: "Medical Volunteer Program",
-        price: 350,
+        price: 200,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -103,33 +103,33 @@ const programWeeklyRates = {
     },
     "sri-lanka-childcare": {
         baseWeeks: 1,
-        basePrice: 220,
-        extraWeekPrice: 100
+        basePrice: 200,
+        extraWeekPrice: 50
     },
     "special-needs-support": {
         baseWeeks: 1,
-        basePrice: 220,
-        extraWeekPrice: 100
+        basePrice: 200,
+        extraWeekPrice: 50
     },
     "village-school-renovation": {
         baseWeeks: 1,
-        basePrice: 250,
-        extraWeekPrice: 120
+        basePrice: 200,
+        extraWeekPrice: 50
     },
     "sri-lanka-dog-rescue": {
         baseWeeks: 1,
         basePrice: 200,
-        extraWeekPrice: 100
+        extraWeekPrice: 50
     },
     "zen-and-temple-yoga": {
         baseWeeks: 1,
-        basePrice: 280,
-        extraWeekPrice: 120
+        basePrice: 200,
+        extraWeekPrice: 50
     },
     "medical-volunteer": {
         baseWeeks: 1,
-        basePrice: 350,
-        extraWeekPrice: 150
+        basePrice: 200,
+        extraWeekPrice: 170
     }
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { volunteerPrograms } from '../data/volunteerPrograms';
+import { volunteerReviews } from '../data/volunteerReviews';
 import { useCurrency } from '../context/CurrencyContext';
 
 const VolunteerProgramDetails = () => {
@@ -9,6 +10,7 @@ const VolunteerProgramDetails = () => {
     const { formatPrice } = useCurrency();
 
     const program = volunteerPrograms.find(p => p.id === id);
+    const reviews = volunteerReviews[id] || [];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -619,6 +621,117 @@ const VolunteerProgramDetails = () => {
                     </div>
                 ))}
             </div>
+
+
+            {/* Reviews Section */}
+            <div style={{
+                padding: '80px 0 70px',
+                background: '#fafafa',
+                borderTop: '1px solid #f0f0f0',
+                overflow: 'hidden'
+            }}>
+                {/* Header + Badge — centered */}
+                <div style={{ textAlign: 'center', marginBottom: '18px', padding: '0 5%' }}>
+                    <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem' }}>What Volunteers Say</span>
+                    <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 900, marginTop: '10px', marginBottom: '24px', letterSpacing: '-0.03em', color: '#1d1d1f' }}>
+                        Trusted by Volunteers Worldwide
+                    </h2>
+
+                    {/* Rating Badge — top */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', flexWrap: 'wrap', marginBottom: '40px' }}>
+                        <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1d1d1f' }}>Great</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '3px', background: '#00b67a', padding: '7px 11px', borderRadius: '7px' }}>
+                            {[1,2,3,4].map(i => (
+                                <i key={i} className="fa-solid fa-star" style={{ color: '#fff', fontSize: '0.9rem' }}></i>
+                            ))}
+                            <i className="fa-solid fa-star-half-stroke" style={{ color: '#fff', fontSize: '0.9rem' }}></i>
+                        </div>
+                        <span style={{ fontSize: '0.9rem', color: '#555', fontWeight: 500 }}>
+                            4.6 out of 5 based on{' '}
+                            <a href="https://www.trustpilot.com/review/givebackjourney.com" target="_blank" rel="noopener noreferrer"
+                                style={{ color: '#1d1d1f', fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                                250 reviews
+                            </a>
+                        </span>
+                        <a href="https://www.trustpilot.com/review/givebackjourney.com" target="_blank" rel="noopener noreferrer"
+                            style={{ display: 'flex', alignItems: 'center', gap: '7px', background: '#f5f5f7', border: '1px solid rgba(0,0,0,0.08)', padding: '7px 16px 7px 12px', borderRadius: '9px', textDecoration: 'none', transition: 'all 0.25s ease' }}
+                            onMouseEnter={e => e.currentTarget.style.background = '#eaeaea'}
+                            onMouseLeave={e => e.currentTarget.style.background = '#f5f5f7'}
+                        >
+                            <i className="fa-solid fa-star" style={{ color: '#00b67a', fontSize: '1rem' }}></i>
+                            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1d1d1f', letterSpacing: '0.2px' }}>Trustpilot</span>
+                        </a>
+                    </div>
+                </div>
+
+                {/* Horizontal Scrollable Review Cards */}
+                <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 5%' }}>
+                <div style={{
+                    display: 'flex',
+                    overflowX: 'auto',
+                    gap: '20px',
+                    padding: '10px 0 24px',
+                    scrollSnapType: 'x mandatory',
+                    WebkitOverflowScrolling: 'touch',
+                    msOverflowStyle: 'none',
+                    scrollbarWidth: 'none',
+                }}>
+                    {reviews.map((r, idx) => (
+                        <div key={idx} style={{
+                            flex: '0 0 300px',
+                            background: '#ffffff',
+                            borderRadius: '20px',
+                            padding: '26px',
+                            border: '1px solid rgba(0,0,0,0.06)',
+                            boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '14px',
+                            scrollSnapAlign: 'start',
+                            transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 35px rgba(0,0,0,0.09)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.04)'; }}
+                        >
+                            {/* Stars */}
+                            <div style={{ display: 'flex', gap: '3px' }}>
+                                {[...Array(r.rating)].map((_, i) => (
+                                    <div key={i} style={{ background: '#00b67a', width: '22px', height: '22px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <i className="fa-solid fa-star" style={{ color: '#fff', fontSize: '0.7rem' }}></i>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Title */}
+                            <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#1d1d1f', margin: 0, letterSpacing: '-0.01em' }}>{r.title}</h4>
+
+                            {/* Review text */}
+                            <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: '#555', margin: 0, flexGrow: 1 }}>"{r.review}"</p>
+
+                            {/* Reviewer info */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '12px', borderTop: '1px solid #f0f0f0' }}>
+                                <div style={{
+                                    width: '38px', height: '38px', borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, var(--primary-green), #0d7a3e)',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    color: '#fff', fontWeight: 800, fontSize: '0.9rem', flexShrink: 0
+                                }}>
+                                    {r.name.charAt(0)}
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1d1d1f' }}>{r.name}</div>
+                                    <div style={{ fontSize: '0.73rem', color: '#888', fontWeight: 500 }}>{r.country} · {r.date}</div>
+                                </div>
+                                <div style={{ marginLeft: 'auto' }}>
+                                    <i className="fa-solid fa-circle-check" style={{ color: 'var(--primary-green)', fontSize: '1rem' }}></i>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                </div>
+            </div>
+
 
             {/* Modern Floating Bottom Bar */}
             <div style={{
