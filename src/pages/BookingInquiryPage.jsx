@@ -262,6 +262,68 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                     </div>
                 </ScrollReveal>
 
+                {/* Bring a Friend Discount Notice Card */}
+                <ScrollReveal>
+                    <div style={{
+                        background: 'linear-gradient(135deg, #f4fbf7 0%, #e8f7ee 100%)',
+                        border: '1px solid rgba(29, 185, 84, 0.25)',
+                        borderRadius: '24px',
+                        padding: '24px 30px',
+                        marginBottom: '40px',
+                        display: 'flex',
+                        gap: '20px',
+                        alignItems: 'flex-start',
+                        boxShadow: '0 10px 30px rgba(29, 185, 84, 0.05)'
+                    }}>
+                        <div style={{
+                            width: '48px',
+                            height: '48px',
+                            borderRadius: '14px',
+                            background: '#1DB954',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontSize: '1.4rem',
+                            flexShrink: 0,
+                            boxShadow: '0 4px 15px rgba(29, 185, 84, 0.2)'
+                        }}>
+                            <i className="bi bi-gift-fill"></i>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#111e15', margin: '0 0 8px 0', letterSpacing: '-0.02em' }}>
+                                Bring a Friend Discount
+                            </h3>
+                            <p style={{ fontSize: '0.92rem', lineHeight: 1.65, color: '#2c3e35', margin: '0 0 16px 0', fontWeight: 550 }}>
+                                If you bring one additional participant with you, you may be eligible for a special discount. Discount eligibility and the final offer will be decided by our local team based on availability and program conditions.
+                            </p>
+                            <div style={{ 
+                                borderTop: '1px solid rgba(29, 185, 84, 0.15)', 
+                                paddingTop: '14px', 
+                                display: 'flex', 
+                                flexDirection: 'column', 
+                                gap: '8px' 
+                            }}>
+                                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>
+                                    Please note:
+                                </div>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1DB954', flexShrink: 0 }}></span>
+                                    <span style={{ fontSize: '0.85rem', color: '#334139', fontWeight: 600 }}>
+                                        This offer is applicable for one additional participant only.
+                                    </span>
+                                </div>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1DB954', flexShrink: 0 }}></span>
+                                    <span style={{ fontSize: '0.85rem', color: '#334139', fontWeight: 600 }}>
+                                        Special pricing and conditions for group bookings can be discussed directly with our team.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ScrollReveal>
+
                 <div className="inquiry-grid" style={{ 
                     display: 'grid', 
                     gridTemplateColumns: '1fr 1.8fr', 
