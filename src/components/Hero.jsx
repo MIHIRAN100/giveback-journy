@@ -9,6 +9,30 @@ import heroLocalVideo from '../assets/IMG_5769.MOV';
 
 const mobileImages = [img1, img2, img3];
 
+const offers = [
+    {
+        tag: "Special Offer",
+        title: "Bring a Friend Discount",
+        text: "Travel with a partner and get a special discount on your journey.",
+        icon: "bi-gift-fill",
+        link: "/packages"
+    },
+    {
+        tag: "Transparent",
+        title: "No Hidden Fees",
+        text: "No registration fees or hidden charges. Pay only for your program.",
+        icon: "bi-shield-check",
+        link: "/packages"
+    },
+    {
+        tag: "Group Booking",
+        title: "Custom Group Plans",
+        text: "Traveling with 3 or more people? Contact us for custom team rates.",
+        icon: "bi-people-fill",
+        link: "/contact"
+    }
+];
+
 const Hero = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -16,9 +40,22 @@ const Hero = ({ onSearch }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMuted, setIsMuted] = useState(true);
     const [activeVideo, setActiveVideo] = useState('youtube'); // 'youtube' or 'local'
+    const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
+    const [prevOfferIndex, setPrevOfferIndex] = useState(-1);
     const playerRef = React.useRef(null);
     const localVideoRef = React.useRef(null);
     const activeVideoRef = React.useRef(activeVideo);
+
+    // Auto-rotate promotional offers every 5 seconds
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentOfferIndex((prev) => {
+                setPrevOfferIndex(prev);
+                return (prev + 1) % offers.length;
+            });
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     // Sync activeVideo ref to avoid stale closures in the timer loop
     React.useEffect(() => {
@@ -232,6 +269,33 @@ const Hero = ({ onSearch }) => {
                 >
                     <i className={isMuted ? "bi bi-volume-mute" : "bi bi-volume-up"}></i>
                 </button>
+            </div>
+
+            {/* Bring a Friend Promo Banner Overlaying Video */}
+            <div className="hero-promo-badge" onClick={() => navigate(offers[currentOfferIndex].link)}>
+                {offers.map((offer, index) => {
+                    let className = "hero-promo-slide-wrapper";
+                    if (index === currentOfferIndex) {
+                        className += " active";
+                    } else if (index === prevOfferIndex) {
+                        className += " exit";
+                    }
+
+                    return (
+                        <div key={index} className={className}>
+                            <div className="hero-promo-icon">
+                                <i className={`bi ${offer.icon}`}></i>
+                            </div>
+                            <div className="hero-promo-details">
+                                <div className="hero-promo-tag">
+                                    {offer.tag}
+                                </div>
+                                <h4>{offer.title}</h4>
+                                <p>{offer.text}</p>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
 
             <div className="mobile-hero-slideshow">

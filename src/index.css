@@ -7492,3 +7492,123 @@ h1, h2, h3, .logo-text {
     opacity: 1;
     font-weight: 800;
 }
+
+/* Hero Promo Badge */
+.hero-promo-badge {
+    position: absolute;
+    top: 140px;
+    right: 5%;
+    z-index: 100;
+    background: rgba(10, 15, 11, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(29, 185, 84, 0.3);
+    border-radius: 20px;
+    padding: 16px 20px;
+    max-width: 320px;
+    width: 320px;
+    height: 112px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+.hero-promo-badge:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(29, 185, 84, 0.15);
+}
+
+.hero-promo-slide-wrapper {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+}
+
+.hero-promo-slide-wrapper.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-promo-slide-wrapper.exit {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-promo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #1DB954;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+}
+
+.hero-promo-details {
+    flex: 1;
+}
+
+.hero-promo-tag {
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1DB954;
+    margin-bottom: 4px;
+}
+
+.hero-promo-badge h4 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.01em;
+}
+
+.hero-promo-badge p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .hero-promo-badge {
+        top: auto;
+        bottom: 120px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 90%;
+        width: 350px;
+        height: 108px;
+    }
+    .hero-promo-badge:hover {
+        transform: translateX(-50%) translateY(-3px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-promo-badge {
+        display: none; /* Hide on extremely small mobile screens to prevent overlapping main titles */
+    }
+}
