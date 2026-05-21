@@ -22,7 +22,7 @@ const Footer = () => {
                     <div className="footer-contact-info" style={{fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)'}}>
                         <p style={{marginBottom: '8px'}}><i className="fa-solid fa-location-dot" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> No. 45, Peradeniya Road, Kandy, Sri Lanka</p>
                         <p style={{marginBottom: '8px'}}><i className="fa-solid fa-phone" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> +94 81 234 5678</p>
-                        <p style={{marginBottom: '20px'}}><i className="fa-solid fa-envelope" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> journeygiveback@gmail.com</p>
+                        <p style={{marginBottom: '20px'}}><i className="fa-solid fa-envelope" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> Hello@givebackjourney.com</p>
                     </div>
                     <div className="footer-social" style={{display: 'flex', gap: '15px', fontSize: '1.4rem'}}>
                         <a href="https://wa.me/94771234567" target="_blank" rel="noreferrer" className="footer-link"><i className="fa-brands fa-whatsapp"></i></a>

@@ -221,6 +221,7 @@ const VolunteerProgramDetails = () => {
                         <div>
                             <div style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1px' }}>Program Fee</div>
                             <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--primary-green)', letterSpacing: '-0.02em', lineHeight: 1.2 }}>From {formatPrice(program.price)}</div>
+                            <div style={{ fontSize: '0.58rem', color: '#86868b', fontWeight: 600, marginTop: '2px', lineHeight: 1.1 }}>No registration fee • No hidden fee</div>
                         </div>
                     </div>
 
@@ -256,6 +257,7 @@ const VolunteerProgramDetails = () => {
                 </div>
 
                 {/* About Dynamic Section */}
+
                 <div id="overview" className="section-card" style={{
                     background: 'transparent',
                     padding: '45px 0',
@@ -554,6 +556,97 @@ const VolunteerProgramDetails = () => {
                                 ))}
                             </div>
                         </div>
+
+                        {/* 🚌 Transport Notice — under Accommodation */}
+                        <div style={{
+                            marginTop: '32px',
+                            background: 'linear-gradient(135deg, #0a2e1a 0%, #0f3d22 100%)',
+                            borderRadius: '20px',
+                            padding: '28px 32px',
+                            display: 'flex',
+                            gap: '20px',
+                            alignItems: 'flex-start',
+                            border: '1px solid rgba(29,185,84,0.2)'
+                        }}>
+                            {/* Icon */}
+                            <div style={{
+                                width: '48px',
+                                height: '48px',
+                                borderRadius: '12px',
+                                background: 'var(--primary-green)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexShrink: 0
+                            }}>
+                                <i className="fa-solid fa-bus" style={{ color: '#fff', fontSize: '1.1rem' }}></i>
+                            </div>
+
+                            {/* Content */}
+                            <div style={{ flex: 1 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                                    <span style={{
+                                        fontSize: '0.62rem',
+                                        fontWeight: 800,
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '2px',
+                                        color: '#0a2e1a',
+                                        background: 'var(--primary-green)',
+                                        padding: '3px 11px',
+                                        borderRadius: '50px'
+                                    }}>Important Transport Notice</span>
+                                </div>
+
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 900, color: '#ffffff', margin: '0 0 10px 0', letterSpacing: '-0.02em' }}>
+                                    🛬 Airport Pickup — Group Transfer Only
+                                </h3>
+
+                                <p style={{ fontSize: '0.95rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.8)', margin: '0 0 16px 0', fontWeight: 400 }}>
+                                    We collect all arriving volunteers from <strong style={{ color: '#fff' }}>Bandaranaike International Airport (CMB)</strong> as a group — we do <strong style={{ color: '#fff' }}>not</strong> offer individual pickups. Our group transfer window is{' '}
+                                    <strong style={{ background: 'rgba(29,185,84,0.3)', color: '#4ade80', padding: '1px 8px', borderRadius: '5px' }}>2:00 PM – 5:00 PM Sri Lankan Time (SLST) on Sunday</strong>.
+                                </p>
+
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                    <div style={{
+                                        display: 'flex', gap: '12px', alignItems: 'flex-start',
+                                        background: 'rgba(255,255,255,0.05)',
+                                        border: '1px solid rgba(255,255,255,0.08)',
+                                        borderRadius: '12px',
+                                        padding: '14px 16px'
+                                    }}>
+                                        <i className="fa-solid fa-calendar-days" style={{ color: 'var(--primary-green)', fontSize: '0.9rem', marginTop: '3px', flexShrink: 0 }}></i>
+                                        <span style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', fontWeight: 500, lineHeight: 1.65 }}>
+                                            Programs start on <strong style={{ color: '#fff' }}>every other Monday</strong>. You need to arrive in the country and at the accommodation on <strong style={{ color: '#fff' }}>Sunday</strong> (the day before your program starts).
+                                        </span>
+                                    </div>
+                                    <div style={{
+                                        display: 'flex', gap: '12px', alignItems: 'flex-start',
+                                        background: 'rgba(255,255,255,0.05)',
+                                        border: '1px solid rgba(255,255,255,0.08)',
+                                        borderRadius: '12px',
+                                        padding: '14px 16px'
+                                    }}>
+                                        <i className="fa-solid fa-circle-info" style={{ color: 'var(--primary-green)', fontSize: '0.9rem', marginTop: '3px', flexShrink: 0 }}></i>
+                                        <span style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', fontWeight: 500, lineHeight: 1.65 }}>
+                                            If your flight arrivals do <strong style={{ color: '#fff' }}>not match this Sunday window</strong>, or you prefer to travel independently, you will need to arrange your own taxi. We recommend booking a reputable metered taxi at the airport arrivals hall.
+                                        </span>
+                                    </div>
+                                    <div style={{
+                                        display: 'flex', gap: '12px', alignItems: 'flex-start',
+                                        background: 'rgba(255,255,255,0.05)',
+                                        border: '1px solid rgba(255,255,255,0.08)',
+                                        borderRadius: '12px',
+                                        padding: '14px 16px'
+                                    }}>
+                                        <i className="fa-solid fa-taxi" style={{ color: 'var(--primary-green)', fontSize: '0.9rem', marginTop: '3px', flexShrink: 0 }}></i>
+                                        <span style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', fontWeight: 500, lineHeight: 1.65 }}>
+                                            We <strong style={{ color: '#fff' }}>can arrange a private taxi</strong> for arrivals outside the group window — however an <strong style={{ color: '#fff' }}>additional fee applies</strong> and must be paid and arranged with our team in advance before your departure.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 )}
 
@@ -760,6 +853,7 @@ const VolunteerProgramDetails = () => {
                             <span style={{ fontSize: '1.3rem', fontWeight: 900, color: 'var(--primary-green)', lineHeight: 1 }}>{formatPrice(program.price)}</span>
                         </div>
                         <span style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>* Includes accommodation, meals & pickup</span>
+                        <span style={{ fontSize: '0.58rem', color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.2px', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: '1px' }}>No Registration & Hidden Fees</span>
                     </div>
                     <Link 
                         to={`/volunteer-inquiry?program=${encodeURIComponent(program.title)}`} 

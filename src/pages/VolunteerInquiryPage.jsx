@@ -28,9 +28,10 @@ const VolunteerInquiryPage = () => {
         
         // Step 2: Program
         program: initialProgram,
+        volunteerProject: initialProgram || '',
         startDate: '',
-        duration: '2 Weeks',
-        projectFocus: 'Education',
+        duration: '',
+        projectFocus: '',
         
         // Step 3: Emergency
         emergencyName: '',
@@ -131,7 +132,7 @@ const VolunteerInquiryPage = () => {
             name: formData.userName,
             email: cleanEmail,
             reply_to: cleanEmail,
-            admin_email: "journeygiveback@gmail.com",
+            admin_email: "hello@givebackjourney.com",
             phone: formData.userPhone,
             
             tour_package: `VOLUNTEER APPLICATION: ${formData.program}`,
@@ -164,7 +165,7 @@ const VolunteerInquiryPage = () => {
                 ${ndaManifest}
             `,
             submitted_at: new Date().toLocaleString(),
-            to_email: "journeygiveback@gmail.com"
+            to_email: "hello@givebackjourney.com"
         };
 
         try {
@@ -312,38 +313,103 @@ const VolunteerInquiryPage = () => {
                                         </div>
                                     )}
 
-                                    {currentStep === 2 && (
-                                        <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                                            <div className="form-group">
-                                                <label className="prof-label">Select Program Duration</label>
-                                                <select value={formData.program} onChange={(e) => setFormData({...formData, program: e.target.value})} className="prof-input prof-select">
-                                                    <option>Special Needs Care (2 Weeks)</option>
-                                                    <option>Teaching in Rural Villages (2-4 Weeks)</option>
-                                                    <option>Community Renovation (1-2 Weeks)</option>
-                                                    <option>Zen & Service: Yoga (1-2 Weeks)</option>
-                                                    <option>Ancient Temple Experience (1 Week)</option>
-                                                    <option>Cultural Immersion (2 Weeks)</option>
-                                                </select>
-                                            </div>
-                                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                    {currentStep === 2 && (() => {
+                                        const isBreathe = formData.volunteerProject === 'Breathe Sri Lanka';
+
+                                        const projects = [
+                                            { id: 'Breathe Sri Lanka', label: 'Breathe Sri Lanka', icon: 'fa-solid fa-earth-asia', desc: 'Cultural immersion journey — 27 days', special: true },
+                                            { id: 'Teaching Volunteer Program', label: 'Teaching Volunteer', icon: 'fa-solid fa-chalkboard-user', desc: 'Teach English in rural schools & temples' },
+                                            { id: 'Special Needs Support', label: 'Special Needs Support', icon: 'fa-solid fa-hands-holding-child', desc: 'Care & support for children with special needs' },
+                                            { id: 'Sri Lanka Dog Volunteers', label: 'Dog Rescue', icon: 'fa-solid fa-paw', desc: 'Rescue & rehabilitation of street dogs' },
+                                            { id: 'Construction & Renovation', label: 'Construction & Renovation', icon: 'fa-solid fa-hammer', desc: 'Build & renovate schools and community spaces' },
+                                            { id: 'Zen & Temple Yoga', label: 'Zen & Temple Yoga', icon: 'fa-solid fa-spa', desc: 'Mindfulness, yoga & temple life' },
+                                            { id: 'Medical Volunteer', label: 'Medical Volunteer', icon: 'fa-solid fa-kit-medical', desc: 'Healthcare placements in rural clinics' },
+                                        ];
+
+                                        const durationOptions = {
+                                            'Breathe Sri Lanka': ['27 Days (Full Program)'],
+                                            'Teaching Volunteer Program': ['1 Week', '2 Weeks', '3 Weeks', '4 Weeks'],
+                                            'Special Needs Support': ['2 Weeks', '3 Weeks', '4 Weeks'],
+                                            'Sri Lanka Dog Volunteers': ['1 Week', '2 Weeks'],
+                                            'Construction & Renovation': ['1 Week', '2 Weeks'],
+                                            'Zen & Temple Yoga': ['1 Week', '2 Weeks'],
+                                            'Medical Volunteer': ['2 Weeks', '3 Weeks', '4 Weeks'],
+                                        };
+
+                                        return (
+                                            <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+                                                {/* Volunteer Project Selector */}
                                                 <div className="form-group">
-                                                    <label className="prof-label">Planned Start Date</label>
-                                                    <input type="date" required value={formData.startDate} onChange={(e) => setFormData({...formData, startDate: e.target.value})} className="prof-input" />
+                                                    <label className="prof-label">Select Volunteer Project</label>
+                                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
+                                                        {projects.map(p => (
+                                                            <div
+                                                                key={p.id}
+                                                                onClick={() => setFormData({ ...formData, volunteerProject: p.id, program: p.id, duration: durationOptions[p.id]?.[0] || '', projectFocus: p.id })}
+                                                                style={{
+                                                                    padding: '16px 18px',
+                                                                    borderRadius: '16px',
+                                                                    border: formData.volunteerProject === p.id ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                    background: formData.volunteerProject === p.id ? 'rgba(29,185,84,0.06)' : '#fafafa',
+                                                                    cursor: 'pointer',
+                                                                    transition: 'all 0.25s ease',
+                                                                    display: 'flex',
+                                                                    flexDirection: 'column',
+                                                                    gap: '8px',
+                                                                    position: 'relative',
+                                                                    overflow: 'hidden'
+                                                                }}
+                                                            >
+                                                                {p.special && (
+                                                                    <span style={{ position: 'absolute', top: '10px', right: '10px', background: 'var(--primary-green)', color: '#fff', fontSize: '0.6rem', fontWeight: 800, padding: '2px 8px', borderRadius: '50px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Signature</span>
+                                                                )}
+                                                                <i className={p.icon} style={{ fontSize: '1.3rem', color: formData.volunteerProject === p.id ? 'var(--primary-green)' : '#888' }}></i>
+                                                                <span style={{ fontWeight: 800, fontSize: '0.88rem', color: '#111', lineHeight: 1.3 }}>{p.label}</span>
+                                                                <span style={{ fontSize: '0.75rem', color: '#888', lineHeight: 1.4 }}>{p.desc}</span>
+                                                                {formData.volunteerProject === p.id && (
+                                                                    <i className="fa-solid fa-circle-check" style={{ color: 'var(--primary-green)', position: 'absolute', bottom: '12px', right: '14px', fontSize: '1rem' }}></i>
+                                                                )}
+                                                            </div>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className="prof-label">Project Focus Area</label>
-                                                    <select value={formData.projectFocus} onChange={(e) => setFormData({...formData, projectFocus: e.target.value})} className="prof-input prof-select">
-                                                        <option>Special Needs Support</option>
-                                                        <option>Rural English Education</option>
-                                                        <option>School & Village Renovation</option>
-                                                        <option>Yoga & Mindfulness</option>
-                                                        <option>Temple Preservation</option>
-                                                        <option>Cultural Heritage</option>
-                                                    </select>
-                                                </div>
+
+                                                {/* Duration + Start Date */}
+                                                {formData.volunteerProject && (
+                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                        <div className="form-group">
+                                                            <label className="prof-label">Program Duration</label>
+                                                            {isBreathe ? (
+                                                                <input
+                                                                    type="text"
+                                                                    value="27 Days (Full Program)"
+                                                                    readOnly
+                                                                    className="prof-input"
+                                                                    style={{ background: '#f5f5f7', color: '#555', cursor: 'not-allowed' }}
+                                                                />
+                                                            ) : (
+                                                                <select
+                                                                    required
+                                                                    value={formData.duration}
+                                                                    onChange={e => setFormData({ ...formData, duration: e.target.value })}
+                                                                    className="prof-input prof-select"
+                                                                >
+                                                                    <option value="">Select Duration</option>
+                                                                    {(durationOptions[formData.volunteerProject] || []).map(d => (
+                                                                        <option key={d}>{d}</option>
+                                                                    ))}
+                                                                </select>
+                                                            )}
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className="prof-label">Planned Start Date</label>
+                                                            <input type="date" required value={formData.startDate} onChange={e => setFormData({ ...formData, startDate: e.target.value })} className="prof-input" />
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
-                                        </div>
-                                    )}
+                                        );
+                                    })()}
 
                                     {currentStep === 3 && (
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
@@ -475,12 +541,12 @@ const VolunteerInquiryPage = () => {
                             <div className="summary-section">
                                 <div className="summary-section-title"><i className="fa-solid fa-earth-asia"></i> Program</div>
                                 <div className="summary-item">
-                                    <span className="summary-label">Selected:</span>
-                                    <span className="summary-value highlight">{formData.program}</span>
+                                    <span className="summary-label">Project:</span>
+                                    <span className="summary-value highlight">{formData.volunteerProject || '—'}</span>
                                 </div>
                                 <div className="summary-item">
-                                    <span className="summary-label">Focus:</span>
-                                    <span className="summary-value">{formData.projectFocus}</span>
+                                    <span className="summary-label">Duration:</span>
+                                    <span className="summary-value">{formData.duration || '—'}</span>
                                 </div>
                                 <div className="summary-item">
                                     <span className="summary-label">Start Date:</span>

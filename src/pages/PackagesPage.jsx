@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import TourPackages, { TourCard } from '../components/TourPackages';
 import SriLankaGlance from '../components/SriLankaGlance';
-import SpotifyAdCard from '../components/SpotifyAdCard';
+
 import { tourPackages } from '../data/tours';
 import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 
 const PackagesPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -53,15 +54,13 @@ const PackagesPage = () => {
 
             <SriLankaGlance />
             
-            <section style={{ padding: '0 5% 100px 5%', background: '#fff' }}>
-                <SpotifyAdCard />
-            </section>
+
             
             <section className="cta-section">
                 <div className="cta-content">
                     <h2>Didn't find what you're looking for?</h2>
                     <p>Our travel designers can build a custom itinerary just for you.</p>
-                    <button className="btn-modern btn-solid-green">Request Custom Plan</button>
+                    <button className="btn-modern btn-solid-green" onClick={() => navigate('/contact')}>Request Custom Plan</button>
                 </div>
             </section>
         </div>
