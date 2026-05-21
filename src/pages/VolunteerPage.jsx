@@ -5,8 +5,166 @@ import effortImg from '../assets/This Moment Shows Effort Beyond Words.webp';
 import hihiImg from '../assets/hihi.webp';
 import impactJourneyImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import VolunteerOpportunities from '../components/VolunteerOpportunities';
+import { useCurrency } from '../context/CurrencyContext';
+
+const pricingPrograms = [
+    {
+        name: "Breathe Sri Lanka",
+        price: 1155,
+        duration: "27 Days",
+        location: "Kandy & Coast",
+        housing: "Shared Rooms",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "real-sri-lanka-experience",
+        color: "#1DB954"
+    },
+    {
+        name: "Teaching Volunteer Program",
+        price: 220,
+        duration: "1-24 Weeks",
+        location: "Kandy District",
+        housing: "Shared / Private Upgrade",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "sri-lanka-childcare",
+        color: "#111"
+    },
+    {
+        name: "Special Needs Support",
+        price: 220,
+        duration: "1-8 Weeks",
+        location: "Kandy District",
+        housing: "Shared / Private Upgrade",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "special-needs-support",
+        color: "#475569"
+    },
+    {
+        name: "Construction & Renovation",
+        price: 250,
+        duration: "1-4 Weeks",
+        location: "Kandy District",
+        housing: "Shared / Private",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "village-school-renovation",
+        color: "#f6ad55"
+    },
+    {
+        name: "Sri Lanka Dog Volunteers",
+        price: 200,
+        duration: "1-24 Weeks",
+        location: "Galle District",
+        housing: "Shared or Private",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "sri-lanka-dog-rescue",
+        color: "#ffd93d"
+    },
+    {
+        name: "Zen & Temple Yoga",
+        price: 280,
+        duration: "1-4 Weeks",
+        location: "Kandy District",
+        housing: "Shared / Private",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "zen-and-temple-yoga",
+        color: "#9b59b6"
+    },
+    {
+        name: "Medical Volunteer Program",
+        price: 350,
+        duration: "1-4 Weeks",
+        location: "Kandy District",
+        housing: "Shared / Private Upgrade",
+        meals: "3 Daily",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "medical-volunteer",
+        color: "#e74c3c"
+    }
+];
+
+const programWeeklyRates = {
+    "real-sri-lanka-experience": {
+        fixed: true,
+        total: 1155,
+        weeks: 4,
+        note: "Fixed 27-day trip"
+    },
+    "sri-lanka-childcare": {
+        baseWeeks: 1,
+        basePrice: 220,
+        extraWeekPrice: 100
+    },
+    "special-needs-support": {
+        baseWeeks: 1,
+        basePrice: 220,
+        extraWeekPrice: 100
+    },
+    "village-school-renovation": {
+        baseWeeks: 1,
+        basePrice: 250,
+        extraWeekPrice: 120
+    },
+    "sri-lanka-dog-rescue": {
+        baseWeeks: 1,
+        basePrice: 200,
+        extraWeekPrice: 100
+    },
+    "zen-and-temple-yoga": {
+        baseWeeks: 1,
+        basePrice: 280,
+        extraWeekPrice: 120
+    },
+    "medical-volunteer": {
+        baseWeeks: 1,
+        basePrice: 350,
+        extraWeekPrice: 150
+    }
+};
+
+const getProgramPriceDetails = (progId, weeks) => {
+    const rate = programWeeklyRates[progId];
+    if (!rate) return { total: 0, average: 0, isMinLimit: false };
+
+    if (rate.fixed) {
+        return {
+            total: rate.total,
+            average: Math.round(rate.total / rate.weeks),
+            isFixed: true
+        };
+    }
+
+    const isMinLimit = weeks < rate.baseWeeks;
+    const actualWeeks = isMinLimit ? rate.baseWeeks : weeks;
+    const total = rate.basePrice + (actualWeeks - rate.baseWeeks) * rate.extraWeekPrice;
+    const average = Math.round(total / weeks);
+
+    const baseAverage = Math.round(rate.basePrice / rate.baseWeeks);
+    const savingPercent = average < baseAverage ? Math.round(((baseAverage - average) / baseAverage) * 100) : 0;
+
+    return {
+        total,
+        average,
+        isMinLimit,
+        minWeeks: rate.baseWeeks,
+        savingPercent
+    };
+};
 
 const VolunteerPage = () => {
+    const { formatPrice } = useCurrency();
+    const [selectedWeeks, setSelectedWeeks] = useState(2);
     const testimonials = [
         {
             quote: "This wasn't just a trip; it was a transformation. Seeing the local communities thrive and being part of the wildlife conservation made me realize the power of small actions.",
@@ -483,7 +641,15 @@ const VolunteerPage = () => {
                 @media (max-width: 600px) {
                     .journey-steps-grid {
                         grid-template-columns: 1fr !important;
-                        gap: 20px;
+                        gap: 20px !important;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .pricing-info-boxes {
+                        grid-template-columns: 1fr !important;
+                        gap: 20px !important;
+                        padding: 25px !important;
                     }
                 }
                 `}
@@ -594,7 +760,225 @@ const VolunteerPage = () => {
                     </div>
                 </section>
                 {/* Volunteer Opportunities */}
-                <VolunteerOpportunities />
+                <VolunteerOpportunities />                {/* Pricing Table Section */}
+                <section id="pricing" style={{ margin: '120px 0' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Transparent Pricing</span>
+                        <h2 style={{ fontSize: '3.2rem', fontWeight: 900, marginTop: '10px', letterSpacing: '-0.04em' }}>Program Fees & Comparison</h2>
+                        <p style={{ color: '#666', fontSize: '1.15rem', marginTop: '15px', maxWidth: '600px', margin: '15px auto 0', lineHeight: 1.6 }}>
+                            Compare fees, durations, and inclusions across all volunteer programs. We believe in complete financial transparency.
+                        </p>
+                    </div>
+
+                    {/* Duration Selector */}
+                    <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        gap: '15px', 
+                        marginBottom: '40px' 
+                    }}>
+                        <span style={{ fontWeight: 800, color: '#1e293b', fontSize: '0.95rem' }}>Select Stay Duration:</span>
+                        <div style={{ 
+                            background: '#f1f5f9', 
+                            padding: '6px', 
+                            borderRadius: '100px', 
+                            display: 'flex',
+                            gap: '4px',
+                            border: '1px solid #e2e8f0'
+                        }}>
+                            {[1, 2, 3, 4].map((wk) => (
+                                <button
+                                    key={wk}
+                                    onClick={() => setSelectedWeeks(wk)}
+                                    style={{
+                                        border: 'none',
+                                        background: selectedWeeks === wk ? 'var(--primary-green)' : 'transparent',
+                                        color: selectedWeeks === wk ? 'white' : '#64748b',
+                                        padding: '10px 24px',
+                                        borderRadius: '100px',
+                                        fontSize: '0.85rem',
+                                        fontWeight: 800,
+                                        cursor: 'pointer',
+                                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                                        boxShadow: selectedWeeks === wk ? '0 4px 10px rgba(29, 185, 84, 0.25)' : 'none'
+                                    }}
+                                    className="duration-toggle-btn"
+                                >
+                                    {wk} {wk === 1 ? 'Week' : 'Weeks'}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div style={{ overflowX: 'auto', background: '#fff', borderRadius: '32px', boxShadow: '0 25px 70px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '950px' }}>
+                            <thead>
+                                <tr style={{ background: '#f8fafc', borderBottom: '1px solid #edf2f7' }}>
+                                    <th style={{ padding: '24px 30px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Program</th>
+                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Total Price</th>
+                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Weekly Average</th>
+                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Duration</th>
+                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Location</th>
+                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Meals & Housing</th>
+                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Airport Pickup</th>
+                                    <th style={{ padding: '24px 30px', textAlign: 'right' }}></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {pricingPrograms.map((prog, index) => {
+                                    const details = getProgramPriceDetails(prog.id, selectedWeeks);
+                                    return (
+                                        <tr 
+                                            key={index} 
+                                            className="pricing-row"
+                                            style={{ 
+                                                borderBottom: index === pricingPrograms.length - 1 ? 'none' : '1px solid #f1f5f9',
+                                                transition: 'all 0.2s ease'
+                                            }}
+                                        >
+                                            <td style={{ padding: '26px 30px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: prog.color }}></div>
+                                                <div>
+                                                    <span style={{ fontWeight: 800, fontSize: '1rem', color: '#1e293b', display: 'block' }}>{prog.name}</span>
+                                                    <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>{prog.support}</span>
+                                                </div>
+                                            </td>
+                                            <td style={{ padding: '26px 20px' }}>
+                                                <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', display: 'block' }}>
+                                                    {formatPrice(details.total)}
+                                                </span>
+                                                {details.isMinLimit && (
+                                                    <span style={{ fontSize: '0.65rem', color: '#ea580c', fontWeight: 700, background: '#fff7ed', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>
+                                                        {details.minWeeks} Wk Min. Commit
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td style={{ padding: '26px 20px' }}>
+                                                <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1e293b', display: 'block' }}>
+                                                    {formatPrice(details.average)}
+                                                    <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>/wk</span>
+                                                </span>
+                                                {details.savingPercent > 0 && (
+                                                    <span style={{ fontSize: '0.65rem', color: '#166534', fontWeight: 700, background: '#dcfce7', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>
+                                                        Save {details.savingPercent}%/wk
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
+                                                {details.isFixed ? "27 Days (Fixed)" : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
+                                            </td>
+                                            <td style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
+                                                {prog.location}
+                                            </td>
+                                            <td style={{ padding: '26px 20px' }}>
+                                                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#475569', display: 'block' }}>{prog.meals}</span>
+                                                <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>{prog.housing}</span>
+                                            </td>
+                                            <td style={{ padding: '26px 20px' }}>
+                                                <span style={{ 
+                                                    fontSize: '0.75rem', 
+                                                    fontWeight: 800, 
+                                                    color: prog.pickup === 'Included' ? '#166534' : '#991b1b',
+                                                    background: prog.pickup === 'Included' ? '#f0fdf4' : '#fef2f2',
+                                                    padding: '6px 14px',
+                                                    borderRadius: '100px',
+                                                    display: 'inline-block'
+                                                }}>
+                                                    {prog.pickup}
+                                                </span>
+                                            </td>
+                                            <td style={{ padding: '26px 30px', textAlign: 'right' }}>
+                                                <Link 
+                                                    to={`/volunteer-program/${prog.id}`} 
+                                                    className="table-btn"
+                                                    style={{ 
+                                                        padding: '10px 20px', 
+                                                        background: '#f1f5f9', 
+                                                        color: '#334155', 
+                                                        borderRadius: '12px', 
+                                                        fontWeight: 800, 
+                                                        fontSize: '0.85rem', 
+                                                        textDecoration: 'none',
+                                                        display: 'inline-block',
+                                                        transition: 'all 0.2s ease'
+                                                    }}
+                                                >
+                                                    Details
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        .pricing-row:hover {
+                            background-color: #f8fafc;
+                        }
+                        .table-btn:hover {
+                            background-color: var(--primary-green) !important;
+                            color: white !important;
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+                        }
+                    `}} />
+
+                    {/* What's Included details */}
+                    <div style={{ 
+                        marginTop: '40px', 
+                        display: 'grid', 
+                        gridTemplateColumns: '1fr 1fr', 
+                        gap: '30px',
+                        padding: '40px',
+                        background: '#f8fafc',
+                        borderRadius: '30px',
+                        border: '1px solid #f1f5f9'
+                    }} className="pricing-info-boxes">
+                        <div>
+                            <h4 style={{ fontSize: '1.25rem', fontWeight: 900, marginBottom: '20px', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <i className="fa-solid fa-circle-check" style={{ color: 'var(--primary-green)' }}></i> Included in Your Fee
+                            </h4>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '14px' }}>
+                                {[
+                                    "Airport Arrival Pickup",
+                                    "Clean, Safe Accommodation",
+                                    "3 Fresh Local Meals Daily",
+                                    "24/7 In-Country Support",
+                                    "Program Orientation",
+                                    "Hands-on Project Training",
+                                    "Local Project Transportation",
+                                    "Official Impact Certificate"
+                                ].map((inc, i) => (
+                                    <li key={i} style={{ fontSize: '0.88rem', color: '#475569', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 600 }}>
+                                        <i className="fa-solid fa-check" style={{ color: 'var(--primary-green)', fontSize: '0.85rem' }}></i> {inc}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style={{ fontSize: '1.25rem', fontWeight: 900, marginBottom: '20px', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <i className="fa-solid fa-circle-xmark" style={{ color: '#94a3b8' }}></i> Not Included
+                            </h4>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+                                {[
+                                    "International Flights",
+                                    "Sri Lankan Travel Visa",
+                                    "Personal Travel Insurance",
+                                    "Return Airport Transfer",
+                                    "Daily Personal Expenses",
+                                    "Weekend Excursion Budgets"
+                                ].map((exc, i) => (
+                                    <li key={i} style={{ fontSize: '0.88rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 600 }}>
+                                        <i className="fa-solid fa-xmark" style={{ color: '#cbd5e1', fontSize: '0.85rem' }}></i> {exc}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Journey Steps */}
                 <section style={{ margin: '120px 0' }}>

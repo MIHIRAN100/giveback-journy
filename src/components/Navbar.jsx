@@ -46,30 +46,31 @@ const Navbar = () => {
             path: '/packages',
             columns: [
                 {
-                    title: 'Explore Tours',
+                    title: 'Signature Journeys',
                     items: [
-                        { name: 'Signature Journeys', path: '/packages' },
-                        { name: 'Day Adventures', path: '/packages' },
-                        { name: 'Multi-Day Quests', path: '/packages' },
-                        { name: 'Coastal Escapes', path: '/packages' },
-                        { name: 'Wildlife Safaris', path: '/packages' }
+                        { name: '7-Day Essential Sri Lanka', path: '/package/1' },
+                        { name: 'Southern Sun & Beach Escape', path: '/package/2' },
+                        { name: 'Highlands & Southern Coast', path: '/package/3' },
+                        { name: '5-Day Mist & Mountains', path: '/package/4' },
+                        { name: '3-Day Galle Fort Escape', path: '/package/6' }
                     ]
                 },
                 {
-                    title: 'Travel Styles',
+                    title: 'Day Trips & Adventures',
                     items: [
-                        { name: 'Budget Friendly', path: '/packages' },
-                        { name: 'Luxury Boutique', path: '/packages' },
-                        { name: 'Adventure & Hike', path: '/packages' },
-                        { name: 'Family Group', path: '/packages' }
+                        { name: 'Kandy & Pinnawala Day Trip', path: '/package/8' },
+                        { name: 'Kandy Highlights', path: '/package/9' },
+                        { name: "Adam's Peak Sunrise Quest", path: '/package/10' },
+                        { name: 'Kitulgala White Water Rafting', path: '/package/11' }
                     ]
                 },
                 {
                     title: 'Quick Links',
                     items: [
+                        { name: 'All Packages', path: '/packages' },
                         { name: 'Compare Tours', path: '/compare' },
-                        { name: 'Latest Offers', path: '/packages' },
-                        { name: 'Why Book With Us', path: '/exclusive-journeys' }
+                        { name: 'Breathe Sri Lanka Journey', path: '/volunteer-program/real-sri-lanka-experience' },
+                        { name: 'Request Custom Plan', path: '/contact' }
                     ]
                 }
             ]
@@ -105,10 +106,12 @@ const Navbar = () => {
                 {
                     title: 'Current Projects',
                     items: [
-                        { name: 'Wildlife Conservation', path: '/volunteer' },
-                        { name: 'Village Education', path: '/volunteer' },
-                        { name: 'Eco-Reforestation', path: '/volunteer' },
-                        { name: 'Women Empowerment', path: '/volunteer' }
+                        { name: 'Teaching Volunteer', path: '/volunteer-program/sri-lanka-childcare' },
+                        { name: 'Special Needs Support', path: '/volunteer-program/special-needs-support' },
+                        { name: 'Construction & Renovation', path: '/volunteer-program/village-school-renovation' },
+                        { name: 'Dog Rescue & Welfare', path: '/volunteer-program/sri-lanka-dog-rescue' },
+                        { name: 'Medical Volunteer', path: '/volunteer-program/medical-volunteer' },
+                        { name: 'Zen & Temple Yoga', path: '/volunteer-program/zen-and-temple-yoga' }
                     ]
                 },
                 {
@@ -117,6 +120,7 @@ const Navbar = () => {
                         { name: 'How it Works', path: '/volunteer' },
                         { name: 'Volunteer Stories', path: '/volunteer' },
                         { name: 'Impact Reports', path: '/volunteer' },
+                        { name: 'Pricing', path: '/volunteer#pricing' },
                         { name: 'Apply Now', path: '/volunteer' }
                     ]
                 }
