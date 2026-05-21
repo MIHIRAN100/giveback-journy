@@ -272,32 +272,35 @@ const VolunteerPage = () => {
                 }
 
                 .section-intro {
-                    margin-bottom: 120px;
-                    display: grid;
-                    grid-template-columns: 1fr 1.2fr;
-                    gap: 60px;
-                    align-items: center;
+                    margin-bottom: 80px;
+                    text-align: center;
+                    max-width: 720px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 0 20px;
                 }
 
                 .intro-title {
-                    font-size: clamp(2.2rem, 5vw, 3.5rem);
-                    font-weight: 900;
-                    letter-spacing: -0.04em;
-                    line-height: 1.1;
-                    color: #111;
+                    font-size: clamp(1.5rem, 3vw, 2rem);
+                    font-weight: 700;
+                    letter-spacing: -0.02em;
+                    line-height: 1.3;
+                    color: #1d1d1f;
+                    margin-bottom: 18px;
                 }
 
                 .intro-text {
-                    font-size: 1.15rem;
-                    line-height: 1.8;
-                    color: #444;
+                    font-size: 1.05rem;
+                    line-height: 1.75;
+                    color: #6e6e73;
+                    font-weight: 400;
                 }
 
                 .focus-areas-grid {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    gap: 40px;
-                    margin-bottom: 120px;
+                    gap: 30px;
+                    margin-bottom: 100px;
                 }
 
                 .focus-card {
@@ -471,7 +474,7 @@ const VolunteerPage = () => {
                 }
 
                     @media (max-width: 1024px) {
-                    .section-intro, .focus-areas-grid, .locations-grid, .journey-steps {
+                    .focus-areas-grid, .locations-grid, .journey-steps {
                         grid-template-columns: 1fr !important;
                     }
 
@@ -489,9 +492,7 @@ const VolunteerPage = () => {
                     }
 
                     .section-intro {
-                        gap: 30px;
-                        margin-bottom: 80px;
-                        text-align: center;
+                        margin-bottom: 60px;
                     }
 
                     .focus-card, .location-card {
@@ -525,123 +526,106 @@ const VolunteerPage = () => {
                 }
 
                 /* Your Impact Journey Asymmetric Grid */
-                .journey-grid-container {
+                .journey-timeline {
                     display: grid;
-                    grid-template-columns: 1.2fr 1fr;
-                    gap: 40px;
-                    margin-bottom: 120px;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 0;
+                    position: relative;
+                    margin-bottom: 100px;
+                    padding: 0 10px;
                 }
 
-                .journey-big-card {
-                    position: relative;
-                    border-radius: 40px;
-                    overflow: hidden;
-                    height: 480px;
-                    background: url(${impactJourneyImg}) no-repeat center/cover;
+                .journey-timeline::before {
+                    content: '';
+                    position: absolute;
+                    top: 36px;
+                    left: calc(12.5% + 10px);
+                    right: calc(12.5% + 10px);
+                    height: 2px;
+                    background: linear-gradient(90deg, var(--primary-green), #dcfce7);
+                    z-index: 0;
+                }
+
+                .journey-step {
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-end;
-                    padding: 50px;
-                    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-                }
-
-                .journey-big-card-overlay {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+                    align-items: center;
+                    text-align: center;
+                    padding: 0 16px;
+                    position: relative;
                     z-index: 1;
                 }
 
-                .journey-big-card-content {
-                    position: relative;
-                    z-index: 2;
-                    color: white;
-                }
-
-                .journey-quote {
-                    font-size: 1.6rem;
-                    font-weight: 700;
-                    font-style: italic;
-                    line-height: 1.5;
-                    margin-bottom: 25px;
-                    letter-spacing: -0.01em;
-                }
-
-                .journey-quote-author {
-                    font-size: 0.85rem;
-                    font-weight: 800;
-                    text-transform: uppercase;
-                    letter-spacing: 2px;
-                    color: var(--primary-green);
-                }
-
-                .journey-steps-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 24px;
-                }
-
-                .journey-step-card {
-                    background: #f8fafc;
-                    border: 1px solid #f1f5f9;
-                    padding: 35px 25px;
-                    border-radius: 30px;
-                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                .journey-step-icon {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    background: #f8fdf9;
+                    border: 1.5px solid #d1fae5;
                     display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    min-height: 200px;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 32px;
+                    box-shadow: 0 4px 20px rgba(29,185,84,0.08);
+                    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
                 }
 
-                .journey-step-card:hover {
-                    transform: translateY(-8px);
-                    background: white;
-                    border-color: rgba(29, 185, 84, 0.25);
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-                }
-
-                .journey-step-number {
-                    font-size: 2.2rem;
-                    font-weight: 900;
-                    color: rgba(29, 185, 84, 0.15);
-                    line-height: 1;
-                }
-
-                .journey-step-card:hover .journey-step-number {
+                .journey-step-icon i {
+                    font-size: 1.5rem;
                     color: var(--primary-green);
-                    transform: scale(1.05);
                     transition: all 0.3s ease;
                 }
 
+                .journey-step:hover .journey-step-icon {
+                    background: var(--primary-green);
+                    border-color: var(--primary-green);
+                    transform: translateY(-6px);
+                    box-shadow: 0 20px 40px rgba(29,185,84,0.2);
+                }
+
+                .journey-step:hover .journey-step-icon i {
+                    color: white;
+                }
+
+                .journey-step-tag {
+                    display: inline-block;
+                    padding: 4px 14px;
+                    border-radius: 100px;
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 14px;
+                }
+
                 .journey-step-title {
-                    font-size: 1.25rem;
+                    font-size: 1.05rem;
                     font-weight: 800;
-                    color: #111;
-                    margin: 0;
-                    line-height: 1.3;
+                    color: #1d1d1f;
+                    margin-bottom: 12px;
+                    letter-spacing: -0.02em;
+                }
+
+                .journey-step-desc {
+                    font-size: 0.85rem;
+                    line-height: 1.65;
+                    color: #6e6e73;
+                    font-weight: 400;
                 }
 
                 @media (max-width: 1024px) {
-                    .journey-grid-container {
-                        grid-template-columns: 1fr !important;
-                        gap: 30px;
+                    .journey-timeline {
+                        grid-template-columns: 1fr 1fr;
+                        gap: 40px;
                     }
-                    .journey-big-card {
-                        height: 400px;
-                        padding: 35px;
-                    }
-                    .journey-quote {
-                        font-size: 1.35rem;
+                    .journey-timeline::before {
+                        display: none;
                     }
                 }
 
                 @media (max-width: 600px) {
-                    .journey-steps-grid {
-                        grid-template-columns: 1fr !important;
-                        gap: 20px !important;
+                    .journey-timeline {
+                        grid-template-columns: 1fr;
+                        gap: 32px;
                     }
                 }
 
@@ -671,13 +655,13 @@ const VolunteerPage = () => {
             <div className="volunteer-container">
                 {/* Introduction */}
                 <section className="section-intro">
-                    <h2 className="intro-title">Make a Lasting Impact</h2>
+                    <h2 className="intro-title">Making a Lasting Impact.</h2>
                     <div className="intro-text">
-                        <p style={{ marginBottom: '20px' }}>
-                            Volunteering in Sri Lanka is a journey of the heart. At Give Back Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
+                        <p style={{ marginBottom: '16px' }}>
+                            Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
                         </p>
                         <p>
-                            Whether you're teaching English to enthusiastic students, supporting woman empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.
+                            Whether you're teaching English to enthusiastic students, supporting women's empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.
                         </p>
                     </div>
                 </section>
@@ -685,25 +669,25 @@ const VolunteerPage = () => {
                 {/* Experience Focus Areas */}
                 <div className="focus-areas-grid">
                     <div className="focus-card">
-                        <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px', color: 'var(--primary-green)' }}>Zen & Temple Service</h3>
-                        <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '25px' }}>
-                            Experience the spiritual heart of Sri Lanka. Join local monks in temple maintenance, learn meditation, and help preserve ancient heritage.
+                        <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '16px', color: 'var(--primary-green)', letterSpacing: '-0.02em' }}>Construction &amp; Community</h3>
+                        <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6e6e73', marginBottom: '25px' }}>
+                            Help rebuild and beautify community spaces — from rural schools and temples to community halls — giving local families spaces they can be proud of.
                         </p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-                            {["Meditation", "Temple Care", "Buddhist Arts"].map((item, i) => (
-                                <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '8px 18px', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700 }}>{item}</span>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                            {["Painting & Repairs", "School Rebuilding", "Community Spaces"].map((item, i) => (
+                                <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
                             ))}
                         </div>
                     </div>
 
                     <div className="focus-card">
-                        <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px', color: '#111' }}>Education & Childcare</h3>
-                        <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '25px' }}>
+                        <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '16px', color: '#111', letterSpacing: '-0.02em' }}>Education &amp; Childcare</h3>
+                        <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6e6e73', marginBottom: '25px' }}>
                             Make a direct impact in rural village preschools and special needs centers. Assist with English teaching, creative play, and basic therapy.
                         </p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                             {["Rural Teaching", "Special Needs", "School Support"].map((item, i) => (
-                                <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '8px 18px', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700 }}>{item}</span>
+                                <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
                             ))}
                         </div>
                     </div>
@@ -982,37 +966,60 @@ const VolunteerPage = () => {
 
                 {/* Journey Steps */}
                 <section style={{ margin: '120px 0' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>The Path of Giving Back</span>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 900, marginTop: '10px' }}>Your Impact Journey</h2>
+                    <div style={{ textAlign: 'center', marginBottom: '70px' }}>
+                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem' }}>How It Works</span>
+                        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, marginTop: '12px', letterSpacing: '-0.04em', color: '#1d1d1f' }}>Your Impact Journey</h2>
+                        <p style={{ color: '#6e6e73', fontSize: '1.05rem', marginTop: '16px', maxWidth: '560px', margin: '16px auto 0', lineHeight: 1.65 }}>
+                            From your first inquiry to your last day on the ground — here's how we make it seamless.
+                        </p>
                     </div>
-                    <div className="journey-grid-container">
-                        {/* Big card with background image and quote */}
-                        <div className="journey-big-card">
-                            <div className="journey-big-card-overlay"></div>
-                            <div className="journey-big-card-content">
-                                <i className="fa-solid fa-quote-left" style={{ fontSize: '2rem', color: 'var(--primary-green)', opacity: 0.8, marginBottom: '15px', display: 'block' }}></i>
-                                <blockquote className="journey-quote">
-                                    "This journey isn't just about the places you visit, but the lives you touch and the legacy of kindness you leave behind."
-                                </blockquote>
-                                <cite className="journey-quote-author">— Give Back Journey</cite>
-                            </div>
-                        </div>
 
-                        {/* Step cards */}
-                        <div className="journey-steps-grid">
-                            {[
-                                { step: "01", title: "Apply Online" },
-                                { step: "02", title: "Personal Chat" },
-                                { step: "03", title: "Preparation" },
-                                { step: "04", title: "Arrive & Act" }
-                            ].map((item, i) => (
-                                <div key={i} className="journey-step-card">
-                                    <div className="journey-step-number">STEP {item.step}</div>
-                                    <h4 className="journey-step-title">{item.title}</h4>
+                    <div className="journey-timeline">
+                        {[
+                            {
+                                icon: 'fa-file-lines',
+                                tag: 'Application',
+                                tagColor: '#166534',
+                                tagBg: '#dcfce7',
+                                title: 'Apply Online',
+                                desc: 'Fill out a short application. Tell us about yourself, your skills, and which program excites you most.'
+                            },
+                            {
+                                icon: 'fa-comments',
+                                tag: 'Discovery',
+                                tagColor: '#1e40af',
+                                tagBg: '#dbeafe',
+                                title: 'Personal Chat',
+                                desc: 'We schedule a friendly call to match you with the perfect program and answer every question you have.'
+                            },
+                            {
+                                icon: 'fa-bag-shopping',
+                                tag: 'Preparation',
+                                tagColor: '#92400e',
+                                tagBg: '#fef3c7',
+                                title: 'Get Prepared',
+                                desc: 'Receive your full pre-departure guide — flights, packing tips, cultural orientation, and a warm welcome pack.'
+                            },
+                            {
+                                icon: 'fa-hand-holding-heart',
+                                tag: 'Impact',
+                                tagColor: '#7c3aed',
+                                tagBg: '#ede9fe',
+                                title: 'Arrive & Act',
+                                desc: 'Land in Sri Lanka, meet your local team, and start creating real, lasting change from day one.'
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="journey-step">
+                                <div className="journey-step-icon">
+                                    <i className={`fa-solid ${item.icon}`}></i>
                                 </div>
-                            ))}
-                        </div>
+                                <span className="journey-step-tag" style={{ color: item.tagColor, background: item.tagBg }}>
+                                    {item.tag}
+                                </span>
+                                <h4 className="journey-step-title">{item.title}</h4>
+                                <p className="journey-step-desc">{item.desc}</p>
+                            </div>
+                        ))}
                     </div>
                 </section>
 
