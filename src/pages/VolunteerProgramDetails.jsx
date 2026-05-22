@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { volunteerPrograms } from '../data/volunteerPrograms';
 import { volunteerReviews } from '../data/volunteerReviews';
@@ -11,6 +11,27 @@ const VolunteerProgramDetails = () => {
 
     const program = volunteerPrograms.find(p => p.id === id);
     const reviews = volunteerReviews[id] || [];
+
+    const [selectedSkills, setSelectedSkills] = useState([]);
+
+    const toggleSkill = (skillTitle) => {
+        setSelectedSkills(prev => {
+            if (prev.includes(skillTitle)) {
+                return prev.filter(s => s !== skillTitle);
+            } else {
+                return [...prev, skillTitle];
+            }
+        });
+    };
+
+    const getInquiryUrl = () => {
+        if (!program) return '';
+        let url = `/volunteer-inquiry?program=${encodeURIComponent(program.title)}`;
+        if (selectedSkills.length > 0) {
+            url += `&skills=${encodeURIComponent(selectedSkills.join(', '))}`;
+        }
+        return url;
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -55,7 +76,7 @@ const VolunteerProgramDetails = () => {
                         {program.accommodation && <a href="#accommodation" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Accommodation</a>}
                         {program.mealsInfo && <a href="#meals" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Meals</a>}
                         <Link 
-                            to={`/volunteer-inquiry?program=${encodeURIComponent(program.title)}`}
+                            to={getInquiryUrl()}
                             style={{
                                 background: '#1d1d1f',
                                 color: 'white',
@@ -378,6 +399,7 @@ const VolunteerProgramDetails = () => {
                 {/* Dynamic Sections & Timeline Itinerary */}
                 {program.sections && program.sections.filter(s => !s.title.toLowerCase().includes('impact')).map((section, idx, filteredArr) => {
                     const isItinerary = section.title.toLowerCase().includes('itinerary');
+                    const isExperienceCategories = section.title.toLowerCase().includes('experience categories');
                     const isLast = idx === filteredArr.length - 1;
                     return (
                         <div key={idx} id={isItinerary ? "itinerary" : `section-${idx}`} className="section-card" style={{
@@ -440,6 +462,108 @@ const VolunteerProgramDetails = () => {
                                             </div>
                                         );
                                     })}
+                                </div>
+                            ) : isExperienceCategories ? (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+                                    {(() => {
+                                        const categories = [];
+                                        for (let i = 0; i < section.paragraphs.length; i += 2) {
+                                            const headerRaw = section.paragraphs[i];
+                                            const itemsRaw = section.paragraphs[i + 1];
+                                            if (headerRaw && itemsRaw) {
+                                                const header = headerRaw.replace(/\*\*/g, '').trim();
+                                                const items = itemsRaw.split('\n').map(line => {
+                                                    const cleanLine = line.replace(/^[•\s\-]+/, '').trim();
+                                                    let title = "";
+                                                    let description = "";
+                                                    if (cleanLine.startsWith('**')) {
+                                                        const parts = cleanLine.split('**');
+                                                        title = parts[1] || "";
+                                                        description = parts[2]?.replace(/^[\s-–—:]+/, '') || "";
+                                                    } else {
+                                                        const idx = cleanLine.indexOf(' – ');
+                                                        if (idx !== -1) {
+                                                            title = cleanLine.substring(0, idx);
+                                                            description = cleanLine.substring(idx + 3);
+                                                        } else {
+                                                            const idx2 = cleanLine.indexOf(' - ');
+                                                            if (idx2 !== -1) {
+                                                                title = cleanLine.substring(0, idx2);
+                                                                description = cleanLine.substring(idx2 + 3);
+                                                            } else {
+                                                                title = cleanLine;
+                                                            }
+                                                        }
+                                                    }
+                                                    return { title, description };
+                                                });
+                                                categories.push({ header, items });
+                                            }
+                                        }
+
+                                        return categories.map((cat, catIdx) => (
+                                            <div key={catIdx} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                <h3 style={{ 
+                                                    fontSize: '1.4rem', 
+                                                    fontWeight: 800, 
+                                                    color: '#1d1d1f', 
+                                                    letterSpacing: '-0.02em', 
+                                                    margin: '0',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '10px'
+                                                }}>
+                                                    {cat.header}
+                                                </h3>
+                                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '20px' }}>
+                                                    {cat.items.map((item, itemIdx) => {
+                                                         const isSelected = selectedSkills.includes(item.title);
+                                                         return (
+                                                             <div key={itemIdx} 
+                                                                 className="skill-highlight-card" 
+                                                                 onClick={() => toggleSkill(item.title)}
+                                                                 style={{ 
+                                                                     display: 'flex', 
+                                                                     alignItems: 'flex-start', 
+                                                                     gap: '16px', 
+                                                                     padding: '16px 20px', 
+                                                                     borderRadius: '16px', 
+                                                                     background: isSelected ? 'white' : '#f5f5f7', 
+                                                                     border: `1px solid ${isSelected ? 'var(--primary-green)' : 'rgba(0,0,0,0.02)'}`,
+                                                                     boxShadow: isSelected ? '0 10px 30px rgba(29, 185, 84, 0.08)' : 'none',
+                                                                     cursor: 'pointer',
+                                                                     transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                                                                 }}
+                                                             >
+                                                                 <div className="skill-highlight-icon" style={{
+                                                                     background: isSelected ? '#158a3d' : 'var(--primary-green)',
+                                                                     width: '28px',
+                                                                     height: '28px',
+                                                                     borderRadius: '50%',
+                                                                     display: 'flex',
+                                                                     alignItems: 'center',
+                                                                     justifyContent: 'center',
+                                                                     color: 'white',
+                                                                     flexShrink: 0,
+                                                                     fontSize: '0.95rem',
+                                                                     marginTop: '2px',
+                                                                     transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                                                                 }}>
+                                                                     <i className={`bi ${isSelected ? 'bi-check-lg' : 'bi-plus-lg'}`}></i>
+                                                                 </div>
+                                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                                                     <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1d1d1f', lineHeight: 1.3 }}>{item.title}</span>
+                                                                     {item.description && (
+                                                                         <span style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.45 }}>{item.description}</span>
+                                                                     )}
+                                                                 </div>
+                                                             </div>
+                                                         );
+                                                     })}
+                                                </div>
+                                            </div>
+                                        ));
+                                    })()}
                                 </div>
                             ) : (
                                 <div>
@@ -857,7 +981,7 @@ const VolunteerProgramDetails = () => {
                         <span style={{ fontSize: '0.58rem', color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.2px', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: '1px' }}>No Registration & Hidden Fees</span>
                     </div>
                     <Link 
-                        to={`/volunteer-inquiry?program=${encodeURIComponent(program.title)}`} 
+                        to={getInquiryUrl()} 
                         className="btn-apple-solid" 
                         style={{ 
                             background: '#1d1d1f', 
@@ -880,6 +1004,152 @@ const VolunteerProgramDetails = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Dynamic Skills Bucket Widget (only for ceylon-skill-odyssey) */}
+            {program.id === 'ceylon-skill-odyssey' && (
+                <div className="skills-bucket-widget" style={{
+                    position: 'fixed',
+                    bottom: '110px',
+                    right: '30px',
+                    zIndex: 998,
+                    width: '340px',
+                    maxWidth: 'calc(100vw - 60px)',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    borderRadius: '24px',
+                    padding: '20px',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.02)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '14px',
+                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    transform: selectedSkills.length > 0 ? 'translateY(0)' : 'translateY(150px)',
+                    opacity: selectedSkills.length > 0 ? 1 : 0,
+                    pointerEvents: selectedSkills.length > 0 ? 'auto' : 'none'
+                }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '50%',
+                                background: 'rgba(29, 185, 84, 0.1)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: 'var(--primary-green)',
+                                fontSize: '1rem'
+                            }}>
+                                <i className="bi bi-backpack-fill"></i>
+                            </div>
+                            <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.01em', textTransform: 'uppercase' }}>Odyssey Bucket</span>
+                            <span style={{
+                                background: 'var(--primary-green)',
+                                color: 'white',
+                                fontSize: '0.75rem',
+                                fontWeight: 800,
+                                padding: '2px 8px',
+                                borderRadius: '50px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                height: '20px'
+                            }}>{selectedSkills.length}</span>
+                        </div>
+                        <button 
+                            onClick={() => setSelectedSkills([])} 
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                color: '#86868b',
+                                fontSize: '0.75rem',
+                                fontWeight: 700,
+                                cursor: 'pointer',
+                                padding: '4px 8px',
+                                borderRadius: '6px',
+                                transition: 'all 0.2s ease'
+                            }}
+                            onMouseOver={(e) => {
+                                e.target.style.background = '#f5f5f7';
+                                e.target.style.color = '#ff3b30';
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.background = 'none';
+                                e.target.style.color = '#86868b';
+                            }}
+                        >
+                            Clear
+                        </button>
+                    </div>
+
+                    <div style={{ 
+                        display: 'flex', 
+                        flexWrap: 'wrap', 
+                        gap: '6px', 
+                        maxHeight: '130px', 
+                        overflowY: 'auto', 
+                        padding: '4px 2px',
+                        borderBottom: '1px solid rgba(0,0,0,0.04)',
+                        paddingBottom: '12px'
+                    }} className="skills-bucket-list">
+                        {selectedSkills.map((skill, sIdx) => (
+                            <div key={sIdx} style={{
+                                background: '#f5f5f7',
+                                color: '#1d1d1f',
+                                border: '1px solid rgba(0,0,0,0.03)',
+                                borderRadius: '20px',
+                                padding: '5px 10px 5px 12px',
+                                fontSize: '0.78rem',
+                                fontWeight: 600,
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                transition: 'all 0.2s ease',
+                                animation: 'animate-fade-in 0.2s ease'
+                            }}>
+                                <span style={{ lineHeight: 1.1 }}>{skill}</span>
+                                <i className="bi bi-x-circle-fill" 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedSkills(prev => prev.filter(s => s !== skill));
+                                    }} 
+                                    style={{ 
+                                        color: '#86868b', 
+                                        cursor: 'pointer',
+                                        fontSize: '0.9rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        transition: 'color 0.2s ease'
+                                    }}
+                                    onMouseOver={(e) => e.target.style.color = '#ff3b30'}
+                                    onMouseOut={(e) => e.target.style.color = '#86868b'}
+                                ></i>
+                            </div>
+                        ))}
+                    </div>
+
+                    <Link to={getInquiryUrl()} style={{
+                        background: 'var(--primary-green)',
+                        color: 'white',
+                        textDecoration: 'none',
+                        textAlign: 'center',
+                        padding: '13px 20px',
+                        borderRadius: '16px',
+                        fontWeight: 700,
+                        fontSize: '0.9rem',
+                        boxShadow: '0 8px 24px rgba(29, 185, 84, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                    }} className="btn-bucket-apply">
+                        <span>Book Selected Skills</span>
+                        <i className="bi bi-arrow-right"></i>
+                    </Link>
+                </div>
+            )}
             
             {/* Global Scoped Premium CSS rules */}
             <style dangerouslySetInnerHTML={{ __html: `
@@ -946,8 +1216,48 @@ const VolunteerProgramDetails = () => {
                     transform: scale(1.02);
                     box-shadow: 0 10px 30px rgba(0,0,0,0.03) !important;
                 }
+                .skill-highlight-card:hover {
+                    transform: translateY(-3px);
+                    background: white !important;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important;
+                    border-color: rgba(29, 185, 84, 0.2) !important;
+                }
+                .skill-highlight-card:hover .skill-highlight-icon {
+                    transform: scale(1.15) rotate(90deg);
+                    background: #158a3d !important;
+                    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3) !important;
+                }
+                .btn-bucket-apply {
+                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+                }
+                .btn-bucket-apply:hover {
+                    background: #158a3d !important;
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 28px rgba(29, 185, 84, 0.35) !important;
+                }
+                .skills-bucket-list::-webkit-scrollbar {
+                    width: 4px;
+                }
+                .skills-bucket-list::-webkit-scrollbar-track {
+                    background: rgba(0,0,0,0.02);
+                    border-radius: 10px;
+                }
+                .skills-bucket-list::-webkit-scrollbar-thumb {
+                    background: rgba(0,0,0,0.15);
+                    border-radius: 10px;
+                }
                 
                 @media (max-width: 768px) {
+                    .skills-bucket-widget {
+                        bottom: 105px !important;
+                        right: 5% !important;
+                        left: 5% !important;
+                        width: auto !important;
+                        max-width: none !important;
+                        box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+                        border-radius: 20px !important;
+                        padding: 16px !important;
+                    }
                     .local-subnav > div {
                         padding: 10px 4% !important;
                     }

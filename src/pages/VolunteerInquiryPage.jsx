@@ -11,6 +11,7 @@ const VolunteerInquiryPage = () => {
     const [searchParams] = useSearchParams();
     const { formatPrice } = useCurrency();
     const initialProgram = searchParams.get('program') || 'Short-Term Impact (1 Week)';
+    const initialSkills = searchParams.get('skills') || '';
     
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -32,7 +33,7 @@ const VolunteerInquiryPage = () => {
         program: initialProgram,
         volunteerProject: initialProgram || '',
         startDate: '',
-        duration: (initialProgram === 'Breathe Sri Lanka') ? '27 Days (Full Program)' : '1 Week',
+        duration: (initialProgram === 'Breathe Sri Lanka') ? '27 Days (Full Program)' : (initialProgram === 'Ceylon Skill Odyssey') ? '7 Days (Full Program)' : '1 Week',
         projectFocus: '',
         arrivalMethod: 'Flight',
         flightNumber: '',
@@ -47,7 +48,7 @@ const VolunteerInquiryPage = () => {
         emergencyPhone: '',
         
         // Step 4: Skills & Motivation
-        skills: '',
+        skills: initialSkills,
         motivation: '',
         referral: 'Social Media',
         
@@ -256,12 +257,14 @@ const VolunteerInquiryPage = () => {
         'Construction & Renovation': 'village-school-renovation',
         'Sri Lanka Dog Volunteers': 'sri-lanka-dog-rescue',
         'Body & Mind Wellness Week': 'zen-and-temple-yoga',
-        'Medical Volunteer': 'medical-volunteer'
+        'Medical Volunteer': 'medical-volunteer',
+        'Ceylon Skill Odyssey': 'ceylon-skill-odyssey'
     };
 
     const getDurationWeeks = (durationStr) => {
         if (!durationStr) return 0;
         if (durationStr.includes('27 Days')) return 4;
+        if (durationStr.includes('7 Days')) return 1;
         
         let totalWeeks = 0;
         
@@ -426,14 +429,17 @@ const VolunteerInquiryPage = () => {
 
                                     {currentStep === 2 && (() => {
                                         const isBreathe = formData.volunteerProject === 'Breathe Sri Lanka';
+                                        const isCeylon = formData.volunteerProject === 'Ceylon Skill Odyssey';
+                                        const isFixed = isBreathe || isCeylon;
 
                                         const projects = [
                                             { id: 'Breathe Sri Lanka', label: 'Breathe Sri Lanka', icon: 'fa-solid fa-earth-asia', desc: 'Cultural immersion journey — 27 days', special: true },
+                                            { id: 'Ceylon Skill Odyssey', label: 'Ceylon Skill Odyssey', icon: 'fa-solid fa-compass', desc: '7-Day custom skill journey — 250 USD' },
                                             { id: 'Teaching Volunteer Program', label: 'Teaching Volunteer', icon: 'fa-solid fa-chalkboard-user', desc: 'Teach English in rural schools & temples' },
                                             { id: 'Special Needs Support', label: 'Special Needs Support', icon: 'fa-solid fa-hands-holding-child', desc: 'Care & support for children with special needs' },
                                             { id: 'Sri Lanka Dog Volunteers', label: 'Dog Rescue', icon: 'fa-solid fa-paw', desc: 'Rescue & rehabilitation of street dogs' },
                                             { id: 'Construction & Renovation', label: 'Construction & Renovation', icon: 'fa-solid fa-hammer', desc: 'Build & renovate schools and community spaces' },
-                                            { id: 'Zen & Temple: Yoga - Body & Mind Week', label: 'Zen & Temple: Yoga - Body & Mind Week', icon: 'fa-solid fa-spa', desc: 'Yoga, meditation & massages in Hikkaduwa' },
+                                            { id: 'Body & Mind Wellness Week', label: 'Body & Mind Wellness Week', icon: 'fa-solid fa-spa', desc: 'Yoga, meditation & massages in Hikkaduwa' },
                                             { id: 'Medical Volunteer', label: 'Medical Volunteer', icon: 'fa-solid fa-kit-medical', desc: 'Healthcare placements in rural clinics' },
                                         ];
 
@@ -448,12 +454,13 @@ const VolunteerInquiryPage = () => {
                                                                 key={p.id}
                                                                 onClick={() => {
                                                                     const isBreatheProject = p.id === 'Breathe Sri Lanka';
+                                                                    const isCeylonProject = p.id === 'Ceylon Skill Odyssey';
                                                                     setDurationCategory('weeks');
                                                                     setFormData({
                                                                         ...formData,
                                                                         volunteerProject: p.id,
                                                                         program: p.id,
-                                                                        duration: isBreatheProject ? '27 Days (Full Program)' : '1 Week',
+                                                                        duration: isBreatheProject ? '27 Days (Full Program)' : isCeylonProject ? '7 Days (Full Program)' : '1 Week',
                                                                         projectFocus: p.id
                                                                     });
                                                                 }}
@@ -489,10 +496,10 @@ const VolunteerInquiryPage = () => {
                                                 {formData.volunteerProject && (
                                                     <div className="form-group animate-fade-in" style={{ maxWidth: '600px' }}>
                                                         <label className="prof-label">Program Duration</label>
-                                                        {isBreathe ? (
+                                                        {isFixed ? (
                                                             <input
                                                                 type="text"
-                                                                value="27 Days (Full Program)"
+                                                                value={isBreathe ? "27 Days (Full Program)" : "7 Days (Full Program)"}
                                                                 readOnly
                                                                 className="prof-input"
                                                                 style={{ background: '#f5f5f7', color: '#555', cursor: 'not-allowed' }}
@@ -791,6 +798,35 @@ const VolunteerInquiryPage = () => {
 
                                     {currentStep === 5 && (
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                                            {formData.volunteerProject === 'Ceylon Skill Odyssey' && formData.skills && (
+                                                <div style={{
+                                                    background: 'rgba(29, 185, 84, 0.05)',
+                                                    border: '1px dashed rgba(29, 185, 84, 0.4)',
+                                                    borderRadius: '12px',
+                                                    padding: '16px',
+                                                    marginBottom: '5px'
+                                                }}>
+                                                    <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                        <i className="bi bi-stars"></i> Prefilled Odyssey Skills ({formData.skills.split(', ').length})
+                                                    </div>
+                                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                                        {formData.skills.split(', ').map((skill, sIdx) => (
+                                                            <span key={sIdx} style={{
+                                                                background: 'white',
+                                                                color: '#1d1d1f',
+                                                                border: '1px solid rgba(29, 185, 84, 0.15)',
+                                                                borderRadius: '20px',
+                                                                padding: '4px 12px',
+                                                                fontSize: '0.8rem',
+                                                                fontWeight: 600,
+                                                                boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+                                                            }}>
+                                                                {skill}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
                                             <div className="form-group">
                                                 <label className="prof-label">Motivation for Volunteering</label>
                                                 <textarea required placeholder="What do you hope to achieve and contribute during your journey?" value={formData.motivation} onChange={(e) => setFormData({...formData, motivation: e.target.value})} className="prof-textarea" style={{ minHeight: '120px' }} />

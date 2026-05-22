@@ -298,5 +298,32 @@ export const volunteerReviews = {
             title: "An experience that shapes who you become as a clinician",
             review: "The conversations I had with local nurses and doctors about delivering care with limited resources have permanently shaped how I approach medicine. Beyond the clinical learning, witnessing the warmth of the Sri Lankan healthcare community and their dedication under pressure was profoundly inspiring. I will carry this experience always."
         }
+    ],
+
+    "ceylon-skill-odyssey": [
+        {
+            name: "Alistair Vance",
+            country: "🇬🇧 United Kingdom",
+            date: "April 2026",
+            rating: 5,
+            title: "Build-your-own travel at its absolute best",
+            review: "The level of flexibility on this program is amazing. I chose Sinhala language, pottery, and surfing. Being able to choose my own skills and learn directly from the local experts was exactly what I wanted. It felt like living Sri Lanka, not just touring it."
+        },
+        {
+            name: "Nadia Petrova",
+            country: "🇨🇦 Canada",
+            date: "May 2026",
+            rating: 5,
+            title: "Incredible community-first approach",
+            review: "I loved that the majority of the cost goes directly to local artisans and teachers. The cooking lessons and Batik workshop were brilliant. I also did the turtle conservation. Our local team coordinated all transfers seamlessly."
+        },
+        {
+            name: "Julian Schmidt",
+            country: "🇩🇪 Germany",
+            date: "May 2026",
+            rating: 5,
+            title: "A truly personalized, meaningful week",
+            review: "A perfect blend of wellness and creativity. I selected meditation, spice knowledge, and wood carving. The instructors are local experts who take immense pride in their craft. A deeply satisfying experience that I highly recommend."
+        }
     ]
 };

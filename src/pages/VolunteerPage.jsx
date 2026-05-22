@@ -91,6 +91,18 @@ const pricingPrograms = [
         support: "24/7 Support",
         id: "medical-volunteer",
         color: "#e74c3c"
+    },
+    {
+        name: "Ceylon Skill Odyssey",
+        price: 250,
+        duration: "7 Days",
+        location: "Multiple Locations",
+        housing: "Coordinated Support",
+        meals: "Varies",
+        pickup: "Included",
+        support: "24/7 Support",
+        id: "ceylon-skill-odyssey",
+        color: "#0d9488"
     }
 ];
 
@@ -100,6 +112,12 @@ export const programWeeklyRates = {
         total: 1155,
         weeks: 4,
         note: "Fixed 27-day trip"
+    },
+    "ceylon-skill-odyssey": {
+        fixed: true,
+        total: 250,
+        weeks: 1,
+        note: "7-Day Experience"
     },
     "sri-lanka-childcare": {
         baseWeeks: 1,
@@ -850,7 +868,7 @@ const VolunteerPage = () => {
                                                 )}
                                             </td>
                                             <td style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
-                                                {details.isFixed ? "27 Days (Fixed)" : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
+                                                {details.isFixed ? `${prog.duration} (Fixed)` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
                                             </td>
                                             <td style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
                                                 {prog.location}

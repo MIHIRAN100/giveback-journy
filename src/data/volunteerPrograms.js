@@ -1,4 +1,5 @@
 import breatheSriLankaImg from '../assets/photo-1548957175-84f0f9af659e.avif';
+import ceylonSkillOdysseyImg from '../assets/ceylon_skill_odyssey.png';
 import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
@@ -799,6 +800,124 @@ export const volunteerPrograms = [
                 breakfast: "Eggs, Toast, Jam, Fruit, Pancakes, Tea",
                 lunch: "Dhal, Spinach Curry, Poppadoms, Paprika Tofu, Rice",
                 dinner: "Vegetables, Noodles, Tomato Curry, Omelette"
+            }
+        }
+    },
+    {
+        id: "ceylon-skill-odyssey",
+        title: "Ceylon Skill Odyssey",
+        location: "Multiple Locations",
+        duration: "7 Days",
+        housing: "Coordinated Support",
+        price: "250",
+        image: ceylonSkillOdysseyImg,
+        minAge: "18+",
+        pickup: "Included",
+        meals: "Varies",
+        shortDesc: "A transformational 7-day custom skill and volunteer journey across Sri Lanka, designed by you.",
+        description: "The Ceylon Skill Odyssey is a unique 7-day immersive experience in Sri Lanka designed for travelers who want more than a holiday. This is not a fixed tour. It is not a standard itinerary. It is a personal journey of discovery, learning, and connection, where every participant builds their own experience by selecting authentic Sri Lankan skills, cultural practices, wellness experiences, creative arts, and adventure activities. You do not just visit Sri Lanka — you live it, learn it, and experience it from within.",
+        color: "#0d9488",
+        galleryImages: [
+            { src: cultureExp, caption: "Traditional Batik Art" },
+            { src: teaPlantation, caption: "Ceylon Tea Estates" },
+            { src: volunteerCommunity, caption: "Community Impact" },
+            { src: volunteer3, caption: "Wellness & Mindfulness" }
+        ],
+        highlights: [
+            "Fully flexible, build-your-own experience model (Monday to Sunday)",
+            "Choose any number of activities from the comprehensive skill list",
+            "Learn directly from local experts and practitioners in real settings",
+            "Real cultural immersion supporting local artisans and families",
+            "Transportation and transfers arranged with assistance from our local team",
+            "Full 24/7 support and coordination throughout your journey"
+        ],
+        sections: [
+            {
+                title: "Program Overview",
+                paragraphs: [
+                    "The Ceylon Skill Odyssey is a unique 7-day immersive experience in Sri Lanka designed for travelers who want more than a holiday.",
+                    "This is not a fixed tour. It is not a standard itinerary. It is a personal journey of discovery, learning, and connection, where every participant builds their own experience by selecting authentic Sri Lankan skills, cultural practices, wellness experiences, creative arts, and adventure activities.",
+                    "You do not just visit Sri Lanka — you live it, learn it, and experience it from within. No two participants ever have the same journey."
+                ]
+            },
+            {
+                title: "Why This Experience is Unique",
+                paragraphs: [
+                    "Most travel programs show you Sri Lanka. The Ceylon Skill Odyssey lets you experience Sri Lanka. What makes it different:",
+                    "• Fully flexible, build-your-own experience model\n• Choose any number of activities from the skill list\n• Learn directly from local experts and practitioners\n• Real cultural immersion (not staged tourism)\n• Each journey is completely unique\n• Blend of culture, wellness, creativity, adventure, and learning"
+                ]
+            },
+            {
+                title: "Experience Categories",
+                paragraphs: [
+                    "**🌿 Culture & Traditional Life**",
+                    "• **Sri Lankan Cooking Experience** – learn authentic island recipes using traditional spices and techniques\n• **Traditional Dance** – expressive cultural dance forms rooted in rituals and celebrations\n• **Sinhala Language Basics** – simple communication skills to connect with locals\n• **Batik Art Workshop** – wax-resist fabric painting using traditional methods\n• **Jewellery Crafting** – handcrafted Sri Lankan-inspired designs\n• **Traditional Dress Making** – introduction to local garment creation\n• **Mask Making** – cultural ritual mask art\n• **Drum Making** – traditional percussion instrument crafting\n• **Handloom Weaving** – ancient textile weaving techniques\n• **Basket Weaving** – natural material craft skills",
+                    "**🧘 Wellness & Mind-Body Practices**",
+                    "• **Basic Yoga Sessions** – flexibility, breathing, and balance training\n• **Meditation Practice** – mindfulness and mental relaxation techniques\n• **Sri Lankan Herbal Therapy Introduction** – Ayurveda-based wellness learning\n• **Herbal & Spice Knowledge** – natural healing ingredients of Sri Lanka\n• **Buddhist Meditation** – guided spiritual mindfulness practice\n• **Buddhist Philosophy Introduction** – principles of inner peace and balance\n• **Basic Physical Fitness Training** – movement and body awareness\n• **Intro to Counselling & Emotional Wellness** – mental wellbeing awareness",
+                    "**🐘 Nature, Wildlife & Environment**",
+                    "• **Turtle Conservation Experience** – marine protection awareness\n• **Elephant Rehabilitation Introduction** – ethical wildlife education\n• **Traditional Farming Experience** – village agriculture participation\n• **Marine Biodiversity Awareness** – ocean ecosystem learning\n• **Ceylon Tea Experience** – plantation visit and tea tasting",
+                    "**🎨 Creative Arts & Craft Skills**",
+                    "• **Fabric Painting** – hand-painted textile design\n• **Tie & Dye Art** – colorful textile creation techniques\n• **Bottle Painting** – creative recycled art\n• **Paper Quilling** – decorative paper craft design\n• **Clay Pottery Making** – traditional ceramic crafting\n• **Wood Carving** – Sri Lankan artisan carving techniques\n• **Bridal Design Introduction** – cultural wedding styling concepts\n• **Ribbon Embroidery** – detailed hand stitching art",
+                    "**🏄 Adventure & Outdoor Skills**",
+                    "• **Surfing Lessons** – beginner-friendly ocean surfing\n• **Kite Surfing Introduction** – wind-powered water sport basics\n• **Diving Experience (PADI Intro)** – underwater exploration training\n• **Archery Training** – focus and precision skill development\n• **Abseiling Adventure** – rope descent outdoor activity\n• **Photography Skills** – travel and cultural photography training",
+                    "**🧠 Education, Lifestyle & Community Skills**",
+                    "• **Volunteer Work Experience** – community participation programs\n• **Teaching Experience** – local education support exposure\n• **Sri Lankan Law Introduction** – basic civic knowledge session\n• **House Planning & Drawing Basics** – simple architectural concepts\n• **Local Construction Introduction** – village building techniques\n• **Sri Lankan Herbs & Spices Knowledge** – traditional ingredient education"
+                ]
+            },
+            {
+                title: "How The Program Works & Logistics",
+                paragraphs: [
+                    "**1. Select your preferred skills and experiences** - Build your personalized curriculum before or during your 7-day program.\n**2. Your personalized itinerary is created** - We map locations, instructors, and schedules based on your choices.\n**3. Costs are calculated** - Base price covers support and basic setups; selected activity costs are calculated based on your custom itinerary.\n**4. Locations are assigned per activity** - Experiences take place in authentic settings throughout Sri Lanka.\n**5. Transport is arranged if needed** - Since activities take place in different locations, transport/transfers will be required. These are arranged with assistance from our team and covered by the participant.\n**6. 24/7 Support** - Enjoy full support and coordination from our local team throughout."
+                ]
+            },
+            {
+                title: "Community Impact & Pricing Transparency",
+                paragraphs: [
+                    "A core value of the Ceylon Skill Odyssey is supporting local communities across Sri Lanka.",
+                    "The majority of the program cost goes directly to the local instructors, artisans, practitioners, and families who are providing the skill experiences.",
+                    "Only a small portion of the overall cost is used for:\n• Participant food and refreshments (where applicable)\n• Accommodation and basic facilities (if included in the selected package)\n• Staff coordination and 24/7 support services",
+                    "This model ensures that your participation directly contributes to the livelihoods of local people, helps preserve traditional skills, and supports sustainable community-based tourism in Sri Lanka.",
+                    "This is designed as a meaningful way of travel where participants are not just 'tourists', but active contributors to local communities — offering more value, respect, and direct support to the people who make these experiences possible. It is a conscious travel approach that uplifts lives, strengthens cultural exchange, and creates real, positive impact beyond traditional tourism."
+                ]
+            },
+            {
+                title: "Important Notes & Support",
+                paragraphs: [
+                    "• This is a flexible experience program, not a fixed tour\n• Participants can choose as many or as few activities as they like\n• Final pricing depends on selected experiences\n• Additional costs may apply for transport, entry fees, or special arrangements",
+                    "**Support & Safety:** Our team provides full assistance throughout your journey including 24/7 local coordination, activity planning/scheduling, transport assistance, and safety guidance."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "Accommodation is flexible and coordinated by our team based on your selected skills and itinerary locations. Homestays with local families or stays in community-based guesthouses are arranged to enhance your immersion.",
+            options: [
+                {
+                    title: "Coordinated Homestays & Guesthouses",
+                    subtitle: "Authentic Cultural Stays (Arranged)",
+                    icon: "🏠",
+                    description: "Live with local families or stay in cozy neighborhood guesthouses along your custom experience route. These stays offer deep cultural connections and authentic local hospitality."
+                },
+                {
+                    title: "Partner Boutique Stays",
+                    subtitle: "Optional Upgrades",
+                    icon: "🏨",
+                    description: "Boutique hotels or eco-resorts are available in key locations for participants seeking extra comfort and relaxation."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Available in most options" },
+                { label: "Coordination Support", value: "24/7 Local Assistance" },
+                { label: "Transport Assistance", value: "Provided by Team" },
+                { label: "Accommodation Style", value: "Customized to Route" },
+                { label: "Safety Guidance", value: "Fully Verified Stays" }
+            ]
+        },
+        mealsInfo: {
+            description: "Meals vary depending on your selected accommodations and daily schedule. Traditional Sri Lankan cooking workshops include meals you prepare yourself. Food and refreshments at homestays are prepared by hosts using fresh local ingredients.",
+            examples: {
+                breakfast: "Sri Lankan-style breakfast (hoppers, roti, or toast & tea)",
+                lunch: "Traditional Rice and Curry prepared during cooking lessons",
+                dinner: "Varies depending on location and custom selection"
             }
         }
     }

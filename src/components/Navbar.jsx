@@ -111,7 +111,8 @@ const Navbar = () => {
                         { name: 'Construction & Renovation', path: '/volunteer-program/village-school-renovation' },
                         { name: 'Dog Rescue & Welfare', path: '/volunteer-program/sri-lanka-dog-rescue' },
                         { name: 'Medical Volunteer', path: '/volunteer-program/medical-volunteer' },
-                        { name: 'Body & Mind Wellness Week', path: '/volunteer-program/zen-and-temple-yoga' }
+                        { name: 'Body & Mind Wellness Week', path: '/volunteer-program/zen-and-temple-yoga' },
+                        { name: 'Ceylon Skill Odyssey', path: '/volunteer-program/ceylon-skill-odyssey' }
                     ]
                 },
                 {
