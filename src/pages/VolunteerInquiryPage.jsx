@@ -3,11 +3,21 @@ import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import emailjs from '@emailjs/browser';
 import DocuSignModal from '../components/DocuSignModal';
+import { useCurrency } from '../context/CurrencyContext';
+import { getProgramPriceDetails } from './VolunteerPage';
+
+
+const isSunday = (dateString) => {
+    if (!dateString) return true;
+    const date = new Date(dateString + 'T00:00:00');
+    return date.getDay() === 0;
+};
 
 
 const VolunteerInquiryPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+    const { formatPrice } = useCurrency();
     const initialProgram = searchParams.get('program') || 'Short-Term Impact (1 Week)';
     
     const [submitted, setSubmitted] = useState(false);
@@ -30,8 +40,14 @@ const VolunteerInquiryPage = () => {
         program: initialProgram,
         volunteerProject: initialProgram || '',
         startDate: '',
-        duration: '',
+        duration: (initialProgram === 'Breathe Sri Lanka') ? '27 Days (Full Program)' : '1 Week',
         projectFocus: '',
+        arrivalMethod: 'Flight',
+        flightNumber: '',
+        arrivalTime: '',
+        airline: '',
+        flightNotes: '',
+        overlandNotes: '',
         
         // Step 3: Emergency
         emergencyName: '',
@@ -54,6 +70,18 @@ const VolunteerInquiryPage = () => {
     const [ndaAccepted, setNdaAccepted] = useState(false);
     const [isNdaModalOpen, setIsNdaModalOpen] = useState(false);
     const [ndaDetails, setNdaDetails] = useState({ signed: false, envelopeId: '' });
+    const [durationCategory, setDurationCategory] = useState('weeks');
+    const [mixMonths, setMixMonths] = useState('3 Months');
+    const [mixWeeks, setMixWeeks] = useState('2 Weeks');
+
+    useEffect(() => {
+        if (durationCategory === 'mix') {
+            setFormData(prev => ({
+                ...prev,
+                duration: `${mixMonths}, ${mixWeeks}`
+            }));
+        }
+    }, [durationCategory, mixMonths, mixWeeks]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -89,8 +117,23 @@ const VolunteerInquiryPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Validate that arrival date is Sunday on Step 2
+        if (currentStep === 2) {
+            if (!isSunday(formData.startDate)) {
+                alert('Arrival date must be a Sunday. Please select a valid Sunday to proceed.');
+                return;
+            }
+        }
+        
         if (currentStep < totalSteps) {
             nextStep();
+            return;
+        }
+        
+        // Final sanity check before submission
+        if (!isSunday(formData.startDate)) {
+            alert('Arrival date must be a Sunday. Please correct this in Step 2.');
             return;
         }
         
@@ -136,7 +179,7 @@ const VolunteerInquiryPage = () => {
             phone: formData.userPhone,
             
             tour_package: `VOLUNTEER APPLICATION: ${formData.program}`,
-            booking_date: formData.startDate,
+            booking_date: `${formData.startDate} (${formData.arrivalMethod === 'Flight' ? `Flight: ${formData.flightNumber}${formData.airline ? ` (${formData.airline})` : ''}` : `Overland${formData.overlandNotes ? ` - Notes: ${formData.overlandNotes}` : ''}`} at ${formData.arrivalTime})`,
             additional_info: `
                 --- PERSONAL ---
                 Country: ${formData.userCountry}
@@ -147,6 +190,12 @@ const VolunteerInquiryPage = () => {
                 --- PROGRAM ---
                 Project: ${formData.projectFocus}
                 Duration: ${formData.duration}
+                Arrival Date: ${formData.startDate}
+                Arrival Method: ${formData.arrivalMethod}
+                Arrival Time: ${formData.arrivalTime}
+                ${formData.arrivalMethod === 'Flight' ? `Airline: ${formData.airline || 'N/A'}
+                Flight Number: ${formData.flightNumber || 'N/A'}
+                Flight Details: ${formData.flightNotes || 'None'}` : `Overland Transfer${formData.overlandNotes ? ` (Notes: ${formData.overlandNotes})` : ''}`}
 
                 --- EMERGENCY ---
                 Contact: ${formData.emergencyName} (${formData.emergencyRelation})
@@ -181,6 +230,48 @@ const VolunteerInquiryPage = () => {
         }
     };
 
+    // Map volunteerProject to programWeeklyRates ID
+    const projectToRateKey = {
+        'Breathe Sri Lanka': 'real-sri-lanka-experience',
+        'Teaching Volunteer Program': 'sri-lanka-childcare',
+        'Special Needs Support': 'special-needs-support',
+        'Construction & Renovation': 'village-school-renovation',
+        'Sri Lanka Dog Volunteers': 'sri-lanka-dog-rescue',
+        'Zen & Temple Yoga': 'zen-and-temple-yoga',
+        'Medical Volunteer': 'medical-volunteer'
+    };
+
+    const getDurationWeeks = (durationStr) => {
+        if (!durationStr) return 0;
+        if (durationStr.includes('27 Days')) return 4;
+        
+        let totalWeeks = 0;
+        
+        // Match months
+        const monthMatch = durationStr.match(/(\d+)\s*Month/i);
+        if (monthMatch) {
+            totalWeeks += parseInt(monthMatch[1], 10) * 4;
+        }
+        
+        // Match weeks
+        const weekMatch = durationStr.match(/(\d+)\s*Week/i);
+        if (weekMatch) {
+            totalWeeks += parseInt(weekMatch[1], 10);
+        } else if (!monthMatch) {
+            // Fallback to match just a number if no "Month" or "Week" label matches directly
+            const simpleMatch = durationStr.match(/^(\d+)/);
+            if (simpleMatch) {
+                totalWeeks = parseInt(simpleMatch[1], 10);
+            }
+        }
+        
+        return totalWeeks;
+    };
+
+    const rateKey = projectToRateKey[formData.volunteerProject];
+    const weeks = getDurationWeeks(formData.duration);
+    const priceDetails = rateKey ? getProgramPriceDetails(rateKey, weeks) : null;
+
     const renderProgressBar = () => (
         <div style={{ marginBottom: '40px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', fontSize: '0.8rem', fontWeight: 700, color: '#666' }}>
@@ -208,9 +299,9 @@ const VolunteerInquiryPage = () => {
 
     return (
         <div className="volunteer-inquiry-page" style={{ background: '#fcfcfc', minHeight: '100vh', padding: '120px 20px 80px' }}>
-            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div className="container" style={{ maxWidth: submitted ? '600px' : '1200px', margin: '0 auto', transition: 'max-width 0.3s ease' }}>
                 <ScrollReveal>
-                    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                    <div style={{ textAlign: 'center', marginBottom: submitted ? '30px' : '50px' }}>
                         <span style={{ 
                             fontSize: '0.75rem', 
                             textTransform: 'uppercase', 
@@ -220,43 +311,44 @@ const VolunteerInquiryPage = () => {
                             display: 'block',
                             marginBottom: '10px'
                         }}>Global Impact Network</span>
-                        <h1 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111', letterSpacing: '-0.02em' }}>Volunteer Application Form</h1>
+                        <h1 style={{ fontSize: submitted ? '1.8rem' : '2.5rem', fontWeight: 900, color: '#111', letterSpacing: '-0.02em', transition: 'font-size 0.3s ease' }}>Volunteer Application Form</h1>
                     </div>
                 </ScrollReveal>
 
-                <div className="form-layout-grid">
+                <div className={submitted ? "" : "form-layout-grid"} style={submitted ? { display: 'block' } : undefined}>
                     <div style={{ 
                     background: 'white', 
-                    borderRadius: '40px', 
-                    padding: '60px',
+                    borderRadius: submitted ? '30px' : '40px', 
+                    padding: submitted ? '45px 30px' : '60px',
                     boxShadow: '0 30px 100px rgba(0,0,0,0.05)',
                     border: '1px solid #f0f0f0',
-                    position: 'relative'
+                    position: 'relative',
+                    transition: 'all 0.3s ease'
                 }}>
                     {submitted ? (
-                        <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                        <div style={{ textAlign: 'center', padding: '10px 0' }}>
                             <div style={{ 
-                                width: '100px', 
-                                height: '100px', 
+                                width: '80px', 
+                                height: '80px', 
                                 background: 'var(--primary-green)', 
                                 color: 'white', 
                                 borderRadius: '50%', 
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 justifyContent: 'center',
-                                fontSize: '3rem',
-                                margin: '0 auto 30px',
-                                boxShadow: '0 20px 40px rgba(29, 185, 84, 0.3)'
+                                fontSize: '2.4rem',
+                                margin: '0 auto 24px',
+                                boxShadow: '0 15px 30px rgba(29, 185, 84, 0.25)'
                             }}>
                                 <i className="bi bi-check-lg"></i>
                             </div>
-                            <h2 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px' }}>Application Submitted</h2>
-                            <p style={{ color: '#555', lineHeight: 1.8, maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
+                            <h2 style={{ fontSize: '1.6rem', fontWeight: 900, marginBottom: '16px', color: '#111' }}>Application Submitted</h2>
+                            <p style={{ color: '#555', lineHeight: 1.7, maxWidth: '480px', margin: '0 auto', fontSize: '0.95rem' }}>
                                 Your application has been successfully logged with our Global Impact Team. We follow a rigorous vetting process similar to IVHQ to ensure the best experience for both our volunteers and local communities. You will receive an email confirmation shortly.
                             </p>
                             <button 
                                 className="btn-modern btn-black" 
-                                style={{ marginTop: '50px', padding: '18px 50px', borderRadius: '100px', background: '#111', color: 'white', border: 'none', fontWeight: 800, cursor: 'pointer', fontSize: '1rem' }}
+                                style={{ marginTop: '35px', padding: '14px 40px', borderRadius: '100px', background: '#111', color: 'white', border: 'none', fontWeight: 800, cursor: 'pointer', fontSize: '0.95rem' }}
                                 onClick={() => navigate('/volunteer')}
                             >
                                 Return to Volunteer Hub
@@ -326,16 +418,6 @@ const VolunteerInquiryPage = () => {
                                             { id: 'Medical Volunteer', label: 'Medical Volunteer', icon: 'fa-solid fa-kit-medical', desc: 'Healthcare placements in rural clinics' },
                                         ];
 
-                                        const durationOptions = {
-                                            'Breathe Sri Lanka': ['27 Days (Full Program)'],
-                                            'Teaching Volunteer Program': ['1 Week', '2 Weeks', '3 Weeks', '4 Weeks'],
-                                            'Special Needs Support': ['2 Weeks', '3 Weeks', '4 Weeks'],
-                                            'Sri Lanka Dog Volunteers': ['1 Week', '2 Weeks'],
-                                            'Construction & Renovation': ['1 Week', '2 Weeks'],
-                                            'Zen & Temple Yoga': ['1 Week', '2 Weeks'],
-                                            'Medical Volunteer': ['2 Weeks', '3 Weeks', '4 Weeks'],
-                                        };
-
                                         return (
                                             <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
                                                 {/* Volunteer Project Selector */}
@@ -345,7 +427,17 @@ const VolunteerInquiryPage = () => {
                                                         {projects.map(p => (
                                                             <div
                                                                 key={p.id}
-                                                                onClick={() => setFormData({ ...formData, volunteerProject: p.id, program: p.id, duration: durationOptions[p.id]?.[0] || '', projectFocus: p.id })}
+                                                                onClick={() => {
+                                                                    const isBreatheProject = p.id === 'Breathe Sri Lanka';
+                                                                    setDurationCategory('weeks');
+                                                                    setFormData({
+                                                                        ...formData,
+                                                                        volunteerProject: p.id,
+                                                                        program: p.id,
+                                                                        duration: isBreatheProject ? '27 Days (Full Program)' : '1 Week',
+                                                                        projectFocus: p.id
+                                                                    });
+                                                                }}
                                                                 style={{
                                                                     padding: '16px 18px',
                                                                     borderRadius: '16px',
@@ -377,33 +469,283 @@ const VolunteerInquiryPage = () => {
                                                 {/* Duration + Start Date */}
                                                 {formData.volunteerProject && (
                                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                                                        <div className="form-group">
-                                                            <label className="prof-label">Program Duration</label>
-                                                            {isBreathe ? (
-                                                                <input
-                                                                    type="text"
-                                                                    value="27 Days (Full Program)"
-                                                                    readOnly
-                                                                    className="prof-input"
-                                                                    style={{ background: '#f5f5f7', color: '#555', cursor: 'not-allowed' }}
-                                                                />
-                                                            ) : (
-                                                                <select
-                                                                    required
-                                                                    value={formData.duration}
-                                                                    onChange={e => setFormData({ ...formData, duration: e.target.value })}
-                                                                    className="prof-input prof-select"
-                                                                >
-                                                                    <option value="">Select Duration</option>
-                                                                    {(durationOptions[formData.volunteerProject] || []).map(d => (
-                                                                        <option key={d}>{d}</option>
-                                                                    ))}
-                                                                </select>
+                                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                            <div className="form-group">
+                                                                <label className="prof-label">Program Duration</label>
+                                                                {isBreathe ? (
+                                                                    <input
+                                                                        type="text"
+                                                                        value="27 Days (Full Program)"
+                                                                        readOnly
+                                                                        className="prof-input"
+                                                                        style={{ background: '#f5f5f7', color: '#555', cursor: 'not-allowed' }}
+                                                                    />
+                                                                ) : (
+                                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                                                        {/* Category selector */}
+                                                                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                                                            <button
+                                                                                type="button"
+                                                                                onClick={() => {
+                                                                                    setDurationCategory('weeks');
+                                                                                    setFormData({ ...formData, duration: '1 Week' });
+                                                                                }}
+                                                                                style={{
+                                                                                    flex: '1 1 120px',
+                                                                                    padding: '10px 16px',
+                                                                                    borderRadius: '12px',
+                                                                                    border: durationCategory === 'weeks' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                                    background: durationCategory === 'weeks' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                                    fontWeight: 700,
+                                                                                    fontSize: '0.85rem',
+                                                                                    cursor: 'pointer',
+                                                                                    transition: 'all 0.25s ease',
+                                                                                    color: durationCategory === 'weeks' ? '#111' : '#666'
+                                                                                }}
+                                                                            >
+                                                                                Weeks (1 - 24 Weeks)
+                                                                            </button>
+                                                                            <button
+                                                                                type="button"
+                                                                                onClick={() => {
+                                                                                    setDurationCategory('months');
+                                                                                    setFormData({ ...formData, duration: '1 Month' });
+                                                                                }}
+                                                                                style={{
+                                                                                    flex: '1 1 120px',
+                                                                                    padding: '10px 16px',
+                                                                                    borderRadius: '12px',
+                                                                                    border: durationCategory === 'months' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                                    background: durationCategory === 'months' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                                    fontWeight: 700,
+                                                                                    fontSize: '0.85rem',
+                                                                                    cursor: 'pointer',
+                                                                                    transition: 'all 0.25s ease',
+                                                                                    color: durationCategory === 'months' ? '#111' : '#666'
+                                                                                }}
+                                                                            >
+                                                                                Months (1 - 6 Months)
+                                                                            </button>
+                                                                            <button
+                                                                                type="button"
+                                                                                onClick={() => {
+                                                                                    setDurationCategory('mix');
+                                                                                }}
+                                                                                style={{
+                                                                                    flex: '1 1 150px',
+                                                                                    padding: '10px 16px',
+                                                                                    borderRadius: '12px',
+                                                                                    border: durationCategory === 'mix' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                                    background: durationCategory === 'mix' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                                    fontWeight: 700,
+                                                                                    fontSize: '0.85rem',
+                                                                                    cursor: 'pointer',
+                                                                                    transition: 'all 0.25s ease',
+                                                                                    color: durationCategory === 'mix' ? '#111' : '#666'
+                                                                                }}
+                                                                            >
+                                                                                Months & Weeks Mix
+                                                                            </button>
+                                                                        </div>
+ 
+                                                                        {/* Select list based on category */}
+                                                                        {durationCategory !== 'mix' ? (
+                                                                            <select
+                                                                                required
+                                                                                value={formData.duration}
+                                                                                onChange={e => setFormData({ ...formData, duration: e.target.value })}
+                                                                                className="prof-input prof-select"
+                                                                            >
+                                                                                <option value="">Select Duration Option</option>
+                                                                                {durationCategory === 'weeks' ? (
+                                                                                    Array.from({ length: 24 }, (_, i) => `${i + 1} ${i === 0 ? 'Week' : 'Weeks'}`).map(d => (
+                                                                                        <option key={d} value={d}>{d}</option>
+                                                                                    ))
+                                                                                ) : (
+                                                                                    Array.from({ length: 6 }, (_, i) => `${i + 1} ${i === 0 ? 'Month' : 'Months'}`).map(d => (
+                                                                                        <option key={d} value={d}>{d}</option>
+                                                                                    ))
+                                                                                )}
+                                                                            </select>
+                                                                        ) : (
+                                                                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', animation: 'profFadeIn 0.3s ease forwards' }}>
+                                                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                                                                    <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#666', textTransform: 'uppercase' }}>Months</label>
+                                                                                    <select
+                                                                                        value={mixMonths}
+                                                                                        onChange={e => setMixMonths(e.target.value)}
+                                                                                        className="prof-input prof-select"
+                                                                                        style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                                    >
+                                                                                        {Array.from({ length: 5 }, (_, i) => `${i + 1} ${i === 0 ? 'Month' : 'Months'}`).map(m => (
+                                                                                            <option key={m} value={m}>{m}</option>
+                                                                                        ))}
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                                                                    <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#666', textTransform: 'uppercase' }}>Weeks</label>
+                                                                                    <select
+                                                                                        value={mixWeeks}
+                                                                                        onChange={e => setMixWeeks(e.target.value)}
+                                                                                        className="prof-input prof-select"
+                                                                                        style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                                    >
+                                                                                        {Array.from({ length: 3 }, (_, i) => `${i + 1} ${i === 0 ? 'Week' : 'Weeks'}`).map(w => (
+                                                                                            <option key={w} value={w}>{w}</option>
+                                                                                        ))}
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        )}
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                            {formData.arrivalMethod === 'Overland' && (
+                                                                <div className="form-group animate-fade-in">
+                                                                    <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Overland Arrival Notes *</label>
+                                                                    <textarea 
+                                                                        required 
+                                                                        placeholder="Describe your overland travel plans (e.g., bus from Colombo, train, taxi, etc.)" 
+                                                                        value={formData.overlandNotes || ''} 
+                                                                        onChange={e => setFormData({ ...formData, overlandNotes: e.target.value })} 
+                                                                        className="prof-textarea" 
+                                                                        style={{ minHeight: '120px', fontSize: '0.9rem', padding: '12px 18px', borderRadius: '12px' }}
+                                                                    />
+                                                                </div>
+                                                            )}
+                                                            {formData.arrivalMethod === 'Flight' && (
+                                                                <>
+                                                                    <div className="form-group animate-fade-in">
+                                                                        <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Airline Name *</label>
+                                                                        <input 
+                                                                            type="text"
+                                                                            required 
+                                                                            placeholder="e.g. Emirates, Qatar Airways" 
+                                                                            value={formData.airline || ''} 
+                                                                            onChange={e => setFormData({ ...formData, airline: e.target.value })} 
+                                                                            className="prof-input" 
+                                                                            style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="form-group animate-fade-in">
+                                                                        <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Flight Additional Details</label>
+                                                                        <textarea 
+                                                                            placeholder="e.g. Connecting flights, special requests, luggage info, or layover details" 
+                                                                            value={formData.flightNotes || ''} 
+                                                                            onChange={e => setFormData({ ...formData, flightNotes: e.target.value })} 
+                                                                            className="prof-textarea" 
+                                                                            style={{ minHeight: '120px', fontSize: '0.9rem', padding: '12px 18px', borderRadius: '12px' }}
+                                                                        />
+                                                                    </div>
+                                                                </>
                                                             )}
                                                         </div>
-                                                        <div className="form-group">
-                                                            <label className="prof-label">Planned Start Date</label>
-                                                            <input type="date" required value={formData.startDate} onChange={e => setFormData({ ...formData, startDate: e.target.value })} className="prof-input" />
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', background: '#fafafa', padding: '20px', borderRadius: '20px', border: '1px solid #eaeaea' }}>
+                                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111' }}>
+                                                                <i className="fa-solid fa-plane-arrival" style={{ color: 'var(--primary-green)' }}></i>
+                                                                Arrival Details
+                                                            </div>
+                                                            
+                                                            <div className="form-group">
+                                                                <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Arrival Date (Must be a Sunday) *</label>
+                                                                <input 
+                                                                    type="date" 
+                                                                    required 
+                                                                    value={formData.startDate} 
+                                                                    onChange={e => setFormData({ ...formData, startDate: e.target.value })} 
+                                                                    className="prof-input"
+                                                                    style={{
+                                                                        padding: '12px 18px',
+                                                                        borderRadius: '12px',
+                                                                        borderColor: formData.startDate && !isSunday(formData.startDate) ? '#dc2626' : '#eee',
+                                                                        background: formData.startDate && !isSunday(formData.startDate) ? '#fef2f2' : 'white'
+                                                                    }}
+                                                                />
+                                                                {formData.startDate && !isSunday(formData.startDate) && (
+                                                                    <span style={{ color: '#dc2626', fontSize: '0.75rem', fontWeight: 700, marginTop: '5px', display: 'block' }}>
+                                                                        <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '5px' }}></i>
+                                                                        Arrivals must be on a Sunday. Please select a Sunday.
+                                                                    </span>
+                                                                )}
+                                                            </div>
+
+                                                            <div className="form-group">
+                                                                <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Arrival Method *</label>
+                                                                <div style={{ display: 'flex', gap: '10px' }}>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => setFormData({ ...formData, arrivalMethod: 'Flight', overlandNotes: '' })}
+                                                                        style={{
+                                                                            flex: 1,
+                                                                            padding: '10px 12px',
+                                                                            borderRadius: '10px',
+                                                                            border: formData.arrivalMethod === 'Flight' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                            background: formData.arrivalMethod === 'Flight' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            fontWeight: 800,
+                                                                            fontSize: '0.8rem',
+                                                                            cursor: 'pointer',
+                                                                            transition: 'all 0.25s ease',
+                                                                            color: formData.arrivalMethod === 'Flight' ? '#111' : '#666',
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            justifyContent: 'center',
+                                                                            gap: '6px'
+                                                                        }}
+                                                                    >
+                                                                        <i className="fa-solid fa-plane" style={{ fontSize: '0.9rem' }}></i> Flight
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => setFormData({ ...formData, arrivalMethod: 'Overland', flightNumber: '', airline: '', flightNotes: '' })}
+                                                                        style={{
+                                                                            flex: 1,
+                                                                            padding: '10px 12px',
+                                                                            borderRadius: '10px',
+                                                                            border: formData.arrivalMethod === 'Overland' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                            background: formData.arrivalMethod === 'Overland' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            fontWeight: 800,
+                                                                            fontSize: '0.8rem',
+                                                                            cursor: 'pointer',
+                                                                            transition: 'all 0.25s ease',
+                                                                            color: formData.arrivalMethod === 'Overland' ? '#111' : '#666',
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            justifyContent: 'center',
+                                                                            gap: '6px'
+                                                                        }}
+                                                                    >
+                                                                        <i className="fa-solid fa-bus" style={{ fontSize: '0.9rem' }}></i> Overland
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div style={{ display: 'grid', gridTemplateColumns: formData.arrivalMethod === 'Flight' ? '1fr 1fr' : '1fr', gap: '10px' }}>
+                                                                <div className="form-group">
+                                                                    <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Arrival Time *</label>
+                                                                    <input 
+                                                                        type="time" 
+                                                                        required 
+                                                                        value={formData.arrivalTime} 
+                                                                        onChange={e => setFormData({ ...formData, arrivalTime: e.target.value })} 
+                                                                        className="prof-input" 
+                                                                        style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                    />
+                                                                </div>
+                                                                {formData.arrivalMethod === 'Flight' && (
+                                                                    <div className="form-group">
+                                                                        <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Flight Number *</label>
+                                                                        <input 
+                                                                            type="text" 
+                                                                            required 
+                                                                            placeholder="e.g. EK 348" 
+                                                                            value={formData.flightNumber} 
+                                                                            onChange={e => setFormData({ ...formData, flightNumber: e.target.value })} 
+                                                                            className="prof-input" 
+                                                                            style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 )}
@@ -549,14 +891,85 @@ const VolunteerInquiryPage = () => {
                                     <span className="summary-value">{formData.duration || '—'}</span>
                                 </div>
                                 <div className="summary-item">
-                                    <span className="summary-label">Start Date:</span>
-                                    <span className="summary-value">{formData.startDate ? new Date(formData.startDate).toLocaleDateString() : 'Not selected'}</span>
+                                    <span className="summary-label">Arrival Date:</span>
+                                    <span className="summary-value">
+                                        {formData.startDate ? (() => {
+                                            const date = new Date(formData.startDate + 'T00:00:00');
+                                            return date.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+                                        })() : 'Not selected'}
+                                    </span>
                                 </div>
-                                <div className="summary-item">
-                                    <span className="summary-label">Duration:</span>
-                                    <span className="summary-value">{formData.duration}</span>
-                                </div>
+                                {formData.startDate && (
+                                    <>
+                                        <div className="summary-item">
+                                            <span className="summary-label">Arrival Method:</span>
+                                            <span className="summary-value">{formData.arrivalMethod}</span>
+                                        </div>
+                                        <div className="summary-item">
+                                            <span className="summary-label">Arrival Time:</span>
+                                            <span className="summary-value">{formData.arrivalTime || '—'}</span>
+                                        </div>
+                                        {formData.arrivalMethod === 'Flight' && (
+                                            <>
+                                                {formData.airline && (
+                                                    <div className="summary-item">
+                                                        <span className="summary-label">Airline:</span>
+                                                        <span className="summary-value">{formData.airline}</span>
+                                                    </div>
+                                                )}
+                                                {formData.flightNumber && (
+                                                    <div className="summary-item">
+                                                        <span className="summary-label">Flight Number:</span>
+                                                        <span className="summary-value">{formData.flightNumber}</span>
+                                                    </div>
+                                                )}
+                                                {formData.flightNotes && (
+                                                    <div className="summary-item" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}>
+                                                        <span className="summary-label">Flight Details:</span>
+                                                        <span className="summary-value" style={{ textAlign: 'left', maxWidth: '100%', fontSize: '0.85rem', color: 'rgba(255,255,255,0.9)', fontStyle: 'italic' }}>
+                                                            {formData.flightNotes}
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </>
+                                        )}
+                                        {formData.arrivalMethod === 'Overland' && formData.overlandNotes && (
+                                            <div className="summary-item" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}>
+                                                <span className="summary-label">Overland Notes:</span>
+                                                <span className="summary-value" style={{ textAlign: 'left', maxWidth: '100%', fontSize: '0.85rem', color: 'rgba(255,255,255,0.9)', fontStyle: 'italic' }}>
+                                                    {formData.overlandNotes}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
                             </div>
+
+                            {priceDetails && (
+                                <div className="summary-section" style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '20px' }}>
+                                    <div className="summary-section-title"><i className="fa-solid fa-credit-card"></i> Program Fee</div>
+                                    <div className="summary-item" style={{ alignItems: 'baseline' }}>
+                                        <span className="summary-label">Total Fee:</span>
+                                        <span className="summary-value highlight" style={{ fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>
+                                            {formatPrice(priceDetails.total)}
+                                        </span>
+                                    </div>
+                                    {!priceDetails.isFixed && (
+                                        <div className="summary-item">
+                                            <span className="summary-label">Weekly Average:</span>
+                                            <span className="summary-value">
+                                                {formatPrice(priceDetails.average)}/wk
+                                            </span>
+                                        </div>
+                                    )}
+                                    {priceDetails.isMinLimit && (
+                                        <div style={{ fontSize: '0.75rem', color: '#ffedd5', background: 'rgba(234, 88, 12, 0.25)', padding: '8px 12px', borderRadius: '10px', marginTop: '10px', fontWeight: 700 }}>
+                                            <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '6px' }}></i>
+                                            {priceDetails.minWeeks} Week Minimum Required
+                                        </div>
+                                    )}
+                                </div>
+                            )}
 
                             <div className="summary-section">
                                 <div className="summary-section-title"><i className="fa-solid fa-user"></i> Personal</div>

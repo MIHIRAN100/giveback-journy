@@ -102,7 +102,7 @@ const Compare = () => {
                                     </div>
                                     
                                     <div style={{ display: 'flex', gap: '15px' }}>
-                                        <Link to={`/package/${tour.id}`} className="btn-modern btn-black" style={{ flex: 1, textAlign: 'center', padding: '15px' }}>View Detail</Link>
+                                        <Link to={tour.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${tour.id}`} className="btn-modern btn-black" style={{ flex: 1, textAlign: 'center', padding: '15px' }}>View Detail</Link>
                                     </div>
                                 </div>
                             </div>

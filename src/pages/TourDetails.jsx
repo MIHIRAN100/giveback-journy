@@ -2142,7 +2142,7 @@ const TourDetails = () => {
                             .filter(t => t.id !== pkg.id)
                             .slice(0, 6)
                             .map((tour) => (
-                            <div key={tour.id} className="tour-card-mini" onClick={() => { navigate(`/package/${tour.id}`); window.scrollTo(0, 0); }}>
+                            <div key={tour.id} className="tour-card-mini" onClick={() => { navigate(tour.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${tour.id}`); window.scrollTo(0, 0); }}>
                                 <div className="card-image-wrapper">
                                     <img src={tour.image} alt={tour.name} />
                                     <div 

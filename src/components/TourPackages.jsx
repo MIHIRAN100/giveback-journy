@@ -28,6 +28,7 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 
     // Determine category & location from tour data
     const getCategory = () => {
+        if (pkg.isVolunteer) return 'Volunteering & Impact';
         const name = (pkg.name + ' ' + pkg.description).toLowerCase();
         if (name.includes('safari') || name.includes('wild') || name.includes('leopard') || name.includes('elephant')) return 'Outdoor & sports activities';
         if (name.includes('beach') || name.includes('coast') || name.includes('surf') || name.includes('southern')) return 'Tours';
@@ -37,6 +38,7 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     };
 
     const getLocation = () => {
+        if (pkg.location) return pkg.location;
         const name = (pkg.name + ' ' + pkg.description).toLowerCase();
         if (name.includes('kandy')) return 'Kandy';
         if (name.includes('galle')) return 'Galle';
@@ -59,7 +61,7 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     const reviewCount = pkg.reviews ? pkg.reviews.length : Math.floor(pkg.rating * 3);
 
     return (
-        <Link to={`/package/${pkg.id}`} className={`package-card gyg-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={pkg.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${pkg.id}`} className={`package-card gyg-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="gyg-card-img-wrapper">
                 <img src={pkg.image} alt={pkg.name} className="gyg-card-img" />
                 {/* Days / Nights badge */}

@@ -4,7 +4,7 @@ import { useLocation, Link } from 'react-router-dom';
 const BottomAdBanner = ({ isCookieVisible }) => {
     const [visible, setVisible] = useState(false);
     const location = useLocation();
-    const isTourDetails = location.pathname.startsWith('/package/');
+    const isHomePage = location.pathname === '/';
 
     useEffect(() => {
         const closed = sessionStorage.getItem('bottom_ad_banner_closed');
@@ -24,7 +24,7 @@ const BottomAdBanner = ({ isCookieVisible }) => {
         sessionStorage.setItem('bottom_ad_banner_closed', 'true');
     };
 
-    if (!visible || isTourDetails) return null;
+    if (!visible || !isHomePage) return null;
 
     // Calculate bottom position based on cookie bar visibility
     const bottomPos = isCookieVisible ? '80px' : '0px';

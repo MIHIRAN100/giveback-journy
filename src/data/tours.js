@@ -11,6 +11,8 @@ import adamsPeakImg from '../assets/download (5).jpg';
 import raftingImg from '../assets/Rafting.jpg';
 import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
 import islandCrossoverCover from '../assets/island_crossover_cover.png';
+import breatheSriLankaImg from '../assets/photo-1548957175-84f0f9af659e.avif';
+
 
 import routeMapEssential from '../assets/route_map_essential_v2.png';
 import routeMapSouthernNew from '../assets/route_map_southern_v2.png';
@@ -861,8 +863,33 @@ export const tourPackages = [
         physicalIntensity: 3,
         importantNotes: COMMON_NOTES
     },
-
-
+    {
+        id: 5,
+        name: "Breathe Sri Lanka",
+        days: "27 Days",
+        location: "Kandy & Coast",
+        description: "A complete 27-day island immersion combining culture, adventure, and meaningful community work. Journey through ancient temples in Kandy, hike emerald hills in Ella, relax on southern beaches, and dedicate 14 days to volunteering in Hikkaduwa.",
+        price: "$1,155",
+        image: breatheSriLankaImg,
+        tags: ["volunteer", "impact", "giveback", "meaningful"],
+        rating: 4.9,
+        ratingLabel: "Volunteer Choice",
+        isVolunteer: true,
+        inclusions: [
+            "Accommodation throughout the journey",
+            "Meals as per itinerary",
+            "Volunteer placement & coordination",
+            "Cultural tours & entry fees",
+            "Local guidance & orientation"
+        ],
+        exclusions: [
+            "International flights & visa fees",
+            "Travel insurance",
+            "Personal expenses",
+            "Return airport transfer"
+        ],
+        importantNotes: COMMON_NOTES
+    }
 ];
 
 export const TOURS_DATA = tourPackages;

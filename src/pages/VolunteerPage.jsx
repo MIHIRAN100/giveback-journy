@@ -94,7 +94,7 @@ const pricingPrograms = [
     }
 ];
 
-const programWeeklyRates = {
+export const programWeeklyRates = {
     "real-sri-lanka-experience": {
         fixed: true,
         total: 1155,
@@ -133,7 +133,7 @@ const programWeeklyRates = {
     }
 };
 
-const getProgramPriceDetails = (progId, weeks) => {
+export const getProgramPriceDetails = (progId, weeks) => {
     const rate = programWeeklyRates[progId];
     if (!rate) return { total: 0, average: 0, isMinLimit: false };
 

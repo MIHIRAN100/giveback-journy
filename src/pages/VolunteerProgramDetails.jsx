@@ -844,7 +844,8 @@ const VolunteerProgramDetails = () => {
                 alignItems: 'center',
                 zIndex: 1000,
                 boxShadow: '0 12px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.03)',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                animation: 'volunteerFloat 4s ease-in-out infinite'
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '100%', justifyContent: 'space-between' }}>
                     <div className="bottom-price-info" style={{ display: 'flex', flexDirection: 'column', gap: '3px', textAlign: 'left' }}>
@@ -987,6 +988,18 @@ const VolunteerProgramDetails = () => {
                     }
                     .bottom-bar-actions {
                         width: auto !important;
+                    }
+                }
+                
+                @keyframes volunteerFloat {
+                    0% {
+                        transform: translateX(-50%) translateY(0);
+                    }
+                    50% {
+                        transform: translateX(-50%) translateY(-6px);
+                    }
+                    100% {
+                        transform: translateX(-50%) translateY(0);
                     }
                 }
             `}} />

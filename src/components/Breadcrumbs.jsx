@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
+import { volunteerPrograms } from '../data/volunteerPrograms';
 
 const Breadcrumbs = ({ customName = null }) => {
     const location = useLocation();
@@ -21,6 +22,16 @@ const Breadcrumbs = ({ customName = null }) => {
             if (pkg) {
                 crumbs.push({ label: pkg.name, path: path, active: true });
             }
+        } else if (path.startsWith('/volunteer-program/')) {
+            const id = path.split('/').pop();
+            const prog = volunteerPrograms.find(p => p.id === id);
+            crumbs.push({ label: 'Giveback Impact', path: '/volunteer' });
+            if (prog) {
+                crumbs.push({ label: prog.title, path: path, active: true });
+            }
+        } else if (path === '/volunteer-inquiry') {
+            crumbs.push({ label: 'Giveback Impact', path: '/volunteer' });
+            crumbs.push({ label: 'Volunteer Inquiry', path: '/volunteer-inquiry', active: true });
         } else if (path === '/packages') {
             crumbs.push({ label: 'Tour Packages', path: '/packages', active: true });
         } else if (path === '/volunteer') {
@@ -45,7 +56,10 @@ const Breadcrumbs = ({ customName = null }) => {
             const pkg = tourPackages.find(p => p.id === parseInt(id));
             crumbs.push({ label: 'Tour Packages', path: '/packages' });
             if (pkg) {
-                crumbs.push({ label: pkg.name, path: `/package/${id}` });
+                crumbs.push({ 
+                    label: pkg.name, 
+                    path: pkg.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${id}` 
+                });
             }
             crumbs.push({ label: 'Booking Inquiry', path: path, active: true });
         }

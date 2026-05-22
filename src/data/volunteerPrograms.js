@@ -1,4 +1,4 @@
-import realExpImg from '../assets/real_sri_lanka_exp_volunteer_1778937381707.png';
+import breatheSriLankaImg from '../assets/photo-1548957175-84f0f9af659e.avif';
 import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
@@ -30,7 +30,7 @@ export const volunteerPrograms = [
         duration: "27 Days",
         housing: "Shared Rooms",
         price: "1155",
-        image: realExpImg,
+        image: breatheSriLankaImg,
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
