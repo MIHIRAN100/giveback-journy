@@ -255,7 +255,7 @@ const VolunteerInquiryPage = () => {
         'Special Needs Support': 'special-needs-support',
         'Construction & Renovation': 'village-school-renovation',
         'Sri Lanka Dog Volunteers': 'sri-lanka-dog-rescue',
-        'Zen & Temple Yoga': 'zen-and-temple-yoga',
+        'Body & Mind Wellness Week': 'zen-and-temple-yoga',
         'Medical Volunteer': 'medical-volunteer'
     };
 
@@ -433,7 +433,7 @@ const VolunteerInquiryPage = () => {
                                             { id: 'Special Needs Support', label: 'Special Needs Support', icon: 'fa-solid fa-hands-holding-child', desc: 'Care & support for children with special needs' },
                                             { id: 'Sri Lanka Dog Volunteers', label: 'Dog Rescue', icon: 'fa-solid fa-paw', desc: 'Rescue & rehabilitation of street dogs' },
                                             { id: 'Construction & Renovation', label: 'Construction & Renovation', icon: 'fa-solid fa-hammer', desc: 'Build & renovate schools and community spaces' },
-                                            { id: 'Zen & Temple Yoga', label: 'Zen & Temple Yoga', icon: 'fa-solid fa-spa', desc: 'Mindfulness, yoga & temple life' },
+                                            { id: 'Zen & Temple: Yoga - Body & Mind Week', label: 'Zen & Temple: Yoga - Body & Mind Week', icon: 'fa-solid fa-spa', desc: 'Yoga, meditation & massages in Hikkaduwa' },
                                             { id: 'Medical Volunteer', label: 'Medical Volunteer', icon: 'fa-solid fa-kit-medical', desc: 'Healthcare placements in rural clinics' },
                                         ];
 

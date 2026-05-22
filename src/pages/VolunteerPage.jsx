@@ -69,11 +69,11 @@ const pricingPrograms = [
         color: "#ffd93d"
     },
     {
-        name: "Zen & Temple Yoga",
+        name: "Body & Mind Wellness Week",
         price: 200,
-        duration: "1-4 Weeks",
-        location: "Kandy District",
-        housing: "Shared / Private",
+        duration: "1-2 Weeks",
+        location: "Hikkaduwa, Sri Lanka",
+        housing: "Shared Volunteer House",
         meals: "3 Daily",
         pickup: "Included",
         support: "24/7 Support",

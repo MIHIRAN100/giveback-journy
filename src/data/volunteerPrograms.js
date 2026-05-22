@@ -556,24 +556,137 @@ export const volunteerPrograms = [
     },
     {
         id: "zen-and-temple-yoga",
-        title: "Zen & Temple: Yoga",
-        location: "Kandy District",
+        title: "Body & Mind Wellness Week",
+        location: "Hikkaduwa, Sri Lanka",
         duration: "1-2 Weeks",
-        housing: "Traditional Temple Stay",
+        housing: "Shared Volunteer House",
         price: "200",
         image: yogaImg,
         minAge: "18+",
         pickup: "Included",
-        meals: "2 Daily",
-        shortDesc: "Combine mindfulness with temple service in the heart of the cultural triangle.",
-        description: "Experience spiritual rejuvenation and cultural immersion in the sacred Kandy District. This unique program blends daily yoga and meditation practices with meaningful service at a local Buddhist temple. Volunteers assist monks with daily chores, temple maintenance, and community outreach programs while learning about Buddhist philosophy and mindfulness techniques. This is an ideal journey for those seeking inner peace and a deep understanding of Sri Lankan spiritual traditions.",
+        meals: "3 Daily",
+        shortDesc: "Discover Balance, Wellness & Inner Peace in Tropical Sri Lanka",
+        description: "Welcome to Body & Mind Week in Hikkaduwa, a unique wellness experience designed for travelers who want to relax, recharge, and reconnect with themselves while enjoying the beauty of Sri Lanka’s southern coastline. Located in the tropical beach town of Hikkaduwa, this wellness program combines traditional Sri Lankan healing practices, yoga, meditation, healthy living, and relaxation to create a complete experience for the mind, body, and soul. Hikkaduwa is one of Sri Lanka’s most famous beach destinations, known for its golden beaches, warm tropical climate, laid-back atmosphere, beautiful sunsets, and peaceful ocean surroundings. It is the perfect location to disconnect from busy daily routines and focus on personal wellbeing. Whether you are looking to reduce stress, improve your health, reconnect with nature, or simply enjoy a peaceful escape by the ocean, Body & Mind Week offers an unforgettable wellness journey.",
         color: "#9b59b6",
         galleryImages: [
             { src: teaPlantation, caption: "Serene Landscapes" },
             { src: kandyTrain, caption: "Journey To Kandy" },
             { src: cultureExp, caption: "Temple Culture" },
             { src: volunteer3, caption: "Mindful Practice" }
-        ]
+        ],
+        highlights: [
+            "05 Traditional Sri Lankan massages and herbal treatments",
+            "05 Guided meditation lessons for all skill levels",
+            "05 Sunrise beach yoga sessions along Hikkaduwa coastline",
+            "Personalized wellness approach adjusted to your body type and fitness goals",
+            "Mandatory orientation day on Monday including herbal garden visit & city tour",
+            "Healthy living, mindfulness activities, and authentic cultural experiences"
+        ],
+        sections: [
+            {
+                title: "Program Overview",
+                paragraphs: [
+                    "The Body & Mind Week program runs from Monday to Friday and includes:",
+                    "• 05 Traditional Sri Lankan massages\n• 05 Guided meditation lessons\n• 05 Sunrise beach yoga sessions\n• Traditional Sri Lankan wellness experiences\n• Relaxation and mindfulness activities\n• Cultural and healthy lifestyle experiences",
+                    "Each day is carefully designed to create a balanced wellness experience that supports both physical and mental wellbeing."
+                ]
+            },
+            {
+                title: "Mandatory Orientation Day – Monday",
+                paragraphs: [
+                    "The mandatory orientation day is designed to help participants settle into their new environment, understand the program structure, and gain a deeper introduction to Sri Lankan culture and wellness traditions. The orientation ensures that all participants feel comfortable, informed, and prepared before beginning the wellness program.",
+                    "During the orientation, participants will:\n• Complete document collection and registration procedures\n• Receive a full briefing about the program\n• Learn about rules and regulations\n• Receive health and safety information\n• Learn about local culture and customs\n• Understand the daily schedule and activities",
+                    "Participants will also enjoy several relaxing and cultural activities including:\n• Visit to a traditional herbal garden to learn about Sri Lankan medicine and Ayurveda\n• Relaxing traditional massage experience\n• Traditional Sri Lankan lunch\n• Hikkaduwa city tour\n• Beach visit and introduction to the coastal environment\n• Information about local culture, marine life, beach safety, and community life in Hikkaduwa",
+                    "The orientation day allows participants to relax, meet fellow travelers, and gain a better understanding of life in Sri Lanka before starting the program."
+                ]
+            },
+            {
+                title: "Personalized Wellness Approach",
+                paragraphs: [
+                    "The exact program schedule, type of massage treatments, yoga sessions, and meditation practices will be individually planned and guided by our experienced instructors, yoga teachers, and therapists.",
+                    "Programs are carefully adjusted after considering several important factors including:\n• Weather and environmental conditions\n• Participant’s body type and physical condition\n• Physical fitness and flexibility levels\n• Previous yoga or meditation experience\n• Stress levels and lifestyle habits\n• Health and wellness goals\n• Energy levels and personal comfort\n• Any injuries, muscle tension, or physical limitations\n• Mental wellbeing and relaxation needs",
+                    "This personalized approach helps ensure that every participant receives the most suitable and beneficial wellness experience during their stay."
+                ]
+            },
+            {
+                title: "Sunrise Beach Yoga Sessions",
+                paragraphs: [
+                    "Each morning begins with peaceful yoga sessions on the beach during sunrise. The calming sound of the ocean, fresh sea breeze, and natural surroundings create the perfect atmosphere for relaxation and mindfulness. Different styles of yoga may be introduced throughout the week depending on the participants’ needs and abilities.",
+                    "Yoga sessions are designed to help improve:\n• Flexibility and posture\n• Strength and balance\n• Breathing and focus\n• Energy levels and sleep quality\n• Mental clarity and emotional wellbeing\n• Body awareness and relaxation",
+                    "Practicing yoga by the ocean provides a calming and energizing experience that helps participants feel refreshed, balanced, and connected with nature."
+                ]
+            },
+            {
+                title: "Guided Meditation Lessons",
+                paragraphs: [
+                    "Meditation sessions focus on helping participants calm the mind, reduce stress, and improve emotional balance. Participants will learn breathing techniques, mindfulness exercises, relaxation methods, and meditation practices that can continue to be used in everyday life long after the program has ended.",
+                    "Meditation can help to:\n• Reduce anxiety and mental stress\n• Improve concentration and focus\n• Increase self-awareness and positivity\n• Support emotional and spiritual wellbeing\n• Create a stronger connection between mind and body\n• Improve inner peace and relaxation",
+                    "These guided meditation lessons are suitable for both beginners and experienced participants."
+                ]
+            },
+            {
+                title: "Traditional Sri Lankan Herbal Treatments & Massage",
+                paragraphs: [
+                    "Sri Lanka is internationally known for its traditional herbal healing methods and Ayurveda practices that have been used for centuries. The massages and herbal treatments included in this program use natural oils, herbs, and traditional techniques to support overall wellbeing and relaxation.",
+                    "Traditional Sri Lankan herbal treatments may help to:\n• Improve blood circulation\n• Relax muscles and relieve body tension\n• Reduce stress and fatigue\n• Detoxify and refresh the body\n• Improve sleep and relaxation\n• Restore balance to the body and mind\n• Increase energy and overall wellbeing",
+                    "These natural wellness traditions provide participants with a truly authentic Sri Lankan healing experience."
+                ]
+            },
+            {
+                title: "Why Choose Hikkaduwa?",
+                paragraphs: [
+                    "Hikkaduwa offers the perfect tropical setting for a wellness journey. Surrounded by beautiful beaches, palm trees, warm weather, and peaceful coastal energy, participants can fully disconnect from busy daily life and focus on relaxation, healing, and self-care.",
+                    "Hikkaduwa is also famous for:\n• Beautiful beaches and sunsets\n• Relaxed tropical atmosphere\n• Friendly local community\n• Fresh and healthy food\n• Marine life and ocean activities\n• Peaceful environment for wellness and mindfulness",
+                    "The combination of ocean air, tropical nature, yoga, meditation, and traditional healing practices creates an unforgettable wellness experience."
+                ]
+            },
+            {
+                title: "Who Is This Program For?",
+                paragraphs: [
+                    "Body & Mind Week is suitable for:\n• Solo travelers\n• Couples\n• Wellness travelers\n• Yoga beginners and experienced practitioners\n• People looking to reduce stress\n• Travelers seeking relaxation and self-care\n• Individuals interested in meditation and mindfulness\n• Participants interested in Sri Lankan wellness traditions and culture",
+                    "No previous yoga or meditation experience is required."
+                ]
+            },
+            {
+                title: "A Complete Wellness Experience in Sri Lanka",
+                paragraphs: [
+                    "Body & Mind Week is more than just a holiday — it is an opportunity to slow down, reconnect with yourself, and experience authentic Sri Lankan wellness traditions in a tropical paradise. This program combines relaxation, healing, mindfulness, culture, and healthy living to create a meaningful and unforgettable experience in Sri Lanka. Join us in Hikkaduwa and begin your journey towards balance, wellbeing, and inner peace."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "During your time on the Body & Mind program, you will stay in our Volunteer House located in Hikkaduwa, a vibrant beach town on Sri Lanka's south coast. You'll share the house with other participants and volunteers from around the world, giving you the chance to make plenty of new friends! The house includes a communal area where you can relax, hang out, or read. A member of the local team also lives at the house, ensuring 24/7 support and security for all volunteers. Transport to and from your daily program activities is included where applicable.",
+            options: [
+                {
+                    title: "Shared Option - Standard Offering",
+                    subtitle: "Recommended for 18-25 Year Olds",
+                    icon: "🛏️",
+                    description: "The Volunteer House is basic but comfortable and clean, with single-sex bedrooms accommodating up to 12 people in bunk beds. Each room has air conditioning, bed linen, cupboard space, and a personal locker for valuables. The bathrooms are shared and feature showers and western-style toilets. The climate is hot and humid all year round, making the cool showers a refreshing feature."
+                },
+                {
+                    title: "Comfort Option - Private Room Upgrade",
+                    subtitle: "150 USD Per Week (Recommended for 26+ Year Olds)",
+                    icon: "🔒",
+                    description: "If you prefer a private room option, you can upgrade to the Comfort Option. Comfort rooms will accommodate a solo traveller or up to two participants travelling together, with one or two single beds, or a double bed. Each room has air conditioning, bed linen, cupboard space, and a personal locker. Two bathrooms are shared with up to two other private rooms and feature showers and western-style toilets."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Not Available" },
+                { label: "People Per Room", value: "Up To 12 (Shared) or 1 (Comfort)" },
+                { label: "Single Sex Rooms", value: "Yes" },
+                { label: "Western Bathroom Facilities", value: "Yes" },
+                { label: "Airport Transfer", value: "Included" },
+                { label: "Nearest ATM & Shops", value: "10 Minute Drive" }
+            ]
+        },
+        mealsInfo: {
+            description: "You will be served three freshly prepared meals daily at the Volunteer House. Sri Lankan cuisine features a lot of rice, with fish or chicken as the main protein options. Vegetarian meals are always available. The meals blend local and western cuisine, and a weekly menu is provided so you can know in advance what’s on offer. For those craving western comforts, restaurants in the nearby town of Hikkaduwa serve a range of western meals.",
+            examples: {
+                breakfast: "Eggs, Toast, Jam, Fruit, Pancakes, Tea",
+                lunch: "Dhal, Spinach Curry, Poppadoms, Paprika Tofu, Rice",
+                dinner: "Vegetables, Noodles, Tomato Curry, Omelette"
+            }
+        }
     },
     {
         id: "medical-volunteer",
