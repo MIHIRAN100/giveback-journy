@@ -6,14 +6,6 @@ import DocuSignModal from '../components/DocuSignModal';
 import { useCurrency } from '../context/CurrencyContext';
 import { getProgramPriceDetails } from './VolunteerPage';
 
-
-const isSunday = (dateString) => {
-    if (!dateString) return true;
-    const date = new Date(dateString + 'T00:00:00');
-    return date.getDay() === 0;
-};
-
-
 const VolunteerInquiryPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -23,7 +15,7 @@ const VolunteerInquiryPage = () => {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
-    const totalSteps = 5;
+    const totalSteps = 6;
     const isSending = useRef(false);
     
     const [formData, setFormData] = useState({
@@ -118,22 +110,8 @@ const VolunteerInquiryPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Validate that arrival date is Sunday on Step 2
-        if (currentStep === 2) {
-            if (!isSunday(formData.startDate)) {
-                alert('Arrival date must be a Sunday. Please select a valid Sunday to proceed.');
-                return;
-            }
-        }
-        
         if (currentStep < totalSteps) {
             nextStep();
-            return;
-        }
-        
-        // Final sanity check before submission
-        if (!isSunday(formData.startDate)) {
-            alert('Arrival date must be a Sunday. Please correct this in Step 2.');
             return;
         }
         
@@ -155,8 +133,8 @@ const VolunteerInquiryPage = () => {
         if (cleanEmail.endsWith('@gmai.com')) cleanEmail = cleanEmail.replace('@gmai.com', '@gmail.com');
 
         const SERVICE_ID = "service_95ud991";
-        const TEMPLATE_ID_ADMIN = "template_84lczai"; 
-        const TEMPLATE_ID_USER = "template_xd7jlaq";   
+        const TEMPLATE_ID_ADMIN = "template_isr2x0x"; 
+        const TEMPLATE_ID_USER = "template_88vx3ml";   
         const PUBLIC_KEY = "Z-S0sHMSNtxZTuFwF";
 
         const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
@@ -177,9 +155,49 @@ const VolunteerInquiryPage = () => {
             reply_to: cleanEmail,
             admin_email: "hello@givebackjourney.com",
             phone: formData.userPhone,
-            
             tour_package: `VOLUNTEER APPLICATION: ${formData.program}`,
             booking_date: `${formData.startDate} (${formData.arrivalMethod === 'Flight' ? `Flight: ${formData.flightNumber}${formData.airline ? ` (${formData.airline})` : ''}` : `Overland${formData.overlandNotes ? ` - Notes: ${formData.overlandNotes}` : ''}`} at ${formData.arrivalTime})`,
+            submitted_at: new Date().toLocaleString(),
+            to_email: "hello@givebackjourney.com",
+
+            // Detailed granular parameters
+            user_name: formData.userName,
+            user_email: cleanEmail,
+            user_phone: formData.userPhone,
+            user_country: formData.userCountry,
+            user_gender: formData.userGender,
+            user_age: formData.userAge,
+            user_occupation: formData.userOccupation,
+            
+            program_project: formData.volunteerProject,
+            program_duration: formData.duration,
+            program_fee: priceDetails ? formatPrice(priceDetails.total) : '—',
+            
+            arrival_date: formData.startDate,
+            arrival_method: formData.arrivalMethod,
+            arrival_time: formData.arrivalTime,
+            flight_airline: formData.airline || 'N/A',
+            flight_number: formData.flightNumber || 'N/A',
+            flight_notes: formData.flightNotes || 'N/A',
+            overland_notes: formData.overlandNotes || 'N/A',
+            
+            emergency_name: formData.emergencyName,
+            emergency_relation: formData.emergencyRelation,
+            emergency_phone: formData.emergencyPhone,
+            
+            motivation: formData.motivation,
+            skills: formData.skills || 'N/A',
+            referral: formData.referral,
+            
+            background_check: formData.hasBackgroundCheck ? 'YES' : 'NO',
+            travel_insurance: formData.hasInsurance ? 'YES' : 'NO',
+            dietary: formData.dietary || 'None',
+            medical_notes: formData.medicalNotes || 'None',
+            
+            nda_signed_name: ndaSignedName || 'N/A',
+            nda_signed_date: ndaSignedDate || 'N/A',
+            nda_envelope_id: ndaEnvelopeId || 'N/A',
+
             additional_info: `
                 --- PERSONAL ---
                 Country: ${formData.userCountry}
@@ -212,14 +230,14 @@ const VolunteerInquiryPage = () => {
                 Dietary: ${formData.dietary}
                 Medical: ${formData.medicalNotes}
                 ${ndaManifest}
-            `,
-            submitted_at: new Date().toLocaleString(),
-            to_email: "hello@givebackjourney.com"
+            `
         };
 
         try {
-            // Dashboard handles customer confirmation automatically via Auto-Reply
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
+            await Promise.all([
+                emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY),
+                emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY)
+            ]);
             setSubmitted(true);
         } catch (err) {
             console.error('Email error:', err);
@@ -292,6 +310,7 @@ const VolunteerInquiryPage = () => {
     const stepTitles = [
         "Personal Information",
         "Program Details",
+        "Arrival Details",
         "Emergency Contact",
         "Skills & Motivation",
         "Declarations & Health"
@@ -466,287 +485,137 @@ const VolunteerInquiryPage = () => {
                                                     </div>
                                                 </div>
 
-                                                {/* Duration + Start Date */}
+                                                {/* Duration (Full Width) */}
                                                 {formData.volunteerProject && (
-                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                            <div className="form-group">
-                                                                <label className="prof-label">Program Duration</label>
-                                                                {isBreathe ? (
-                                                                    <input
-                                                                        type="text"
-                                                                        value="27 Days (Full Program)"
-                                                                        readOnly
-                                                                        className="prof-input"
-                                                                        style={{ background: '#f5f5f7', color: '#555', cursor: 'not-allowed' }}
-                                                                    />
-                                                                ) : (
-                                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                                                                        {/* Category selector */}
-                                                                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                                                                            <button
-                                                                                type="button"
-                                                                                onClick={() => {
-                                                                                    setDurationCategory('weeks');
-                                                                                    setFormData({ ...formData, duration: '1 Week' });
-                                                                                }}
-                                                                                style={{
-                                                                                    flex: '1 1 120px',
-                                                                                    padding: '10px 16px',
-                                                                                    borderRadius: '12px',
-                                                                                    border: durationCategory === 'weeks' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                                    background: durationCategory === 'weeks' ? 'rgba(29,185,84,0.06)' : 'white',
-                                                                                    fontWeight: 700,
-                                                                                    fontSize: '0.85rem',
-                                                                                    cursor: 'pointer',
-                                                                                    transition: 'all 0.25s ease',
-                                                                                    color: durationCategory === 'weeks' ? '#111' : '#666'
-                                                                                }}
-                                                                            >
-                                                                                Weeks (1 - 24 Weeks)
-                                                                            </button>
-                                                                            <button
-                                                                                type="button"
-                                                                                onClick={() => {
-                                                                                    setDurationCategory('months');
-                                                                                    setFormData({ ...formData, duration: '1 Month' });
-                                                                                }}
-                                                                                style={{
-                                                                                    flex: '1 1 120px',
-                                                                                    padding: '10px 16px',
-                                                                                    borderRadius: '12px',
-                                                                                    border: durationCategory === 'months' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                                    background: durationCategory === 'months' ? 'rgba(29,185,84,0.06)' : 'white',
-                                                                                    fontWeight: 700,
-                                                                                    fontSize: '0.85rem',
-                                                                                    cursor: 'pointer',
-                                                                                    transition: 'all 0.25s ease',
-                                                                                    color: durationCategory === 'months' ? '#111' : '#666'
-                                                                                }}
-                                                                            >
-                                                                                Months (1 - 6 Months)
-                                                                            </button>
-                                                                            <button
-                                                                                type="button"
-                                                                                onClick={() => {
-                                                                                    setDurationCategory('mix');
-                                                                                }}
-                                                                                style={{
-                                                                                    flex: '1 1 150px',
-                                                                                    padding: '10px 16px',
-                                                                                    borderRadius: '12px',
-                                                                                    border: durationCategory === 'mix' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                                    background: durationCategory === 'mix' ? 'rgba(29,185,84,0.06)' : 'white',
-                                                                                    fontWeight: 700,
-                                                                                    fontSize: '0.85rem',
-                                                                                    cursor: 'pointer',
-                                                                                    transition: 'all 0.25s ease',
-                                                                                    color: durationCategory === 'mix' ? '#111' : '#666'
-                                                                                }}
-                                                                            >
-                                                                                Months & Weeks Mix
-                                                                            </button>
-                                                                        </div>
- 
-                                                                        {/* Select list based on category */}
-                                                                        {durationCategory !== 'mix' ? (
-                                                                            <select
-                                                                                required
-                                                                                value={formData.duration}
-                                                                                onChange={e => setFormData({ ...formData, duration: e.target.value })}
-                                                                                className="prof-input prof-select"
-                                                                            >
-                                                                                <option value="">Select Duration Option</option>
-                                                                                {durationCategory === 'weeks' ? (
-                                                                                    Array.from({ length: 24 }, (_, i) => `${i + 1} ${i === 0 ? 'Week' : 'Weeks'}`).map(d => (
-                                                                                        <option key={d} value={d}>{d}</option>
-                                                                                    ))
-                                                                                ) : (
-                                                                                    Array.from({ length: 6 }, (_, i) => `${i + 1} ${i === 0 ? 'Month' : 'Months'}`).map(d => (
-                                                                                        <option key={d} value={d}>{d}</option>
-                                                                                    ))
-                                                                                )}
-                                                                            </select>
+                                                    <div className="form-group animate-fade-in" style={{ maxWidth: '600px' }}>
+                                                        <label className="prof-label">Program Duration</label>
+                                                        {isBreathe ? (
+                                                            <input
+                                                                type="text"
+                                                                value="27 Days (Full Program)"
+                                                                readOnly
+                                                                className="prof-input"
+                                                                style={{ background: '#f5f5f7', color: '#555', cursor: 'not-allowed' }}
+                                                            />
+                                                        ) : (
+                                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                                                {/* Category selector */}
+                                                                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => {
+                                                                            setDurationCategory('weeks');
+                                                                            setFormData({ ...formData, duration: '1 Week' });
+                                                                        }}
+                                                                        style={{
+                                                                            flex: '1 1 120px',
+                                                                            padding: '10px 16px',
+                                                                            borderRadius: '12px',
+                                                                            border: durationCategory === 'weeks' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                            background: durationCategory === 'weeks' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            fontWeight: 700,
+                                                                            fontSize: '0.85rem',
+                                                                            cursor: 'pointer',
+                                                                            transition: 'all 0.25s ease',
+                                                                            color: durationCategory === 'weeks' ? '#111' : '#666'
+                                                                        }}
+                                                                    >
+                                                                        Weeks (1 - 24 Weeks)
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => {
+                                                                            setDurationCategory('months');
+                                                                            setFormData({ ...formData, duration: '1 Month' });
+                                                                        }}
+                                                                        style={{
+                                                                            flex: '1 1 120px',
+                                                                            padding: '10px 16px',
+                                                                            borderRadius: '12px',
+                                                                            border: durationCategory === 'months' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                            background: durationCategory === 'months' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            fontWeight: 700,
+                                                                            fontSize: '0.85rem',
+                                                                            cursor: 'pointer',
+                                                                            transition: 'all 0.25s ease',
+                                                                            color: durationCategory === 'months' ? '#111' : '#666'
+                                                                        }}
+                                                                    >
+                                                                        Months (1 - 6 Months)
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => {
+                                                                            setDurationCategory('mix');
+                                                                        }}
+                                                                        style={{
+                                                                            flex: '1 1 150px',
+                                                                            padding: '10px 16px',
+                                                                            borderRadius: '12px',
+                                                                            border: durationCategory === 'mix' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                                            background: durationCategory === 'mix' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            fontWeight: 700,
+                                                                            fontSize: '0.85rem',
+                                                                            cursor: 'pointer',
+                                                                            transition: 'all 0.25s ease',
+                                                                            color: durationCategory === 'mix' ? '#111' : '#666'
+                                                                        }}
+                                                                    >
+                                                                        Months & Weeks Mix
+                                                                    </button>
+                                                                </div>
+
+                                                                {/* Select list based on category */}
+                                                                {durationCategory !== 'mix' ? (
+                                                                    <select
+                                                                        required
+                                                                        value={formData.duration}
+                                                                        onChange={e => setFormData({ ...formData, duration: e.target.value })}
+                                                                        className="prof-input prof-select"
+                                                                    >
+                                                                        <option value="">Select Duration Option</option>
+                                                                        {durationCategory === 'weeks' ? (
+                                                                            Array.from({ length: 24 }, (_, i) => `${i + 1} ${i === 0 ? 'Week' : 'Weeks'}`).map(d => (
+                                                                                <option key={d} value={d}>{d}</option>
+                                                                            ))
                                                                         ) : (
-                                                                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', animation: 'profFadeIn 0.3s ease forwards' }}>
-                                                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                                                                    <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#666', textTransform: 'uppercase' }}>Months</label>
-                                                                                    <select
-                                                                                        value={mixMonths}
-                                                                                        onChange={e => setMixMonths(e.target.value)}
-                                                                                        className="prof-input prof-select"
-                                                                                        style={{ padding: '12px 18px', borderRadius: '12px' }}
-                                                                                    >
-                                                                                        {Array.from({ length: 5 }, (_, i) => `${i + 1} ${i === 0 ? 'Month' : 'Months'}`).map(m => (
-                                                                                            <option key={m} value={m}>{m}</option>
-                                                                                        ))}
-                                                                                    </select>
-                                                                                </div>
-                                                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                                                                    <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#666', textTransform: 'uppercase' }}>Weeks</label>
-                                                                                    <select
-                                                                                        value={mixWeeks}
-                                                                                        onChange={e => setMixWeeks(e.target.value)}
-                                                                                        className="prof-input prof-select"
-                                                                                        style={{ padding: '12px 18px', borderRadius: '12px' }}
-                                                                                    >
-                                                                                        {Array.from({ length: 3 }, (_, i) => `${i + 1} ${i === 0 ? 'Week' : 'Weeks'}`).map(w => (
-                                                                                            <option key={w} value={w}>{w}</option>
-                                                                                        ))}
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
+                                                                            Array.from({ length: 6 }, (_, i) => `${i + 1} ${i === 0 ? 'Month' : 'Months'}`).map(d => (
+                                                                                <option key={d} value={d}>{d}</option>
+                                                                            ))
                                                                         )}
+                                                                    </select>
+                                                                ) : (
+                                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', animation: 'profFadeIn 0.3s ease forwards' }}>
+                                                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                                                            <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#666', textTransform: 'uppercase' }}>Months</label>
+                                                                            <select
+                                                                                value={mixMonths}
+                                                                                onChange={e => setMixMonths(e.target.value)}
+                                                                                className="prof-input prof-select"
+                                                                                style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                            >
+                                                                                {Array.from({ length: 5 }, (_, i) => `${i + 1} ${i === 0 ? 'Month' : 'Months'}`).map(m => (
+                                                                                    <option key={m} value={m}>{m}</option>
+                                                                                ))}
+                                                                            </select>
+                                                                        </div>
+                                                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                                                            <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#666', textTransform: 'uppercase' }}>Weeks</label>
+                                                                            <select
+                                                                                value={mixWeeks}
+                                                                                onChange={e => setMixWeeks(e.target.value)}
+                                                                                className="prof-input prof-select"
+                                                                                style={{ padding: '12px 18px', borderRadius: '12px' }}
+                                                                            >
+                                                                                {Array.from({ length: 3 }, (_, i) => `${i + 1} ${i === 0 ? 'Week' : 'Weeks'}`).map(w => (
+                                                                                    <option key={w} value={w}>{w}</option>
+                                                                                ))}
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                 )}
                                                             </div>
-                                                            {formData.arrivalMethod === 'Overland' && (
-                                                                <div className="form-group animate-fade-in">
-                                                                    <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Overland Arrival Notes *</label>
-                                                                    <textarea 
-                                                                        required 
-                                                                        placeholder="Describe your overland travel plans (e.g., bus from Colombo, train, taxi, etc.)" 
-                                                                        value={formData.overlandNotes || ''} 
-                                                                        onChange={e => setFormData({ ...formData, overlandNotes: e.target.value })} 
-                                                                        className="prof-textarea" 
-                                                                        style={{ minHeight: '120px', fontSize: '0.9rem', padding: '12px 18px', borderRadius: '12px' }}
-                                                                    />
-                                                                </div>
-                                                            )}
-                                                            {formData.arrivalMethod === 'Flight' && (
-                                                                <>
-                                                                    <div className="form-group animate-fade-in">
-                                                                        <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Airline Name *</label>
-                                                                        <input 
-                                                                            type="text"
-                                                                            required 
-                                                                            placeholder="e.g. Emirates, Qatar Airways" 
-                                                                            value={formData.airline || ''} 
-                                                                            onChange={e => setFormData({ ...formData, airline: e.target.value })} 
-                                                                            className="prof-input" 
-                                                                            style={{ padding: '12px 18px', borderRadius: '12px' }}
-                                                                        />
-                                                                    </div>
-                                                                    <div className="form-group animate-fade-in">
-                                                                        <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Flight Additional Details</label>
-                                                                        <textarea 
-                                                                            placeholder="e.g. Connecting flights, special requests, luggage info, or layover details" 
-                                                                            value={formData.flightNotes || ''} 
-                                                                            onChange={e => setFormData({ ...formData, flightNotes: e.target.value })} 
-                                                                            className="prof-textarea" 
-                                                                            style={{ minHeight: '120px', fontSize: '0.9rem', padding: '12px 18px', borderRadius: '12px' }}
-                                                                        />
-                                                                    </div>
-                                                                </>
-                                                            )}
-                                                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', background: '#fafafa', padding: '20px', borderRadius: '20px', border: '1px solid #eaeaea' }}>
-                                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#111' }}>
-                                                                <i className="fa-solid fa-plane-arrival" style={{ color: 'var(--primary-green)' }}></i>
-                                                                Arrival Details
-                                                            </div>
-                                                            
-                                                            <div className="form-group">
-                                                                <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Arrival Date (Must be a Sunday) *</label>
-                                                                <input 
-                                                                    type="date" 
-                                                                    required 
-                                                                    value={formData.startDate} 
-                                                                    onChange={e => setFormData({ ...formData, startDate: e.target.value })} 
-                                                                    className="prof-input"
-                                                                    style={{
-                                                                        padding: '12px 18px',
-                                                                        borderRadius: '12px',
-                                                                        borderColor: formData.startDate && !isSunday(formData.startDate) ? '#dc2626' : '#eee',
-                                                                        background: formData.startDate && !isSunday(formData.startDate) ? '#fef2f2' : 'white'
-                                                                    }}
-                                                                />
-                                                                {formData.startDate && !isSunday(formData.startDate) && (
-                                                                    <span style={{ color: '#dc2626', fontSize: '0.75rem', fontWeight: 700, marginTop: '5px', display: 'block' }}>
-                                                                        <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '5px' }}></i>
-                                                                        Arrivals must be on a Sunday. Please select a Sunday.
-                                                                    </span>
-                                                                )}
-                                                            </div>
-
-                                                            <div className="form-group">
-                                                                <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Arrival Method *</label>
-                                                                <div style={{ display: 'flex', gap: '10px' }}>
-                                                                    <button
-                                                                        type="button"
-                                                                        onClick={() => setFormData({ ...formData, arrivalMethod: 'Flight', overlandNotes: '' })}
-                                                                        style={{
-                                                                            flex: 1,
-                                                                            padding: '10px 12px',
-                                                                            borderRadius: '10px',
-                                                                            border: formData.arrivalMethod === 'Flight' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                            background: formData.arrivalMethod === 'Flight' ? 'rgba(29,185,84,0.06)' : 'white',
-                                                                            fontWeight: 800,
-                                                                            fontSize: '0.8rem',
-                                                                            cursor: 'pointer',
-                                                                            transition: 'all 0.25s ease',
-                                                                            color: formData.arrivalMethod === 'Flight' ? '#111' : '#666',
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            justifyContent: 'center',
-                                                                            gap: '6px'
-                                                                        }}
-                                                                    >
-                                                                        <i className="fa-solid fa-plane" style={{ fontSize: '0.9rem' }}></i> Flight
-                                                                    </button>
-                                                                    <button
-                                                                        type="button"
-                                                                        onClick={() => setFormData({ ...formData, arrivalMethod: 'Overland', flightNumber: '', airline: '', flightNotes: '' })}
-                                                                        style={{
-                                                                            flex: 1,
-                                                                            padding: '10px 12px',
-                                                                            borderRadius: '10px',
-                                                                            border: formData.arrivalMethod === 'Overland' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                            background: formData.arrivalMethod === 'Overland' ? 'rgba(29,185,84,0.06)' : 'white',
-                                                                            fontWeight: 800,
-                                                                            fontSize: '0.8rem',
-                                                                            cursor: 'pointer',
-                                                                            transition: 'all 0.25s ease',
-                                                                            color: formData.arrivalMethod === 'Overland' ? '#111' : '#666',
-                                                                            display: 'flex',
-                                                                            alignItems: 'center',
-                                                                            justifyContent: 'center',
-                                                                            gap: '6px'
-                                                                        }}
-                                                                    >
-                                                                        <i className="fa-solid fa-bus" style={{ fontSize: '0.9rem' }}></i> Overland
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-
-                                                            <div style={{ display: 'grid', gridTemplateColumns: formData.arrivalMethod === 'Flight' ? '1fr 1fr' : '1fr', gap: '10px' }}>
-                                                                <div className="form-group">
-                                                                    <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Arrival Time *</label>
-                                                                    <input 
-                                                                        type="time" 
-                                                                        required 
-                                                                        value={formData.arrivalTime} 
-                                                                        onChange={e => setFormData({ ...formData, arrivalTime: e.target.value })} 
-                                                                        className="prof-input" 
-                                                                        style={{ padding: '12px 18px', borderRadius: '12px' }}
-                                                                    />
-                                                                </div>
-                                                                {formData.arrivalMethod === 'Flight' && (
-                                                                    <div className="form-group">
-                                                                        <label className="prof-label" style={{ fontSize: '0.75rem', marginBottom: '6px' }}>Flight Number *</label>
-                                                                        <input 
-                                                                            type="text" 
-                                                                            required 
-                                                                            placeholder="e.g. EK 348" 
-                                                                            value={formData.flightNumber} 
-                                                                            onChange={e => setFormData({ ...formData, flightNumber: e.target.value })} 
-                                                                            className="prof-input" 
-                                                                            style={{ padding: '12px 18px', borderRadius: '12px' }}
-                                                                        />
-                                                                    </div>
-                                                                )}
-                                                            </div>
-                                                        </div>
+                                                        )}
                                                     </div>
                                                 )}
                                             </div>
@@ -754,6 +623,154 @@ const VolunteerInquiryPage = () => {
                                     })()}
 
                                     {currentStep === 3 && (
+                                        <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                                            {/* Arrival Date and Arrival Time */}
+                                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                <div className="form-group">
+                                                    <label className="prof-label">Arrival Date *</label>
+                                                    <input 
+                                                        type="date" 
+                                                        required 
+                                                        value={formData.startDate} 
+                                                        onChange={e => setFormData({ ...formData, startDate: e.target.value })} 
+                                                        className="prof-input"
+                                                        style={{
+                                                            padding: '18px 24px',
+                                                            borderRadius: '16px',
+                                                            borderColor: '#eee',
+                                                            background: 'white'
+                                                        }}
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className="prof-label">Arrival Time *</label>
+                                                    <input 
+                                                        type="time" 
+                                                        required 
+                                                        value={formData.arrivalTime} 
+                                                        onChange={e => setFormData({ ...formData, arrivalTime: e.target.value })} 
+                                                        className="prof-input" 
+                                                        style={{ padding: '18px 24px', borderRadius: '16px' }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            {/* Arrival Method selector as 2 cards */}
+                                            <div className="form-group">
+                                                <label className="prof-label">Arrival Method *</label>
+                                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+                                                    {/* Card 1: By Air */}
+                                                    <div
+                                                        onClick={() => setFormData({ ...formData, arrivalMethod: 'Flight', overlandNotes: '' })}
+                                                        style={{
+                                                            padding: '24px 20px',
+                                                            borderRadius: '20px',
+                                                            border: formData.arrivalMethod === 'Flight' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                            background: formData.arrivalMethod === 'Flight' ? 'rgba(29,185,84,0.06)' : '#fafafa',
+                                                            cursor: 'pointer',
+                                                            transition: 'all 0.25s ease',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            gap: '10px',
+                                                            position: 'relative',
+                                                            overflow: 'hidden'
+                                                        }}
+                                                        className="arrival-card"
+                                                    >
+                                                        <i className="fa-solid fa-plane" style={{ fontSize: '1.6rem', color: formData.arrivalMethod === 'Flight' ? 'var(--primary-green)' : '#888' }}></i>
+                                                        <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111' }}>By Air / Flight</span>
+                                                        <span style={{ fontSize: '0.8rem', color: '#888', lineHeight: 1.4 }}>Arriving at Bandaranaike International Airport (CMB) with flight details.</span>
+                                                        {formData.arrivalMethod === 'Flight' && (
+                                                            <i className="fa-solid fa-circle-check" style={{ color: 'var(--primary-green)', position: 'absolute', bottom: '15px', right: '15px', fontSize: '1.2rem' }}></i>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Card 2: Overland */}
+                                                    <div
+                                                        onClick={() => setFormData({ ...formData, arrivalMethod: 'Overland', flightNumber: '', airline: '', flightNotes: '' })}
+                                                        style={{
+                                                            padding: '24px 20px',
+                                                            borderRadius: '20px',
+                                                            border: formData.arrivalMethod === 'Overland' ? '2px solid var(--primary-green)' : '2px solid #eee',
+                                                            background: formData.arrivalMethod === 'Overland' ? 'rgba(29,185,84,0.06)' : '#fafafa',
+                                                            cursor: 'pointer',
+                                                            transition: 'all 0.25s ease',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            gap: '10px',
+                                                            position: 'relative',
+                                                            overflow: 'hidden'
+                                                        }}
+                                                        className="arrival-card"
+                                                    >
+                                                        <i className="fa-solid fa-bus" style={{ fontSize: '1.6rem', color: formData.arrivalMethod === 'Overland' ? 'var(--primary-green)' : '#888' }}></i>
+                                                        <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111' }}>Overland Transfer</span>
+                                                        <span style={{ fontSize: '0.8rem', color: '#888', lineHeight: 1.4 }}>Arriving via taxi, train, bus, or private transport from another location.</span>
+                                                        {formData.arrivalMethod === 'Overland' && (
+                                                            <i className="fa-solid fa-circle-check" style={{ color: 'var(--primary-green)', position: 'absolute', bottom: '15px', right: '15px', fontSize: '1.2rem' }}></i>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Flight conditional inputs */}
+                                            {formData.arrivalMethod === 'Flight' && (
+                                                <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                        <div className="form-group">
+                                                            <label className="prof-label">Airline Name *</label>
+                                                            <input 
+                                                                type="text"
+                                                                required 
+                                                                placeholder="e.g. Emirates, Qatar Airways" 
+                                                                value={formData.airline || ''} 
+                                                                onChange={e => setFormData({ ...formData, airline: e.target.value })} 
+                                                                className="prof-input" 
+                                                            />
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className="prof-label">Flight Number *</label>
+                                                            <input 
+                                                                type="text" 
+                                                                required 
+                                                                placeholder="e.g. EK 348" 
+                                                                value={formData.flightNumber} 
+                                                                onChange={e => setFormData({ ...formData, flightNumber: e.target.value })} 
+                                                                className="prof-input" 
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label className="prof-label">Flight Additional Details</label>
+                                                        <textarea 
+                                                            placeholder="e.g. Connecting flights, special requests, luggage info, or layover details" 
+                                                            value={formData.flightNotes || ''} 
+                                                            onChange={e => setFormData({ ...formData, flightNotes: e.target.value })} 
+                                                            className="prof-textarea" 
+                                                            style={{ minHeight: '120px' }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Overland conditional inputs */}
+                                            {formData.arrivalMethod === 'Overland' && (
+                                                <div className="form-group animate-fade-in">
+                                                    <label className="prof-label">Overland Arrival Notes *</label>
+                                                    <textarea 
+                                                        required 
+                                                        placeholder="Describe your overland travel plans (e.g., bus from Colombo, train, taxi, etc.)" 
+                                                        value={formData.overlandNotes || ''} 
+                                                        onChange={e => setFormData({ ...formData, overlandNotes: e.target.value })} 
+                                                        className="prof-textarea" 
+                                                        style={{ minHeight: '120px' }}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {currentStep === 4 && (
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                             <div className="form-group">
                                                 <label className="prof-label">Emergency Contact Full Name</label>
@@ -772,7 +789,7 @@ const VolunteerInquiryPage = () => {
                                         </div>
                                     )}
 
-                                    {currentStep === 4 && (
+                                    {currentStep === 5 && (
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                             <div className="form-group">
                                                 <label className="prof-label">Motivation for Volunteering</label>
@@ -795,7 +812,7 @@ const VolunteerInquiryPage = () => {
                                         </div>
                                     )}
 
-                                    {currentStep === 5 && (
+                                    {currentStep === 6 && (
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                             <div style={{ background: '#f8f9fa', padding: '25px', borderRadius: '15px', border: '1px solid #eee', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', cursor: 'pointer' }}>
@@ -848,6 +865,7 @@ const VolunteerInquiryPage = () => {
                                             </div>
                                         </div>
                                     )}
+
                                 </div>
 
                                 <div style={{ display: 'flex', gap: '20px', marginTop: '50px' }}>
@@ -1069,6 +1087,15 @@ const VolunteerInquiryPage = () => {
                     grid-template-columns: 1fr 380px;
                     gap: 40px;
                     align-items: start;
+                }
+                
+                .arrival-card {
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                }
+                .arrival-card:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+                    border-color: #ccc !important;
                 }
                 
                 .summary-card {
