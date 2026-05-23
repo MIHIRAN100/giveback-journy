@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import Moment1 from '../assets/moments/traveler_moment_1_1778416676983.png';
-import TravelerVideo3 from '../assets/IMG_5706 (1).MOV';
+import TravelerVideo3 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.09.28.mp4';
+import TravelerVideo4 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.17.18.mp4';
 import Volunteer1 from '../assets/volunteer_1.png';
 import Volunteer2 from '../assets/volunteer_2.png';
 import Volunteer3 from '../assets/volunteer_3.png';
@@ -54,7 +55,7 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                     {typeof moment.avatar === 'string' && moment.avatar.startsWith('http') ? (
                         <img src={moment.avatar} alt={moment.user} style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}} />
                     ) : (
-                        moment.avatar
+                        <i className={moment.avatar} style={{ fontSize: '0.85rem', color: '#1DB954' }}></i>
                     )}
                 </div>
                 <span className="moment-username">{moment.user}</span>
@@ -107,37 +108,38 @@ const TravelerMoments = () => {
     const moments = [
         {
             id: 1,
-            user: "Piper",
-            avatar: "P",
+            user: "Natasha",
+            avatar: "fa-solid fa-hands-holding-child",
             image: Moment1,
             video: TravelerVideo3,
             title: "Volunteer Experience in Kandy",
         },
         {
             id: 2,
-            user: "Jake",
-            avatar: "J",
+            user: "Piper",
+            avatar: "fa-solid fa-hand-holding-heart",
             image: Volunteer1,
-            title: "My Journey in Ella",
+            video: TravelerVideo4,
+            title: "Special Need Care Volunteer",
         },
         {
             id: 3,
             user: "Chloe",
-            avatar: "C",
+            avatar: "fa-solid fa-chalkboard-user",
             image: Volunteer2,
             title: "Teaching in Galle",
         },
         {
             id: 4,
             user: "Noah",
-            avatar: "N",
+            avatar: "fa-solid fa-paw",
             image: Volunteer3,
             title: "Wildlife Rescue Story",
         },
         {
             id: 5,
             user: "Mia",
-            avatar: "M",
+            avatar: "fa-solid fa-house-chimney",
             image: Volunteer4,
             title: "Village Life Experience",
         }

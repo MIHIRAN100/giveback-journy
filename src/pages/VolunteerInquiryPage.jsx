@@ -807,7 +807,7 @@ const VolunteerInquiryPage = () => {
                                                     marginBottom: '5px'
                                                 }}>
                                                     <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                        <i className="bi bi-stars"></i> Prefilled Odyssey Skills ({formData.skills.split(', ').length})
+                                                        <i className="bi bi-backpack"></i> Prefilled Odyssey Skills ({formData.skills.split(', ').length})
                                                     </div>
                                                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                                                         {formData.skills.split(', ').map((skill, sIdx) => (
