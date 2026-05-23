@@ -55,7 +55,7 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                     {typeof moment.avatar === 'string' && moment.avatar.startsWith('http') ? (
                         <img src={moment.avatar} alt={moment.user} style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}} />
                     ) : (
-                        <i className={moment.avatar} style={{ fontSize: '0.85rem', color: '#1DB954' }}></i>
+                        <i className={moment.avatar} style={{ fontSize: '0.85rem', color: 'white' }}></i>
                     )}
                 </div>
                 <span className="moment-username">{moment.user}</span>
@@ -93,6 +93,31 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                 <img src={moment.image} alt={moment.title} />
             )}
             
+            {moment.overlayTitle && (
+                <div style={{
+                    position: 'absolute',
+                    top: '30%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 3,
+                    color: 'white',
+                    fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    textAlign: 'center',
+                    lineHeight: 1.15,
+                    letterSpacing: '0.02em',
+                    padding: '0 20px',
+                    width: '85%',
+                    textShadow: '0 2px 15px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4)',
+                    pointerEvents: 'none',
+                    transition: 'opacity 0.4s ease',
+                    opacity: isPlaying ? 0 : 1,
+                }}>
+                    {moment.overlayTitle}
+                </div>
+            )}
+
             <div className="moment-footer">
                 <span className="moment-title">{moment.title}</span>
                 <i className="fa-solid fa-video" style={{fontSize: '0.8rem', opacity: 0.7}}></i>
@@ -113,6 +138,7 @@ const TravelerMoments = () => {
             image: Moment1,
             video: TravelerVideo3,
             title: "Volunteer Experience in Kandy",
+            overlayTitle: "GIVING BACK TO GAIN SO MUCH MORE",
         },
         {
             id: 2,
@@ -121,6 +147,7 @@ const TravelerMoments = () => {
             image: Volunteer1,
             video: TravelerVideo4,
             title: "Special Need Care Volunteer",
+            overlayTitle: "EVERY CHILD DESERVES A CHANCE",
         },
         {
             id: 3,
@@ -128,6 +155,7 @@ const TravelerMoments = () => {
             avatar: "fa-solid fa-chalkboard-user",
             image: Volunteer2,
             title: "Teaching in Galle",
+            overlayTitle: "TEACHING WITH HEART",
         },
         {
             id: 4,
@@ -135,6 +163,7 @@ const TravelerMoments = () => {
             avatar: "fa-solid fa-paw",
             image: Volunteer3,
             title: "Wildlife Rescue Story",
+            overlayTitle: "PROTECTING THE SMALLEST CREATURES",
         },
         {
             id: 5,
@@ -142,6 +171,7 @@ const TravelerMoments = () => {
             avatar: "fa-solid fa-house-chimney",
             image: Volunteer4,
             title: "Village Life Experience",
+            overlayTitle: "TRAVELING WITH PURPOSE",
         }
     ];
 
