@@ -7611,3 +7611,13 @@ h1, h2, h3, .logo-text {
         display: none; /* Hide on extremely small mobile screens to prevent overlapping main titles */
     }
 }
+
+/* Section Divider */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 20%, rgba(0, 0, 0, 0.18) 80%, rgba(0, 0, 0, 0) 100%);
+    max-width: 1400px;
+    width: 90%;
+    margin: 0 auto;
+}
