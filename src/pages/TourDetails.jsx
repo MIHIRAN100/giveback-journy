@@ -387,11 +387,11 @@ const TourDetails = () => {
         if (pkg.id === 2) currentBase = 600;
         
         if (transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 50 : (pkg.id === 13 ? 65 : 300)))))));
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 90 : (pkg.id === 13 ? 110 : 300)))))));
             return currentBase - discount;
         }
         if (transport === 'van') {
-            return currentBase + 150;
+            return currentBase + (pkg.id === 12 ? 40 : (pkg.id === 13 ? 65 : 150));
         }
         return currentBase;
     };
@@ -1546,8 +1546,8 @@ const TourDetails = () => {
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
                                     {[
                                         { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
-                                        { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: '+$150' },
-                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 9 ? '-$30' : (pkg.id === 12 ? '-$50' : (pkg.id === 13 ? '-$65' : '-$300')))))) }
+                                        { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: pkg.id === 12 ? '+$40' : (pkg.id === 13 ? '+$65' : '+$150') },
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 9 ? '-$30' : (pkg.id === 12 ? '-$90' : (pkg.id === 13 ? '-$110' : '-$300')))))) }
                                     ].map(v => (
                                         <div
                                             key={v.id}

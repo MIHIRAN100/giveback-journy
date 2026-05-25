@@ -26,7 +26,7 @@ const ExclusiveJourneys = () => {
 
                 <div className="joy-hero-content">
                     <ScrollReveal>
-                        <h1>Looking for a budget-friendly<br/>way to travel?</h1>
+                        <h1>Looking for a budget friendly<br/>way to travel?</h1>
                         <p>You're in the right place</p>
                     </ScrollReveal>
                 </div>
@@ -42,7 +42,7 @@ const ExclusiveJourneys = () => {
                         </h3>
                         <div className="joy-about-text">
                             <p>
-                                Looking for a budget-friendly way to explore Sri Lanka? Give Back Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities. We believe that everyone should have the chance to see the world's beauty while contributing to its preservation, which is why our journeys are designed to be as impactful as they are affordable. From the misty highlands to the golden southern shores, our mission is to ensure that your adventure leaves a lasting, positive legacy on the hearts of the people you meet and the land you explore.
+                                Looking for a budget friendly way to explore Sri Lanka? Give Back Journey is more than just a travel platform; it's a bridge between passionate travelers and local communities. We specialize in combining low-cost, authentic island experiences with unique volunteering opportunities. We believe that everyone should have the chance to see the world's beauty while contributing to its preservation, which is why our journeys are designed to be as impactful as they are affordable. From the misty highlands to the golden southern shores, our mission is to ensure that your adventure leaves a lasting, positive legacy on the hearts of the people you meet and the land you explore.
                             </p>
                             <p>
                                 Our approach is rooted in transparency and local expertise. By working directly with grassroots organizations and local families, we cut out the middleman, ensuring that more of your travel funds reach the people who need it most. This allows us to provide you with an unfiltered, raw look at the island's culture while maintaining the high safety and comfort standards that every traveler deserves.
@@ -63,10 +63,10 @@ const ExclusiveJourneys = () => {
                         </h3>
                         <div className="joy-about-text">
                             <p>
-                                We bridge the gap between global curiosity and local necessity by curating travel experiences that are intrinsically linked to social and environmental responsibility. We prove that you don't need a massive budget to make a tangible difference in the world. Whether it's assisting teachers in rural village schools, participating in reforestation efforts in the rainforests, or supporting sustainable farming initiatives, our journeys ensure that your presence in Sri Lanka directly translates into resources and support for the growth and well-being of local communities.
+                                We bridge the gap between global curiosity and local necessity by curating travel experiences that are intrinsically linked to social and environmental responsibility. We prove that you don't need a massive budget to make a tangible difference in the world. Whether it's assisting teachers in rural village schools, participating in reforestation efforts in the rainforests, or supporting sustainable farming initiatives, our journeys ensure that your presence in Sri Lanka directly translates into resources and support for the growth and well being of local communities.
                             </p>
                             <p>
-                                Our work goes far beyond simply organizing logistics; we are dedicated to fostering deep, long-term relationships between our travelers and our project partners on the ground. We don't believe in "voluntourism" that provides only surface-level interaction. Instead, we facilitate immersion that allows for genuine cultural exchange and skill-sharing. Many of our guests find themselves returning year after year, not just as tourists, but as mentors, friends, and active supporters, creating a powerful global network of "Givebackers" who are united by their love for the island and their commitment to its future.
+                                Our work goes far beyond simply organizing logistics; we are dedicated to fostering deep, long term relationships between our travelers and our project partners on the ground. We don't believe in "voluntourism" that provides only surface level interaction. Instead, we facilitate immersion that allows for genuine cultural exchange and skill sharing. Many of our guests find themselves returning year after year, not just as tourists, but as mentors, friends, and active supporters, creating a powerful global network of "Givebackers" who are united by their love for the island and their commitment to its future.
                             </p>
                         </div>
                     </ScrollReveal>
@@ -81,7 +81,7 @@ const ExclusiveJourneys = () => {
                             <span className="notice-badge-simple">Important Notice</span>
                             <h2 className="notice-main-title">Expectations & Travel Philosophy</h2>
                             <p className="notice-lead">
-                                Please read this carefully before deciding to join our journeys. We believe in transparency and aligning expectations for a truly life-changing experience.
+                                Please read this carefully before deciding to join our journeys. We believe in transparency and aligning expectations for a truly life changing experience.
                             </p>
                         </div>
                     </ScrollReveal>
@@ -90,10 +90,10 @@ const ExclusiveJourneys = () => {
                         <ScrollReveal>
                             <div className="notice-section-block">
                                 <h3>Mindset & Growth</h3>
-                                <p>This experience is designed for open-minded travelers who are willing to step outside their comfort zone, embrace new cultures, and grow as individuals through meaningful real-life experiences.</p>
+                                <p>This experience is designed for open minded travelers who are willing to step outside their comfort zone, embrace new cultures, and grow as individuals through meaningful real life experiences.</p>
                                 <p>If you are looking for personal growth, authentic human connection, cultural exchange, and the opportunity to make a positive impact while learning from local communities, we would love to welcome you on this journey.</p>
-                                <p>This can become a once-in-a-lifetime experience where you do not feel like a visitor, but rather a part of the culture, the people, and the community itself. Throughout your journey, you will experience the true grassroots level of Sri Lankan community life — the real stories, real smiles, real struggles, and real human connections that many travelers never get the chance to see.</p>
-                                <p>This is not a program where you simply travel around taking photographs as souvenirs. It is an experience where you live among local communities, share moments with people, and take those memories, emotions, and life lessons back home with you — not only in pictures, but within yourself forever.</p>
+                                <p>This can become a once in a lifetime experience where you do not feel like a visitor, but rather a part of the culture, the people, and the community itself. Throughout your journey, you will experience the true grassroots level of Sri Lankan community life, with the real stories, real smiles, real struggles, and real human connections that many travelers never get the chance to see.</p>
+                                <p>This is not a program where you simply travel around taking photographs as souvenirs. It is an experience where you live among local communities, share moments with people, and take those memories, emotions, and life lessons back home with you, not only in pictures, but within yourself forever.</p>
                                 <p>Along this journey, you may witness beautiful moments that inspire happiness and gratitude, as well as situations that may touch your heart and change your perspective on life. Overall, this experience is designed to give a balanced and meaningful understanding of the world around you. Many participants return home with a deeper appreciation for the simple things they may once have overlooked in their own lives.</p>
                             </div>
                         </ScrollReveal>
@@ -101,8 +101,8 @@ const ExclusiveJourneys = () => {
                         <ScrollReveal>
                             <div className="notice-section-block">
                                 <h3>Travel & Lodging Style</h3>
-                                <p>Our programs focus more on experience, community, learning, and connection rather than luxury tourism or resort-style travel. While we provide comfortable support and dedicated assistance throughout your stay, this experience may not be ideal for travelers whose main priority is high-end luxury accommodation or traditional tourist-style services.</p>
-                                <p>Another important part of this experience is the way you travel throughout Sri Lanka. Whenever possible, participants are encouraged to travel like locals and experience the country in a more authentic and meaningful way rather than as high-end luxury tourists. Depending on the location and activity, transportation may include local trains, public buses, tuk tuks, or other locally used transport methods. This allows participants to connect more closely with everyday Sri Lankan life, culture, and people while also helping support local communities directly.</p>
+                                <p>Our programs focus more on experience, community, learning, and connection rather than luxury tourism or resort style travel. While we provide comfortable support and dedicated assistance throughout your stay, this experience may not be ideal for travelers whose main priority is high end luxury accommodation or traditional tourist style services.</p>
+                                <p>Another important part of this experience is the way you travel throughout Sri Lanka. Whenever possible, participants are encouraged to travel like locals and experience the country in a more authentic and meaningful way rather than as high end luxury tourists. Depending on the location and activity, transportation may include local trains, public buses, tuk tuks, or other locally used transport methods. This allows participants to connect more closely with everyday Sri Lankan life, culture, and people while also helping support local communities directly.</p>
                             </div>
                         </ScrollReveal>
 
@@ -110,9 +110,24 @@ const ExclusiveJourneys = () => {
                             <div className="notice-section-block">
                                 <h3>Direct Impact & Support</h3>
                                 <p>What makes us different is the unmatched level of personalized support, flexibility, and genuine care we provide to every participant. From the moment you arrive until the end of your journey, our local team is available to assist, guide, and support you throughout your experience in Sri Lanka.</p>
-                                <p>We also believe in offering honest and fair pricing. A large portion of the program contribution goes directly to local instructors, artisans, families, and community members who share their knowledge, traditions, and skills with participants. Your participation directly helps support local livelihoods, preserve traditional Sri Lankan culture and knowledge, and uplift communities at the grassroots level.</p>
-                                <p>This is designed as a meaningful way of travel where participants are not just “tourists,” but active contributors to local communities — offering more value, respect, and direct support to the people who make these experiences possible.</p>
-                                <p>Every person who joins us to create an impact becomes an ambassador of Give Back Journeys — helping spread kindness, cultural understanding, responsible travel, and meaningful human connection across the world.</p>
+                                <p>As one of the Give Back Journey ambassadors, you have the right to know where your hard earned contribution is allocated.</p>
+                                <p>Your contribution helps support many important areas of the program, including:</p>
+                                <ul className="notice-list">
+                                    <li>Accommodation and daily living facilities</li>
+                                    <li>Food and meal preparations</li>
+                                    <li>Local transportation and project related travel</li>
+                                    <li>Community projects and grassroots initiatives</li>
+                                    <li>Support for local families, instructors, and community members</li>
+                                    <li>Project coordination and local staffing</li>
+                                    <li>Cultural exchange activities and educational experiences</li>
+                                    <li>Maintenance and improvement of volunteer and community spaces</li>
+                                    <li>Support for sustainable and responsible tourism initiatives</li>
+                                    <li>Operational and administrative costs required to safely and effectively manage programs, staff coordination, participant support, logistics, and day to day operations</li>
+                                </ul>
+                                <p>A large portion of the funds goes directly back into local communities and helps create meaningful opportunities for the people who are part of these experiences.</p>
+                                <p>At Give Back Journey, we believe in transparency, fairness, and responsible travel. Our goal is not only to create life changing experiences for participants, but also to ensure that local communities genuinely benefit from every journey.</p>
+                                <p>This is designed as a meaningful way of travel where participants are not just “tourists,” but active contributors to local communities, offering more value, respect, and direct support to the people who make these experiences possible.</p>
+                                <p>Every person who joins us to create an impact becomes an ambassador of Give Back Journeys, helping spread kindness, cultural understanding, responsible travel, and meaningful human connection across the world.</p>
                             </div>
                         </ScrollReveal>
 
@@ -131,10 +146,10 @@ const ExclusiveJourneys = () => {
                             </div>
                             <div className="vision-right">
                                 <p className="vision-lead">
-                                    We are not simply another travel or voluntourism provider. Our goal is to work closely with grassroots-level community needs while creating real human connections, meaningful cultural exchange, and life-changing experiences for both participants and local communities alike.
+                                    We are not simply another travel or voluntourism provider. Our goal is to work closely with grassroots level community needs while creating real human connections, meaningful cultural exchange, and life-changing experiences for both participants and local communities alike.
                                 </p>
                                 <p className="vision-body">
-                                    There may be many organizations offering similar-style programs, but we strongly believe that the level of personalized service, local connection, flexibility, community impact, and overall value we provide is difficult to match.
+                                    There may be many organizations offering similar style programs, but we strongly believe that the level of personalized service, local connection, flexibility, community impact, and overall value we provide is difficult to match.
                                 </p>
                                 <div className="vision-cta-box">
                                     <p>If this sounds like the kind of meaningful journey you have been searching for, we invite you to take the next step and become part of the experience.</p>
@@ -379,6 +394,27 @@ const ExclusiveJourneys = () => {
                 }
                 .notice-section-block p:last-child {
                     margin-bottom: 0;
+                }
+                .notice-list {
+                    list-style-type: none;
+                    padding-left: 0;
+                    margin: 0 0 25px 0;
+                }
+                .notice-list li {
+                    font-size: 1.05rem;
+                    line-height: 1.8;
+                    color: #424245;
+                    margin-bottom: 12px;
+                    position: relative;
+                    padding-left: 24px;
+                }
+                .notice-list li::before {
+                    content: "•";
+                    color: #1DB954;
+                    font-size: 1.4rem;
+                    position: absolute;
+                    left: 4px;
+                    top: -2px;
                 }
 
                 /* Vision Section Styles */

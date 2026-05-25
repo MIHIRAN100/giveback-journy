@@ -1,7 +1,7 @@
 import essentialCover from '../assets/gy.jpg';
 import southernCover from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import adventureCover from '../assets/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg';
-import mistMountainsCover from '../assets/Nuwera Eliya day tour.jpg';
+import mistMountainsCover from '../assets/WhatsApp Image 2026-05-25 at 19.37.51.jpeg';
 import wildSafariCover from '../assets/Hurulu Eco Park.jpg';
 import galleFortCover from '../assets/Galle Fort, Sri Lanka.jpg';
 import koslandaCover from '../assets/Koslanda 🇱🇰.jpg';
@@ -956,7 +956,7 @@ export const tourPackages = [
         name: "Sigiriya & Elephant Safari Experience",
         days: "1 Day",
         description: "Experience the cultural heart and wildlife beauty of Sri Lanka in one unforgettable day. This premium day tour takes you from Kandy to the ancient Sigiriya Rock Fortress and on an exciting elephant safari in their natural habitat, starting and ending in Kandy.",
-        price: "$145",
+        price: "$200",
         image: sigiriyaSafariCover,
         itinerary: [
             {
@@ -1004,7 +1004,7 @@ export const tourPackages = [
         name: "Sigiriya Nature & Culture Escape",
         days: "2 Days / 1 Night",
         description: "Experience the perfect combination of history, culture, nature, and wildlife during this unforgettable overnight journey through the cultural triangle of Sri Lanka. Starting and ending in Kandy, this tour includes visits to Dambulla Cave Temple, Pidurangala sunset hike, Sigiriya Sunrise climb, Matale Hindu Temple, and a wild elephant safari.",
-        price: "$240",
+        price: "$320",
         image: sigiriyaEscapeCover,
         itinerary: [
             {
