@@ -7613,43 +7613,197 @@ h1, h2, h3, .logo-text {
     }
 }
 
-.hero-promo-badge.bottom-left {
+/* Subpage Floating Promo Container */
+.hero-promo-container {
     position: fixed;
-    top: auto;
     bottom: 30px;
     left: 30px;
-    right: auto;
     z-index: 4900;
+    width: 320px;
+    height: 112px;
 }
 
+/* Make sure the badge inside container doesn't have absolute offsets */
+.hero-promo-container .hero-promo-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.hero-promo-container.collapsed .hero-promo-badge {
+    transform: translateX(-380px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-promo-container.expanded .hero-promo-badge {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Close/Collapse button on expanded badge */
+.promo-close-btn {
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #1DB954;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 110;
+    font-size: 0.8rem;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background 0.2s ease;
+}
+
+.promo-close-btn i {
+    position: relative;
+    left: -1px; /* offset chevron-left visually for perfect center alignment */
+}
+
+.hero-promo-container.collapsed .promo-close-btn {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(-20px) scale(0.7);
+}
+
+.hero-promo-container.expanded .promo-close-btn {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0) scale(1);
+}
+
+.promo-close-btn:hover {
+    background: #158a3d;
+}
+
+.hero-promo-container.expanded .promo-close-btn:hover {
+    transform: translateY(-50%) translateX(0) scale(1.1);
+}
+
+/* Trigger tab visible when collapsed */
+.promo-badge-trigger {
+    position: absolute;
+    bottom: 0;
+    left: -30px; /* aligns to page edge */
+    width: 32px;
+    height: 44px;
+    border-radius: 0 12px 12px 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 4901;
+    color: white;
+}
+
+.promo-badge-trigger i.bi-chevron-right {
+    font-size: 0.95rem;
+    color: #1DB954;
+    animation: chevron-pulse 1.5s infinite;
+}
+
+.hero-promo-container.collapsed .promo-badge-trigger {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.hero-promo-container.expanded .promo-badge-trigger {
+    opacity: 0;
+    transform: scale(0.7) translateX(-20px);
+    pointer-events: none;
+}
+
+@keyframes chevron-pulse {
+    0% { transform: translateX(0); opacity: 0.3; }
+    50% { transform: translateX(3px); opacity: 1; }
+    100% { transform: translateX(0); opacity: 0.3; }
+}
+
+/* Mobile responsive styles */
 @media (max-width: 991px) {
-    .hero-promo-badge.bottom-left {
-        position: fixed;
+    .hero-promo-container {
         left: 50%;
         transform: translateX(-50%);
         bottom: 100px;
         width: 320px;
         max-width: 90%;
-        top: auto;
-        right: auto;
     }
-    .hero-promo-badge.bottom-left:hover {
-        transform: translateX(-50%) translateY(-3px);
+    
+    .hero-promo-container.collapsed .hero-promo-badge {
+        transform: translateY(150px);
+        opacity: 0;
+    }
+    
+    .hero-promo-container.expanded .hero-promo-badge {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .promo-badge-trigger {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        border-radius: 50%;
+        padding: 0;
+        width: 44px;
+        height: 44px;
+    }
+
+    .promo-badge-trigger i.bi-chevron-right {
+        transform: rotate(-90deg);
+        animation: chevron-pulse-mobile 1.5s infinite;
+    }
+
+    .hero-promo-container.collapsed .promo-badge-trigger {
+        transform: translateX(-50%) scale(1);
+    }
+    
+    .hero-promo-container.expanded .promo-badge-trigger {
+        transform: translateX(-50%) scale(0.7) translateY(20px);
+    }
+
+    .promo-close-btn {
+        right: 10px;
+        top: 10px;
+        transform: none;
+    }
+    
+    .hero-promo-container.collapsed .promo-close-btn {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px) scale(0.7);
+    }
+    
+    .hero-promo-container.expanded .promo-close-btn {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+    }
+    
+    .hero-promo-container.expanded .promo-close-btn:hover {
+        transform: scale(1.1);
     }
 }
 
-@media (max-width: 480px) {
-    .hero-promo-badge.bottom-left {
-        display: none;
-    }
-}
-
-/* Section Divider */
-.section-divider {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 20%, rgba(0, 0, 0, 0.18) 80%, rgba(0, 0, 0, 0) 100%);
-    max-width: 1400px;
-    width: 90%;
-    margin: 0 auto;
-}
+@keyframes chevron-pulse-mobile {
+    0% { transform: rotate(-90deg) translateY(0); opacity: 
