@@ -7613,6 +7613,37 @@ h1, h2, h3, .logo-text {
     }
 }
 
+.hero-promo-badge.bottom-left {
+    position: fixed;
+    top: auto;
+    bottom: 30px;
+    left: 30px;
+    right: auto;
+    z-index: 4900;
+}
+
+@media (max-width: 991px) {
+    .hero-promo-badge.bottom-left {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 100px;
+        width: 320px;
+        max-width: 90%;
+        top: auto;
+        right: auto;
+    }
+    .hero-promo-badge.bottom-left:hover {
+        transform: translateX(-50%) translateY(-3px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-promo-badge.bottom-left {
+        display: none;
+    }
+}
+
 /* Section Divider */
 .section-divider {
     border: 0;

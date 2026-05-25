@@ -4,33 +4,12 @@ import { tourPackages } from '../data/tours';
 import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
+import HeroPromoBadge from './HeroPromoBadge';
 
 
 const mobileImages = [img1, img2, img3];
 
-const offers = [
-    {
-        tag: "Special Offer",
-        title: "Bring a Friend Discount",
-        text: "Travel with a partner and get a special discount on your journey.",
-        icon: "bi-gift-fill",
-        link: "/packages"
-    },
-    {
-        tag: "Transparent",
-        title: "No Hidden Fees",
-        text: "No registration fees or hidden charges. Pay only for your program.",
-        icon: "bi-shield-check",
-        link: "/packages"
-    },
-    {
-        tag: "Group Booking",
-        title: "Custom Group Plans",
-        text: "Traveling with 3 or more people? Contact us for custom team rates.",
-        icon: "bi-people-fill",
-        link: "/contact"
-    }
-];
+
 
 const Hero = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -38,22 +17,11 @@ const Hero = ({ onSearch }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMuted, setIsMuted] = useState(true);
-    const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
-    const [prevOfferIndex, setPrevOfferIndex] = useState(-1);
     const [activeVideo, setActiveVideo] = useState(0);
     const player1Ref = React.useRef(null);
     const player2Ref = React.useRef(null);
 
-    // Auto-rotate promotional offers every 5 seconds
-    React.useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentOfferIndex((prev) => {
-                setPrevOfferIndex(prev);
-                return (prev + 1) % offers.length;
-            });
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
+
 
     // Rotate between the first and second background videos every 1 minute
     React.useEffect(() => {
@@ -255,31 +223,7 @@ const Hero = ({ onSearch }) => {
             </div>
 
             {/* Bring a Friend Promo Banner Overlaying Video */}
-            <div className="hero-promo-badge" onClick={() => navigate(offers[currentOfferIndex].link)}>
-                {offers.map((offer, index) => {
-                    let className = "hero-promo-slide-wrapper";
-                    if (index === currentOfferIndex) {
-                        className += " active";
-                    } else if (index === prevOfferIndex) {
-                        className += " exit";
-                    }
-
-                    return (
-                        <div key={index} className={className}>
-                            <div className="hero-promo-icon">
-                                <i className={`bi ${offer.icon}`}></i>
-                            </div>
-                            <div className="hero-promo-details">
-                                <div className="hero-promo-tag">
-                                    {offer.tag}
-                                </div>
-                                <h4>{offer.title}</h4>
-                                <p>{offer.text}</p>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
+            <HeroPromoBadge />
 
             <div className="mobile-hero-slideshow">
                 {mobileImages.map((img, index) => (

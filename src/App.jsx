@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
 import CookieBar from './components/CookieBar';
+import HeroPromoBadge from './components/HeroPromoBadge';
 import Home from './pages/Home';
 import SriLanka from './pages/SriLanka';
 import PackagesPage from './pages/PackagesPage';
@@ -35,6 +36,7 @@ const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isTourDetails = location.pathname.startsWith('/package/');
+  const showGlobalBadge = ['/packages', '/sri-lanka', '/volunteer', '/exclusive-journeys', '/contact'].includes(location.pathname);
 
   return (
     <div className="App" style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
@@ -64,6 +66,7 @@ const AppContent = () => {
       <Footer />
       <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} />
       <CookieBar onVisibilityChange={setCookieVisible} />
+      {showGlobalBadge && <HeroPromoBadge />}
 
       {!isTourDetails && <MobileBottomBar />}
       <BottomAdBanner isCookieVisible={cookieVisible} />
