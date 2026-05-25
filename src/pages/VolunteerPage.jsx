@@ -761,8 +761,13 @@ const VolunteerPage = () => {
                         ))}
                     </div>
                 </section>
-                {/* Volunteer Opportunities */}
-                <VolunteerOpportunities />                {/* Pricing Table Section */}
+            </div>
+
+            {/* Volunteer Opportunities */}
+            <VolunteerOpportunities />
+
+            <div className="volunteer-container">
+                {/* Pricing Table Section */}
                 <section id="pricing" style={{ margin: '120px 0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Transparent Pricing</span>

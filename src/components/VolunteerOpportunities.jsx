@@ -19,7 +19,7 @@ const VolunteerOpportunities = () => {
 
     return (
         <section className="volunteer-opp-section" style={{ padding: '80px 0', background: '#fff', position: 'relative' }}>
-            <div style={{ maxWidth: '1920px', margin: '0 auto', padding: '0 3%', position: 'relative' }}>
+            <div style={{ maxWidth: '1920px', margin: '0 auto', padding: '0 6%', position: 'relative' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px' }}>
                     <div>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Open Positions</span>
@@ -85,8 +85,8 @@ const VolunteerOpportunities = () => {
                     <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
                     {opportunities.map((opp, i) => (
                         <div key={i} className="opp-card-modern" style={{ 
-                            flex: '0 0 calc((100% - 96px) / 3.5)',
-                            minWidth: '320px',
+                            flex: '0 0 calc((100% - 96px) / 4.5)',
+                            minWidth: '280px',
                             background: 'white',
                             borderRadius: '32px',
                             overflow: 'hidden',

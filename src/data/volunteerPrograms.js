@@ -5,6 +5,7 @@ import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
 import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
+import medicalImg from '../assets/5569bb0730a82c461b7f043001aadd0d.jpg';
 
 // Gallery images
 import volunteerCommunity from '../assets/volunteer-community.png';
@@ -696,7 +697,7 @@ export const volunteerPrograms = [
         duration: "1-4 Weeks",
         housing: "Shared or Private",
         price: "200",
-        image: specialNeedsImg,
+        image: medicalImg,
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
