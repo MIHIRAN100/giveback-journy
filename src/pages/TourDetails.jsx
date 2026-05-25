@@ -38,7 +38,7 @@ import galleSlide3 from '../assets/29b450ea3ff426a308ac44a4b6566ebf.jpg';
 import galleSlide4 from '../assets/f4441febd0999a390c407b9cfd5422ae.jpg';
 import galleSlide5 from '../assets/71e3007dc13ff2793d406e8cc25e96d5.jpg';
 import galleSlide6 from '../assets/0d84aa0af7fa47f94946ed5cb1896cd6.jpg';
-import kandyHighSlide2 from '../assets/4a4f12055e9bf982ad73fb490bebaf15.jpg';
+import kandyHighSlide2 from '../assets/WhatsApp Image 2026-05-24 at 15.59.15.jpeg';
 import kandyHighSlide3 from '../assets/0b244be2033db8d252c09ac5952fd2ec.jpg';
 import kandyHighSlide4 from '../assets/190b19efa26222b1d393a6085b5d6d3e.jpg';
 import kandyHighSlide6 from '../assets/ccabf7721ab68bb424228db7bdb2e13d.jpg';
@@ -53,6 +53,16 @@ import kitulgalaSlide5 from '../assets/fa.jpg';
 import kitulgalaSlide4 from '../assets/26.jpg';
 import kitulgalaSlide3 from '../assets/dayouting1.jpg';
 import kitulgalaSlide2 from '../assets/14914765974.jpg';
+import sigiriyaSlide2 from '../assets/IMG_6137-1-scaled.jpeg';
+import sigiriyaSlide3 from '../assets/5dfd3f2e2111aba1b9961f042aa21f8a (1).jpg';
+import sigiriyaSlide4 from '../assets/28a582f6df4e8171994a22a76540650e.jpg';
+import sigiriyaSlide5 from '../assets/2f6794a88ebd86969fb2356ec82057d3.jpg';
+import sigiriyaSlide6 from '../assets/f4c352cefadc1549bea9f8a06c016afa.jpg';
+import sigiriyaEscapeSlide2 from '../assets/df96c62c290b0f7cb51288e1a6cdbb25 (1).jpg';
+import sigiriyaEscapeSlide3 from '../assets/10616d78083ff17e45530b47e969f4a4.jpg';
+import sigiriyaEscapeSlide4 from '../assets/d382f4efe9231656c4f21a04ff5e36b9.jpg';
+import sigiriyaEscapeSlide5 from '../assets/f98be6281003c7c7e80fcf331faa3e1a.jpg';
+import sigiriyaEscapeSlide6 from '../assets/e5a6a83faee0d03f0e2aae72baabba0c.jpg';
 
 const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -289,11 +299,11 @@ const TourDetails = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const galleryImages = [
         pkg?.image || '', 
-        (pkg?.id === 8) ? kandySlide2 : (pkg?.id === 11 ? kitulgalaSlide2 : (pkg?.id === 2 ? southernSlide2_new : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2))))))), 
-        (pkg?.id === 8) ? kandySlide3 : (pkg?.id === 11 ? kitulgalaSlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : (pkg?.id === 6 ? galleSlide3 : (pkg?.id === 9 ? kandyHighSlide3 : (pkg?.id === 10 ? adamsPeakSlide3 : gallerySlide3))))))), 
-        (pkg?.id === 8) ? kandySlide4 : (pkg?.id === 11 ? kitulgalaSlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : (pkg?.id === 6 ? galleSlide4 : (pkg?.id === 9 ? kandyHighSlide4 : (pkg?.id === 10 ? adamsPeakSlide4 : gallerySlide4))))))), 
-        (pkg?.id === 8) ? kandySlide5 : (pkg?.id === 11 ? kitulgalaSlide5 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : (pkg?.id === 6 ? galleSlide5 : (pkg?.id === 10 ? adamsPeakSlide5 : gallerySlide5)))))), 
-        (pkg?.id === 8) ? kandySlide6 : (pkg?.id === 11 ? kitulgalaSlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : (pkg?.id === 6 ? galleSlide6 : (pkg?.id === 10 ? adamsPeakSlide6 : gallerySlide6))))))
+        (pkg?.id === 13) ? sigiriyaEscapeSlide2 : ((pkg?.id === 12) ? sigiriyaSlide2 : ((pkg?.id === 8) ? kandySlide2 : (pkg?.id === 11 ? kitulgalaSlide2 : (pkg?.id === 2 ? southernSlide2_new : (pkg?.id === 3 ? highlandsSlide2 : (pkg?.id === 4 ? mistSlide2 : (pkg?.id === 6 ? galleSlide2 : (pkg?.id === 9 ? kandyHighSlide2 : (pkg?.id === 10 ? adamsPeakSlide2 : essentialSlide2))))))))), 
+        (pkg?.id === 13) ? sigiriyaEscapeSlide3 : ((pkg?.id === 12) ? sigiriyaSlide3 : ((pkg?.id === 8) ? kandySlide3 : (pkg?.id === 11 ? kitulgalaSlide3 : (pkg?.id === 2 ? southernSlide3 : (pkg?.id === 3 ? highlandsSlide3 : (pkg?.id === 4 ? mistSlide3 : (pkg?.id === 6 ? galleSlide3 : (pkg?.id === 9 ? kandyHighSlide3 : (pkg?.id === 10 ? adamsPeakSlide3 : gallerySlide3))))))))), 
+        (pkg?.id === 13) ? sigiriyaEscapeSlide4 : ((pkg?.id === 12) ? sigiriyaSlide4 : ((pkg?.id === 8) ? kandySlide4 : (pkg?.id === 11 ? kitulgalaSlide4 : (pkg?.id === 2 ? southernSlide4 : (pkg?.id === 3 ? highlandsSlide4 : (pkg?.id === 4 ? mistSlide4 : (pkg?.id === 6 ? galleSlide4 : (pkg?.id === 9 ? kandyHighSlide4 : (pkg?.id === 10 ? adamsPeakSlide4 : gallerySlide4))))))))), 
+        (pkg?.id === 13) ? sigiriyaEscapeSlide5 : ((pkg?.id === 12) ? sigiriyaSlide5 : ((pkg?.id === 8) ? kandySlide5 : (pkg?.id === 11 ? kitulgalaSlide5 : (pkg?.id === 2 ? southernSlide2 : (pkg?.id === 3 ? highlandsSlide5 : (pkg?.id === 4 ? mistSlide5 : (pkg?.id === 6 ? galleSlide5 : (pkg?.id === 10 ? adamsPeakSlide5 : gallerySlide5)))))))), 
+        (pkg?.id === 13) ? sigiriyaEscapeSlide6 : ((pkg?.id === 12) ? sigiriyaSlide6 : ((pkg?.id === 8) ? kandySlide6 : (pkg?.id === 11 ? kitulgalaSlide6 : (pkg?.id === 2 ? southernSlide6 : (pkg?.id === 3 ? highlandsSlide6 : (pkg?.id === 4 ? mistSlide6 : (pkg?.id === 6 ? galleSlide6 : (pkg?.id === 10 ? adamsPeakSlide6 : gallerySlide6))))))))
     ];
     const sliderRef = React.useRef(null);
     
@@ -377,7 +387,7 @@ const TourDetails = () => {
         if (pkg.id === 2) currentBase = 600;
         
         if (transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : 300)))));
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 50 : (pkg.id === 13 ? 65 : 300)))))));
             return currentBase - discount;
         }
         if (transport === 'van') {
@@ -1537,7 +1547,7 @@ const TourDetails = () => {
                                     {[
                                         { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
                                         { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: '+$150' },
-                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 9 ? '-$30' : '-$300')))) }
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 9 ? '-$30' : (pkg.id === 12 ? '-$50' : (pkg.id === 13 ? '-$65' : '-$300')))))) }
                                     ].map(v => (
                                         <div
                                             key={v.id}

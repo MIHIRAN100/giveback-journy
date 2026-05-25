@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CultureImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
+import CultureImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import NatureImg from '../assets/Little Adam’s Peak.jpg';
 import FoodImg from '../assets/Tasting Sri Lankan Cuisine .jpg';
 import WildlifeImg from '../assets/Elephants in Sri Lanka (1).jpg';

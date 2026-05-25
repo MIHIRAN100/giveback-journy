@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
-import teachingImg from '../assets/teaching_english_preschool_sri_lanka_1778936461399.png';
+import teachingImg from '../assets/teaching_volunteer_cover.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
 import cultureImg from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';

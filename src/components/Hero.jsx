@@ -40,7 +40,9 @@ const Hero = ({ onSearch }) => {
     const [isMuted, setIsMuted] = useState(true);
     const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
     const [prevOfferIndex, setPrevOfferIndex] = useState(-1);
-    const playerRef = React.useRef(null);
+    const [activeVideo, setActiveVideo] = useState(0);
+    const player1Ref = React.useRef(null);
+    const player2Ref = React.useRef(null);
 
     // Auto-rotate promotional offers every 5 seconds
     React.useEffect(() => {
@@ -50,6 +52,14 @@ const Hero = ({ onSearch }) => {
                 return (prev + 1) % offers.length;
             });
         }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Rotate between the first and second background videos every 1 minute
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveVideo((prev) => (prev === 0 ? 1 : 0));
+        }, 60000);
         return () => clearInterval(interval);
     }, []);
 
@@ -63,13 +73,28 @@ const Hero = ({ onSearch }) => {
         }
 
         const initPlayer = () => {
-            new window.YT.Player('hero-youtube-player', {
+            new window.YT.Player('hero-youtube-player-1', {
                 events: {
                     'onReady': (event) => {
-                        playerRef.current = event.target;
+                        player1Ref.current = event.target;
                         if (isMuted) event.target.mute();
                         else event.target.unMute();
                         event.target.playVideo();
+                    }
+                }
+            });
+            new window.YT.Player('hero-youtube-player-2', {
+                events: {
+                    'onReady': (event) => {
+                        player2Ref.current = event.target;
+                        if (isMuted) event.target.mute();
+                        else event.target.unMute();
+                        // Pause initially if not active
+                        if (activeVideo === 1) {
+                            event.target.playVideo();
+                        } else {
+                            event.target.pauseVideo();
+                        }
                     }
                 }
             });
@@ -82,13 +107,46 @@ const Hero = ({ onSearch }) => {
         }
     }, []);
 
-    // Sync mute state with player
+    // Sync mute state with players
     React.useEffect(() => {
-        if (playerRef.current) {
-            if (isMuted) playerRef.current.mute();
-            else playerRef.current.unMute();
+        if (player1Ref.current) {
+            if (isMuted) player1Ref.current.mute();
+            else player1Ref.current.unMute();
+        }
+        if (player2Ref.current) {
+            if (isMuted) player2Ref.current.mute();
+            else player2Ref.current.unMute();
         }
     }, [isMuted]);
+
+    // Handle play/pause transitions and reset to start when active video changes
+    React.useEffect(() => {
+        if (activeVideo === 1) {
+            if (player1Ref.current) {
+                player1Ref.current.pauseVideo();
+            }
+            if (player2Ref.current) {
+                try {
+                    player2Ref.current.seekTo(0);
+                } catch (e) {
+                    console.error("Error seeking video 2:", e);
+                }
+                player2Ref.current.playVideo();
+            }
+        } else {
+            if (player2Ref.current) {
+                player2Ref.current.pauseVideo();
+            }
+            if (player1Ref.current) {
+                try {
+                    player1Ref.current.seekTo(0);
+                } catch (e) {
+                    console.error("Error seeking video 1:", e);
+                }
+                player1Ref.current.playVideo();
+            }
+        }
+    }, [activeVideo]);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -170,13 +228,22 @@ const Hero = ({ onSearch }) => {
         <section className="hero">
             <div className="hero-video-container">
                 <iframe 
-                    id="hero-youtube-player"
-                    className="hero-video active"
+                    id="hero-youtube-player-1"
+                    className={`hero-video ${activeVideo === 0 ? 'active' : 'inactive'}`}
+                    src={`https://www.youtube.com/embed/OxFOuZCokLk?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=OxFOuZCokLk&loop=1`}
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="Hero Background Video 1"
+                ></iframe>
+                <iframe 
+                    id="hero-youtube-player-2"
+                    className={`hero-video ${activeVideo === 1 ? 'active' : 'inactive'}`}
                     src={`https://www.youtube.com/embed/1ueifvk7oBU?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=1ueifvk7oBU&loop=1`}
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
-                    title="Hero Background Video"
+                    title="Hero Background Video 2"
                 ></iframe>
                 <button 
                     className="video-mute-toggle" 

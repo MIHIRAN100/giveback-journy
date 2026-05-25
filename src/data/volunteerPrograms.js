@@ -14,7 +14,7 @@ import volunteer2 from '../assets/volunteer_2.png';
 import volunteer3 from '../assets/volunteer_3.png';
 import volunteer4 from '../assets/volunteer_4.png';
 import cultureExp from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
-import teachingImg from '../assets/teaching_english_preschool_sri_lanka_1778936461399.png';
+import teachingImg from '../assets/teaching_volunteer_cover.jpg';
 import interviewImg from '../assets/interview_volunteer.png';
 import kandyTrain from '../assets/Kandy to Ella Train Journey _ Lanka Tour Experts.jpg';
 import ellaImg from '../assets/Wanderlust Sri Lanka - Mini Adams Peak Ella.jpg';

@@ -12,6 +12,9 @@ import raftingImg from '../assets/Rafting.jpg';
 import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
 import islandCrossoverCover from '../assets/island_crossover_cover.png';
 import breatheSriLankaImg from '../assets/photo-1548957175-84f0f9af659e.avif';
+import sigiriyaSafariCover from '../assets/TAL-tourists-sigiriya-sri-Lanka-WLCMASIANDEST0125-d5608fddc86e4b0f984c8e15ea637b0b.jpg';
+import sigiriyaEscapeCover from '../assets/32270acd8d24c9c32459048ef39490ae.jpg';
+import routeMapSigiriyaEscape from '../assets/route_map_sigiriya_escape.png';
 
 
 import routeMapEssential from '../assets/route_map_essential_v2.png';
@@ -335,6 +338,64 @@ const kitulgalaReviews = [
             "It started raining halfway through, which made it even more adventurous!",
             "Great value for an action-packed day. Highly recommend if you like adventure.",
             "The changing facilities were basic, but the rafting itself was fantastic."
+        ][i % 10],
+        color: "#fff"
+    }))
+];
+
+const sigiriyaEscapeReviews = [
+    { id: 1, name: "Charlotte S.", rating: 5, date: "November 2025", profile: "Verified Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "The sunrise at Sigiriya Fortress was absolutely breath-taking, and the overnight stay at the nature resort was peaceful. Perfect 2-day escape!", color: "#fff3e0" },
+    { id: 2, name: "Alexander M.", rating: 5, date: "October 2025", profile: "Couple", trip: "Sigiriya Nature & Culture Escape", comment: "We loved the sunset hike up Pidurangala and the Dambulla Cave Temple. The driver was professional and safe.", color: "#e8f5e9" },
+    { id: 3, name: "Mia N.", rating: 4, date: "September 2025", profile: "Solo Explorer", trip: "Sigiriya Nature & Culture Escape", comment: "Excellent overnight tour. The elephant safari was amazing, saw so many wild herds. Accommodations were clean and cozy.", color: "#e3f2fd" },
+    { id: 4, name: "Lucas D.", rating: 2, date: "August 2025", profile: "Verified Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "Great sights but the weather was very hot, making the climb difficult. Guest house wifi was slow.", color: "#fbe9e7" },
+    { id: 5, name: "Oliver H.", rating: 1, date: "July 2025", profile: "Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "Had to cancel the climb due to heavy rain. No alternative activities were offered for the afternoon.", color: "#fff" },
+    ...Array(195).fill().map((_, i) => ({
+        id: i + 6,
+        name: ["John D.", "Sarah M.", "David L.", "Emily W.", "Michael K.", "Anna S.", "James B.", "Elena P.", "Robert C.", "Laura G."][i % 10],
+        rating: (i % 22 === 0) ? 1 : ((i % 14 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Mix of 1, 2, 3, 4, and 5 stars
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Trip", "Couple", "Nature Lover"][i % 5],
+        trip: "Sigiriya Nature & Culture Escape",
+        comment: [
+            "Pidurangala hike at sunset was stunning. The view of Lion Rock is unbelievable.",
+            "Wonderful elephant safari! Highly recommend the overnight stay to avoid rushing.",
+            "The ancient cave temple in Dambulla is rich in history and art. Very spiritual place.",
+            "Great 2-day overview of the Cultural Triangle. Perfectly paced and very comfortable.",
+            "Sunrise at Sigiriya is tough but beautiful. Watch out for the monkeys at the base!",
+            "Excellent hospitality at the guest house. The traditional dinner and breakfast were delicious.",
+            "The jeep safari was the highlight of our trip. Saw majestic giants up close.",
+            "A well-planned overnight tour from Kandy. Driver was informative and extremely friendly.",
+            "Lovely experience visiting the Matale Hindu temple on the return. So colorful!",
+            "Perfect blend of culture, history, and nature. Highly recommend Sigiriya!"
+        ][i % 10],
+        color: "#fff"
+    }))
+];
+
+const sigiriyaSafariReviews = [
+    { id: 1, name: "David K.", rating: 5, date: "November 2025", profile: "Verified Traveler", trip: "Sigiriya & Elephant Safari", comment: "Outstanding day trip! Climbing Sigiriya in the morning and seeing herds of wild elephants in the afternoon was magical. Our driver was wonderful.", color: "#fff3e0" },
+    { id: 2, name: "Maria S.", rating: 5, date: "October 2025", profile: "Solo Explorer", trip: "Sigiriya & Elephant Safari", comment: "Highly recommend this tour. Safe driving, great jeep safari, and Sigiriya is absolutely spectacular.", color: "#e8f5e9" },
+    { id: 3, name: "Liam H.", rating: 4, date: "September 2025", profile: "Couple", trip: "Sigiriya & Elephant Safari", comment: "A packed day but worth every minute. The safari was incredible - we saw so many elephants up close!", color: "#e3f2fd" },
+    { id: 4, name: "Emma G.", rating: 2, date: "August 2025", profile: "Family Trip", trip: "Sigiriya & Elephant Safari", comment: "Sigiriya rock was amazing, but Kandy traffic made the return journey extremely long and tiring for the kids.", color: "#fbe9e7" },
+    { id: 5, name: "Niels B.", rating: 1, date: "July 2025", profile: "Backpacker", trip: "Sigiriya & Elephant Safari", comment: "The tour was canceled due to heavy thunderstorms and bad weather. Took two days to get a refund.", color: "#fff" },
+    ...Array(150).fill().map((_, i) => ({
+        id: i + 6,
+        name: ["Benjamin M.", "Sophia R.", "Lucas D.", "Emma F.", "Arthur L.", "Mia N.", "William P.", "Olivia H.", "Gabriel V.", "Clara W."][i % 10],
+        rating: (i % 25 === 0) ? 1 : ((i % 15 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Mix of 1, 2, 3, 4, and 5 stars
+        date: "2024-2025",
+        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
+        trip: "Sigiriya & Elephant Safari",
+        comment: [
+            "Sigiriya was absolutely breathtaking. Early morning is the best time to climb to avoid the heat.",
+            "Wonderful elephant safari! We saw a herd of over 30 wild elephants including babies.",
+            "Great tour. Our guide was very friendly and shared interesting historical facts about Sigiriya.",
+            "A must-do day trip from Kandy. The safari jeep experience was thrilling and well-organized.",
+            "Climbing Lion Rock was tough but the view from the top is definitely worth the effort.",
+            "Excellent organization. Safe driver, clean vehicle, and awesome wildlife views.",
+            "We had a great time seeing elephants. The drive is a bit long but beautiful.",
+            "Loved every minute of the day. Sigiriya is a marvel, and the safari was the perfect finish.",
+            "Very convenient tour starting and ending in Kandy. Covered all highlights comfortably.",
+            "The ancient gardens at the base of Sigiriya are stunning. The safari jeep was very modern."
         ][i % 10],
         color: "#fff"
     }))
@@ -889,6 +950,122 @@ export const tourPackages = [
             "Return airport transfer"
         ],
         importantNotes: COMMON_NOTES
+    },
+    {
+        id: 12,
+        name: "Sigiriya & Elephant Safari Experience",
+        days: "1 Day",
+        description: "Experience the cultural heart and wildlife beauty of Sri Lanka in one unforgettable day. This premium day tour takes you from Kandy to the ancient Sigiriya Rock Fortress and on an exciting elephant safari in their natural habitat, starting and ending in Kandy.",
+        price: "$145",
+        image: sigiriyaSafariCover,
+        itinerary: [
+            {
+                day: 1,
+                title: "Sigiriya Rock & Elephant Safari Journey",
+                desc: `<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Pickup Information:</b> Complimentary pickup is provided from your accommodation in Kandy. The departure time can be arranged flexibly according to your preference and weather conditions.</div>
+
+                <strong>Morning: Pick Up & Sigiriya Rock Climb</strong><br/>
+                Your day starts with an early morning pickup from your accommodation in Kandy. Enjoy a scenic drive towards <b>Sigiriya</b>. You can enjoy a delicious breakfast during the journey or at a local restaurant.<br/><br/>
+                Arrive at the world-famous <b>Sigiriya Rock Fortress</b>, a UNESCO World Heritage site. Climb and explore the ancient rock fortress while enjoying breathtaking panoramic views of the surrounding jungles and learning about the rich history and culture of Sri Lanka.<br/><br/>
+
+                <strong>Afternoon: Wild Elephant Safari</strong><br/>
+                After exploring the fortress, proceed for an exciting <b>Elephant Safari experience</b>. Climb into your included safari jeep and witness majestic wild elephants in their natural habitat along with other vibrant wildlife and beautiful landscapes.<br/><br/>
+
+                <strong>Evening: Return to Kandy</strong><br/>
+                After a thrilling safari, relax and enjoy the scenic drive back to Kandy. You will be dropped off at your accommodation by evening.`,
+                activities: ["Sigiriya Rock Climbing", "Wild Elephant Safari", "Private Jeep Tour", "Private Transport"],
+                optionalActivities: ["Traditional village lunch", "Herbal garden tour", "Wood carving workshop"]
+            }
+        ],
+        inclusions: [
+            "Private transportation (Starting & Ending in Kandy)",
+            "Breakfast during the journey",
+            "Safari Jeep experience",
+            "Entrance fees for Sigiriya Rock and Safari",
+            "Driver assistance"
+        ],
+        exclusions: [
+            "Lunch and dinners",
+            "Personal expenses",
+            "Tips and gratuities"
+        ],
+        routeMap: routeMapWild,
+        reviews: sigiriyaSafariReviews,
+        rating: 4.8,
+        ratingLabel: "Must Experience",
+        physicalIntensity: 3,
+        importantNotes: [
+            "Departure time is flexible based on your preference and weather conditions.",
+            ...COMMON_NOTES
+        ]
+    },
+    {
+        id: 13,
+        name: "Sigiriya Nature & Culture Escape",
+        days: "2 Days / 1 Night",
+        description: "Experience the perfect combination of history, culture, nature, and wildlife during this unforgettable overnight journey through the cultural triangle of Sri Lanka. Starting and ending in Kandy, this tour includes visits to Dambulla Cave Temple, Pidurangala sunset hike, Sigiriya Sunrise climb, Matale Hindu Temple, and a wild elephant safari.",
+        price: "$240",
+        image: sigiriyaEscapeCover,
+        itinerary: [
+            {
+                day: 1,
+                title: "Kandy to Sigiriya | Cave Temple & Pidurangala sunset",
+                desc: `<div style='background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #444; line-height: 1.5;'><i class='bi bi-info-circle-fill' style='color: #fbc02d; margin-right: 8px;'></i><b>Departure Note:</b> Departure time from Kandy can be arranged flexibly. Based on your departure time, the itinerary may be slightly adjusted to fit the timings comfortably.</div>
+
+                <strong>Morning: Kandy to Sigiriya & Dambulla Caves</strong><br/>
+                Your guide will pick you up from your accommodation in Kandy to begin the journey towards <b>Sigiriya</b>. En route, stop to visit the famous <b>Dambulla Cave Temple</b>, a UNESCO World Heritage site. Explore the ancient, beautifully preserved Buddhist temple complex, filled with historic wall paintings and over 150 stunning Buddha statues carved directly into the rock cliffs.<br/><br/>
+
+                <strong>Afternoon: Guesthouse Check-In</strong><br/>
+                Upon arriving in Sigiriya, check in to your cozy local guesthouse. Take some time to relax, unpack, and enjoy the tranquil nature surroundings.<br/><br/>
+
+                <strong>Evening: Sunset at Pidurangala Rock</strong><br/>
+                In the late afternoon, proceed for a scenic sunset hike to the top of <b>Pidurangala Rock</b>. Scale the forest paths and boulders to witness the breathtaking, 360-degree panoramic views of Sigiriya Rock and the surrounding jungles as the sun sets over the island.<br/><br/>
+
+                <strong>Night: Local Dinner</strong><br/>
+                Descend and return to your guesthouse. Enjoy a delicious traditional Sri Lankan dinner and a relaxing overnight stay.`,
+                activities: ["Dambulla Cave Temple Visit", "Pidurangala Sunset Hike", "Guesthouse Check-in", "Local Dinner"],
+                optionalActivities: ["Traditional wood carving workshop", "Ayurvedic massage in Dambulla"]
+            },
+            {
+                day: 2,
+                title: "Sunrise, Wildlife & Return to Kandy",
+                desc: `<strong>Early Morning: Sigiriya Sunrise Climb</strong><br/>
+                Rise early and proceed to the majestic <b>Sigiriya Rock Fortress</b>. Scale the rock steps in the cool morning air to witness the amazing sunrise over the treetops. Explore the ancient ruins of King Kassapa's palace, the water gardens, and the famous Lion's Paw gate, enjoying one of Sri Lanka's most iconic and historic views.<br/><br/>
+
+                <strong>Morning: Breakfast & Check-Out</strong><br/>
+                Return to the guesthouse to enjoy a fresh, hearty breakfast. Collect your belongings and check out of your stay.<br/><br/>
+
+                <strong>Afternoon: Wild Elephant Safari</strong><br/>
+                Set off for an exciting <b>wildlife safari experience</b> in a national park near Sigiriya. Hop into a private safari jeep to witness the majestic wild giants of Sri Lanka—elephants in their natural habitat—along with monkeys, crocodiles, exotic birds, and beautiful landscapes.<br/><br/>
+
+                <strong>Return Journey & Matale Temple</strong><br/>
+                Embark on the drive back to Kandy. On the way, visit the famous <b>Matale Hindu Temple</b>, experiencing its towering colorful gopuram architecture and spiritual atmosphere. Arrive back in Kandy in the evening and drop off at your Kandy accommodation.`,
+                activities: ["Sigiriya Sunrise Climb", "Guesthouse Breakfast", "Elephant Jeep Safari", "Matale Hindu Temple Visit", "Private Transport"],
+                optionalActivities: ["Spice & Herbal Garden Tour in Matale", "Village Tuk-Tuk Food Tour"]
+            }
+        ],
+        inclusions: [
+            "Private transportation (Starting & Ending in Kandy)",
+            "Guesthouse Accommodation (1 Night)",
+            "Breakfast & Dinner at the guesthouse",
+            "Private Safari Jeep experience",
+            "Entrance fees for all mentioned sites (Dambulla, Pidurangala, Sigiriya, Safari, Matale)",
+            "Driver assistance"
+        ],
+        exclusions: [
+            "Lunches",
+            "Personal expenses",
+            "Tips and gratuities"
+        ],
+        routeMap: routeMapSigiriyaEscape,
+        reviews: sigiriyaEscapeReviews,
+        rating: 4.9,
+        ratingLabel: "Must Experience",
+        physicalIntensity: 4,
+        importantNotes: [
+            "Departure time is flexible based on your preference and weather conditions.",
+            ...COMMON_NOTES
+        ]
     }
 ];
 
