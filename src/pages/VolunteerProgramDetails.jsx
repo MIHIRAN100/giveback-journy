@@ -69,8 +69,8 @@ const VolunteerProgramDetails = () => {
                     alignItems: 'center'
                 }}>
                     <div>
-                        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '1.5px', display: 'block', marginBottom: '2px' }}>{program.location}</span>
-                        <h2 style={{ fontSize: '1.25rem', fontWeight: 900, margin: 0, color: '#1d1d1f', letterSpacing: '-0.03em', lineHeight: 1.1 }}>{program.title}</h2>
+                        <span className="subnav-location">{program.location}</span>
+                        <h2 className="subnav-title">{program.title}</h2>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
                         <a href="#overview" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Overview</a>
@@ -79,16 +79,6 @@ const VolunteerProgramDetails = () => {
                         {program.mealsInfo && <a href="#meals" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Meals</a>}
                         <Link 
                             to={getInquiryUrl()}
-                            style={{
-                                background: '#1d1d1f',
-                                color: 'white',
-                                padding: '8px 20px',
-                                borderRadius: '50px',
-                                fontSize: '0.85rem',
-                                fontWeight: 700,
-                                textDecoration: 'none',
-                                transition: 'all 0.3s ease'
-                            }}
                             className="subnav-cta"
                         >
                             Apply Now
@@ -979,38 +969,20 @@ const VolunteerProgramDetails = () => {
 
 
             {/* Modern Floating Bottom Bar */}
-            <div style={{
-                position: 'fixed',
-                bottom: '20px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 'calc(100% - 60px)',
-                maxWidth: '580px',
-                background: 'rgba(255, 255, 255, 0.88)',
-                backdropFilter: 'blur(24px) saturate(180%)',
-                border: '1px solid rgba(0,0,0,0.06)',
-                borderRadius: '50px',
-                padding: '14px 16px 14px 30px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: 1000,
-                boxShadow: '0 12px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.03)',
-                boxSizing: 'border-box',
-                animation: 'volunteerFloat 4s ease-in-out infinite'
-            }}>
+            <div className="floating-bottom-bar">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '100%', justifyContent: 'space-between' }}>
                     <div className="bottom-price-info" style={{ display: 'flex', flexDirection: 'column', gap: '3px', textAlign: 'left' }}>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-                            <span style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
-                            <span style={{ fontSize: '1.3rem', fontWeight: 900, color: 'var(--primary-green)', lineHeight: 1 }}>{formatPrice(program.price)}</span>
+                            <span className="bottom-price-label" style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
+                            <span className="bottom-price-amount" style={{ fontSize: '1.3rem', fontWeight: 900, color: 'var(--primary-green)', lineHeight: 1 }}>{formatPrice(program.price)}</span>
                         </div>
-                        <span style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>* Includes accommodation, meals & pickup</span>
-                        <span style={{ fontSize: '0.58rem', color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.2px', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: '1px' }}>No Registration & Hidden Fees</span>
+                        <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>* Includes accommodation, meals & pickup</span>
+                        <span className="desktop-spec-text" style={{ fontSize: '0.58rem', color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.2px', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: '1px' }}>No Registration & Hidden Fees</span>
+                        <span className="mobile-spec-text">23kg luggage allowance inc.</span>
                     </div>
                     <Link 
                         to={getInquiryUrl()} 
-                        className="btn-apple-solid" 
+                        className="btn-apple-solid bottom-bar-btn" 
                         style={{ 
                             background: '#1d1d1f', 
                             color: 'white',
@@ -1027,7 +999,8 @@ const VolunteerProgramDetails = () => {
                             whiteSpace: 'nowrap'
                         }}
                     >
-                        <span>Apply to Volunteer</span>
+                        <span className="desktop-btn-text">Apply to Volunteer</span>
+                        <span className="mobile-btn-text">Apply Now</span>
                         <i className="bi bi-arrow-right" style={{ fontSize: '1rem' }}></i>
                     </Link>
                 </div>
@@ -1185,6 +1158,67 @@ const VolunteerProgramDetails = () => {
                     font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
                     -webkit-font-smoothing: antialiased;
                 }
+                .subnav-location {
+                    font-size: 0.75rem;
+                    font-weight: 800;
+                    color: var(--primary-green);
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    display: block;
+                    margin-bottom: 2px;
+                }
+                .subnav-title {
+                    font-size: 1.25rem;
+                    font-weight: 900;
+                    margin: 0;
+                    color: #1d1d1f;
+                    letter-spacing: -0.03em;
+                    line-height: 1.1;
+                }
+                .subnav-cta {
+                    background: #1d1d1f;
+                    color: white;
+                    padding: 8px 20px;
+                    border-radius: 50px;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    white-space: nowrap;
+                    display: inline-block;
+                }
+                .floating-bottom-bar {
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: calc(100% - 60px);
+                    max-width: 580px;
+                    background: rgba(255, 255, 255, 0.88);
+                    backdrop-filter: blur(24px) saturate(180%);
+                    border: 1px solid rgba(0,0,0,0.06);
+                    border-radius: 50px;
+                    padding: 14px 16px 14px 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 1000;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.03);
+                    box-sizing: border-box;
+                    animation: volunteerFloat 4s ease-in-out infinite;
+                }
+                .mobile-btn-text {
+                    display: none;
+                }
+                .desktop-btn-text {
+                    display: inline;
+                }
+                .mobile-spec-text {
+                    display: none;
+                }
+                .desktop-spec-text {
+                    display: inline;
+                }
                 .volunteer-details-page h1,
                 .volunteer-details-page h2,
                 .volunteer-details-page h3,
@@ -1276,6 +1310,18 @@ const VolunteerProgramDetails = () => {
                 }
                 
                 @media (max-width: 768px) {
+                    .subnav-location {
+                        font-size: 0.65rem !important;
+                        letter-spacing: 1px !important;
+                    }
+                    .subnav-title {
+                        font-size: 1.05rem !important;
+                        letter-spacing: -0.02em !important;
+                    }
+                    .subnav-cta {
+                        padding: 6px 14px !important;
+                        font-size: 0.75rem !important;
+                    }
                     .skills-bucket-widget {
                         bottom: 105px !important;
                         right: 5% !important;
@@ -1295,6 +1341,52 @@ const VolunteerProgramDetails = () => {
                     .section-card {
                         padding: 30px 0 !important;
                     }
+                    .floating-bottom-bar {
+                        padding: 10px 18px !important;
+                        width: calc(100% - 30px) !important;
+                        bottom: 15px !important;
+                        justify-content: space-between !important;
+                    }
+                    .bottom-price-info {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        gap: 1px !important;
+                        text-align: left !important;
+                    }
+                    .desktop-spec-text {
+                        display: none !important;
+                    }
+                    .mobile-spec-text {
+                        display: block !important;
+                        font-size: 0.6rem !important;
+                        color: #64748b !important;
+                        font-weight: 700 !important;
+                        white-space: nowrap !important;
+                        letter-spacing: -0.01em !important;
+                    }
+                    .bottom-price-amount {
+                        font-size: 1.15rem !important;
+                    }
+                    .bottom-price-label {
+                        font-size: 0.58rem !important;
+                    }
+                    .mobile-btn-text {
+                        display: inline !important;
+                        font-size: 0.75rem !important;
+                    }
+                    .desktop-btn-text {
+                        display: none !important;
+                    }
+                    .btn-apple-solid.bottom-bar-btn {
+                        width: auto !important;
+                        max-width: none !important;
+                        padding: 10px 20px !important;
+                        justify-content: center !important;
+                        gap: 6px !important;
+                    }
+                    .btn-apple-solid.bottom-bar-btn i {
+                        font-size: 0.8rem !important;
+                    }
                     .bento-grid {
                         grid-template-columns: repeat(2, 1fr) !important;
                         gap: 8px !important;
@@ -1304,17 +1396,44 @@ const VolunteerProgramDetails = () => {
                         grid-template-columns: repeat(2, 1fr) !important;
                         grid-template-rows: 150px !important;
                     }
-                    .bottom-price-info {
-                        display: none !important;
-                    }
-                    .bottom-bar-actions {
-                        width: 100% !important;
-                        justify-content: center !important;
-                        gap: 0 !important;
-                    }
-                    .btn-apple-solid {
+                    .btn-apple-solid:not(.bottom-bar-btn) {
                         width: 100% !important;
                         max-width: 100% !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .subnav-location {
+                        font-size: 0.6rem !important;
+                    }
+                    .subnav-title {
+                        font-size: 0.9rem !important;
+                    }
+                    .subnav-cta {
+                        padding: 5px 12px !important;
+                        font-size: 0.68rem !important;
+                    }
+                    .floating-bottom-bar {
+                        padding: 8px 14px !important;
+                        width: calc(100% - 20px) !important;
+                    }
+                    .bottom-price-amount {
+                        font-size: 1.05rem !important;
+                    }
+                    .bottom-price-label {
+                        font-size: 0.55rem !important;
+                    }
+                    .mobile-spec-text {
+                        font-size: 0.52rem !important;
+                    }
+                    .mobile-btn-text {
+                        font-size: 0.68rem !important;
+                    }
+                    .btn-apple-solid.bottom-bar-btn {
+                        padding: 8px 14px !important;
+                        gap: 4px !important;
+                    }
+                    .btn-apple-solid.bottom-bar-btn i {
+                        font-size: 0.75rem !important;
                     }
                 }
                 @media (min-width: 768px) {

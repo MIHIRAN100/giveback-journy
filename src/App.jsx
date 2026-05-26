@@ -36,6 +36,7 @@ const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isTourDetails = location.pathname.startsWith('/package/');
+  const hideMobileBottomBar = location.pathname.startsWith('/package/') || location.pathname.startsWith('/volunteer-program/');
   const showGlobalBadge = ['/packages', '/sri-lanka', '/volunteer', '/exclusive-journeys', '/contact'].includes(location.pathname);
 
   return (
@@ -68,7 +69,7 @@ const AppContent = () => {
       <CookieBar onVisibilityChange={setCookieVisible} />
       {showGlobalBadge && <HeroPromoBadge />}
 
-      {!isTourDetails && <MobileBottomBar />}
+      {!hideMobileBottomBar && <MobileBottomBar />}
       <BottomAdBanner isCookieVisible={cookieVisible} />
     </div>
   );
