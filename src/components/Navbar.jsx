@@ -244,8 +244,17 @@ const Navbar = () => {
                         <Link to="/contact" className="btn-modern btn-black">Contact Us</Link>
                     </div>
 
-                    <div className="mobile-menu-btn" onClick={toggleMenu}>
-                        <i className={isMenuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+                    <div className="mobile-right-actions">
+                        <Link to="/compare" className="mobile-compare-btn">
+                            <i className={compareList.length > 0 ? "bi bi-heart-fill" : "bi bi-heart"}></i>
+                            {compareList.length > 0 && <span className="compare-badge">{compareList.length}</span>}
+                        </Link>
+                        <Link to="/packages" className="btn-modern btn-solid-green mobile-book-btn">
+                            Book
+                        </Link>
+                        <div className="mobile-menu-btn" onClick={toggleMenu}>
+                            <i className={isMenuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+                        </div>
                     </div>
                 </nav>
 

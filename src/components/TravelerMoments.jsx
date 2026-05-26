@@ -101,7 +101,7 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                     transform: 'translate(-50%, -50%)',
                     zIndex: 3,
                     color: 'white',
-                    fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
+                    fontSize: 'clamp(0.95rem, 2vw, 1.2rem)',
                     fontWeight: 900,
                     textTransform: 'uppercase',
                     textAlign: 'center',

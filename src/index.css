@@ -440,6 +440,21 @@ h1, h2, h3, .logo-text {
         height: 40px;
         border-radius: 8px;
     }
+    /* Mobile-specific navbar logo modifications */
+    .navbar-container .logo-text {
+        font-size: 1.0rem !important;
+    }
+    .navbar-container .logo-image-container {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .navbar-container .logo-area {
+        justify-content: flex-start !important;
+        gap: 8px !important;
+    }
+    .volunteer-preview-section {
+        display: none !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -453,6 +468,17 @@ h1, h2, h3, .logo-text {
     }
     .logo-area {
         gap: 6px;
+    }
+    /* Extra-small mobile navbar logo modifications */
+    .navbar-container .logo-text {
+        font-size: 0.9rem !important;
+    }
+    .navbar-container .logo-image-container {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    .navbar-container .logo-area {
+        gap: 6px !important;
     }
 }
 
@@ -3389,6 +3415,10 @@ h1, h2, h3, .logo-text {
 
 /* Cookie Bar Animation */
 /* Mobile Menu Styles */
+.mobile-right-actions {
+    display: none;
+}
+
 .mobile-menu-btn {
     display: none;
     font-size: 1.5rem;
@@ -3402,9 +3432,60 @@ h1, h2, h3, .logo-text {
         display: none;
     }
     
+    .mobile-right-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
     .mobile-menu-btn {
         display: block;
     }
+}
+
+.mobile-compare-btn {
+    position: relative;
+    color: var(--pitch-black);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.mobile-compare-btn:hover {
+    color: var(--primary-green);
+}
+
+.mobile-compare-btn .bi-heart-fill {
+    color: #e23b3b;
+}
+
+.mobile-compare-btn .compare-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--primary-green);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 800;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid white;
+}
+
+.mobile-book-btn {
+    padding: 6px 14px !important;
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(29, 185, 84, 0.2) !important;
+    border-radius: 8px !important;
 }
 
 .mobile-drawer {
@@ -3629,13 +3710,13 @@ h1, h2, h3, .logo-text {
 }
 
 .moment-card {
-    flex: 0 0 280px; /* Slightly smaller width */
+    flex: 0 0 240px;
     position: relative;
-    border-radius: 30px; /* More radius */
+    border-radius: 24px;
     overflow: hidden;
     cursor: pointer;
     background: #f0f0f0;
-    height: 380px; /* Slightly smaller height */
+    height: 340px;
     transition: var(--transition);
     scroll-snap-align: start;
 }
@@ -3769,7 +3850,7 @@ h1, h2, h3, .logo-text {
 
 .moment-title {
     color: var(--white);
-    font-size: 1.1rem; /* Bigger letters */
+    font-size: 0.95rem;
     font-weight: 800;
     line-height: 1.2;
     max-width: 90%;
@@ -3795,9 +3876,12 @@ h1, h2, h3, .logo-text {
     }
     
     .moment-card {
-        flex: 0 0 250px;
-        height: 350px;
-        border-radius: 25px;
+        flex: 0 0 210px;
+        height: 290px;
+        border-radius: 20px;
+    }
+    .moment-title {
+        font-size: 0.85rem !important;
     }
 }
 

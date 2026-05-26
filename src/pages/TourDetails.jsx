@@ -1000,6 +1000,11 @@ const TourDetails = () => {
                     margin-top: 80px;
                     border-top: 1px solid #eee;
                     padding-top: 80px;
+                    padding-left: 60px;
+                    padding-right: 60px;
+                    max-width: 1100px;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
                 .reviews-summary {
                     display: grid;
@@ -1200,6 +1205,10 @@ const TourDetails = () => {
                 }
 
                 @media (max-width: 768px) {
+                    .reviews-container, .also-bought-container {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
                     .reviews-summary {
                         grid-template-columns: 1fr;
                         gap: 40px;
@@ -1216,12 +1225,17 @@ const TourDetails = () => {
                     border-top: 1px solid #eee;
                     padding-top: 60px;
                     margin-bottom: 60px;
+                    padding-left: 60px;
+                    padding-right: 60px;
+                    max-width: 1100px;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
                 .also-bought-title {
-                    font-size: 1.8rem;
+                    font-size: 1.2rem;
                     font-weight: 800;
                     color: #111;
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
                 }
                 .also-bought-grid {
                     display: flex;
@@ -1235,7 +1249,7 @@ const TourDetails = () => {
                     display: none;
                 }
                 .tour-card-mini {
-                    flex: 0 0 280px;
+                    flex: 0 0 210px;
                     background: white;
                     border-radius: 12px;
                     border: 1px solid #eee;
@@ -1251,7 +1265,7 @@ const TourDetails = () => {
                 }
                 .card-image-wrapper {
                     position: relative;
-                    height: 180px;
+                    height: 130px;
                 }
                 .card-image-wrapper img {
                     width: 100%;
@@ -1260,10 +1274,10 @@ const TourDetails = () => {
                 }
                 .heart-icon {
                     position: absolute;
-                    top: 12px;
-                    right: 12px;
-                    width: 32px;
-                    height: 32px;
+                    top: 8px;
+                    right: 8px;
+                    width: 26px;
+                    height: 26px;
                     background: white;
                     border-radius: 50%;
                     display: flex;
@@ -1271,20 +1285,21 @@ const TourDetails = () => {
                     justify-content: center;
                     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
                     color: #666;
+                    font-size: 0.8rem;
                 }
                 .category-tag {
                     position: absolute;
-                    bottom: 12px;
-                    left: 12px;
+                    bottom: 8px;
+                    left: 8px;
                     background: rgba(0,0,0,0.6);
                     color: white;
-                    padding: 4px 10px;
+                    padding: 3px 8px;
                     border-radius: 4px;
-                    font-size: 0.75rem;
+                    font-size: 0.65rem;
                     font-weight: 600;
                 }
                 .card-content {
-                    padding: 15px;
+                    padding: 12px;
                     flex: 1;
                     display: flex;
                     flex-direction: column;
@@ -1293,28 +1308,28 @@ const TourDetails = () => {
                     display: flex;
                     align-items: center;
                     gap: 5px;
-                    font-size: 0.8rem;
+                    font-size: 0.72rem;
                     color: #666;
-                    margin-bottom: 8px;
+                    margin-bottom: 6px;
                 }
                 .card-rating {
                     display: flex;
                     align-items: center;
                     gap: 5px;
-                    font-size: 0.85rem;
+                    font-size: 0.75rem;
                     color: #111;
                     font-weight: 700;
-                    margin-bottom: 10px;
+                    margin-bottom: 8px;
                 }
                 .card-rating i {
                     color: var(--primary-green);
                 }
                 .card-title {
-                    font-size: 0.95rem;
+                    font-size: 0.82rem;
                     font-weight: 800;
                     color: #111;
                     line-height: 1.4;
-                    margin-bottom: 15px;
+                    margin-bottom: 10px;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
@@ -1322,29 +1337,32 @@ const TourDetails = () => {
                     height: 2.8em;
                 }
                 .card-features {
-                    margin-bottom: 15px;
+                    margin-bottom: 10px;
                 }
                 .feature-item {
                     display: flex;
                     align-items: center;
-                    gap: 8px;
-                    font-size: 0.8rem;
+                    gap: 6px;
+                    font-size: 0.75rem;
                     color: #555;
                     margin-bottom: 5px;
                 }
                 .card-price {
                     margin-top: auto;
-                    font-size: 0.9rem;
+                    font-size: 0.8rem;
                     color: #111;
                 }
                 .card-price strong {
-                    font-size: 1.1rem;
+                    font-size: 1.0rem;
                     font-weight: 800;
                 }
-
+ 
                 @media (max-width: 1024px) {
                     .tour-card-mini {
-                        flex: 0 0 260px;
+                        flex: 0 0 180px;
+                    }
+                    .card-image-wrapper {
+                        height: 110px;
                     }
                 }
                 `}
@@ -1870,7 +1888,7 @@ const TourDetails = () => {
                 {/* Itinerary Section */}
                 <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '60px' }}>
                     <div className="itinerary-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111' }}>Itinerary</h2>
+                        <h2 style={{ fontSize: '2.0rem', fontWeight: 800, color: '#111' }}>Itinerary</h2>
                         <div style={{ display: 'flex', gap: '15px' }}>
                             <button 
                                 onClick={handleDownloadPDF}
@@ -2006,7 +2024,7 @@ const TourDetails = () => {
                 {/* Important Notes */}
                 {pkg.importantNotes && (
                     <div className="important-notes-section" style={{ marginTop: '80px', padding: '20px 0' }}>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 500, color: '#222', marginBottom: '30px', fontFamily: 'inherit' }}>Important notes</h2>
+                        <h2 style={{ fontSize: '2.0rem', fontWeight: 800, color: '#111', marginBottom: '20px', fontFamily: 'inherit' }}>Important notes</h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                             {pkg.importantNotes.map((note, i) => (
                                 <div key={i} style={{ fontSize: '1.05rem', color: '#444', lineHeight: 1.6, display: 'flex', gap: '8px' }}>
@@ -2021,7 +2039,7 @@ const TourDetails = () => {
                 {/* Guest Reviews */}
                 {pkg.reviews && (
                     <div className="reviews-container" id="reviews">
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#111', marginBottom: '50px' }}>Reviews</h2>
+                        <h2 style={{ fontSize: '2.0rem', fontWeight: 800, color: '#111', marginBottom: '30px' }}>Reviews</h2>
                         
                         <div className="reviews-summary">
                             <div className="rating-large">

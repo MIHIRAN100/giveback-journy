@@ -254,15 +254,15 @@ const VolunteerPage = () => {
 
                 .hero-tag {
                     text-transform: uppercase;
-                    letter-spacing: 4px;
-                    font-size: 0.85rem;
+                    letter-spacing: 2px;
+                    font-size: 0.72rem;
                     font-weight: 800;
                     background: var(--primary-green);
-                    padding: 10px 30px;
+                    padding: 6px 18px;
                     border-radius: 100px;
                     display: inline-block;
-                    margin-bottom: 30px;
-                    box-shadow: 0 10px 20px rgba(29, 185, 84, 0.3);
+                    margin-bottom: 20px;
+                    box-shadow: 0 6px 15px rgba(29, 185, 84, 0.2);
                 }
 
                 .hero-title {
@@ -390,68 +390,96 @@ const VolunteerPage = () => {
 
                 .features-grid {
                     display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 30px;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 25px;
                 }
 
                 .feature-item {
                     background: rgba(255, 255, 255, 0.8);
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
-                    padding: 40px 30px;
-                    border-radius: 32px;
+                    padding: 25px;
+                    border-radius: 24px;
                     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
                     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                     border: 1px solid rgba(255, 255, 255, 0.5);
                     display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    text-align: left;
+                    gap: 20px;
                 }
 
                 .feature-item:hover {
-                    transform: translateY(-12px);
+                    transform: translateY(-8px);
                     background: #fff;
-                    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
                     border-color: rgba(29, 185, 84, 0.2);
                 }
 
                 .feature-icon-container {
-                    width: 70px;
-                    height: 70px;
+                    width: 54px;
+                    height: 54px;
                     background: white;
                     color: #111;
-                    border-radius: 22px;
+                    border-radius: 16px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    font-size: 1.8rem;
-                    margin-bottom: 25px;
+                    font-size: 1.35rem;
+                    margin-bottom: 0;
                     transition: all 0.5s ease;
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
                     position: relative;
+                    flex-shrink: 0;
                 }
 
                 .feature-item:hover .feature-icon-container {
                     transform: rotate(10deg);
                     background: var(--primary-green);
                     color: white;
-                    box-shadow: 0 15px 30px rgba(29, 185, 84, 0.3);
+                    box-shadow: 0 10px 20px rgba(29, 185, 84, 0.25);
                 }
 
                 .feature-title {
-                    font-size: 1.35rem;
+                    font-size: 1.1rem;
                     font-weight: 800;
                     color: #111;
-                    margin-bottom: 15px;
+                    margin-bottom: 6px;
                     letter-spacing: -0.02em;
                 }
 
                 .feature-desc {
-                    font-size: 0.95rem;
-                    line-height: 1.7;
+                    font-size: 0.85rem;
+                    line-height: 1.5;
                     color: #64748b;
                     margin: 0;
+                }
+
+                @media (max-width: 600px) {
+                    .features-grid {
+                        grid-template-columns: 1fr 1fr !important;
+                        gap: 12px !important;
+                    }
+                    .feature-item {
+                        padding: 12px !important;
+                        gap: 10px !important;
+                        border-radius: 16px !important;
+                    }
+                    .feature-icon-container {
+                        width: 32px !important;
+                        height: 32px !important;
+                        font-size: 0.95rem !important;
+                        border-radius: 8px !important;
+                    }
+                    .feature-title {
+                        font-size: 0.8rem !important;
+                        margin-bottom: 2px !important;
+                    }
+                    .feature-desc {
+                        font-size: 0.68rem !important;
+                        line-height: 1.35 !important;
+                    }
                 }
 
                 /* Journey Steps */
@@ -654,6 +682,62 @@ const VolunteerPage = () => {
                         padding: 25px !important;
                     }
                 }
+
+                .duration-selector-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 25px;
+                }
+                
+                .duration-label {
+                    font-weight: 800;
+                    color: #1e293b;
+                    font-size: 0.78rem;
+                }
+                
+                .duration-track {
+                    background: #f1f5f9;
+                    padding: 3px;
+                    border-radius: 100px;
+                    display: flex;
+                    gap: 2px;
+                    border: 1px solid #e2e8f0;
+                }
+                
+                .duration-toggle-btn {
+                    border: none;
+                    background: transparent;
+                    color: #64748b;
+                    padding: 5px 12px;
+                    border-radius: 100px;
+                    font-size: 0.68rem;
+                    font-weight: 800;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .duration-toggle-btn.active {
+                    background: var(--primary-green) !important;
+                    color: white !important;
+                    box-shadow: 0 4px 10px rgba(29, 185, 84, 0.25) !important;
+                }
+
+                @media (max-width: 768px) {
+                    .duration-selector-container {
+                        gap: 5px;
+                        margin-bottom: 18px;
+                    }
+                    .duration-label {
+                        font-size: 0.7rem;
+                    }
+                    .duration-toggle-btn {
+                        padding: 4px 8px;
+                        font-size: 0.62rem;
+                    }
+                }
+                
                 `}
             </style>
 
@@ -755,8 +839,10 @@ const VolunteerPage = () => {
                                 <div className="feature-icon-container">
                                     <i className={`fa-solid ${item.icon}`}></i>
                                 </div>
-                                <h4 className="feature-title">{item.title}</h4>
-                                <p className="feature-desc">{item.desc}</p>
+                                <div className="feature-text-content">
+                                    <h4 className="feature-title">{item.title}</h4>
+                                    <p className="feature-desc">{item.desc}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -778,47 +864,22 @@ const VolunteerPage = () => {
                     </div>
 
                     {/* Duration Selector */}
-                    <div style={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center', 
-                        gap: '15px', 
-                        marginBottom: '40px' 
-                    }}>
-                        <span style={{ fontWeight: 800, color: '#1e293b', fontSize: '0.95rem' }}>Select Stay Duration:</span>
-                        <div style={{ 
-                            background: '#f1f5f9', 
-                            padding: '6px', 
-                            borderRadius: '100px', 
-                            display: 'flex',
-                            gap: '4px',
-                            border: '1px solid #e2e8f0'
-                        }}>
+                    <div className="duration-selector-container">
+                        <span className="duration-label">Select Stay Duration:</span>
+                        <div className="duration-track">
                             {[1, 2, 3, 4].map((wk) => (
                                 <button
                                     key={wk}
                                     onClick={() => setSelectedWeeks(wk)}
-                                    style={{
-                                        border: 'none',
-                                        background: selectedWeeks === wk ? 'var(--primary-green)' : 'transparent',
-                                        color: selectedWeeks === wk ? 'white' : '#64748b',
-                                        padding: '10px 24px',
-                                        borderRadius: '100px',
-                                        fontSize: '0.85rem',
-                                        fontWeight: 800,
-                                        cursor: 'pointer',
-                                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                        boxShadow: selectedWeeks === wk ? '0 4px 10px rgba(29, 185, 84, 0.25)' : 'none'
-                                    }}
-                                    className="duration-toggle-btn"
+                                    className={`duration-toggle-btn ${selectedWeeks === wk ? 'active' : ''}`}
                                 >
-                                    {wk} {wk === 1 ? 'Week' : 'Weeks'}
+                                    {wk} {wk === 1 ? 'Wk' : 'Wks'}
                                 </button>
                             ))}
                         </div>
                     </div>
 
-                    <div style={{ overflowX: 'auto', background: '#fff', borderRadius: '32px', boxShadow: '0 25px 70px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
+                    <div className="table-container-mobile-wrapper" style={{ overflowX: 'auto', background: '#fff', borderRadius: '32px', boxShadow: '0 25px 70px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '950px' }}>
                             <thead>
                                 <tr style={{ background: '#f8fafc', borderBottom: '1px solid #edf2f7' }}>
@@ -844,45 +905,53 @@ const VolunteerPage = () => {
                                                 transition: 'all 0.2s ease'
                                             }}
                                         >
-                                            <td style={{ padding: '26px 30px', display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: prog.color }}></div>
-                                                <div>
-                                                    <span style={{ fontWeight: 800, fontSize: '1rem', color: '#1e293b', display: 'block' }}>{prog.name}</span>
-                                                    <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>{prog.support}</span>
+                                            <td data-label="Program" style={{ padding: '26px 30px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: prog.color }}></div>
+                                                    <div style={{ textAlign: 'left' }}>
+                                                        <span style={{ fontWeight: 800, fontSize: '1rem', color: '#1e293b', display: 'block' }}>{prog.name}</span>
+                                                        <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>{prog.support}</span>
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td style={{ padding: '26px 20px' }}>
-                                                <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', display: 'block' }}>
-                                                    {formatPrice(details.total)}
-                                                </span>
-                                                {details.isMinLimit && (
-                                                    <span style={{ fontSize: '0.65rem', color: '#ea580c', fontWeight: 700, background: '#fff7ed', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>
-                                                        {details.minWeeks} Wk Min. Commit
+                                            <td data-label="Total Price" style={{ padding: '26px 20px' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                                                    <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>
+                                                        {formatPrice(details.total)}
                                                     </span>
-                                                )}
+                                                    {details.isMinLimit && (
+                                                        <span style={{ fontSize: '0.65rem', color: '#ea580c', fontWeight: 700, background: '#fff7ed', padding: '2px 8px', borderRadius: '4px', marginTop: '4px' }}>
+                                                            {details.minWeeks} Wk Min. Commit
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </td>
-                                            <td style={{ padding: '26px 20px' }}>
-                                                <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1e293b', display: 'block' }}>
-                                                    {formatPrice(details.average)}
-                                                    <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>/wk</span>
-                                                </span>
-                                                {details.savingPercent > 0 && (
-                                                    <span style={{ fontSize: '0.65rem', color: '#166534', fontWeight: 700, background: '#dcfce7', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>
-                                                        Save {details.savingPercent}%/wk
+                                            <td data-label="Weekly Avg" style={{ padding: '26px 20px' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                                                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1e293b' }}>
+                                                        {formatPrice(details.average)}
+                                                        <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>/wk</span>
                                                     </span>
-                                                )}
+                                                    {details.savingPercent > 0 && (
+                                                        <span style={{ fontSize: '0.65rem', color: '#166534', fontWeight: 700, background: '#dcfce7', padding: '2px 8px', borderRadius: '4px', marginTop: '4px' }}>
+                                                            Save {details.savingPercent}%/wk
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </td>
-                                            <td style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
-                                                {details.isFixed ? `${prog.duration} (Fixed)` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
+                                            <td data-label="Duration" style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
+                                                <span>{details.isFixed ? `${prog.duration} (Fixed)` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}</span>
                                             </td>
-                                            <td style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
-                                                {prog.location}
+                                            <td data-label="Location" style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
+                                                <span>{prog.location}</span>
                                             </td>
-                                            <td style={{ padding: '26px 20px' }}>
-                                                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#475569', display: 'block' }}>{prog.meals}</span>
-                                                <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>{prog.housing}</span>
+                                            <td data-label="Meals & Housing" style={{ padding: '26px 20px' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                                                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#475569' }}>{prog.meals}</span>
+                                                    <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>{prog.housing}</span>
+                                                </div>
                                             </td>
-                                            <td style={{ padding: '26px 20px' }}>
+                                            <td data-label="Airport Pickup" style={{ padding: '26px 20px' }}>
                                                 <span style={{ 
                                                     fontSize: '0.75rem', 
                                                     fontWeight: 800, 
@@ -930,6 +999,63 @@ const VolunteerPage = () => {
                             color: white !important;
                             transform: translateY(-2px);
                             box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+                        }
+                        @media (max-width: 768px) {
+                            .table-container-mobile-wrapper {
+                                background: transparent !important;
+                                box-shadow: none !important;
+                                border: none !important;
+                                overflow-x: visible !important;
+                            }
+                            .table-container-mobile-wrapper table {
+                                min-width: 100% !important;
+                            }
+                            .table-container-mobile-wrapper table thead {
+                                display: none !important;
+                            }
+                            .table-container-mobile-wrapper table, 
+                            .table-container-mobile-wrapper table tbody, 
+                            .table-container-mobile-wrapper table tr, 
+                            .table-container-mobile-wrapper table td {
+                                display: block !important;
+                                width: 100% !important;
+                                box-sizing: border-box !important;
+                            }
+                            .table-container-mobile-wrapper .pricing-row {
+                                background: #ffffff !important;
+                                border-radius: 24px !important;
+                                padding: 20px !important;
+                                margin-bottom: 20px !important;
+                                border: 1px solid rgba(0, 0, 0, 0.05) !important;
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.03) !important;
+                                display: flex !important;
+                                flex-direction: column !important;
+                            }
+                            .table-container-mobile-wrapper .pricing-row td {
+                                padding: 12px 10px !important;
+                                border-bottom: 1px solid #f1f5f9 !important;
+                                display: flex !important;
+                                justify-content: space-between !important;
+                                align-items: center !important;
+                                text-align: right !important;
+                                background: transparent !important;
+                            }
+                            .table-container-mobile-wrapper .pricing-row td:last-child {
+                                border-bottom: none !important;
+                                justify-content: center !important;
+                                padding-top: 15px !important;
+                            }
+                            .table-container-mobile-wrapper .pricing-row td::before {
+                                content: attr(data-label) !important;
+                                font-weight: 800 !important;
+                                text-transform: uppercase !important;
+                                font-size: 0.7rem !important;
+                                color: #94a3b8 !important;
+                                text-align: left !important;
+                            }
+                            .table-container-mobile-wrapper .pricing-row td:last-child::before {
+                                content: none !important;
+                            }
                         }
                     `}} />
 

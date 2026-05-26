@@ -85,10 +85,10 @@ const VolunteerOpportunities = () => {
                     <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
                     {opportunities.map((opp, i) => (
                         <div key={i} className="opp-card-modern" style={{ 
-                            flex: '0 0 calc((100% - 96px) / 4.5)',
-                            minWidth: '280px',
+                            flex: '0 0 calc((100% - 96px) / 5.2)',
+                            minWidth: '230px',
                             background: 'white',
-                            borderRadius: '32px',
+                            borderRadius: '24px',
                             overflow: 'hidden',
                             boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
                             border: '1px solid rgba(0,0,0,0.04)',
@@ -98,7 +98,7 @@ const VolunteerOpportunities = () => {
                             cursor: 'pointer',
                             position: 'relative'
                         }}>
-                            <div style={{ height: '160px', overflow: 'hidden', position: 'relative' }}>
+                            <div style={{ height: '135px', overflow: 'hidden', position: 'relative' }}>
                                 <img src={opp.image} alt={opp.title} className="card-img-zoom" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s ease' }} />
                                 <div style={{ 
                                     position: 'absolute', 
@@ -136,69 +136,69 @@ const VolunteerOpportunities = () => {
                                 </div>
                             </div>
                             
-                            <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                            <div style={{ padding: '15px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '8px' }}>
                                     <i className="fa-solid fa-location-dot" style={{ color: opp.color, fontSize: '0.7rem' }}></i>
                                     <span style={{ fontSize: '0.7rem', fontWeight: 800, color: opp.color, textTransform: 'uppercase', letterSpacing: '0.5px' }}>{opp.location}</span>
                                 </div>
-                                <h3 style={{ fontSize: '1.15rem', fontWeight: 900, marginBottom: '15px', color: '#111', lineHeight: 1.2, height: '2.4em', display: 'flex', alignItems: 'center' }}>{opp.title}</h3>
+                                <h3 style={{ fontSize: '0.95rem', fontWeight: 900, marginBottom: '10px', color: '#111', lineHeight: 1.2, height: '2.4em', display: 'flex', alignItems: 'center' }}>{opp.title}</h3>
                                 
                                 {/* Professional Metadata Grid */}
                                 <div style={{ 
                                     display: 'grid', 
                                     gridTemplateColumns: '1fr 1fr', 
-                                    gap: '12px', 
-                                    marginBottom: '15px',
-                                    padding: '12px',
+                                    gap: '8px', 
+                                    marginBottom: '10px',
+                                    padding: '8px',
                                     background: '#f8fafc',
-                                    borderRadius: '16px',
+                                    borderRadius: '12px',
                                     border: '1px solid #f1f5f9'
                                 }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <i className="fa-solid fa-user-check" style={{ color: '#64748b', fontSize: '0.75rem' }}></i>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#475569' }}>Age {opp.minAge}</span>
+                                        <i className="fa-solid fa-user-check" style={{ color: '#64748b', fontSize: '0.7rem' }}></i>
+                                        <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#475569' }}>Age {opp.minAge}</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <i className="fa-solid fa-utensils" style={{ color: '#64748b', fontSize: '0.75rem' }}></i>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#475569' }}>{opp.meals} Meals</span>
+                                        <i className="fa-solid fa-utensils" style={{ color: '#64748b', fontSize: '0.7rem' }}></i>
+                                        <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#475569' }}>{opp.meals} Meals</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <i className="fa-solid fa-plane-arrival" style={{ color: '#64748b', fontSize: '0.75rem' }}></i>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#475569' }}>Pickup</span>
+                                        <i className="fa-solid fa-plane-arrival" style={{ color: '#64748b', fontSize: '0.7rem' }}></i>
+                                        <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#475569' }}>Pickup</span>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <i className="fa-solid fa-house-chimney" style={{ color: '#64748b', fontSize: '0.75rem' }}></i>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#475569' }}>Housing</span>
+                                        <i className="fa-solid fa-house-chimney" style={{ color: '#64748b', fontSize: '0.7rem' }}></i>
+                                        <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#475569' }}>Housing</span>
                                     </div>
                                 </div>
-
-                                <p style={{ color: '#64748b', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: '20px', height: '3em', overflow: 'hidden' }}>
+ 
+                                <p style={{ color: '#64748b', fontSize: '0.78rem', lineHeight: 1.4, marginBottom: '10px', height: '2.8em', overflow: 'hidden' }}>
                                     {opp.shortDesc}
                                 </p>
-
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '20px' }}>
+ 
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '12px' }}>
                                     <div>
-                                        <div style={{ fontSize: '0.65rem', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>Program Fee</div>
-                                        <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#111' }}>
-                                            <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600, marginRight: '4px' }}>From</span>
+                                        <div style={{ fontSize: '0.6rem', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>Program Fee</div>
+                                        <div style={{ fontSize: '1.05rem', fontWeight: 900, color: '#111' }}>
+                                            <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600, marginRight: '4px' }}>From</span>
                                             {formatPrice(opp.price)}
                                         </div>
                                     </div>
-                                    <div style={{ fontSize: '0.65rem', color: '#1DB954', fontWeight: 800, background: 'rgba(29, 185, 84, 0.1)', padding: '4px 8px', borderRadius: '4px' }}>
+                                    <div style={{ fontSize: '0.6rem', color: '#1DB954', fontWeight: 800, background: 'rgba(29, 185, 84, 0.1)', padding: '4px 8px', borderRadius: '4px' }}>
                                         USD / Program
                                     </div>
                                 </div>
-
+ 
                                 <Link to={`/volunteer-program/${opp.id}`} className="opp-card-btn" style={{
                                     marginTop: 'auto',
                                     background: '#111',
                                     color: 'white',
                                     textAlign: 'center',
-                                    padding: '12px',
-                                    borderRadius: '12px',
+                                    padding: '10px',
+                                    borderRadius: '8px',
                                     fontWeight: 800,
                                     textDecoration: 'none',
-                                    fontSize: '0.85rem',
+                                    fontSize: '0.8rem',
                                     display: 'block',
                                     transition: 'all 0.3s ease'
                                 }}>

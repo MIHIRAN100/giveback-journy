@@ -6,6 +6,8 @@ import specialNeedsImg from '../assets/special_needs_care_volunteer_177893644320
 import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 import medicalImg from '../assets/5569bb0730a82c461b7f043001aadd0d.jpg';
+import medicalVolunteerWhatsAppImg from '../assets/WhatsApp Image 2026-05-26 at 10.34.53.jpeg';
+
 
 // Gallery images
 import volunteerCommunity from '../assets/volunteer-community.png';
@@ -705,10 +707,10 @@ export const volunteerPrograms = [
         description: "As a medical volunteer in Sri Lanka, you can gain valuable medical experience in a new culture, an opportunity not to be missed in this gorgeous part of the world! If you are looking for a learning experience or would like to pursue a career in the medical field, then this program is the ideal way to give you an insight into the Sri Lankan healthcare system.",
         color: "#e74c3c",
         galleryImages: [
+            { src: medicalVolunteerWhatsAppImg, caption: "Medical Experience" },
             { src: interviewImg, caption: "Medical Orientation" },
             { src: volunteer2, caption: "Hospital Placement" },
-            { src: volunteerCommunity, caption: "Community Health" },
-            { src: mirissaImg, caption: "Weekend Getaway" }
+            { src: volunteerCommunity, caption: "Community Health" }
         ],
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",

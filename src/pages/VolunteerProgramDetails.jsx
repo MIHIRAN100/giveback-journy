@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { volunteerPrograms } from '../data/volunteerPrograms';
+import stayEatBg from '../assets/548331228.jpg';
 import { volunteerReviews } from '../data/volunteerReviews';
 import { useCurrency } from '../context/CurrencyContext';
 
@@ -285,7 +287,10 @@ const VolunteerProgramDetails = () => {
                     marginBottom: '45px',
                     borderBottom: '1px solid #eaeaea'
                 }}>
-                    <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '20px' }}>About This Program</h2>
+                    <div style={{ marginBottom: '24px' }}>
+                        <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Overview</span>
+                        <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>About This Program</h2>
+                    </div>
                     <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', fontWeight: 400, margin: 0 }}>
                         {program.description}
                     </p>
@@ -306,7 +311,7 @@ const VolunteerProgramDetails = () => {
                                 borderRadius: '4px',
                                 background: 'var(--primary-green)'
                             }}></div>
-                            <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', margin: 0 }}>Gallery</h2>
+                            <h2 style={{ fontSize: '1.8rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Photo Gallery</h2>
                         </div>
                         <div className="vol-gallery-grid" style={{
                             display: 'grid',
@@ -315,12 +320,20 @@ const VolunteerProgramDetails = () => {
                             gap: '12px'
                         }}>
                             {program.galleryImages.map((img, idx) => (
-                                <div key={idx} className="vol-gallery-item" style={{
-                                    position: 'relative',
-                                    borderRadius: '16px',
-                                    overflow: 'hidden',
-                                    cursor: 'pointer'
-                                }}>
+                                <motion.div 
+                                    key={idx} 
+                                    className="vol-gallery-item" 
+                                    initial={{ opacity: 0, y: 35, scale: 0.94 }}
+                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                                    style={{
+                                        position: 'relative',
+                                        borderRadius: '16px',
+                                        overflow: 'hidden',
+                                        cursor: 'pointer'
+                                    }}
+                                >
                                     <img 
                                         src={img.src} 
                                         alt={img.caption}
@@ -349,7 +362,7 @@ const VolunteerProgramDetails = () => {
                                     }}>
                                         {img.caption}
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
@@ -363,7 +376,10 @@ const VolunteerProgramDetails = () => {
                         marginBottom: '45px',
                         borderBottom: '1px solid #eaeaea'
                     }}>
-                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '30px' }}>Program Highlights</h2>
+                        <div style={{ marginBottom: '24px' }}>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Key Details</span>
+                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Program Highlights</h2>
+                        </div>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '20px' }}>
                             {program.highlights.map((highlight, idx) => (
                                 <div key={idx} style={{ 
@@ -408,7 +424,10 @@ const VolunteerProgramDetails = () => {
                             marginBottom: '45px',
                             borderBottom: isLast && !program.accommodation && !program.mealsInfo ? 'none' : '1px solid #eaeaea'
                         }}>
-                            <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '30px' }}>{section.title}</h2>
+                            <div style={{ marginBottom: '24px' }}>
+                                <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>{isItinerary ? "Schedule" : "Experience"}</span>
+                                <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>{section.title}</h2>
+                            </div>
                             
                             {isItinerary ? (
                                 <div className="itinerary-timeline" style={{ position: 'relative', paddingLeft: '30px' }}>
@@ -598,7 +617,7 @@ const VolunteerProgramDetails = () => {
                         height: '280px'
                     }}>
                         <img 
-                            src={program.galleryImages[1].src} 
+                            src={stayEatBg} 
                             alt="Program experience"
                             style={{
                                 width: '100%',
@@ -644,7 +663,10 @@ const VolunteerProgramDetails = () => {
                         marginBottom: '45px',
                         borderBottom: !program.mealsInfo ? 'none' : '1px solid #eaeaea'
                     }}>
-                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '20px' }}>Accommodation Options</h2>
+                        <div style={{ marginBottom: '24px' }}>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Where You'll Stay</span>
+                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Accommodation Options</h2>
+                        </div>
                         <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '35px' }}>{program.accommodation.description}</p>
                         
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '45px' }}>
@@ -652,7 +674,7 @@ const VolunteerProgramDetails = () => {
                                 <div key={idx} style={{ 
                                     padding: '30px 35px', 
                                     borderRadius: '24px', 
-                                    background: '#f5f5f7', 
+                                    background: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${stayEatBg}) center/cover no-repeat`, 
                                     border: '2px solid rgba(0,0,0,0.03)',
                                     transition: 'all 0.3s ease',
                                     display: 'flex',
@@ -781,25 +803,28 @@ const VolunteerProgramDetails = () => {
                         padding: '45px 0',
                         marginBottom: '60px'
                     }}>
-                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '20px' }}>Meals</h2>
+                        <div style={{ marginBottom: '24px' }}>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>What You'll Eat</span>
+                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Meals</h2>
+                        </div>
                         <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '35px' }}>{program.mealsInfo.description}</p>
                         
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: '#fff9e6', border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(255, 249, 230, 0.91), rgba(255, 249, 230, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <span style={{ fontSize: '1.8rem' }}>🍳</span>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#664d00', margin: 0 }}>Breakfast</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#806000', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.breakfast}</p>
                             </div>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: '#e6f4ea', border: '1px solid #a3d9b1', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(230, 244, 234, 0.91), rgba(230, 244, 234, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #a3d9b1', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <span style={{ fontSize: '1.8rem' }}>🥗</span>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1a7332', margin: 0 }}>Lunch</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#114a20', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.lunch}</p>
                             </div>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: '#fae9e9', border: '1px solid #f0b4b4', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(250, 233, 233, 0.91), rgba(250, 233, 233, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #f0b4b4', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <span style={{ fontSize: '1.8rem' }}>🥘</span>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#c52828', margin: 0 }}>Dinner</h3>
@@ -817,7 +842,10 @@ const VolunteerProgramDetails = () => {
                         padding: '45px 0',
                         marginBottom: '60px',
                     }}>
-                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.03em', marginBottom: '30px' }}>{section.title}</h2>
+                        <div style={{ marginBottom: '24px' }}>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Your Impact</span>
+                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>{section.title}</h2>
+                        </div>
                         <div>
                             {section.paragraphs.map((para, pIdx) => {
                                 if (para.startsWith('**')) {
