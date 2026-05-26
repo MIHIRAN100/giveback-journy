@@ -33,28 +33,33 @@ const PackagesPage = () => {
             
             <TourPackages searchTerm={searchTerm} />
 
+            <hr className="section-divider" />
+
             {/* Short Day Trips Section */}
             {!searchTerm && dayTrips.length > 0 && (
-                <section className="packages-section" style={{ background: '#f8f9fa', padding: '100px 5% 100px 5%' }}>
-                    <div className="packages-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <span className="about-tag">Quick Escapes</span>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 900 }}>Short Day Trips.</h2>
-                        <p style={{ maxWidth: '700px', margin: '20px auto', color: '#666' }}>
-                            Perfect for travelers with limited time who still want to experience the absolute highlights of Sri Lanka's cultural capital.
-                        </p>
-                    </div>
-                    
-                    <div className="packages-grid">
-                        {dayTrips.map(pkg => (
-                            <TourCard key={pkg.id} pkg={pkg} />
-                        ))}
-                    </div>
-                </section>
+                <>
+                    <section className="packages-section" style={{ background: '#f8f9fa', padding: '100px 5% 100px 5%' }}>
+                        <div className="packages-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
+                            <span className="about-tag">Quick Escapes</span>
+                            <h2 style={{ fontSize: '3rem', fontWeight: 900 }}>Short Day Trips.</h2>
+                            <p style={{ maxWidth: '700px', margin: '20px auto', color: '#666' }}>
+                                Perfect for travelers with limited time who still want to experience the absolute highlights of Sri Lanka's cultural capital.
+                            </p>
+                        </div>
+                        
+                        <div className="packages-grid">
+                            {dayTrips.map(pkg => (
+                                <TourCard key={pkg.id} pkg={pkg} />
+                            ))}
+                        </div>
+                    </section>
+                    <hr className="section-divider" />
+                </>
             )}
 
             <SriLankaGlance />
             
-
+            <hr className="section-divider" />
             
             <section className="cta-section">
                 <div className="cta-content">

@@ -7,6 +7,12 @@ import impactJourneyImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jp
 import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import { useCurrency } from '../context/CurrencyContext';
 
+// Section assets
+import constructionImg from '../assets/teaching volunteers/IMG_2991.jpg';
+import educationImg from '../assets/teaching_english_preschool_sri_lanka_1778936461399.png';
+import kandyImg from '../assets/tea_plantation.png';
+import galleImg from '../assets/Galle Fort, Sri Lanka.jpg';
+
 const pricingPrograms = [
     {
         name: "Breathe Sri Lanka",
@@ -755,72 +761,148 @@ const VolunteerPage = () => {
             </section>
 
             <div className="volunteer-container">
-                {/* Introduction */}
-                <section className="section-intro">
-                    <h2 className="intro-title">Making a Lasting Impact.</h2>
-                    <div className="intro-text">
-                        <p style={{ marginBottom: '16px' }}>
-                            Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
-                        </p>
-                        <p>
-                            Whether you're teaching English to enthusiastic students, supporting women's empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.
-                        </p>
-                    </div>
-                </section>
+                {/* Expectations & Travel Philosophy Style Section */}
+                <section className="philosophy-section" style={{ maxWidth: '800px', margin: '40px auto 60px', padding: '0 20px' }}>
+                    <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', display: 'block', marginBottom: '12px' }}>OUR MISSION</span>
+                    <h2 style={{ fontSize: 'clamp(2.2rem, 5vw, 3rem)', fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 24px 0', color: '#1d1d1f', lineHeight: 1.1 }}>Making a Lasting Impact.</h2>
+                    <p style={{ fontSize: '1.15rem', lineHeight: 1.75, color: '#484848', marginBottom: '20px' }}>
+                        Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
+                    </p>
+                    <p style={{ fontSize: '1.15rem', lineHeight: 1.75, color: '#484848', marginBottom: '40px' }}>
+                        Whether you're teaching English to enthusiastic students, supporting women's empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.
+                    </p>
+                    
+                    <hr style={{ border: 0, borderBottom: '1px solid #eaeaea', margin: '40px 0' }} />
 
-                {/* Experience Focus Areas */}
-                <div className="focus-areas-grid">
-                    <div className="focus-card">
-                        <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '16px', color: 'var(--primary-green)', letterSpacing: '-0.02em' }}>Construction &amp; Community</h3>
-                        <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6e6e73', marginBottom: '25px' }}>
-                            Help rebuild and beautify community spaces — from rural schools and temples to community halls — giving local families spaces they can be proud of.
-                        </p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                            {["Painting & Repairs", "School Rebuilding", "Community Spaces"].map((item, i) => (
-                                <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
-                            ))}
+                    {/* Focus Areas */}
+                    <div style={{ marginBottom: '60px' }}>
+                        <div style={{ marginBottom: '50px' }}>
+                            <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
+                                Construction &amp; Community
+                            </h3>
+                            <img 
+                                src={constructionImg} 
+                                alt="Construction &amp; Community volunteering in Sri Lanka" 
+                                style={{ 
+                                    width: '100%', 
+                                    height: '350px', 
+                                    objectFit: 'cover', 
+                                    borderRadius: '16px', 
+                                    marginBottom: '20px', 
+                                    boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
+                                }} 
+                            />
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
+                                Help rebuild and beautify community spaces — from rural schools and temples to community halls — giving local families spaces they can be proud of. Volunteers work hand-in-hand with local masons and community members, engaging in painting, repairing furniture, planting community gardens, and renovating structures.
+                            </p>
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
+                                Through these efforts, you directly help enhance the daily lives of families and children, providing them with spaces that foster community pride, learning, and celebration. No prior construction experience is required — just a willing pair of hands and a heart to serve.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                {["Painting & Repairs", "School Rebuilding", "Community Spaces"].map((item, i) => (
+                                    <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div style={{ marginBottom: '50px' }}>
+                            <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
+                                Education &amp; Childcare
+                            </h3>
+                            <img 
+                                src={educationImg} 
+                                alt="Education &amp; Childcare volunteering in Sri Lanka" 
+                                style={{ 
+                                    width: '100%', 
+                                    height: '350px', 
+                                    objectFit: 'cover', 
+                                    borderRadius: '16px', 
+                                    marginBottom: '20px', 
+                                    boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
+                                }} 
+                            />
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
+                                Make a direct impact in rural village preschools and special needs centers. Assist with conversational English teaching, creative play, drawing, music, and basic physical/sensory therapy.
+                            </p>
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
+                                By bringing creativity, warmth, and attention to classrooms that are often under-resourced, you'll help build kids' confidence and open up future learning pathways. Your presence acts as a powerful catalyst for cultural exchange and long-term educational growth.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                {["Rural Teaching", "Special Needs", "School Support"].map((item, i) => (
+                                    <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="focus-card">
-                        <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '16px', color: '#111', letterSpacing: '-0.02em' }}>Education &amp; Childcare</h3>
-                        <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6e6e73', marginBottom: '25px' }}>
-                            Make a direct impact in rural village preschools and special needs centers. Assist with English teaching, creative play, and basic therapy.
-                        </p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                            {["Rural Teaching", "Special Needs", "School Support"].map((item, i) => (
-                                <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                    <hr style={{ border: 0, borderBottom: '1px solid #eaeaea', margin: '40px 0' }} />
 
-                {/* Project Locations */}
-                <section style={{ marginBottom: '120px' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '2.8rem', fontWeight: 900 }}>Where You’ll Make an Impact</h2>
-                    </div>
-                    <div className="locations-grid">
-                        <div className="location-card">
-                            <h4 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '15px' }}>Kandy District</h4>
-                            <p style={{ color: '#666', lineHeight: 1.8, marginBottom: '20px' }}>Nestled in the lush hill country, focus on community development and English education in rural schools.</p>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {/* Locations */}
+                    <div>
+                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', display: 'block', marginBottom: '12px' }}>DESTINATIONS</span>
+                        <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 30px 0', color: '#1d1d1f' }}>Where You’ll Make an Impact.</h2>
+                        
+                        <div style={{ marginBottom: '50px' }}>
+                            <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
+                                Kandy District
+                            </h3>
+                            <img 
+                                src={kandyImg} 
+                                alt="Kandy District Tea Plantation Sri Lanka" 
+                                style={{ 
+                                    width: '100%', 
+                                    height: '350px', 
+                                    objectFit: 'cover', 
+                                    borderRadius: '16px', 
+                                    marginBottom: '20px', 
+                                    boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
+                                }} 
+                            />
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
+                                Nestled in the lush, mist-covered hill country, Kandy is the cultural capital of Sri Lanka. Here, our projects focus heavily on community development and English education in rural, mountain-side schools.
+                            </p>
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
+                                Volunteers live in a vibrant, community-oriented setting, experiencing the traditional Sri Lankan way of life, and supporting families that reside away from major commercial centers.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                                 {["Hill Country", "Education", "Rural Villages"].map((tag, i) => (
-                                    <span key={i} style={{ fontSize: '0.75rem', fontWeight: 800, background: '#f0f0f0', padding: '6px 15px', borderRadius: '50px' }}>{tag}</span>
+                                    <span key={i} style={{ fontSize: '0.75rem', fontWeight: 800, background: '#f0f0f0', color: '#475569', padding: '6px 15px', borderRadius: '50px' }}>{tag}</span>
                                 ))}
                             </div>
                         </div>
-                        <div className="location-card">
-                            <h4 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '15px', color: 'var(--primary-green)' }}>Galle District</h4>
-                            <p style={{ color: '#666', lineHeight: 1.8, marginBottom: '20px' }}>Along the historic southern coast, focus on environmental initiatives and woman empowerment programs.</p>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+
+                        <div style={{ marginBottom: '50px' }}>
+                            <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
+                                Galle District
+                            </h3>
+                            <img 
+                                src={galleImg} 
+                                alt="Galle Fort and Coastal Region Sri Lanka" 
+                                style={{ 
+                                    width: '100%', 
+                                    height: '350px', 
+                                    objectFit: 'cover', 
+                                    borderRadius: '16px', 
+                                    marginBottom: '20px', 
+                                    boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
+                                }} 
+                            />
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
+                                Along the historic southern coast, focus on environmental conservation and women's empowerment initiatives. From beach cleanups and coastal habitat preservation to leading self-reliance workshops, there are diverse avenues of contribution.
+                            </p>
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
+                                Galle provides a beautiful blend of colonial history, coastal biodiversity, and dynamic community-led programs, allowing volunteers to make a lasting ecological and social footprint.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                                 {["Coastal Region", "Environment", "Empowerment"].map((tag, i) => (
-                                    <span key={i} style={{ fontSize: '0.75rem', fontWeight: 800, background: '#f0f0f0', padding: '6px 15px', borderRadius: '50px' }}>{tag}</span>
+                                    <span key={i} style={{ fontSize: '0.75rem', fontWeight: 800, background: '#f0f0f0', color: '#475569', padding: '6px 15px', borderRadius: '50px' }}>{tag}</span>
                                 ))}
                             </div>
                         </div>
                     </div>
                 </section>
+
+                <hr className="section-divider" style={{ margin: '40px auto 80px' }} />
 
                 {/* Features */}
                 <section className="features-section">
@@ -849,10 +931,13 @@ const VolunteerPage = () => {
                 </section>
             </div>
 
+            <hr className="section-divider" />
+
             {/* Volunteer Opportunities */}
             <VolunteerOpportunities />
 
             <div className="volunteer-container">
+                <hr className="section-divider" style={{ margin: '0 auto 80px' }} />
                 {/* Pricing Table Section */}
                 <section id="pricing" style={{ margin: '120px 0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '40px' }}>
@@ -1113,6 +1198,8 @@ const VolunteerPage = () => {
                     </div>
                 </section>
 
+                <hr className="section-divider" style={{ margin: '40px auto 80px' }} />
+
                 {/* Journey Steps */}
                 <section style={{ margin: '120px 0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '70px' }}>
@@ -1172,6 +1259,8 @@ const VolunteerPage = () => {
                     </div>
                 </section>
 
+                <hr className="section-divider" style={{ margin: '40px auto 80px' }} />
+
                 {/* Testimonial Slider */}
                 <section className="testimonial-slider">
                     <div 
@@ -1195,6 +1284,8 @@ const VolunteerPage = () => {
                         </div>
                     </div>
                 </section>
+
+                <hr className="section-divider" style={{ margin: '80px auto' }} />
 
                 {/* Final CTA */}
                 <div style={{ textAlign: 'center' }}>

@@ -1,12 +1,14 @@
-import breatheSriLankaImg from '../assets/photo-1548957175-84f0f9af659e.avif';
+import breatheSriLankaImg from '../assets/WhatsApp Image 2026-05-26 at 15.13.22.jpeg';
 import ceylonSkillOdysseyImg from '../assets/ceylon_skill_odyssey.png';
 import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
-import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
-import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
+import specialNeedsImg from '../assets/c6031e1f-c623-47b3-9ff1-1602cad6772f.jpg';
+import renovationImg from '../assets/teaching volunteers/IMG_2991.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
-import medicalImg from '../assets/5569bb0730a82c461b7f043001aadd0d.jpg';
+import medicalImg from '../assets/WhatsApp Image 2026-05-26 at 15.22.42.jpeg';
 import medicalVolunteerWhatsAppImg from '../assets/WhatsApp Image 2026-05-26 at 10.34.53.jpeg';
+import medicalGallery1 from '../assets/medical_gallery_new_1.jpg';
+import medicalGallery2 from '../assets/medical_gallery_new_2.jpg';
 
 
 // Gallery images
@@ -17,7 +19,10 @@ import volunteer2 from '../assets/volunteer_2.png';
 import volunteer3 from '../assets/volunteer_3.png';
 import volunteer4 from '../assets/volunteer_4.png';
 import cultureExp from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
-import teachingImg from '../assets/teaching_volunteer_cover.jpg';
+import teachingImg from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
+import teachingGallery2 from '../assets/teaching volunteers/IMG_2741.jpg';
+import teachingGallery3 from '../assets/teaching volunteers/IMG_4271.jpg';
+import teachingGallery4 from '../assets/IMG-20241111-WA0002.jpg';
 import interviewImg from '../assets/interview_volunteer.png';
 import kandyTrain from '../assets/Kandy to Ella Train Journey _ Lanka Tour Experts.jpg';
 import ellaImg from '../assets/Wanderlust Sri Lanka - Mini Adams Peak Ella.jpg';
@@ -161,9 +166,9 @@ export const volunteerPrograms = [
         color: "#ff6b6b",
         galleryImages: [
             { src: teachingImg, caption: "Teaching English" },
-            { src: volunteer1, caption: "Working With Children" },
-            { src: cultureExp, caption: "Cultural Exchange" },
-            { src: volunteerCommunity, caption: "Community Work" }
+            { src: teachingGallery2, caption: "Working With Children" },
+            { src: teachingGallery3, caption: "Cultural Exchange" },
+            { src: teachingGallery4, caption: "Community Work" }
         ],
         highlights: [
             "Support local schools, preschools, and community education centers in Kandy",
@@ -399,27 +404,7 @@ export const volunteerPrograms = [
             }
         }
     },
-    {
-        id: "sri-lanka-dog-rescue",
-        title: "Sri Lanka Dog Volunteers",
-        location: "Galle District",
-        duration: "1-24 Weeks",
-        housing: "Shared or Private",
-        price: "200",
-        image: dogImg,
-        minAge: "18+",
-        pickup: "Included",
-        meals: "3 Daily",
-        shortDesc: "Work with local clinics to rescue, treat, and rehabilitate street dogs.",
-        description: "Contribute to animal welfare in Sri Lanka by volunteering at a local dog rescue clinic in the Galle District. You will play a crucial role in the rehabilitation of street dogs, assisting with feeding, bathing, walking, and basic medical care under the supervision of local veterinarians. This hands-on program is incredibly rewarding for animal lovers looking to improve the lives of vulnerable animals and promote humane treatment within the community.",
-        color: "#ffd93d",
-        galleryImages: [
-            { src: volunteerWildlife, caption: "Animal Care" },
-            { src: volunteer4, caption: "Dog Rehabilitation" },
-            { src: volunteerCommunity, caption: "Community Impact" },
-            { src: galleImg, caption: "Galle District" }
-        ]
-    },
+
     {
         id: "village-school-renovation",
         title: "Construction & Renovation",
@@ -699,7 +684,8 @@ export const volunteerPrograms = [
         duration: "1-4 Weeks",
         housing: "Shared or Private",
         price: "200",
-        image: medicalImg,
+        image: medicalGallery1,
+        bgPosition: "center 85%",
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
@@ -707,10 +693,10 @@ export const volunteerPrograms = [
         description: "As a medical volunteer in Sri Lanka, you can gain valuable medical experience in a new culture, an opportunity not to be missed in this gorgeous part of the world! If you are looking for a learning experience or would like to pursue a career in the medical field, then this program is the ideal way to give you an insight into the Sri Lankan healthcare system.",
         color: "#e74c3c",
         galleryImages: [
+            { src: medicalGallery2, caption: "Hospital Placement" },
+            { src: medicalGallery1, caption: "Volunteer Life & Culture" },
             { src: medicalVolunteerWhatsAppImg, caption: "Medical Experience" },
-            { src: interviewImg, caption: "Medical Orientation" },
-            { src: volunteer2, caption: "Hospital Placement" },
-            { src: volunteerCommunity, caption: "Community Health" }
+            { src: medicalImg, caption: "Medical Program Cover" }
         ],
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",

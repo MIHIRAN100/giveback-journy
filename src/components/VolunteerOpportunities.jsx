@@ -85,8 +85,8 @@ const VolunteerOpportunities = () => {
                     <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
                     {opportunities.map((opp, i) => (
                         <div key={i} className="opp-card-modern" style={{ 
-                            flex: '0 0 calc((100% - 96px) / 5.2)',
-                            minWidth: '230px',
+                            flex: '0 0 calc((100% - 72px) / 4.2)',
+                            minWidth: '290px',
                             background: 'white',
                             borderRadius: '24px',
                             overflow: 'hidden',

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import specialNeedsImg from '../assets/special_needs_care_volunteer_1778936443201.png';
-import teachingImg from '../assets/teaching_volunteer_cover.jpg';
+import specialNeedsImg from '../assets/c6031e1f-c623-47b3-9ff1-1602cad6772f.jpg';
+import teachingImg from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
-import renovationImg from '../assets/renovation_volunteer_sri_lanka_1778936508752.png';
+import renovationImg from '../assets/teaching volunteers/IMG_2991.jpg';
 import cultureImg from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
 import wildlifeImg from '../assets/volunteer-wildlife.png';
 import { useCurrency } from '../context/CurrencyContext';

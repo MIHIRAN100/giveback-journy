@@ -92,7 +92,7 @@ const VolunteerProgramDetails = () => {
                 position: 'relative',
                 height: '45vh',
                 minHeight: '300px',
-                background: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65)), url(${program.image}) center/cover no-repeat`,
+                background: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65)), url(${program.image}) ${program.bgPosition || 'center'}/cover no-repeat`,
                 display: 'flex',
                 alignItems: 'flex-end',
                 paddingBottom: '40px',

@@ -11,7 +11,7 @@ import adamsPeakImg from '../assets/download (5).jpg';
 import raftingImg from '../assets/Rafting.jpg';
 import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
 import islandCrossoverCover from '../assets/island_crossover_cover.png';
-import breatheSriLankaImg from '../assets/photo-1548957175-84f0f9af659e.avif';
+import breatheSriLankaImg from '../assets/WhatsApp Image 2026-05-26 at 15.13.22.jpeg';
 import sigiriyaSafariCover from '../assets/TAL-tourists-sigiriya-sri-Lanka-WLCMASIANDEST0125-d5608fddc86e4b0f984c8e15ea637b0b.jpg';
 import sigiriyaEscapeCover from '../assets/32270acd8d24c9c32459048ef39490ae.jpg';
 import routeMapSigiriyaEscape from '../assets/route_map_sigiriya_escape.png';
