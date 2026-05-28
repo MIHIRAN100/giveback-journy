@@ -8,7 +8,7 @@ const FeedbackSection = () => {
             name: "Charlotte Saunders",
             profile: "British, 19",
             trip: "7-Day Essential Sri Lanka",
-            text: "I have gained so many experiences from this program. It pushed me out of my comfort zone, I connected with new people, learnt new things, experienced a new culture and so much more!",
+            text: "At first I thought this website is a scam because of their cheap prices, but they are more than the best compared to the other companies!",
             rating: 5,
             color: "#e8f5e9" 
         },

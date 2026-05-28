@@ -123,7 +123,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                         cursor: 'pointer'
                     }}>
                         <div style={{ height: '170px', width: '100%', position: 'relative', overflow: 'hidden' }}>
-                            <img src={pkg.image} alt={pkg.title} className="card-img-zoom" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s ease' }} />
+                            <img src={pkg.image} alt={pkg.title} className="card-img-zoom" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: pkg.bgPosition || 'center', transition: 'transform 0.8s ease' }} />
                             <div style={{ 
                                 position: 'absolute', 
                                 top: '15px', 

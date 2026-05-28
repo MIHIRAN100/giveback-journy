@@ -1,10 +1,11 @@
 import breatheSriLankaImg from '../assets/WhatsApp Image 2026-05-26 at 15.13.22.jpeg';
-import ceylonSkillOdysseyImg from '../assets/ceylon_skill_odyssey.png';
+import ceylonSkillOdysseyImg from '../assets/IMG_3131.jpg';
 import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
-import specialNeedsImg from '../assets/c6031e1f-c623-47b3-9ff1-1602cad6772f.jpg';
+import specialNeedsImg from '../assets/WhatsApp Image 2026-05-28 at 11.58.31.jpeg';
 import renovationImg from '../assets/teaching volunteers/IMG_2991.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
+import bodyMindImg from '../assets/IMG_6270.jpg';
 import medicalImg from '../assets/WhatsApp Image 2026-05-26 at 15.22.42.jpeg';
 import medicalVolunteerWhatsAppImg from '../assets/WhatsApp Image 2026-05-26 at 10.34.53.jpeg';
 import medicalGallery1 from '../assets/medical_gallery_new_1.jpg';
@@ -550,7 +551,7 @@ export const volunteerPrograms = [
         duration: "1-2 Weeks",
         housing: "Shared Volunteer House",
         price: "200",
-        image: yogaImg,
+        image: bodyMindImg,
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",

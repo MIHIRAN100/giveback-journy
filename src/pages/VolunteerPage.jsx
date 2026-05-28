@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import puppyImg from '../assets/dominican puppy.jpg';
-import effortImg from '../assets/This Moment Shows Effort Beyond Words.webp';
+import effortImg from '../assets/IMG_5892.JPG.jpeg';
 import hihiImg from '../assets/hihi.webp';
 import impactJourneyImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import VolunteerOpportunities from '../components/VolunteerOpportunities';
@@ -9,9 +9,9 @@ import { useCurrency } from '../context/CurrencyContext';
 
 // Section assets
 import constructionImg from '../assets/teaching volunteers/IMG_2991.jpg';
-import educationImg from '../assets/teaching_english_preschool_sri_lanka_1778936461399.png';
-import kandyImg from '../assets/tea_plantation.png';
-import galleImg from '../assets/Galle Fort, Sri Lanka.jpg';
+import educationImg from '../assets/IMG_5894.JPG.jpeg';
+import kandyImg from '../assets/IMG_5896.JPG.jpeg';
+import galleImg from '../assets/teaching volunteers/IMG_7081.JPG';
 
 const pricingPrograms = [
     {
@@ -1286,25 +1286,86 @@ const VolunteerPage = () => {
                 </section>
 
                 <hr className="section-divider" style={{ margin: '80px auto' }} />
+            </div>
 
-                {/* Final CTA */}
-                <div style={{ textAlign: 'center' }}>
-                    <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '30px' }}>Ready to Make a Difference?</h2>
-                    <Link to="/volunteer-inquiry" className="btn-modern" style={{ 
-                        padding: '20px 60px', 
+            {/* Final CTA Card */}
+            <section className="volunteer-final-cta" style={{
+                background: 'linear-gradient(135deg, #111 0%, #061f11 100%)',
+                borderRadius: '0px',
+                padding: '100px 5%',
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+            }}>
+                {/* Glowing background bubble */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-50%',
+                    left: '-50%',
+                    width: '200%',
+                    height: '200%',
+                    background: 'radial-gradient(circle, rgba(29, 185, 84, 0.08) 0%, transparent 60%)',
+                    pointerEvents: 'none',
+                    zIndex: 0
+                }}></div>
+
+                <div style={{ position: 'relative', zIndex: 1, maxWidth: '600px', margin: '0 auto' }}>
+                    <span style={{ 
+                        color: 'var(--primary-green)', 
+                        fontWeight: 800, 
+                        textTransform: 'uppercase', 
+                        letterSpacing: '2px', 
+                        fontSize: '0.85rem',
+                        display: 'inline-block',
+                        marginBottom: '15px'
+                    }}>
+                        Get Involved Today
+                    </span>
+                    
+                    <h2 style={{ 
+                        fontSize: 'clamp(2rem, 5vw, 3.2rem)', 
+                        fontWeight: 900, 
+                        marginBottom: '20px', 
+                        color: 'white',
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.1
+                    }}>
+                        Ready to Make a Difference?
+                    </h2>
+                    
+                    <p style={{ 
+                        color: 'rgba(255, 255, 255, 0.7)', 
+                        fontSize: '1.1rem', 
+                        lineHeight: 1.6, 
+                        marginBottom: '40px',
+                        fontWeight: 400
+                    }}>
+                        Join our community of conscious travelers. Take the first step towards a journey that will transform both your life and the communities you touch.
+                    </p>
+                    
+                    <Link to="/volunteer-inquiry" className="btn-modern volunteer-cta-btn" style={{ 
+                        padding: '18px 50px', 
                         background: 'var(--primary-green)', 
                         color: 'white', 
                         borderRadius: '100px',
-                        fontWeight: 900,
-                        fontSize: '1.1rem',
+                        fontWeight: 800,
+                        fontSize: '1.05rem',
                         textDecoration: 'none',
-                        display: 'inline-block',
-                        boxShadow: '0 15px 35px rgba(29, 185, 84, 0.3)'
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        boxShadow: '0 15px 30px rgba(29, 185, 84, 0.35)',
+                        transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                        border: 'none',
+                        cursor: 'pointer'
                     }}>
-                        Apply to Volunteer
+                        <span>Apply to Volunteer</span>
+                        <i className="fa-solid fa-arrow-right" style={{ fontSize: '0.9rem', transition: 'transform 0.3s ease' }}></i>
                     </Link>
                 </div>
-            </div>
+            </section>
         </div>
     );
 };

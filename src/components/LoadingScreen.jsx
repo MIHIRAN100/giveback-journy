@@ -128,7 +128,7 @@ const LoadingScreen = () => {
 
     useEffect(() => {
         // Preload sound
-        const sound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+        const sound = new Audio('https://assets.mixkit.co/active_storage/sfx/2560/2560-preview.mp3');
         sound.volume = 0.3;
 
         // Transition through travel icons (approx 1000ms per step)

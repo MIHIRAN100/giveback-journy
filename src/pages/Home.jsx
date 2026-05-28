@@ -7,9 +7,7 @@ import WhoWeAre from '../components/WhoWeAre';
 import TravelerMoments from '../components/TravelerMoments';
 import ExclusiveExperiences from '../components/ExclusiveExperiences';
 import FAQSection from '../components/FAQSection';
-import MapSection from '../components/MapSection';
 import VolunteerSection from '../components/VolunteerSection';
-import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import FeedbackSection from '../components/FeedbackSection';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -29,10 +27,8 @@ const Home = () => {
             <hr className="section-divider" />
             <ScrollReveal><ExclusiveExperiences /></ScrollReveal>
             <ScrollReveal><VolunteerSection /></ScrollReveal>
-            <ScrollReveal><VolunteerOpportunities /></ScrollReveal>
 
             <ScrollReveal><FeedbackSection /></ScrollReveal>
-            <ScrollReveal><MapSection /></ScrollReveal>
             <ScrollReveal><FAQSection /></ScrollReveal>
             
             <ScrollReveal>

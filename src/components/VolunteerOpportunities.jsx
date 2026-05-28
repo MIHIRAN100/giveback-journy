@@ -99,7 +99,7 @@ const VolunteerOpportunities = () => {
                             position: 'relative'
                         }}>
                             <div style={{ height: '135px', overflow: 'hidden', position: 'relative' }}>
-                                <img src={opp.image} alt={opp.title} className="card-img-zoom" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s ease' }} />
+                                <img src={opp.image} alt={opp.title} className="card-img-zoom" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: opp.bgPosition || 'center', transition: 'transform 0.8s ease' }} />
                                 <div style={{ 
                                     position: 'absolute', 
                                     top: '12px', 

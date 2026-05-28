@@ -173,31 +173,35 @@ const VolunteerSection = () => {
                         Give back to the local communities, support wildlife conservation, and leave a lasting positive impact on the island you love.
                     </p>
                     
-                    <div className="volunteer-perks">
-                        <div className="perk-item">
+                    <div className="volunteer-perks" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', marginBottom: '40px' }}>
+                        <Link to="/volunteer-program/real-sri-lanka-experience" className="perk-item" style={{ textDecoration: 'none' }}>
+                            <i className="fa-solid fa-leaf"></i>
+                            <span>Breathe Sri Lanka</span>
+                        </Link>
+                        <Link to="/volunteer-program/sri-lanka-childcare" className="perk-item" style={{ textDecoration: 'none' }}>
                             <i className="fa-solid fa-graduation-cap"></i>
-                            <span>Rural Teaching</span>
-                        </div>
-                        <div className="perk-item">
-                            <i className="fa-solid fa-om"></i>
-                            <span>Yoga & Zen</span>
-                        </div>
-                        <div className="perk-item">
+                            <span>Teaching Volunteer</span>
+                        </Link>
+                        <Link to="/volunteer-program/special-needs-support" className="perk-item" style={{ textDecoration: 'none' }}>
                             <i className="fa-solid fa-hands-holding-child"></i>
-                            <span>Special Needs</span>
-                        </div>
-                        <div className="perk-item">
+                            <span>Special Needs Support</span>
+                        </Link>
+                        <Link to="/volunteer-program/village-school-renovation" className="perk-item" style={{ textDecoration: 'none' }}>
                             <i className="fa-solid fa-trowel-bricks"></i>
-                            <span>Renovation</span>
-                        </div>
-                        <div className="perk-item">
-                            <i className="fa-solid fa-landmark-dome"></i>
-                            <span>Temple Experience</span>
-                        </div>
-                        <div className="perk-item">
-                            <i className="fa-solid fa-masks-theater"></i>
-                            <span>Culture Immersion</span>
-                        </div>
+                            <span>Construction & Renovation</span>
+                        </Link>
+                        <Link to="/volunteer-program/zen-and-temple-yoga" className="perk-item" style={{ textDecoration: 'none' }}>
+                            <i className="fa-solid fa-om"></i>
+                            <span>Zen & Temple Yoga</span>
+                        </Link>
+                        <Link to="/volunteer-program/medical-volunteer" className="perk-item" style={{ textDecoration: 'none' }}>
+                            <i className="fa-solid fa-briefcase-medical"></i>
+                            <span>Medical Volunteer</span>
+                        </Link>
+                        <Link to="/volunteer-program/ceylon-skill-odyssey" className="perk-item" style={{ textDecoration: 'none' }}>
+                            <i className="fa-solid fa-earth-asia"></i>
+                            <span>Ceylon Skill Odyssey</span>
+                        </Link>
                     </div>
 
                     <Link to="/contact" className="btn-modern btn-solid-green" style={{
