@@ -17,6 +17,7 @@ import TourDetails from './pages/TourDetails';
 import BookingPage from './pages/BookingPage';
 import BookingInquiryPage from './pages/BookingInquiryPage';
 import VolunteerInquiryPage from './pages/VolunteerInquiryPage';
+import OdysseyBookingPage from './pages/OdysseyBookingPage';
 import VolunteerProgramDetails from './pages/VolunteerProgramDetails';
 import Compare from './pages/Compare';
 import NDAPage from './pages/NDAPage';
@@ -58,6 +59,7 @@ const AppContent = () => {
           <Route path="/volunteer" element={<VolunteerPage />} />
           <Route path="/volunteer-program/:id" element={<VolunteerProgramDetails />} />
           <Route path="/volunteer-inquiry" element={<VolunteerInquiryPage />} />
+          <Route path="/odyssey-booking" element={<OdysseyBookingPage />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/nda" element={<NDAPage />} />

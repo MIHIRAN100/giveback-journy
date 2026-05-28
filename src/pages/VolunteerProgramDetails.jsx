@@ -16,21 +16,27 @@ const VolunteerProgramDetails = () => {
 
     const [selectedSkills, setSelectedSkills] = useState([]);
 
-    const toggleSkill = (skillTitle) => {
+    const toggleSkill = (skillTitle, skillPrice) => {
         setSelectedSkills(prev => {
-            if (prev.includes(skillTitle)) {
-                return prev.filter(s => s !== skillTitle);
+            if (prev.some(s => s.title === skillTitle)) {
+                return prev.filter(s => s.title !== skillTitle);
             } else {
-                return [...prev, skillTitle];
+                return [...prev, { title: skillTitle, price: skillPrice || '0' }];
             }
         });
     };
 
     const getInquiryUrl = () => {
         if (!program) return '';
+        // Ceylon Skill Odyssey goes to dedicated booking page with skills & prices
+        if (program.id === 'ceylon-skill-odyssey' && selectedSkills.length > 0) {
+            const skillNames = selectedSkills.map(s => s.title).join(', ');
+            const skillPrices = selectedSkills.map(s => s.price || '0').join(',');
+            return `/odyssey-booking?skills=${encodeURIComponent(skillNames)}&prices=${encodeURIComponent(skillPrices)}`;
+        }
         let url = `/volunteer-inquiry?program=${encodeURIComponent(program.title)}`;
         if (selectedSkills.length > 0) {
-            url += `&skills=${encodeURIComponent(selectedSkills.join(', '))}`;
+            url += `&skills=${encodeURIComponent(selectedSkills.map(s => s.title).join(', '))}`;
         }
         return url;
     };
@@ -470,13 +476,68 @@ const VolunteerProgramDetails = () => {
                                                 </div>
                                             </div>
                                         );
-                                    })}
+                                     })}
                                 </div>
                             ) : isExperienceCategories ? (
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+                                    {/* Educational Banner */}
+                                    <div style={{
+                                        background: 'linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(29, 185, 84, 0.05) 100%)',
+                                        border: '1px solid rgba(13, 148, 136, 0.2)',
+                                        borderRadius: '24px',
+                                        padding: '30px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '16px',
+                                        boxShadow: '0 10px 30px rgba(13, 148, 136, 0.04)',
+                                        lineHeight: 1.6,
+                                        marginBottom: '10px'
+                                    }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                            <div style={{
+                                                background: 'var(--primary-green)',
+                                                color: 'white',
+                                                width: '40px',
+                                                height: '40px',
+                                                borderRadius: '12px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                fontSize: '1.4rem'
+                                            }}>
+                                                <i className="bi bi-info-circle-fill"></i>
+                                            </div>
+                                            <div>
+                                                <h4 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 900, color: '#1d1d1f' }}>Design Your Custom 7-Day Tour</h4>
+                                                <span style={{ fontSize: '0.85rem', color: '#666', fontWeight: 600 }}>Immersive Learning & Custom Itinerary Mapping</span>
+                                            </div>
+                                        </div>
+                                        <p style={{ margin: 0, color: '#444', fontSize: '1rem', lineHeight: 1.6 }}>
+                                            The <strong>Ceylon Skill Odyssey</strong> is a fully customized 7-day program built specifically around your interests. To ensure a comprehensive and rich itinerary, <strong>you must select a minimum of 10 skills</strong> from the categories below. 
+                                        </p>
+                                        <div style={{ 
+                                            display: 'grid', 
+                                            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
+                                            gap: '12px', 
+                                            background: 'rgba(255,255,255,0.6)', 
+                                            padding: '16px 20px', 
+                                            borderRadius: '16px', 
+                                            border: '1px solid rgba(0,0,0,0.02)' 
+                                        }}>
+                                            <div style={{ display: 'flex', gap: '8px', fontSize: '0.9rem', color: '#333' }}>
+                                                <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)' }}></i>
+                                                <span><strong>10 Skills Minimum:</strong> Required to build a complete 7-day schedule.</span>
+                                            </div>
+                                            <div style={{ display: 'flex', gap: '8px', fontSize: '0.9rem', color: '#333' }}>
+                                                <i className="bi bi-geo-alt-fill" style={{ color: 'var(--primary-green)' }}></i>
+                                                <span><strong>Custom Routing:</strong> Locations and local instructors are arranged specifically for your selected skills.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     {(() => {
-                                        const categories = [];
-                                        for (let i = 0; i < section.paragraphs.length; i += 2) {
+                                         const categories = [];
+                                         for (let i = 0; i < section.paragraphs.length; i += 2) {
                                             const headerRaw = section.paragraphs[i];
                                             const itemsRaw = section.paragraphs[i + 1];
                                             if (headerRaw && itemsRaw) {
@@ -485,26 +546,33 @@ const VolunteerProgramDetails = () => {
                                                     const cleanLine = line.replace(/^[•\s\-]+/, '').trim();
                                                     let title = "";
                                                     let description = "";
-                                                    if (cleanLine.startsWith('**')) {
-                                                        const parts = cleanLine.split('**');
+                                                    let price = "";
+                                                    // Extract price tag [USD XX]
+                                                    const priceMatch = cleanLine.match(/\[USD\s+(\d+)\]/);
+                                                    if (priceMatch) {
+                                                        price = priceMatch[1];
+                                                    }
+                                                    const lineWithoutPrice = cleanLine.replace(/\s*\[USD\s+\d+\]/, '').trim();
+                                                    if (lineWithoutPrice.startsWith('**')) {
+                                                        const parts = lineWithoutPrice.split('**');
                                                         title = parts[1] || "";
                                                         description = parts[2]?.replace(/^[\s-–—:]+/, '') || "";
                                                     } else {
-                                                        const idx = cleanLine.indexOf(' – ');
+                                                        const idx = lineWithoutPrice.indexOf(' – ');
                                                         if (idx !== -1) {
-                                                            title = cleanLine.substring(0, idx);
-                                                            description = cleanLine.substring(idx + 3);
+                                                            title = lineWithoutPrice.substring(0, idx);
+                                                            description = lineWithoutPrice.substring(idx + 3);
                                                         } else {
-                                                            const idx2 = cleanLine.indexOf(' - ');
+                                                            const idx2 = lineWithoutPrice.indexOf(' - ');
                                                             if (idx2 !== -1) {
-                                                                title = cleanLine.substring(0, idx2);
-                                                                description = cleanLine.substring(idx2 + 3);
+                                                                title = lineWithoutPrice.substring(0, idx2);
+                                                                description = lineWithoutPrice.substring(idx2 + 3);
                                                             } else {
-                                                                title = cleanLine;
+                                                                title = lineWithoutPrice;
                                                             }
                                                         }
                                                     }
-                                                    return { title, description };
+                                                    return { title, description, price };
                                                 });
                                                 categories.push({ header, items });
                                             }
@@ -522,15 +590,20 @@ const VolunteerProgramDetails = () => {
                                                     alignItems: 'center',
                                                     gap: '10px'
                                                 }}>
+                                                    {cat.header.toLowerCase().includes('kandy') ? (
+                                                        <i className="bi bi-bank" style={{ color: 'var(--primary-green)', fontSize: '1.25rem' }}></i>
+                                                    ) : cat.header.toLowerCase().includes('galle') ? (
+                                                        <i className="bi bi-water" style={{ color: 'var(--primary-green)', fontSize: '1.25rem' }}></i>
+                                                    ) : null}
                                                     {cat.header}
                                                 </h3>
                                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '20px' }}>
                                                     {cat.items.map((item, itemIdx) => {
-                                                         const isSelected = selectedSkills.includes(item.title);
+                                                         const isSelected = selectedSkills.some(s => s.title === item.title);
                                                          return (
                                                              <div key={itemIdx} 
                                                                  className="skill-highlight-card" 
-                                                                 onClick={() => toggleSkill(item.title)}
+                                                                 onClick={() => toggleSkill(item.title, item.price)}
                                                                  style={{ 
                                                                      display: 'flex', 
                                                                      alignItems: 'flex-start', 
@@ -560,8 +633,27 @@ const VolunteerProgramDetails = () => {
                                                                  }}>
                                                                      <i className={`bi ${isSelected ? 'bi-check-lg' : 'bi-plus-lg'}`}></i>
                                                                  </div>
-                                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                                                     <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1d1d1f', lineHeight: 1.3 }}>{item.title}</span>
+                                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', flex: 1 }}>
+                                                                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                                                                         <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1d1d1f', lineHeight: 1.3 }}>{item.title}</span>
+                                                                         {item.price && (
+                                                                             <span style={{
+                                                                                 fontSize: '0.75rem',
+                                                                                 fontWeight: 800,
+                                                                                 color: 'var(--primary-green)',
+                                                                                 background: isSelected ? 'rgba(29, 185, 84, 0.1)' : 'rgba(29, 185, 84, 0.08)',
+                                                                                 padding: '3px 10px',
+                                                                                 borderRadius: '50px',
+                                                                                 whiteSpace: 'nowrap',
+                                                                                 letterSpacing: '0.3px',
+                                                                                 flexShrink: 0,
+                                                                                 border: isSelected ? '1px solid rgba(29, 185, 84, 0.2)' : '1px solid transparent',
+                                                                                 transition: 'all 0.3s ease'
+                                                                             }}>
+                                                                                 ${item.price}
+                                                                             </span>
+                                                                         )}
+                                                                     </div>
                                                                      {item.description && (
                                                                          <span style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.45 }}>{item.description}</span>
                                                                      )}
@@ -672,7 +764,7 @@ const VolunteerProgramDetails = () => {
                                     justifyContent: 'space-between'
                                 }} className="config-tile">
                                     <div>
-                                        <div style={{ fontSize: '2.5rem', marginBottom: '15px' }}>{opt.icon}</div>
+                                        <div style={{ fontSize: '2.5rem', marginBottom: '15px', color: 'var(--primary-green)' }}><i className={`bi ${opt.icon}`}></i></div>
                                         <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '6px', letterSpacing: '-0.01em' }}>{opt.title}</h3>
                                         <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '15px' }}>{opt.subtitle}</div>
                                         <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#444444', margin: 0 }}>{opt.description}</p>
@@ -802,21 +894,21 @@ const VolunteerProgramDetails = () => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
                             <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(255, 249, 230, 0.91), rgba(255, 249, 230, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <span style={{ fontSize: '1.8rem' }}>🍳</span>
+                                    <i className="bi bi-sunrise-fill" style={{ fontSize: '1.8rem', color: '#664d00' }}></i>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#664d00', margin: 0 }}>Breakfast</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#806000', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.breakfast}</p>
                             </div>
                             <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(230, 244, 234, 0.91), rgba(230, 244, 234, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #a3d9b1', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <span style={{ fontSize: '1.8rem' }}>🥗</span>
+                                    <i className="bi bi-sun-fill" style={{ fontSize: '1.8rem', color: '#1a7332' }}></i>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1a7332', margin: 0 }}>Lunch</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#114a20', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.lunch}</p>
                             </div>
                             <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(250, 233, 233, 0.91), rgba(250, 233, 233, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #f0b4b4', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <span style={{ fontSize: '1.8rem' }}>🥘</span>
+                                    <i className="bi bi-moon-stars-fill" style={{ fontSize: '1.8rem', color: '#c52828' }}></i>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#c52828', margin: 0 }}>Dinner</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#7d1919', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.dinner}</p>
@@ -968,7 +1060,8 @@ const VolunteerProgramDetails = () => {
             </div>
 
 
-            {/* Modern Floating Bottom Bar */}
+            {/* Modern Floating Bottom Bar — hidden on Ceylon Skill Odyssey (has its own Bucket widget) */}
+            {program.id !== 'ceylon-skill-odyssey' && (
             <div className="floating-bottom-bar">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '100%', justifyContent: 'space-between' }}>
                     <div className="bottom-price-info" style={{ display: 'flex', flexDirection: 'column', gap: '3px', textAlign: 'left' }}>
@@ -1005,6 +1098,7 @@ const VolunteerProgramDetails = () => {
                     </Link>
                 </div>
             </div>
+            )}
 
             {/* Dynamic Skills Bucket Widget (only for ceylon-skill-odyssey) */}
             {program.id === 'ceylon-skill-odyssey' && (
@@ -1109,11 +1203,14 @@ const VolunteerProgramDetails = () => {
                                 transition: 'all 0.2s ease',
                                 animation: 'animate-fade-in 0.2s ease'
                             }}>
-                                <span style={{ lineHeight: 1.1 }}>{skill}</span>
+                                <span style={{ lineHeight: 1.1 }}>{skill.title}</span>
+                                {skill.price && skill.price !== '0' && (
+                                    <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)' }}>${skill.price}</span>
+                                )}
                                 <i className="bi bi-x-circle-fill" 
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        setSelectedSkills(prev => prev.filter(s => s !== skill));
+                                        setSelectedSkills(prev => prev.filter(s => s.title !== skill.title));
                                     }} 
                                     style={{ 
                                         color: '#86868b', 
@@ -1130,25 +1227,83 @@ const VolunteerProgramDetails = () => {
                         ))}
                     </div>
 
-                    <Link to={getInquiryUrl()} style={{
-                        background: 'var(--primary-green)',
-                        color: 'white',
-                        textDecoration: 'none',
-                        textAlign: 'center',
-                        padding: '13px 20px',
-                        borderRadius: '16px',
-                        fontWeight: 700,
-                        fontSize: '0.9rem',
-                        boxShadow: '0 8px 24px rgba(29, 185, 84, 0.2)',
+                    {/* Total Price */}
+                    <div style={{
                         display: 'flex',
+                        justifyContent: 'space-between',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '8px',
-                        transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
-                    }} className="btn-bucket-apply">
-                        <span>Book Selected Skills</span>
-                        <i className="bi bi-arrow-right"></i>
-                    </Link>
+                        padding: '10px 4px 2px',
+                    }}>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Estimated Total</span>
+                        <span style={{
+                            fontSize: '1.25rem',
+                            fontWeight: 900,
+                            color: '#1d1d1f',
+                            letterSpacing: '-0.03em',
+                            lineHeight: 1
+                        }}>
+                            ${selectedSkills.reduce((sum, s) => sum + (parseInt(s.price) || 0), 0)}
+                            <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#86868b', marginLeft: '3px' }}>USD</span>
+                        </span>
+                    </div>
+
+                    {selectedSkills.length < 10 && (
+                        <div style={{
+                            fontSize: '0.78rem',
+                            color: '#e67e22',
+                            fontWeight: 700,
+                            textAlign: 'center',
+                            background: 'rgba(230, 126, 34, 0.08)',
+                            padding: '10px 14px',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(230, 126, 34, 0.2)',
+                            lineHeight: 1.4,
+                            marginTop: '2px'
+                        }}>
+                            <i className="bi bi-exclamation-triangle-fill" style={{ marginRight: '6px' }}></i>
+                            Select at least 10 skills to fill a 7-day trip (Selected: {selectedSkills.length}/10)
+                        </div>
+                    )}
+
+                    {selectedSkills.length < 10 ? (
+                        <div style={{
+                            background: '#e0e0e0',
+                            color: '#8e8e93',
+                            textAlign: 'center',
+                            padding: '13px 20px',
+                            borderRadius: '16px',
+                            fontWeight: 700,
+                            fontSize: '0.9rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px',
+                            cursor: 'not-allowed',
+                            userSelect: 'none'
+                        }}>
+                            <span>Select {10 - selectedSkills.length} More {10 - selectedSkills.length === 1 ? 'Skill' : 'Skills'}</span>
+                        </div>
+                    ) : (
+                        <Link to={getInquiryUrl()} style={{
+                            background: 'var(--primary-green)',
+                            color: 'white',
+                            textDecoration: 'none',
+                            textAlign: 'center',
+                            padding: '13px 20px',
+                            borderRadius: '16px',
+                            fontWeight: 700,
+                            fontSize: '0.9rem',
+                            boxShadow: '0 8px 24px rgba(29, 185, 84, 0.2)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px',
+                            transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                        }} className="btn-bucket-apply">
+                            <span>Book Selected Skills — ${selectedSkills.reduce((sum, s) => sum + (parseInt(s.price) || 0), 0)}</span>
+                            <i className="bi bi-arrow-right"></i>
+                        </Link>
+                    )}
                 </div>
             )}
             

@@ -7,11 +7,11 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
 
     const messages = [
         "1 message received",
-        "Hi 👋 Need help?",
-        "Ready for adventure? 🌴",
-        "Plan your trip now! ✨",
-        "Have any questions? 🤔",
-        "Discover Sri Lanka! 🇱🇰"
+        "Hi! Need help?",
+        "Ready for adventure?",
+        "Plan your trip now!",
+        "Have any questions?",
+        "Discover Sri Lanka!"
     ];
 
     const [msgIndex, setMsgIndex] = useState(0);
@@ -47,7 +47,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                 <div style={{padding: '30px 25px', display: 'flex', flexDirection: 'column', gap: '20px'}}>
                     {/* Bot greeting */}
                     <div className="msg-bubble msg-bot">
-                        Ayubowan! 🙏 Welcome to <strong>Giveback journny.</strong> I'm here to help you plan your perfect Sri Lankan getaway. Tap below to chat with our travel expert directly on WhatsApp!
+                        Ayubowan! Welcome to <strong>Giveback journny.</strong> I'm here to help you plan your perfect Sri Lankan getaway. Tap below to chat with our travel expert directly on WhatsApp!
                     </div>
 
                     {/* Quick action buttons */}

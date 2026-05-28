@@ -39,7 +39,7 @@ export const volunteerPrograms = [
         location: "Kandy & Coast",
         duration: "27 Days",
         housing: "Shared Rooms",
-        price: "1155",
+        price: "1400",
         image: breatheSriLankaImg,
         minAge: "18+",
         pickup: "Included",
@@ -111,7 +111,7 @@ export const volunteerPrograms = [
                 ]
             },
             {
-                title: "The Giveback Journey Difference 🌱",
+                title: "The Giveback Journey Difference",
                 paragraphs: [
                     "This experience is not only about traveling across Sri Lanka. It is about: Connecting with communities, Learning local culture, Traveling responsibly, Supporting grassroots initiatives, and Creating meaningful memories.",
                     "The journey combines adventure, cultural immersion, volunteering, and authentic local experiences — allowing travelers to experience Sri Lanka beyond traditional tourism."
@@ -124,13 +124,13 @@ export const volunteerPrograms = [
                 {
                     title: "Travelling Accommodation",
                     subtitle: "Guesthouses & Hotels (Included)",
-                    icon: "🏨",
+                    icon: "bi-building-fill",
                     description: "Clean, basic, and comfortable guesthouses or hotels, sharing a room with fellow travelers."
                 },
                 {
                     title: "Hikkaduwa Volunteer House",
                     subtitle: "Shared Community Living",
-                    icon: "🛏️",
+                    icon: "bi-house-door-fill",
                     description: "Shared volunteer accommodation with gender-based rooms, western toilets, cold water showers, and a shared living environment."
                 }
             ],
@@ -239,13 +239,13 @@ export const volunteerPrograms = [
                 {
                     title: "Shared Accommodation",
                     subtitle: "Allocated by Gender (Included)",
-                    icon: "🛏️",
+                    icon: "bi-house-door-fill",
                     description: "Gender-based room allocation, normally 4–6 volunteers per room with shared bathrooms, Western-style toilets, cold water showers, and simple, basic living conditions."
                 },
                 {
                     title: "Private Rooms",
                     subtitle: "Upgrade Available",
-                    icon: "🔒",
+                    icon: "bi-shield-lock-fill",
                     description: "Private room upgrades may be available within the volunteer accommodation or at a nearby local homestay (additional costs may apply)."
                 }
             ],
@@ -377,13 +377,13 @@ export const volunteerPrograms = [
                 {
                     title: "Shared Accommodation",
                     subtitle: "Allocated by Gender (Included)",
-                    icon: "🛏️",
+                    icon: "bi-house-door-fill",
                     description: "Rooms are allocated based on gender, normally with 4–6 volunteers per room. Features shared bathroom facilities with Western-style toilets and cold water showers. These are basic living conditions with simple furnishings. Wi-Fi is not available at the accommodation."
                 },
                 {
                     title: "Private Room Option",
                     subtitle: "Homestay or Room Upgrade",
-                    icon: "🔒",
+                    icon: "bi-shield-lock-fill",
                     description: "Private room upgrades may be available upon request depending on availability. These can be arranged within the volunteer accommodation or at a nearby local homestay. Private rooms may involve an additional cost."
                 }
             ],
@@ -517,13 +517,13 @@ export const volunteerPrograms = [
                 {
                     title: "Shared Accommodation",
                     subtitle: "Allocated by Gender (Included)",
-                    icon: "🛏️",
+                    icon: "bi-house-door-fill",
                     description: "Gender-based room allocation, normally 4–6 volunteers per room with shared bathrooms, Western-style toilets, cold water showers, and simple, basic living conditions."
                 },
                 {
                     title: "Private Rooms",
                     subtitle: "Upgrade Available",
-                    icon: "🔒",
+                    icon: "bi-shield-lock-fill",
                     description: "Private room upgrades may be available within the volunteer accommodation or at a nearby local guesthouse or homestay (additional costs may apply)."
                 }
             ],
@@ -650,13 +650,13 @@ export const volunteerPrograms = [
                 {
                     title: "Shared Option - Standard Offering",
                     subtitle: "Recommended for 18-25 Year Olds",
-                    icon: "🛏️",
+                    icon: "bi-house-door-fill",
                     description: "The Volunteer House is basic but comfortable and clean, with single-sex bedrooms accommodating up to 12 people in bunk beds. Each room has air conditioning, bed linen, cupboard space, and a personal locker for valuables. The bathrooms are shared and feature showers and western-style toilets. The climate is hot and humid all year round, making the cool showers a refreshing feature."
                 },
                 {
                     title: "Comfort Option - Private Room Upgrade",
                     subtitle: "150 USD Per Week (Recommended for 26+ Year Olds)",
-                    icon: "🔒",
+                    icon: "bi-shield-lock-fill",
                     description: "If you prefer a private room option, you can upgrade to the Comfort Option. Comfort rooms will accommodate a solo traveller or up to two participants travelling together, with one or two single beds, or a double bed. Each room has air conditioning, bed linen, cupboard space, and a personal locker. Two bathrooms are shared with up to two other private rooms and feature showers and western-style toilets."
                 }
             ],
@@ -765,13 +765,13 @@ export const volunteerPrograms = [
                 {
                     title: "Shared Option - Standard Offering",
                     subtitle: "Recommended for 18-25 Year Olds",
-                    icon: "🛏️",
+                    icon: "bi-house-door-fill",
                     description: "The Volunteer House is basic but comfortable and clean, with single-sex bedrooms accommodating up to 12 people in bunk beds. Each room has air conditioning, bed linen, cupboard space for clothes and accessories, and a personal locker for valuables. While lockers are provided, volunteers are encouraged to bring only essential items during their volunteer work in Sri Lanka. The bathrooms are shared and feature showers and western-style toilets. Although the water is cold, this won’t be an issue if you volunteer in Sri Lanka, as the climate is hot and humid all year round, making it a refreshing feature for volunteers."
                 },
                 {
                     title: "Comfort Option - Private Room Upgrade",
                     subtitle: "150 USD Per Week (Recommended for 26+ Year Olds)",
-                    icon: "🔒",
+                    icon: "bi-shield-lock-fill",
                     description: "If you prefer a private room option, you can upgrade to the Comfort Option when you register with us. Comfort rooms will accommodate a solo traveller or up to two participants travelling together, with one or two single beds, or a double. Each room has air conditioning, bed linen, cupboard space for clothes and accessories, and a personal locker for valuables. Two bathrooms will be shared with up to two other private rooms and feature showers and western-style toilets. Although the water is cold, this won’t be an issue if you volunteer in Sri Lanka, as the climate is hot and humid all year round, making it a refreshing feature for volunteers."
                 }
             ],
@@ -840,18 +840,10 @@ export const volunteerPrograms = [
             {
                 title: "Experience Categories",
                 paragraphs: [
-                    "**🌿 Culture & Traditional Life**",
-                    "• **Sri Lankan Cooking Experience** – learn authentic island recipes using traditional spices and techniques\n• **Traditional Dance** – expressive cultural dance forms rooted in rituals and celebrations\n• **Sinhala Language Basics** – simple communication skills to connect with locals\n• **Batik Art Workshop** – wax-resist fabric painting using traditional methods\n• **Jewellery Crafting** – handcrafted Sri Lankan-inspired designs\n• **Traditional Dress Making** – introduction to local garment creation\n• **Mask Making** – cultural ritual mask art\n• **Drum Making** – traditional percussion instrument crafting\n• **Handloom Weaving** – ancient textile weaving techniques\n• **Basket Weaving** – natural material craft skills",
-                    "**🧘 Wellness & Mind-Body Practices**",
-                    "• **Basic Yoga Sessions** – flexibility, breathing, and balance training\n• **Meditation Practice** – mindfulness and mental relaxation techniques\n• **Sri Lankan Herbal Therapy Introduction** – Ayurveda-based wellness learning\n• **Herbal & Spice Knowledge** – natural healing ingredients of Sri Lanka\n• **Buddhist Meditation** – guided spiritual mindfulness practice\n• **Buddhist Philosophy Introduction** – principles of inner peace and balance\n• **Basic Physical Fitness Training** – movement and body awareness\n• **Intro to Counselling & Emotional Wellness** – mental wellbeing awareness",
-                    "**🐘 Nature, Wildlife & Environment**",
-                    "• **Turtle Conservation Experience** – marine protection awareness\n• **Elephant Rehabilitation Introduction** – ethical wildlife education\n• **Traditional Farming Experience** – village agriculture participation\n• **Marine Biodiversity Awareness** – ocean ecosystem learning\n• **Ceylon Tea Experience** – plantation visit and tea tasting",
-                    "**🎨 Creative Arts & Craft Skills**",
-                    "• **Fabric Painting** – hand-painted textile design\n• **Tie & Dye Art** – colorful textile creation techniques\n• **Bottle Painting** – creative recycled art\n• **Paper Quilling** – decorative paper craft design\n• **Clay Pottery Making** – traditional ceramic crafting\n• **Wood Carving** – Sri Lankan artisan carving techniques\n• **Bridal Design Introduction** – cultural wedding styling concepts\n• **Ribbon Embroidery** – detailed hand stitching art",
-                    "**🏄 Adventure & Outdoor Skills**",
-                    "• **Surfing Lessons** – beginner-friendly ocean surfing\n• **Kite Surfing Introduction** – wind-powered water sport basics\n• **Diving Experience (PADI Intro)** – underwater exploration training\n• **Archery Training** – focus and precision skill development\n• **Abseiling Adventure** – rope descent outdoor activity\n• **Photography Skills** – travel and cultural photography training",
-                    "**🧠 Education, Lifestyle & Community Skills**",
-                    "• **Volunteer Work Experience** – community participation programs\n• **Teaching Experience** – local education support exposure\n• **Sri Lankan Law Introduction** – basic civic knowledge session\n• **House Planning & Drawing Basics** – simple architectural concepts\n• **Local Construction Introduction** – village building techniques\n• **Sri Lankan Herbs & Spices Knowledge** – traditional ingredient education"
+                    "**Kandy District Skills & Experiences**",
+                    "• **Sri Lankan Cooking Experience** – learn authentic hill-country recipes using traditional spices [USD 20]\n• **Traditional Kandy Dance** – expressive cultural dance forms rooted in royal Kandyan rituals [USD 15]\n• **Sinhala Language Basics** – simple communication skills to connect with Kandy locals [USD 10]\n• **Traditional Drum Making** – learn Kandyan percussion instrument crafting in a traditional village [USD 18]\n• **Ceylon Tea Experience** – tour lush tea plantations and learn tea-tasting in the hills [USD 18]\n• **Buddhist Meditation** – guided spiritual mindfulness practice in Kandy's forest temples [USD 10]\n• **Buddhist Philosophy Introduction** – principles of inner peace and balance taught by local scholars [USD 10]\n• **Elephant Rehabilitation Introduction** – ethical wildlife education in Pinnawala [USD 25]\n• **Traditional Farming Experience** – join village farmers in local paddy fields [USD 15]\n• **Clay Pottery Making** – hand-sculpt traditional clay pots in a local pottery village [USD 18]\n• **Wood Carving** – learn traditional wood carving designs from master artisans [USD 20]\n• **Abseiling Adventure** – outdoor rope descent down scenic Kandyan waterfalls [USD 25]\n• **Archery Training** – focus and precision skill development in a mountain setting [USD 18]\n• **Handloom Weaving** – learn ancient textile weaving techniques in a village home [USD 15]\n• **Jewellery Crafting** – handcrafted Sri Lankan-inspired designs using local gems [USD 20]\n• **Basket Weaving** – craft traditional baskets from natural palm leaves [USD 12]\n• **Traditional Dress Making** – introduction to tailoring local Kandyan garments [USD 18]\n• **Sri Lankan Herbs & Spices Knowledge** – explore natural healing gardens in Kandy [USD 12]\n• **Sri Lankan Law Introduction** – basic civic knowledge session [USD 12]\n• **House Planning & Drawing Basics** – simple architectural drafting concepts [USD 12]\n• **Local Construction Introduction** – learn local village building techniques [USD 15]\n• **Volunteer Work Experience** – community participation in rural schools [USD 10]\n• **Teaching Experience** – teach English to children in Kandy preschools [USD 10]",
+                    "**Galle District Skills & Experiences**",
+                    "• **Turtle Conservation Experience** – participate in marine turtle protection on Galle beaches [USD 20]\n• **Marine Biodiversity Awareness** – ocean ecosystem learning near Hikkaduwa coral reefs [USD 18]\n• **Surfing Lessons** – learn to surf on the beginner-friendly waves of Galle coast [USD 30]\n• **Diving Experience (PADI Intro)** – underwater exploration training in Hikkaduwa Marine Sanctuary [USD 45]\n• **Kite Surfing Introduction** – wind-powered water sport basics on the southern coast [USD 35]\n• **Batik Art Workshop** – wax-resist fabric painting using traditional southern methods [USD 18]\n• **Fabric Painting** – hand-painted textile design workshops in Galle Fort [USD 15]\n• **Tie & Dye Art** – colorful southern textile creation techniques [USD 15]\n• **Bottle Painting** – creative recycled art in Galle cafes [USD 12]\n• **Paper Quilling** – decorative paper craft design [USD 12]\n• **Mask Making** – learn traditional wood mask carving and painting in Ambalangoda [USD 15]\n• **Ribbon Embroidery** – detailed hand stitching art [USD 12]\n• **Basic Yoga Sessions** – beachfront flexibility and breathing training [USD 12]\n• **Meditation Practice** – mindfulness and mental relaxation by the ocean [USD 10]\n• **Sri Lankan Herbal Therapy Introduction** – Ayurveda-based wellness learning in Galle [USD 22]\n• **Basic Physical Fitness Training** – beach movement and body awareness [USD 10]\n• **Intro to Counselling & Emotional Wellness** – mental wellbeing awareness [USD 12]\n• **Coastal Photography Skills** – travel and seascapes photography training [USD 15]"
                 ]
             },
             {
@@ -884,13 +876,13 @@ export const volunteerPrograms = [
                 {
                     title: "Coordinated Homestays & Guesthouses",
                     subtitle: "Authentic Cultural Stays (Arranged)",
-                    icon: "🏠",
+                    icon: "bi-house-heart-fill",
                     description: "Live with local families or stay in cozy neighborhood guesthouses along your custom experience route. These stays offer deep cultural connections and authentic local hospitality."
                 },
                 {
                     title: "Partner Boutique Stays",
                     subtitle: "Optional Upgrades",
-                    icon: "🏨",
+                    icon: "bi-building-fill",
                     description: "Boutique hotels or eco-resorts are available in key locations for participants seeking extra comfort and relaxation."
                 }
             ],

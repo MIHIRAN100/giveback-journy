@@ -252,9 +252,21 @@ const Hero = ({ onSearch }) => {
                                 onChange={handleSearchChange}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSearchSubmit()}
                             />
-                            <button className="hero-search-btn" onClick={handleSearchSubmit}>
-                                <span>Find Journey</span>
-                                <i className="bi bi-arrow-right"></i>
+                            <button className="hero-search-btn" onClick={(e) => {
+                                // Ripple effect
+                                const btn = e.currentTarget;
+                                const ripple = document.createElement('span');
+                                ripple.className = 'btn-ripple';
+                                const rect = btn.getBoundingClientRect();
+                                ripple.style.left = (e.clientX - rect.left) + 'px';
+                                ripple.style.top = (e.clientY - rect.top) + 'px';
+                                btn.appendChild(ripple);
+                                setTimeout(() => ripple.remove(), 600);
+                                handleSearchSubmit();
+                            }}>
+                                <span className="btn-shimmer"></span>
+                                <span className="btn-text">Find Journey</span>
+                                <i className="bi bi-arrow-right btn-arrow"></i>
                             </button>
                         </div>
 
