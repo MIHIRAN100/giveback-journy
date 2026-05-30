@@ -1,157 +1,106 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hihiImg from '../assets/hihi.webp';
-import elephantImg from '../assets/Elephants in Sri Lanka (1).jpg';
+import communityImg from '../assets/teaching volunteers/IMG_7118.JPG';
+import educationImg from '../assets/IMG_4412.jpg';
+import medicalGalleryImg from '../assets/medical_gallery_new_1.jpg';
 
 const VolunteerSection = () => {
-    const [isMuted, setIsMuted] = React.useState(true);
-    const iframeRef = React.useRef(null);
-
-    const toggleMute = () => {
-        const command = isMuted ? 'unMute' : 'mute';
-        if (iframeRef.current) {
-            iframeRef.current.contentWindow.postMessage(JSON.stringify({
-                event: 'command',
-                func: command,
-                args: []
-            }), '*');
-            setIsMuted(!isMuted);
-        }
-    };
-
     return (
         <section className="volunteer-preview-section">
             <div className="volunteer-preview-container">
                 <div className="volunteer-bento-grid">
-                    <div className="volunteer-grid-item tall-card video-card" style={{ overflow: 'hidden', position: 'relative', marginBottom: '20px' }}>
-                        <iframe 
-                            ref={iframeRef}
-                            src="https://www.youtube.com/embed/KeoRicNwxtA?autoplay=1&mute=1&loop=1&playlist=KeoRicNwxtA&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1" 
-                            title="Volunteering in Sri Lanka"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                width: '100%',
-                                height: '100%',
-                                transform: 'translate(-50%, -50%) scale(1.5)',
-                                pointerEvents: 'none'
-                            }}
-                        ></iframe>
+                    {/* Item 1: Image */}
+                    <div className="volunteer-grid-item video-card" style={{ overflow: 'hidden', position: 'relative' }}>
+                        <img src={medicalGalleryImg} alt="Volunteer Impact" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         <div className="volunteer-image-overlay" style={{ zIndex: 5 }}>
                             <div className="experience-badge">Impactful Journeys</div>
-                            
-                            {/* Bottom Controls Row */}
+                        </div>
+                    </div>
+
+                    {/* Item 2: Community */}
+                    <div className="volunteer-grid-item community-card">
+                        <img src={communityImg} alt="Volunteer Impact" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div className="volunteer-image-overlay" style={{ 
+                            background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
+                            display: 'flex',
+                            alignItems: 'flex-end',
+                            padding: '20px'
+                        }}>
+                            <span className="impact-tag">
+                                <i className="fa-solid fa-users"></i>
+                                Community
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Item 3: Purpose Card */}
+                    <div className="volunteer-grid-item stats-card">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <div style={{
-                                position: 'absolute',
-                                bottom: '0',
-                                left: '0',
-                                right: '0',
-                                padding: '15px 20px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '12px',
-                                zIndex: 10
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '50%',
+                                background: 'rgba(255, 255, 255, 0.12)',
+                                display: 'inline-flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
                             }}>
+                                <i className="fa-solid fa-heart" style={{ color: 'white', fontSize: '0.85rem' }}></i>
+                            </div>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase', opacity: 0.8 }}>Our Purpose</span>
+                        </div>
+                        
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1, justifyContent: 'center', margin: '15px 0' }}>
+                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                <div style={{ fontSize: '1.2rem', color: '#1db954', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
+                                    <i className="fa-solid fa-earth-asia"></i>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 800, lineHeight: 1.2 }}>Grassroots Support</div>
+                                    <div style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '3px', lineHeight: 1.3 }}>Directly assist community-led local initiatives.</div>
+                                </div>
+                            </div>
+                            
+                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                <div style={{ fontSize: '1.2rem', color: '#1db954', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
+                                    <i className="fa-solid fa-handshake-angle"></i>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 800, lineHeight: 1.2 }}>Mutual Growth</div>
+                                    <div style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '3px', lineHeight: 1.3 }}>Exchange skills, knowledge, and build friendships.</div>
+                                </div>
+                            </div>
 
-                                {/* Control Buttons */}
-                                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-                                    {/* Fullscreen Button */}
-                                    <button 
-                                        onClick={() => {
-                                            if (iframeRef.current) {
-                                                if (iframeRef.current.requestFullscreen) {
-                                                    iframeRef.current.requestFullscreen();
-                                                } else if (iframeRef.current.webkitRequestFullscreen) {
-                                                    iframeRef.current.webkitRequestFullscreen();
-                                                }
-                                            }
-                                        }}
-                                        style={{
-                                            width: '50px',
-                                            height: '50px',
-                                            borderRadius: '50%',
-                                            background: 'rgba(255, 255, 255, 0.15)',
-                                            backdropFilter: 'blur(10px)',
-                                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                                            color: 'white',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'}
-                                    >
-                                        <i className="fa-solid fa-expand" style={{ fontSize: '1.4rem' }}></i>
-                                    </button>
-
-                                    {/* Mute/Unmute Toggle */}
-                                    <button 
-                                        onClick={toggleMute}
-                                        style={{
-                                            width: '50px',
-                                            height: '50px',
-                                            borderRadius: '50%',
-                                            background: 'rgba(255, 255, 255, 0.15)',
-                                            backdropFilter: 'blur(10px)',
-                                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                                            color: 'white',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'}
-                                    >
-                                        <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`} style={{ fontSize: '1.2rem' }}></i>
-                                    </button>
+                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                <div style={{ fontSize: '1.2rem', color: '#1db954', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
+                                    <i className="fa-solid fa-shield-heart"></i>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 800, lineHeight: 1.2 }}>Ethical Travel</div>
+                                    <div style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '3px', lineHeight: 1.3 }}>Ensure a positive, respectful cultural footprint.</div>
                                 </div>
                             </div>
                         </div>
 
+                        <div style={{ fontSize: '0.65rem', opacity: 0.5, borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '10px', display: 'flex', alignItems: 'center', width: '100%' }}>
+                            <span>Make a Difference</span>
+                            <i className="fa-solid fa-arrow-right" style={{ marginLeft: 'auto', color: '#1db954' }}></i>
+                        </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '20px' }}>
-                        <div className="volunteer-grid-item" style={{ 
-                            flex: 1, 
-                            aspectRatio: '16/9'
+                    {/* Item 4: Education */}
+                    <div className="volunteer-grid-item education-card">
+                        <img src={educationImg} alt="Preschool Teaching Volunteer" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div className="volunteer-image-overlay" style={{ 
+                            background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
+                            display: 'flex',
+                            alignItems: 'flex-end',
+                            padding: '20px'
                         }}>
-                            <img src={hihiImg} alt="Volunteer Impact" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            <div className="volunteer-image-overlay" style={{ 
-                                background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                padding: '20px'
-                            }}>
-                                <span className="impact-tag">
-                                    <i className="fa-solid fa-users"></i>
-                                    Community
-                                </span>
-                            </div>
-                        </div>
-                        <div className="volunteer-grid-item" style={{ 
-                            flex: 1, 
-                            aspectRatio: '16/9'
-                        }}>
-                            <img src={elephantImg} alt="Elephants in Sri Lanka" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            <div className="volunteer-image-overlay" style={{ 
-                                background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
-                                display: 'flex',
-                                alignItems: 'flex-end',
-                                padding: '20px'
-                            }}>
-                                <span className="impact-tag">
-                                    <i className="fa-solid fa-bolt-lightning"></i>
-                                    Empowerment
-                                </span>
-                            </div>
+                            <span className="impact-tag">
+                                <i className="fa-solid fa-graduation-cap"></i>
+                                Education
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -191,8 +140,8 @@ const VolunteerSection = () => {
                             <span>Construction & Renovation</span>
                         </Link>
                         <Link to="/volunteer-program/zen-and-temple-yoga" className="perk-item" style={{ textDecoration: 'none' }}>
-                            <i className="fa-solid fa-om"></i>
-                            <span>Zen & Temple Yoga</span>
+                            <i className="fa-solid fa-spa"></i>
+                            <span>Body & Mind Wellness Week</span>
                         </Link>
                         <Link to="/volunteer-program/medical-volunteer" className="perk-item" style={{ textDecoration: 'none' }}>
                             <i className="fa-solid fa-briefcase-medical"></i>

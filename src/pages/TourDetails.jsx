@@ -387,7 +387,7 @@ const TourDetails = () => {
         if (pkg.id === 2) currentBase = 600;
         
         if (transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 90 : (pkg.id === 13 ? 110 : 300)))))));
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 6 ? 100 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 90 : (pkg.id === 13 ? 110 : 300))))))));
             return currentBase - discount;
         }
         if (transport === 'van') {
@@ -1408,9 +1408,9 @@ const TourDetails = () => {
                         borderRadius: '50px', 
                         fontSize: '0.75rem', 
                         fontWeight: 800, 
-                        textTransform: 'lowercase',
+                        textTransform: pkg.id === 6 ? 'none' : 'lowercase',
                         boxShadow: '0 4px 12px rgba(16, 124, 65, 0.2)'
-                    }}>Sale now on</span>
+                    }}>{pkg.id === 6 ? 'Sale now on tuk tuk 220usd' : 'Sale now on'}</span>
                 </div>
 
                 {/* Gallery & Summary Card Grid */}
@@ -1565,7 +1565,7 @@ const TourDetails = () => {
                                     {[
                                         { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
                                         { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: pkg.id === 12 ? '+$40' : (pkg.id === 13 ? '+$65' : '+$150') },
-                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 9 ? '-$30' : (pkg.id === 12 ? '-$90' : (pkg.id === 13 ? '-$110' : '-$300')))))) }
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 6 ? '-$100' : (pkg.id === 9 ? '-$30' : (pkg.id === 12 ? '-$90' : (pkg.id === 13 ? '-$110' : '-$300'))))))) }
                                     ].map(v => (
                                         <div
                                             key={v.id}

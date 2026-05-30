@@ -47,7 +47,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
         },
         {
             duration: "1-2 Weeks",
-            title: "Zen & Service: Yoga",
+            title: "Body & Mind Wellness Week",
             price: "$350",
             originalPrice: "$520",
             image: yogaImg,
