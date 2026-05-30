@@ -797,7 +797,96 @@ const VolunteerPage = () => {
                         font-size: 0.62rem;
                     }
                 }
+                .modern-dest-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                    gap: 32px;
+                    margin-bottom: 40px;
+                }
                 
+                .modern-dest-card {
+                    background: #fff;
+                    border-radius: 24px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    display: flex;
+                    flex-direction: column;
+                    border: 1px solid rgba(0,0,0,0.04);
+                    position: relative;
+                }
+
+                .modern-dest-card:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+                    border-color: rgba(22, 163, 74, 0.2);
+                }
+
+                .modern-dest-img-wrapper {
+                    width: 100%;
+                    height: 280px;
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .modern-dest-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+
+                .modern-dest-card:hover .modern-dest-img {
+                    transform: scale(1.06);
+                }
+
+                .modern-dest-content {
+                    padding: 32px;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .modern-dest-title {
+                    font-size: 1.6rem;
+                    font-weight: 800;
+                    color: #1d1d1f;
+                    margin: 0 0 12px 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    letter-spacing: -0.02em;
+                }
+
+                .modern-dest-text {
+                    font-size: 1.05rem;
+                    line-height: 1.7;
+                    color: #515154;
+                    margin-bottom: 24px;
+                }
+
+                .modern-dest-tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-top: auto;
+                    padding-top: 24px;
+                    border-top: 1px solid #f0f0f0;
+                }
+
+                .modern-dest-tag {
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    color: var(--primary-green, #166534);
+                    background: #f0fdf4;
+                    padding: 6px 14px;
+                    border-radius: 100px;
+                }
+                
+                .modern-dest-header {
+                    text-align: center;
+                    margin-bottom: 48px;
+                }
                 `}
             </style>
 
@@ -941,10 +1030,10 @@ const VolunteerPage = () => {
                                     }} 
                                 />
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
-                                    Help rebuild and beautify community spaces — from rural schools and temples to community halls — giving local families spaces they can be proud of. Volunteers work hand-in-hand with local masons and community members, engaging in painting, repairing furniture, planting community gardens, and renovating structures.
+                                    Help rebuild and beautify community spaces, giving local families spaces they can be proud of. Volunteers work hand-in-hand with local masons and community members, engaging in painting, repairing furniture, planting community gardens, and renovating structures.
                                 </p>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
-                                    Through these efforts, you directly help enhance the daily lives of families and children, providing them with spaces that foster community pride, learning, and celebration. No prior construction experience is required — just a willing pair of hands and a heart to serve.
+                                    Through these efforts, you directly help enhance the daily lives of families and children, providing them with spaces that foster community pride, learning, and celebration. No prior construction experience is required.
                                 </p>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                                     {["Painting & Repairs", "School Rebuilding", "Community Spaces"].map((item, i) => (
@@ -954,84 +1043,55 @@ const VolunteerPage = () => {
                             </div>
                         </div>
 
-                        {/* Right Column: Sticky Progress Report Panel */}
+                        {/* Right Column: Sticky Key Benefits Panel */}
                         <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }} className="progress-report-sidebar">
-                            <div className="progress-report-card">
+                            <div className="progress-report-card" style={{ border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                                    <i className="bi bi-graph-up-arrow" style={{ color: 'var(--primary-green)', fontSize: '1.4rem' }}></i>
-                                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#111', letterSpacing: '-0.02em' }}>Progress Report</h3>
+                                    <div style={{
+                                        width: '36px',
+                                        height: '36px',
+                                        borderRadius: '50%',
+                                        background: 'rgba(29, 185, 84, 0.1)',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        color: 'var(--primary-green)'
+                                    }}>
+                                        <i className="fa-solid fa-circle-check" style={{ fontSize: '1rem' }}></i>
+                                    </div>
+                                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#111', letterSpacing: '-0.02em' }}>Why Join This Project?</h3>
                                 </div>
                                 <p style={{ margin: '0 0 25px 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
-                                    Live updates of community infrastructure, school classroom renovations, and building projects.
+                                    Discover how your hands-on contribution directly impacts local communities and enriches your journey.
                                 </p>
 
-                                {/* Progress Bars */}
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '35px' }}>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>School Classrooms Painted</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>80%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '80%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>Library Shelving Installed</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>90%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '90%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>Community Hall Repairs</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>75%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '75%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>Buddhist Temple Restorations</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>60%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '60%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Recent Activity Feed */}
-                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Activity (Past Month)</h4>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                                {/* Benefits List */}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                     {[
-                                        { time: "May 26", text: "Matale School classroom painting finished by Kandy team.", icon: "bi-paint-bucket" },
-                                        { time: "May 18", text: "10 new handmade bookshelves installed in village library.", icon: "bi-layout-three-columns" },
-                                        { time: "May 12", text: "Completed structural roofing repairs on community center hall.", icon: "bi-house-fill" },
-                                        { time: "May 05", text: "Renovation work started on library room at local monastery.", icon: "bi-tools" }
-                                    ].map((act, idx) => (
-                                        <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                                        { title: "Immediate Visual Impact", desc: "See a building, classroom, or public space transform from start to finish with your own eyes.", icon: "fa-eye" },
+                                        { title: "Learn Local Craft Skills", desc: "Gain practical experience in traditional Sri Lankan painting, masonry, and sustainable landscaping.", icon: "fa-hammer" },
+                                        { title: "Authentic Integration", desc: "Work side-by-side with experienced Sri Lankan masons, fostering deep, direct cultural exchange.", icon: "fa-handshake" },
+                                        { title: "Community Pride", desc: "Provide local families and kids with clean, safe spaces that encourage learning and gathering.", icon: "fa-heart-circle-check" }
+                                    ].map((item, idx) => (
+                                        <div key={idx} style={{ display: 'flex', gap: '15px', alignItems: 'flex-start' }}>
                                             <div style={{ 
-                                                width: '28px', 
-                                                height: '28px', 
-                                                borderRadius: '8px', 
+                                                width: '36px', 
+                                                height: '36px', 
+                                                borderRadius: '50%', 
                                                 background: '#f0fdf4', 
                                                 color: 'var(--primary-green)', 
                                                 display: 'flex', 
                                                 alignItems: 'center', 
                                                 justifyContent: 'center',
-                                                fontSize: '0.85rem',
-                                                flexShrink: 0
+                                                fontSize: '0.9rem',
+                                                flexShrink: 0,
+                                                border: '1px solid rgba(29, 185, 84, 0.15)'
                                             }}>
-                                                <i className={`bi ${act.icon}`}></i>
+                                                <i className={`fa-solid ${item.icon}`}></i>
                                             </div>
                                             <div style={{ textAlign: 'left' }}>
-                                                <div style={{ fontSize: '0.78rem', color: '#1e293b', lineHeight: 1.4, fontWeight: 550 }}>{act.text}</div>
-                                                <span style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 700 }}>{act.time}</span>
+                                                <h5 style={{ margin: '0 0 4px 0', fontSize: '0.9rem', fontWeight: 800, color: '#1e293b' }}>{item.title}</h5>
+                                                <p style={{ margin: 0, fontSize: '0.78rem', color: '#64748b', lineHeight: 1.4 }}>{item.desc}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -1076,84 +1136,55 @@ const VolunteerPage = () => {
                             </div>
                         </div>
 
-                        {/* Right Column: Sticky Progress Report Panel */}
+                        {/* Right Column: Sticky Key Benefits Panel */}
                         <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }} className="progress-report-sidebar">
-                            <div className="progress-report-card">
+                            <div className="progress-report-card" style={{ border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                                    <i className="bi bi-graph-up-arrow" style={{ color: 'var(--primary-green)', fontSize: '1.4rem' }}></i>
-                                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#111', letterSpacing: '-0.02em' }}>Progress Report</h3>
+                                    <div style={{
+                                        width: '36px',
+                                        height: '36px',
+                                        borderRadius: '50%',
+                                        background: 'rgba(29, 185, 84, 0.1)',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        color: 'var(--primary-green)'
+                                    }}>
+                                        <i className="fa-solid fa-circle-check" style={{ fontSize: '1rem' }}></i>
+                                    </div>
+                                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#111', letterSpacing: '-0.02em' }}>Why Join This Project?</h3>
                                 </div>
                                 <p style={{ margin: '0 0 25px 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
-                                    Live updates of conversational English teaching, preschool support, and special needs programs.
+                                    Discover how your energy and support can shape children's futures while expanding your perspective.
                                 </p>
 
-                                {/* Progress Bars */}
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '35px' }}>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>Preschool Support</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>85%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '85%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>English Curriculum Levels</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>95%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '95%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>Creative Arts Sessions</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>70%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '70%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>
-                                            <span>Special Needs Care Programs</span>
-                                            <span style={{ color: 'var(--primary-green)' }}>65%</span>
-                                        </div>
-                                        <div style={{ height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                            <div style={{ width: '65%', height: '100%', background: 'var(--primary-green)', borderRadius: '10px' }}></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Recent Activity Feed */}
-                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Activity (Past Month)</h4>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                                {/* Benefits List */}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                     {[
-                                        { time: "May 28", text: "New conversational English curriculum introduced in Kandy preschools.", icon: "bi-book-half" },
-                                        { time: "May 20", text: "Art & music workshop materials distributed to 5 rural centers.", icon: "bi-music-note-beamed" },
-                                        { time: "May 14", text: "Special needs center in Kandy completed 20 sensory therapy sessions.", icon: "bi-heart-fill" },
-                                        { time: "May 08", text: "Teacher training completed for local village volunteers.", icon: "bi-people-fill" }
-                                    ].map((act, idx) => (
-                                        <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                                        { title: "Inspire Young Minds", desc: "Help rural preschool children build confidence in their conversational English and communication skills.", icon: "fa-face-smile-beam" },
+                                        { title: "Support Underfunded Centers", desc: "Provide essential resource relief to understaffed schools and local special needs care centers.", icon: "fa-school-circle-check" },
+                                        { title: "Bi-directional Exchange", desc: "Share your own culture and stories while learning local Sri Lankan songs, games, and customs.", icon: "fa-earth-asia" },
+                                        { title: "Heartfelt Connections", desc: "Develop lasting, heart-warming bonds with the children and teachers you assist daily.", icon: "fa-people-roof" }
+                                    ].map((item, idx) => (
+                                        <div key={idx} style={{ display: 'flex', gap: '15px', alignItems: 'flex-start' }}>
                                             <div style={{ 
-                                                width: '28px', 
-                                                height: '28px', 
-                                                borderRadius: '8px', 
+                                                width: '36px', 
+                                                height: '36px', 
+                                                borderRadius: '50%', 
                                                 background: '#f0fdf4', 
                                                 color: 'var(--primary-green)', 
                                                 display: 'flex', 
                                                 alignItems: 'center', 
                                                 justifyContent: 'center',
-                                                fontSize: '0.85rem',
-                                                flexShrink: 0
+                                                fontSize: '0.9rem',
+                                                flexShrink: 0,
+                                                border: '1px solid rgba(29, 185, 84, 0.15)'
                                             }}>
-                                                <i className={`bi ${act.icon}`}></i>
+                                                <i className={`fa-solid ${item.icon}`}></i>
                                             </div>
                                             <div style={{ textAlign: 'left' }}>
-                                                <div style={{ fontSize: '0.78rem', color: '#1e293b', lineHeight: 1.4, fontWeight: 550 }}>{act.text}</div>
-                                                <span style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 700 }}>{act.time}</span>
+                                                <h5 style={{ margin: '0 0 4px 0', fontSize: '0.9rem', fontWeight: 800, color: '#1e293b' }}>{item.title}</h5>
+                                                <p style={{ margin: 0, fontSize: '0.78rem', color: '#64748b', lineHeight: 1.4 }}>{item.desc}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -1165,70 +1196,73 @@ const VolunteerPage = () => {
                     <hr style={{ border: 0, borderBottom: '1px solid #eaeaea', margin: '40px 0' }} />
 
                     {/* Destinations Section */}
-                    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', display: 'block', marginBottom: '12px' }}>DESTINATIONS</span>
-                        <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 30px 0', color: '#1d1d1f' }}>Where You’ll Make an Impact.</h2>
+                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+                        <div className="modern-dest-header">
+                            <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', display: 'inline-block', marginBottom: '16px', background: '#f0fdf4', padding: '6px 16px', borderRadius: '100px' }}>Our Locations</span>
+                            <h2 style={{ fontSize: '2.8rem', fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 16px 0', color: '#1d1d1f' }}>Where You’ll Make an Impact</h2>
+                            <p style={{ fontSize: '1.15rem', color: '#6e6e73', maxWidth: '600px', margin: '0 auto' }}>Choose between the lush hills of central Sri Lanka or the vibrant southern coast. Both offer distinct cultures, landscapes, and opportunities to serve.</p>
+                        </div>
                         
-                        <div className="locations-grid">
-                            <div style={{ marginBottom: '30px' }}>
-                                <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
-                                    Kandy District
-                                </h3>
-                                <img 
-                                    src={kandyImg} 
-                                    alt="Kandy District Tea Plantation Sri Lanka" 
-                                    style={{ 
-                                        width: '100%', 
-                                        height: '350px', 
-                                        objectFit: 'cover', 
-                                        borderRadius: '16px', 
-                                        marginBottom: '20px', 
-                                        boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
-                                    }} 
-                                />
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
-                                    Nestled in the lush, mist-covered hill country, Kandy is the cultural capital of Sri Lanka. Here, our projects focus heavily on community development and English education in rural, mountain-side schools.
-                                </p>
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
-                                    Volunteers live in a vibrant, community-oriented setting, experiencing the traditional Sri Lankan way of life, and supporting families that reside away from major commercial centers.
-                                </p>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                    {["Hill Country", "Education", "Rural Villages"].map((tag, i) => (
-                                        <span key={i} style={{ fontSize: '0.75rem', fontWeight: 800, background: '#f0f0f0', color: '#475569', padding: '6px 15px', borderRadius: '50px' }}>{tag}</span>
-                                    ))}
+                        <div className="modern-dest-grid">
+                            {/* Kandy Card */}
+                            <div className="modern-dest-card">
+                                <div className="modern-dest-img-wrapper">
+                                    <div style={{ position: 'absolute', top: '20px', left: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', zIndex: 2, fontWeight: 700, fontSize: '0.85rem', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                        Central Province
+                                    </div>
+                                    <img 
+                                        src={kandyImg} 
+                                        alt="Kandy District Tea Plantation Sri Lanka" 
+                                        className="modern-dest-img"
+                                    />
+                                </div>
+                                <div className="modern-dest-content">
+                                    <h3 className="modern-dest-title">
+                                        Kandy District
+                                    </h3>
+                                    <div className="modern-dest-text">
+                                        <p style={{ marginBottom: '12px' }}>Nestled in the lush, mist-covered hill country, Kandy is the cultural capital of Sri Lanka. Here, our projects focus heavily on community development and English education in rural, mountain-side schools.</p>
+                                        <p>Volunteers live in a vibrant, community-oriented setting, experiencing the traditional Sri Lankan way of life, and supporting families that reside away from major commercial centers.</p>
+                                    </div>
+                                    <div className="modern-dest-tags">
+                                        {["Hill Country", "Education", "Rural Villages"].map((tag, i) => (
+                                            <span key={i} className="modern-dest-tag">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
-                            <div style={{ marginBottom: '30px' }}>
-                                <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
-                                    Galle District
-                                </h3>
-                                <img 
-                                    src={galleImg} 
-                                    alt="Galle Fort and Coastal Region Sri Lanka" 
-                                    style={{ 
-                                        width: '100%', 
-                                        height: '350px', 
-                                        objectFit: 'cover', 
-                                        borderRadius: '16px', 
-                                        marginBottom: '20px', 
-                                        boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
-                                    }} 
-                                />
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
-                                    Along the historic southern coast, focus on environmental conservation and women's empowerment initiatives. From beach cleanups and coastal habitat preservation to leading self-reliance workshops, there are diverse avenues of contribution.
-                                </p>
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '20px' }}>
-                                    Galle provides a beautiful blend of colonial history, coastal biodiversity, and dynamic community-led programs, allowing volunteers to make a lasting ecological and social footprint.
-                                </p>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                    {["Coastal Region", "Environment", "Empowerment"].map((tag, i) => (
-                                        <span key={i} style={{ fontSize: '0.75rem', fontWeight: 800, background: '#f0f0f0', color: '#475569', padding: '6px 15px', borderRadius: '50px' }}>{tag}</span>
-                                    ))}
+                            {/* Galle Card */}
+                            <div className="modern-dest-card">
+                                <div className="modern-dest-img-wrapper">
+                                    <div style={{ position: 'absolute', top: '20px', left: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', zIndex: 2, fontWeight: 700, fontSize: '0.85rem', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                        Southern Province
+                                    </div>
+                                    <img 
+                                        src={galleImg} 
+                                        alt="Galle Fort and Coastal Region Sri Lanka" 
+                                        className="modern-dest-img"
+                                    />
+                                </div>
+                                <div className="modern-dest-content">
+                                    <h3 className="modern-dest-title">
+                                        Galle District
+                                    </h3>
+                                    <div className="modern-dest-text">
+                                        <p style={{ marginBottom: '12px' }}>Along the historic southern coast, focus on environmental conservation and women's empowerment initiatives. From beach cleanups and coastal habitat preservation to leading self-reliance workshops, there are diverse avenues of contribution.</p>
+                                        <p>Galle provides a beautiful blend of colonial history, coastal biodiversity, and dynamic community-led programs, allowing volunteers to make a lasting ecological and social footprint.</p>
+                                    </div>
+                                    <div className="modern-dest-tags">
+                                        {["Coastal Region", "Environment", "Empowerment"].map((tag, i) => (
+                                            <span key={i} className="modern-dest-tag">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
             </section>
 
                 <hr className="section-divider" style={{ margin: '20px auto 40px' }} />
