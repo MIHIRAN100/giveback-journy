@@ -7,8 +7,11 @@ import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
 import HeroPromoBadge from './HeroPromoBadge';
 
 
-const mobileImages = [img1, img2, img3];
-
+const mobileImages = tourPackages.map(pkg => ({
+    image: pkg.image,
+    title: pkg.name,
+    snippet: pkg.description.split('\n')[0]
+}));
 
 
 const Hero = ({ onSearch }) => {
@@ -226,13 +229,34 @@ const Hero = ({ onSearch }) => {
             <HeroPromoBadge />
 
             <div className="mobile-hero-slideshow">
-                {mobileImages.map((img, index) => (
-                    <div 
-                        key={index}
-                        className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
-                        style={{ backgroundImage: `url(${img})` }}
-                    />
-                ))}
+                {mobileImages.map((slide, index) => {
+                    const isPrev = index === (currentSlide - 1 + mobileImages.length) % mobileImages.length;
+                    return (
+                        <div 
+                            key={index}
+                            className={`hero-slide ${index === currentSlide ? 'active' : ''} ${isPrev ? 'prev' : ''}`}
+                            style={{ backgroundImage: `url(${slide.image})` }}
+                        >
+                        <div style={{
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '55%',
+                            background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'flex-end',
+                            padding: '20px 20px 45px',
+                            color: 'white',
+                            textAlign: 'left'
+                        }}>
+                            <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>{slide.title}</h3>
+                            <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: 'rgba(255,255,255,0.9)', lineHeight: 1.3, textShadow: '0 1px 3px rgba(0,0,0,0.9)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{slide.snippet}</p>
+                        </div>
+                    </div>
+                    );
+                })}
             </div>
             
             <div className="hero-overlay"></div>
@@ -291,6 +315,30 @@ const Hero = ({ onSearch }) => {
 
                     <div className="hero-mobile-actions">
                         <Link to="/packages" className="btn-modern btn-solid-green">View Our Packages</Link>
+                    </div>
+
+                    <div className="mobile-slideshow-dots" style={{
+                        display: 'none',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        marginTop: '25px',
+                        zIndex: 100,
+                        position: 'relative'
+                    }}>
+                        {mobileImages.map((_, idx) => (
+                            <div 
+                                key={idx} 
+                                onClick={() => setCurrentSlide(idx)}
+                                style={{
+                                    width: idx === currentSlide ? '24px' : '8px',
+                                    height: '8px',
+                                    borderRadius: '4px',
+                                    background: idx === currentSlide ? 'var(--primary-green)' : 'rgba(255,255,255,0.4)',
+                                    transition: 'all 0.3s ease',
+                                    cursor: 'pointer'
+                                }}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

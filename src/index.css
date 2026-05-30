@@ -704,7 +704,7 @@ h1, h2, h3, .logo-text {
 /* Hero Styles */
 .hero {
     position: relative;
-    height: 88vh;
+    height: 95vh;
     width: 100%;
     z-index: 20;
     display: flex;
@@ -803,14 +803,19 @@ h1, h2, h3, .logo-text {
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out, transform 8s ease-out;
-    transform: scale(1.1); /* Slight zoom-out effect for modern vibe */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateX(100%);
+    z-index: 1;
+}
+
+.hero-slide.prev {
+    transform: translateX(-100%);
+    z-index: 1;
 }
 
 .hero-slide.active {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateX(0);
+    z-index: 2;
 }
 
 .hero-overlay {
@@ -1246,12 +1251,15 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .hero {
-        height: 58vh;
+        height: 75vh;
         background: none !important;
     }
 
     .mobile-hero-slideshow {
         display: block;
+    }
+    .mobile-slideshow-dots {
+        display: flex !important;
     }
 
     .hero-video-container {
@@ -3376,8 +3384,8 @@ h1, h2, h3, .logo-text {
 
 @media (max-width: 768px) {
     .chat-container {
-        bottom: calc(160px + env(safe-area-inset-bottom)) !important; /* Raised even further as requested */
-        right: 20px;
+        bottom: calc(95px + env(safe-area-inset-bottom)) !important;
+        right: 15px;
     }
     
     .chat-window {
@@ -3668,7 +3676,7 @@ h1, h2, h3, .logo-text {
     
     .chat-container {
         right: 15px;
-        bottom: 160px !important;
+        bottom: 95px !important;
         pointer-events: none; /* Reinforce: container must not intercept */
     }
     
