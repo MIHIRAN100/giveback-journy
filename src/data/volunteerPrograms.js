@@ -10,6 +10,7 @@ import medicalImg from '../assets/WhatsApp Image 2026-05-26 at 15.22.42.jpeg';
 import medicalVolunteerWhatsAppImg from '../assets/WhatsApp Image 2026-05-26 at 10.34.53.jpeg';
 import medicalGallery1 from '../assets/medical_gallery_new_1.jpg';
 import medicalGallery2 from '../assets/medical_gallery_new_2.jpg';
+import medicalNewGalleryImg from '../assets/dde7d2b38e6f6993d2fa13e839e96704.jpg';
 
 
 // Gallery images
@@ -547,7 +548,7 @@ export const volunteerPrograms = [
 
     {
         id: "medical-volunteer",
-        title: "Medical Volunteer Program",
+        title: "Medical Observation & Community Health Program",
         location: "Kandy District",
         duration: "1-4 Weeks",
         housing: "Shared or Private",
@@ -557,11 +558,11 @@ export const volunteerPrograms = [
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
-        shortDesc: "Gain valuable medical experience and insight into the Sri Lankan healthcare system.",
-        description: "As a medical volunteer in Sri Lanka, you can gain valuable medical experience in a new culture, an opportunity not to be missed in this gorgeous part of the world! If you are looking for a learning experience or would like to pursue a career in the medical field, then this program is the ideal way to give you an insight into the Sri Lankan healthcare system.",
+        shortDesc: "Gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
+        description: "The Give Back Journey Medical Observation & Community Health Program offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
         color: "#e74c3c",
         galleryImages: [
-            { src: medicalGallery2, caption: "Hospital Placement" },
+            { src: medicalNewGalleryImg, caption: "Hospital Placement" },
             { src: medicalGallery1, caption: "Volunteer Life & Culture" },
             { src: medicalVolunteerWhatsAppImg, caption: "Medical Experience" },
             { src: medicalImg, caption: "Medical Program Cover" }
@@ -575,54 +576,144 @@ export const volunteerPrograms = [
         ],
         sections: [
             {
-                title: "Background to the Medical Program",
+                title: "Program Overview",
                 paragraphs: [
-                    "Sri Lanka has a rich and fascinating medical history, dating back thousands of years to the time of its ancient kingdoms. The Sinhalese are believed to have introduced the concept of hospitals to the world, with royalty not only commissioning hospital homes but also practising medicine themselves.",
-                    "The ancient practice of Ayurveda is deeply rooted in the Sri Lankan medical system. As one of the oldest healing sciences, Ayurveda translates from Sanskrit as \"The Science of Life.\" Originating in India over 3,000 years ago, this approach emphasises balance in all aspects of life, including mental health, diet, lifestyle, and overall well-being.",
-                    "Ayurvedic medicine, which focuses on holistic and natural health practices, seeks to prevent illness and maintain balance across physical, emotional, and mental states. In Sri Lanka, Ayurveda is widely practised alongside modern healthcare, with many citizens choosing Ayurvedic treatments for certain conditions and western medicine for others.",
-                    "Sri Lanka's healthcare system is universal, offering free access to both traditional Ayurvedic and modern medical care at government hospitals. Today, most hospitals in Sri Lanka follow a \"western medicine\" approach, using procedures and medications recognised globally. However, as a medical volunteer in Sri Lanka, you may notice that healthcare facilities can seem basic or outdated in some respects. Despite these challenges, Sri Lanka has achieved a higher life expectancy and lower infant mortality rate compared to its regional neighbours. To address capacity and resource limitations in government hospitals, private healthcare services have also become more prevalent.",
-                    "Joining a hospital placement on the Sri Lanka volunteer program offers an exceptional opportunity for clinical exposure and insight into healthcare systems in a developing country. You’ll encounter a wide variety of cases, providing a unique contrast to what you might see in your local hospital. PMGY’s medical volunteer program is designed for both medical students and aspiring healthcare professionals. By becoming a medical volunteer in Sri Lanka, you can gain invaluable hospital work experience while immersing yourself in the beauty and culture of this incredible island."
+                    "The Give Back Journey Medical Observation & Community Health Program offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
+                    "The program is based in Kandy, the cultural capital of Sri Lanka, and is conducted primarily at Kandy Teaching Hospital (Kandy General Hospital), the second-largest hospital in Sri Lanka and one of the country's leading teaching and referral hospitals.",
+                    "This program has been designed as an educational, observational, and cultural exchange experience. Participants will gain valuable exposure to healthcare delivery in a developing country while learning about hospital operations, patient care systems, and the realities of healthcare provision in Sri Lanka."
                 ]
             },
             {
-                title: "Medical Volunteer Placement Examples",
+                title: "About Healthcare in Sri Lanka",
                 paragraphs: [
-                    "Your placement schedule on the medical volunteer abroad program will depend on your educational background. University students studying a health-related degree can gain experience in both private and government hospitals, provided we receive the required paperwork in the correct format at least three weeks before your program start date. High school leavers and those without a medical background will be placed at a private hospital. However, they will still benefit from clinical workshops and an introduction to Ayurvedic medicine, an experience offered to all medical volunteers in Sri Lanka.",
-                    "Roseth Private Hospital - As a medical volunteer in Sri Lanka, you may work at a small private hospital in Ambalangoda. This hospital offers a structured and informative approach, providing participants with a well-rounded insight into a Sri Lankan medical facility.",
-                    "Departments available at the private hospital include: Physiotherapy, Dental Surgery, Radiology (X-ray machine and computerised radiology), Laboratory, Phlebotomy, In-Patient and Out-Patient Wards."
+                    "Sri Lanka has a rich and fascinating medical history dating back thousands of years. The island has long been recognized for its commitment to healthcare and public well-being.",
+                    "Today, Sri Lanka operates one of the strongest public healthcare systems in South Asia. Through its universal healthcare model, citizens have access to free medical treatment through government hospitals and clinics.",
+                    "Despite operating with fewer resources than many developed countries, Sri Lanka consistently achieves impressive healthcare outcomes, including: High life expectancy, Low infant mortality rates, Strong vaccination coverage, Effective public health programs, and High-quality maternal healthcare services.",
+                    "These achievements have made Sri Lanka's healthcare system a respected model within the region."
                 ]
             },
             {
-                title: "Your Volunteer Role & Typical Work Day",
+                title: "About Kandy Teaching Hospital",
                 paragraphs: [
-                    "As a medical volunteer in Sri Lanka, your primary role is to observe and learn about the Sri Lankan healthcare system, its procedures, and the cultural context of medical care. You’ll gain an understanding of how healthcare in Sri Lanka differs from what you may be used to at home. During your time, you might witness cases such as dengue fever, snake bites, and motorcycle accidents, providing a unique insight into healthcare challenges in the region.",
-                    "The medical project typically runs for around three hours a day, Monday to Friday, between 9am and 12pm, depending on the opportunities available. You may have the chance to stay longer if significant cases, such as a major surgery or labour, arise during your placement. While there is an option to join the project in the afternoons, please note that doctors are usually only present in the wards during the morning. The hospitals are conveniently located 5–15 minutes away by tuk-tuk.",
-                    "Given the observational nature of this role, we recommend that volunteers sign up for no more than two weeks. While you’ll gain invaluable insights and knowledge during your time at the hospitals, many volunteers prefer to transition to alternative volunteer work in Sri Lanka after a couple of weeks. Although PMGY cannot offer hands-on experience as a medical volunteer in Sri Lanka, you are welcome to join our community projects, such as teaching English in Sri Lanka.",
-                    "Our local team will discuss these options with you during your in-country orientation. You can choose to combine morning hospital placements with afternoon community projects. Additionally, if you’d like to stay longer than two weeks, you can spend part of your time as a medical volunteer in Sri Lanka and the remainder on another project."
+                    "Kandy Teaching Hospital, also known as Kandy General Hospital, is the second-largest hospital in Sri Lanka and serves as a major teaching and referral institution for the Central Province and surrounding regions.",
+                    "The hospital treats thousands of patients daily and plays a vital role in medical education, specialist training, and healthcare delivery throughout the country.",
+                    "As a teaching hospital, it provides participants with a unique opportunity to observe a wide variety of medical specialties and healthcare environments while gaining insight into the operations of a major public healthcare institution."
                 ]
             },
             {
-                title: "Other Things to Consider as a Medical Volunteer in Sri Lanka",
+                title: "Who Can Join?",
                 paragraphs: [
-                    "**Return Airport Transfer** - Your return airport transfer is not included in the Program Fee. However, our local team can assist with arranging onward transport to the airport or another destination. Making arrangements once you’re in-country allows for flexibility, especially as plans can often change, and some participants may share similar flight schedules. Costs will vary depending on your chosen method of transport and destination, and they can often be split if you’re travelling with fellow trip participants. We strongly advise against using public transport or ridesharing apps for the return journey to the airport due to safety risks and potential inconvenience.",
-                    "**Top PMGY Destination** - Sri Lanka is frequently rated as the best PMGY volunteer destination, thanks to the exceptional local support, affordability, and overall experience in Ambalangoda. The Sri Lankan team goes above and beyond to ensure every volunteer has an incredible stay, and this dedication is reflected in glowing feedback from participants. For first-time travellers looking for additional support, well-organised weekend trips, and meaningful community projects in a vibrant and exotic location, Sri Lanka is an ideal choice.",
-                    "**Project Flexibility** - Since the medical project runs during the morning, you have the option to join teaching projects in the afternoon. A minimum commitment of one week per project is required, and arrangements can be made once you are in Sri Lanka. There are no extra costs, and your additional support across community-based projects is always welcomed.",
-                    "**Internship-Style Experience** - Participants should note that the medical volunteer program focuses on observation and learning. Hands-on involvement is not permitted, regardless of medical training. This internship-style program is designed to offer a unique learning exchange with local healthcare professionals, allowing you to develop a deeper understanding of Sri Lanka’s healthcare system. If you’re seeking more immersive opportunities, we recommend exploring other destinations.",
-                    "**Government Hospital Opportunities** - University students studying a health-related degree can enjoy placements at both private and government hospitals, provided we receive the necessary paperwork at least three weeks before your program start date. High school leavers and applicants without a health-related background will be placed at a private hospital but will still enjoy engaging clinic and workshop experiences, including an introduction to Ayurvedic medicine, which is a highlight for all medical volunteers in Sri Lanka.",
-                    "**Trained Professionals** – This program is not designed for trained professionals looking to practise medicine overseas. It is specifically tailored for school leavers and medical students who wish to learn about healthcare systems abroad and gain experience in a supportive environment.",
-                    "**Photos** – Please note that photography is not allowed in clinical areas. Patients are often in vulnerable situations, and taking photos can compromise their privacy and dignity. Even if you witness something memorable or medically interesting, capturing images is not appropriate. You are welcome to take general photos outside of clinical settings, but always follow local guidance and respect the privacy of staff, patients, and the wider community.",
-                    "**Group Medical Trips** - PMGY offers affordable group trips to Sri Lanka for academic institutions and societies worldwide. With free travel for group leaders, these 15-day trips are fully structured and inclusive, led by experienced PMGY staff. Planning large group trips can be challenging, involving logistics such as flights, insurance, and pre-trip preparation. PMGY specialises in organising seamless group expeditions, offering trusted medical placements and full-board accommodation for students. Participants benefit from a rich, immersive experience that includes insight into healthcare challenges, exposure to local practices, and valuable learning opportunities.",
-                    "**Unforeseen Circumstances** - Sri Lanka’s healthcare facilities reflect its status as a developing country. While participating in the medical program, unforeseen factors such as doctor strikes or consultant absences may occasionally disrupt hospital placements. In such cases, PMGY will arrange alternative volunteer work in Sri Lanka, usually within community programs, for the affected days."
+                    "This program is suitable for: Medical Students, Pre-Medical Students, Nursing Students, Qualified Nurses, Medical Interns, Public Health Students, Allied Health Students, Qualified Doctors, Healthcare Professionals, and Individuals considering a future career in healthcare."
                 ]
             },
             {
-                title: "Weekend Trip Opportunities",
+                title: "Important Notice – Observational Placement Only",
                 paragraphs: [
-                    "• Cultural Triangle & Safari – Suggested Budget 285 USD",
-                    "• Hill Country & Safari – Suggested Budget 285 USD",
-                    "• Maldives – Suggested Budget 750 USD",
-                    "• South Coast Beaches – Suggested Budget 105 USD",
-                    "• Arugam Bay – Suggested Budget 150 USD"
+                    "The Give Back Journey Medical Program is strictly an observational and educational experience.",
+                    "**Participants Will NOT Be Permitted To:** Diagnose patients, Administer medication, Conduct medical examinations, Assist in surgeries, Carry out medical procedures, Provide medical advice, Participate in direct patient care, or Undertake any hands-on clinical activities.",
+                    "These restrictions apply to all participants regardless of their medical qualifications, professional status, or level of training.",
+                    "The program fully complies with: Sri Lankan healthcare regulations, Hospital policies and procedures, Patient confidentiality requirements, Ethical medical standards, and Government healthcare regulations.",
+                    "Participants are expected to observe, learn, ask questions when appropriate, and gain a deeper understanding of healthcare delivery in Sri Lanka."
+                ]
+            },
+            {
+                title: "Special Opportunities for Qualified Medical Professionals",
+                paragraphs: [
+                    "Qualified doctors, who wish to contribute their knowledge and skills to local communities may have opportunities to participate in community health outreach initiatives.",
+                    "These activities are separate from hospital placements and may include: Community health awareness programs, School health education sessions, Community wellness workshops, and Preventive healthcare initiatives.",
+                    "Healthcare professionals interested in creating a customized community outreach experience are encouraged to contact the Give Back Journey Team before arrival.",
+                    "Our team can work with participants to design meaningful programs that allow them to share their knowledge and contribute positively to local communities while fully respecting Sri Lankan healthcare regulations."
+                ]
+            },
+            {
+                title: "Exposure to Sri Lanka's Healthcare System",
+                paragraphs: [
+                    "Participants will gain valuable insight into how a large government teaching hospital operates in a developing country setting.",
+                    "The program provides exposure to: Public healthcare delivery, Hospital administration and operations, Patient management systems, Clinical workflows, Medical education and training, Specialist and multidisciplinary care, Community healthcare challenges, and Resource management within public hospitals.",
+                    "This experience allows participants to compare healthcare systems and gain a broader understanding of global medical practices."
+                ]
+            },
+            {
+                title: "Department Preferences & Hospital Placement",
+                paragraphs: [
+                    "Participants may request up to three department preferences when applying for the program. Preferences should be listed as: 1st Preference – Most preferred department, 2nd Preference – Alternative choice, 3rd Preference – Alternative choice.",
+                    "While every effort will be made to accommodate participant preferences, final department allocation is determined solely by Kandy Teaching Hospital.",
+                    "Placements are allocated based on: Department availability, Hospital requirements, Educational background, Professional qualifications, Placement duration, Current hospital regulations, and Capacity limitations.",
+                    "Please note that department preferences cannot be guaranteed."
+                ]
+            },
+            {
+                title: "Available Departments",
+                paragraphs: [
+                    "Subject to hospital approval and availability, participants may be allocated to departments including:",
+                    "**Medical Specialties:** General Medicine, Cardiology, Neurology, Dermatology, Endocrinology, Gastroenterology, Nephrology, Respiratory Medicine, Rheumatology, Infectious Diseases, Geriatric Medicine.",
+                    "**Surgical Specialties:** General Surgery, Cardiothoracic Surgery, Neurosurgery, Orthopaedic Surgery, Plastic Surgery, Reconstructive Surgery, Vascular Surgery, Urology, Paediatric Surgery.",
+                    "**Women's Health & Child Care:** Obstetrics, Gynaecology, Labour Ward, Maternity Services, Neonatal Care Unit, Paediatrics, Paediatric Intensive Care Unit (PICU).",
+                    "**Emergency & Critical Care:** Emergency Treatment Unit (ETU), Intensive Care Unit (ICU), High Dependency Unit (HDU), Trauma Care Services.",
+                    "**Cancer & Specialized Care:** Oncology, Radiotherapy, Palliative Care.",
+                    "**Diagnostic & Support Services:** Radiology, MRI Services, CT Scan Unit, Ultrasound Services, Pathology, Laboratory Services, Blood Bank, Pharmacy, Physiotherapy, Occupational Therapy.",
+                    "**Mental Health Services:** Psychiatry, Mental Health Clinics, Community Mental Health Services.",
+                    "**Public Health Services:** Outpatient Department (OPD), Preventive Health Services, Community Health Clinics, Health Education Programs.",
+                    "Department availability may vary throughout the year according to hospital operations."
+                ]
+            },
+            {
+                title: "Typical Placement Schedule",
+                paragraphs: [
+                    "Hospital placements generally operate Monday to Friday.",
+                    "**Morning Session:** 08:30 AM – 12:30 PM",
+                    "Additional observation opportunities may occasionally be available depending on the department and hospital schedule. Schedules are determined by the hospital and may change without prior notice."
+                ]
+            },
+            {
+                title: "Required Documents",
+                paragraphs: [
+                    "As Kandy Teaching Hospital is a government teaching hospital, participants must submit all required documentation before their application can be reviewed.",
+                    "Document requirements may vary depending on educational background and department preference and you are advised to contact the Give Back Journey Team."
+                ]
+            },
+            {
+                title: "Application & Approval Process",
+                paragraphs: [
+                    "Before being accepted into the program, all participants must contact the Give Back Journey Team. The team will provide detailed guidance regarding: Required documents, Application procedures, Department preferences, Hospital requirements, and Program expectations.",
+                    "Once all required documentation has been received, the Give Back Journey Team will submit the application to Kandy Teaching Hospital for review.",
+                    "**Important:** Placement cannot be confirmed until official approval has been received from the hospital.",
+                    "The hospital reserves the right to: Approve or decline applications, Request additional documents, Change department allocations, Modify schedules, and Restrict access to specific departments.",
+                    "Final placement decisions rest solely with Kandy Teaching Hospital."
+                ]
+            },
+            {
+                title: "Dress Code",
+                paragraphs: [
+                    "All participants are required to maintain a professional appearance while attending their hospital placement.",
+                    "The following dress code must be followed at all times: Plain Dark Blue Scrubs, Fully Covered Shoes (closed-toe footwear), Neat and professional appearance, Minimal jewellery, and Hospital identification badge (if provided).",
+                    "Participants who do not comply with the dress code may be refused entry to the hospital by the hospital administration."
+                ]
+            },
+            {
+                title: "Recommended Items to Bring",
+                paragraphs: [
+                    "To make the most of your placement experience, participants are encouraged to bring: Notebook, Pens, Stethoscope (optional but recommended for medical students and doctors), Reusable Water Bottle, Small Hand Sanitizer, Watch with a second hand (optional), and Personal Study Materials (if desired).",
+                    "A notebook is highly recommended as participants will be exposed to a variety of medical cases, healthcare systems, and learning opportunities throughout their placement.",
+                    "Please note that personal medical equipment may not be used on patients under any circumstances, as this is an observational placement only."
+                ]
+            },
+            {
+                title: "Photography & Patient Privacy",
+                paragraphs: [
+                    "Photography and video recording are strictly prohibited within clinical areas unless specific permission has been granted by the hospital administration.",
+                    "Participants must respect: Patient privacy, Patient dignity, Hospital regulations, and Healthcare confidentiality standards.",
+                    "Failure to comply with these regulations may result in immediate removal from the program."
+                ]
+            },
+            {
+                title: "Why Join Give Back Journey?",
+                paragraphs: [
+                    "The Give Back Journey Medical Observation & Community Health Program combines healthcare observation, professional development, cultural immersion, and meaningful community engagement.",
+                    "Participants gain valuable exposure to one of Sri Lanka's leading teaching hospitals while developing a broader understanding of global healthcare systems and medical practice.",
+                    "Whether you are preparing for a future career in healthcare, currently studying medicine or nursing, or already working as a healthcare professional, this program offers a unique opportunity to gain international exposure while experiencing the culture, hospitality, and healthcare environment of Sri Lanka.",
+                    "Observe. Learn. Connect. Give Back.",
+                    "Give Back Journey – Creating Meaningful Experiences Through Learning and Community Impact."
                 ]
             }
         ],
@@ -647,7 +738,7 @@ export const volunteerPrograms = [
                 { label: "People Per Room", value: "Up To 12 (Shared) or 1 (Comfort)" },
                 { label: "Single Sex Rooms", value: "Yes" },
                 { label: "Western Bathroom Facilities", value: "Yes" },
-                { label: "Airport Transfer", value: "2 Hours" },
+                { label: "Airport Transfer", value: "3 Hours (Kandy) / 20 Mins (Negombo) / 4 Hours (Galle)" },
                 { label: "Nearest ATM & Shops", value: "10 Minute Drive" }
             ]
         },

@@ -750,7 +750,7 @@ const VolunteerProgramDetails = () => {
                                 <div key={idx} style={{ 
                                     padding: '30px 35px', 
                                     borderRadius: '24px', 
-                                    background: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${stayEatBg}) center/cover no-repeat`, 
+                                    background: '#ffffff', 
                                     border: '2px solid rgba(0,0,0,0.03)',
                                     transition: 'all 0.3s ease',
                                     display: 'flex',
@@ -850,7 +850,7 @@ const VolunteerProgramDetails = () => {
                                     }}>
                                         <i className="fa-solid fa-circle-info" style={{ color: 'var(--primary-green)', fontSize: '0.9rem', marginTop: '3px', flexShrink: 0 }}></i>
                                         <span style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', fontWeight: 500, lineHeight: 1.65 }}>
-                                            If your flight arrivals do <strong style={{ color: '#fff' }}>not match this Sunday window</strong>, or you prefer to travel independently, you will need to arrange your own taxi. We recommend booking a reputable metered taxi at the airport arrivals hall.
+                                            If your flight arrivals do <strong style={{ color: '#fff' }}>not match this Sunday window</strong>, or you prefer to travel independently, you will need to arrange your own taxi.
                                         </span>
                                     </div>
                                     <div style={{
@@ -886,21 +886,21 @@ const VolunteerProgramDetails = () => {
                         <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '35px' }}>{program.mealsInfo.description}</p>
                         
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(255, 249, 230, 0.91), rgba(255, 249, 230, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(255, 249, 230, 0.91)', border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <i className="bi bi-sunrise-fill" style={{ fontSize: '1.8rem', color: '#664d00' }}></i>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#664d00', margin: 0 }}>Breakfast</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#806000', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.breakfast}</p>
                             </div>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(230, 244, 234, 0.91), rgba(230, 244, 234, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #a3d9b1', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(230, 244, 234, 0.91)', border: '1px solid #a3d9b1', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <i className="bi bi-sun-fill" style={{ fontSize: '1.8rem', color: '#1a7332' }}></i>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1a7332', margin: 0 }}>Lunch</h3>
                                 </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#114a20', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.lunch}</p>
                             </div>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: `linear-gradient(rgba(250, 233, 233, 0.91), rgba(250, 233, 233, 0.91)), url(${stayEatBg}) center/cover no-repeat`, border: '1px solid #f0b4b4', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(250, 233, 233, 0.91)', border: '1px solid #f0b4b4', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <i className="bi bi-moon-stars-fill" style={{ fontSize: '1.8rem', color: '#c52828' }}></i>
                                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#c52828', margin: 0 }}>Dinner</h3>
