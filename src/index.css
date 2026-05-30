@@ -715,6 +715,12 @@ h1, h2, h3, .logo-text {
     background: var(--pitch-black);
 }
 
+@media (min-width: 992px) {
+    .hero {
+        height: 88vh;
+    }
+}
+
 .hero-video-container {
     position: absolute;
     top: 0;
