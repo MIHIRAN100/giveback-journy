@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Moment1 from '../assets/moments/traveler_moment_1_1778416676983.png';
 import TravelerVideo3 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.09.28.mp4';
 import TravelerVideo4 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.17.18.mp4';
+import TravelerVideo5 from '../assets/feedback clip/WhatsApp Video 2026-05-30 at 11.02.50.mp4';
 import Volunteer1 from '../assets/volunteer_1.png';
 import Volunteer2 from '../assets/volunteer_2.png';
 import Volunteer3 from '../assets/volunteer_3.png';
@@ -86,7 +87,7 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                         muted={isMuted}
                         loop 
                         playsInline
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 90%' }}
                     />
                 )
             ) : (
@@ -151,10 +152,11 @@ const TravelerMoments = () => {
         },
         {
             id: 3,
-            user: "Chloe",
+            user: "Nick",
             avatar: "fa-solid fa-chalkboard-user",
             image: Volunteer2,
-            title: "Teaching in Galle",
+            video: TravelerVideo5,
+            title: "Teaching in Kandy",
             overlayTitle: "TEACHING WITH HEART",
         },
         {
