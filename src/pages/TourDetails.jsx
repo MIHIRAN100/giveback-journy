@@ -608,11 +608,13 @@ const TourDetails = () => {
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    background: #ffffff;
+                    background: rgba(255, 255, 255, 0.75);
+                    backdrop-filter: blur(30px) saturate(200%);
+                    -webkit-backdrop-filter: blur(30px) saturate(200%);
                     padding: 15px 5%;
-                    box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+                    box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
                     z-index: 10000;
-                    border-top: 1px solid #eee;
+                    border-top: 1px solid rgba(255, 255, 255, 0.4);
                     width: 100%;
                 }
                 .sticky-bar-content {
@@ -950,11 +952,13 @@ const TourDetails = () => {
                         bottom: 0 !important;
                         left: 0 !important;
                         right: 0 !important;
-                        background: #ffffff !important;
+                        background: rgba(255, 255, 255, 0.75) !important;
+                        backdrop-filter: blur(30px) saturate(200%) !important;
+                        -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
                         padding: 15px 5% !important;
-                        box-shadow: 0 -10px 40px rgba(0,0,0,0.1) !important;
+                        box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6) !important;
                         z-index: 10000 !important;
-                        border-top: 1px solid #eee !important;
+                        border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
                         width: 100% !important;
                         border-radius: 0 !important;
                         max-width: none !important;

@@ -63,18 +63,6 @@ const pricingPrograms = [
         color: "#f6ad55"
     },
     {
-        name: "Sri Lanka Dog Volunteers",
-        price: 200,
-        duration: "1-24 Weeks",
-        location: "Galle District",
-        housing: "Shared or Private",
-        meals: "3 Daily",
-        pickup: "Included",
-        support: "24/7 Support",
-        id: "sri-lanka-dog-rescue",
-        color: "#ffd93d"
-    },
-    {
         name: "Body & Mind Wellness Week",
         price: 200,
         duration: "1-2 Weeks",
@@ -136,11 +124,6 @@ export const programWeeklyRates = {
         extraWeekPrice: 50
     },
     "village-school-renovation": {
-        baseWeeks: 1,
-        basePrice: 200,
-        extraWeekPrice: 50
-    },
-    "sri-lanka-dog-rescue": {
         baseWeeks: 1,
         basePrice: 200,
         extraWeekPrice: 50
@@ -881,6 +864,34 @@ const VolunteerPage = () => {
                     background: #f0fdf4;
                     padding: 6px 14px;
                     border-radius: 100px;
+                }
+
+                @media (max-width: 768px) {
+                    .modern-dest-grid {
+                        grid-template-columns: 1fr;
+                        gap: 20px;
+                    }
+                    .modern-dest-img-wrapper {
+                        height: 200px;
+                    }
+                    .modern-dest-content {
+                        padding: 20px;
+                    }
+                    .modern-dest-title {
+                        font-size: 1.4rem;
+                        margin-bottom: 8px;
+                    }
+                    .modern-dest-text {
+                        font-size: 0.95rem;
+                        margin-bottom: 16px;
+                    }
+                    .modern-dest-tags {
+                        padding-top: 16px;
+                    }
+                    .modern-dest-tag {
+                        padding: 4px 10px;
+                        font-size: 0.75rem;
+                    }
                 }
                 
                 .modern-dest-header {

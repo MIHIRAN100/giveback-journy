@@ -109,7 +109,6 @@ const Navbar = () => {
                         { name: 'Teaching Volunteer', path: '/volunteer-program/sri-lanka-childcare' },
                         { name: 'Special Needs Support', path: '/volunteer-program/special-needs-support' },
                         { name: 'Construction & Renovation', path: '/volunteer-program/village-school-renovation' },
-                        { name: 'Dog Rescue & Welfare', path: '/volunteer-program/sri-lanka-dog-rescue' },
                         { name: 'Medical Volunteer', path: '/volunteer-program/medical-volunteer' }
                     ]
                 },
@@ -248,7 +247,7 @@ const Navbar = () => {
                             {compareList.length > 0 && <span className="compare-badge">{compareList.length}</span>}
                         </Link>
                         <Link to="/packages" className="btn-modern btn-solid-green mobile-book-btn">
-                            Book
+                            Apply
                         </Link>
                         <div className="mobile-menu-btn" onClick={toggleMenu}>
                             <i className={isMenuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>

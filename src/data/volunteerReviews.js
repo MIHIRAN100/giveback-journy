@@ -128,48 +128,6 @@ export const volunteerReviews = {
         }
     ],
 
-    "sri-lanka-dog-rescue": [
-        {
-            name: "Charlotte Hughes",
-            country: "🇬🇧 United Kingdom",
-            date: "February 2025",
-            rating: 5,
-            title: "For every animal lover — do this",
-            review: "The dog rescue program was heartbreaking and heartwarming in equal measure. You see the reality of street dog life in Sri Lanka, but you also see the incredible work being done to help. I assisted with feeding rounds, wound care, and socialisation — and every single day felt meaningful."
-        },
-        {
-            name: "Ethan Brooks",
-            country: "🇺🇸 United States",
-            date: "March 2025",
-            rating: 5,
-            title: "Changed how I see animal welfare globally",
-            review: "I'd volunteered at shelters back home but nothing prepared me for the scale here. The local team's dedication is extraordinary — they work tirelessly with limited resources. Giveback Journey connects you into something real and ongoing, not just a photo op. Genuinely impactful work."
-        },
-        {
-            name: "Annika Lund",
-            country: "🇸🇪 Sweden",
-            date: "January 2025",
-            rating: 5,
-            title: "Emotional, exhausting, and absolutely worth it",
-            review: "This isn't for the faint-hearted — you will see things that are difficult. But you'll also see recovery, resilience, and love from animals that have every reason not to trust humans. The bonds I formed with the dogs in just two weeks were remarkable. I'm already planning my return."
-        },
-        {
-            name: "Marco Rossi",
-            country: "🇮🇹 Italy",
-            date: "April 2025",
-            rating: 5,
-            title: "A truly grassroots rescue effort",
-            review: "What sets this program apart is that the rescue work is real and community-driven. We weren't just visitors — we were part of the daily operation. I helped with feeding, basic veterinary assistance, and community education. Giveback Journey's coordination was seamless and the local partners were wonderful."
-        },
-        {
-            name: "Zoe Petit",
-            country: "🇫🇷 France",
-            date: "February 2025",
-            rating: 5,
-            title: "My most impactful trip ever",
-            review: "As a vet nurse, this placement was a perfect fit. I could apply real skills while learning from the local veterinary team. The dogs we worked with were so resilient. Watching a dog that arrived terrified and injured become playful and trusting over the weeks — there's nothing better than that."
-        }
-    ],
 
     "village-school-renovation": [
         {

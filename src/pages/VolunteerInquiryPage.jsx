@@ -255,7 +255,6 @@ const VolunteerInquiryPage = () => {
         'Teaching Volunteer Program': 'sri-lanka-childcare',
         'Special Needs Support': 'special-needs-support',
         'Construction & Renovation': 'village-school-renovation',
-        'Sri Lanka Dog Volunteers': 'sri-lanka-dog-rescue',
         'Medical Volunteer': 'medical-volunteer'
     };
 
@@ -434,7 +433,6 @@ const VolunteerInquiryPage = () => {
                                             { id: 'Breathe Sri Lanka', label: 'Breathe Sri Lanka', icon: 'fa-solid fa-earth-asia', desc: 'Cultural immersion journey — 27 days', special: true },
                                             { id: 'Teaching Volunteer Program', label: 'Teaching Volunteer', icon: 'fa-solid fa-chalkboard-user', desc: 'Teach English in rural schools & temples' },
                                             { id: 'Special Needs Support', label: 'Special Needs Support', icon: 'fa-solid fa-hands-holding-child', desc: 'Care & support for children with special needs' },
-                                            { id: 'Sri Lanka Dog Volunteers', label: 'Dog Rescue', icon: 'fa-solid fa-paw', desc: 'Rescue & rehabilitation of street dogs' },
                                             { id: 'Construction & Renovation', label: 'Construction & Renovation', icon: 'fa-solid fa-hammer', desc: 'Build & renovate schools and community spaces' },
                                             { id: 'Medical Volunteer', label: 'Medical Volunteer', icon: 'fa-solid fa-kit-medical', desc: 'Healthcare placements in rural clinics' },
                                         ];

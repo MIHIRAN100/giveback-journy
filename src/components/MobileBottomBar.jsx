@@ -6,11 +6,11 @@ const MobileBottomBar = () => {
     const currentPath = location.pathname;
 
     const navItems = [
-        { path: '/',                   icon: 'fa-solid fa-house',          label: 'Home' },
-        { path: '/packages',           icon: 'fa-solid fa-compass',        label: 'Packages' },
-        { path: '/volunteer',          icon: 'fa-solid fa-hand-holding-heart', label: 'Impact' },
-        { path: '/sri-lanka',          icon: 'fa-solid fa-landmark',       label: 'Heritage' },
-        { path: '/contact',            icon: 'fa-solid fa-comment-dots',   label: 'Contact' },
+        { path: '/',                   icon: 'bi bi-house',          label: 'Home' },
+        { path: '/packages',           icon: 'bi bi-suitcase-lg',    label: 'Holiday Tours' },
+        { path: '/volunteer',          icon: 'bi bi-heart',          label: 'Volunteer' },
+        { path: '/sri-lanka',          icon: 'bi bi-bank',           label: 'Heritage' },
+        { path: '/contact',            icon: 'bi bi-chat-text',      label: 'Contact' },
     ];
 
     return (

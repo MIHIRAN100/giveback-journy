@@ -7,7 +7,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
 
     const messages = [
         "1 message received",
-        "Hi! Need help?",
+        "Hi! I'm Danushka, how can I help you?",
         "Ready for adventure?",
         "Plan your trip now!",
         "Have any questions?",
@@ -16,8 +16,19 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
 
     const [msgIndex, setMsgIndex] = useState(0);
     const [isMsgFading, setIsMsgFading] = useState(false);
+    const [showNotification, setShowNotification] = useState(false);
 
     React.useEffect(() => {
+        // Pop up the notification badge and sound after 2 seconds
+        const popupTimer = setTimeout(() => {
+            setShowNotification(true);
+            try {
+                // Short, unobtrusive bubble pop sound
+                const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3');
+                audio.play().catch(err => console.log('Audio autoplay blocked by browser', err));
+            } catch (e) {}
+        }, 2000);
+
         const interval = setInterval(() => {
             setIsMsgFading(true);
             setTimeout(() => {
@@ -25,8 +36,12 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                 setIsMsgFading(false);
             }, 600); // Wait for fade out
         }, 5000); // Change every 5 seconds
-        return () => clearInterval(interval);
-    }, []);
+        
+        return () => {
+            clearTimeout(popupTimer);
+            clearInterval(interval);
+        };
+    }, [messages.length]);
 
     return (
         <div className="chat-container" style={{ bottom: (cookieVisible || isTourDetails) ? '160px' : '30px' }}>
@@ -75,7 +90,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
             </div>
 
             {/* Hi greeting bubble */}
-            {!isOpen && (
+            {!isOpen && showNotification && (
                 <div 
                     className="hi-bubble" 
                     onClick={() => setIsOpen(true)}
@@ -92,7 +107,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
             {/* Floating WhatsApp Toggle Button */}
             <button className="chat-toggle" onClick={() => setIsOpen(!isOpen)} title="Chat with us" style={{ position: 'relative' }}>
                 {isOpen ? <i className="fa-solid fa-xmark"></i> : <i className="fa-brands fa-whatsapp" style={{fontSize: '1.8rem'}}></i>}
-                {!isOpen && (
+                {!isOpen && showNotification && (
                     <span style={{
                         position: 'absolute',
                         top: '-5px',
@@ -109,7 +124,8 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                         justifyContent: 'center',
                         boxShadow: '0 4px 10px rgba(239, 68, 68, 0.4)',
                         border: 'none',
-                        zIndex: 10
+                        zIndex: 10,
+                        animation: 'profFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards'
                     }}>
                         1
                     </span>

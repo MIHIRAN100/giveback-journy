@@ -1128,27 +1128,35 @@ const VolunteerProgramDetails = () => {
                     display: inline-block;
                 }
                 .floating-bottom-bar {
+                    display: block;
                     position: fixed;
-                    bottom: 20px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: calc(100% - 60px);
-                    max-width: 580px;
-                    background: rgba(255, 255, 255, 0.88);
-                    backdrop-filter: blur(24px) saturate(180%);
-                    border: 1px solid rgba(0,0,0,0.06);
-                    border-radius: 50px;
-                    padding: 14px 16px 14px 30px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 1000;
-                    box-shadow: 0 12px 32px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.03);
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: rgba(255, 255, 255, 0.75);
+                    backdrop-filter: blur(30px) saturate(200%);
+                    -webkit-backdrop-filter: blur(30px) saturate(200%);
+                    padding: 15px 5%;
+                    box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+                    z-index: 10000;
+                    border-top: 1px solid rgba(255, 255, 255, 0.4);
+                    width: 100%;
+                    max-width: none;
+                    border-radius: 0;
                     box-sizing: border-box;
-                    animation: volunteerFloat 4s ease-in-out infinite;
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .floating-bottom-bar > div {
+                    max-width: 1200px;
+                    margin: 0 auto;
                 }
                 .mobile-btn-text {
                     display: none;
+                }
+                
+                /* Ensure Chat Bot is not covered by Sticky Bar */
+                .chat-container {
+                    bottom: 100px !important;
                 }
                 .desktop-btn-text {
                     display: inline;
@@ -1194,6 +1202,17 @@ const VolunteerProgramDetails = () => {
                     background: white !important;
                     box-shadow: 0 15px 35px rgba(0,0,0,0.03) !important;
                     border-color: rgba(0,0,0,0.04) !important;
+                }
+                .btn-apple-solid.bottom-bar-btn {
+                    background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%) !important;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.12) !important;
+                    border: 1px solid rgba(0,0,0,0.9) !important;
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                }
+                .btn-apple-solid.bottom-bar-btn:hover {
+                    background: linear-gradient(135deg, #3c3c3e 0%, #1c1c1e 100%) !important;
+                    transform: translateY(-2px) scale(1.02) !important;
+                    box-shadow: 0 14px 32px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.2) !important;
                 }
                 .btn-apple-solid:hover {
                     background: #000000 !important;
@@ -1282,10 +1301,21 @@ const VolunteerProgramDetails = () => {
                         padding: 30px 0 !important;
                     }
                     .floating-bottom-bar {
-                        padding: 10px 18px !important;
-                        width: calc(100% - 30px) !important;
-                        bottom: 15px !important;
+                        padding: 12px 20px !important;
+                        margin: 0 !important;
+                        width: 100vw !important;
+                        max-width: 100vw !important;
+                        left: 50% !important;
+                        right: auto !important;
+                        transform: translateX(-50%) !important;
+                        bottom: 0 !important;
+                        border-radius: 30px 30px 0 0 !important;
+                        border-left: none !important;
+                        border-right: none !important;
+                        border-bottom: none !important;
+                        border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
                         justify-content: space-between !important;
+                        box-sizing: border-box !important;
                     }
                     .bottom-price-info {
                         display: flex !important;
