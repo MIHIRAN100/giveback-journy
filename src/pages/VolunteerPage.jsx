@@ -887,6 +887,30 @@ const VolunteerPage = () => {
                     text-align: center;
                     margin-bottom: 48px;
                 }
+
+                .scrolling-activities-wrapper {
+                    overflow: hidden;
+                    height: 250px;
+                    position: relative;
+                    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+                    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+                }
+
+                @keyframes verticalScroll {
+                    0% { transform: translateY(0); }
+                    100% { transform: translateY(-50%); }
+                }
+
+                .scrolling-activities-content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    animation: verticalScroll 30s linear infinite;
+                }
+
+                .scrolling-activities-wrapper:hover .scrolling-activities-content {
+                    animation-play-state: paused;
+                }
                 `}
             </style>
 
@@ -1097,6 +1121,48 @@ const VolunteerPage = () => {
                                     ))}
                                 </div>
                             </div>
+                            
+                            {/* Recent Activity Card */}
+                            <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Activity</h4>
+                                <div className="scrolling-activities-wrapper">
+                                    <div className="scrolling-activities-content">
+                                        {[
+                                            { time: "May 26", text: "Matale School classroom painting finished by Kandy team.", icon: "fa-paint-roller" },
+                                            { time: "May 18", text: "10 new handmade bookshelves installed in village library.", icon: "fa-book-open" },
+                                            { time: "May 12", text: "Completed structural roofing repairs on community center hall.", icon: "fa-hammer" },
+                                            { time: "May 05", text: "Renovation work started on library room at local monastery.", icon: "fa-building" },
+                                            { time: "Apr 29", text: "Painted 3 new murals at the Kandy community hall.", icon: "fa-palette" },
+                                            { time: "Apr 20", text: "Fixed broken desks and chairs for the rural school.", icon: "fa-chair" },
+                                            { time: "Apr 14", text: "Installed 5 new water filters in the village center.", icon: "fa-faucet-drip" },
+                                            { time: "Apr 08", text: "Cleared the temple gardens and planted 20 new trees.", icon: "fa-tree" },
+                                            { time: "Mar 30", text: "Repaired the playground swings at the local preschool.", icon: "fa-child-reaching" },
+                                            { time: "Mar 22", text: "Built a new community gathering pavilion from recycled wood.", icon: "fa-house" },
+                                            // Duplicate for seamless loop
+                                            { time: "May 26", text: "Matale School classroom painting finished by Kandy team.", icon: "fa-paint-roller" },
+                                            { time: "May 18", text: "10 new handmade bookshelves installed in village library.", icon: "fa-book-open" },
+                                            { time: "May 12", text: "Completed structural roofing repairs on community center hall.", icon: "fa-hammer" },
+                                            { time: "May 05", text: "Renovation work started on library room at local monastery.", icon: "fa-building" },
+                                            { time: "Apr 29", text: "Painted 3 new murals at the Kandy community hall.", icon: "fa-palette" },
+                                            { time: "Apr 20", text: "Fixed broken desks and chairs for the rural school.", icon: "fa-chair" },
+                                            { time: "Apr 14", text: "Installed 5 new water filters in the village center.", icon: "fa-faucet-drip" },
+                                            { time: "Apr 08", text: "Cleared the temple gardens and planted 20 new trees.", icon: "fa-tree" },
+                                            { time: "Mar 30", text: "Repaired the playground swings at the local preschool.", icon: "fa-child-reaching" },
+                                            { time: "Mar 22", text: "Built a new community gathering pavilion from recycled wood.", icon: "fa-house" }
+                                        ].map((act, idx) => (
+                                            <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                                                <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: '#f0fdf4', color: 'var(--primary-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 }}>
+                                                    <i className={`fa-solid ${act.icon}`}></i>
+                                                </div>
+                                                <div style={{ textAlign: 'left' }}>
+                                                    <div style={{ fontSize: '0.78rem', color: '#1e293b', lineHeight: 1.4, fontWeight: 700 }}>{act.text}</div>
+                                                    <span style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 700 }}>{act.time}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1188,6 +1254,48 @@ const VolunteerPage = () => {
                                             </div>
                                         </div>
                                     ))}
+                                </div>
+                            </div>
+
+                            {/* Recent Activity Card */}
+                            <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Activity</h4>
+                                <div className="scrolling-activities-wrapper">
+                                    <div className="scrolling-activities-content">
+                                        {[
+                                            { time: "May 28", text: "New conversational English curriculum introduced in Kandy preschools.", icon: "fa-book" },
+                                            { time: "May 20", text: "Art & music workshop materials distributed to 5 rural centers.", icon: "fa-music" },
+                                            { time: "May 14", text: "Special needs center in Kandy completed 20 sensory therapy sessions.", icon: "fa-hands-holding-child" },
+                                            { time: "May 08", text: "Teacher training completed for local village volunteers.", icon: "fa-chalkboard-user" },
+                                            { time: "Apr 30", text: "Hosted a community sports day for 150 local children.", icon: "fa-volleyball" },
+                                            { time: "Apr 22", text: "Delivered 200 new English storybooks to the Galle library.", icon: "fa-book-open-reader" },
+                                            { time: "Apr 15", text: "Conducted a successful hygiene and health workshop for kids.", icon: "fa-soap" },
+                                            { time: "Apr 10", text: "Celebrated the traditional New Year with cultural games and songs.", icon: "fa-masks-theater" },
+                                            { time: "Apr 02", text: "Initiated an after-school tutoring program for older students.", icon: "fa-user-graduate" },
+                                            { time: "Mar 25", text: "Organized a field trip to the local botanical gardens for 40 students.", icon: "fa-bus" },
+                                            // Duplicate for seamless loop
+                                            { time: "May 28", text: "New conversational English curriculum introduced in Kandy preschools.", icon: "fa-book" },
+                                            { time: "May 20", text: "Art & music workshop materials distributed to 5 rural centers.", icon: "fa-music" },
+                                            { time: "May 14", text: "Special needs center in Kandy completed 20 sensory therapy sessions.", icon: "fa-hands-holding-child" },
+                                            { time: "May 08", text: "Teacher training completed for local village volunteers.", icon: "fa-chalkboard-user" },
+                                            { time: "Apr 30", text: "Hosted a community sports day for 150 local children.", icon: "fa-volleyball" },
+                                            { time: "Apr 22", text: "Delivered 200 new English storybooks to the Galle library.", icon: "fa-book-open-reader" },
+                                            { time: "Apr 15", text: "Conducted a successful hygiene and health workshop for kids.", icon: "fa-soap" },
+                                            { time: "Apr 10", text: "Celebrated the traditional New Year with cultural games and songs.", icon: "fa-masks-theater" },
+                                            { time: "Apr 02", text: "Initiated an after-school tutoring program for older students.", icon: "fa-user-graduate" },
+                                            { time: "Mar 25", text: "Organized a field trip to the local botanical gardens for 40 students.", icon: "fa-bus" }
+                                        ].map((act, idx) => (
+                                            <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                                                <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: '#f0fdf4', color: 'var(--primary-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 }}>
+                                                    <i className={`fa-solid ${act.icon}`}></i>
+                                                </div>
+                                                <div style={{ textAlign: 'left' }}>
+                                                    <div style={{ fontSize: '0.78rem', color: '#1e293b', lineHeight: 1.4, fontWeight: 700 }}>{act.text}</div>
+                                                    <span style={{ fontSize: '0.68rem', color: '#94a3b8', fontWeight: 700 }}>{act.time}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
