@@ -8,10 +8,10 @@ import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import { useCurrency } from '../context/CurrencyContext';
 
 // Section assets
-import constructionImg from '../assets/teaching volunteers/IMG_2991.jpg';
+import constructionImg from '../assets/IMG-20241111-WA0002.jpg';
 import educationImg from '../assets/IMG_5894.JPG.jpeg';
-import kandyImg from '../assets/IMG_5896.JPG.jpeg';
-import galleImg from '../assets/teaching volunteers/IMG_7081.JPG';
+import kandyImg from '../assets/kandy_detailed_map.png';
+import galleImg from '../assets/galle_detailed_map.png';
 
 const pricingPrograms = [
     {
@@ -198,6 +198,7 @@ const VolunteerPage = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFading, setIsFading] = useState(false);
+    const [zoomedMap, setZoomedMap] = useState(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -993,8 +994,8 @@ const VolunteerPage = () => {
                                     <i className="bi bi-shield-check"></i>
                                 </div>
                                 <div>
-                                    <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>100% Safe &amp; Verified</h4>
-                                    <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#64748b', fontWeight: 550 }}>Audited safety protocols</p>
+                                    <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>Safe &amp; Supported</h4>
+                                    <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#64748b', fontWeight: 550 }}>Trusted by our community</p>
                                 </div>
                             </div>
 
@@ -1071,7 +1072,7 @@ const VolunteerPage = () => {
                                     Through these efforts, you directly help enhance the daily lives of families and children, providing them with spaces that foster community pride, learning, and celebration. No prior construction experience is required.
                                 </p>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                    {["Painting & Repairs", "School Rebuilding", "Community Spaces"].map((item, i) => (
+                                    {["Painting & Repairs", "School Rebuilding", "Community Spaces", "Playground Building", "Temple Restoration"].map((item, i) => (
                                         <span key={i} style={{ background: '#f0fdf4', color: '#166534', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
                                     ))}
                                 </div>
@@ -1135,7 +1136,7 @@ const VolunteerPage = () => {
                             
                             {/* Recent Activity Card */}
                             <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
-                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Activity</h4>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Giveback Impacts</h4>
                                 <div className="scrolling-activities-wrapper">
                                     <div className="scrolling-activities-content">
                                         {[
@@ -1206,7 +1207,7 @@ const VolunteerPage = () => {
                                     By bringing creativity, warmth, and attention to classrooms that are often under-resourced, you'll help build kids' confidence and open up future learning pathways. Your presence acts as a powerful catalyst for cultural exchange and long-term educational growth.
                                 </p>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                    {["Rural Teaching", "Special Needs", "School Support"].map((item, i) => (
+                                    {["Rural Teaching", "Special Needs", "School Support", "English Teaching", "Preschool Assistance", "Creative Arts"].map((item, i) => (
                                         <span key={i} style={{ background: '#f8f9fa', color: '#475569', padding: '7px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 700 }}>{item}</span>
                                     ))}
                                 </div>
@@ -1270,7 +1271,7 @@ const VolunteerPage = () => {
 
                             {/* Recent Activity Card */}
                             <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
-                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Activity</h4>
+                                <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Giveback Impacts</h4>
                                 <div className="scrolling-activities-wrapper">
                                     <div className="scrolling-activities-content">
                                         {[
@@ -1335,6 +1336,15 @@ const VolunteerPage = () => {
                                         alt="Kandy District Tea Plantation Sri Lanka" 
                                         className="modern-dest-img"
                                     />
+                                    <button 
+                                        onClick={() => setZoomedMap(kandyImg)}
+                                        style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', border: 'none', width: '38px', height: '38px', borderRadius: '50%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', color: '#1d1d1f', transition: 'transform 0.2s' }}
+                                        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                        title="Zoom Map"
+                                    >
+                                        <i className="fa-solid fa-expand" style={{ fontSize: '1.1rem' }}></i>
+                                    </button>
                                 </div>
                                 <div className="modern-dest-content">
                                     <h3 className="modern-dest-title">
@@ -1363,7 +1373,17 @@ const VolunteerPage = () => {
                                         src={galleImg} 
                                         alt="Galle Fort and Coastal Region Sri Lanka" 
                                         className="modern-dest-img"
+                                        style={{ marginTop: '-10px', objectPosition: 'center 95%' }}
                                     />
+                                    <button 
+                                        onClick={() => setZoomedMap(galleImg)}
+                                        style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', border: 'none', width: '38px', height: '38px', borderRadius: '50%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', color: '#1d1d1f', transition: 'transform 0.2s' }}
+                                        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                        title="Zoom Map"
+                                    >
+                                        <i className="fa-solid fa-expand" style={{ fontSize: '1.1rem' }}></i>
+                                    </button>
                                 </div>
                                 <div className="modern-dest-content">
                                     <h3 className="modern-dest-title">
@@ -1848,6 +1868,33 @@ const VolunteerPage = () => {
                     </Link>
                 </div>
             </section>
+
+            {/* Map Zoom Modal */}
+            {zoomedMap && (
+                <div 
+                    onClick={() => setZoomedMap(null)}
+                    style={{
+                        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+                        backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 99999,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        padding: '20px', backdropFilter: 'blur(5px)', cursor: 'zoom-out'
+                    }}
+                >
+                    <div style={{ position: 'relative', maxWidth: '95%', maxHeight: '95vh' }}>
+                        <button 
+                            onClick={(e) => { e.stopPropagation(); setZoomedMap(null); }}
+                            style={{ position: 'absolute', top: '-40px', right: '0', background: 'transparent', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', lineHeight: 1 }}
+                        >
+                            &times;
+                        </button>
+                        <img 
+                            src={zoomedMap} 
+                            alt="Zoomed Map" 
+                            style={{ maxWidth: '100%', maxHeight: '90vh', objectFit: 'contain', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', backgroundColor: '#fff' }} 
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
