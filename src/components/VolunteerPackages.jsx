@@ -45,17 +45,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             rating: 4.7,
             gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
         },
-        {
-            duration: "1-2 Weeks",
-            title: "Body & Mind Wellness Week",
-            price: "$350",
-            originalPrice: "$520",
-            image: yogaImg,
-            features: ["Daily Meditation", "Yoga Sessions", "Temple Service", "Spiritual Guidance"],
-            color: "#111",
-            rating: 5.0,
-            gradient: "linear-gradient(135deg, #111 0%, #333 100%)"
-        },
+
         {
             duration: "1 Week",
             title: "Ancient Temple Experience",

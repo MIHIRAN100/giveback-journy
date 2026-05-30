@@ -139,17 +139,9 @@ const VolunteerSection = () => {
                             <i className="fa-solid fa-trowel-bricks"></i>
                             <span>Construction & Renovation</span>
                         </Link>
-                        <Link to="/volunteer-program/zen-and-temple-yoga" className="perk-item" style={{ textDecoration: 'none' }}>
-                            <i className="fa-solid fa-spa"></i>
-                            <span>Body & Mind Wellness Week</span>
-                        </Link>
                         <Link to="/volunteer-program/medical-volunteer" className="perk-item" style={{ textDecoration: 'none' }}>
                             <i className="fa-solid fa-briefcase-medical"></i>
                             <span>Medical Volunteer</span>
-                        </Link>
-                        <Link to="/volunteer-program/ceylon-skill-odyssey" className="perk-item" style={{ textDecoration: 'none' }}>
-                            <i className="fa-solid fa-earth-asia"></i>
-                            <span>Ceylon Skill Odyssey</span>
                         </Link>
                     </div>
 

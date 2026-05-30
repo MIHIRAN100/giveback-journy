@@ -214,49 +214,6 @@ export const volunteerReviews = {
         }
     ],
 
-    "zen-and-temple-yoga": [
-        {
-            name: "Aria Collins",
-            country: "🇺🇸 United States",
-            date: "February 2025",
-            rating: 5,
-            title: "The reset I desperately needed",
-            review: "I arrived burnt out from two years of nonstop work. Within three days of the Zen and Temple program, I could feel myself genuinely unwinding. Morning yoga in temple gardens, meditation with monks, mindful walks through jungle paths — it sounds too good, but it's all real. I came home transformed."
-        },
-        {
-            name: "Juliet Marchand",
-            country: "🇫🇷 France",
-            date: "March 2025",
-            rating: 5,
-            title: "Spiritual depth I never expected to find",
-            review: "I'm not religious but this experience touched something very deep in me. The monks were incredibly generous with their time and teachings. The yoga sessions in the temple grounds at sunrise were unlike anything I've experienced anywhere in the world. A truly sacred and healing program."
-        },
-        {
-            name: "Kenji Tanaka",
-            country: "🇯🇵 Japan",
-            date: "January 2025",
-            rating: 5,
-            title: "Authentic, grounding, and beautifully paced",
-            review: "The pace of this program is exactly what modern life makes you forget you need. Nothing was rushed. Everything was intentional. The combination of Theravada Buddhist philosophy, traditional yoga practice, and Sri Lankan nature was incredibly restorative. Giveback Journey curates it with real care and respect."
-        },
-        {
-            name: "Rosa Klein",
-            country: "🇩🇪 Germany",
-            date: "April 2025",
-            rating: 5,
-            title: "Life-changing doesn't do it justice",
-            review: "I've done yoga retreats across Asia but this was something entirely different. Here, the spirituality is woven into daily life — you're not an outsider consuming a packaged experience, you're a guest in a real community. The monks, the temples, the silence — it all comes together in a way that stays with you."
-        },
-        {
-            name: "Chloe Davies",
-            country: "🇬🇧 United Kingdom",
-            date: "February 2025",
-            rating: 5,
-            title: "My mind is still quiet two months later",
-            review: "I struggle with anxiety and was hoping this program might help. It exceeded every expectation. The daily meditation practice, the temple environment, the slower rhythm of life in rural Sri Lanka — it gave me tools I actually use every day now. An investment in yourself that genuinely pays off."
-        }
-    ],
-
     "medical-volunteer": [
         {
             name: "Dr. Sarah Mitchell",
@@ -297,33 +254,6 @@ export const volunteerReviews = {
             rating: 5,
             title: "An experience that shapes who you become as a clinician",
             review: "The conversations I had with local nurses and doctors about delivering care with limited resources have permanently shaped how I approach medicine. Beyond the clinical learning, witnessing the warmth of the Sri Lankan healthcare community and their dedication under pressure was profoundly inspiring. I will carry this experience always."
-        }
-    ],
-
-    "ceylon-skill-odyssey": [
-        {
-            name: "Alistair Vance",
-            country: "🇬🇧 United Kingdom",
-            date: "April 2026",
-            rating: 5,
-            title: "Build-your-own travel at its absolute best",
-            review: "The level of flexibility on this program is amazing. I chose Sinhala language, pottery, and surfing. Being able to choose my own skills and learn directly from the local experts was exactly what I wanted. It felt like living Sri Lanka, not just touring it."
-        },
-        {
-            name: "Nadia Petrova",
-            country: "🇨🇦 Canada",
-            date: "May 2026",
-            rating: 5,
-            title: "Incredible community-first approach",
-            review: "I loved that the majority of the cost goes directly to local artisans and teachers. The cooking lessons and Batik workshop were brilliant. I also did the turtle conservation. Our local team coordinated all transfers seamlessly."
-        },
-        {
-            name: "Julian Schmidt",
-            country: "🇩🇪 Germany",
-            date: "May 2026",
-            rating: 5,
-            title: "A truly personalized, meaningful week",
-            review: "A perfect blend of wellness and creativity. I selected meditation, spice knowledge, and wood carving. The instructors are local experts who take immense pride in their craft. A deeply satisfying experience that I highly recommend."
         }
     ]
 };

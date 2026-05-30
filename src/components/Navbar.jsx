@@ -42,7 +42,7 @@ const Navbar = () => {
 
     const navItems = [
         { 
-            name: 'Packages', 
+            name: 'Holiday Tours', 
             path: '/packages',
             columns: [
                 {
@@ -100,7 +100,7 @@ const Navbar = () => {
             ]
         },
         { 
-            name: 'Impact & Volunteer', 
+            name: 'Volunteer & Programs', 
             path: '/volunteer',
             columns: [
                 {
@@ -110,9 +110,7 @@ const Navbar = () => {
                         { name: 'Special Needs Support', path: '/volunteer-program/special-needs-support' },
                         { name: 'Construction & Renovation', path: '/volunteer-program/village-school-renovation' },
                         { name: 'Dog Rescue & Welfare', path: '/volunteer-program/sri-lanka-dog-rescue' },
-                        { name: 'Medical Volunteer', path: '/volunteer-program/medical-volunteer' },
-                        { name: 'Body & Mind Wellness Week', path: '/volunteer-program/zen-and-temple-yoga' },
-                        { name: 'Ceylon Skill Odyssey', path: '/volunteer-program/ceylon-skill-odyssey' }
+                        { name: 'Medical Volunteer', path: '/volunteer-program/medical-volunteer' }
                     ]
                 },
                 {
