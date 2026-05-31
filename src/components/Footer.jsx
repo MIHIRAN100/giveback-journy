@@ -64,7 +64,7 @@ const Footer = () => {
                     <div className="trust-badges" style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px'}}>
                         <div style={{background: 'rgba(255,255,255,0.05)', padding: '12px', borderRadius: '8px', textAlign: 'center'}}>
                             <i className="fa-solid fa-leaf" style={{color: 'var(--primary-green)', fontSize: '1.2rem', display: 'block', marginBottom: '5px'}}></i>
-                            <span style={{fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px'}}>Eco Certified</span>
+                            <span style={{fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px'}}>Authentic Impact</span>
                         </div>
                         <div style={{background: 'rgba(255,255,255,0.05)', padding: '12px', borderRadius: '8px', textAlign: 'center'}}>
                             <i className="fa-solid fa-award" style={{color: 'var(--primary-green)', fontSize: '1.2rem', display: 'block', marginBottom: '5px'}}></i>
