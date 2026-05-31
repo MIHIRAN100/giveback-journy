@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CultureImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
-import NatureImg from '../assets/Little Adam’s Peak.jpg';
+import NatureImg from '../assets/teaching volunteers/IMG_7089.JPG';
 import FoodImg from '../assets/Tasting Sri Lankan Cuisine .jpg';
 import WildlifeImg from '../assets/Elephants in Sri Lanka (1).jpg';
 
@@ -89,7 +89,7 @@ const WhoWeAre = () => {
                         <div className="who-small-card">
                             <div className="who-img-wrapper">
                                 <img src={CultureImg} alt="Sri Lankan Culture" />
-                                <span className="who-badge">Full Day</span>
+                                <span className="who-badge">Make An Impact</span>
                             </div>
                             <div className="who-card-info">
                                 <h5>True People And Soul</h5>
@@ -101,7 +101,7 @@ const WhoWeAre = () => {
                                 <div className="who-impact-icon">
                                     <i className="fa-solid fa-heart-pulse"></i>
                                 </div>
-                                <div className="who-impact-number">150+</div>
+                                <div className="who-impact-number">15+</div>
                                 <h5>Community Projects</h5>
                                 <p>Directly supported by our travelers since 2021.</p>
                             </div>
