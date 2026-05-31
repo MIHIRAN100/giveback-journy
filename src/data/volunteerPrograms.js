@@ -570,9 +570,8 @@ export const volunteerPrograms = [
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",
             "Gain Hospital Experience & Exposure Into The Sri Lankan Healthcare System",
-            "Learn About Cultural Differences & Ayurvedic Medicine Practices",
             "Structured Weekend Trips To Kandy, Yala National Park & The Maldives",
-            "Widely Considered To Be PMGY's Top Overall Destination & Best Local Team"
+            "Widely Considered To Be Giveback Journey's Top Overall Destination & Best Local Team"
         ],
         sections: [
             {
@@ -718,7 +717,7 @@ export const volunteerPrograms = [
             }
         ],
         accommodation: {
-            description: "During your time on the Sri Lanka volunteer program, you will stay in our Volunteer House located just outside central Ambalangoda, in a quiet part of town on Sri Lanka’s south coast. The house is only a 10-minute tuk-tuk journey into the main town, where you can find ATMs, supermarkets, and local restaurants. You’ll share the house with other PMGY volunteers from around the world, giving you the chance to make plenty of new friends! The house includes a communal area where volunteers can relax, hang out with friends, or prepare lesson plans if teaching English. A refrigerator is available for storing items that need to be kept chilled. A member of the local team also lives at the house, ensuring 24/7 support and security for all volunteers. Transport to and from your placement is provided via tuk-tuk or private car, and placements are typically 5-30 minutes from the Volunteer House. This service is included in your Program Fee.",
+            description: "During your time on the Sri Lanka volunteer program, you will stay in our Volunteer House located just outside central Ambalangoda, in a quiet part of town on Sri Lanka’s south coast. The house is only a 10-minute tuk-tuk journey into the main town, where you can find ATMs, supermarkets, and local restaurants. You’ll share the house with other Giveback Journey volunteers from around the world, giving you the chance to make plenty of new friends! The house includes a communal area where volunteers can relax, hang out with friends, or prepare lesson plans if teaching English. A refrigerator is available for storing items that need to be kept chilled. A member of the local team also lives at the house, ensuring 24/7 support and security for all volunteers. Transport to and from your placement is provided via tuk-tuk or private car, and placements are typically 5-30 minutes from the Volunteer House. This service is included in your Program Fee.",
             options: [
                 {
                     title: "Shared Option - Standard Offering",
