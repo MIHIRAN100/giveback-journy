@@ -3,10 +3,16 @@ import Moment1 from '../assets/moments/traveler_moment_1_1778416676983.png';
 import TravelerVideo3 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.09.28.mp4';
 import TravelerVideo4 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.17.18.mp4';
 import TravelerVideo5 from '../assets/feedback clip/WhatsApp Video 2026-05-30 at 11.02.50.mp4';
+import TravelerVideo6 from '../assets/feedback clip/WhatsApp Video 2026-05-31 at 13.18.52.mp4';
+import TravelerVideo7 from '../assets/feedback clip/WhatsApp Video 2026-05-31 at 13.37.40.mp4';
 import Volunteer1 from '../assets/volunteer_1.png';
 import Volunteer2 from '../assets/volunteer_2.png';
 import Volunteer3 from '../assets/volunteer_3.png';
 import Volunteer4 from '../assets/volunteer_4.png';
+import NewImg1 from '../assets/volunteer-community.png';
+import NewImg2 from '../assets/volunteer-wildlife.png';
+import NewImg3 from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
+import NewImg4 from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 
 const getYouTubeId = (url) => {
     if (!url) return null;
@@ -62,11 +68,17 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                 <span className="moment-username">{moment.user}</span>
             </div>
             
-            <div className="play-button-overlay" onClick={togglePlay}>
+            <div 
+                className="play-button-overlay" 
+                onClick={(e) => {
+                    if (!moment.disablePlay) togglePlay(e);
+                }}
+                style={moment.disablePlay ? { cursor: 'not-allowed', opacity: 0.7 } : {}}
+            >
                 <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
             </div>
 
-            {moment.video && (
+            {moment.video && !moment.disablePlay && (
                 <div className="mute-button-overlay" onClick={toggleMute}>
                     <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
                 </div>
@@ -161,19 +173,54 @@ const TravelerMoments = () => {
         },
         {
             id: 4,
-            user: "Noah",
-            avatar: "fa-solid fa-paw",
+            user: "Lara",
+            avatar: "fa-solid fa-hands-praying",
             image: Volunteer3,
-            title: "Wildlife Rescue Story",
-            overlayTitle: "PROTECTING THE SMALLEST CREATURES",
+            video: TravelerVideo6,
+            title: "Culture Immersion in Hikkaduwa",
+            overlayTitle: "EXPERIENCING TRUE SRI LANKAN CULTURE",
         },
         {
             id: 5,
             user: "Mia",
             avatar: "fa-solid fa-house-chimney",
             image: Volunteer4,
+            video: TravelerVideo7,
+            disablePlay: true,
             title: "Village Life Experience",
-            overlayTitle: "TRAVELING WITH PURPOSE",
+            overlayTitle: "EMBRACING AUTHENTIC VILLAGE LIFE",
+        },
+        {
+            id: 6,
+            user: "Sam",
+            avatar: "fa-solid fa-users",
+            image: NewImg1,
+            title: "Community Outreach",
+            overlayTitle: "SUPPORTING LOCAL COMMUNITIES",
+        },
+        {
+            id: 7,
+            user: "Alex",
+            avatar: "fa-solid fa-leaf",
+            image: NewImg2,
+            title: "Wildlife Conservation",
+            overlayTitle: "PRESERVING NATURE'S BEAUTY",
+        },
+        {
+            id: 8,
+            user: "Emma",
+            avatar: "fa-solid fa-masks-theater",
+            image: NewImg3,
+            title: "Cultural Exchange",
+            overlayTitle: "LEARNING ANCIENT TRADITIONS",
+        },
+        {
+            id: 9,
+            user: "David",
+            avatar: "fa-solid fa-om",
+            image: NewImg4,
+            title: "Yoga & Meditation",
+            overlayTitle: "FINDING INNER PEACE",
         }
     ];
 
@@ -189,9 +236,14 @@ const TravelerMoments = () => {
 
     return (
         <section className="who-we-are-section">
-            <div className="who-we-are-header">
-                <h2>Traveler Feedback Shorts</h2>
-                <div className="who-nav-btns">
+            <div className="who-we-are-header" style={{ alignItems: 'flex-start' }}>
+                <div>
+                    <h2>Traveler Feedback Shorts</h2>
+                    <p style={{ marginTop: '10px', color: '#666', fontSize: '1.05rem', maxWidth: '600px', lineHeight: '1.6' }}>
+                        Watch <span style={{ color: 'var(--primary-green)', fontWeight: 600 }}>real moments</span> captured by our travelers. Discover authentic experiences and unforgettable adventures in Sri Lanka.
+                    </p>
+                </div>
+                <div className="who-nav-btns" style={{ alignSelf: 'center' }}>
                     <button className="who-nav-btn" onClick={() => scroll('left')}>
                         <i className="fa-solid fa-chevron-left"></i>
                     </button>

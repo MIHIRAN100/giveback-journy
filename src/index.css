@@ -3882,6 +3882,12 @@ h1, h2, h3, .logo-text {
     font-size: 0.9rem;
     transition: all 0.3s ease;
     cursor: pointer;
+    opacity: 0;
+}
+
+.moment-card:hover .mute-button-overlay,
+.mute-button-overlay:hover {
+    opacity: 1;
 }
 
 .mute-button-overlay:hover {
