@@ -9,7 +9,7 @@ import Volunteer1 from '../assets/volunteer_1.png';
 import Volunteer2 from '../assets/volunteer_2.png';
 import Volunteer3 from '../assets/volunteer_3.png';
 import Volunteer4 from '../assets/volunteer_4.png';
-import NewImg1 from '../assets/volunteer-community.png';
+import NewImg1 from '../assets/teaching volunteers/IMG-20241203-WA0041.jpg';
 import NewImg2 from '../assets/volunteer-wildlife.png';
 import NewImg3 from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
 import NewImg4 from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
