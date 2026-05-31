@@ -570,7 +570,7 @@ export const volunteerPrograms = [
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",
             "Gain Hospital Experience & Exposure Into The Sri Lankan Healthcare System",
-            "Structured Weekend Trips To Kandy & Yala National Park",
+            "Structured Weekend Trips To Kandy, Yala National Park, and any other destination in Sri Lanka you wish to go",
             "Widely Considered To Be Giveback Journey's Top Overall Destination & Best Local Team"
         ],
         sections: [
