@@ -13,7 +13,7 @@ import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
 import islandCrossoverCover from '../assets/island_crossover_cover.png';
 import breatheSriLankaImg from '../assets/WhatsApp Image 2026-05-26 at 15.13.22.jpeg';
 import sigiriyaSafariCover from '../assets/TAL-tourists-sigiriya-sri-Lanka-WLCMASIANDEST0125-d5608fddc86e4b0f984c8e15ea637b0b.jpg';
-import sigiriyaEscapeCover from '../assets/32270acd8d24c9c32459048ef39490ae.jpg';
+import sigiriyaEscapeCover from '../assets/WhatsApp Image 2026-06-01 at 15.37.23.jpeg';
 import routeMapSigiriyaEscape from '../assets/route_map_sigiriya_escape.png';
 
 
@@ -47,28 +47,28 @@ import routeMapKitulgalaPremium from '../assets/route_map_kitulgala_premium.png'
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 
 const signatureReviews = [
-    { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2025", profile: "British, 24", trip: "Signature Experience", comment: "The sunrise climb at Sigiriya was the highlight of my trip! Everything was perfectly organized.", color: "#fff3e0" },
+    { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2026", profile: "British, 24", trip: "Signature Experience", comment: "The sunrise climb at Sigiriya was the highlight of my trip! Everything was perfectly organized.", color: "#fff3e0" },
     { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", profile: "USA, 29", trip: "Signature Experience", comment: "The train journey from Kandy to Ella was breathtaking. Highly recommend this signature tour.", color: "#f3e5f5" },
-    { id: 3, name: "Elena Rossi", rating: 5, date: "August 2025", profile: "Italian, 22", trip: "Signature Experience", comment: "Minneriya safari was amazing! We saw so many elephants. A truly essential Sri Lanka experience.", color: "#e0f2f1" },
-    { id: 4, name: "James Wilson", rating: 5, date: "July 2025", profile: "Canadian, 31", trip: "Signature Experience", comment: "Perfect balance between culture and relaxation. The south coast stay was the perfect ending.", color: "#fbe9e7" },
-    { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2025", profile: "French, 20", trip: "Signature Experience", comment: "Galle Fort at sunset is a dream. The hospitality throughout the week was exceptional.", color: "#e8f5e9" },
-    { id: 6, name: "Robert Brown", rating: 5, date: "May 2025", profile: "USA", trip: "Signature Experience", comment: "The tour guide was exceptionally knowledgeable. Highly recommended!", color: "#fff" },
-    { id: 7, name: "Alice Green", rating: 4, date: "April 2025", profile: "UK", trip: "Signature Experience", comment: "Great experience overall, though the bus ride was a bit long.", color: "#fff" },
-    { id: 8, name: "Tom Cruise", rating: 5, date: "March 2025", profile: "USA", trip: "Signature Experience", comment: "Felt like a movie! Every location was stunning.", color: "#fff" },
-    { id: 9, name: "Emma Stone", rating: 5, date: "February 2025", profile: "Australia", trip: "Signature Experience", comment: "The wildlife safari was out of this world.", color: "#fff" },
-    { id: 10, name: "Lucas Silva", rating: 5, date: "January 2025", profile: "Brazil", trip: "Signature Experience", comment: "Amazing food and culture. Love Sri Lanka!", color: "#fff" },
-    { id: 11, name: "Zoe Kravitz", rating: 5, date: "December 2024", profile: "USA", trip: "Signature Experience", comment: "The beaches are pristine. Very relaxing.", color: "#fff" },
-    { id: 12, name: "Ryan Gosling", rating: 4, date: "November 2024", profile: "Canada", trip: "Signature Experience", comment: "Great service and beautiful hotels.", color: "#fff" },
-    { id: 13, name: "Michael Chen", rating: 3, date: "October 2024", profile: "Singapore", trip: "Signature Experience", comment: "The sights were incredible, but the weather was unusually rainy during our train ride which blocked some views.", color: "#fff" },
-    { id: 14, name: "Sophia Martinez", rating: 2, date: "September 2024", profile: "Spain", trip: "Signature Experience", comment: "Beautiful country, but I found the local food much too spicy for my stomach. Ensure you ask for non-spicy versions.", color: "#fff" },
-    { id: 15, name: "David Beckham", rating: 4, date: "August 2024", profile: "UK", trip: "Signature Experience", comment: "Excellent itinerary and private transport. Smooth communication with our tour consultant.", color: "#fff" },
-    { id: 16, name: "Liam Hemsworth", rating: 3, date: "July 2024", profile: "Australia", trip: "Signature Experience", comment: "Enjoyed the safari and beach towns, but the drives between cities can feel a bit exhausting.", color: "#fff" },
+    { id: 3, name: "Elena Rossi", rating: 5, date: "August 2024", profile: "Italian, 22", trip: "Signature Experience", comment: "Minneriya safari was amazing! We saw so many elephants. A truly essential Sri Lanka experience.", color: "#e0f2f1" },
+    { id: 4, name: "James Wilson", rating: 5, date: "July 2023", profile: "Canadian, 31", trip: "Signature Experience", comment: "Perfect balance between culture and relaxation. The south coast stay was the perfect ending.", color: "#fbe9e7" },
+    { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2022", profile: "French, 20", trip: "Signature Experience", comment: "Galle Fort at sunset is a dream. The hospitality throughout the week was exceptional.", color: "#e8f5e9" },
+    { id: 6, name: "Robert Brown", rating: 5, date: "May 2021", profile: "USA", trip: "Signature Experience", comment: "The tour guide was exceptionally knowledgeable. Highly recommended!", color: "#fff" },
+    { id: 7, name: "Alice Green", rating: 4, date: "April 2020", profile: "UK", trip: "Signature Experience", comment: "Great experience overall, though the bus ride was a bit long.", color: "#fff" },
+    { id: 8, name: "Tom Cruise", rating: 5, date: "March 2019", profile: "USA", trip: "Signature Experience", comment: "Felt like a movie! Every location was stunning.", color: "#fff" },
+    { id: 9, name: "Emma Stone", rating: 5, date: "February 2018", profile: "Australia", trip: "Signature Experience", comment: "The wildlife safari was out of this world.", color: "#fff" },
+    { id: 10, name: "Lucas Silva", rating: 5, date: "January 2017", profile: "Brazil", trip: "Signature Experience", comment: "Amazing food and culture. Love Sri Lanka!", color: "#fff" },
+    { id: 11, name: "Zoe Kravitz", rating: 5, date: "December 2016", profile: "USA", trip: "Signature Experience", comment: "The beaches are pristine. Very relaxing.", color: "#fff" },
+    { id: 12, name: "Ryan Gosling", rating: 4, date: "November 2015", profile: "Canada", trip: "Signature Experience", comment: "Great service and beautiful hotels.", color: "#fff" },
+    { id: 13, name: "Michael Chen", rating: 3, date: "October 2023", profile: "Singapore", trip: "Signature Experience", comment: "The sights were incredible, but the weather was unusually rainy during our train ride which blocked some views.", color: "#fff" },
+    { id: 14, name: "Sophia Martinez", rating: 2, date: "September 2022", profile: "Spain", trip: "Signature Experience", comment: "Beautiful country, but I found the local food much too spicy for my stomach. Ensure you ask for non-spicy versions.", color: "#fff" },
+    { id: 15, name: "David Beckham", rating: 4, date: "August 2021", profile: "UK", trip: "Signature Experience", comment: "Excellent itinerary and private transport. Smooth communication with our tour consultant.", color: "#fff" },
+    { id: 16, name: "Liam Hemsworth", rating: 3, date: "July 2020", profile: "Australia", trip: "Signature Experience", comment: "Enjoyed the safari and beach towns, but the drives between cities can feel a bit exhausting.", color: "#fff" },
     // Adding 140 more reviews with a mix of 5, 4, 3, and 2 stars to reach 150+ reviews
     ...Array(140).fill().map((_, i) => ({
         id: i + 17,
         name: ["Alexander M.", "Charlotte S.", "Daniel K.", "Emily R.", "Frederic L.", "Gabriella N.", "James P.", "Katherine H.", "Oliver V.", "Sophia W."][i % 10],
         rating: (i % 14 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)),
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
         trip: "Essential Sri Lanka",
         comment: [
@@ -88,17 +88,17 @@ const signatureReviews = [
 ];
 
 const kandyReviews = [
-    { id: 1, name: "Jessica Lee", rating: 5, date: "October 2025", profile: "Traveler", trip: "Kandy Day Trip", comment: "Watching the elephants walk to the river in Pinnawala was magical! A must-do day trip.", color: "#e8f5e9" },
-    { id: 2, name: "David Miller", rating: 5, date: "September 2025", profile: "Traveler", trip: "Kandy Day Trip", comment: "The Temple of the Tooth is so spiritual and peaceful. Kandy is a beautiful city.", color: "#e3f2fd" },
-    { id: 3, name: "Emma Watson", rating: 5, date: "August 2025", profile: "UK", trip: "Kandy Day Trip", comment: "Botanical gardens were stunning. Our driver was very helpful with picking us up.", color: "#fff3e0" },
-    { id: 4, name: "Hans Zimmer", rating: 5, date: "July 2025", profile: "German", trip: "Kandy Day Trip", comment: "The cultural show music and dance were very impressive. Great way to spend a day.", color: "#f3e5f5" },
-    { id: 5, name: "Sofia Loren", rating: 5, date: "June 2025", profile: "Italy", trip: "Kandy Day Trip", comment: "Short but very comprehensive. We saw all the major sights in just one day.", color: "#e0f2f1" },
+    { id: 1, name: "Jessica Lee", rating: 5, date: "October 2026", profile: "Traveler", trip: "Kandy Day Trip", comment: "Watching the elephants walk to the river in Pinnawala was magical! A must-do day trip.", color: "#e8f5e9" },
+    { id: 2, name: "David Miller", rating: 5, date: "September 2024", profile: "Traveler", trip: "Kandy Day Trip", comment: "The Temple of the Tooth is so spiritual and peaceful. Kandy is a beautiful city.", color: "#e3f2fd" },
+    { id: 3, name: "Emma Watson", rating: 5, date: "August 2022", profile: "UK", trip: "Kandy Day Trip", comment: "Botanical gardens were stunning. Our driver was very helpful with picking us up.", color: "#fff3e0" },
+    { id: 4, name: "Hans Zimmer", rating: 5, date: "July 2019", profile: "German", trip: "Kandy Day Trip", comment: "The cultural show music and dance were very impressive. Great way to spend a day.", color: "#f3e5f5" },
+    { id: 5, name: "Sofia Loren", rating: 5, date: "June 2016", profile: "Italy", trip: "Kandy Day Trip", comment: "Short but very comprehensive. We saw all the major sights in just one day.", color: "#e0f2f1" },
     // Adding 125 more reviews with a mix of 5, 4, 3, and 2 stars
     ...Array(125).fill().map((_, i) => ({
         id: i + 6,
         name: ["John D.", "Sarah M.", "David L.", "Emily W.", "Michael K.", "Anna S.", "James B.", "Elena P.", "Robert C.", "Laura G."][i % 10],
         rating: (i % 15 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)),
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Traveler", "Solo Explorer", "Family Trip", "Couple", "Backpacker"][i % 5],
         trip: "Kandy Day Trip",
         comment: [
@@ -118,20 +118,20 @@ const kandyReviews = [
 ];
 
 const coastalReviews = [
-    { id: 1, name: "Mateo Silva", rating: 5, date: "October 2025", profile: "Brazilian", trip: "Southern Escape", comment: "Surfing in Weligama was a dream. The coastal vibe of this tour is perfect.", color: "#fff3e0" },
-    { id: 2, name: "Yuna Kim", rating: 5, date: "September 2025", profile: "Korean", trip: "Southern Escape", comment: "Mirissa beaches are the best. Watching the whales was a life-changing experience.", color: "#f3e5f5" },
-    { id: 3, name: "Noah Williams", rating: 5, date: "August 2025", profile: "USA", trip: "Southern Escape", comment: "Galle Fort is so historic and charming. Loved the boutique stays along the coast.", color: "#e0f2f1" },
-    { id: 4, name: "Mia Dubois", rating: 5, date: "July 2025", profile: "French", trip: "Southern Escape", comment: "The seafood dinners by the beach were incredible. Such a relaxing week.", color: "#fbe9e7" },
-    { id: 5, name: "Leo Rossi", rating: 5, date: "June 2025", profile: "Italian", trip: "Southern Escape", comment: "Sunset at Coconut Tree Hill is a must-see. The southern coast is beautiful.", color: "#e8f5e9" },
-    { id: 6, name: "Sandro Moretti", rating: 3, date: "May 2025", profile: "Italy", trip: "Southern Escape", comment: "The beaches were beautiful, but the travel times between coastal towns were longer than expected due to local traffic.", color: "#fff" },
-    { id: 7, name: "Anna Schmidt", rating: 4, date: "April 2025", profile: "Germany", trip: "Southern Escape", comment: "Well-organized tour with great guesthouse selections. Some locations were a bit crowded.", color: "#fff" },
-    { id: 8, name: "Robert Klein", rating: 2, date: "March 2025", profile: "Netherlands", trip: "Southern Escape", comment: "Unfortunately, the extreme humidity during this season made the outdoor activities very difficult for me personally.", color: "#fff" },
+    { id: 1, name: "Mateo Silva", rating: 5, date: "October 2026", profile: "Brazilian", trip: "Southern Escape", comment: "Surfing in Weligama was a dream. The coastal vibe of this tour is perfect.", color: "#fff3e0" },
+    { id: 2, name: "Yuna Kim", rating: 5, date: "September 2024", profile: "Korean", trip: "Southern Escape", comment: "Mirissa beaches are the best. Watching the whales was a life-changing experience.", color: "#f3e5f5" },
+    { id: 3, name: "Noah Williams", rating: 5, date: "August 2022", profile: "USA", trip: "Southern Escape", comment: "Galle Fort is so historic and charming. Loved the boutique stays along the coast.", color: "#e0f2f1" },
+    { id: 4, name: "Mia Dubois", rating: 5, date: "July 2020", profile: "French", trip: "Southern Escape", comment: "The seafood dinners by the beach were incredible. Such a relaxing week.", color: "#fbe9e7" },
+    { id: 5, name: "Leo Rossi", rating: 5, date: "June 2018", profile: "Italian", trip: "Southern Escape", comment: "Sunset at Coconut Tree Hill is a must-see. The southern coast is beautiful.", color: "#e8f5e9" },
+    { id: 6, name: "Sandro Moretti", rating: 3, date: "May 2016", profile: "Italy", trip: "Southern Escape", comment: "The beaches were beautiful, but the travel times between coastal towns were longer than expected due to local traffic.", color: "#fff" },
+    { id: 7, name: "Anna Schmidt", rating: 4, date: "April 2015", profile: "Germany", trip: "Southern Escape", comment: "Well-organized tour with great guesthouse selections. Some locations were a bit crowded.", color: "#fff" },
+    { id: 8, name: "Robert Klein", rating: 2, date: "March 2023", profile: "Netherlands", trip: "Southern Escape", comment: "Unfortunately, the extreme humidity during this season made the outdoor activities very difficult for me personally.", color: "#fff" },
     // Adding 142 more reviews with a mix to reach 150 total
     ...Array(142).fill().map((_, i) => ({
         id: i + 9,
         name: ["James L.", "Elena P.", "Chen W.", "Sarah J.", "Ahmed K.", "Linda M.", "Hiroshi T.", "Clara S.", "David R.", "Emma B."][i % 10],
         rating: (i % 12 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 4 === 0) ? 4 : 5)), // Mix of 2, 3, 4, and 5 stars
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Traveler", "Solo Explorer", "Family Trip", "Couple", "Backpacker"][i % 5],
         trip: "Southern Escape",
         comment: [
@@ -151,20 +151,20 @@ const coastalReviews = [
 ];
 
 const adventureReviews = [
-    { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2025", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every bit of it.", color: "#e8f5e9" },
-    { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2025", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the rainforest to the mountains of Ella was spectacular.", color: "#e3f2fd" },
-    { id: 3, name: "Ryan Reyn", rating: 5, date: "August 2025", profile: "Canadian", trip: "Highlands & Coast", comment: "Seeing a leopard in Yala was the highlight of my trip. The guide was expert.", color: "#fff3e0" },
-    { id: 4, name: "Gal Gadot", rating: 5, date: "July 2025", profile: "Israel", trip: "Highlands & Coast", comment: "Little Adam's Peak hike was easy but offered the most incredible views of Ella.", color: "#f3e5f5" },
-    { id: 5, name: "Chris Evans", rating: 5, date: "June 2025", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" },
-    { id: 6, name: "Priya Kapoor", rating: 5, date: "May 2025", profile: "India", trip: "Highlands & Coast", comment: "The Madu River safari was so peaceful. Seeing the cinnamon peeling was a unique experience I'll never forget.", color: "#fff3e0" },
-    { id: 7, name: "Oliver Hughes", rating: 4, date: "April 2025", profile: "Australian, 27", trip: "Highlands & Coast", comment: "Yala safari was incredible but the early morning start was tough. Totally worth it when we spotted elephants and a sloth bear!", color: "#e3f2fd" },
-    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2025", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week, this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" },
+    { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2026", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every bit of it.", color: "#e8f5e9" },
+    { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2024", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the rainforest to the mountains of Ella was spectacular.", color: "#e3f2fd" },
+    { id: 3, name: "Ryan Reyn", rating: 5, date: "August 2022", profile: "Canadian", trip: "Highlands & Coast", comment: "Seeing a leopard in Yala was the highlight of my trip. The guide was expert.", color: "#fff3e0" },
+    { id: 4, name: "Gal Gadot", rating: 5, date: "July 2020", profile: "Israel", trip: "Highlands & Coast", comment: "Little Adam's Peak hike was easy but offered the most incredible views of Ella.", color: "#f3e5f5" },
+    { id: 5, name: "Chris Evans", rating: 5, date: "June 2018", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" },
+    { id: 6, name: "Priya Kapoor", rating: 5, date: "May 2016", profile: "India", trip: "Highlands & Coast", comment: "The Madu River safari was so peaceful. Seeing the cinnamon peeling was a unique experience I'll never forget.", color: "#fff3e0" },
+    { id: 7, name: "Oliver Hughes", rating: 4, date: "April 2015", profile: "Australian, 27", trip: "Highlands & Coast", comment: "Yala safari was incredible but the early morning start was tough. Totally worth it when we spotted elephants and a sloth bear!", color: "#e3f2fd" },
+    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2023", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week, this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" },
     // Adding 155 dynamic reviews with a combination of 1, 2, 3, 4, and 5 stars
     ...Array(155).fill().map((_, i) => ({
         id: i + 9,
         name: ["Benjamin M.", "Sophia R.", "Lucas D.", "Emma F.", "Arthur L.", "Mia N.", "William P.", "Olivia H.", "Gabriel V.", "Chara W."][i % 10],
         rating: (i % 25 === 0) ? 1 : ((i % 15 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
         trip: "Highlands & Coast",
         comment: [
@@ -184,16 +184,16 @@ const adventureReviews = [
 ];
 
 const galleReviews = [
-    { id: 1, name: "Isabella Müller", rating: 5, date: "October 2025", profile: "German, 28", trip: "Galle Fort Escape", comment: "Walking along the fort ramparts at sunset was absolutely magical. The boutique cafes inside the fort are charming!", color: "#fff3e0" },
-    { id: 2, name: "Luca Bianchi", rating: 5, date: "September 2025", profile: "Italian, 32", trip: "Galle Fort Escape", comment: "Galle Fort is a hidden gem. The colonial architecture, the lighthouse, and the local artisan shops made this a perfect short getaway.", color: "#e0f2f1" },
-    { id: 3, name: "Charlotte Brown", rating: 4, date: "August 2025", profile: "UK, 26", trip: "Galle Fort Escape", comment: "Loved the history and the slow pace of life inside the fort. The cliff divers were so entertaining to watch!", color: "#f3e5f5" },
-    { id: 4, name: "Hiroshi Tanaka", rating: 5, date: "July 2025", profile: "Japanese, 30", trip: "Galle Fort Escape", comment: "Three days was the perfect amount of time. The Dutch hospital area has amazing restaurants and the jewelry workshops were fascinating.", color: "#e8f5e9" },
+    { id: 1, name: "Isabella Müller", rating: 5, date: "October 2026", profile: "German, 28", trip: "Galle Fort Escape", comment: "Walking along the fort ramparts at sunset was absolutely magical. The boutique cafes inside the fort are charming!", color: "#fff3e0" },
+    { id: 2, name: "Luca Bianchi", rating: 5, date: "September 2023", profile: "Italian, 32", trip: "Galle Fort Escape", comment: "Galle Fort is a hidden gem. The colonial architecture, the lighthouse, and the local artisan shops made this a perfect short getaway.", color: "#e0f2f1" },
+    { id: 3, name: "Charlotte Brown", rating: 4, date: "August 2020", profile: "UK, 26", trip: "Galle Fort Escape", comment: "Loved the history and the slow pace of life inside the fort. The cliff divers were so entertaining to watch!", color: "#f3e5f5" },
+    { id: 4, name: "Hiroshi Tanaka", rating: 5, date: "July 2017", profile: "Japanese, 30", trip: "Galle Fort Escape", comment: "Three days was the perfect amount of time. The Dutch hospital area has amazing restaurants and the jewelry workshops were fascinating.", color: "#e8f5e9" },
     // Adding 90 dynamic reviews to reach 90+ reviews total
     ...Array(90).fill().map((_, i) => ({
         id: i + 5,
         name: ["Julian S.", "Victoria M.", "Daniel O.", "Isabella R.", "Christian L.", "Camila N.", "Elijah P.", "Aria H.", "Gabriel B.", "Hailey W."][i % 10],
         rating: (i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)), // Star rating distribution (2, 3, 4, 5 stars)
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "History Buff"][i % 5],
         trip: "Galle Fort Escape",
         comment: [
@@ -213,16 +213,16 @@ const galleReviews = [
 ];
 
 const mistReviews = [
-    { id: 1, name: "Freya Andersen", rating: 5, date: "October 2025", profile: "Danish, 24", trip: "Mist & Mountains", comment: "The Blue Train journey was the most beautiful rail experience of my life. Leaning out the window through the tea estates was pure magic.", color: "#e8f5e9" },
-    { id: 2, name: "Tomás García", rating: 5, date: "September 2025", profile: "Spanish, 29", trip: "Mist & Mountains", comment: "Nuwara Eliya felt like stepping into another world. The tea factory visit and tasting were highlights I didn't expect to love so much.", color: "#e3f2fd" },
-    { id: 3, name: "Sophie Taylor", rating: 4, date: "August 2025", profile: "Australian, 27", trip: "Mist & Mountains", comment: "Ella Rock hike was challenging but the view from the top was absolutely worth every step. Nine Arches Bridge is iconic!", color: "#fff3e0" },
-    { id: 4, name: "Henrik Johansson", rating: 5, date: "July 2025", profile: "Swedish, 33", trip: "Mist & Mountains", comment: "Kandy's Temple of the Tooth was deeply spiritual. The entire 5-day journey through the highlands felt like a dream.", color: "#f3e5f5" },
+    { id: 1, name: "Freya Andersen", rating: 5, date: "October 2026", profile: "Danish, 24", trip: "Mist & Mountains", comment: "The Blue Train journey was the most beautiful rail experience of my life. Leaning out the window through the tea estates was pure magic.", color: "#e8f5e9" },
+    { id: 2, name: "Tomás García", rating: 5, date: "September 2023", profile: "Spanish, 29", trip: "Mist & Mountains", comment: "Nuwara Eliya felt like stepping into another world. The tea factory visit and tasting were highlights I didn't expect to love so much.", color: "#e3f2fd" },
+    { id: 3, name: "Sophie Taylor", rating: 4, date: "August 2020", profile: "Australian, 27", trip: "Mist & Mountains", comment: "Ella Rock hike was challenging but the view from the top was absolutely worth every step. Nine Arches Bridge is iconic!", color: "#fff3e0" },
+    { id: 4, name: "Henrik Johansson", rating: 5, date: "July 2017", profile: "Swedish, 33", trip: "Mist & Mountains", comment: "Kandy's Temple of the Tooth was deeply spiritual. The entire 5-day journey through the highlands felt like a dream.", color: "#f3e5f5" },
     // Adding 196 dynamic reviews to reach 200 total reviews
     ...Array(196).fill().map((_, i) => ({
         id: i + 5,
         name: ["Julian S.", "Victoria M.", "Daniel O.", "Isabella R.", "Christian L.", "Camila N.", "Elijah P.", "Aria H.", "Gabriel B.", "Hailey W."][i % 10],
         rating: (i % 25 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 12 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "Nature Lover"][i % 5],
         trip: "Mist & Mountains",
         comment: [
@@ -242,26 +242,26 @@ const mistReviews = [
 ];
 
 const kandyHighlightsReviews = [
-    { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2025", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were absolutely stunning, the orchid collection alone is worth the visit. Our guide was so knowledgeable!", color: "#e8f5e9" },
+    { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2026", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were absolutely stunning, the orchid collection alone is worth the visit. Our guide was so knowledgeable!", color: "#e8f5e9" },
     { id: 2, name: "Ben Carter", rating: 5, date: "September 2025", profile: "USA, 31", trip: "Kandy Highlights", comment: "The cultural dance show was electrifying! The fire-walkers were incredible. Perfect introduction to Sri Lankan culture.", color: "#e3f2fd" },
-    { id: 3, name: "Yuki Nakamura", rating: 4, date: "August 2025", profile: "Japanese, 28", trip: "Kandy Highlights", comment: "Kandy Lake at sunset is so peaceful. A great day trip that covers all the must-see spots without feeling rushed.", color: "#fff3e0" },
+    { id: 3, name: "Yuki Nakamura", rating: 4, date: "August 2024", profile: "Japanese, 28", trip: "Kandy Highlights", comment: "Kandy Lake at sunset is so peaceful. A great day trip that covers all the must-see spots without feeling rushed.", color: "#fff3e0" },
     // 2-star reviews (5 requested)
-    { id: 4, name: "Mark Wilson", rating: 2, date: "July 2025", profile: "UK", trip: "Kandy Highlights", comment: "The temple was beautiful but way too crowded. We spent more time in traffic than actually seeing the sights.", color: "#fff" },
-    { id: 5, name: "Elena Schmidt", rating: 2, date: "June 2025", profile: "Germany", trip: "Kandy Highlights", comment: "The botanical gardens were nice, but the guide rushed us through. Felt like a tourist trap at the spice garden.", color: "#fff" },
-    { id: 6, name: "John Doe", rating: 2, date: "May 2025", profile: "USA", trip: "Kandy Highlights", comment: "Too much driving for a one-day trip. Kandy is chaotic and the humidity was unbearable.", color: "#fff" },
-    { id: 7, name: "Sarah Miller", rating: 2, date: "April 2025", profile: "Canada", trip: "Kandy Highlights", comment: "The cultural show was okay, but the seating was very uncomfortable and it was extremely loud.", color: "#fff" },
-    { id: 8, name: "Pierre Dubois", rating: 2, date: "March 2025", profile: "France", trip: "Kandy Highlights", comment: "Disappointed with the lunch options provided. The 'authentic' meal was way too spicy and made me feel unwell.", color: "#fff" },
+    { id: 4, name: "Mark Wilson", rating: 2, date: "July 2023", profile: "UK", trip: "Kandy Highlights", comment: "The temple was beautiful but way too crowded. We spent more time in traffic than actually seeing the sights.", color: "#fff" },
+    { id: 5, name: "Elena Schmidt", rating: 2, date: "June 2022", profile: "Germany", trip: "Kandy Highlights", comment: "The botanical gardens were nice, but the guide rushed us through. Felt like a tourist trap at the spice garden.", color: "#fff" },
+    { id: 6, name: "John Doe", rating: 2, date: "May 2021", profile: "USA", trip: "Kandy Highlights", comment: "Too much driving for a one-day trip. Kandy is chaotic and the humidity was unbearable.", color: "#fff" },
+    { id: 7, name: "Sarah Miller", rating: 2, date: "April 2020", profile: "Canada", trip: "Kandy Highlights", comment: "The cultural show was okay, but the seating was very uncomfortable and it was extremely loud.", color: "#fff" },
+    { id: 8, name: "Pierre Dubois", rating: 2, date: "March 2019", profile: "France", trip: "Kandy Highlights", comment: "Disappointed with the lunch options provided. The 'authentic' meal was way too spicy and made me feel unwell.", color: "#fff" },
     // 1-star reviews (4 requested)
-    { id: 9, name: "Robert Taylor", rating: 1, date: "February 2025", profile: "Australia", trip: "Kandy Highlights", comment: "Our driver was late and spoke very little English. We missed half the itinerary due to poor planning.", color: "#fff" },
-    { id: 10, name: "Linda Brown", rating: 1, date: "January 2025", profile: "UK", trip: "Kandy Highlights", comment: "Waste of money. The Pinnawala experience felt unethical and the city of Kandy was just dirty and loud.", color: "#fff" },
-    { id: 11, name: "Michael Chen", rating: 1, date: "December 2024", profile: "Singapore", trip: "Kandy Highlights", comment: "It rained the whole day and there was no backup plan. We just sat in the car for 4 hours.", color: "#fff" },
-    { id: 12, name: "Sophia Rossi", rating: 1, date: "November 2024", profile: "Italy", trip: "Kandy Highlights", comment: "The tour was cancelled last minute with no proper explanation. Very unprofessional service.", color: "#fff" },
+    { id: 9, name: "Robert Taylor", rating: 1, date: "February 2018", profile: "Australia", trip: "Kandy Highlights", comment: "Our driver was late and spoke very little English. We missed half the itinerary due to poor planning.", color: "#fff" },
+    { id: 10, name: "Linda Brown", rating: 1, date: "January 2017", profile: "UK", trip: "Kandy Highlights", comment: "Waste of money. The Pinnawala experience felt unethical and the city of Kandy was just dirty and loud.", color: "#fff" },
+    { id: 11, name: "Michael Chen", rating: 1, date: "December 2016", profile: "Singapore", trip: "Kandy Highlights", comment: "It rained the whole day and there was no backup plan. We just sat in the car for 4 hours.", color: "#fff" },
+    { id: 12, name: "Sophia Rossi", rating: 1, date: "November 2015", profile: "Italy", trip: "Kandy Highlights", comment: "The tour was cancelled last minute with no proper explanation. Very unprofessional service.", color: "#fff" },
     // Adding 195 dynamic reviews to reach 200+ reviews total
     ...Array(195).fill().map((_, i) => ({
         id: i + 13,
         name: ["John D.", "Emma S.", "Oliver L.", "Charlotte W.", "William M.", "Amelia K.", "James B.", "Sophia P.", "Benjamin C.", "Mia G."][i % 10],
         rating: (i % 30 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Star rating distribution (1, 2, 3, 4, 5 stars)
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "Culture Lover"][i % 5],
         trip: "Kandy Highlights",
         comment: [
@@ -296,7 +296,7 @@ const adamsPeakReviews = [
         id: i + 11,
         name: ["John D.", "Maria S.", "David L.", "Sophie K.", "Alex M.", "Rachel T.", "Thomas B.", "Oliver W.", "Emily H.", "Daniel F."][i % 10],
         rating: (i % 7 === 0) ? 3 : ((i % 3 === 0) ? 4 : 5), // Mix of 3, 4, and 5 stars
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: "Verified Traveler",
         trip: "Adam's Peak Quest",
         comment: [
@@ -324,7 +324,7 @@ const kitulgalaReviews = [
         id: i + 4,
         name: ["Samuel T.", "Rebecca W.", "Jacob S.", "Chloe M.", "Ethan P.", "Mia L.", "Benjamin H.", "Lily C.", "William R.", "Ava G."][i % 10],
         rating: (i % 25 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 12 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple", "Thrill Seeker"][i % 5],
         trip: "Kitulgala Rafting",
         comment: [
@@ -353,7 +353,7 @@ const sigiriyaEscapeReviews = [
         id: i + 6,
         name: ["John D.", "Sarah M.", "David L.", "Emily W.", "Michael K.", "Anna S.", "James B.", "Elena P.", "Robert C.", "Laura G."][i % 10],
         rating: (i % 22 === 0) ? 1 : ((i % 14 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Mix of 1, 2, 3, 4, and 5 stars
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Trip", "Couple", "Nature Lover"][i % 5],
         trip: "Sigiriya Nature & Culture Escape",
         comment: [
@@ -382,7 +382,7 @@ const sigiriyaSafariReviews = [
         id: i + 6,
         name: ["Benjamin M.", "Sophia R.", "Lucas D.", "Emma F.", "Arthur L.", "Mia N.", "William P.", "Olivia H.", "Gabriel V.", "Clara W."][i % 10],
         rating: (i % 25 === 0) ? 1 : ((i % 15 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Mix of 1, 2, 3, 4, and 5 stars
-        date: "2024-2025",
+        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
         profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
         trip: "Sigiriya & Elephant Safari",
         comment: [

@@ -48,6 +48,13 @@ const VolunteerProgramDetails = () => {
         );
     }
 
+    let isGray = false;
+    const getNextBgClass = () => {
+        const bgClass = isGray ? 'gray-bg' : 'white-bg';
+        isGray = !isGray;
+        return bgClass;
+    };
+
     return (
         <div className="volunteer-details-page" style={{ background: '#ffffff', minHeight: '100vh', paddingBottom: '120px' }}>
             
@@ -139,14 +146,15 @@ const VolunteerProgramDetails = () => {
                 </div>
             </div>
 
-            {/* Compact Specs Strip */}
-            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '30px 5% 0' }}>
-                <div className="bento-grid" style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(4, 1fr)',
-                    gap: '12px',
-                    marginBottom: '40px'
-                }}>
+            {/* Section 1: Specs, Overview & Gallery */}
+            <div className={`detail-section ${getNextBgClass()}`} style={{ paddingTop: '30px' }}>
+                <div className="detail-section-inner">
+                    <div className="bento-grid" style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(4, 1fr)',
+                        gap: '12px',
+                        marginBottom: '40px'
+                    }}>
                     <div className="bento-card" style={{
                         background: '#f5f5f7',
                         padding: '16px 20px',
@@ -275,13 +283,13 @@ const VolunteerProgramDetails = () => {
                     background: 'transparent',
                     padding: '45px 0',
                     marginBottom: '45px',
-                    borderBottom: '1px solid #eaeaea'
+                    borderBottom: (program.galleryImages && program.galleryImages.length > 0) ? '1px solid #eaeaea' : 'none'
                 }}>
                     <div style={{ marginBottom: '24px' }}>
                         <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Overview</span>
-                        <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>About This Program</h2>
+                        <h2 className="section-heading-modern" style={{ margin: 0 }}>About This Program</h2>
                     </div>
-                    <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', fontWeight: 400, margin: 0 }}>
+                    <p className="section-text-modern" style={{ margin: 0 }}>
                         {program.description}
                     </p>
                 </div>
@@ -301,7 +309,7 @@ const VolunteerProgramDetails = () => {
                                 borderRadius: '4px',
                                 background: 'var(--primary-green)'
                             }}></div>
-                            <h2 style={{ fontSize: '1.8rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Photo Gallery</h2>
+                            <h2 className="section-heading-modern" style={{ margin: 0 }}>Photo Gallery</h2>
                         </div>
                         <div className="vol-gallery-grid" style={{
                             display: 'grid',
@@ -357,30 +365,34 @@ const VolunteerProgramDetails = () => {
                         </div>
                     </div>
                 )}
+                </div>
+            </div>
 
-                {/* Program Highlights Spec Grid */}
-                {program.highlights && program.highlights.length > 0 && (
-                    <div id="highlights" className="section-card" style={{
-                        background: 'transparent',
-                        padding: '45px 0',
-                        marginBottom: '45px',
-                        borderBottom: '1px solid #eaeaea'
-                    }}>
-                        <div style={{ marginBottom: '24px' }}>
-                            <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Key Details</span>
-                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Program Highlights</h2>
-                        </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '20px' }}>
-                            {program.highlights.map((highlight, idx) => (
-                                <div key={idx} style={{ 
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    gap: '16px', 
-                                    padding: '16px 20px', 
-                                    borderRadius: '16px', 
-                                    background: '#f5f5f7', 
-                                    border: '1px solid rgba(0,0,0,0.02)'
-                                }}>
+            {/* Section 2: Program Highlights */}
+            {program.highlights && program.highlights.length > 0 && (
+                <div className={`detail-section ${getNextBgClass()}`} id="highlights">
+                    <div className="detail-section-inner">
+                        <div className="section-card" style={{
+                            background: 'transparent',
+                            padding: '0',
+                            marginBottom: '0'
+                        }}>
+                            <div style={{ marginBottom: '24px' }}>
+                                <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Key Details</span>
+                                <h2 className="section-heading-modern" style={{ margin: 0 }}>Program Highlights</h2>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '20px' }}>
+                                {program.highlights.map((highlight, idx) => (
+                                    <div key={idx} style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '16px', 
+                                        padding: '16px 20px', 
+                                        borderRadius: '16px', 
+                                        background: '#ffffff',
+                                        border: '1px solid rgba(0,0,0,0.02)',
+                                        boxShadow: '0 4px 15px rgba(0,0,0,0.02)'
+                                    }}>
                                     <div style={{
                                         background: 'var(--primary-green)',
                                         width: '28px',
@@ -400,24 +412,24 @@ const VolunteerProgramDetails = () => {
                             ))}
                         </div>
                     </div>
-                )}
+                </div>
+            </div>
+            )}
 
-                {/* Dynamic Sections & Timeline Itinerary */}
-                {program.sections && program.sections.filter(s => !s.title.toLowerCase().includes('impact')).map((section, idx, filteredArr) => {
-                    const isItinerary = section.title.toLowerCase().includes('itinerary');
-                    const isExperienceCategories = section.title.toLowerCase().includes('experience categories');
-                    const isLast = idx === filteredArr.length - 1;
-                    return (
-                        <div key={idx} id={isItinerary ? "itinerary" : `section-${idx}`} className="section-card" style={{
-                            background: 'transparent',
-                            padding: '45px 0',
-                            marginBottom: '45px',
-                            borderBottom: isLast && !program.accommodation && !program.mealsInfo ? 'none' : '1px solid #eaeaea'
-                        }}>
-                            <div style={{ marginBottom: '24px' }}>
-                                <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>{isItinerary ? "Schedule" : "Experience"}</span>
-                                <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>{section.title}</h2>
-                            </div>
+            {/* Dynamic Sections & Timeline Itinerary */}
+            {program.sections && program.sections.filter(s => !s.title.toLowerCase().includes('impact')).map((section, idx, filteredArr) => {
+                const isTeachingOptions = section.title === 'Teaching Placement Options';
+                const isItinerary = section.title.toLowerCase().includes('itinerary');
+                const isExperienceCategories = section.title.toLowerCase().includes('experience categories');
+                const sectionBg = getNextBgClass();
+                return (
+                    <div key={idx} id={isItinerary ? "itinerary" : `section-${idx}`} className={`detail-section ${sectionBg}`}>
+                        <div className="detail-section-inner">
+                            <div className="section-card" style={{ background: 'transparent', padding: '0', marginBottom: '0' }}>
+                                <div style={{ marginBottom: '24px' }}>
+                                    <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>{isItinerary ? "Schedule" : "Experience"}</span>
+                                    <h2 className="section-heading-modern" style={{ margin: 0 }}>{section.title}</h2>
+                                </div>
                             
                             {isItinerary ? (
                                 <div className="itinerary-timeline" style={{ position: 'relative', paddingLeft: '30px' }}>
@@ -459,7 +471,7 @@ const VolunteerProgramDetails = () => {
                                                 }} className="timeline-node"></div>
                                                 
                                                 <div style={{
-                                                    background: '#f5f5f7',
+                                                    background: sectionBg === 'white-bg' ? '#f5f5f7' : '#ffffff',
                                                     padding: '20px 25px',
                                                     borderRadius: '20px',
                                                     border: '1px solid rgba(0,0,0,0.02)',
@@ -604,7 +616,7 @@ const VolunteerProgramDetails = () => {
                                                                      gap: '16px', 
                                                                      padding: '16px 20px', 
                                                                      borderRadius: '16px', 
-                                                                     background: isSelected ? 'white' : '#f5f5f7', 
+                                                                     background: isSelected ? 'white' : (sectionBg === 'white-bg' ? '#f5f5f7' : '#ffffff'), 
                                                                      border: `1px solid ${isSelected ? 'var(--primary-green)' : 'rgba(0,0,0,0.02)'}`,
                                                                      boxShadow: isSelected ? '0 10px 30px rgba(29, 185, 84, 0.08)' : 'none',
                                                                      cursor: 'pointer',
@@ -666,57 +678,60 @@ const VolunteerProgramDetails = () => {
                                         if (para.startsWith('**')) {
                                             const parts = para.split('**');
                                             return (
-                                                <p key={pIdx} style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '20px' }}>
-                                                    <strong style={{ color: '#1d1d1f', fontWeight: 700 }}>{parts[1]}</strong>{parts[2]}
+                                                <p key={pIdx} className="section-text-modern" style={{ marginBottom: '20px' }}>
+                                                    <span style={{ color: 'var(--primary-green)', fontWeight: 'normal' }}>{parts[1]}</span>{parts[2]}
                                                 </p>
                                             );
                                         }
                                         return (
-                                            <p key={pIdx} style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '20px' }}>
+                                            <p key={pIdx} className="section-text-modern" style={{ marginBottom: '20px' }}>
                                                 {para}
                                             </p>
                                         );
                                     })}
                                 </div>
                             )}
+                            </div>
                         </div>
-                    );
-                })}
+                    </div>
+                );
+            })}
 
-                {/* Cinematic Image Break */}
-                {program.galleryImages && program.galleryImages.length > 1 && (
+            {/* Cinematic Image Break */}
+            {program.galleryImages && program.galleryImages.length > 1 && (
+                <div style={{
+                    position: 'relative',
+                    height: '350px',
+                    width: '100%',
+                    overflow: 'hidden'
+                }}>
+                    <img 
+                        src={stayEatBg} 
+                        alt="Program experience"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover'
+                        }}
+                    />
                     <div style={{
-                        margin: '20px 0 50px',
-                        borderRadius: '24px',
-                        overflow: 'hidden',
-                        position: 'relative',
-                        height: '280px'
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        padding: '40px 5%'
                     }}>
-                        <img 
-                            src={stayEatBg} 
-                            alt="Program experience"
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover'
-                            }}
-                        />
-                        <div style={{
-                            position: 'absolute',
-                            inset: 0,
-                            background: 'linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'flex-end',
-                            padding: '40px'
-                        }}>
+                        <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
                             <span style={{
                                 fontSize: '0.7rem',
                                 fontWeight: 800,
                                 textTransform: 'uppercase',
                                 letterSpacing: '2px',
                                 color: 'rgba(255,255,255,0.7)',
-                                marginBottom: '8px'
+                                marginBottom: '8px',
+                                display: 'block'
                             }}>Your Journey</span>
                             <h3 style={{
                                 fontSize: 'clamp(1.4rem, 3vw, 2rem)',
@@ -729,21 +744,25 @@ const VolunteerProgramDetails = () => {
                             }}>Where you'll stay & what you'll eat</h3>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
 
-                {/* Accommodation Configurator Section */}
-                {program.accommodation && (
-                    <div id="accommodation" className="section-card" style={{
-                        background: 'transparent',
-                        padding: '45px 0',
-                        marginBottom: '45px',
-                        borderBottom: !program.mealsInfo ? 'none' : '1px solid #eaeaea'
-                    }}>
+            {/* Accommodation Configurator Section */}
+            {program.accommodation && (() => {
+                const sectionBg = getNextBgClass();
+                return (
+                    <div className={`detail-section ${sectionBg}`} id="accommodation">
+                        <div className="detail-section-inner">
+                            <div className="section-card" style={{
+                                background: 'transparent',
+                                padding: '0',
+                                marginBottom: '0'
+                            }}>
                         <div style={{ marginBottom: '24px' }}>
                             <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Where You'll Stay</span>
-                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Accommodation Options</h2>
+                            <h2 className="section-heading-modern" style={{ margin: 0 }}>Accommodation Options</h2>
                         </div>
-                        <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '35px' }}>{program.accommodation.description}</p>
+                        <p className="section-text-modern" style={{ marginBottom: '35px' }}>{program.accommodation.description}</p>
                         
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '45px' }}>
                             {program.accommodation.options.map((opt, idx) => (
@@ -767,7 +786,7 @@ const VolunteerProgramDetails = () => {
                             ))}
                         </div>
 
-                        <div style={{ background: '#f5f5f7', padding: '30px 35px', borderRadius: '24px', border: '1px solid rgba(0,0,0,0.01)' }}>
+                        <div style={{ background: sectionBg === 'white-bg' ? '#f5f5f7' : '#ffffff', padding: '30px 35px', borderRadius: '24px', border: '1px solid rgba(0,0,0,0.01)' }}>
                             <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '15px', letterSpacing: '-0.01em' }}>At a glance specs</h4>
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '15px' }}>
                                 {program.accommodation.features.map((feat, idx) => (
@@ -868,22 +887,28 @@ const VolunteerProgramDetails = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                )}
+                </div>
+            </div>
+        );
+    })()}
 
-                {/* Meals Specs Section */}
-                {program.mealsInfo && (
-                    <div id="meals" className="section-card" style={{
-                        background: 'transparent',
-                        padding: '45px 0',
-                        marginBottom: '60px'
-                    }}>
+            {/* Meals Specs Section */}
+            {program.mealsInfo && (() => {
+                const sectionBg = getNextBgClass();
+                return (
+                    <div className={`detail-section ${sectionBg}`} id="meals">
+                        <div className="detail-section-inner">
+                            <div className="section-card" style={{
+                                background: 'transparent',
+                                padding: '0',
+                                marginBottom: '0'
+                            }}>
                         <div style={{ marginBottom: '24px' }}>
                             <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>What You'll Eat</span>
-                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>Meals</h2>
+                            <h2 className="section-heading-modern" style={{ margin: 0 }}>Meals</h2>
                         </div>
-                        <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '35px' }}>{program.mealsInfo.description}</p>
+                        <p className="section-text-modern" style={{ marginBottom: '35px' }}>{program.mealsInfo.description}</p>
                         
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
                             <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(255, 249, 230, 0.91)', border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
@@ -909,39 +934,48 @@ const VolunteerProgramDetails = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
+            </div>
+        );
+    })()}
 
-                {/* Your Impact Section - Bottom of Page */}
-                {program.sections && program.sections.filter(s => s.title.toLowerCase().includes('impact')).map((section, idx) => (
-                    <div key={`impact-${idx}`} className="section-card" style={{
-                        background: 'transparent',
-                        padding: '45px 0',
-                        marginBottom: '60px',
-                    }}>
+            {/* Your Impact Section - Bottom of Page */}
+            {program.sections && program.sections.filter(s => s.title.toLowerCase().includes('impact')).map((section, idx) => {
+                const sectionBg = getNextBgClass();
+                return (
+                    <div key={`impact-${idx}`} className={`detail-section ${sectionBg}`}>
+                        <div className="detail-section-inner">
+                            <div className="section-card" style={{
+                                background: 'transparent',
+                                padding: '0',
+                                marginBottom: '0',
+                            }}>
                         <div style={{ marginBottom: '24px' }}>
                             <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Your Impact</span>
-                            <h2 style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0, background: 'linear-gradient(135deg, #121212 30%, #4f4f4f 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>{section.title}</h2>
+                            <h2 className="section-heading-modern" style={{ margin: 0 }}>{section.title}</h2>
                         </div>
                         <div>
                             {section.paragraphs.map((para, pIdx) => {
                                 if (para.startsWith('**')) {
                                     const parts = para.split('**');
                                     return (
-                                        <p key={pIdx} style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '20px' }}>
-                                            <strong style={{ color: '#1d1d1f', fontWeight: 700 }}>{parts[1]}</strong>{parts[2]}
+                                        <p key={pIdx} className="section-text-modern" style={{ marginBottom: '20px' }}>
+                                            <span style={{ color: 'var(--primary-green)', fontWeight: 'normal' }}>{parts[1]}</span>{parts[2]}
                                         </p>
                                     );
                                 }
                                 return (
-                                    <p key={pIdx} style={{ fontSize: '1.15rem', lineHeight: 1.8, color: '#444444', marginBottom: '20px' }}>
+                                    <p key={pIdx} className="section-text-modern" style={{ marginBottom: '20px' }}>
                                         {para}
                                     </p>
                                 );
                             })}
                         </div>
                     </div>
-                ))}
+                </div>
             </div>
+        );
+    })}
 
 
             {/* Reviews Section */}
@@ -954,7 +988,7 @@ const VolunteerProgramDetails = () => {
                 {/* Header + Badge — centered */}
                 <div style={{ textAlign: 'center', marginBottom: '18px', padding: '0 5%' }}>
                     <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem' }}>What Volunteers Say</span>
-                    <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 900, marginTop: '10px', marginBottom: '24px', letterSpacing: '-0.03em', color: '#1d1d1f' }}>
+                    <h2 className="section-heading-modern" style={{ marginTop: '10px', marginBottom: '24px' }}>
                         Trusted by Volunteers Worldwide
                     </h2>
 
@@ -1094,6 +1128,49 @@ const VolunteerProgramDetails = () => {
             
             {/* Global Scoped Premium CSS rules */}
             <style dangerouslySetInnerHTML={{ __html: `
+                .section-heading-modern {
+                    font-size: clamp(2rem, 3.5vw, 2.8rem) !important;
+                    font-weight: 700 !important;
+                    color: #2d2d2d !important;
+                    line-height: 1.25 !important;
+                    letter-spacing: -0.01em !important;
+                }
+                
+                .section-text-modern {
+                    font-size: 1.05rem !important;
+                    color: #4a4a4a !important;
+                    line-height: 1.75 !important;
+                    font-weight: 400 !important;
+                }
+
+                .detail-section {
+                    width: 100% !important;
+                    padding: 60px 0 !important;
+                    box-sizing: border-box !important;
+                }
+                .detail-section.white-bg {
+                    background: #ffffff !important;
+                }
+                .detail-section.gray-bg {
+                    background: #f5f5f7 !important;
+                }
+                .detail-section-inner {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 0 5%;
+                }
+                @media (max-width: 768px) {
+                    .detail-section {
+                        padding: 40px 0 !important;
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    .teaching-options-card {
+                        padding: 40px 0 !important;
+                    }
+                }
+
                 .volunteer-details-page {
                     font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
                     -webkit-font-smoothing: antialiased;

@@ -64,6 +64,11 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
         <Link to={pkg.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${pkg.id}`} className={`package-card gyg-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="gyg-card-img-wrapper">
                 <img src={pkg.image} alt={pkg.name} className="gyg-card-img" />
+                {pkg.name.includes('Breathe Sri Lanka') && (
+                    <div style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--primary-green)', color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold', zIndex: 10, boxShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+                        Volunteer Combined
+                    </div>
+                )}
                 {/* Days / Nights badge */}
                 <div className="gyg-days-badge">
                     <span className="gyg-days-num">{daysNum}</span>
@@ -78,7 +83,9 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                 </div>
                 {/* Discount badge */}
                 {discountPercent > 0 && (
-                    <div className="gyg-discount-badge">-{discountPercent}%</div>
+                    <div className="gyg-discount-badge" style={pkg.name.includes('Breathe Sri Lanka') ? { top: '44px', left: '10px' } : {}}>
+                        -{discountPercent}%
+                    </div>
                 )}
             </div>
             <div className="gyg-card-body">
@@ -160,6 +167,8 @@ const TourPackages = ({ searchTerm }) => {
         if (filterCategory === 'wildlife' && !tags.includes('wild') && !tags.includes('nature') && !tags.includes('safari') && !tags.includes('elephant') && !tags.includes('leopard')) return false;
         if (filterCategory === 'cultural' && !tags.includes('temple') && !tags.includes('ancient') && !tags.includes('cultural') && !tags.includes('history') && !tags.includes('heritage')) return false;
         if (filterCategory === 'beach' && !tags.includes('beach') && !tags.includes('coast') && !tags.includes('shore') && !tags.includes('surf')) return false;
+        if (filterCategory === 'adventure' && !tags.includes('hike') && !tags.includes('trek') && !tags.includes('mountain') && !tags.includes('adventure') && !tags.includes('rafting') && !tags.includes('rainforest') && !tags.includes('peak')) return false;
+        if (filterCategory === 'daytrip' && parseInt(pkg.days) > 1) return false;
         if (filterCategory === 'volunteer' && !tags.includes('volunteer') && !tags.includes('impact') && !tags.includes('giveback') && !tags.includes('meaningful')) return false;
 
         return true;
@@ -216,33 +225,20 @@ const TourPackages = ({ searchTerm }) => {
                 </button>
 
                 <button 
-                    onClick={() => setFilterCategory('volunteer')}
-                    className={`filter-pill ${filterCategory === 'volunteer' ? 'active' : ''}`}
+                    onClick={() => setFilterCategory('adventure')}
+                    className={`filter-pill ${filterCategory === 'adventure' ? 'active' : ''}`}
                 >
-                    Volunteering & Impact
+                    Nature & Adventure
+                </button>
+
+                <button 
+                    onClick={() => setFilterCategory('daytrip')}
+                    className={`filter-pill ${filterCategory === 'daytrip' ? 'active' : ''}`}
+                >
+                    Day Trips
                 </button>
 
 
-
-                {/* Duration Filters */}
-                <button 
-                    onClick={() => setFilterDuration('short')}
-                    className={`filter-pill ${filterDuration === 'short' ? 'active' : ''}`}
-                >
-                    1-4 Days
-                </button>
-                <button 
-                    onClick={() => setFilterDuration('medium')}
-                    className={`filter-pill ${filterDuration === 'medium' ? 'active' : ''}`}
-                >
-                    5-7 Days
-                </button>
-                <button 
-                    onClick={() => setFilterDuration('long')}
-                    className={`filter-pill ${filterDuration === 'long' ? 'active' : ''}`}
-                >
-                    8+ Days
-                </button>
 
                 <button 
                     onClick={() => {setFilterCategory('all'); setFilterDuration('all');}}

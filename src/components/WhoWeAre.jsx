@@ -78,8 +78,8 @@ const WhoWeAre = () => {
                         <div className="who-tall-card">
                             <img src={NatureImg} alt="Sri Lankan Nature" className="who-card-img" />
                             <div className="who-card-overlay">
-                                <h3>The Soul of Nature</h3>
-                                <p>Discover the untouched beauty of Sri Lanka's highlands and hidden waterfalls that take your breath away.</p>
+                                <h3>Timeless Heritage</h3>
+                                <p>Discover the historic charm of Galle Fort. Wander through cobblestone streets where colonial architecture meets the stunning coastal scenery of Sri Lanka.</p>
                             </div>
                         </div>
                     </div>
@@ -130,19 +130,20 @@ const WhoWeAre = () => {
 
                 /* Content Column */
                 .who-main-title {
-                    font-size: clamp(2rem, 3.5vw, 3rem);
-                    font-weight: 800;
-                    color: #111;
-                    line-height: 1.2;
-                    margin-bottom: 20px;
-                    letter-spacing: -1px;
+                    font-size: clamp(2rem, 3.5vw, 2.8rem);
+                    font-weight: 700;
+                    color: #2d2d2d;
+                    line-height: 1.25;
+                    margin-bottom: 24px;
+                    letter-spacing: -0.01em;
                 }
                 .who-subtitle {
-                    font-size: 1.1rem;
-                    color: #555;
-                    line-height: 1.6;
+                    font-size: 1.05rem;
+                    color: #4a4a4a;
+                    line-height: 1.75;
                     margin-bottom: 40px;
-                    max-width: 90%;
+                    max-width: 95%;
+                    font-weight: 400;
                 }
                 .who-features-list {
                     display: flex;

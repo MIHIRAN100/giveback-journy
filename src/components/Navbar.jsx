@@ -42,7 +42,7 @@ const Navbar = () => {
 
     const navItems = [
         { 
-            name: 'Holiday Tours', 
+            name: 'Travels and Adventures', 
             path: '/packages',
             columns: [
                 {
@@ -76,31 +76,7 @@ const Navbar = () => {
             ]
         },
         { 
-            name: 'Island Guide', 
-            path: '/sri-lanka',
-            columns: [
-                {
-                    title: 'Top Regions',
-                    items: [
-                        { name: 'Cultural Triangle', path: '/sri-lanka' },
-                        { name: 'Hill Country', path: '/sri-lanka' },
-                        { name: 'Southern Coast', path: '/sri-lanka' },
-                        { name: 'Northern Wonders', path: '/sri-lanka' }
-                    ]
-                },
-                {
-                    title: 'Travel Essentials',
-                    items: [
-                        { name: 'Best Time to Visit', path: '/sri-lanka' },
-                        { name: 'Visa & Entry', path: '/sri-lanka' },
-                        { name: 'Local Etiquette', path: '/sri-lanka' },
-                        { name: 'Packing Guide', path: '/sri-lanka' }
-                    ]
-                }
-            ]
-        },
-        { 
-            name: 'Volunteer & Programs', 
+            name: 'Giveback Volunteer', 
             path: '/volunteer',
             columns: [
                 {
@@ -124,6 +100,31 @@ const Navbar = () => {
                 }
             ]
         },
+        { 
+            name: 'Island Guide', 
+            path: '/sri-lanka',
+            columns: [
+                {
+                    title: 'Top Regions',
+                    items: [
+                        { name: 'Cultural Triangle', path: '/sri-lanka' },
+                        { name: 'Hill Country', path: '/sri-lanka' },
+                        { name: 'Southern Coast', path: '/sri-lanka' },
+                        { name: 'Northern Wonders', path: '/sri-lanka' }
+                    ]
+                },
+                {
+                    title: 'Travel Essentials',
+                    items: [
+                        { name: 'Best Time to Visit', path: '/sri-lanka' },
+                        { name: 'Visa & Entry', path: '/sri-lanka' },
+                        { name: 'Local Etiquette', path: '/sri-lanka' },
+                        { name: 'Packing Guide', path: '/sri-lanka' }
+                    ]
+                }
+            ]
+        },
+        { name: 'Price', path: '/volunteer#pricing' },
         { name: 'About Us', path: '/exclusive-journeys' }
     ];
 
@@ -154,8 +155,15 @@ const Navbar = () => {
                                     className="nav-item-wrapper"
                                     onMouseEnter={() => item.columns ? setActiveMegaMenu(item.name) : setActiveMegaMenu(null)}
                                 >
-                                    <Link to={item.path} className="nav-item">
-                                        {item.name}
+                                    <Link to={item.path} className="nav-item" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                        <span>{item.name}</span>
+                                        {item.columns && (
+                                            <i className="bi bi-chevron-down" style={{ 
+                                                fontSize: '0.65rem', 
+                                                transition: 'transform 0.3s ease',
+                                                transform: activeMegaMenu === item.name ? 'rotate(180deg)' : 'rotate(0)' 
+                                            }}></i>
+                                        )}
                                     </Link>
                                 </li>
                             ))}
@@ -246,6 +254,79 @@ const Navbar = () => {
                             <i className={compareList.length > 0 ? "bi bi-heart-fill" : "bi bi-heart"}></i>
                             {compareList.length > 0 && <span className="compare-badge">{compareList.length}</span>}
                         </Link>
+                        
+                        {/* Mobile Currency Selector */}
+                        <div className="mobile-currency-selector" style={{ position: 'relative' }}>
+                            <div 
+                                onClick={(e) => { e.stopPropagation(); setIsCurrencyOpen(!isCurrencyOpen); }}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '4px',
+                                    padding: '6px 10px',
+                                    background: 'rgba(0,0,0,0.05)',
+                                    borderRadius: '50px',
+                                    cursor: 'pointer',
+                                    color: 'var(--pitch-black)',
+                                    fontSize: '0.75rem',
+                                    fontWeight: 800,
+                                    border: '1px solid rgba(0,0,0,0.05)'
+                                }}
+                            >
+                                <span>{currencies[currency].icon}</span>
+                                <span>{currency}</span>
+                                <i className={`bi bi-chevron-down`} style={{ fontSize: '0.55rem', transition: 'transform 0.3s ease', transform: isCurrencyOpen ? 'rotate(180deg)' : 'rotate(0)' }}></i>
+                            </div>
+
+                            <AnimatePresence>
+                                {isCurrencyOpen && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        style={{
+                                            position: 'absolute',
+                                            top: '120%',
+                                            right: 0,
+                                            background: 'rgba(255, 255, 255, 0.95)',
+                                            backdropFilter: 'blur(15px)',
+                                            WebkitBackdropFilter: 'blur(15px)',
+                                            borderRadius: '16px',
+                                            boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+                                            padding: '6px',
+                                            minWidth: '130px',
+                                            zIndex: 1000,
+                                            border: '1px solid rgba(0,0,0,0.05)'
+                                        }}
+                                    >
+                                        {Object.values(currencies).map(c => (
+                                            <div 
+                                                key={c.label}
+                                                onClick={() => { setCurrency(c.label); setIsCurrencyOpen(false); }}
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '8px',
+                                                    padding: '8px 12px',
+                                                    borderRadius: '8px',
+                                                    cursor: 'pointer',
+                                                    transition: 'all 0.2s ease',
+                                                    background: currency === c.label ? 'rgba(29, 185, 84, 0.1)' : 'transparent',
+                                                    color: currency === c.label ? 'var(--primary-green)' : '#333',
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: currency === c.label ? 800 : 600
+                                                }}
+                                            >
+                                                <span style={{ fontSize: '1rem' }}>{c.icon}</span>
+                                                <span>{c.label}</span>
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
                         <Link to="/packages" className="btn-modern btn-solid-green mobile-book-btn">
                             Apply
                         </Link>

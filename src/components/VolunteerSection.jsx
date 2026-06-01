@@ -145,7 +145,7 @@ const VolunteerSection = () => {
                         </Link>
                     </div>
 
-                    <Link to="/contact" className="btn-modern btn-solid-green" style={{
+                    <Link to="/volunteer" className="btn-modern btn-solid-green" style={{
                         marginTop: '40px',
                         padding: '18px 45px',
                         fontSize: '1rem',

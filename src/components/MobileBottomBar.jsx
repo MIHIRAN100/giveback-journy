@@ -7,9 +7,9 @@ const MobileBottomBar = () => {
 
     const navItems = [
         { path: '/',                   icon: 'bi bi-house',          label: 'Home' },
-        { path: '/packages',           icon: 'bi bi-suitcase-lg',    label: 'Holiday Tours' },
-        { path: '/volunteer',          icon: 'bi bi-heart',          label: 'Volunteer' },
+        { path: '/packages',           icon: 'bi bi-suitcase-lg',    label: 'Travels and Adventures' },
         { path: '/sri-lanka',          icon: 'bi bi-bank',           label: 'Heritage' },
+        { path: '/volunteer',          icon: 'bi bi-heart',          label: 'Giveback Volunteer' },
         { path: '/contact',            icon: 'bi bi-chat-text',      label: 'Contact' },
     ];
 

@@ -218,6 +218,21 @@ const VolunteerPage = () => {
         <div className="volunteer-page">
             <style>
                 {`
+                .section-heading-modern {
+                    font-size: clamp(2rem, 3.5vw, 2.8rem) !important;
+                    font-weight: 700 !important;
+                    color: #2d2d2d !important;
+                    line-height: 1.25 !important;
+                    letter-spacing: -0.01em !important;
+                }
+                
+                .section-text-modern {
+                    font-size: 1.05rem !important;
+                    color: #4a4a4a !important;
+                    line-height: 1.75 !important;
+                    font-weight: 400 !important;
+                }
+
                 .volunteer-page {
                     background: #fff;
                     overflow-x: hidden;
@@ -946,11 +961,11 @@ const VolunteerPage = () => {
                         {/* Left Column: Our Mission */}
                         <div>
                             <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem', display: 'block', marginBottom: '12px' }}>OUR MISSION</span>
-                            <h2 style={{ fontSize: 'clamp(2.2rem, 5vw, 3rem)', fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 24px 0', color: '#1d1d1f', lineHeight: 1.1 }}>Making a Lasting Impact.</h2>
-                            <p style={{ fontSize: '1.15rem', lineHeight: 1.75, color: '#484848', marginBottom: '20px' }}>
+                            <h2 className="section-heading-modern" style={{ margin: '0 0 24px 0' }}>Making a Lasting Impact.</h2>
+                            <p className="section-text-modern" style={{ marginBottom: '20px' }}>
                                 Volunteering in Sri Lanka is a journey of the heart. At Giveback Journey, we connect passionate travelers with meaningful projects that address the island's most pressing needs.
                             </p>
-                            <p style={{ fontSize: '1.15rem', lineHeight: 1.75, color: '#484848', marginBottom: 0 }}>
+                            <p className="section-text-modern" style={{ marginBottom: 0 }}>
                                 Whether you're teaching English to enthusiastic students, supporting women's empowerment initiatives, or providing care for those with special needs, your contribution creates a ripple effect of positive change.
                             </p>
                         </div>
@@ -1319,8 +1334,8 @@ const VolunteerPage = () => {
                     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
                         <div className="modern-dest-header">
                             <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', display: 'inline-block', marginBottom: '16px', background: '#f0fdf4', padding: '6px 16px', borderRadius: '100px' }}>Our Locations</span>
-                            <h2 style={{ fontSize: '2.8rem', fontWeight: 900, letterSpacing: '-0.04em', margin: '0 0 16px 0', color: '#1d1d1f' }}>Where You’ll Make an Impact</h2>
-                            <p style={{ fontSize: '1.15rem', color: '#6e6e73', maxWidth: '600px', margin: '0 auto' }}>Choose between the lush hills of central Sri Lanka or the vibrant southern coast. Both offer distinct cultures, landscapes, and opportunities to serve.</p>
+                            <h2 className="section-heading-modern" style={{ margin: '0 0 16px 0' }}>Where You’ll Make an Impact</h2>
+                            <p className="section-text-modern" style={{ maxWidth: '600px', margin: '0 auto' }}>Choose between the lush hills of central Sri Lanka or the vibrant southern coast. Both offer distinct cultures, landscapes, and opportunities to serve.</p>
                         </div>
                         
                         <div className="modern-dest-grid">
@@ -1410,7 +1425,7 @@ const VolunteerPage = () => {
                 <section className="features-section">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Experience Excellence</span>
-                        <h3 style={{ fontSize: '3rem', fontWeight: 900, marginTop: '10px', color: '#111', letterSpacing: '-0.03em' }}>Program Features</h3>
+                        <h3 className="section-heading-modern" style={{ marginTop: '10px' }}>Program Features</h3>
                     </div>
                     <div className="features-grid">
                         {[
@@ -1444,8 +1459,8 @@ const VolunteerPage = () => {
                 <section id="pricing" style={{ margin: '60px 0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Transparent Pricing</span>
-                        <h2 style={{ fontSize: '3.2rem', fontWeight: 900, marginTop: '10px', letterSpacing: '-0.04em' }}>Program Fees & Comparison</h2>
-                        <p style={{ color: '#666', fontSize: '1.15rem', marginTop: '15px', maxWidth: '600px', margin: '15px auto 0', lineHeight: 1.6 }}>
+                        <h2 className="section-heading-modern" style={{ marginTop: '10px' }}>Program Fees & Comparison</h2>
+                        <p className="section-text-modern" style={{ marginTop: '15px', maxWidth: '600px', margin: '15px auto 0' }}>
                             Compare fees, durations, and inclusions across all volunteer programs. We believe in complete financial transparency.
                         </p>
                     </div>
@@ -1706,8 +1721,8 @@ const VolunteerPage = () => {
                 <section style={{ margin: '120px 0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '70px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem' }}>How It Works</span>
-                        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, marginTop: '12px', letterSpacing: '-0.04em', color: '#1d1d1f' }}>Your Impact Journey</h2>
-                        <p style={{ color: '#6e6e73', fontSize: '1.05rem', marginTop: '16px', maxWidth: '560px', margin: '16px auto 0', lineHeight: 1.65 }}>
+                        <h2 className="section-heading-modern" style={{ marginTop: '12px' }}>Your Impact Journey</h2>
+                        <p className="section-text-modern" style={{ marginTop: '16px', maxWidth: '560px', margin: '16px auto 0' }}>
                             From your first inquiry to your last day on the ground — here's how we make it seamless.
                         </p>
                     </div>

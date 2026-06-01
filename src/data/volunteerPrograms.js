@@ -749,5 +749,116 @@ export const volunteerPrograms = [
                 dinner: "Vegetables, Noodles, Tomato Curry, Omelette"
             }
         }
+    },
+    {
+        id: "professional-impact-program",
+        title: "Professional Impact Program",
+        location: "Customized Locations",
+        duration: "Customized",
+        housing: "Flexible Options",
+        price: "Custom",
+        image: interviewImg,
+        minAge: "21+",
+        pickup: "Included",
+        meals: "Flexible",
+        shortDesc: "Customized volunteering and knowledge exchange experience for professionals and skilled individuals.",
+        description: "The Give Back Journey Professional Impact Program has been specifically designed for experienced professionals, specialists, skilled individuals, and industry leaders who wish to use their knowledge, expertise, and life experience to create meaningful and sustainable impact within Sri Lankan communities. Unlike traditional volunteer programs, this initiative is fully customized around each participant's unique background, qualifications, professional experience, interests, and goals.",
+        color: "#2c3e50",
+        galleryImages: [
+            { src: interviewImg, caption: "Professional Consultation" },
+            { src: volunteerCommunity, caption: "Community Impact" },
+            { src: volunteer1, caption: "Knowledge Exchange" },
+            { src: cultureExp, caption: "Cultural Connection" }
+        ],
+        highlights: [
+            "Fully customized placement based on your expertise and professional background",
+            "Meaningful knowledge exchange with local organizations and communities",
+            "A collaborative journey addressing genuine local needs",
+            "Experience authentic Sri Lankan culture and community spirit"
+        ],
+        sections: [
+            {
+                title: "Program Overview",
+                paragraphs: [
+                    "The Give Back Journey Professional Impact Program has been specifically designed for experienced professionals, specialists, skilled individuals, and industry leaders who wish to use their knowledge, expertise, and life experience to create meaningful and sustainable impact within Sri Lankan communities.",
+                    "Unlike traditional volunteer programs, this initiative is fully customized around each participant's unique background, qualifications, professional experience, interests, and goals.",
+                    "We recognize that every individual brings a different set of skills, experiences, and perspectives. Therefore, we do not offer a pre-designed placement. Instead, we work closely with each participant to create a meaningful opportunity that aligns with their expertise while addressing genuine local needs.",
+                    "Our goal is to create an experience that is rewarding for the participant, beneficial for local communities, and impactful for the organizations and individuals involved."
+                ]
+            },
+            {
+                title: "Tell Us Who You Are",
+                paragraphs: [
+                    "We are interested in learning about: Your professional background, Your qualifications and certifications, Your career experience, Your specialist knowledge, Your interests and passions, Your hobbies and personal skills, Your leadership experience, Your previous volunteer experience, and Your ideas and goals for making a positive impact.",
+                    "Whether your expertise comes from years of professional practice, business ownership, academic work, technical skills, creative industries, community leadership, or life experience, we would love to hear your story."
+                ]
+            },
+            {
+                title: "Tell Us What You Can Do",
+                paragraphs: [
+                    "Every participant has something valuable to share. We encourage you to tell us:",
+                    "What knowledge you can share, What skills you can teach, What experience you can contribute, What challenges you have helped solve, What type of projects inspire you, and What kind of impact you would like to make.",
+                    "There is no fixed formula. The more information you provide, the better we can understand how to create a meaningful and impactful experience for everyone involved."
+                ]
+            },
+            {
+                title: "A Program Designed Around You",
+                paragraphs: [
+                    "Once we receive your information, the Give Back Journey Team will carefully review your background and discuss potential opportunities with local partners and community organizations.",
+                    "Together, we will develop a customized volunteering and knowledge-exchange experience that: Matches your skills and expertise, Supports genuine local needs, Creates sustainable impact, Encourages cultural exchange, Benefits both the participant and the local community, and Provides a rewarding and memorable experience.",
+                    "No two placements are the same. Every Professional Impact Program is individually designed to maximize the value of your contribution while ensuring an authentic and meaningful experience in Sri Lanka."
+                ]
+            },
+            {
+                title: "Our Approach",
+                paragraphs: [
+                    "We believe that meaningful change happens when people share their knowledge, experience, and passion with others.",
+                    "Rather than simply volunteering, participants become part of a collaborative journey where ideas, skills, and experiences are exchanged to create positive outcomes for everyone involved.",
+                    "The focus is not only on giving back but also on learning, connecting, and building relationships that have a lasting impact."
+                ]
+            },
+            {
+                title: "Why Sri Lanka?",
+                paragraphs: [
+                    "Sri Lanka offers a unique environment where cultural heritage, community spirit, innovation, and resilience come together.",
+                    "Participants have the opportunity to experience authentic Sri Lankan culture while engaging with local communities, organizations, and individuals who are eager to learn, collaborate, and grow.",
+                    "Through this experience, participants gain a deeper understanding of the country's social, economic, educational, environmental, and community development challenges while contributing their expertise in meaningful ways."
+                ]
+            },
+            {
+                title: "Join the Journey",
+                paragraphs: [
+                    "If you have valuable skills, experience, knowledge, or expertise to share, we invite you to tell us your story.",
+                    "Together, we can create a customized opportunity that makes a genuine difference and leaves a lasting impact for all involved.",
+                    "Tell Us Who You Are. Tell Us What You Can Do. Together, Let's Create Meaningful Impact.",
+                    "Give Back Journey – Creating Meaningful Experiences Through Knowledge, Connection, and Community Impact."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "Accommodation will be tailored to the customized placement and your preferences. Depending on the project location and your comfort level, options can range from boutique hotels and guesthouses to private local homestays.",
+            options: [
+                {
+                    title: "Customized Accommodation",
+                    subtitle: "Tailored to Your Needs",
+                    icon: "bi-house-heart-fill",
+                    description: "We work with you to select the best accommodation that fits your professional needs, budget, and desired level of cultural immersion."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Dependent on Selection" },
+                { label: "Privacy", value: "Private Rooms Available" },
+                { label: "Airport Transfer", value: "Included" },
+                { label: "Support", value: "Dedicated Coordinator" }
+            ]
+        },
+        mealsInfo: {
+            description: "Meals will be arranged based on your itinerary and accommodation choices. You will have the opportunity to enjoy traditional Sri Lankan cuisine as well as international options depending on your location.",
+            examples: {
+                breakfast: "Options ranging from traditional local breakfast to continental",
+                lunch: "Local meals during placement or at nearby restaurants",
+                dinner: "Flexible dining options based on your preferences"
+            }
+        }
     }
 ];
