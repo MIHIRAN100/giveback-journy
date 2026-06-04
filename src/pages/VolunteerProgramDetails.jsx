@@ -99,7 +99,7 @@ const VolunteerProgramDetails = () => {
                 position: 'relative',
                 height: '45vh',
                 minHeight: '300px',
-                background: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65)), url(${program.image}) ${program.bgPosition || 'center'}/cover no-repeat`,
+                background: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65)), url(${program.coverImage || program.image}) ${program.bgPosition || 'center'}/cover no-repeat`,
                 display: 'flex',
                 alignItems: 'flex-end',
                 paddingBottom: '40px',
@@ -117,10 +117,12 @@ const VolunteerProgramDetails = () => {
                         letterSpacing: '2px',
                         textTransform: 'uppercase',
                         marginBottom: '14px',
-                        display: 'inline-block',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
                         border: '1px solid rgba(255, 255, 255, 0.3)'
                     }}>
-                        ✨ {program.location}
+                        <i className="fa-solid fa-location-dot" style={{ fontSize: '0.75rem' }}></i> {program.location}
                     </span>
                     <h1 style={{ 
                         fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', 
@@ -752,7 +754,7 @@ const VolunteerProgramDetails = () => {
                 const sectionBg = getNextBgClass();
                 return (
                     <div className={`detail-section ${sectionBg}`} id="accommodation">
-                        <div className="detail-section-inner">
+                        <div className="detail-section-inner" style={{ maxWidth: '1200px' }}>
                             <div className="section-card" style={{
                                 background: 'transparent',
                                 padding: '0',
@@ -764,13 +766,14 @@ const VolunteerProgramDetails = () => {
                         </div>
                         <p className="section-text-modern" style={{ marginBottom: '35px' }}>{program.accommodation.description}</p>
                         
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '45px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '24px', marginBottom: '45px' }}>
                             {program.accommodation.options.map((opt, idx) => (
                                 <div key={idx} style={{ 
                                     padding: '30px 35px', 
                                     borderRadius: '24px', 
                                     background: '#ffffff', 
                                     border: '2px solid rgba(0,0,0,0.03)',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.02)',
                                     transition: 'all 0.3s ease',
                                     display: 'flex',
                                     flexDirection: 'column',

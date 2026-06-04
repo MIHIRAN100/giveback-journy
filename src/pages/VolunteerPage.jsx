@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import puppyImg from '../assets/dominican puppy.jpg';
 import effortImg from '../assets/IMG_5892.JPG.jpeg';
-import hihiImg from '../assets/hihi.webp';
+import yukiImg from '../assets/IMG_4378.jpg';
 import impactJourneyImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import { useCurrency } from '../context/CurrencyContext';
 
 // Section assets
-import constructionImg from '../assets/IMG-20241111-WA0002.jpg';
+import constructionImg from '../assets/construction volunteer/WhatsApp Image 2026-06-02 at 17.36.37.jpeg';
+import constructionImg2 from '../assets/construction volunteer/WhatsApp Image 2026-06-01 at 15.37.50.jpeg';
 import educationImg from '../assets/IMG_5894.JPG.jpeg';
 import kandyImg from '../assets/kandy_detailed_map.png';
 import galleImg from '../assets/galle_detailed_map.png';
@@ -192,7 +193,7 @@ const VolunteerPage = () => {
             author: "Yuki Tanaka",
             location: "Volunteer from Tokyo, Japan",
             initials: "YT",
-            image: hihiImg
+            image: yukiImg
         }
     ];
 
@@ -938,6 +939,41 @@ const VolunteerPage = () => {
                 .scrolling-activities-wrapper:hover .scrolling-activities-content {
                     animation-play-state: paused;
                 }
+
+                .volunteer-grid-img-wrapper img {
+                    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                }
+                .volunteer-grid-img-wrapper:hover img {
+                    transform: scale(1.08) !important;
+                }
+
+                .volunteer-section-wrapper {
+                    width: 100%;
+                    padding: 80px 0;
+                    box-sizing: border-box;
+                }
+                
+                .volunteer-section-wrapper.bg-white {
+                    background-color: #ffffff;
+                }
+                
+                .volunteer-section-wrapper.bg-soft-green {
+                    background-color: #f4f8f5;
+                }
+                
+                .volunteer-section-wrapper.bg-soft-blue {
+                    background-color: #f3f7fa;
+                }
+
+                .volunteer-section-wrapper.bg-soft-gray {
+                    background-color: #f7fafc;
+                }
+
+                @media (max-width: 768px) {
+                    .volunteer-section-wrapper {
+                        padding: 50px 0;
+                    }
+                }
                 `}
             </style>
 
@@ -954,9 +990,10 @@ const VolunteerPage = () => {
                 </div>
             </section>
 
-            <div className="volunteer-container">
-                {/* Expectations & Travel Philosophy Style Section */}
-                <section className="philosophy-section" style={{ maxWidth: '1200px', margin: '20px auto 40px', padding: '0 20px' }}>
+            <div className="volunteer-section-wrapper bg-white" style={{ padding: '40px 0 20px' }}>
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
+                    {/* Expectations & Travel Philosophy Style Section */}
+                    <section className="philosophy-section" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0' }}>
                     <div className="philosophy-layout">
                         {/* Left Column: Our Mission */}
                         <div>
@@ -1058,28 +1095,50 @@ const VolunteerPage = () => {
                         </div>
                     </div>
                     
-                    <hr style={{ border: 0, borderBottom: '1px solid #eaeaea', margin: '40px 0' }} />
+                    </section>
+                </div>
+            </div>
 
+            {/* Section 2: Construction & Community */}
+            <div className="volunteer-section-wrapper bg-soft-green">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
                     {/* Focus Area 1: Construction & Community */}
-                    <div className="progress-report-layout" style={{ marginBottom: '60px' }}>
+                    <div className="progress-report-layout" style={{ marginBottom: 0 }}>
                         {/* Left Column: Focus Area Info */}
                         <div>
                             <div style={{ marginBottom: '20px' }}>
                                 <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
                                     Construction &amp; Community
                                 </h3>
-                                <img 
-                                    src={constructionImg} 
-                                    alt="Construction &amp; Community volunteering in Sri Lanka" 
-                                    style={{ 
-                                        width: '100%', 
-                                        height: '350px', 
-                                        objectFit: 'cover', 
-                                        borderRadius: '16px', 
-                                        marginBottom: '20px', 
-                                        boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
-                                    }} 
-                                />
+                                <div style={{ 
+                                    display: 'grid', 
+                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+                                    gap: '16px', 
+                                    marginBottom: '20px' 
+                                }}>
+                                    <div className="volunteer-grid-img-wrapper" style={{ overflow: 'hidden', borderRadius: '16px', height: '280px', boxShadow: '0 8px 30px rgba(0,0,0,0.06)' }}>
+                                        <img 
+                                            src={constructionImg} 
+                                            alt="Construction &amp; Community volunteering in Sri Lanka 1" 
+                                            style={{ 
+                                                width: '100%', 
+                                                height: '100%', 
+                                                objectFit: 'cover'
+                                            }} 
+                                        />
+                                    </div>
+                                    <div className="volunteer-grid-img-wrapper" style={{ overflow: 'hidden', borderRadius: '16px', height: '280px', boxShadow: '0 8px 30px rgba(0,0,0,0.06)' }}>
+                                        <img 
+                                            src={constructionImg2} 
+                                            alt="Construction &amp; Community volunteering in Sri Lanka 2" 
+                                            style={{ 
+                                                width: '100%', 
+                                                height: '100%', 
+                                                objectFit: 'cover'
+                                            }} 
+                                        />
+                                    </div>
+                                </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
                                     Help rebuild and beautify community spaces, giving local families spaces they can be proud of. Volunteers work hand-in-hand with local masons and community members, engaging in painting, repairing furniture, planting community gardens, and renovating structures.
                                 </p>
@@ -1192,11 +1251,14 @@ const VolunteerPage = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <hr style={{ border: 0, borderBottom: '1px solid #eaeaea', margin: '40px 0' }} />
-
+            {/* Section 3: Education & Childcare */}
+            <div className="volunteer-section-wrapper bg-white">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
                     {/* Focus Area 2: Education & Childcare */}
-                    <div className="progress-report-layout" style={{ marginBottom: '60px' }}>
+                    <div className="progress-report-layout" style={{ marginBottom: 0 }}>
                         {/* Left Column: Focus Area Info */}
                         <div>
                             <div style={{ marginBottom: '20px' }}>
@@ -1327,11 +1389,14 @@ const VolunteerPage = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <hr style={{ border: 0, borderBottom: '1px solid #eaeaea', margin: '40px 0' }} />
-
+            {/* Section 4: Destinations Section */}
+            <div className="volunteer-section-wrapper bg-soft-blue">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
                     {/* Destinations Section */}
-                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0' }}>
                         <div className="modern-dest-header">
                             <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', display: 'inline-block', marginBottom: '16px', background: '#f0fdf4', padding: '6px 16px', borderRadius: '100px' }}>Our Locations</span>
                             <h2 className="section-heading-modern" style={{ margin: '0 0 16px 0' }}>Where You’ll Make an Impact</h2>
@@ -1417,12 +1482,14 @@ const VolunteerPage = () => {
                             </div>
                         </div>
                     </div>
-            </section>
+                </div>
+            </div>
 
-                <hr className="section-divider" style={{ margin: '20px auto 40px' }} />
-
-                {/* Features */}
-                <section className="features-section">
+            {/* Section 5: Program Features */}
+            <div className="volunteer-section-wrapper bg-white">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
+                    {/* Features */}
+                    <section className="features-section">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Experience Excellence</span>
                         <h3 className="section-heading-modern" style={{ marginTop: '10px' }}>Program Features</h3>
@@ -1447,16 +1514,16 @@ const VolunteerPage = () => {
                     </div>
                 </section>
             </div>
-
-            <hr className="section-divider" />
+            </div>
 
             {/* Volunteer Opportunities */}
             <VolunteerOpportunities />
 
-            <div className="volunteer-container">
-                <hr className="section-divider" style={{ margin: '0 auto 40px' }} />
-                {/* Pricing Table Section */}
-                <section id="pricing" style={{ margin: '60px 0' }}>
+            {/* Section 6: Transparent Pricing */}
+            <div className="volunteer-section-wrapper bg-soft-gray" id="pricing">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
+                    {/* Pricing Table Section */}
+                    <section style={{ margin: '0 0 40px' }}>
                     <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Transparent Pricing</span>
                         <h2 className="section-heading-modern" style={{ marginTop: '10px' }}>Program Fees & Comparison</h2>
@@ -1714,11 +1781,14 @@ const VolunteerPage = () => {
                         </div>
                     </div>
                 </section>
+            </div>
+            </div>
 
-                <hr className="section-divider" style={{ margin: '40px auto 80px' }} />
-
-                {/* Journey Steps */}
-                <section style={{ margin: '120px 0' }}>
+            {/* Section 7: Journey Steps */}
+            <div className="volunteer-section-wrapper bg-white">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
+                    {/* Journey Steps */}
+                    <section style={{ margin: '0' }}>
                     <div style={{ textAlign: 'center', marginBottom: '70px' }}>
                         <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem' }}>How It Works</span>
                         <h2 className="section-heading-modern" style={{ marginTop: '12px' }}>Your Impact Journey</h2>
@@ -1775,11 +1845,14 @@ const VolunteerPage = () => {
                         ))}
                     </div>
                 </section>
+            </div>
+            </div>
 
-                <hr className="section-divider" style={{ margin: '40px auto 80px' }} />
-
-                {/* Testimonial Slider */}
-                <section className="testimonial-slider">
+            {/* Section 8: Testimonial Slider */}
+            <div className="volunteer-section-wrapper bg-soft-green">
+                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
+                    {/* Testimonial Slider */}
+                    <section className="testimonial-slider">
                     <div 
                         className="testimonial-img"
                         style={{ 
@@ -1801,8 +1874,7 @@ const VolunteerPage = () => {
                         </div>
                     </div>
                 </section>
-
-                <hr className="section-divider" style={{ margin: '80px auto' }} />
+            </div>
             </div>
 
             {/* Final CTA Card */}

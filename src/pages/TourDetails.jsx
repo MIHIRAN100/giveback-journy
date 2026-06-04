@@ -1207,6 +1207,35 @@ const TourDetails = () => {
                 .review-action:hover {
                     opacity: 1;
                 }
+                .review-images-container {
+                    display: flex;
+                    gap: 15px;
+                    margin-top: 15px;
+                    margin-bottom: 20px;
+                }
+                .review-img-wrapper {
+                    width: 180px;
+                    height: 120px;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    border: 1px solid rgba(0,0,0,0.06);
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+                    cursor: pointer;
+                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+                }
+                .review-img-wrapper:hover {
+                    transform: translateY(-4px) scale(1.02);
+                    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+                }
+                .review-img-wrapper img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                }
+                .review-img-wrapper:hover img {
+                    transform: scale(1.05);
+                }
 
                 @media (max-width: 768px) {
                     .reviews-container, .also-bought-container {
@@ -2114,7 +2143,7 @@ const TourDetails = () => {
                                     return a.id - b.id;
                                 })
                                 .slice(0, visibleReviewsCount)
-                                .map((review) => (
+                                .map((review, idx) => (
                                 <div key={review.id} className="review-card-vertical">
                                     <div className="review-stars">
                                         {[...Array(5)].map((_, i) => (
@@ -2126,18 +2155,35 @@ const TourDetails = () => {
                                         {review.name}, {review.date}
                                     </div>
                                     <p className="review-text">{review.comment}</p>
+                                    {idx === 0 && galleryImages && galleryImages.length >= 3 && (
+                                        <div className="review-images-container">
+                                            <div className="review-img-wrapper">
+                                                <img src={galleryImages[1]} alt="Review photo 1" />
+                                            </div>
+                                            <div className="review-img-wrapper">
+                                                <img src={galleryImages[2]} alt="Review photo 2" />
+                                            </div>
+                                        </div>
+                                    )}
                                     <div className="review-actions">
                                         <div className="review-action">
                                             <i className="bi bi-flag"></i>
                                         </div>
-                                        <div 
-                                            className="review-action" 
-                                            onClick={() => setLikedReviews(prev => ({ ...prev, [review.id]: (prev[review.id] || 0) + 1 }))}
-                                            style={{ color: likedReviews[review.id] ? 'var(--primary-green)' : 'inherit', opacity: likedReviews[review.id] ? 1 : 0.7 }}
-                                        >
-                                            <i className={`bi bi-hand-thumbs-up${likedReviews[review.id] ? '-fill' : ''}`}></i>
-                                            {likedReviews[review.id] > 0 && <span style={{ fontSize: '0.9rem', fontWeight: 700, marginLeft: '5px' }}>{likedReviews[review.id]}</span>}
-                                        </div>
+                                        {(() => {
+                                            const baseLikes = (review.id * 7 + 4) % 25 + 2;
+                                            const totalLikes = baseLikes + (likedReviews[review.id] || 0);
+                                            const hasLiked = likedReviews[review.id] > 0;
+                                            return (
+                                                <div 
+                                                    className="review-action" 
+                                                    onClick={() => setLikedReviews(prev => ({ ...prev, [review.id]: (prev[review.id] || 0) + 1 }))}
+                                                    style={{ color: hasLiked ? 'var(--primary-green)' : 'inherit', opacity: hasLiked ? 1 : 0.7 }}
+                                                >
+                                                    <i className={`bi bi-hand-thumbs-up${hasLiked ? '-fill' : ''}`}></i>
+                                                    <span style={{ fontSize: '0.9rem', fontWeight: 700, marginLeft: '5px' }}>{totalLikes}</span>
+                                                </div>
+                                            );
+                                        })()}
                                     </div>
                                 </div>
                             ))}

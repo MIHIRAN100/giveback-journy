@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import specialNeedsImg from '../assets/c6031e1f-c623-47b3-9ff1-1602cad6772f.jpg';
 import teachingImg from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
-import renovationImg from '../assets/teaching volunteers/IMG_2991.jpg';
+import renovationImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
 import cultureImg from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
 import wildlifeImg from '../assets/volunteer-wildlife.png';
 import { useCurrency } from '../context/CurrencyContext';

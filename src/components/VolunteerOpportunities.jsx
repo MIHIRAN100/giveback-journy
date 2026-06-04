@@ -104,9 +104,9 @@ const VolunteerOpportunities = () => {
                                     position: 'absolute', 
                                     top: '12px', 
                                     left: '12px', 
-                                    background: 'rgba(29, 185, 84, 0.9)', 
+                                    background: opp.id === 'professional-impact-program' ? 'var(--accent-gold, #D4AF37)' : 'rgba(29, 185, 84, 0.9)', 
                                     backdropFilter: 'blur(10px)',
-                                    color: 'white', 
+                                    color: opp.id === 'professional-impact-program' ? '#111' : 'white', 
                                     padding: '4px 10px', 
                                     borderRadius: '6px', 
                                     fontSize: '0.65rem', 
@@ -115,9 +115,18 @@ const VolunteerOpportunities = () => {
                                     letterSpacing: '0.5px',
                                     display: 'flex',
                                     alignItems: 'center',
-                                    gap: '5px'
+                                    gap: '5px',
+                                    boxShadow: opp.id === 'professional-impact-program' ? '0 4px 10px rgba(212, 175, 55, 0.25)' : 'none'
                                 }}>
-                                    <i className="fa-solid fa-circle-check"></i> Verified
+                                    {opp.id === 'professional-impact-program' ? (
+                                        <>
+                                            <i className="fa-solid fa-crown"></i> Exclusive Giveback
+                                        </>
+                                    ) : (
+                                        <>
+                                            <i className="fa-solid fa-circle-check"></i> Verified
+                                        </>
+                                    )}
                                 </div>
                                 <div style={{ 
                                     position: 'absolute', 

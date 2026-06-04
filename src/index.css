@@ -948,7 +948,7 @@ h1, h2, h3, .logo-text {
 .hero-search-btn {
     background: linear-gradient(135deg, #1db954 0%, #1ed760 50%, #1db954 100%);
     background-size: 200% 200%;
-    color: var(--pitch-black);
+    color: #ffffff;
     border: none;
     padding: 15px 35px;
     border-radius: 100px;
@@ -5374,7 +5374,7 @@ h1, h2, h3, .logo-text {
 .hero-search-btn {
     background: linear-gradient(135deg, #1db954 0%, #1ed760 50%, #1db954 100%);
     background-size: 200% 200%;
-    color: var(--pitch-black);
+    color: #ffffff;
     border: none;
     padding: 12px 25px;
     border-radius: 500px;

@@ -3,9 +3,11 @@ import ceylonSkillOdysseyImg from '../assets/IMG_3131.jpg';
 import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/WhatsApp Image 2026-05-28 at 11.58.31.jpeg';
-import renovationImg from '../assets/teaching volunteers/IMG_2991.jpg';
+import renovationImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
+import renovationCoverImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 import bodyMindImg from '../assets/IMG_6270.jpg';
+import professionalImpactImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import medicalImg from '../assets/WhatsApp Image 2026-05-26 at 15.22.42.jpeg';
 import medicalVolunteerWhatsAppImg from '../assets/WhatsApp Image 2026-05-26 at 10.34.53.jpeg';
 import medicalGallery1 from '../assets/medical_gallery_new_1.jpg';
@@ -415,6 +417,7 @@ export const volunteerPrograms = [
         housing: "Shared or Private",
         price: "200",
         image: renovationImg,
+        coverImage: renovationCoverImg,
         minAge: "18+",
         pickup: "Included",
         meals: "3 Daily",
@@ -737,7 +740,7 @@ export const volunteerPrograms = [
                 { label: "People Per Room", value: "Up To 12 (Shared) or 1 (Comfort)" },
                 { label: "Single Sex Rooms", value: "Yes" },
                 { label: "Western Bathroom Facilities", value: "Yes" },
-                { label: "Airport Transfer", value: "3 Hours (Kandy) / 20 Mins (Negombo) / 4 Hours (Galle)" },
+                { label: "Airport Transfer", value: "3 Hours (Kandy) / 20 Mins (Negombo) / 2 Hours (Galle)" },
                 { label: "Nearest ATM & Shops", value: "10 Minute Drive" }
             ]
         },
@@ -757,7 +760,7 @@ export const volunteerPrograms = [
         duration: "Customized",
         housing: "Flexible Options",
         price: "Custom",
-        image: interviewImg,
+        image: professionalImpactImg,
         minAge: "21+",
         pickup: "Included",
         meals: "Flexible",
