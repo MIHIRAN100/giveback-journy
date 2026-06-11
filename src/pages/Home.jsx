@@ -22,9 +22,7 @@ const Home = () => {
             <ScrollReveal><FeaturesScroll /></ScrollReveal>
             <ScrollReveal><WhoWeAre /></ScrollReveal>
             <ScrollReveal><PackageHighlight /></ScrollReveal>
-            <hr className="section-divider" />
             <ScrollReveal><TravelerMoments /></ScrollReveal>
-            <hr className="section-divider" />
             <ScrollReveal><ExclusiveExperiences /></ScrollReveal>
             <ScrollReveal><VolunteerSection /></ScrollReveal>
 

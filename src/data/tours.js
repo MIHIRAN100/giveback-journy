@@ -472,8 +472,8 @@ export const tourPackages = [
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "<b>🍽️ Breakfast included.</b><br/><br/>After breakfast, we will transfer you comfortably to the airport for your onward journey. Carry with you the memories of ancient wonders, misty mountains, and the warmth of the Sri Lankan spirit.", 
-                activities: ["Breakfast", "Airport transfer"] 
+                desc: "<b>🍽️ Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                activities: ["Breakfast"] 
             }
         ],
         inclusions: [
@@ -486,7 +486,8 @@ export const tourPackages = [
         exclusions: [
             "Lunches and dinners (unless specified)",
             "Personal expenses",
-            "Optional activities"
+            "Optional activities",
+            "Departure airport transfer"
         ],
         routeMap: routeMapEssentialInfographic,
         reviews: signatureReviews,

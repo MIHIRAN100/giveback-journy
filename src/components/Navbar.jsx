@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/brand_logo.jpg';
+import logo from '../assets/brand_logo.png';
 import AdBanner from './AdBanner';
 
 

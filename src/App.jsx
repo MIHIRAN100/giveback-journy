@@ -28,6 +28,7 @@ import MobileBottomBar from './components/MobileBottomBar';
 import BottomAdBanner from './components/BottomAdBanner';
 import Breadcrumbs from './components/Breadcrumbs';
 import ScrollToTop from './components/ScrollToTop';
+import TourDetailsPromoBanner from './components/TourDetailsPromoBanner';
 
 import { CompareProvider } from './context/CompareContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -46,6 +47,7 @@ const AppContent = () => {
       <LoadingScreen />
       <Navbar />
       <main style={{flex: 1, paddingTop: isHomePage ? '0' : '90px'}}>
+        {isTourDetails && <TourDetailsPromoBanner />}
         {!isHomePage && <Breadcrumbs />}
         <Routes>
           <Route path="/" element={<Home />} />

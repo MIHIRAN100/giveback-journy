@@ -136,8 +136,42 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 };
 
 const TourPackages = ({ searchTerm }) => {
-    const [filterDuration, setFilterDuration] = React.useState('all');
     const [filterCategory, setFilterCategory] = React.useState('all');
+
+    // Sidebar Filter States
+    const [minDuration, setMinDuration] = React.useState('any');
+    const [maxDuration, setMaxDuration] = React.useState('any');
+    const [minPrice, setMinPrice] = React.useState('');
+    const [maxPrice, setMaxPrice] = React.useState('');
+    const [tripsOnSale, setTripsOnSale] = React.useState(false);
+    const [saleNowOn, setSaleNowOn] = React.useState(false);
+    const [earlyBird, setEarlyBird] = React.useState(false);
+    const [minRating, setMinRating] = React.useState('any');
+    const [intensityEasy, setIntensityEasy] = React.useState(false);
+    const [intensityModerate, setIntensityModerate] = React.useState(false);
+    const [intensityChallenging, setIntensityChallenging] = React.useState(false);
+
+    // Expandable sections
+    const [durationExpanded, setDurationExpanded] = React.useState(true);
+    const [priceExpanded, setPriceExpanded] = React.useState(true);
+    const [dealsExpanded, setDealsExpanded] = React.useState(true);
+    const [intensityExpanded, setIntensityExpanded] = React.useState(true);
+    const [ratingExpanded, setRatingExpanded] = React.useState(true);
+
+    const handleReset = () => {
+        setFilterCategory('all');
+        setMinDuration('any');
+        setMaxDuration('any');
+        setMinPrice('');
+        setMaxPrice('');
+        setTripsOnSale(false);
+        setSaleNowOn(false);
+        setEarlyBird(false);
+        setMinRating('any');
+        setIntensityEasy(false);
+        setIntensityModerate(false);
+        setIntensityChallenging(false);
+    };
 
     // Check if the searchTerm is an exact match
     const searchLower = (searchTerm || "").toLowerCase();
@@ -158,9 +192,52 @@ const TourPackages = ({ searchTerm }) => {
 
         // Duration Filter
         const days = parseInt(pkg.days);
-        if (filterDuration === 'short' && days >= 5) return false;
-        if (filterDuration === 'medium' && (days < 5 || days > 7)) return false;
-        if (filterDuration === 'long' && days <= 7) return false;
+        if (minDuration !== 'any' && days < parseInt(minDuration)) return false;
+        if (maxDuration !== 'any' && days > parseInt(maxDuration)) return false;
+
+        // Price Filter
+        const getPriceVal = () => {
+            const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
+            if (pkg.id === 1) return 840;
+            if (pkg.id === 2) return 600;
+            return basePriceVal;
+        };
+        const priceVal = getPriceVal();
+        if (minPrice && priceVal < parseInt(minPrice)) return false;
+        if (maxPrice && priceVal > parseInt(maxPrice)) return false;
+
+        // Deals Filter
+        const getDiscountFactor = () => {
+            const factors = [0.65, 0.75, 0.8, 0.7, 0.85];
+            return factors[pkg.id % factors.length];
+        };
+        const originalPrice = Math.floor(priceVal / getDiscountFactor());
+        const discountPercent = Math.round((1 - priceVal / originalPrice) * 100);
+
+        if (tripsOnSale && discountPercent <= 20) return false;
+        if (saleNowOn && pkg.id !== 6 && pkg.id % 2 !== 0) return false;
+        if (earlyBird && pkg.rating < 4.8) return false;
+
+        // Review Rating Filter
+        if (minRating !== 'any' && pkg.rating < parseFloat(minRating)) return false;
+
+        // Physical Intensity Filter
+        const intensity = pkg.physicalIntensity || 2;
+        const isEasy = intensity <= 2;
+        const isModerate = intensity === 3 || intensity === 4;
+        const isChallenging = intensity === 5;
+        const hasIntensityFilter = intensityEasy || intensityModerate || intensityChallenging;
+        if (hasIntensityFilter) {
+            if (intensityEasy && isEasy) {
+                // match
+            } else if (intensityModerate && isModerate) {
+                // match
+            } else if (intensityChallenging && isChallenging) {
+                // match
+            } else {
+                return false;
+            }
+        }
 
         // Category Filter
         const tags = (pkg.name + pkg.description + (pkg.tags ? pkg.tags.join(' ') : '')).toLowerCase();
@@ -168,7 +245,6 @@ const TourPackages = ({ searchTerm }) => {
         if (filterCategory === 'cultural' && !tags.includes('temple') && !tags.includes('ancient') && !tags.includes('cultural') && !tags.includes('history') && !tags.includes('heritage')) return false;
         if (filterCategory === 'beach' && !tags.includes('beach') && !tags.includes('coast') && !tags.includes('shore') && !tags.includes('surf')) return false;
         if (filterCategory === 'adventure' && !tags.includes('hike') && !tags.includes('trek') && !tags.includes('mountain') && !tags.includes('adventure') && !tags.includes('rafting') && !tags.includes('rainforest') && !tags.includes('peak')) return false;
-        if (filterCategory === 'daytrip' && parseInt(pkg.days) > 1) return false;
         if (filterCategory === 'volunteer' && !tags.includes('volunteer') && !tags.includes('impact') && !tags.includes('giveback') && !tags.includes('meaningful')) return false;
 
         return true;
@@ -178,6 +254,56 @@ const TourPackages = ({ searchTerm }) => {
 
     return (
         <section className="premium-filter-section" id="tours">
+            <style>
+                {`
+                .tours-page-layout {
+                    display: grid;
+                    grid-template-columns: 280px 1fr;
+                    gap: 30px;
+                    align-items: start;
+                    margin-top: 40px;
+                    max-width: 1400px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .tours-sidebar {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    position: sticky;
+                    top: 110px;
+                    z-index: 90;
+                }
+                .tours-listing-content {
+                    flex: 1;
+                }
+                .tours-listing-content .packages-grid {
+                    grid-template-columns: repeat(3, 1fr) !important;
+                    width: 100% !important;
+                    margin: 0 !important;
+                    gap: 25px !important;
+                }
+                @media (max-width: 1200px) {
+                    .tours-listing-content .packages-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+                }
+                @media (max-width: 992px) {
+                    .tours-page-layout {
+                        grid-template-columns: 1fr !important;
+                        gap: 20px !important;
+                    }
+                    .tours-sidebar {
+                        position: static !important;
+                    }
+                }
+                @media (max-width: 600px) {
+                    .tours-listing-content .packages-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+                `}
+            </style>
             <div className="premium-filter-header">
                 <span className="about-tag">Handpicked Journeys</span>
                 <h1>All Sri Lanka Tours & Meaningful Experiences in 2026</h1>
@@ -193,8 +319,6 @@ const TourPackages = ({ searchTerm }) => {
 
             {/* Premium Pill Filter Bar */}
             <div className="premium-filter-bar">
-
-
                 {/* Interest Filters */}
                 <button 
                     onClick={() => setFilterCategory('all')}
@@ -231,17 +355,10 @@ const TourPackages = ({ searchTerm }) => {
                     Nature & Adventure
                 </button>
 
-                <button 
-                    onClick={() => setFilterCategory('daytrip')}
-                    className={`filter-pill ${filterCategory === 'daytrip' ? 'active' : ''}`}
-                >
-                    Day Trips
-                </button>
-
 
 
                 <button 
-                    onClick={() => {setFilterCategory('all'); setFilterDuration('all');}}
+                    onClick={handleReset}
                     className="filter-pill"
                     style={{marginLeft: 'auto'}}
                 >
@@ -249,30 +366,304 @@ const TourPackages = ({ searchTerm }) => {
                 </button>
             </div>
 
-            <div className="packages-grid">
-                {exactMatch ? (
-                    <>
-                        <TourCard pkg={exactMatch} isExactMatch={true} />
-                        {otherPackages.length > 0 && (
-                            otherPackages.map((pkg) => (
-                                <TourCard key={pkg.id} pkg={pkg} isRecommendation={true} />
-                            ))
-                        )}
-                    </>
-                ) : (
-                    otherPackages.length > 0 ? (
-                        otherPackages.map((pkg) => (
-                            <TourCard key={pkg.id} pkg={pkg} />
-                        ))
-                    ) : (
-                        <div style={{gridColumn: '1/-1', textAlign: 'center', padding: '100px 0', opacity: 0.5}}>
-                            <i className="bi bi-search" style={{fontSize: '3rem', marginBottom: '20px', display: 'block'}}></i>
-                            <h3>No tours found for "{searchTerm}"</h3>
-                            <p>Try searching for something else or explore our all signature plans below.</p>
-                            <button className="btn-modern btn-itinerary-toggle" onClick={() => window.location.href='/packages'} style={{margin: '20px auto'}}>View All Tours</button>
+            {/* MAIN LAYOUT: Sidebar Filters + Tour Listings */}
+            <div className="tours-page-layout">
+                
+                {/* Left Column: Sidebar Filters */}
+                <aside className="tours-sidebar">
+                    
+                    {/* Duration Filter Card */}
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
+                        padding: '20px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: durationExpanded ? '15px' : '0'
+                    }}>
+                        <div 
+                            onClick={() => setDurationExpanded(!durationExpanded)}
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                        >
+                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Duration</span>
+                            <i className={`bi bi-chevron-${durationExpanded ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
                         </div>
-                    )
-                )}
+                        {durationExpanded && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '10px' }}>
+                                <div style={{ flex: 1 }}>
+                                    <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#888', display: 'block', marginBottom: '4px' }}>Min</label>
+                                    <select 
+                                        value={minDuration} 
+                                        onChange={(e) => setMinDuration(e.target.value)}
+                                        style={{ width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '0.85rem', fontWeight: 600, outline: 'none', background: 'white' }}
+                                    >
+                                        <option value="any">Any</option>
+                                        <option value="1">1 Day</option>
+                                        <option value="2">2 Days</option>
+                                        <option value="3">3 Days</option>
+                                        <option value="5">5 Days</option>
+                                        <option value="7">7 Days</option>
+                                        <option value="10">10 Days</option>
+                                    </select>
+                                </div>
+                                <span style={{ color: '#888', fontSize: '0.85rem', marginTop: '20px' }}>to</span>
+                                <div style={{ flex: 1 }}>
+                                    <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#888', display: 'block', marginBottom: '4px' }}>Max</label>
+                                    <select 
+                                        value={maxDuration} 
+                                        onChange={(e) => setMaxDuration(e.target.value)}
+                                        style={{ width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '0.85rem', fontWeight: 600, outline: 'none', background: 'white' }}
+                                    >
+                                        <option value="any">Any</option>
+                                        <option value="1">1 Day</option>
+                                        <option value="2">2 Days</option>
+                                        <option value="3">3 Days</option>
+                                        <option value="5">5 Days</option>
+                                        <option value="7">7 Days</option>
+                                        <option value="10">10 Days</option>
+                                        <option value="15">15 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Price Filter Card */}
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
+                        padding: '20px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: priceExpanded ? '15px' : '0'
+                    }}>
+                        <div 
+                            onClick={() => setPriceExpanded(!priceExpanded)}
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                        >
+                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Price</span>
+                            <i className={`bi bi-chevron-${priceExpanded ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
+                        </div>
+                        {priceExpanded && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '10px' }}>
+                                <div style={{ flex: 1, position: 'relative' }}>
+                                    <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#888', display: 'block', marginBottom: '4px' }}>Min</label>
+                                    <span style={{ position: 'absolute', left: '12px', bottom: '9px', fontSize: '0.85rem', color: '#666', fontWeight: 600 }}>$</span>
+                                    <input 
+                                        type="number" 
+                                        value={minPrice} 
+                                        onChange={(e) => setMinPrice(e.target.value)}
+                                        placeholder="Min" 
+                                        style={{ width: '100%', padding: '8px 12px 8px 24px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '0.85rem', fontWeight: 600, outline: 'none', boxSizing: 'border-box' }}
+                                    />
+                                </div>
+                                <span style={{ color: '#888', fontSize: '0.85rem', marginTop: '20px' }}>to</span>
+                                <div style={{ flex: 1, position: 'relative' }}>
+                                    <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#888', display: 'block', marginBottom: '4px' }}>Max</label>
+                                    <span style={{ position: 'absolute', left: '12px', bottom: '9px', fontSize: '0.85rem', color: '#666', fontWeight: 600 }}>$</span>
+                                    <input 
+                                        type="number" 
+                                        value={maxPrice} 
+                                        onChange={(e) => setMaxPrice(e.target.value)}
+                                        placeholder="Max" 
+                                        style={{ width: '100%', padding: '8px 12px 8px 24px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '0.85rem', fontWeight: 600, outline: 'none', boxSizing: 'border-box' }}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Travel Deals Filter Card */}
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
+                        padding: '20px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: dealsExpanded ? '15px' : '0'
+                    }}>
+                        <div 
+                            onClick={() => setDealsExpanded(!dealsExpanded)}
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                        >
+                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Travel deals</span>
+                            <i className={`bi bi-chevron-${dealsExpanded ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
+                        </div>
+                        {dealsExpanded && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '10px' }}>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={tripsOnSale} 
+                                        onChange={(e) => setTripsOnSale(e.target.checked)}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Trips on sale
+                                </label>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={saleNowOn} 
+                                        onChange={(e) => setSaleNowOn(e.target.checked)}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Sale now on
+                                </label>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={earlyBird} 
+                                        onChange={(e) => setEarlyBird(e.target.checked)}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Early bird
+                                </label>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Physical Intensity Filter Card */}
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
+                        padding: '20px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: intensityExpanded ? '15px' : '0'
+                    }}>
+                        <div 
+                            onClick={() => setIntensityExpanded(!intensityExpanded)}
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                        >
+                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Physical intensity</span>
+                            <i className={`bi bi-chevron-${intensityExpanded ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
+                        </div>
+                        {intensityExpanded && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '10px' }}>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={intensityEasy} 
+                                        onChange={(e) => setIntensityEasy(e.target.checked)}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Easy (1-2)
+                                </label>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={intensityModerate} 
+                                        onChange={(e) => setIntensityModerate(e.target.checked)}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Moderate (3-4)
+                                </label>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={intensityChallenging} 
+                                        onChange={(e) => setIntensityChallenging(e.target.checked)}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Challenging (5)
+                                </label>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Review Rating Filter Card */}
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '16px',
+                        border: '1px solid rgba(0,0,0,0.06)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
+                        padding: '20px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: ratingExpanded ? '15px' : '0'
+                    }}>
+                        <div 
+                            onClick={() => setRatingExpanded(!ratingExpanded)}
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                        >
+                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Review rating</span>
+                            <i className={`bi bi-chevron-${ratingExpanded ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
+                        </div>
+                        {ratingExpanded && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '10px' }}>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="radio" 
+                                        name="ratingFilter"
+                                        checked={minRating === 'any'} 
+                                        onChange={() => setMinRating('any')}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    Any rating
+                                </label>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="radio" 
+                                        name="ratingFilter"
+                                        checked={minRating === '4.5'} 
+                                        onChange={() => setMinRating('4.5')}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    4.5★ and up
+                                </label>
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#333', cursor: 'pointer', fontWeight: 600 }}>
+                                    <input 
+                                        type="radio" 
+                                        name="ratingFilter"
+                                        checked={minRating === '4.8'} 
+                                        onChange={() => setMinRating('4.8')}
+                                        style={{ width: '18px', height: '18px', accentColor: 'var(--primary-green)' }}
+                                    />
+                                    4.8★ and up
+                                </label>
+                            </div>
+                        )}
+                    </div>
+
+                </aside>
+
+                {/* Right Column: Tour Grid */}
+                <div className="tours-listing-content">
+                    <div className="packages-grid">
+                        {exactMatch ? (
+                            <>
+                                <TourCard pkg={exactMatch} isExactMatch={true} />
+                                {otherPackages.length > 0 && (
+                                    otherPackages.map((pkg) => (
+                                        <TourCard key={pkg.id} pkg={pkg} isRecommendation={true} />
+                                    ))
+                                )}
+                            </>
+                        ) : (
+                            otherPackages.length > 0 ? (
+                                otherPackages.map((pkg) => (
+                                    <TourCard key={pkg.id} pkg={pkg} />
+                                ))
+                            ) : (
+                                <div style={{gridColumn: '1/-1', textAlign: 'center', padding: '100px 0', opacity: 0.5}}>
+                                    <i className="bi bi-search" style={{fontSize: '3rem', marginBottom: '20px', display: 'block'}}></i>
+                                    <h3>No tours found matching filters</h3>
+                                    <p>Try resetting the filters or adjusting your inputs.</p>
+                                    <button className="btn-modern btn-itinerary-toggle" onClick={handleReset} style={{margin: '20px auto'}}>Reset Filters</button>
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+
             </div>
         </section>
     );

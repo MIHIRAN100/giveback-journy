@@ -2238,7 +2238,11 @@ const TourDetails = () => {
                                     >
                                         <i className={`bi bi-heart${compareList?.some(item => item.id === tour.id) ? '-fill' : ''}`}></i>
                                     </div>
-                                    <div className="category-tag">Day Trips</div>
+                                    <div className="category-tag">
+                                        {tour.isVolunteer 
+                                            ? "Volunteering" 
+                                            : (tour.days === "1 Day" || tour.days === "1 day" ? "Day Tour" : "Multi-day Tour")}
+                                    </div>
                                 </div>
                                 <div className="card-content">
                                     <div className="card-location">

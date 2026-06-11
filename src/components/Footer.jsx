@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/brand_logo.jpg';
+import logo from '../assets/brand_logo.png';
 import { useCurrency } from '../context/CurrencyContext';
 
 const Footer = () => {
