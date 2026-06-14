@@ -86,18 +86,6 @@ const pricingPrograms = [
         support: "24/7 Support",
         id: "medical-volunteer",
         color: "#e74c3c"
-    },
-    {
-        name: "Ceylon Skill Odyssey",
-        price: 250,
-        duration: "7 Days",
-        location: "Multiple Locations",
-        housing: "Coordinated Support",
-        meals: "Varies",
-        pickup: "Included",
-        support: "24/7 Support",
-        id: "ceylon-skill-odyssey",
-        color: "#0d9488"
     }
 ];
 
@@ -1549,16 +1537,14 @@ const VolunteerPage = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="table-container-mobile-wrapper" style={{ overflowX: 'auto', background: '#fff', borderRadius: '32px', boxShadow: '0 25px 70px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '950px' }}>
+                    <div className="table-container-mobile-wrapper" style={{ overflowX: 'auto', background: '#fff', borderRadius: '24px', boxShadow: '0 20px 50px rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.04)' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '820px' }}>
                             <thead>
-                                <tr style={{ background: '#f8fafc', borderBottom: '1px solid #edf2f7' }}>
-                                    <th style={{ padding: '18px 24px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Program</th>
-                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Location & Duration</th>
-                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Meals & Housing</th>
-                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Airport Pickup</th>
-                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Total Price (Avg/Wk)</th>
-                                    <th style={{ padding: '18px 24px', textAlign: 'right' }}></th>
+                                <tr style={{ background: '#f8fafc', borderBottom: '1px solid #f1f5f9' }}>
+                                    <th style={{ padding: '16px 24px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Program</th>
+                                    <th style={{ padding: '16px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Stay & Inclusions</th>
+                                    <th style={{ padding: '16px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Total Price</th>
+                                    <th style={{ padding: '16px 24px', textAlign: 'right' }}></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1573,60 +1559,87 @@ const VolunteerPage = () => {
                                                 transition: 'all 0.2s ease'
                                             }}
                                         >
-                                            <td data-label="Program" style={{ padding: '16px 24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                            <td data-label="Program" style={{ padding: '14px 24px' }}>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: prog.color, flexShrink: 0 }}></div>
                                                     <div style={{ textAlign: 'left' }}>
                                                         <span style={{ fontWeight: 800, fontSize: '0.92rem', color: '#1e293b', display: 'block' }}>{prog.name}</span>
-                                                        <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600 }}>{prog.support}</span>
+                                                        <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+                                                            <span><i className="fa-solid fa-location-dot" style={{ color: 'var(--primary-green)', marginRight: '4px', fontSize: '0.75rem' }}></i>{prog.location}</span>
+                                                            <span style={{ color: '#cbd5e1' }}>•</span>
+                                                            <span>{prog.support}</span>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td data-label="Location & Stay" style={{ padding: '16px 16px', fontSize: '0.82rem', fontWeight: 700, color: '#475569' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                                    <span style={{ color: '#1e293b', fontWeight: 800 }}>{prog.location}</span>
-                                                    <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>
-                                                        {details.isFixed ? `${prog.duration}` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
+                                            <td data-label="Inclusions" style={{ padding: '14px 16px' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-start' }}>
+                                                    <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#334155' }}>
+                                                        <i className="fa-regular fa-clock" style={{ color: '#64748b', marginRight: '6px', fontSize: '0.75rem' }}></i>{details.isFixed ? `${prog.duration}` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
                                                     </span>
+                                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                                        <span style={{ 
+                                                            fontSize: '0.68rem', 
+                                                            fontWeight: 700, 
+                                                            color: '#475569', 
+                                                            background: '#f1f5f9', 
+                                                            padding: '2px 8px', 
+                                                            borderRadius: '6px',
+                                                            display: 'inline-flex',
+                                                            alignItems: 'center',
+                                                            gap: '3px'
+                                                        }}>
+                                                            <i className="fa-solid fa-house" style={{ marginRight: '4px', fontSize: '0.62rem', color: '#64748b' }}></i>{prog.housing.split(' / ')[0]}
+                                                        </span>
+                                                        <span style={{ 
+                                                            fontSize: '0.68rem', 
+                                                            fontWeight: 700, 
+                                                            color: '#475569', 
+                                                            background: '#f1f5f9', 
+                                                            padding: '2px 8px', 
+                                                            borderRadius: '6px',
+                                                            display: 'inline-flex',
+                                                            alignItems: 'center',
+                                                            gap: '3px'
+                                                        }}>
+                                                            <i className="fa-solid fa-utensils" style={{ marginRight: '4px', fontSize: '0.62rem', color: '#64748b' }}></i>{prog.meals}
+                                                        </span>
+                                                        {(!details.isFixed && selectedWeeks === 1) ? (
+                                                            <span style={{ 
+                                                                fontSize: '0.68rem', 
+                                                                fontWeight: 700, 
+                                                                color: '#b45309',
+                                                                background: '#fffbeb',
+                                                                padding: '2px 8px',
+                                                                borderRadius: '6px',
+                                                                display: 'inline-flex',
+                                                                alignItems: 'center',
+                                                                gap: '3px'
+                                                            }}>
+                                                                <i className="fa-solid fa-plane" style={{ marginRight: '4px', fontSize: '0.62rem', color: '#b45309' }}></i>Pickup Extra
+                                                            </span>
+                                                        ) : (
+                                                            <span style={{ 
+                                                                fontSize: '0.68rem', 
+                                                                fontWeight: 700, 
+                                                                color: prog.pickup === 'Included' ? '#166534' : '#991b1b',
+                                                                background: prog.pickup === 'Included' ? '#f0fdf4' : '#fef2f2',
+                                                                padding: '2px 8px',
+                                                                borderRadius: '6px',
+                                                                display: 'inline-flex',
+                                                                alignItems: 'center',
+                                                                gap: '3px'
+                                                            }}>
+                                                                <i className="fa-solid fa-plane" style={{ marginRight: '4px', fontSize: '0.62rem', color: prog.pickup === 'Included' ? '#166534' : '#991b1b' }}></i>Pickup {prog.pickup}
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td data-label="Meals & Housing" style={{ padding: '16px 16px' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                                    <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569' }}>{prog.meals}</span>
-                                                    <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>{prog.housing}</span>
-                                                </div>
-                                            </td>
-                                            <td data-label="Airport Pickup" style={{ padding: '16px 16px' }}>
-                                                {(!details.isFixed && selectedWeeks === 1) ? (
-                                                    <span style={{ 
-                                                        fontSize: '0.7rem', 
-                                                        fontWeight: 800, 
-                                                        color: '#b45309',
-                                                        background: '#fffbeb',
-                                                        padding: '4px 10px',
-                                                        borderRadius: '100px',
-                                                        display: 'inline-block'
-                                                    }}>
-                                                        Extra Fee (Upon Request)
-                                                    </span>
-                                                ) : (
-                                                    <span style={{ 
-                                                        fontSize: '0.7rem', 
-                                                        fontWeight: 800, 
-                                                        color: prog.pickup === 'Included' ? '#166534' : '#991b1b',
-                                                        background: prog.pickup === 'Included' ? '#f0fdf4' : '#fef2f2',
-                                                        padding: '4px 10px',
-                                                        borderRadius: '100px',
-                                                        display: 'inline-block'
-                                                    }}>
-                                                        {prog.pickup}
-                                                    </span>
-                                                )}
-                                            </td>
-                                            <td data-label="Price" style={{ padding: '16px 16px' }}>
+                                            <td data-label="Price" style={{ padding: '14px 16px' }}>
                                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                                                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#0f172a' }}>
+                                                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: 'var(--primary-green)' }}>
                                                             {formatPrice(details.total)}
                                                         </span>
                                                         {!details.isFixed && (
@@ -1642,7 +1655,7 @@ const VolunteerPage = () => {
                                                     )}
                                                 </div>
                                             </td>
-                                            <td style={{ padding: '16px 24px', textAlign: 'right' }}>
+                                            <td style={{ padding: '14px 24px', textAlign: 'right' }}>
                                                 <Link 
                                                     to={`/volunteer-program/${prog.id}`} 
                                                     className="table-btn"
