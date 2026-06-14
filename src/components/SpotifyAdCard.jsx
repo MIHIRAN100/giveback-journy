@@ -63,17 +63,17 @@ const SpotifyAdCard = ({ margin = '0' }) => {
                 right: '-50px',
                 width: '350px',
                 height: '350px',
-                background: 'radial-gradient(circle, rgba(29,185,84,0.25) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(27,163,82,0.25) 0%, transparent 70%)',
                 zIndex: 0,
                 pointerEvents: 'none'
             }}></div>
 
             <div style={{ zIndex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '30px' }}>
-                    <div style={{ color: '#1DB954', fontSize: '1.6rem' }}>
+                    <div style={{ color: '#1ba352', fontSize: '1.6rem' }}>
                         <i className="fa-solid fa-hand-holding-heart"></i>
                     </div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 900, letterSpacing: '1px', textTransform: 'none', color: '#fff', opacity: 0.9 }}>Give Back Journey<span style={{color: '#1DB954'}}>.</span></span>
+                    <span style={{ fontSize: '0.9rem', fontWeight: 900, letterSpacing: '1px', textTransform: 'none', color: '#fff', opacity: 0.9 }}>Give Back Journey<span style={{color: '#1ba352'}}>.</span></span>
                 </div>
                 
                 <h3 style={{ 
@@ -85,7 +85,7 @@ const SpotifyAdCard = ({ margin = '0' }) => {
                     letterSpacing: '-2px',
                     maxWidth: '400px'
                 }}>
-                    The Best <span style={{color: '#1DB954'}}>Budget</span> <br/>Tour Plan.
+                    The Best <span style={{color: '#1ba352'}}>Budget</span> <br/>Tour Plan.
                 </h3>
                 <p style={{ color: '#e0e0e0', fontSize: '1.1rem', marginTop: '20px', fontWeight: 600, maxWidth: '350px', lineHeight: 1.4 }}>
                     No hidden fees. Just pure adventure.
@@ -106,7 +106,7 @@ const SpotifyAdCard = ({ margin = '0' }) => {
                     <div style={{ 
                         width: '40px', 
                         height: '40px', 
-                        background: '#1DB954', 
+                        background: '#1ba352', 
                         borderRadius: '50%', 
                         display: 'flex', 
                         alignItems: 'center', 
@@ -117,7 +117,7 @@ const SpotifyAdCard = ({ margin = '0' }) => {
                         <i className="fa-solid fa-hand-holding-heart"></i>
                     </div>
                     <p style={{ margin: 0, fontSize: '0.9rem', fontWeight: 700, color: '#fff' }}>
-                        This journey can be combined with <span style={{color: '#1DB954'}}>Volunteering</span>
+                        This journey can be combined with <span style={{color: '#1ba352'}}>Volunteering</span>
                     </p>
                 </div>
 
@@ -129,22 +129,22 @@ const SpotifyAdCard = ({ margin = '0' }) => {
                         fontWeight: 900, 
                         textTransform: 'uppercase', 
                         letterSpacing: '1px',
-                        background: '#1DB954',
+                        background: '#1ba352',
                         color: 'black',
                         padding: '16px 40px',
                         borderRadius: '500px',
                         width: 'fit-content',
                         cursor: 'pointer',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        boxShadow: '0 10px 20px rgba(29, 185, 84, 0.3)'
+                        boxShadow: '0 10px 20px rgba(27, 163, 82, 0.3)'
                     }}
                     onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'scale(1.05)';
-                        e.currentTarget.style.backgroundColor = '#1ed760';
+                        e.currentTarget.style.backgroundColor = '#2bc36f';
                     }}
                     onMouseLeave={(e) => {
                         e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.backgroundColor = '#1DB954';
+                        e.currentTarget.style.backgroundColor = '#1ba352';
                     }}
                 >
                     Explore More

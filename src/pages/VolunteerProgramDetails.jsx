@@ -173,7 +173,7 @@ const VolunteerProgramDetails = () => {
                             width: '36px',
                             height: '36px',
                             borderRadius: '10px',
-                            background: 'rgba(29, 185, 84, 0.08)',
+                            background: 'rgba(27, 163, 82, 0.08)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -203,7 +203,7 @@ const VolunteerProgramDetails = () => {
                             width: '36px',
                             height: '36px',
                             borderRadius: '10px',
-                            background: 'rgba(29, 185, 84, 0.08)',
+                            background: 'rgba(27, 163, 82, 0.08)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -233,7 +233,7 @@ const VolunteerProgramDetails = () => {
                             width: '36px',
                             height: '36px',
                             borderRadius: '10px',
-                            background: 'rgba(29, 185, 84, 0.08)',
+                            background: 'rgba(27, 163, 82, 0.08)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -264,7 +264,7 @@ const VolunteerProgramDetails = () => {
                             width: '36px',
                             height: '36px',
                             borderRadius: '10px',
-                            background: 'rgba(29, 185, 84, 0.08)',
+                            background: 'rgba(27, 163, 82, 0.08)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -490,7 +490,7 @@ const VolunteerProgramDetails = () => {
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
                                     {/* Educational Banner */}
                                     <div style={{
-                                        background: 'linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(29, 185, 84, 0.05) 100%)',
+                                        background: 'linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(27, 163, 82, 0.05) 100%)',
                                         border: '1px solid rgba(13, 148, 136, 0.2)',
                                         borderRadius: '24px',
                                         padding: '30px',
@@ -620,7 +620,7 @@ const VolunteerProgramDetails = () => {
                                                                      borderRadius: '16px', 
                                                                      background: isSelected ? 'white' : (sectionBg === 'white-bg' ? '#f5f5f7' : '#ffffff'), 
                                                                      border: `1px solid ${isSelected ? 'var(--primary-green)' : 'rgba(0,0,0,0.02)'}`,
-                                                                     boxShadow: isSelected ? '0 10px 30px rgba(29, 185, 84, 0.08)' : 'none',
+                                                                     boxShadow: isSelected ? '0 10px 30px rgba(27, 163, 82, 0.08)' : 'none',
                                                                      cursor: 'pointer',
                                                                      transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
                                                                  }}
@@ -649,13 +649,13 @@ const VolunteerProgramDetails = () => {
                                                                                  fontSize: '0.75rem',
                                                                                  fontWeight: 800,
                                                                                  color: 'var(--primary-green)',
-                                                                                 background: isSelected ? 'rgba(29, 185, 84, 0.1)' : 'rgba(29, 185, 84, 0.08)',
+                                                                                 background: isSelected ? 'rgba(27, 163, 82, 0.1)' : 'rgba(27, 163, 82, 0.08)',
                                                                                  padding: '3px 10px',
                                                                                  borderRadius: '50px',
                                                                                  whiteSpace: 'nowrap',
                                                                                  letterSpacing: '0.3px',
                                                                                  flexShrink: 0,
-                                                                                 border: isSelected ? '1px solid rgba(29, 185, 84, 0.2)' : '1px solid transparent',
+                                                                                 border: isSelected ? '1px solid rgba(27, 163, 82, 0.2)' : '1px solid transparent',
                                                                                  transition: 'all 0.3s ease'
                                                                              }}>
                                                                                  ${item.price}
@@ -810,7 +810,7 @@ const VolunteerProgramDetails = () => {
                             display: 'flex',
                             gap: '20px',
                             alignItems: 'flex-start',
-                            border: '1px solid rgba(29,185,84,0.2)'
+                            border: '1px solid rgba(27,163,82,0.2)'
                         }}>
                             {/* Icon */}
                             <div style={{
@@ -846,8 +846,13 @@ const VolunteerProgramDetails = () => {
                                 </h3>
 
                                 <p style={{ fontSize: '0.95rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.8)', margin: '0 0 16px 0', fontWeight: 400 }}>
+                                    {program.id !== 'real-sri-lanka-experience' && program.id !== 'professional-impact-program' && (
+                                        <span style={{ display: 'block', background: 'rgba(234, 88, 12, 0.2)', borderLeft: '4px solid #ea580c', padding: '10px 15px', borderRadius: '8px', marginBottom: '15px', fontSize: '0.88rem', color: '#ffedd5' }}>
+                                            <strong style={{ color: '#fff' }}>Note for 1-Week Stays:</strong> Airport arrival pickup is <strong style={{ color: '#fff' }}>not included</strong> for 1-week volunteering. However, you can request it through us and we will arrange it for an additional fee.
+                                        </span>
+                                    )}
                                     We collect all arriving volunteers from <strong style={{ color: '#fff' }}>Bandaranaike International Airport (CMB)</strong> as a group — we do <strong style={{ color: '#fff' }}>not</strong> offer individual pickups. Our group transfer window is{' '}
-                                    <strong style={{ background: 'rgba(29,185,84,0.3)', color: '#4ade80', padding: '1px 8px', borderRadius: '5px' }}>2:00 PM – 5:00 PM Sri Lankan Time (SLST) on Sunday</strong>.
+                                    <strong style={{ background: 'rgba(27,163,82,0.3)', color: '#4ade80', padding: '1px 8px', borderRadius: '5px' }}>2:00 PM – 5:00 PM Sri Lankan Time (SLST) on Sunday</strong>.
                                 </p>
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -1098,7 +1103,15 @@ const VolunteerProgramDetails = () => {
                             <span className="bottom-price-label" style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
                             <span className="bottom-price-amount" style={{ fontSize: '1.3rem', fontWeight: 900, color: 'var(--primary-green)', lineHeight: 1 }}>{formatPrice(program.price)}</span>
                         </div>
-                        <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>* Includes accommodation, meals & pickup</span>
+                        {program.id !== 'real-sri-lanka-experience' && program.id !== 'professional-impact-program' ? (
+                            <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
+                                * Includes accommodation, meals & pickup (2+ wks stays only)
+                            </span>
+                        ) : (
+                            <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
+                                * Includes accommodation, meals & pickup
+                            </span>
+                        )}
                         <span className="desktop-spec-text" style={{ fontSize: '0.58rem', color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.2px', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: '1px' }}>No Registration & Hidden Fees</span>
                         <span className="mobile-spec-text">23kg luggage allowance inc.</span>
                     </div>
@@ -1269,7 +1282,7 @@ const VolunteerProgramDetails = () => {
                     box-shadow: 0 15px 45px rgba(0,0,0,0.05) !important;
                 }
                 .config-tile:hover {
-                    border-color: rgba(29, 185, 84, 0.4) !important;
+                    border-color: rgba(27, 163, 82, 0.4) !important;
                     background: white !important;
                     box-shadow: 0 15px 45px rgba(0,0,0,0.04) !important;
                     transform: translateY(-3px);
@@ -1321,12 +1334,12 @@ const VolunteerProgramDetails = () => {
                     transform: translateY(-3px);
                     background: white !important;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important;
-                    border-color: rgba(29, 185, 84, 0.2) !important;
+                    border-color: rgba(27, 163, 82, 0.2) !important;
                 }
                 .skill-highlight-card:hover .skill-highlight-icon {
                     transform: scale(1.15) rotate(90deg);
                     background: #158a3d !important;
-                    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3) !important;
+                    box-shadow: 0 4px 12px rgba(27, 163, 82, 0.3) !important;
                 }
                 .btn-bucket-apply {
                     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
@@ -1334,7 +1347,7 @@ const VolunteerProgramDetails = () => {
                 .btn-bucket-apply:hover {
                     background: #158a3d !important;
                     transform: translateY(-2px);
-                    box-shadow: 0 10px 28px rgba(29, 185, 84, 0.35) !important;
+                    box-shadow: 0 10px 28px rgba(27, 163, 82, 0.35) !important;
                 }
                 .skills-bucket-list::-webkit-scrollbar {
                     width: 4px;

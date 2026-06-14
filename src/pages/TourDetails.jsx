@@ -80,7 +80,7 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
             borderLeft: '3px solid var(--primary-green)',
             marginLeft: '15px',
             borderBottom: '1px solid #f4f4f4',
-            background: isOpen ? 'rgba(29, 185, 84, 0.02)' : 'transparent',
+            background: isOpen ? 'rgba(27, 163, 82, 0.02)' : 'transparent',
             transition: 'background 0.3s ease'
         }}>
             {/* Timeline Node Dot */}
@@ -93,7 +93,7 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
                 borderRadius: '50%',
                 background: isOpen ? 'var(--primary-green)' : '#fff',
                 border: '3px solid var(--primary-green)',
-                boxShadow: isOpen ? '0 0 0 4px rgba(29, 185, 84, 0.2)' : 'none',
+                boxShadow: isOpen ? '0 0 0 4px rgba(27, 163, 82, 0.2)' : 'none',
                 transition: 'all 0.3s ease'
             }} />
 
@@ -219,8 +219,8 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
                             padding: '30px',
                             background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
                             borderRadius: '24px',
-                            border: '1px solid rgba(29, 185, 84, 0.3)',
-                            boxShadow: '0 10px 25px rgba(29, 185, 84, 0.05)',
+                            border: '1px solid rgba(27, 163, 82, 0.3)',
+                            boxShadow: '0 10px 25px rgba(27, 163, 82, 0.05)',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '15px'
@@ -259,10 +259,10 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay }) => {
                                     alignItems: 'center',
                                     gap: '10px',
                                     transition: 'all 0.3s ease',
-                                    boxShadow: '0 4px 12px rgba(29, 185, 84, 0.2)'
+                                    boxShadow: '0 4px 12px rgba(27, 163, 82, 0.2)'
                                 }}
-                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(29, 185, 84, 0.3)'; }}
-                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(29, 185, 84, 0.2)'; }}
+                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 15px rgba(27, 163, 82, 0.3)'; }}
+                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(27, 163, 82, 0.2)'; }}
                             >
                                 Explore Volunteering Programs <i className="bi bi-arrow-right"></i>
                             </a>
@@ -599,7 +599,7 @@ const TourDetails = () => {
                     background: var(--primary-green);
                     width: 24px;
                     border-radius: 10px;
-                    box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
+                    box-shadow: 0 0 15px rgba(27, 163, 82, 0.6);
                 }
 
                 .mobile-sticky-bar {
@@ -649,7 +649,7 @@ const TourDetails = () => {
                     font-weight: 900;
                     font-size: 1.1rem;
                     border: none;
-                    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.3);
+                    box-shadow: 0 8px 25px rgba(27, 163, 82, 0.3);
                     transition: all 0.3s ease;
                     cursor: pointer;
                 }
@@ -672,7 +672,7 @@ const TourDetails = () => {
                 }
                 .impact-card {
                     background: #f8fcf9;
-                    border: 1px solid rgba(29, 185, 84, 0.1);
+                    border: 1px solid rgba(27, 163, 82, 0.1);
                     border-radius: 24px;
                     padding: 40px;
                     display: flex;
@@ -682,8 +682,8 @@ const TourDetails = () => {
                 }
                 .impact-card:hover {
                     transform: translateY(-5px);
-                    box-shadow: 0 20px 40px rgba(29, 185, 84, 0.08);
-                    border-color: rgba(29, 185, 84, 0.3);
+                    box-shadow: 0 20px 40px rgba(27, 163, 82, 0.08);
+                    border-color: rgba(27, 163, 82, 0.3);
                 }
                 .impact-icon {
                     width: 60px;
@@ -696,7 +696,7 @@ const TourDetails = () => {
                     justify-content: center;
                     font-size: 1.8rem;
                     margin-bottom: 25px;
-                    box-shadow: 0 10px 20px rgba(29, 185, 84, 0.2);
+                    box-shadow: 0 10px 20px rgba(27, 163, 82, 0.2);
                 }
                 .impact-card h3 {
                     font-size: 1.6rem;
@@ -730,7 +730,7 @@ const TourDetails = () => {
                 }
                 .btn-green:hover {
                     background: #107c41;
-                    box-shadow: 0 8px 20px rgba(29, 185, 84, 0.3);
+                    box-shadow: 0 8px 20px rgba(27, 163, 82, 0.3);
                 }
                 .btn-outline {
                     background: white;
@@ -1612,7 +1612,7 @@ const TourDetails = () => {
                                                 textAlign: 'center',
                                                 cursor: 'pointer',
                                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                boxShadow: transport === v.id ? '0 8px 20px rgba(29, 185, 84, 0.25)' : 'none',
+                                                boxShadow: transport === v.id ? '0 8px 20px rgba(27, 163, 82, 0.25)' : 'none',
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
@@ -1834,12 +1834,12 @@ const TourDetails = () => {
                             padding: '30px',
                             background: 'linear-gradient(145deg, #ffffff 0%, #f9fdfa 100%)',
                             borderRadius: '20px',
-                            border: '1px solid rgba(29, 185, 84, 0.15)',
-                            boxShadow: '0 10px 30px rgba(29, 185, 84, 0.04)'
+                            border: '1px solid rgba(27, 163, 82, 0.15)',
+                            boxShadow: '0 10px 30px rgba(27, 163, 82, 0.04)'
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
                                 <div style={{ 
-                                    background: 'rgba(29, 185, 84, 0.1)', 
+                                    background: 'rgba(27, 163, 82, 0.1)', 
                                     color: 'var(--primary-green)', 
                                     width: '36px', 
                                     height: '36px', 
@@ -1904,7 +1904,7 @@ const TourDetails = () => {
                             padding: '35px',
                             background: '#f0fdf4',
                             borderRadius: '24px',
-                            border: '1px solid rgba(29, 185, 84, 0.1)',
+                            border: '1px solid rgba(27, 163, 82, 0.1)',
                             marginTop: '20px'
                         }}>
                             <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--primary-green)', marginBottom: '15px' }}>

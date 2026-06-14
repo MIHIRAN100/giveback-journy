@@ -8,7 +8,7 @@ const GlobeIcon = () => (
         height="42" 
         viewBox="0 0 24 24" 
         fill="none" 
-        stroke="#1DB954" 
+        stroke="#1ba352" 
         strokeWidth="1.75" 
         strokeLinecap="round" 
         strokeLinejoin="round"
@@ -28,7 +28,7 @@ const PlaneIcon = () => (
         height="42" 
         viewBox="0 0 24 24" 
         fill="none" 
-        stroke="#D4AF37" 
+        stroke="#3b7fba" 
         strokeWidth="1.75" 
         strokeLinecap="round" 
         strokeLinejoin="round"
@@ -47,7 +47,7 @@ const PlaneIcon = () => (
 );
 
 const CompassIcon = () => (
-    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#1ba352" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <path d="M12 2v2" opacity="0.5" />
         <path d="M12 20v2" opacity="0.5" />
@@ -58,7 +58,7 @@ const CompassIcon = () => (
             style={{ originX: "12px", originY: "12px" }}
             animate={{ rotate: [0, 60, -20, 220, 180, 360] }}
             transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut" }}
-            fill="rgba(29, 185, 84, 0.1)"
+            fill="rgba(27, 163, 82, 0.1)"
         />
     </svg>
 );
@@ -69,7 +69,7 @@ const SuitcaseIcon = () => (
         height="42" 
         viewBox="0 0 24 24" 
         fill="none" 
-        stroke="#D4AF37" 
+        stroke="#3b7fba" 
         strokeWidth="1.75" 
         strokeLinecap="round" 
         strokeLinejoin="round"
@@ -85,7 +85,7 @@ const SuitcaseIcon = () => (
 );
 
 const PinIcon = () => (
-    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#1ba352" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <motion.path 
             d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" 
             animate={{ y: [0, -4, 0] }}
@@ -103,7 +103,7 @@ const PinIcon = () => (
             cy="22" 
             rx="6" 
             ry="1.5"
-            stroke="#1DB954"
+            stroke="#1ba352"
             strokeWidth="1"
             opacity="0.5"
             animate={{ scale: [0.8, 1.6], opacity: [0.6, 0] }}

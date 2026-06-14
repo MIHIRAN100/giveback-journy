@@ -11,7 +11,7 @@ const TourDetailsPromoBanner = () => {
         }}>
             <div style={{
                 background: 'linear-gradient(135deg, #121212 0%, #1c1c1c 100%)', // Sleek dark mode gradient
-                border: '1px solid rgba(29, 185, 84, 0.22)', // Subtle green border
+                border: '1px solid rgba(27, 163, 82, 0.22)', // Subtle green border
                 borderRadius: '12px',
                 padding: '12px 24px',
                 display: 'flex',
@@ -36,22 +36,22 @@ const TourDetailsPromoBanner = () => {
                     gap: '8px'
                 }}>
                     <span style={{ 
-                        color: '#1DB954', // var(--primary-green)
+                        color: '#1ba352', // var(--primary-green)
                         textTransform: 'uppercase', 
                         fontWeight: 900, 
                         fontSize: '0.75rem',
                         letterSpacing: '1.5px',
-                        background: 'rgba(29, 185, 84, 0.12)',
+                        background: 'rgba(27, 163, 82, 0.12)',
                         padding: '3px 10px',
                         borderRadius: '50px',
-                        border: '1px solid rgba(29, 185, 84, 0.2)'
+                        border: '1px solid rgba(27, 163, 82, 0.2)'
                     }}>Flash Sale</span>
                     <span>Up to 20% off selected trips</span>
                 </div>
                 
                 <div style={{
-                    background: 'rgba(29, 185, 84, 0.1)', // Translucent green badge
-                    border: '1px solid rgba(29, 185, 84, 0.25)',
+                    background: 'rgba(27, 163, 82, 0.1)', // Translucent green badge
+                    border: '1px solid rgba(27, 163, 82, 0.25)',
                     color: '#4ade80', // Glowing green text
                     padding: '6px 14px',
                     borderRadius: '8px',

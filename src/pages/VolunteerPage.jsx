@@ -25,11 +25,11 @@ const pricingPrograms = [
         pickup: "Included",
         support: "24/7 Support",
         id: "real-sri-lanka-experience",
-        color: "#1DB954"
+        color: "#1ba352"
     },
     {
         name: "Teaching Volunteer Program",
-        price: 200,
+        price: 190,
         duration: "1-24 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -41,7 +41,7 @@ const pricingPrograms = [
     },
     {
         name: "Special Needs Support",
-        price: 200,
+        price: 190,
         duration: "1-8 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -53,7 +53,7 @@ const pricingPrograms = [
     },
     {
         name: "Construction & Renovation",
-        price: 200,
+        price: 190,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private",
@@ -65,7 +65,7 @@ const pricingPrograms = [
     },
     {
         name: "Body & Mind Wellness Week",
-        price: 200,
+        price: 190,
         duration: "1-2 Weeks",
         location: "Hikkaduwa, Sri Lanka",
         housing: "Shared Volunteer House",
@@ -77,7 +77,7 @@ const pricingPrograms = [
     },
     {
         name: "Medical Volunteer Program",
-        price: 200,
+        price: 190,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -155,7 +155,9 @@ export const getProgramPriceDetails = (progId, weeks) => {
 
     const isMinLimit = weeks < rate.baseWeeks;
     const actualWeeks = isMinLimit ? rate.baseWeeks : weeks;
-    const total = rate.basePrice + (actualWeeks - rate.baseWeeks) * rate.extraWeekPrice;
+    
+    // 1-week special pricing of 190 USD, otherwise normal price
+    const total = actualWeeks === 1 ? 190 : rate.basePrice + (actualWeeks - rate.baseWeeks) * rate.extraWeekPrice;
     const average = Math.round(total / weeks);
 
     const baseAverage = Math.round(rate.basePrice / rate.baseWeeks);
@@ -268,7 +270,7 @@ const VolunteerPage = () => {
                     border-radius: 100px;
                     display: inline-block;
                     margin-bottom: 20px;
-                    box-shadow: 0 6px 15px rgba(29, 185, 84, 0.2);
+                    box-shadow: 0 6px 15px rgba(27, 163, 82, 0.2);
                 }
 
                 .hero-title {
@@ -390,7 +392,7 @@ const VolunteerPage = () => {
                     right: -100px;
                     width: 300px;
                     height: 300px;
-                    background: radial-gradient(circle, rgba(29, 185, 84, 0.05) 0%, transparent 70%);
+                    background: radial-gradient(circle, rgba(27, 163, 82, 0.05) 0%, transparent 70%);
                     border-radius: 50%;
                 }
 
@@ -420,7 +422,7 @@ const VolunteerPage = () => {
                     transform: translateY(-8px);
                     background: #fff;
                     box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-                    border-color: rgba(29, 185, 84, 0.2);
+                    border-color: rgba(27, 163, 82, 0.2);
                 }
 
                 .feature-icon-container {
@@ -444,7 +446,7 @@ const VolunteerPage = () => {
                     transform: rotate(10deg);
                     background: var(--primary-green);
                     color: white;
-                    box-shadow: 0 10px 20px rgba(29, 185, 84, 0.25);
+                    box-shadow: 0 10px 20px rgba(27, 163, 82, 0.25);
                 }
 
                 .feature-title {
@@ -513,7 +515,7 @@ const VolunteerPage = () => {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    background: linear-gradient(135deg, #1DB954 0%, #0a2e1a 100%);
+                    background: linear-gradient(135deg, #1ba352 0%, #0a2e1a 100%);
                     color: white;
                     position: relative;
                 }
@@ -672,7 +674,7 @@ const VolunteerPage = () => {
                     align-items: center;
                     justify-content: center;
                     margin-bottom: 32px;
-                    box-shadow: 0 4px 20px rgba(29,185,84,0.08);
+                    box-shadow: 0 4px 20px rgba(27,163,82,0.08);
                     transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
                 }
 
@@ -686,7 +688,7 @@ const VolunteerPage = () => {
                     background: var(--primary-green);
                     border-color: var(--primary-green);
                     transform: translateY(-6px);
-                    box-shadow: 0 20px 40px rgba(29,185,84,0.2);
+                    box-shadow: 0 20px 40px rgba(27,163,82,0.2);
                 }
 
                 .journey-step:hover .journey-step-icon i {
@@ -781,7 +783,7 @@ const VolunteerPage = () => {
                 .duration-toggle-btn.active {
                     background: var(--primary-green) !important;
                     color: white !important;
-                    box-shadow: 0 4px 10px rgba(29, 185, 84, 0.25) !important;
+                    box-shadow: 0 4px 10px rgba(27, 163, 82, 0.25) !important;
                 }
 
                 @media (max-width: 768px) {
@@ -1155,13 +1157,13 @@ const VolunteerPage = () => {
 
                         {/* Right Column: Sticky Key Benefits Panel */}
                         <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }} className="progress-report-sidebar">
-                            <div className="progress-report-card" style={{ border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+                            <div className="progress-report-card" style={{ border: '1px solid rgba(27, 163, 82, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                                     <div style={{
                                         width: '36px',
                                         height: '36px',
                                         borderRadius: '50%',
-                                        background: 'rgba(29, 185, 84, 0.1)',
+                                        background: 'rgba(27, 163, 82, 0.1)',
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
@@ -1195,7 +1197,7 @@ const VolunteerPage = () => {
                                                 justifyContent: 'center',
                                                 fontSize: '0.9rem',
                                                 flexShrink: 0,
-                                                border: '1px solid rgba(29, 185, 84, 0.15)'
+                                                border: '1px solid rgba(27, 163, 82, 0.15)'
                                             }}>
                                                 <i className={`fa-solid ${item.icon}`}></i>
                                             </div>
@@ -1209,7 +1211,7 @@ const VolunteerPage = () => {
                             </div>
                             
                             {/* Recent Activity Card */}
-                            <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+                            <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(27, 163, 82, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                                 <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Giveback Impacts</h4>
                                 <div className="scrolling-activities-wrapper">
                                     <div className="scrolling-activities-content">
@@ -1293,13 +1295,13 @@ const VolunteerPage = () => {
 
                         {/* Right Column: Sticky Key Benefits Panel */}
                         <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }} className="progress-report-sidebar">
-                            <div className="progress-report-card" style={{ border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+                            <div className="progress-report-card" style={{ border: '1px solid rgba(27, 163, 82, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                                     <div style={{
                                         width: '36px',
                                         height: '36px',
                                         borderRadius: '50%',
-                                        background: 'rgba(29, 185, 84, 0.1)',
+                                        background: 'rgba(27, 163, 82, 0.1)',
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
@@ -1333,7 +1335,7 @@ const VolunteerPage = () => {
                                                 justifyContent: 'center',
                                                 fontSize: '0.9rem',
                                                 flexShrink: 0,
-                                                border: '1px solid rgba(29, 185, 84, 0.15)'
+                                                border: '1px solid rgba(27, 163, 82, 0.15)'
                                             }}>
                                                 <i className={`fa-solid ${item.icon}`}></i>
                                             </div>
@@ -1347,7 +1349,7 @@ const VolunteerPage = () => {
                             </div>
 
                             {/* Recent Activity Card */}
-                            <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(29, 185, 84, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+                            <div className="progress-report-card" style={{ marginTop: '20px', border: '1px solid rgba(27, 163, 82, 0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                                 <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1e293b', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Recent Giveback Impacts</h4>
                                 <div className="scrolling-activities-wrapper">
                                     <div className="scrolling-activities-content">
@@ -1547,19 +1549,16 @@ const VolunteerPage = () => {
                             ))}
                         </div>
                     </div>
-
                     <div className="table-container-mobile-wrapper" style={{ overflowX: 'auto', background: '#fff', borderRadius: '32px', boxShadow: '0 25px 70px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '950px' }}>
                             <thead>
                                 <tr style={{ background: '#f8fafc', borderBottom: '1px solid #edf2f7' }}>
-                                    <th style={{ padding: '24px 30px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Program</th>
-                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Total Price</th>
-                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Weekly Average</th>
-                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Duration</th>
-                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Location</th>
-                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Meals & Housing</th>
-                                    <th style={{ padding: '24px 20px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Airport Pickup</th>
-                                    <th style={{ padding: '24px 30px', textAlign: 'right' }}></th>
+                                    <th style={{ padding: '18px 24px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Program</th>
+                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Location & Duration</th>
+                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Meals & Housing</th>
+                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Airport Pickup</th>
+                                    <th style={{ padding: '18px 16px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.5px' }}>Total Price (Avg/Wk)</th>
+                                    <th style={{ padding: '18px 24px', textAlign: 'right' }}></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1574,76 +1573,86 @@ const VolunteerPage = () => {
                                                 transition: 'all 0.2s ease'
                                             }}
                                         >
-                                            <td data-label="Program" style={{ padding: '26px 30px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                            <td data-label="Program" style={{ padding: '16px 24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: prog.color }}></div>
+                                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: prog.color, flexShrink: 0 }}></div>
                                                     <div style={{ textAlign: 'left' }}>
-                                                        <span style={{ fontWeight: 800, fontSize: '1rem', color: '#1e293b', display: 'block' }}>{prog.name}</span>
-                                                        <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>{prog.support}</span>
+                                                        <span style={{ fontWeight: 800, fontSize: '0.92rem', color: '#1e293b', display: 'block' }}>{prog.name}</span>
+                                                        <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600 }}>{prog.support}</span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td data-label="Total Price" style={{ padding: '26px 20px' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                                                    <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>
-                                                        {formatPrice(details.total)}
+                                            <td data-label="Location & Stay" style={{ padding: '16px 16px', fontSize: '0.82rem', fontWeight: 700, color: '#475569' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                                    <span style={{ color: '#1e293b', fontWeight: 800 }}>{prog.location}</span>
+                                                    <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>
+                                                        {details.isFixed ? `${prog.duration}` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}
                                                     </span>
-                                                    {details.isMinLimit && (
-                                                        <span style={{ fontSize: '0.65rem', color: '#ea580c', fontWeight: 700, background: '#fff7ed', padding: '2px 8px', borderRadius: '4px', marginTop: '4px' }}>
-                                                            {details.minWeeks} Wk Min. Commit
-                                                        </span>
-                                                    )}
                                                 </div>
                                             </td>
-                                            <td data-label="Weekly Avg" style={{ padding: '26px 20px' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                                                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1e293b' }}>
-                                                        {formatPrice(details.average)}
-                                                        <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>/wk</span>
+                                            <td data-label="Meals & Housing" style={{ padding: '16px 16px' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                                    <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569' }}>{prog.meals}</span>
+                                                    <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>{prog.housing}</span>
+                                                </div>
+                                            </td>
+                                            <td data-label="Airport Pickup" style={{ padding: '16px 16px' }}>
+                                                {(!details.isFixed && selectedWeeks === 1) ? (
+                                                    <span style={{ 
+                                                        fontSize: '0.7rem', 
+                                                        fontWeight: 800, 
+                                                        color: '#b45309',
+                                                        background: '#fffbeb',
+                                                        padding: '4px 10px',
+                                                        borderRadius: '100px',
+                                                        display: 'inline-block'
+                                                    }}>
+                                                        Extra Fee (Upon Request)
                                                     </span>
+                                                ) : (
+                                                    <span style={{ 
+                                                        fontSize: '0.7rem', 
+                                                        fontWeight: 800, 
+                                                        color: prog.pickup === 'Included' ? '#166534' : '#991b1b',
+                                                        background: prog.pickup === 'Included' ? '#f0fdf4' : '#fef2f2',
+                                                        padding: '4px 10px',
+                                                        borderRadius: '100px',
+                                                        display: 'inline-block'
+                                                    }}>
+                                                        {prog.pickup}
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td data-label="Price" style={{ padding: '16px 16px' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                                                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#0f172a' }}>
+                                                            {formatPrice(details.total)}
+                                                        </span>
+                                                        {!details.isFixed && (
+                                                            <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>
+                                                                ({formatPrice(details.average)}/wk)
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                     {details.savingPercent > 0 && (
-                                                        <span style={{ fontSize: '0.65rem', color: '#166534', fontWeight: 700, background: '#dcfce7', padding: '2px 8px', borderRadius: '4px', marginTop: '4px' }}>
+                                                        <span style={{ fontSize: '0.62rem', color: '#166534', fontWeight: 700, background: '#dcfce7', padding: '1px 6px', borderRadius: '4px', marginTop: '2px' }}>
                                                             Save {details.savingPercent}%/wk
                                                         </span>
                                                     )}
                                                 </div>
                                             </td>
-                                            <td data-label="Duration" style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
-                                                <span>{details.isFixed ? `${prog.duration} (Fixed)` : `${selectedWeeks} ${selectedWeeks === 1 ? 'Week' : 'Weeks'}`}</span>
-                                            </td>
-                                            <td data-label="Location" style={{ padding: '26px 20px', fontSize: '0.9rem', fontWeight: 700, color: '#475569' }}>
-                                                <span>{prog.location}</span>
-                                            </td>
-                                            <td data-label="Meals & Housing" style={{ padding: '26px 20px' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                                                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#475569' }}>{prog.meals}</span>
-                                                    <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>{prog.housing}</span>
-                                                </div>
-                                            </td>
-                                            <td data-label="Airport Pickup" style={{ padding: '26px 20px' }}>
-                                                <span style={{ 
-                                                    fontSize: '0.75rem', 
-                                                    fontWeight: 800, 
-                                                    color: prog.pickup === 'Included' ? '#166534' : '#991b1b',
-                                                    background: prog.pickup === 'Included' ? '#f0fdf4' : '#fef2f2',
-                                                    padding: '6px 14px',
-                                                    borderRadius: '100px',
-                                                    display: 'inline-block'
-                                                }}>
-                                                    {prog.pickup}
-                                                </span>
-                                            </td>
-                                            <td style={{ padding: '26px 30px', textAlign: 'right' }}>
+                                            <td style={{ padding: '16px 24px', textAlign: 'right' }}>
                                                 <Link 
                                                     to={`/volunteer-program/${prog.id}`} 
                                                     className="table-btn"
                                                     style={{ 
-                                                        padding: '10px 20px', 
+                                                        padding: '8px 16px', 
                                                         background: '#f1f5f9', 
                                                         color: '#334155', 
-                                                        borderRadius: '12px', 
+                                                        borderRadius: '10px', 
                                                         fontWeight: 800, 
-                                                        fontSize: '0.85rem', 
+                                                        fontSize: '0.78rem', 
                                                         textDecoration: 'none',
                                                         display: 'inline-block',
                                                         transition: 'all 0.2s ease'
@@ -1667,7 +1676,7 @@ const VolunteerPage = () => {
                             background-color: var(--primary-green) !important;
                             color: white !important;
                             transform: translateY(-2px);
-                            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+                            box-shadow: 0 4px 12px rgba(27, 163, 82, 0.2);
                         }
                         @media (max-width: 768px) {
                             .table-container-mobile-wrapper {
@@ -1745,7 +1754,7 @@ const VolunteerPage = () => {
                             </h4>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '14px' }}>
                                 {[
-                                    "Airport Arrival Pickup",
+                                    selectedWeeks === 1 ? "Airport Arrival Pickup (2+ wks only)" : "Airport Arrival Pickup",
                                     "Clean, Safe Accommodation",
                                     "3 Fresh Local Meals Daily",
                                     "24/7 In-Country Support",
@@ -1753,11 +1762,23 @@ const VolunteerPage = () => {
                                     "Hands-on Project Training",
                                     "Local Project Transportation",
                                     "Official Impact Certificate"
-                                ].map((inc, i) => (
-                                    <li key={i} style={{ fontSize: '0.88rem', color: '#475569', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 600 }}>
-                                        <i className="fa-solid fa-check" style={{ color: 'var(--primary-green)', fontSize: '0.85rem' }}></i> {inc}
-                                    </li>
-                                ))}
+                                ].map((inc, i) => {
+                                    const isPickup = inc.startsWith("Airport Arrival Pickup");
+                                    return (
+                                        <li key={i} style={{ 
+                                            fontSize: '0.88rem', 
+                                            color: (isPickup && selectedWeeks === 1) ? '#94a3b8' : '#475569', 
+                                            display: 'flex', 
+                                            alignItems: 'center', 
+                                            gap: '10px', 
+                                            fontWeight: 600,
+                                            textDecoration: (isPickup && selectedWeeks === 1) ? 'line-through' : 'none'
+                                        }}>
+                                            <i className={(isPickup && selectedWeeks === 1) ? "fa-solid fa-xmark" : "fa-solid fa-check"} 
+                                               style={{ color: (isPickup && selectedWeeks === 1) ? '#cbd5e1' : 'var(--primary-green)', fontSize: '0.85rem' }}></i> {inc}
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                         <div>
@@ -1770,9 +1791,10 @@ const VolunteerPage = () => {
                                     "Sri Lankan Travel Visa",
                                     "Personal Travel Insurance",
                                     "Return Airport Transfer",
+                                    selectedWeeks === 1 ? "Airport Arrival Pickup (1-wk stays)" : null,
                                     "Daily Personal Expenses",
                                     "Weekend Excursion Budgets"
-                                ].map((exc, i) => (
+                                ].filter(Boolean).map((exc, i) => (
                                     <li key={i} style={{ fontSize: '0.88rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 600 }}>
                                         <i className="fa-solid fa-xmark" style={{ color: '#cbd5e1', fontSize: '0.85rem' }}></i> {exc}
                                     </li>
@@ -1895,7 +1917,7 @@ const VolunteerPage = () => {
                     left: '-50%',
                     width: '200%',
                     height: '200%',
-                    background: 'radial-gradient(circle, rgba(29, 185, 84, 0.08) 0%, transparent 60%)',
+                    background: 'radial-gradient(circle, rgba(27, 163, 82, 0.08) 0%, transparent 60%)',
                     pointerEvents: 'none',
                     zIndex: 0
                 }}></div>
@@ -1945,7 +1967,7 @@ const VolunteerPage = () => {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '12px',
-                        boxShadow: '0 15px 30px rgba(29, 185, 84, 0.35)',
+                        boxShadow: '0 15px 30px rgba(27, 163, 82, 0.35)',
                         transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
                         border: 'none',
                         cursor: 'pointer'

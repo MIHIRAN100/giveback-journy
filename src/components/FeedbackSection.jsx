@@ -184,7 +184,7 @@ const FeedbackSection = () => {
                 .feedback-card:hover {
                     transform: translateY(-6px);
                     box-shadow: 0 25px 50px rgba(0,0,0,0.06);
-                    border-color: rgba(29, 185, 84, 0.15);
+                    border-color: rgba(27, 163, 82, 0.15);
                 }
 
                 @media (max-width: 1024px) {

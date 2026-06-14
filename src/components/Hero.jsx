@@ -133,7 +133,7 @@ const Hero = ({ onSearch }) => {
                 const searchLower = val.toLowerCase();
                 const inName = p.name.toLowerCase().includes(searchLower);
                 const inDesc = p.description.toLowerCase().includes(searchLower);
-                const inItinerary = p.itinerary.some(step => 
+                const inItinerary = p.itinerary && p.itinerary.some(step => 
                     step.title.toLowerCase().includes(searchLower) || 
                     (step.activities && step.activities.some(act => act.toLowerCase().includes(searchLower)))
                 );

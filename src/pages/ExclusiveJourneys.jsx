@@ -19,8 +19,8 @@ const ExclusiveJourneys = () => {
                 <div className="joy-shape joy-shape-green-dark"></div>
                 <div className="joy-squiggle">
                     <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 50C20 33.4315 33.4315 20 50 20C66.5685 20 80 33.4315 80 50C80 66.5685 66.5685 80 50 80C33.4315 80 20 66.5685 20 50Z" stroke="#1DB954" strokeWidth="6" strokeLinecap="round" strokeDasharray="10 20"/>
-                        <path d="M50 10C50 10 70 30 50 50C30 70 50 90 50 90" stroke="#1DB954" strokeWidth="6" strokeLinecap="round"/>
+                        <path d="M20 50C20 33.4315 33.4315 20 50 20C66.5685 20 80 33.4315 80 50C80 66.5685 66.5685 80 50 80C33.4315 80 20 66.5685 20 50Z" stroke="#1ba352" strokeWidth="6" strokeLinecap="round" strokeDasharray="10 20"/>
+                        <path d="M50 10C50 10 70 30 50 50C30 70 50 90 50 90" stroke="#1ba352" strokeWidth="6" strokeLinecap="round"/>
                     </svg>
                 </div>
 
@@ -271,7 +271,7 @@ const ExclusiveJourneys = () => {
                     right: -40px;
                     width: 200px;
                     height: 300px;
-                    background: #1DB954;
+                    background: #1ba352;
                     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
                     transform: rotate(10deg);
                     opacity: 0.7;
@@ -298,7 +298,7 @@ const ExclusiveJourneys = () => {
                     z-index: 2;
                 }
                 .joy-about-title {
-                    color: #1DB954;
+                    color: #1ba352;
                     font-size: 1.8rem;
                     font-weight: 700;
                     margin-bottom: 30px;
@@ -352,7 +352,7 @@ const ExclusiveJourneys = () => {
                 }
                 .notice-badge-simple {
                     display: inline-block;
-                    color: #1DB954;
+                    color: #1ba352;
                     font-size: 0.85rem;
                     font-weight: 800;
                     letter-spacing: 1.5px;
@@ -383,7 +383,7 @@ const ExclusiveJourneys = () => {
                     color: #1d1d1f;
                     margin: 0 0 18px 0;
                     letter-spacing: -0.2px;
-                    border-left: 3px solid #1DB954;
+                    border-left: 3px solid #1ba352;
                     padding-left: 12px;
                 }
                 .notice-section-block p {
@@ -410,7 +410,7 @@ const ExclusiveJourneys = () => {
                 }
                 .notice-list li::before {
                     content: "•";
-                    color: #1DB954;
+                    color: #1ba352;
                     font-size: 1.4rem;
                     position: absolute;
                     left: 4px;
@@ -439,7 +439,7 @@ const ExclusiveJourneys = () => {
                 .vision-tag {
                     font-size: 0.85rem;
                     font-weight: 800;
-                    color: #1DB954;
+                    color: #1ba352;
                     letter-spacing: 1.5px;
                     text-transform: uppercase;
                 }
@@ -470,7 +470,7 @@ const ExclusiveJourneys = () => {
                 }
                 .vision-cta-box {
                     background: #ffffff;
-                    border: 1px solid rgba(29, 185, 84, 0.15);
+                    border: 1px solid rgba(27, 163, 82, 0.15);
                     border-radius: 20px;
                     padding: 35px;
                     margin-top: 15px;
@@ -488,19 +488,19 @@ const ExclusiveJourneys = () => {
                     align-items: center;
                     gap: 10px;
                     padding: 14px 30px;
-                    background: #1DB954;
+                    background: #1ba352;
                     color: #ffffff !important;
                     border-radius: 100px;
                     font-weight: 700;
                     text-decoration: none;
                     transition: all 0.3s ease;
                     font-size: 0.95rem;
-                    box-shadow: 0 10px 20px rgba(29, 185, 84, 0.15);
+                    box-shadow: 0 10px 20px rgba(27, 163, 82, 0.15);
                 }
                 .vision-btn-modern:hover {
                     transform: translateY(-2px);
                     background: #158a3d;
-                    box-shadow: 0 15px 25px rgba(29, 185, 84, 0.25);
+                    box-shadow: 0 15px 25px rgba(27, 163, 82, 0.25);
                 }
                 .vision-btn-modern i {
                     transition: transform 0.3s ease;
@@ -540,7 +540,7 @@ const ExclusiveJourneys = () => {
                     position: relative;
                     z-index: 2;
                     font-size: 2.2rem;
-                    color: #1DB954;
+                    color: #1ba352;
                 }
                 .promise-card h4 {
                     font-size: 1.25rem;

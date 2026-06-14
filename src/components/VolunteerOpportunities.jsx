@@ -18,7 +18,7 @@ const VolunteerOpportunities = () => {
     };
 
     return (
-        <section className="volunteer-opp-section" style={{ padding: '80px 0', background: '#fff', position: 'relative' }}>
+        <section className="volunteer-opp-section" style={{ padding: '80px 0', background: '#f2f9f5', position: 'relative' }}>
             <div style={{ maxWidth: '1920px', margin: '0 auto', padding: '0 6%', position: 'relative' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px' }}>
                     <div>
@@ -104,7 +104,7 @@ const VolunteerOpportunities = () => {
                                     position: 'absolute', 
                                     top: '12px', 
                                     left: '12px', 
-                                    background: opp.id === 'professional-impact-program' ? 'var(--accent-gold, #D4AF37)' : 'rgba(29, 185, 84, 0.9)', 
+                                    background: opp.id === 'professional-impact-program' ? 'var(--accent-gold, #3b7fba)' : 'rgba(27, 163, 82, 0.9)', 
                                     backdropFilter: 'blur(10px)',
                                     color: opp.id === 'professional-impact-program' ? '#111' : 'white', 
                                     padding: '4px 10px', 
@@ -193,7 +193,7 @@ const VolunteerOpportunities = () => {
                                             {formatPrice(opp.price)}
                                         </div>
                                     </div>
-                                    <div style={{ fontSize: '0.6rem', color: '#1DB954', fontWeight: 800, background: 'rgba(29, 185, 84, 0.1)', padding: '4px 8px', borderRadius: '4px' }}>
+                                    <div style={{ fontSize: '0.6rem', color: '#1ba352', fontWeight: 800, background: 'rgba(27, 163, 82, 0.1)', padding: '4px 8px', borderRadius: '4px' }}>
                                         USD / Program
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@ const VolunteerOpportunities = () => {
                 .opp-card-modern:hover {
                     transform: translateY(-12px);
                     box-shadow: 0 40px 80px rgba(0,0,0,0.1) !important;
-                    border-color: rgba(29, 185, 84, 0.2);
+                    border-color: rgba(27, 163, 82, 0.2);
                 }
                 .opp-card-modern:hover .card-img-zoom {
                     transform: scale(1.1);
@@ -231,7 +231,7 @@ const VolunteerOpportunities = () => {
                 .opp-card-btn:hover {
                     background: var(--primary-green);
                     transform: scale(1.02);
-                    box-shadow: 0 15px 30px rgba(29, 185, 84, 0.3);
+                    box-shadow: 0 15px 30px rgba(27, 163, 82, 0.3);
                 }
                 .scroll-nav-btn:hover {
                     background: #111 !important;

@@ -77,7 +77,7 @@ const Compare = () => {
                             
                             <div style={{ padding: '0 20px 30px' }}>
                                 <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-                                    <span style={{ background: 'rgba(29, 185, 84, 0.1)', color: 'var(--primary-green)', padding: '4px 12px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: 800 }}>{tour.days}</span>
+                                    <span style={{ background: 'rgba(27, 163, 82, 0.1)', color: 'var(--primary-green)', padding: '4px 12px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: 800 }}>{tour.days}</span>
                                     <span style={{ background: '#f8f9fa', color: '#666', padding: '4px 12px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: 800 }}>Popular</span>
                                 </div>
                                 

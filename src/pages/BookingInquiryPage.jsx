@@ -266,27 +266,27 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                 <ScrollReveal>
                     <div style={{
                         background: 'linear-gradient(135deg, #f4fbf7 0%, #e8f7ee 100%)',
-                        border: '1px solid rgba(29, 185, 84, 0.25)',
+                        border: '1px solid rgba(27, 163, 82, 0.25)',
                         borderRadius: '24px',
                         padding: '24px 30px',
                         marginBottom: '40px',
                         display: 'flex',
                         gap: '20px',
                         alignItems: 'flex-start',
-                        boxShadow: '0 10px 30px rgba(29, 185, 84, 0.05)'
+                        boxShadow: '0 10px 30px rgba(27, 163, 82, 0.05)'
                     }}>
                         <div style={{
                             width: '48px',
                             height: '48px',
                             borderRadius: '14px',
-                            background: '#1DB954',
+                            background: '#1ba352',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             color: 'white',
                             fontSize: '1.4rem',
                             flexShrink: 0,
-                            boxShadow: '0 4px 15px rgba(29, 185, 84, 0.2)'
+                            boxShadow: '0 4px 15px rgba(27, 163, 82, 0.2)'
                         }}>
                             <i className="bi bi-gift-fill"></i>
                         </div>
@@ -298,7 +298,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                 If you bring one additional participant with you, you may be eligible for a special discount. Discount eligibility and the final offer will be decided by our local team based on availability and program conditions.
                             </p>
                             <div style={{ 
-                                borderTop: '1px solid rgba(29, 185, 84, 0.15)', 
+                                borderTop: '1px solid rgba(27, 163, 82, 0.15)', 
                                 paddingTop: '14px', 
                                 display: 'flex', 
                                 flexDirection: 'column', 
@@ -308,13 +308,13 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                     Please note:
                                 </div>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1DB954', flexShrink: 0 }}></span>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1ba352', flexShrink: 0 }}></span>
                                     <span style={{ fontSize: '0.85rem', color: '#334139', fontWeight: 600 }}>
                                         This offer is applicable for one additional participant only.
                                     </span>
                                 </div>
                                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1DB954', flexShrink: 0 }}></span>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1ba352', flexShrink: 0 }}></span>
                                     <span style={{ fontSize: '0.85rem', color: '#334139', fontWeight: 600 }}>
                                         Special pricing and conditions for group bookings can be discussed directly with our team.
                                     </span>
@@ -367,10 +367,10 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                     <span style={{
                                         width: '6px',
                                         height: '6px',
-                                        background: '#1DB954',
+                                        background: '#1ba352',
                                         borderRadius: '50%',
                                         display: 'inline-block',
-                                        boxShadow: '0 0 8px #1DB954'
+                                        boxShadow: '0 0 8px #1ba352'
                                     }}></span>
                                     <span style={{
                                         color: '#ffffff',
@@ -386,7 +386,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                 <span style={{ 
                                     fontSize: '0.7rem', 
                                     fontWeight: 800, 
-                                    color: '#1DB954', 
+                                    color: '#1ba352', 
                                     letterSpacing: '2px', 
                                     textTransform: 'uppercase', 
                                     display: 'block', 
@@ -414,7 +414,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         borderRadius: '100px',
                                         border: '1px solid rgba(255,255,255,0.05)'
                                     }}>
-                                        <i className="bi bi-calendar3" style={{ color: '#1DB954' }}></i>
+                                        <i className="bi bi-calendar3" style={{ color: '#1ba352' }}></i>
                                         <span style={{ fontWeight: 600 }}>{pkg.days}</span>
                                     </div>
                                     <div style={{ 
@@ -427,7 +427,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         borderRadius: '100px',
                                         border: '1px solid rgba(255,255,255,0.05)'
                                     }}>
-                                        <i className="bi bi-people" style={{ color: '#1DB954' }}></i>
+                                        <i className="bi bi-people" style={{ color: '#1ba352' }}></i>
                                         <span style={{ fontWeight: 600 }}>{formData.travelerType}</span>
                                     </div>
                                     <div style={{ 
@@ -440,7 +440,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         borderRadius: '100px',
                                         border: '1px solid rgba(255,255,255,0.05)'
                                     }}>
-                                        <i className="bi bi-compass" style={{ color: '#1DB954' }}></i>
+                                        <i className="bi bi-compass" style={{ color: '#1ba352' }}></i>
                                         <span style={{ fontWeight: 600, textTransform: 'capitalize' }}>
                                             {formData.transport === 'taxi' ? 'SUV Car' : (formData.transport === 'van' ? 'Private Van' : 'Tuk Tuk')}
                                         </span>
@@ -476,7 +476,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                             </div>
                                         )}
                                         {formData.infants > 0 && (
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#1DB954' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#1ba352' }}>
                                                 <span>{formData.infants} Infants (Free)</span>
                                                 <span style={{ fontWeight: 700 }}>Free</span>
                                             </div>
@@ -491,9 +491,9 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                             <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>Total Price</span>
                                             <span style={{ 
                                                 fontWeight: 900, 
-                                                color: '#1DB954', 
+                                                color: '#1ba352', 
                                                 fontSize: '1.6rem',
-                                                textShadow: '0 0 20px rgba(29, 185, 84, 0.25)' 
+                                                textShadow: '0 0 20px rgba(27, 163, 82, 0.25)' 
                                             }}>{formatPrice(priceData.total)}</span>
                                         </div>
                                     </div>
@@ -504,14 +504,14 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         display: 'flex', 
                                         alignItems: 'center', 
                                         gap: '12px', 
-                                        background: 'rgba(29, 185, 84, 0.08)', 
+                                        background: 'rgba(27, 163, 82, 0.08)', 
                                         padding: '16px 20px', 
                                         borderRadius: '16px',
-                                        border: '1px solid rgba(29, 185, 84, 0.15)',
+                                        border: '1px solid rgba(27, 163, 82, 0.15)',
                                         marginBottom: '25px',
                                         animation: 'pulseGlow 2s infinite ease-in-out'
                                     }}>
-                                        <i className="bi bi-heart-fill" style={{ color: '#1DB954', fontSize: '1.2rem' }}></i>
+                                        <i className="bi bi-heart-fill" style={{ color: '#1ba352', fontSize: '1.2rem' }}></i>
                                         <div>
                                             <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#fff' }}>Social Impact Included</div>
                                             <div style={{ fontSize: '0.7rem', color: '#aaa', marginTop: '2px' }}>A portion of your booking supports local community projects.</div>
@@ -527,7 +527,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                     lineHeight: 1.6 
                                 }}>
                                     <div style={{ display: 'flex', gap: '8px', alignItems: 'start' }}>
-                                        <i className="bi bi-shield-check" style={{ color: '#1DB954', fontSize: '0.9rem' }}></i>
+                                        <i className="bi bi-shield-check" style={{ color: '#1ba352', fontSize: '0.9rem' }}></i>
                                         <span>Fully customizable. Our travel designers will tailor this route to your exact specifications.</span>
                                     </div>
                                 </div>
@@ -598,13 +598,13 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                                     style={{
                                                                         padding: '14px',
                                                                         borderRadius: '8px',
-                                                                        border: `2px solid ${formData.travelerType === type ? '#1DB954' : '#727272'}`,
-                                                                        background: formData.travelerType === type ? 'rgba(29, 185, 84, 0.05)' : 'white',
+                                                                        border: `2px solid ${formData.travelerType === type ? '#1ba352' : '#727272'}`,
+                                                                        background: formData.travelerType === type ? 'rgba(27, 163, 82, 0.05)' : 'white',
                                                                         cursor: 'pointer',
                                                                         textAlign: 'center',
                                                                         fontSize: '0.85rem',
                                                                         fontWeight: 700,
-                                                                        color: formData.travelerType === type ? '#1DB954' : '#121212',
+                                                                        color: formData.travelerType === type ? '#1ba352' : '#121212',
                                                                         transition: 'all 0.2s ease'
                                                                     }}
                                                                 >
@@ -715,15 +715,15 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                                     style={{
                                                                         padding: '15px 10px',
                                                                         borderRadius: '8px',
-                                                                        border: `2px solid ${formData.transport === opt.id ? '#1DB954' : '#727272'}`,
-                                                                        background: formData.transport === opt.id ? 'rgba(29, 185, 84, 0.05)' : 'white',
+                                                                        border: `2px solid ${formData.transport === opt.id ? '#1ba352' : '#727272'}`,
+                                                                        background: formData.transport === opt.id ? 'rgba(27, 163, 82, 0.05)' : 'white',
                                                                         cursor: 'pointer',
                                                                         textAlign: 'center',
                                                                         transition: 'all 0.2s ease'
                                                                     }}
                                                                 >
                                                                     {opt.id === 'tuktuk' ? (
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', margin: '0 auto 5px auto', color: formData.transport === opt.id ? '#1DB954' : '#121212' }}>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', margin: '0 auto 5px auto', color: formData.transport === opt.id ? '#1ba352' : '#121212' }}>
                                                                             <path d="M6 7c0-2 2-3 6-3s6 1 6 3v4H6V7z" />
                                                                             <rect x="7" y="7" width="10" height="4" rx="0.5" />
                                                                             <path d="M5 11h14l-2 7H7l-2-7z" />
@@ -733,9 +733,9 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                                             <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none" />
                                                                         </svg>
                                                                     ) : (
-                                                                        <i className={`bi ${opt.icon}`} style={{ display: 'block', fontSize: '1.2rem', marginBottom: '5px', color: formData.transport === opt.id ? '#1DB954' : '#121212' }}></i>
+                                                                        <i className={`bi ${opt.icon}`} style={{ display: 'block', fontSize: '1.2rem', marginBottom: '5px', color: formData.transport === opt.id ? '#1ba352' : '#121212' }}></i>
                                                                     )}
-                                                                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: formData.transport === opt.id ? '#1DB954' : '#121212' }}>{opt.label}</span>
+                                                                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: formData.transport === opt.id ? '#1ba352' : '#121212' }}>{opt.label}</span>
                                                                 </div>
                                                             ))}
                                                         </div>
@@ -773,7 +773,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                                     <button 
                                                                         type="button"
                                                                         onClick={() => setFormData({...formData, [item.id]: item.count + 1})}
-                                                                        style={{ width: '36px', height: '36px', borderRadius: '50%', border: '2px solid #1DB954', background: 'white', color: '#1DB954', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 700 }}
+                                                                        style={{ width: '36px', height: '36px', borderRadius: '50%', border: '2px solid #1ba352', background: 'white', color: '#1ba352', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 700 }}
                                                                     >+</button>
                                                                 </div>
                                                             </div>
@@ -847,7 +847,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                             <input 
                                                                 type="checkbox" checked={formData.wantsVolunteering}
                                                                 onChange={(e) => setFormData({...formData, wantsVolunteering: e.target.checked})}
-                                                                style={{ width: '20px', height: '20px', accentColor: '#1DB954' }}
+                                                                style={{ width: '20px', height: '20px', accentColor: '#1ba352' }}
                                                             />
                                                             <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#121212' }}>
                                                                 I'm interested in impactful volunteering activities during my journey.
@@ -873,9 +873,9 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                                 checked={termsAccepted} 
                                                                 onChange={(e) => setTermsAccepted(e.target.checked)} 
                                                                 required 
-                                                                style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: '#1DB954', cursor: 'pointer' }} 
+                                                                style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: '#1ba352', cursor: 'pointer' }} 
                                                             />
-                                                            <span>I agree to the <Link to="/terms-and-conditions" target="_blank" style={{ color: '#1DB954', textDecoration: 'underline' }}>Terms & Conditions</Link> and <Link to="/privacy-policy" target="_blank" style={{ color: '#1DB954', textDecoration: 'underline' }}>Privacy Policy</Link>. *</span>
+                                                            <span>I agree to the <Link to="/terms-and-conditions" target="_blank" style={{ color: '#1ba352', textDecoration: 'underline' }}>Terms & Conditions</Link> and <Link to="/privacy-policy" target="_blank" style={{ color: '#1ba352', textDecoration: 'underline' }}>Privacy Policy</Link>. *</span>
                                                         </label>
 
                                                         <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, color: '#334155' }}>
@@ -885,14 +885,14 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                                                 onChange={(e) => setNdaAccepted(e.target.checked)} 
                                                                 disabled={ndaDetails.signed} 
                                                                 required 
-                                                                style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: '#1DB954', cursor: 'pointer' }} 
+                                                                style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: '#1ba352', cursor: 'pointer' }} 
                                                             />
                                                             {ndaDetails.signed ? (
-                                                                <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                                <span style={{ color: '#168a45', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                                                     <i className="fa-solid fa-circle-check"></i> Verified DocuSign Signature Applied <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', opacity: 0.8 }}>({ndaDetails.envelopeId.slice(0, 11)}...)</span>
                                                                 </span>
                                                             ) : (
-                                                                <span>I agree to the <Link to="/nda" target="_blank" onClick={(e) => { e.preventDefault(); setIsNdaModalOpen(true); }} style={{ color: '#1DB954', textDecoration: 'underline' }}>Non-Disclosure Agreement (NDA)</Link> (DocuSign Required). *</span>
+                                                                <span>I agree to the <Link to="/nda" target="_blank" onClick={(e) => { e.preventDefault(); setIsNdaModalOpen(true); }} style={{ color: '#1ba352', textDecoration: 'underline' }}>Non-Disclosure Agreement (NDA)</Link> (DocuSign Required). *</span>
                                                             )}
                                                         </label>
                                                     </div>
@@ -939,7 +939,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                 }
                 @keyframes pulseGlow {
                     0%, 100% { opacity: 0.95; transform: scale(1); }
-                    50% { opacity: 1; transform: scale(1.01); box-shadow: 0 0 25px rgba(29, 185, 84, 0.18); }
+                    50% { opacity: 1; transform: scale(1.01); box-shadow: 0 0 25px rgba(27, 163, 82, 0.18); }
                 }
 
                 /* Spotify-inspired Form Styles */
@@ -961,7 +961,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
 
                 .modern-input:focus, .modern-select:focus, .modern-textarea:focus {
                     outline: none;
-                    border: 2px solid #1DB954;
+                    border: 2px solid #1ba352;
                     padding: 13px 17px; /* Adjust for border width change */
                 }
 
@@ -1025,7 +1025,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                     transition: all 0.3s ease;
                 }
                 .step-dot.active {
-                    background: #1DB954;
+                    background: #1ba352;
                     transform: scale(1.3);
                 }
 

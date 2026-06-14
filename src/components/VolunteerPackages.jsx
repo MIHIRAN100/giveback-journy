@@ -18,9 +18,9 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             originalPrice: "$480",
             image: specialNeedsImg,
             features: ["School Support", "Therapy Assistance", "Home Visits", "Daily Orientation"],
-            color: "#1DB954",
+            color: "#1ba352",
             rating: 4.9,
-            gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
+            gradient: "linear-gradient(135deg, #1ba352 0%, #168a45 100%)"
         },
         {
             duration: "2-4 Weeks",
@@ -41,9 +41,9 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             originalPrice: "$380",
             image: renovationImg,
             features: ["Painting & Repairs", "Community Centers", "School Building", "Skill Workshops"],
-            color: "#1DB954",
+            color: "#1ba352",
             rating: 4.7,
-            gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
+            gradient: "linear-gradient(135deg, #1ba352 0%, #168a45 100%)"
         },
 
         {
@@ -53,9 +53,9 @@ const VolunteerPackages = ({ lightTheme = true }) => {
             originalPrice: "$340",
             image: wildlifeImg, // Reuse or replace if needed
             features: ["Temple Maintenance", "Buddhist Teachings", "Local Ceremony Help", "Monastic Life Intro"],
-            color: "#1DB954",
+            color: "#1ba352",
             rating: 4.6,
-            gradient: "linear-gradient(135deg, #1DB954 0%, #15803d 100%)"
+            gradient: "linear-gradient(135deg, #1ba352 0%, #168a45 100%)"
         },
         {
             duration: "2 Weeks",
@@ -148,7 +148,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                         <div style={{ padding: '25px 30px 30px', position: 'relative', display: 'flex', flexDirection: 'column', flex: 1 }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                                 <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#111', lineHeight: 1.1, margin: 0 }}>{pkg.title}</h3>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(29, 185, 84, 0.1)', padding: '2px 8px', borderRadius: '6px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(27, 163, 82, 0.1)', padding: '2px 8px', borderRadius: '6px' }}>
                                     <i className="fa-solid fa-star" style={{ color: 'var(--primary-green)', fontSize: '0.7rem' }}></i>
                                     <span style={{ fontWeight: 800, fontSize: '0.75rem', color: 'var(--primary-green)' }}>{pkg.rating}</span>
                                 </div>

@@ -410,7 +410,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                 style={{ width: '18px', height: '18px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} 
                             />
                             {ndaDetails.signed ? (
-                                <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <span style={{ color: '#168a45', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                     <i className="fa-solid fa-circle-check"></i> Verified DocuSign Signature Applied <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', opacity: 0.8 }}>({ndaDetails.envelopeId.slice(0, 11)}...)</span>
                                 </span>
                             ) : (
@@ -434,7 +434,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                             fontWeight: 800,
                             cursor: isSubmitting ? 'not-allowed' : 'pointer',
                             transition: 'all 0.3s ease',
-                            boxShadow: '0 10px 20px rgba(29, 185, 84, 0.2)'
+                            boxShadow: '0 10px 20px rgba(27, 163, 82, 0.2)'
                         }}
                     >
                         {isSubmitting ? 'Processing...' : 'Confirm Booking'}

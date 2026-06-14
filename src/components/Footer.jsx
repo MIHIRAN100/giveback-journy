@@ -10,11 +10,11 @@ const Footer = () => {
             <div className="footer-grid">
                 {/* Column 1: Brand & Contact */}
                 <div className="footer-column">
-                    <Link to="/" className="logo-area" style={{marginBottom: '25px', display: 'inline-flex'}}>
+                    <Link to="/" className="logo-area" style={{marginBottom: '25px', display: 'inline-flex', color: 'var(--white)'}}>
                         <div className="logo-image-container">
                             <img src={logo} alt="Giveback Journey Logo" className="logo-image" />
                         </div>
-                        <span className="logo-text" style={{color: 'white'}}>Giveback Journey<span className="logo-dot">.</span></span>
+                        <span className="logo-text">Giveback Journey<span className="logo-dot">.</span></span>
                     </Link>
                     <p style={{color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: '20px'}}>
                         Empowering local communities through meaningful travel. We reveal Sri Lanka's soul through curated heritage, wilderness, and impactful experiences.

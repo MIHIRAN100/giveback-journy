@@ -104,7 +104,7 @@ const PackageHighlight = () => {
                     .mobile-filter-btn.active {
                         background: var(--primary-green);
                         color: white;
-                        box-shadow: 0 4px 12px rgba(29, 185, 84, 0.25);
+                        box-shadow: 0 4px 12px rgba(27, 163, 82, 0.25);
                     }
                     
                     .packages-section .packages-grid {

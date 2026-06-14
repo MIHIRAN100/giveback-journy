@@ -357,7 +357,7 @@ const VolunteerInquiryPage = () => {
                                 justifyContent: 'center',
                                 fontSize: '2.4rem',
                                 margin: '0 auto 24px',
-                                boxShadow: '0 15px 30px rgba(29, 185, 84, 0.25)'
+                                boxShadow: '0 15px 30px rgba(27, 163, 82, 0.25)'
                             }}>
                                 <i className="bi bi-check-lg"></i>
                             </div>
@@ -462,7 +462,7 @@ const VolunteerInquiryPage = () => {
                                                                     padding: '16px 18px',
                                                                     borderRadius: '16px',
                                                                     border: formData.volunteerProject === p.id ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                    background: formData.volunteerProject === p.id ? 'rgba(29,185,84,0.06)' : '#fafafa',
+                                                                    background: formData.volunteerProject === p.id ? 'rgba(27,163,82,0.06)' : '#fafafa',
                                                                     cursor: 'pointer',
                                                                     transition: 'all 0.25s ease',
                                                                     display: 'flex',
@@ -513,7 +513,7 @@ const VolunteerInquiryPage = () => {
                                                                             padding: '10px 16px',
                                                                             borderRadius: '12px',
                                                                             border: durationCategory === 'weeks' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                            background: durationCategory === 'weeks' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            background: durationCategory === 'weeks' ? 'rgba(27,163,82,0.06)' : 'white',
                                                                             fontWeight: 700,
                                                                             fontSize: '0.85rem',
                                                                             cursor: 'pointer',
@@ -534,7 +534,7 @@ const VolunteerInquiryPage = () => {
                                                                             padding: '10px 16px',
                                                                             borderRadius: '12px',
                                                                             border: durationCategory === 'months' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                            background: durationCategory === 'months' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            background: durationCategory === 'months' ? 'rgba(27,163,82,0.06)' : 'white',
                                                                             fontWeight: 700,
                                                                             fontSize: '0.85rem',
                                                                             cursor: 'pointer',
@@ -554,7 +554,7 @@ const VolunteerInquiryPage = () => {
                                                                             padding: '10px 16px',
                                                                             borderRadius: '12px',
                                                                             border: durationCategory === 'mix' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                                            background: durationCategory === 'mix' ? 'rgba(29,185,84,0.06)' : 'white',
+                                                                            background: durationCategory === 'mix' ? 'rgba(27,163,82,0.06)' : 'white',
                                                                             fontWeight: 700,
                                                                             fontSize: '0.85rem',
                                                                             cursor: 'pointer',
@@ -667,7 +667,7 @@ const VolunteerInquiryPage = () => {
                                                             padding: '24px 20px',
                                                             borderRadius: '20px',
                                                             border: formData.arrivalMethod === 'Flight' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                            background: formData.arrivalMethod === 'Flight' ? 'rgba(29,185,84,0.06)' : '#fafafa',
+                                                            background: formData.arrivalMethod === 'Flight' ? 'rgba(27,163,82,0.06)' : '#fafafa',
                                                             cursor: 'pointer',
                                                             transition: 'all 0.25s ease',
                                                             display: 'flex',
@@ -693,7 +693,7 @@ const VolunteerInquiryPage = () => {
                                                             padding: '24px 20px',
                                                             borderRadius: '20px',
                                                             border: formData.arrivalMethod === 'Overland' ? '2px solid var(--primary-green)' : '2px solid #eee',
-                                                            background: formData.arrivalMethod === 'Overland' ? 'rgba(29,185,84,0.06)' : '#fafafa',
+                                                            background: formData.arrivalMethod === 'Overland' ? 'rgba(27,163,82,0.06)' : '#fafafa',
                                                             cursor: 'pointer',
                                                             transition: 'all 0.25s ease',
                                                             display: 'flex',
@@ -713,6 +713,28 @@ const VolunteerInquiryPage = () => {
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            {/* Airport Pickup 1-Week Notice */}
+                                            {weeks === 1 && rateKey && !priceDetails.isFixed && (
+                                                <div style={{
+                                                    background: '#fffbeb',
+                                                    border: '1px solid #fef3c7',
+                                                    borderRadius: '16px',
+                                                    padding: '16px 20px',
+                                                    marginTop: '20px',
+                                                    color: '#b45309',
+                                                    fontSize: '0.88rem',
+                                                    lineHeight: 1.5,
+                                                    display: 'flex',
+                                                    alignItems: 'flex-start',
+                                                    gap: '12px'
+                                                }}>
+                                                    <i className="fa-solid fa-circle-exclamation" style={{ fontSize: '1.1rem', marginTop: '2px', flexShrink: 0 }}></i>
+                                                    <div>
+                                                        <strong>Important Note:</strong> Standard airport arrival pickup is not included for 1-week volunteer stays. You can request it in the field below or discuss it with our team, and we can arrange it for an additional fee.
+                                                    </div>
+                                                </div>
+                                            )}
 
                                             {/* Flight conditional inputs */}
                                             {formData.arrivalMethod === 'Flight' && (
@@ -794,8 +816,8 @@ const VolunteerInquiryPage = () => {
                                         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                             {formData.volunteerProject === 'Ceylon Skill Odyssey' && formData.skills && (
                                                 <div style={{
-                                                    background: 'rgba(29, 185, 84, 0.05)',
-                                                    border: '1px dashed rgba(29, 185, 84, 0.4)',
+                                                    background: 'rgba(27, 163, 82, 0.05)',
+                                                    border: '1px dashed rgba(27, 163, 82, 0.4)',
                                                     borderRadius: '12px',
                                                     padding: '16px',
                                                     marginBottom: '5px'
@@ -808,7 +830,7 @@ const VolunteerInquiryPage = () => {
                                                             <span key={sIdx} style={{
                                                                 background: 'white',
                                                                 color: '#1d1d1f',
-                                                                border: '1px solid rgba(29, 185, 84, 0.15)',
+                                                                border: '1px solid rgba(27, 163, 82, 0.15)',
                                                                 borderRadius: '20px',
                                                                 padding: '4px 12px',
                                                                 fontSize: '0.8rem',
@@ -877,7 +899,7 @@ const VolunteerInquiryPage = () => {
                                                         style={{ width: '20px', height: '20px', marginTop: '2px', accentColor: 'var(--primary-green)', cursor: 'pointer' }} 
                                                     />
                                                     {ndaDetails.signed ? (
-                                                        <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#15803d', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                        <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#168a45', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                                             <i className="fa-solid fa-circle-check"></i> Verified DocuSign Signature Applied <span style={{ fontFamily: 'monospace', fontSize: '0.75rem', opacity: 0.8 }}>({ndaDetails.envelopeId.slice(0, 11)}...)</span>
                                                         </span>
                                                     ) : (
@@ -1096,7 +1118,7 @@ const VolunteerInquiryPage = () => {
                     outline: none;
                     border-color: var(--primary-green);
                     background: #fdfdfd;
-                    box-shadow: 0 10px 30px rgba(29, 185, 84, 0.05);
+                    box-shadow: 0 10px 30px rgba(27, 163, 82, 0.05);
                 }
                 .prof-select {
                     appearance: none;
@@ -1129,13 +1151,13 @@ const VolunteerInquiryPage = () => {
                 }
                 
                 .summary-card {
-                    background: linear-gradient(145deg, #1DB954 0%, #0a2e1a 100%);
+                    background: linear-gradient(145deg, #1ba352 0%, #0a2e1a 100%);
                     border-radius: 35px;
                     padding: 45px 35px;
                     color: white;
                     position: sticky;
                     top: 120px;
-                    box-shadow: 0 20px 50px rgba(29, 185, 84, 0.2);
+                    box-shadow: 0 20px 50px rgba(27, 163, 82, 0.2);
                 }
 
                 .summary-title {

@@ -227,7 +227,7 @@ const Navbar = () => {
                                                     borderRadius: '10px',
                                                     cursor: 'pointer',
                                                     transition: 'all 0.2s ease',
-                                                    background: currency === c.label ? 'rgba(29, 185, 84, 0.1)' : 'transparent',
+                                                    background: currency === c.label ? 'rgba(27, 163, 82, 0.1)' : 'transparent',
                                                     color: currency === c.label ? 'var(--primary-green)' : '#333',
                                                     fontSize: '0.85rem',
                                                     fontWeight: currency === c.label ? 800 : 600
@@ -312,7 +312,7 @@ const Navbar = () => {
                                                     borderRadius: '8px',
                                                     cursor: 'pointer',
                                                     transition: 'all 0.2s ease',
-                                                    background: currency === c.label ? 'rgba(29, 185, 84, 0.1)' : 'transparent',
+                                                    background: currency === c.label ? 'rgba(27, 163, 82, 0.1)' : 'transparent',
                                                     color: currency === c.label ? 'var(--primary-green)' : '#333',
                                                     fontSize: '0.8rem',
                                                     fontWeight: currency === c.label ? 800 : 600
@@ -398,7 +398,7 @@ const Navbar = () => {
                                         padding: '15px',
                                         borderRadius: '16px',
                                         border: `2px solid ${currency === c.label ? 'var(--primary-green)' : '#eee'}`,
-                                        background: currency === c.label ? 'rgba(29, 185, 84, 0.05)' : 'white',
+                                        background: currency === c.label ? 'rgba(27, 163, 82, 0.05)' : 'white',
                                         display: 'flex',
                                         flexDirection: 'column',
                                         alignItems: 'center',

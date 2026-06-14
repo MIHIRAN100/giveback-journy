@@ -52,7 +52,7 @@ const VolunteerSection = () => {
                         
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1, justifyContent: 'center', margin: '15px 0' }}>
                             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                <div style={{ fontSize: '1.2rem', color: '#1db954', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
+                                <div style={{ fontSize: '1.2rem', color: '#1ba352', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
                                     <i className="fa-solid fa-earth-asia"></i>
                                 </div>
                                 <div>
@@ -62,7 +62,7 @@ const VolunteerSection = () => {
                             </div>
                             
                             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                <div style={{ fontSize: '1.2rem', color: '#1db954', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
+                                <div style={{ fontSize: '1.2rem', color: '#1ba352', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
                                     <i className="fa-solid fa-handshake-angle"></i>
                                 </div>
                                 <div>
@@ -72,7 +72,7 @@ const VolunteerSection = () => {
                             </div>
 
                             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                <div style={{ fontSize: '1.2rem', color: '#1db954', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
+                                <div style={{ fontSize: '1.2rem', color: '#1ba352', marginTop: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px' }}>
                                     <i className="fa-solid fa-shield-heart"></i>
                                 </div>
                                 <div>
@@ -84,7 +84,7 @@ const VolunteerSection = () => {
 
                         <div style={{ fontSize: '0.65rem', opacity: 0.5, borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '10px', display: 'flex', alignItems: 'center', width: '100%' }}>
                             <span>Make a Difference</span>
-                            <i className="fa-solid fa-arrow-right" style={{ marginLeft: 'auto', color: '#1db954' }}></i>
+                            <i className="fa-solid fa-arrow-right" style={{ marginLeft: 'auto', color: '#1ba352' }}></i>
                         </div>
                     </div>
 

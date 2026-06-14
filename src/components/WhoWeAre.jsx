@@ -13,14 +13,14 @@ const WhoWeAre = () => {
                     <span style={{ 
                         display: 'inline-block',
                         padding: '8px 24px',
-                        background: 'rgba(29, 185, 84, 0.1)',
+                        background: 'rgba(27, 163, 82, 0.1)',
                         color: 'var(--primary-green)',
                         borderRadius: '100px',
                         fontSize: '0.9rem',
                         fontWeight: 900,
                         textTransform: 'uppercase',
                         letterSpacing: '2px',
-                        border: '1px solid rgba(29, 185, 84, 0.2)'
+                        border: '1px solid rgba(27, 163, 82, 0.2)'
                     }}>
                         Our Identity
                     </span>
@@ -159,7 +159,7 @@ const WhoWeAre = () => {
                     width: 45px;
                     height: 45px;
                     background: #f0f7f2;
-                    color: #1DB954;
+                    color: #1ba352;
                     border-radius: 50%;
                     display: flex;
                     align-items: center;
@@ -273,14 +273,14 @@ const WhoWeAre = () => {
 
                 /* Impact Card Styling */
                 .who-impact-card {
-                    background: linear-gradient(145deg, #1DB954 0%, #158a3d 100%);
+                    background: linear-gradient(145deg, #1ba352 0%, #158a3d 100%);
                     color: white;
                     padding: 30px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     min-height: 250px;
-                    box-shadow: 0 15px 35px rgba(29, 185, 84, 0.2);
+                    box-shadow: 0 15px 35px rgba(27, 163, 82, 0.2);
                 }
                 .who-impact-content {
                     text-align: center;

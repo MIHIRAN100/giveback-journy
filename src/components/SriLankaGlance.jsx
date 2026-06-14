@@ -36,7 +36,7 @@ const glanceData = [
         icon: 'bi-people-fill',
         label: 'Population',
         value: <AnimatedNumber target={22} suffix="M+" />,
-        color: '#1DB954',
+        color: '#1ba352',
         desc: 'Friendly people'
     },
     {
