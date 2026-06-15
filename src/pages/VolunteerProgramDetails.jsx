@@ -918,7 +918,7 @@ const VolunteerProgramDetails = () => {
                         </div>
                         <p className="section-text-modern" style={{ marginBottom: '35px' }}>{program.mealsInfo.description}</p>
                         
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+                        <div className="meals-grid">
                             <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(255, 249, 230, 0.91)', border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <i className="bi bi-sunrise-fill" style={{ fontSize: '1.8rem', color: '#664d00' }}></i>
@@ -1175,9 +1175,17 @@ const VolunteerProgramDetails = () => {
                     margin: 0 auto;
                     padding: 0 5%;
                 }
+                .meals-grid {
+                    display: grid !important;
+                    grid-template-columns: repeat(3, 1fr) !important;
+                    gap: 24px !important;
+                }
                 @media (max-width: 768px) {
                     .detail-section {
                         padding: 40px 0 !important;
+                    }
+                    .meals-grid {
+                        grid-template-columns: 1fr !important;
                     }
                 }
                 

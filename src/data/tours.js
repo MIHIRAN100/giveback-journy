@@ -1,4 +1,4 @@
-import essentialCover from '../assets/gy.jpg';
+import essentialCover from '../assets/bro.jpg';
 import southernCover from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import adventureCover from '../assets/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg';
 import mistMountainsCover from '../assets/WhatsApp Image 2026-05-25 at 19.37.51.jpeg';

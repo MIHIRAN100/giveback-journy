@@ -4,7 +4,7 @@ import TourPackages, { TourCard } from '../components/TourPackages';
 import SriLankaGlance from '../components/SriLankaGlance';
 
 import { tourPackages } from '../data/tours';
-import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
+import heroBg from '../assets/bro.jpg';
 
 const PackagesPage = () => {
     const [searchTerm, setSearchTerm] = useState('');

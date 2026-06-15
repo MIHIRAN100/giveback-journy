@@ -23,7 +23,7 @@ import volunteer2 from '../assets/volunteer_2.png';
 import volunteer3 from '../assets/volunteer_3.png';
 import volunteer4 from '../assets/volunteer_4.png';
 import cultureExp from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
-import teachingImg from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
+import teachingImg from '../assets/teaching volunteers/hiu.jpg';
 import teachingGallery2 from '../assets/teaching volunteers/IMG_2741.jpg';
 import teachingGallery3 from '../assets/teaching volunteers/IMG_4271.jpg';
 import teachingGallery4 from '../assets/IMG-20241111-WA0002.jpg';

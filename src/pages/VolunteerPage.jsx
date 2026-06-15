@@ -1767,31 +1767,26 @@ const VolunteerPage = () => {
                             </h4>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '14px' }}>
                                 {[
-                                    selectedWeeks === 1 ? "Airport Arrival Pickup (2+ wks only)" : "Airport Arrival Pickup",
+                                    selectedWeeks === 1 ? "Airport Arrival Pickup (Conditions Apply)" : "Airport Arrival Pickup",
                                     "Clean, Safe Accommodation",
                                     "3 Fresh Local Meals Daily",
                                     "24/7 In-Country Support",
                                     "Program Orientation",
                                     "Hands-on Project Training",
-                                    "Local Project Transportation",
                                     "Official Impact Certificate"
-                                ].map((inc, i) => {
-                                    const isPickup = inc.startsWith("Airport Arrival Pickup");
-                                    return (
-                                        <li key={i} style={{ 
-                                            fontSize: '0.88rem', 
-                                            color: (isPickup && selectedWeeks === 1) ? '#94a3b8' : '#475569', 
-                                            display: 'flex', 
-                                            alignItems: 'center', 
-                                            gap: '10px', 
-                                            fontWeight: 600,
-                                            textDecoration: (isPickup && selectedWeeks === 1) ? 'line-through' : 'none'
-                                        }}>
-                                            <i className={(isPickup && selectedWeeks === 1) ? "fa-solid fa-xmark" : "fa-solid fa-check"} 
-                                               style={{ color: (isPickup && selectedWeeks === 1) ? '#cbd5e1' : 'var(--primary-green)', fontSize: '0.85rem' }}></i> {inc}
-                                        </li>
-                                    );
-                                })}
+                                ].map((inc, i) => (
+                                    <li key={i} style={{ 
+                                        fontSize: '0.88rem', 
+                                        color: '#475569', 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '10px', 
+                                        fontWeight: 600
+                                    }}>
+                                        <i className="fa-solid fa-check" 
+                                           style={{ color: 'var(--primary-green)', fontSize: '0.85rem' }}></i> {inc}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div>
