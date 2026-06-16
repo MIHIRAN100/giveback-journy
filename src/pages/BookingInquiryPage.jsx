@@ -992,12 +992,12 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                 }
 
                 .btn-black {
-                    background: #121212;
+                    background: #1a2332;
                     color: white;
                 }
 
                 .btn-black:hover {
-                    background: #282828;
+                    background: #151d2b;
                 }
 
                 .btn-outline {

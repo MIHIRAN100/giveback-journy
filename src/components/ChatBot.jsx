@@ -11,7 +11,13 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
         "Ready for adventure?",
         "Plan your trip now!",
         "Have any questions?",
-        "Discover Sri Lanka!"
+        "Discover Sri Lanka!",
+        "Let's plan your dream trip! 🌴",
+        "Exclusive deals available today!",
+        "Need help choosing a tour?",
+        "We reply within minutes! ⚡",
+        "Custom itineraries available!",
+        "Join 1000+ happy travelers!"
     ];
 
     const [msgIndex, setMsgIndex] = useState(0);
@@ -48,7 +54,7 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
             {/* Popup Window */}
             <div className={`chat-window ${isOpen ? 'open' : ''}`}>
                 <div className="chat-header">
-                    <div className="chat-avatar" style={{background: 'var(--primary-green)'}}>
+                    <div className="chat-avatar" style={{background: '#1a2332'}}>
                         <i className="fa-brands fa-whatsapp" style={{fontSize: '1.2rem'}}></i>
                     </div>
                     <div>
@@ -59,10 +65,16 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                     </div>
                 </div>
 
-                <div style={{padding: '30px 25px', display: 'flex', flexDirection: 'column', gap: '20px'}}>
+                <div style={{padding: '30px 25px', display: 'flex', flexDirection: 'column', gap: '15px'}}>
                     {/* Bot greeting */}
                     <div className="msg-bubble msg-bot">
                         Ayubowan! Welcome to <strong>Giveback journny.</strong> I'm here to help you plan your perfect Sri Lankan getaway. Tap below to chat with our travel expert directly on WhatsApp!
+                    </div>
+                    <div className="msg-bubble msg-bot" style={{ marginTop: '-5px' }}>
+                        We specialize in volunteer programs, customizable tour packages, and immersive cultural trips. 🌴
+                    </div>
+                    <div className="msg-bubble msg-bot" style={{ marginTop: '-5px' }}>
+                        Simply click the button below to start your adventure. Our experts are ready to assist you right away! ✨
                     </div>
 
                     {/* Quick action buttons */}

@@ -190,56 +190,82 @@ h1, h2, h3, .logo-text {
 }
 
 .banner {
-    background: linear-gradient(90deg, #1DB954 0%, #158b3e 100%);
-    color: var(--white);
-    padding: 8px 5%;
+    background: #1a2332;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 9px 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.3px;
+    font-weight: 500;
 }
 
-.banner-tag {
-    background: var(--pitch-black);
-    color: var(--white);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.6rem;
-    font-weight: 800;
-    margin-right: 15px;
+.banner-stat {
+    position: absolute;
+    left: 5%;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.banner-stat i {
+    color: #1DB954;
+    font-size: 0.8rem;
+}
+
+.banner-cta {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.2px;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.banner-cta:hover {
+    color: #fff;
 }
 
 .banner-close {
     position: absolute;
     right: 5%;
     cursor: pointer;
-    font-size: 0.8rem;
-    background: rgba(0, 0, 0, 0.1);
-    width: 24px;
-    height: 24px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    transition: var(--transition);
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .banner-close:hover {
-    background: rgba(0,0,0,0.3);
-    transform: rotate(90deg);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
     .banner {
-        padding: 10px 15px;
-        font-size: 0.6rem;
+        padding: 9px 15px;
+        font-size: 0.65rem;
     }
-    .banner-tag {
-        margin-right: 10px;
+    .banner-stat {
+        display: none;
+    }
+    .banner-cta {
+        font-size: 0.65rem;
+    }
+    .banner-close {
+        right: 15px;
     }
 }
 /* Modern Ticker Banner (Full-Width Bottom) */
@@ -254,7 +280,7 @@ h1, h2, h3, .logo-text {
 }
 
 .bottom-ad-inner {
-    background: #000; /* Solid Black */
+    background: #1a2332; /* Match top banner */
     color: var(--white);
     padding: 10px 5%;
     display: flex;
@@ -382,7 +408,6 @@ h1, h2, h3, .logo-text {
     text-decoration: none;
     color: var(--pitch-black);
     flex: 1;
-    transition: all 0.3s ease;
 }
 
 .logo-box {
@@ -406,25 +431,12 @@ h1, h2, h3, .logo-text {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-
-
-.logo-area:hover .logo-image-container {
-    transform: translateY(-2px);
 }
 
 .logo-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
-}
-
-.logo-area:hover .logo-image {
-    transform: scale(1.08) rotate(-3deg);
-    filter: drop-shadow(0 4px 12px rgba(27, 163, 82, 0.2));
 }
 
 .logo-text {
@@ -433,11 +445,11 @@ h1, h2, h3, .logo-text {
     font-weight: 900;
     letter-spacing: -0.02em;
     text-transform: none;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.logo-area:hover .logo-text {
-    transform: translateX(3px);
+.logo-dot {
+    color: var(--primary-green);
+    display: inline-block;
 }
 
 @media (max-width: 768px) {
@@ -496,26 +508,6 @@ h1, h2, h3, .logo-text {
     }
     .navbar-container .logo-area {
         gap: 6px !important;
-    }
-}
-
-.logo-dot {
-    color: var(--primary-green);
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.4s ease;
-}
-
-.logo-area:hover .logo-dot {
-    animation: logoDotPulse 1.2s infinite alternate cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@keyframes logoDotPulse {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.6);
-        color: #1ed760;
     }
 }
 
@@ -708,15 +700,15 @@ h1, h2, h3, .logo-text {
 }
 
 .btn-black {
-    background: linear-gradient(135deg, var(--pitch-black) 0%, #1a1a1a 100%);
+    background: #1a2332 !important;
     color: var(--white) !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 20px rgba(26,35,50,0.25);
 }
 
 .btn-black:hover {
-    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    background: linear-gradient(135deg, #151d2b 0%, #1a2332 100%) !important;
     transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    box-shadow: 0 15px 30px rgba(26,35,50,0.35);
 }
 
 .btn-white {
@@ -729,7 +721,7 @@ h1, h2, h3, .logo-text {
     transform: scale(1.04);
 }
 
-.btn-modern:hover {
+.btn-modern:hover:not(.btn-black) {
     background: #2bc36f;
     transform: scale(1.04);
 }
@@ -1496,7 +1488,7 @@ h1, h2, h3, .logo-text {
 
 /* Company Status Bar (Partner Slider) */
 .partner-slider-section {
-    background: linear-gradient(90deg, #121212 0%, #1a1a1a 100%);
+    background: #1a2332;
     padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
@@ -2099,7 +2091,7 @@ h1, h2, h3, .logo-text {
 
 /* More Button */
 .gyg-more-btn {
-    background: var(--pitch-black);
+    background: #1a2332;
     color: var(--white);
     padding: 8px 20px;
     border-radius: 500px;
@@ -2113,7 +2105,7 @@ h1, h2, h3, .logo-text {
 }
 
 .package-card.gyg-card:hover .gyg-more-btn {
-    background: #333;
+    background: #151d2b;
     transform: scale(1.05);
 }
 
@@ -2774,7 +2766,7 @@ h1, h2, h3, .logo-text {
 }
 
 .btn-black {
-    background: var(--pitch-black) !important;
+    background: #1a2332 !important;
     color: var(--white) !important;
     border: none;
     padding: 14px 28px;
@@ -2793,7 +2785,7 @@ h1, h2, h3, .logo-text {
 }
 
 .btn-black:hover {
-    background: #333 !important;
+    background: #151d2b !important;
     transform: scale(1.05);
 }
 
@@ -3137,7 +3129,7 @@ h1, h2, h3, .logo-text {
 
 /* Branding Footer Styles */
 .brand-footer {
-    background: var(--pitch-black);
+    background: #1a2332;
     color: var(--white);
     padding: 100px 5% 40px;
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -3274,7 +3266,7 @@ h1, h2, h3, .logo-text {
 }
 
 .chat-header {
-    background: var(--pitch-black);
+    background: #1a2332;
     color: white;
     padding: 22px 25px;
     display: flex;
@@ -3390,7 +3382,7 @@ h1, h2, h3, .logo-text {
 }
 
 .hi-bubble {
-    background: var(--pitch-black);
+    background: #1a2332;
     color: white;
     padding: 12px 20px;
     border-radius: 20px 20px 4px 20px;
@@ -3404,7 +3396,7 @@ h1, h2, h3, .logo-text {
 .chat-toggle {
     width: 65px;
     height: 65px;
-    background: var(--primary-green);
+    background: #1a2332;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -3412,7 +3404,7 @@ h1, h2, h3, .logo-text {
     justify-content: center;
     font-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 15px 40px rgba(27, 163, 82, 0.4);
+    box-shadow: 0 15px 40px rgba(26, 35, 50, 0.4);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
 }
@@ -3453,7 +3445,7 @@ h1, h2, h3, .logo-text {
 }
 
 .chat-header {
-    background: var(--pitch-black);
+    background: #1a2332;
     color: white;
     padding: 20px 25px;
     display: flex;
@@ -4223,7 +4215,7 @@ h1, h2, h3, .logo-text {
 /* Volunteer Section Styles */
 .volunteer-preview-section {
     padding: 120px 5%;
-    background: linear-gradient(135deg, var(--primary-green) 0%, #0a2e1a 100%);
+    background: #1a2332;
     color: var(--white);
 }
 

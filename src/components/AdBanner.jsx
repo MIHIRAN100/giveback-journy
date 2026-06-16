@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const AdBanner = ({ isScrolled }) => {
     const [visible, setVisible] = useState(true);
@@ -19,12 +19,15 @@ const AdBanner = ({ isScrolled }) => {
     };
 
     return (
-        <div className={`banner-wrapper ${(!visible || isTourDetails || isScrolled) ? 'banner-hidden' : ''}`}>
+        <div className={`banner-wrapper ${(!visible || isTourDetails) ? 'banner-hidden' : ''}`}>
             <div className="banner">
-                <span className="banner-tag">NEW</span>
-                <p className="banner-text">
-                    New volunteering projects available - Join the impact today!
-                </p>
+                <div className="banner-stat">
+                    <i className="fa-solid fa-circle-check"></i>
+                    <span>1000+ travelers since 2019</span>
+                </div>
+                <Link to="/volunteer" className="banner-cta">
+                    Trusted volunteer programs + flexible booking! Apply today <i className="fa-solid fa-chevron-right" style={{ fontSize: '0.55rem', marginLeft: '4px' }}></i>
+                </Link>
                 <div className="banner-close" onClick={handleClose}>
                     <i className="fa-solid fa-xmark"></i>
                 </div>
