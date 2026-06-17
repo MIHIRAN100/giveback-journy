@@ -642,20 +642,20 @@ const TourDetails = () => {
                     color: #111;
                 }
                 .sticky-book-btn {
-                    background: var(--primary-green);
+                    background: #1a2332;
                     color: white;
                     padding: 15px 45px;
                     border-radius: 14px;
                     font-weight: 900;
                     font-size: 1.1rem;
                     border: none;
-                    box-shadow: 0 8px 25px rgba(27, 163, 82, 0.3);
+                    box-shadow: 0 8px 25px rgba(26, 35, 50, 0.3);
                     transition: all 0.3s ease;
                     cursor: pointer;
                 }
                 .sticky-book-btn:hover {
                     transform: translateY(-2px);
-                    box-shadow: 0 12px 30px rgba(12, 93, 49, 0.4);
+                    box-shadow: 0 12px 30px rgba(26, 35, 50, 0.4);
                 }
 
                 /* Ensure Chat Bot is not covered by Sticky Bar */
@@ -987,14 +987,14 @@ const TourDetails = () => {
                         color: #111 !important;
                     }
                     .sticky-book-btn {
-                        background: #111 !important;
+                        background: #1a2332 !important;
                         color: white !important;
                         padding: 12px 28px !important;
                         border-radius: 12px !important;
                         font-weight: 900 !important;
                         font-size: 0.9rem !important;
                         border: none !important;
-                        box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important;
+                        box-shadow: 0 8px 20px rgba(26, 35, 50, 0.2) !important;
                         transition: all 0.3s ease !important;
                     }
                 }
