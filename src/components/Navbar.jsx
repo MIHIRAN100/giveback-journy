@@ -139,9 +139,9 @@ const Navbar = () => {
             <header className={`brand-header ${(activeMegaMenu || !isHomePage || isScrolled) ? 'header-scrolled' : ''}`}>
                 <AdBanner isScrolled={isScrolled} />
                 <nav className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}>
-                    <Link to="/" className="logo-area" onMouseEnter={() => setActiveMegaMenu(null)}>
+                    <Link to="/" className="logo-area" title="Giveback Journey Logo" onMouseEnter={() => setActiveMegaMenu(null)}>
                         <div className="logo-image-container">
-                            <img src={logo} alt="Give Back Journey Logo" className="logo-image" />
+                            <img src={logo} alt="Give Back Journey Logo" title="Giveback Journey Logo" className="logo-image" />
                         </div>
                         <span className="logo-text">Giveback Journey<span className="logo-dot">.</span></span>
                     </Link>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/brand_logo.png';
 
 const ChatBot = ({ cookieVisible, isTourDetails }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +13,10 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
         "Plan your trip now!",
         "Have any questions?",
         "Discover Sri Lanka!",
-        "Let's plan your dream trip! 🌴",
+        <span>Let's plan your dream trip! <i className="fa-solid fa-umbrella-beach" style={{color: '#3b7fba', marginLeft: '4px'}}></i></span>,
         "Exclusive deals available today!",
         "Need help choosing a tour?",
-        "We reply within minutes! ⚡",
+        <span>We reply within minutes! <i className="fa-solid fa-bolt" style={{color: '#eab308', marginLeft: '4px'}}></i></span>,
         "Custom itineraries available!",
         "Join 1000+ happy travelers!"
     ];
@@ -54,8 +55,8 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
             {/* Popup Window */}
             <div className={`chat-window ${isOpen ? 'open' : ''}`}>
                 <div className="chat-header">
-                    <div className="chat-avatar" style={{background: '#1a2332'}}>
-                        <i className="fa-brands fa-whatsapp" style={{fontSize: '1.2rem'}}></i>
+                    <div className="chat-avatar" style={{background: 'white', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <img src={logo} alt="Giveback Journey Logo" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                     </div>
                     <div>
                         <div className="chat-title">Giveback Concierge</div>
@@ -71,10 +72,10 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                         Ayubowan! Welcome to <strong>Giveback journny.</strong> I'm here to help you plan your perfect Sri Lankan getaway. Tap below to chat with our travel expert directly on WhatsApp!
                     </div>
                     <div className="msg-bubble msg-bot" style={{ marginTop: '-5px' }}>
-                        We specialize in volunteer programs, customizable tour packages, and immersive cultural trips. 🌴
+                        We specialize in volunteer programs, customizable tour packages, and immersive cultural trips. <i className="fa-solid fa-umbrella-beach" style={{color: '#3b7fba', marginLeft: '4px'}}></i>
                     </div>
                     <div className="msg-bubble msg-bot" style={{ marginTop: '-5px' }}>
-                        Simply click the button below to start your adventure. Our experts are ready to assist you right away! ✨
+                        Simply click the button below to start your adventure. Our experts are ready to assist you right away! <i className="fa-solid fa-wand-magic-sparkles" style={{color: '#eab308', marginLeft: '4px'}}></i>
                     </div>
 
                     {/* Quick action buttons */}
@@ -117,8 +118,20 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
             )}
 
             {/* Floating WhatsApp Toggle Button */}
-            <button className="chat-toggle" onClick={() => setIsOpen(!isOpen)} title="Chat with us" style={{ position: 'relative' }}>
-                {isOpen ? <i className="fa-solid fa-xmark"></i> : <i className="fa-brands fa-whatsapp" style={{fontSize: '1.8rem'}}></i>}
+            <button className="chat-toggle" onClick={() => setIsOpen(!isOpen)} title="Chat with us" style={{ 
+                position: 'relative', 
+                background: isOpen ? '#1a2332' : 'var(--primary-green, #1ba352)',
+                boxShadow: isOpen ? '0 15px 40px rgba(26, 35, 50, 0.4)' : '0 15px 40px rgba(27, 163, 82, 0.4)'
+            }}>
+                {isOpen ? (
+                    <i className="fa-solid fa-xmark" style={{ fontSize: '1.6rem' }}></i>
+                ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="4" y="4" width="16" height="13" rx="3" fill="white" stroke="none" />
+                        <path d="M 15 17 L 19 21 V 17 Z" fill="white" stroke="none" />
+                        <path d="M 8 11 Q 12 14 16 11" stroke="var(--primary-green, #1ba352)" strokeWidth="2" fill="none" strokeLinecap="round" />
+                    </svg>
+                )}
                 {!isOpen && showNotification && (
                     <span style={{
                         position: 'absolute',

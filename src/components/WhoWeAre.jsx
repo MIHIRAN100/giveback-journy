@@ -30,7 +30,7 @@ const WhoWeAre = () => {
                     {/* Left Column: Brand Story & Values */}
                     <div className="who-content-side">
                         <h2 className="who-main-title">
-                            The experts in budget-friendly travel local volunteering
+                            The experts in budget friendly travel local volunteering
                         </h2>
                         <p className="who-subtitle">
                             We redefine island exploration by proving that impactful travel can be accessible to everyone. Our mission is to combine affordable, authentic adventures with meaningful volunteering that directly supports Sri Lankan communities. This is how our <b>'Give Back Journey'</b> name was born: a promise to ensure every step you take on this island helps it flourish.
@@ -182,17 +182,20 @@ const WhoWeAre = () => {
                 .who-explore-btn {
                     display: inline-block;
                     padding: 16px 40px;
-                    background: #e8f5e9;
-                    color: #2e7d32;
+                    background: #1a2332;
+                    color: #ffffff;
                     border-radius: 50px;
                     text-decoration: none;
                     font-weight: 700;
                     font-size: 0.95rem;
                     transition: all 0.3s ease;
+                    box-shadow: 0 8px 20px rgba(26, 35, 50, 0.15);
                 }
                 .who-explore-btn:hover {
-                    background: #c8e6c9;
+                    background: #26334a;
+                    color: #ffffff;
                     transform: translateY(-2px);
+                    box-shadow: 0 12px 25px rgba(26, 35, 50, 0.25);
                 }
 
                 /* Middle Column */

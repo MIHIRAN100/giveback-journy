@@ -19,7 +19,7 @@ const AdBanner = ({ isScrolled }) => {
     };
 
     return (
-        <div className={`banner-wrapper ${(!visible || isTourDetails) ? 'banner-hidden' : ''}`}>
+        <div className={`banner-wrapper ${(!visible) ? 'banner-hidden' : ''}`}>
             <div className="banner">
                 <div className="banner-stat">
                     <i className="fa-solid fa-circle-check"></i>

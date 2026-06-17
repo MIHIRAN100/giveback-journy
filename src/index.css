@@ -3860,10 +3860,10 @@ h1, h2, h3, .logo-text {
     transform: translate(-50%, -50%);
     width: 54px;
     height: 54px;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(59, 127, 186, 0.45); /* Translucent website blue */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3882,8 +3882,8 @@ h1, h2, h3, .logo-text {
 .moment-card:hover .play-button-overlay,
 .moment-card .play-button-overlay:hover {
     opacity: 1;
-    background: var(--primary-green);
-    border-color: var(--primary-green);
+    background: #3b7fba; /* Website blue */
+    border-color: #3b7fba;
     transform: translate(-50%, -50%) scale(1.1);
 }
 

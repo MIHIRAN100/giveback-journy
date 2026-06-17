@@ -200,7 +200,7 @@ const VolunteerOpportunities = () => {
  
                                 <Link to={`/volunteer-program/${opp.id}`} className="opp-card-btn" style={{
                                     marginTop: 'auto',
-                                    background: '#111',
+                                    background: '#1a2332',
                                     color: 'white',
                                     textAlign: 'center',
                                     padding: '10px',
@@ -229,9 +229,9 @@ const VolunteerOpportunities = () => {
                     transform: scale(1.1);
                 }
                 .opp-card-btn:hover {
-                    background: var(--primary-green);
+                    background: #26334a !important;
                     transform: scale(1.02);
-                    box-shadow: 0 15px 30px rgba(27, 163, 82, 0.3);
+                    box-shadow: 0 15px 30px rgba(26, 35, 50, 0.3);
                 }
                 .scroll-nav-btn:hover {
                     background: #111 !important;

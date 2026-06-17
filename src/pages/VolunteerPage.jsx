@@ -625,58 +625,79 @@ const VolunteerPage = () => {
                 .journey-timeline {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
-                    gap: 0;
+                    gap: 24px;
                     position: relative;
                     margin-bottom: 50px;
-                    padding: 0 10px;
+                    padding: 0;
                 }
 
                 .journey-timeline::before {
-                    content: '';
-                    position: absolute;
-                    top: 36px;
-                    left: calc(12.5% + 10px);
-                    right: calc(12.5% + 10px);
-                    height: 2px;
-                    background: linear-gradient(90deg, var(--primary-green), #dcfce7);
-                    z-index: 0;
+                    display: none !important;
                 }
 
                 .journey-step {
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                    padding: 0 16px;
+                    align-items: flex-start;
+                    text-align: left;
+                    padding: 48px 36px;
                     position: relative;
                     z-index: 1;
+                    background: #f5f5f7; /* Apple's signature light grey */
+                    border-radius: 28px;
+                    transition: all 0.5s cubic-bezier(0.15, 0.85, 0.45, 1);
+                    border: none;
+                    box-shadow: none;
+                }
+
+                .journey-step-number {
+                    position: absolute;
+                    top: 40px;
+                    right: 36px;
+                    font-size: 3.2rem;
+                    font-weight: 800;
+                    color: #1d1d1f;
+                    opacity: 0.12;
+                    line-height: 1;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                    user-select: none;
+                    transition: all 0.5s ease;
+                }
+
+                .journey-step:hover .journey-step-number {
+                    opacity: 0.28;
+                    transform: translateY(-2px);
                 }
 
                 .journey-step-icon {
-                    width: 80px;
-                    height: 80px;
-                    border-radius: 50%;
-                    background: #f8fdf9;
-                    border: 1.5px solid #d1fae5;
+                    width: 46px;
+                    height: 46px;
+                    border-radius: 14px;
+                    background: white;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    margin-bottom: 32px;
-                    box-shadow: 0 4px 20px rgba(27,163,82,0.08);
-                    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+                    margin-bottom: 28px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+                    transition: all 0.5s cubic-bezier(0.15, 0.85, 0.45, 1);
+                    position: relative;
                 }
 
                 .journey-step-icon i {
-                    font-size: 1.5rem;
-                    color: var(--primary-green);
+                    font-size: 1.15rem;
+                    color: #1d1d1f;
                     transition: all 0.3s ease;
+                }
+
+                .journey-step:hover {
+                    transform: translateY(-6px);
+                    background: #e8e8ed; /* Apple's hover state grey */
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
                 }
 
                 .journey-step:hover .journey-step-icon {
                     background: var(--primary-green);
-                    border-color: var(--primary-green);
-                    transform: translateY(-6px);
-                    box-shadow: 0 20px 40px rgba(27,163,82,0.2);
+                    transform: scale(1.05);
                 }
 
                 .journey-step:hover .journey-step-icon i {
@@ -685,43 +706,44 @@ const VolunteerPage = () => {
 
                 .journey-step-tag {
                     display: inline-block;
-                    padding: 4px 14px;
+                    padding: 4px 12px;
                     border-radius: 100px;
-                    font-size: 0.7rem;
-                    font-weight: 700;
-                    letter-spacing: 0.5px;
-                    margin-bottom: 14px;
+                    font-size: 0.68rem;
+                    font-weight: 800;
+                    letter-spacing: 0.2px;
+                    margin-bottom: 15px;
+                    text-transform: uppercase;
                 }
 
                 .journey-step-title {
-                    font-size: 1.05rem;
-                    font-weight: 800;
+                    font-size: 1.3rem;
+                    font-weight: 700;
                     color: #1d1d1f;
                     margin-bottom: 12px;
-                    letter-spacing: -0.02em;
+                    letter-spacing: -0.01em;
                 }
 
                 .journey-step-desc {
-                    font-size: 0.85rem;
-                    line-height: 1.65;
-                    color: #6e6e73;
-                    font-weight: 400;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                    color: #86868b;
+                    font-weight: 500;
                 }
 
                 @media (max-width: 1024px) {
                     .journey-timeline {
-                        grid-template-columns: 1fr 1fr;
-                        gap: 40px;
-                    }
-                    .journey-timeline::before {
-                        display: none;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 20px;
                     }
                 }
 
                 @media (max-width: 600px) {
                     .journey-timeline {
                         grid-template-columns: 1fr;
-                        gap: 32px;
+                        gap: 16px;
+                    }
+                    .journey-step {
+                        padding: 36px 28px;
                     }
                 }
 
@@ -1863,6 +1885,7 @@ const VolunteerPage = () => {
                             }
                         ].map((item, i) => (
                             <div key={i} className="journey-step">
+                                <span className="journey-step-number">{`0${i + 1}`}</span>
                                 <div className="journey-step-icon">
                                     <i className={`fa-solid ${item.icon}`}></i>
                                 </div>
