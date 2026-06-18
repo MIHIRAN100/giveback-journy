@@ -77,7 +77,7 @@ const Breadcrumbs = ({ customName = null }) => {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            fontSize: '0.85rem',
+            fontSize: '0.75rem',
             color: '#888',
             fontWeight: 600,
             borderBottom: '1px solid rgba(0,0,0,0.03)',
@@ -88,7 +88,7 @@ const Breadcrumbs = ({ customName = null }) => {
             {breadcrumbs.map((crumb, index) => (
                 <React.Fragment key={index}>
                     {index > 0 && (
-                        <span style={{ color: '#ccc', margin: '0 4px', fontSize: '0.7rem', fontWeight: 400 }}>
+                        <span style={{ color: '#ccc', margin: '0 4px', fontSize: '0.65rem', fontWeight: 400 }}>
                             /
                         </span>
                     )}
@@ -124,7 +124,7 @@ const Breadcrumbs = ({ customName = null }) => {
                                 e.target.style.background = 'transparent';
                             }}
                         >
-                            {crumb.label === 'Home' && <i className="bi bi-house-door" style={{fontSize: '1rem'}}></i>}
+                            {crumb.label === 'Home' && <i className="bi bi-house-door" style={{fontSize: '0.9rem'}}></i>}
                             {crumb.label}
                         </Link>
                     )}

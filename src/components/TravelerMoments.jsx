@@ -235,7 +235,7 @@ const TravelerMoments = () => {
     };
 
     return (
-        <section className="who-we-are-section">
+        <section id="feedback-shorts" className="who-we-are-section">
             <div className="who-we-are-header" style={{ alignItems: 'flex-start' }}>
                 <div>
                     <h2>Traveler Feedback Shorts</h2>

@@ -124,9 +124,9 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                 boxShadow: isOpen ? '0 15px 40px rgba(26, 35, 50, 0.4)' : '0 15px 40px rgba(27, 163, 82, 0.4)'
             }}>
                 {isOpen ? (
-                    <i className="fa-solid fa-xmark" style={{ fontSize: '1.6rem' }}></i>
+                    <i className="fa-solid fa-xmark" style={{ fontSize: '1.4rem' }}></i>
                 ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="4" y="4" width="16" height="13" rx="3" fill="white" stroke="none" />
                         <path d="M 15 17 L 19 21 V 17 Z" fill="white" stroke="none" />
                         <path d="M 8 11 Q 12 14 16 11" stroke="var(--primary-green, #1ba352)" strokeWidth="2" fill="none" strokeLinecap="round" />
