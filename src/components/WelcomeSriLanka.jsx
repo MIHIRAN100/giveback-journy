@@ -9,7 +9,7 @@ const WelcomeSriLanka = () => {
                 <div className="welcome-content-centered">
                     <div className="welcome-text">
                         <span className="welcome-tag">Ayubowan</span>
-                        <h2>Welcome to <span className="text-highlight">Sri Lanka</span></h2>
+                        <h2><span style={{ color: '#1a2332' }}>Welcome to</span> <span className="text-highlight">Sri Lanka</span></h2>
                         <div className="welcome-description">
                             <p>
                                 Experience the Pearl of the Indian Ocean, a land of emerald tea plantations, ancient stone fortresses, and golden shores. Sri Lanka is not just a destination; it's a sensory symphony where the scent of cinnamon mingles with the salty sea breeze, and the rhythmic chanting from ancient temples echoes through misty mountain peaks.

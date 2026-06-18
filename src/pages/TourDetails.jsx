@@ -1282,7 +1282,7 @@ const TourDetails = () => {
                     display: none;
                 }
                 .tour-card-mini {
-                    flex: 0 0 210px;
+                    flex: 0 0 260px;
                     background: white;
                     border-radius: 12px;
                     border: 1px solid #eee;
@@ -1298,7 +1298,7 @@ const TourDetails = () => {
                 }
                 .card-image-wrapper {
                     position: relative;
-                    height: 130px;
+                    height: 160px;
                 }
                 .card-image-wrapper img {
                     width: 100%;
@@ -1605,14 +1605,14 @@ const TourDetails = () => {
                                             onClick={() => setTransport(v.id)}
                                             style={{
                                                 padding: '12px 8px',
-                                                background: transport === v.id ? 'var(--primary-green)' : '#fcfcfc',
+                                                background: transport === v.id ? '#1a2332' : '#fcfcfc',
                                                 color: transport === v.id ? 'white' : '#333',
                                                 borderRadius: '14px',
-                                                border: `2px solid ${transport === v.id ? 'var(--primary-green)' : '#eee'}`,
+                                                border: `2px solid ${transport === v.id ? '#1a2332' : '#eee'}`,
                                                 textAlign: 'center',
                                                 cursor: 'pointer',
                                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                boxShadow: transport === v.id ? '0 8px 20px rgba(27, 163, 82, 0.25)' : 'none',
+                                                boxShadow: transport === v.id ? '0 8px 20px rgba(26, 35, 50, 0.25)' : 'none',
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
@@ -1621,7 +1621,7 @@ const TourDetails = () => {
                                             }}
                                         >
                                             {v.id === 'tuktuk' ? (
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: transport === v.id ? 'white' : 'var(--primary-green)' }}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: transport === v.id ? 'white' : '#1a2332' }}>
                                                     <path d="M6 7c0-2 2-3 6-3s6 1 6 3v4H6V7z" />
                                                     <rect x="7" y="7" width="10" height="4" rx="0.5" />
                                                     <path d="M5 11h14l-2 7H7l-2-7z" />
@@ -1631,7 +1631,7 @@ const TourDetails = () => {
                                                     <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none" />
                                                 </svg>
                                             ) : (
-                                                <i className={v.icon} style={{ fontSize: '1.3rem', color: transport === v.id ? 'white' : 'var(--primary-green)' }}></i>
+                                                <i className={v.icon} style={{ fontSize: '1.3rem', color: transport === v.id ? 'white' : '#1a2332' }}></i>
                                             )}
                                             <span style={{ fontSize: '0.85rem', fontWeight: 800, lineHeight: 1.1 }}>{v.label}</span>
                                             <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -1895,6 +1895,17 @@ const TourDetails = () => {
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                        
+                        {/* Departure Airport Transfer Note */}
+                        <div style={{ marginTop: '20px', background: '#eef5f9', borderLeft: '4px solid var(--primary-green)', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.02)' }}>
+                            <h5 style={{ fontSize: '1.05rem', margin: '0 0 10px 0', color: 'var(--primary-green)', fontWeight: 800 }}>
+                                <i className="bi bi-info-circle-fill" style={{ marginRight: '8px' }}></i>
+                                Departure Airport Transfer
+                            </h5>
+                            <p style={{ margin: 0, fontSize: '0.9rem', color: '#444', lineHeight: 1.6 }}>
+                                Please note that on departure dates, airport transfer is <b>not included</b> in the package. You can arrange your own transport to the airport, or we can easily arrange a private transfer for you for an additional fee.
+                            </p>
                         </div>
 
                         <SpotifyAdCard margin="10px 0 0 0" />

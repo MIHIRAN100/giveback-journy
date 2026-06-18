@@ -619,8 +619,8 @@ export const tourPackages = [
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, it’s time to bid farewell to the <b>southern coast</b>. Your private transfer will take you back to the airport for your onward journey.<br/><br/>As you leave the <b>turquoise waters</b> behind, you’ll carry with you memories of <b>golden sunsets</b>, <b>historic forts</b>, and the gentle rhythm of the <b>Indian Ocean</b>.<br/><br/>We hope this southern escape has left you feeling refreshed and inspired, and we look forward to welcoming you back to our island paradise in the future.", 
-                activities: ["Breakfast", "Airport Transfer"],
+                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                activities: ["Breakfast"],
                 optionalActivities: [
                     "Morning Whale Watching Safari in the deep blue",
                     "Exciting Wildlife Jeep Safari to Yala National Park",
@@ -713,8 +713,8 @@ export const tourPackages = [
             { 
                 day: 7, 
                 title: "Departure", 
-                desc: "Enjoy <b>breakfast</b> before your private transfer comfortably takes you to the airport for your onward journey, carrying with you the cherished memories of your Sri Lankan adventure.", 
-                activities: ["Breakfast", "Airport Transfer"] 
+                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                activities: ["Breakfast"] 
             }
         ],
         inclusions: [
@@ -743,14 +743,14 @@ export const tourPackages = [
         id: 4,
         name: "5-Day Mist & Mountains",
         days: "5 Days",
-        description: "Venture into the emerald heart of Sri Lanka. Traverse tea plantations and hike the scenic trails of Ella.",
+        description: "Venture into the emerald heart of Sri Lanka on this immersive 5-day journey through the central highlands. This tour is perfectly crafted for nature lovers and those seeking a cool, misty escape from the tropical heat.\n\nYou will begin in the sacred city of Kandy to witness ancient traditions, then ascend into the rolling hills of Nuwara Eliya to uncover the secrets of Ceylon tea. Experience the world-renowned Blue Train journey as it winds through stunning valleys, and challenge yourself with a rewarding hike up Ella Rock.\n\nFrom cascading waterfalls to colonial-era bridges, every day presents a new breathtaking vista in the island's most serene region.",
         price: "$550",
         image: mistMountainsCover,
         itinerary: [
             { 
                 day: 1, 
                 title: "Sacred Kandy & Cultural Beginnings", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                desc: "Your journey begins in the sacred city of <b>Kandy</b>, nestled in the central highlands. After checking into your hotel, spend the afternoon exploring the rich cultural heritage of this ancient kingdom.<br/><br/><b>Highlights of the day:</b><br/><ul><li><i class='bi bi-bank' style='color: #888; margin-right: 6px;'></i> Visit the revered <b>Temple of the Sacred Tooth Relic</b>, a UNESCO World Heritage site.</li><li><i class='bi bi-music-note-beamed' style='color: #888; margin-right: 6px;'></i> Witness a vibrant <b>Cultural Dance Show</b> featuring traditional drummers and fire dancers in the evening.</li></ul><br/><b>Overnight stay in Kandy</b>", 
                 activities: ["Temple of the Tooth", "Cultural Dance Show", "Private Transport"],
                 optionalActivities: [
                     "Sacred Pilgrimage to Adam's Peak (tour itinerary will change accordingly)",
@@ -791,8 +791,8 @@ export const tourPackages = [
             { 
                 day: 5, 
                 title: "Mountain Farewell & Departure", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Enjoy your final mountain breakfast before we begin our descent from the highlands. As you drive back towards the coast or the airport, reflect on the misty peaks and emerald valleys that have defined your mountain escape.<br/><br/>Your journey concludes with a private transfer to your next destination or the airport.", 
-                activities: ["Breakfast", "Scenic Descent", "Airport Transfer"],
+                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                activities: ["Breakfast", "Scenic Descent"],
                 optionalActivities: [
                     "Stop at Ravana Falls for photography and a cool dip",
                     "Visit a local spice and herbal garden en route",
@@ -819,7 +819,7 @@ export const tourPackages = [
             { 
                 day: 1, 
                 title: "Colonial Grandeur & Sunset Ramparts", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                desc: "Welcome to the historic <b>Galle Fort</b>, a UNESCO World Heritage site that perfectly preserves the island's colonial past. After settling into your boutique accommodation, step out to explore the cobblestone streets lined with Dutch-era villas.<br/><br/><b>Highlights of the day:</b><br/><ul><li><i class='bi bi-building' style='color: #888; margin-right: 6px;'></i> Walk among stunning <b>colonial architecture</b> and visit the historic Dutch Reformed Church.</li><li><i class='bi bi-sunset' style='color: #888; margin-right: 6px;'></i> Take a leisurely <b>Sunset Rampart Walk</b>, joining locals as the sun dips below the Indian Ocean.</li></ul><br/><b>Overnight stay in Galle Fort</b>", 
                 activities: ["Fort Check-in", "Sunset Rampart Walk", "Colonial Sights"],
                 optionalActivities: ["Cocktails at a heritage hotel", "Photography tour of colonial buildings", "Local street food tasting"]
             },
@@ -833,8 +833,8 @@ export const tourPackages = [
             { 
                 day: 3, 
                 title: "Coastal Farewell & Departure", 
-                desc: "Before you say goodbye to <b>Galle</b>, take a final refreshing dip in the ocean at a nearby beach or enjoy breakfast in one of the fort’s many picturesque cafes.<br/><br/>Your short but immersive journey concludes with a transfer back to your next destination or the airport.<br/><br/>As you leave the <b>historic walls</b> of the fort behind, carry with you the <b>timeless charm</b> and elegance of this colonial gem.", 
-                activities: ["Breakfast", "Coastal Dip", "Airport Transfer"] 
+                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                activities: ["Breakfast", "Coastal Dip"] 
             }
         ],
         inclusions: ["Galle Fort tour", "Boutique stay", "Local breakfast"],

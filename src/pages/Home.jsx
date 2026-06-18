@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <div className="home-page">
             <Hero />
-            <ScrollReveal><PartnerSlider /></ScrollReveal>
+            <PartnerSlider />
             <ScrollReveal><WelcomeSriLanka /></ScrollReveal>
             <ScrollReveal><FeaturesScroll /></ScrollReveal>
             <ScrollReveal><WhoWeAre /></ScrollReveal>
