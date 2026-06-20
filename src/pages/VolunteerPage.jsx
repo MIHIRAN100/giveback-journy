@@ -8,7 +8,7 @@ import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import { useCurrency } from '../context/CurrencyContext';
 
 // Section assets
-import constructionImg from '../assets/construction volunteer/WhatsApp Image 2026-06-20 at 08.24.00.jpeg';
+import constructionImg from '../assets/construction volunteer/WhatsApp Image 2026-06-02 at 17.36.37.jpeg';
 import constructionImg2 from '../assets/construction volunteer/WhatsApp Image 2026-06-01 at 15.37.50.jpeg';
 import educationImg from '../assets/IMG_5894.JPG.jpeg';
 import educationImg2 from '../assets/teaching volunteers/WhatsApp Image 2026-06-20 at 08.17.53.jpeg';
