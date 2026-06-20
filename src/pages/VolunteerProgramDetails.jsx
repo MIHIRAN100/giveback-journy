@@ -20,6 +20,17 @@ const VolunteerProgramDetails = () => {
     const [showWhatsIncluded, setShowWhatsIncluded] = useState(true);
     const [showHolidaysModal, setShowHolidaysModal] = useState(false);
 
+    useEffect(() => {
+        if (showHolidaysModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [showHolidaysModal]);
+
     const toggleSkill = (skillTitle, skillPrice) => {
         setSelectedSkills(prev => {
             if (prev.some(s => s.title === skillTitle)) {
@@ -1789,6 +1800,24 @@ const VolunteerProgramDetails = () => {
                         transform: translateX(-50%) translateY(0);
                     }
                 }
+
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 6px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, 0.2);
+                    border-radius: 10px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background-color: rgba(0, 0, 0, 0.3);
+                }
+                .custom-scrollbar {
+                    scrollbar-width: thin;
+                    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+                }
             `}} />
 
             {/* Local Holidays Modal */}
@@ -1840,7 +1869,7 @@ const VolunteerProgramDetails = () => {
                                 Sri Lanka observes several public and religious holidays throughout the year, including monthly Poya Days (full moon days). Please note that the government may occasionally announce additional ad-hoc holidays due to special situations. During these times, schools, public institutions, and some volunteer placements may be closed or operate on a limited schedule.
                             </p>
                             
-                            <div style={{ overflowY: 'auto', flex: 1, paddingRight: '10px', marginBottom: '24px' }}>
+                            <div className="custom-scrollbar" style={{ overflowY: 'auto', flex: 1, paddingRight: '12px', marginBottom: '24px' }}>
                                 {[2026, 2027, 2028].map(year => {
                                     const yearHolidays = publicHolidays.filter(h => h.year === year);
                                     if (yearHolidays.length === 0) return null;
