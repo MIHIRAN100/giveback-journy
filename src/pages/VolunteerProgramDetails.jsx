@@ -15,6 +15,8 @@ const VolunteerProgramDetails = () => {
     const reviews = volunteerReviews[id] || [];
 
     const [selectedSkills, setSelectedSkills] = useState([]);
+    const [showImportantNotes, setShowImportantNotes] = useState(true);
+    const [showWhatsIncluded, setShowWhatsIncluded] = useState(true);
 
     const toggleSkill = (skillTitle, skillPrice) => {
         setSelectedSkills(prev => {
@@ -58,42 +60,6 @@ const VolunteerProgramDetails = () => {
     return (
         <div className="volunteer-details-page" style={{ background: '#ffffff', minHeight: '100vh', paddingBottom: '120px' }}>
             
-            {/* Apple Style Sticky Subnav */}
-            <div className="local-subnav" style={{
-                position: 'sticky',
-                top: '0',
-                background: 'rgba(255, 255, 255, 0.85)',
-                backdropFilter: 'saturate(180%) blur(20px)',
-                borderBottom: '1px solid rgba(0,0,0,0.08)',
-                zIndex: 999
-            }}>
-                <div style={{
-                    maxWidth: '1000px',
-                    margin: '0 auto',
-                    padding: '14px 5%',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                }}>
-                    <div>
-                        <span className="subnav-location">{program.location}</span>
-                        <h2 className="subnav-title">{program.title}</h2>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
-                        <a href="#overview" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Overview</a>
-                        {program.highlights && <a href="#highlights" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Highlights</a>}
-                        {program.accommodation && <a href="#accommodation" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Accommodation</a>}
-                        {program.mealsInfo && <a href="#meals" style={{ textDecoration: 'none', color: '#86868b', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '-0.01em' }} className="subnav-link">Meals</a>}
-                        <Link 
-                            to={getInquiryUrl()}
-                            className="subnav-cta"
-                        >
-                            Apply Now
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
             {/* Immersive Apple-Style Hero */}
             <div className="hero-apple" style={{
                 position: 'relative',
@@ -145,6 +111,38 @@ const VolunteerProgramDetails = () => {
                     }}>
                         {program.shortDesc}
                     </p>
+                </div>
+            </div>
+
+            {/* Sticky Subnav (IVHQ Style) */}
+            <div className="local-subnav" style={{
+                position: 'sticky',
+                top: '70px',
+                background: '#f9f9f9',
+                borderBottom: '1px solid rgba(0,0,0,0.08)',
+                zIndex: 999,
+                overflowX: 'auto',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.03)'
+            }}>
+                <div style={{
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                    padding: '16px 5%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '30px'
+                }}>
+                    <a href="#overview" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Overview</a>
+                    {program.highlights && <a href="#highlights" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Highlights</a>}
+                    {program.accommodation && <a href="#accommodation" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Accommodation & Meals</a>}
+                    <a href="#pricing" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Pricing</a>
+                    <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                        <i className="bi bi-heart" style={{ fontSize: '1.2rem', cursor: 'pointer', color: '#1d1d1f' }}></i>
+                        <div style={{ cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '6px', color: '#1d1d1f' }} onClick={() => window.scrollTo(0,0)}>
+                            Top <i className="bi bi-chevron-up"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -285,13 +283,13 @@ const VolunteerProgramDetails = () => {
                     background: 'transparent',
                     padding: '45px 0',
                     marginBottom: '45px',
-                    borderBottom: (program.galleryImages && program.galleryImages.length > 0) ? '1px solid #eaeaea' : 'none'
+                    borderBottom: (program.galleryImages && program.galleryImages.length > 0) ? '1px solid #eaeaea' : 'none',
+                    textAlign: 'left'
                 }}>
                     <div style={{ marginBottom: '24px' }}>
-                        <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Overview</span>
-                        <h2 className="section-heading-modern" style={{ margin: 0 }}>About This Program</h2>
+                        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1d1d1f', margin: 0 }}>About This Program</h2>
                     </div>
-                    <p className="section-text-modern" style={{ margin: 0 }}>
+                    <p style={{ margin: 0, color: '#424245', fontSize: '1.05rem', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
                         {program.description}
                     </p>
                 </div>
@@ -427,10 +425,10 @@ const VolunteerProgramDetails = () => {
                 return (
                     <div key={idx} id={isItinerary ? "itinerary" : `section-${idx}`} className={`detail-section ${sectionBg}`}>
                         <div className="detail-section-inner">
-                            <div className="section-card" style={{ background: 'transparent', padding: '0', marginBottom: '0' }}>
+                            <div className="section-card" style={{ background: 'transparent', padding: '0', marginBottom: '0', textAlign: 'left' }}>
                                 <div style={{ marginBottom: '24px' }}>
-                                    <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>{isItinerary ? "Schedule" : "Experience"}</span>
-                                    <h2 className="section-heading-modern" style={{ margin: 0 }}>{section.title}</h2>
+                                    {isItinerary && <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>Schedule</span>}
+                                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1d1d1f', margin: 0 }}>{section.title}</h2>
                                 </div>
                             
                             {isItinerary ? (
@@ -675,22 +673,46 @@ const VolunteerProgramDetails = () => {
                                     })()}
                                 </div>
                             ) : (
-                                <div>
-                                    {section.paragraphs.map((para, pIdx) => {
-                                        if (para.startsWith('**')) {
-                                            const parts = para.split('**');
-                                            return (
-                                                <p key={pIdx} className="section-text-modern" style={{ marginBottom: '20px' }}>
-                                                    <span style={{ color: 'var(--primary-green)', fontWeight: 'normal' }}>{parts[1]}</span>{parts[2]}
-                                                </p>
-                                            );
-                                        }
-                                        return (
-                                            <p key={pIdx} className="section-text-modern" style={{ marginBottom: '20px' }}>
-                                                {para}
-                                            </p>
-                                        );
-                                    })}
+                                <div style={{ color: '#424245', fontSize: '1.05rem', lineHeight: 1.7, textAlign: 'left' }}>
+                                    {(() => {
+                                        const elements = [];
+                                        let currentList = [];
+                                        const flushList = () => {
+                                            if (currentList.length > 0) {
+                                                elements.push(<ul key={`ul-${elements.length}`} style={{ paddingLeft: '20px', marginBottom: '10px' }}>{[...currentList]}</ul>);
+                                                currentList = [];
+                                            }
+                                        };
+                                        section.paragraphs.forEach((para, pIdx) => {
+                                            if (para.startsWith('- ')) {
+                                                currentList.push(<li key={`li-${pIdx}`} style={{ marginBottom: '4px' }}>{para.substring(2)}</li>);
+                                            } else {
+                                                flushList();
+                                                if (para.startsWith('**')) {
+                                                    const parts = para.split('**');
+                                                    const isTeachingOptions = section.title === 'Teaching Placement Options';
+                                                    const hasNumber = /^\d+\./.test(parts[1].trim());
+                                                    
+                                                    // Default to green, unless it's a non-numbered item in the Teaching Options section
+                                                    const textColor = (isTeachingOptions && !hasNumber) ? '#1d1d1f' : 'var(--primary-green)';
+                                                    
+                                                    elements.push(
+                                                        <p key={`p-${pIdx}`} style={{ marginBottom: '10px' }}>
+                                                            <strong style={{ color: textColor }}>{parts[1]}</strong>{parts[2]}
+                                                        </p>
+                                                    );
+                                                } else {
+                                                    elements.push(
+                                                        <p key={`p-${pIdx}`} style={{ marginBottom: '10px' }}>
+                                                            {para}
+                                                        </p>
+                                                    );
+                                                }
+                                            }
+                                        });
+                                        flushList();
+                                        return elements;
+                                    })()}
                                 </div>
                             )}
                             </div>
@@ -698,6 +720,55 @@ const VolunteerProgramDetails = () => {
                     </div>
                 );
             })}
+
+            {/* Volunteer Schedule Example */}
+            <div className={`detail-section ${getNextBgClass()}`}>
+                <div className="detail-section-inner">
+                    <div className="section-card" style={{ background: 'transparent', padding: '0', marginBottom: '0', textAlign: 'left' }}>
+                        <div style={{ marginBottom: '24px' }}>
+                            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1d1d1f', margin: 0 }}>Volunteer schedule example</h2>
+                        </div>
+                        <div style={{ color: '#424245', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                            <p style={{ marginBottom: '16px', fontWeight: 700, color: 'var(--primary-green)' }}>Weekdays:</p>
+                            <p style={{ marginBottom: '16px' }}>Volunteers can expect to work 5 hours a day with 3 hours in the morning followed by a lunch break then 2-3 hours in the afternoon.</p>
+                            <p style={{ marginBottom: '24px' }}>A typical daily schedule is as follows:</p>
+                            
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>7:00 - 8:00 AM</div>
+                                    <div>Breakfast at the volunteer accommodation.</div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>8:45 AM</div>
+                                    <div>Volunteers are transported to the placement and begin work on their project.</div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>12:00 - 1:00 PM</div>
+                                    <div>Volunteer break for lunch.</div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>1:30 PM</div>
+                                    <div>Travel back to the volunteer placement and join local placement staff to begin afternoon shift.</div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>3:30 PM</div>
+                                    <div>Transfer back to the volunteer accommodation.</div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>7:00 - 8:00 PM</div>
+                                    <div>Dinner.</div>
+                                </div>
+                            </div>
+                            
+                            <p style={{ marginBottom: '24px', fontStyle: 'italic', fontSize: '0.95rem' }}>Please note that the schedule may occasionally change due to weather, public or school holidays, or other unforeseen events that could affect your placement. We recommend checking in advance whether your intended travel dates coincide with any public or school holidays.</p>
+                            
+                            <p style={{ marginBottom: '16px' }}>
+                                <strong style={{ color: 'var(--primary-green)' }}>Weekends:</strong> On the weekends volunteers are free to explore the surrounding area or travel further afield. There are many activities to do nearby such as local markets, beaches, or historic temples.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {/* Cinematic Image Break */}
             {program.galleryImages && program.galleryImages.length > 1 && (
@@ -903,9 +974,8 @@ const VolunteerProgramDetails = () => {
 
             {/* Meals Specs Section */}
             {program.mealsInfo && (() => {
-                const sectionBg = getNextBgClass();
                 return (
-                    <div className={`detail-section ${sectionBg}`} id="meals">
+                    <div className="detail-section" id="meals" style={{ background: '#f5f5f7' }}>
                         <div className="detail-section-inner">
                             <div className="section-card" style={{
                                 background: 'transparent',
@@ -914,31 +984,31 @@ const VolunteerProgramDetails = () => {
                             }}>
                         <div style={{ marginBottom: '24px' }}>
                             <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-green)', textTransform: 'uppercase', letterSpacing: '2px', display: 'block', marginBottom: '6px' }}>What You'll Eat</span>
-                            <h2 className="section-heading-modern" style={{ margin: 0 }}>Meals</h2>
+                            <h2 className="section-heading-modern" style={{ margin: 0, color: '#1d1d1f' }}>Meals</h2>
                         </div>
-                        <p className="section-text-modern" style={{ marginBottom: '35px' }}>{program.mealsInfo.description}</p>
+                        <p className="section-text-modern" style={{ marginBottom: '35px', color: '#424245' }}>{program.mealsInfo.description}</p>
                         
-                        <div className="meals-grid">
-                            <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(255, 249, 230, 0.91)', border: '1px solid #ffe89e', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                        <div className="meals-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+                            <div style={{ padding: '30px', borderRadius: '24px', background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%), url(/images/sril-lanka-volunteer-breakfast-ivhq.jpg) center/cover no-repeat', display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '320px', justifyContent: 'flex-end', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <i className="bi bi-sunrise-fill" style={{ fontSize: '1.8rem', color: '#664d00' }}></i>
-                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#664d00', margin: 0 }}>Breakfast</h3>
+                                    <i className="bi bi-sunrise-fill" style={{ fontSize: '1.8rem', color: 'var(--primary-green)' }}></i>
+                                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>Breakfast</h3>
                                 </div>
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#806000', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.breakfast}</p>
+                                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.95)', margin: 0, fontWeight: 500, textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}>{program.mealsInfo.examples.breakfast}</p>
                             </div>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(230, 244, 234, 0.91)', border: '1px solid #a3d9b1', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%), url(/images/photo-1743674453123-93356ade2891.jpg) center/cover no-repeat', display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '320px', justifyContent: 'flex-end', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <i className="bi bi-sun-fill" style={{ fontSize: '1.8rem', color: '#1a7332' }}></i>
-                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1a7332', margin: 0 }}>Lunch</h3>
+                                    <i className="bi bi-sun-fill" style={{ fontSize: '1.8rem', color: 'var(--primary-green)' }}></i>
+                                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>Lunch</h3>
                                 </div>
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#114a20', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.lunch}</p>
+                                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.95)', margin: 0, fontWeight: 500, textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}>{program.mealsInfo.examples.lunch}</p>
                             </div>
-                            <div style={{ padding: '30px', borderRadius: '24px', background: 'rgba(250, 233, 233, 0.91)', border: '1px solid #f0b4b4', display: 'flex', flexDirection: 'column', gap: '15px' }} className="meal-card">
+                            <div style={{ padding: '30px', borderRadius: '24px', background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%), url(/images/ivhq-sri-lanka-lunch.jpg) center/cover no-repeat', display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '320px', justifyContent: 'flex-end', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }} className="meal-card">
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                    <i className="bi bi-moon-stars-fill" style={{ fontSize: '1.8rem', color: '#c52828' }}></i>
-                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#c52828', margin: 0 }}>Dinner</h3>
+                                    <i className="bi bi-moon-stars-fill" style={{ fontSize: '1.8rem', color: 'var(--primary-green)' }}></i>
+                                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>Dinner</h3>
                                 </div>
-                                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#7d1919', margin: 0, fontWeight: 550 }}>{program.mealsInfo.examples.dinner}</p>
+                                <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.95)', margin: 0, fontWeight: 500, textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}>{program.mealsInfo.examples.dinner}</p>
                             </div>
                         </div>
                     </div>
@@ -946,6 +1016,175 @@ const VolunteerProgramDetails = () => {
             </div>
         );
     })()}
+
+            {/* Pricing Section */}
+            <div className="detail-section" style={{ background: '#f4f7f8' }} id="pricing">
+                <div className="detail-section-inner">
+                    <div style={{ marginBottom: '30px' }}>
+                        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', margin: 0 }}>Pricing</h2>
+                    </div>
+                    
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', marginBottom: '40px' }}>
+                        {/* Desktop Layout Uses CSS Grid or Flex, we use flex wrap for responsiveness */}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
+                            {/* Left Column: Pricing Table */}
+                            <div style={{ flex: '1 1 500px', background: 'white', borderRadius: '24px', border: '1px solid rgba(0,0,0,0.06)', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.04)' }}>
+                                <div style={{ 
+                                    background: '#2c3e50', 
+                                    padding: '24px 32px', 
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    borderBottom: '1px solid rgba(255,255,255,0.05)'
+                                }}>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', width: '100%' }}>
+                                        <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)' }}>Duration</div>
+                                        <div>
+                                            <div style={{ fontWeight: 800, marginBottom: '4px', fontSize: '1rem', color: '#ffffff' }}>Program Fee</div>
+                                            <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>Due 30 days before start, or within 48h if registering inside 30 days.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div style={{ background: '#ffffff' }}>
+                                    {[1, 2, 3, 4].map((week, idx) => {
+                                        const basePrice = parseInt(program.price) || 190;
+                                        const fee = basePrice * week;
+                                        const perDay = Math.round(fee / (week * 7));
+                                        return (
+                                            <div key={week} style={{ 
+                                                display: 'grid', 
+                                                gridTemplateColumns: '120px 1fr', 
+                                                gap: '16px', 
+                                                padding: '24px 32px',
+                                                borderBottom: week < 4 ? '1px solid #f5f5f7' : 'none',
+                                                background: '#ffffff',
+                                                alignItems: 'center',
+                                                transition: 'background 0.3s ease'
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.background = '#fcfcfc'}
+                                            onMouseLeave={(e) => e.currentTarget.style.background = '#ffffff'}
+                                            >
+                                                <div style={{ color: '#1d1d1f', fontSize: '1.1rem', fontWeight: 800 }}>{week} {week === 1 ? 'week' : 'weeks'}</div>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                                    <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                                                        <div style={{ fontWeight: 800, color: '#1d1d1f', fontSize: '1.3rem', letterSpacing: '-0.02em' }}>{formatPrice ? formatPrice(fee) : `$${fee}`}</div>
+                                                        <div style={{ color: 'var(--primary-green)', fontSize: '0.85rem', fontWeight: 800, background: 'rgba(27, 163, 82, 0.1)', padding: '6px 12px', borderRadius: '50px', letterSpacing: '0.5px' }}>Eq. {formatPrice ? formatPrice(perDay) : `$${perDay}`}/day</div>
+                                                    </div>
+                                                    <div style={{ display: 'flex', gap: '16px', fontSize: '0.8rem', color: '#86868b', fontWeight: 500, marginTop: '4px' }}>
+                                                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                            <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)' }}></i> No Reg Fee
+                                                        </span>
+                                                        {week === 1 ? (
+                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                                <i className="bi bi-info-circle-fill" style={{ color: '#007aff' }}></i> Airport pickup available for an extra fee
+                                                            </span>
+                                                        ) : (
+                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                                <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)' }}></i> Airport Pickup Included
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+
+                            {/* Right Column: Important Notes */}
+                            <div style={{ flex: '1 1 300px' }}>
+                                <div 
+                                    onClick={() => setShowImportantNotes(!showImportantNotes)}
+                                    style={{ borderBottom: showImportantNotes ? '1px solid #eaeaea' : '1px solid transparent', paddingBottom: '16px', marginBottom: showImportantNotes ? '20px' : '0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', transition: 'all 0.3s ease' }}
+                                >
+                                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0, color: '#1d1d1f' }}>Important things to note</h3>
+                                    <div style={{ background: '#f5f5f7', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.3s ease', transform: showImportantNotes ? 'rotate(0deg)' : 'rotate(180deg)' }}>
+                                        <i className="bi bi-chevron-up" style={{ fontSize: '0.9rem', color: '#1d1d1f' }}></i>
+                                    </div>
+                                </div>
+                                <div style={{ 
+                                    maxHeight: showImportantNotes ? '500px' : '0', 
+                                    overflow: 'hidden', 
+                                    transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease',
+                                    opacity: showImportantNotes ? 1 : 0
+                                }}>
+                                    <ul style={{ paddingLeft: '20px', color: '#424245', fontSize: '1rem', lineHeight: 1.6, margin: 0, paddingBottom: '20px' }}>
+                                        <li style={{ marginBottom: '12px' }}>
+                                            <span style={{ fontWeight: 700, color: 'var(--primary-green)' }}>No Registration Fee:</span> Unlike other platforms, Giveback Journeys does not charge an extra application or registration fee. 
+                                        </li>
+                                        <li style={{ marginBottom: '12px' }}>
+                                            <span style={{ fontWeight: 700 }}>Transparent Pricing:</span> We believe in keeping costs clear. Your fee directly supports our grassroots community projects, your accommodation, and local staff in Sri Lanka.
+                                        </li>
+                                        <li style={{ marginBottom: '12px' }}>
+                                            <span style={{ fontWeight: 700, color: 'var(--primary-green)' }}>Flexible Dates:</span> You have the freedom to arrive and start your volunteer journey on any Monday of the year.
+                                        </li>
+                                        <li style={{ marginBottom: '12px' }}>
+                                            <span style={{ fontWeight: 700 }}>Pre-departure Support:</span> Once booked, you will receive a comprehensive guide and personal support to ensure you are fully prepared for your trip to Sri Lanka.
+                                        </li>
+                                        <li style={{ marginBottom: '12px' }}>
+                                            <span style={{ fontWeight: 700, color: 'var(--primary-green)' }}>Weekend Free Time:</span> Your weekends are completely free to travel, explore stunning beaches, go on safaris, or visit historic sites.
+                                        </li>
+                                        <li>
+                                            <span style={{ fontWeight: 700 }}>Immersive Experience:</span> Live and work closely with local communities, gaining an authentic understanding of Sri Lankan culture.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* What's Included */}
+                    <div style={{ background: '#fafafa', padding: '30px', borderRadius: '16px', border: '1px solid #eaeaea' }}>
+                        <div 
+                            onClick={() => setShowWhatsIncluded(!showWhatsIncluded)}
+                            style={{ borderBottom: showWhatsIncluded ? '1px solid #eaeaea' : '1px solid transparent', paddingBottom: '16px', marginBottom: showWhatsIncluded ? '24px' : '0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', transition: 'all 0.3s ease' }}
+                        >
+                            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#1d1d1f' }}>What's included</h3>
+                            <div style={{ background: '#ffffff', border: '1px solid #eaeaea', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.3s ease', transform: showWhatsIncluded ? 'rotate(0deg)' : 'rotate(180deg)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+                                <i className="bi bi-chevron-up" style={{ fontSize: '1rem', color: '#1d1d1f' }}></i>
+                            </div>
+                        </div>
+                        <div style={{ 
+                            maxHeight: showWhatsIncluded ? '800px' : '0', 
+                            overflow: 'hidden', 
+                            transition: 'max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease',
+                            opacity: showWhatsIncluded ? 1 : 0
+                        }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+                                {[
+                                    "Breakfast, lunch and dinner",
+                                    "Airport pick-up",
+                                    "Transport to and from your volunteer placement each day",
+                                    "Accommodation",
+                                    "Pre-departure support from your Program Manager",
+                                    "Personalized preparation tools, guides and check lists",
+                                    "Access to Giveback Journeys's preferred insurance and flights partners",
+                                    "Comprehensive in-country day to day support and guidance"
+                                ].map((item, i) => (
+                                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'white', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.03)', boxShadow: '0 2px 10px rgba(0,0,0,0.02)' }}>
+                                        <div style={{ 
+                                            background: 'rgba(27, 163, 82, 0.1)', 
+                                            color: 'var(--primary-green)', 
+                                            borderRadius: '50%', 
+                                            width: '24px', 
+                                            height: '24px', 
+                                            display: 'flex', 
+                                            alignItems: 'center', 
+                                            justifyContent: 'center',
+                                            fontSize: '0.8rem',
+                                            flexShrink: 0
+                                        }}>
+                                            <i className="bi bi-check-lg" style={{ fontWeight: 900 }}></i>
+                                        </div>
+                                        <span style={{ color: '#1d1d1f', fontSize: '0.95rem', fontWeight: 500 }}>{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {/* Your Impact Section - Bottom of Page */}
             {program.sections && program.sections.filter(s => s.title.toLowerCase().includes('impact')).map((section, idx) => {
@@ -1171,7 +1410,7 @@ const VolunteerProgramDetails = () => {
                     background: #f5f5f7 !important;
                 }
                 .detail-section-inner {
-                    max-width: 1000px;
+                    max-width: 1200px;
                     margin: 0 auto;
                     padding: 0 5%;
                 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import communityImg from '../assets/teaching volunteers/IMG_7118.JPG';
 import educationImg from '../assets/IMG_4412.jpg';
-import medicalGalleryImg from '../assets/medical_gallery_new_1.jpg';
+import medicalGalleryImg from '../assets/WhatsApp Image 2026-06-20 at 08.04.37.jpeg';
 
 const VolunteerSection = () => {
     return (

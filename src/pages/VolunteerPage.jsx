@@ -8,11 +8,12 @@ import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import { useCurrency } from '../context/CurrencyContext';
 
 // Section assets
-import constructionImg from '../assets/construction volunteer/WhatsApp Image 2026-06-02 at 17.36.37.jpeg';
+import constructionImg from '../assets/construction volunteer/WhatsApp Image 2026-06-20 at 08.24.00.jpeg';
 import constructionImg2 from '../assets/construction volunteer/WhatsApp Image 2026-06-01 at 15.37.50.jpeg';
 import educationImg from '../assets/IMG_5894.JPG.jpeg';
-import kandyImg from '../assets/kandy_detailed_map.png';
-import galleImg from '../assets/galle_detailed_map.png';
+import educationImg2 from '../assets/teaching volunteers/WhatsApp Image 2026-06-20 at 08.17.53.jpeg';
+import kandyImg from '../assets/photo-1642095012245-bda8033e8ee3.jpg';
+import galleImg from '../assets/photo-1547818832-470a7998a99a.jpg';
 
 const pricingPrograms = [
     {
@@ -1277,18 +1278,35 @@ const VolunteerPage = () => {
                                 <h3 style={{ borderLeft: '4px solid var(--primary-green)', paddingLeft: '16px', fontSize: '1.5rem', fontWeight: 800, color: '#1d1d1f', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}>
                                     Education &amp; Childcare
                                 </h3>
-                                <img 
-                                    src={educationImg} 
-                                    alt="Education &amp; Childcare volunteering in Sri Lanka" 
-                                    style={{ 
-                                        width: '100%', 
-                                        height: '350px', 
-                                        objectFit: 'cover', 
-                                        borderRadius: '16px', 
-                                        marginBottom: '20px', 
-                                        boxShadow: '0 8px 30px rgba(0,0,0,0.06)' 
-                                    }} 
-                                />
+                                <div style={{ 
+                                    display: 'grid', 
+                                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+                                    gap: '16px', 
+                                    marginBottom: '20px' 
+                                }}>
+                                    <div className="volunteer-grid-img-wrapper" style={{ overflow: 'hidden', borderRadius: '16px', height: '280px', boxShadow: '0 8px 30px rgba(0,0,0,0.06)' }}>
+                                        <img 
+                                            src={educationImg} 
+                                            alt="Education &amp; Childcare volunteering in Sri Lanka 1" 
+                                            style={{ 
+                                                width: '100%', 
+                                                height: '100%', 
+                                                objectFit: 'cover'
+                                            }} 
+                                        />
+                                    </div>
+                                    <div className="volunteer-grid-img-wrapper" style={{ overflow: 'hidden', borderRadius: '16px', height: '280px', boxShadow: '0 8px 30px rgba(0,0,0,0.06)' }}>
+                                        <img 
+                                            src={educationImg2} 
+                                            alt="Education &amp; Childcare volunteering in Sri Lanka 2" 
+                                            style={{ 
+                                                width: '100%', 
+                                                height: '100%', 
+                                                objectFit: 'cover'
+                                            }} 
+                                        />
+                                    </div>
+                                </div>
                                 <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#424245', marginBottom: '16px' }}>
                                     Make a direct impact in rural village preschools and special needs centers. Assist with conversational English teaching, creative play, drawing, music, and basic physical/sensory therapy.
                                 </p>
@@ -1405,89 +1423,207 @@ const VolunteerPage = () => {
             </div>
 
             {/* Section 4: Destinations Section */}
-            <div className="volunteer-section-wrapper bg-soft-blue">
+            <div className="volunteer-section-wrapper bg-soft-blue" style={{ background: '#f8fafc' }}>
                 <div className="volunteer-container" style={{ paddingBottom: 0 }}>
                     {/* Destinations Section */}
                     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0' }}>
-                        <div className="modern-dest-header">
-                            <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', display: 'inline-block', marginBottom: '16px', background: '#f0fdf4', padding: '6px 16px', borderRadius: '100px' }}>Our Locations</span>
-                            <h2 className="section-heading-modern" style={{ margin: '0 0 16px 0' }}>Where You’ll Make an Impact</h2>
-                            <p className="section-text-modern" style={{ maxWidth: '600px', margin: '0 auto' }}>Choose between the lush hills of central Sri Lanka or the vibrant southern coast. Both offer distinct cultures, landscapes, and opportunities to serve.</p>
+                        <div className="modern-dest-header" style={{ textAlign: 'left' }}>
+                            <span style={{ 
+                                display: 'inline-block',
+                                color: 'var(--primary-green)', 
+                                background: 'rgba(27, 163, 82, 0.1)',
+                                padding: '8px 20px',
+                                borderRadius: '100px',
+                                fontWeight: 800, 
+                                textTransform: 'uppercase', 
+                                letterSpacing: '2px', 
+                                fontSize: '0.85rem'
+                            }}>Our Locations</span>
                         </div>
                         
-                        <div className="modern-dest-grid">
-                            {/* Kandy Card */}
-                            <div className="modern-dest-card">
-                                <div className="modern-dest-img-wrapper">
-                                    <div style={{ position: 'absolute', top: '20px', left: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', zIndex: 2, fontWeight: 700, fontSize: '0.85rem', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                        Central Province
-                                    </div>
-                                    <img 
-                                        src={kandyImg} 
-                                        alt="Kandy District Tea Plantation Sri Lanka" 
-                                        className="modern-dest-img"
-                                    />
-                                    <button 
-                                        onClick={() => setZoomedMap(kandyImg)}
-                                        style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', border: 'none', width: '38px', height: '38px', borderRadius: '50%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', color: '#1d1d1f', transition: 'transform 0.2s' }}
-                                        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                                        title="Zoom Map"
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', marginTop: '40px' }}>
+                            {/* Kandy Location */}
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'center' }}>
+                                <div>
+                                    <h3 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '20px', letterSpacing: '-0.02em' }}>
+                                        Volunteer in Kandy District
+                                    </h3>
+                                    <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#424245', marginBottom: '24px' }}>
+                                        Nestled in the lush, mist covered hill country, Kandy is the cultural capital of Sri Lanka. Our projects focus heavily on community development and English education in rural, mountain side schools. Volunteers live in a vibrant, community oriented setting, experiencing the traditional Sri Lankan way of life.
+                                    </p>
+                                    
+                                    <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '16px' }}>Highlights:</h4>
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Focus on pre school teaching, monk teaching, sports coaching, yoga, and rural community development
+                                        </li>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Includes airport pick up, orientation, accommodation, meals, and 24/7 in country support
+                                        </li>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Accommodation in shared volunteer houses with mountain views
+                                        </li>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Immersive cultural experiences and weekend trips to historic temples
+                                        </li>
+                                    </ul>
+                                    
+                                    <button style={{
+                                        background: 'var(--primary-green)',
+                                        color: '#fff',
+                                        border: 'none',
+                                        padding: '14px 28px',
+                                        borderRadius: '8px',
+                                        fontWeight: 800,
+                                        fontSize: '0.95rem',
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px'
+                                    }}
+                                    onClick={() => {
+                                        const el = document.getElementById('opportunities');
+                                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = '#15803d'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'var(--primary-green)'}
                                     >
-                                        <i className="fa-solid fa-expand" style={{ fontSize: '1.1rem' }}></i>
+                                        Explore Projects
                                     </button>
                                 </div>
-                                <div className="modern-dest-content">
-                                    <h3 className="modern-dest-title">
-                                        Kandy District
-                                    </h3>
-                                    <div className="modern-dest-text">
-                                        <p style={{ marginBottom: '12px' }}>Nestled in the lush, mist-covered hill country, Kandy is the cultural capital of Sri Lanka. Here, our projects focus heavily on community development and English education in rural, mountain-side schools.</p>
-                                        <p>Volunteers live in a vibrant, community-oriented setting, experiencing the traditional Sri Lankan way of life, and supporting families that reside away from major commercial centers.</p>
-                                    </div>
-                                    <div className="modern-dest-tags">
-                                        {["Hill Country", "Education", "Rural Villages"].map((tag, i) => (
-                                            <span key={i} className="modern-dest-tag">{tag}</span>
+                                <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
+                                    <img 
+                                        src={kandyImg} 
+                                        alt="Volunteer in Kandy" 
+                                        style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', aspectRatio: '4/3' }} 
+                                    />
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
+                                        padding: '40px 24px 24px 24px',
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '8px'
+                                    }}>
+                                        {['Pre School Teaching', 'Monk Teaching', 'Sports', 'Yoga', 'Community Development'].map((label, i) => (
+                                            <span key={i} style={{
+                                                background: 'rgba(255, 255, 255, 0.95)',
+                                                backdropFilter: 'blur(10px)',
+                                                color: '#111',
+                                                padding: '6px 14px',
+                                                borderRadius: '100px',
+                                                fontSize: '0.75rem',
+                                                fontWeight: 800,
+                                                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '6px'
+                                            }}>
+                                                <i className="fa-solid fa-check" style={{ color: 'var(--primary-green)' }}></i>
+                                                {label}
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Galle Card */}
-                            <div className="modern-dest-card">
-                                <div className="modern-dest-img-wrapper">
-                                    <div style={{ position: 'absolute', top: '20px', left: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', zIndex: 2, fontWeight: 700, fontSize: '0.85rem', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                        Southern Province
-                                    </div>
-                                    <img 
-                                        src={galleImg} 
-                                        alt="Galle Fort and Coastal Region Sri Lanka" 
-                                        className="modern-dest-img"
-                                        style={{ marginTop: '-10px', objectPosition: 'center 95%' }}
-                                    />
-                                    <button 
-                                        onClick={() => setZoomedMap(galleImg)}
-                                        style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', border: 'none', width: '38px', height: '38px', borderRadius: '50%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', color: '#1d1d1f', transition: 'transform 0.2s' }}
-                                        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                                        title="Zoom Map"
+                            {/* Divider */}
+                            <div style={{ height: '1px', background: '#e2e8f0', width: '100%' }}></div>
+
+                            {/* Galle Location */}
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'center' }}>
+                                <div>
+                                    <h3 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '20px', letterSpacing: '-0.02em' }}>
+                                        Volunteer in Galle District
+                                    </h3>
+                                    <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: '#424245', marginBottom: '24px' }}>
+                                        Along the historic southern coast, Galle provides a beautiful blend of colonial history and coastal biodiversity. Our projects focus on environmental conservation and women's empowerment initiatives, from beach cleanups to self reliance workshops.
+                                    </p>
+                                    
+                                    <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '16px' }}>Highlights:</h4>
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Focus on pre school teaching, monk teaching, sports coaching, and yoga
+                                        </li>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Includes airport pick up, orientation, accommodation, meals, and 24/7 in country support
+                                        </li>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Accommodation in volunteer houses located near beautiful southern beaches
+                                        </li>
+                                        <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#424245', lineHeight: 1.5 }}>
+                                            <div style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.6rem' }}><i className="fa-solid fa-circle"></i></div>
+                                            Opportunities to explore historic forts and vibrant coastal towns
+                                        </li>
+                                    </ul>
+                                    
+                                    <button style={{
+                                        background: 'var(--primary-green)',
+                                        color: '#fff',
+                                        border: 'none',
+                                        padding: '14px 28px',
+                                        borderRadius: '8px',
+                                        fontWeight: 800,
+                                        fontSize: '0.95rem',
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px'
+                                    }}
+                                    onClick={() => {
+                                        const el = document.getElementById('opportunities');
+                                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = '#15803d'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'var(--primary-green)'}
                                     >
-                                        <i className="fa-solid fa-expand" style={{ fontSize: '1.1rem' }}></i>
+                                        Explore Projects
                                     </button>
                                 </div>
-                                <div className="modern-dest-content">
-                                    <h3 className="modern-dest-title">
-                                        Galle District
-                                    </h3>
-                                    <div className="modern-dest-text">
-                                        <p style={{ marginBottom: '12px' }}>Along the historic southern coast, focus on environmental conservation and women's empowerment initiatives. From beach cleanups and coastal habitat preservation to leading self-reliance workshops, there are diverse avenues of contribution.</p>
-                                        <p>Galle provides a beautiful blend of colonial history, coastal biodiversity, and dynamic community-led programs, allowing volunteers to make a lasting ecological and social footprint.</p>
-                                    </div>
-                                    <div className="modern-dest-tags">
-                                        {["Coastal Region", "Environment", "Empowerment"].map((tag, i) => (
-                                            <span key={i} className="modern-dest-tag">{tag}</span>
+                                <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
+                                    <img 
+                                        src={galleImg} 
+                                        alt="Volunteer in Galle" 
+                                        style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', aspectRatio: '4/3' }} 
+                                    />
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
+                                        padding: '40px 24px 24px 24px',
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '8px'
+                                    }}>
+                                        {['Pre School Teaching', 'Monk Teaching', 'Sports', 'Yoga', 'Community Empowerment'].map((label, i) => (
+                                            <span key={i} style={{
+                                                background: 'rgba(255, 255, 255, 0.95)',
+                                                backdropFilter: 'blur(10px)',
+                                                color: '#111',
+                                                padding: '6px 14px',
+                                                borderRadius: '100px',
+                                                fontSize: '0.75rem',
+                                                fontWeight: 800,
+                                                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '6px'
+                                            }}>
+                                                <i className="fa-solid fa-check" style={{ color: 'var(--primary-green)' }}></i>
+                                                {label}
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
@@ -1498,34 +1634,93 @@ const VolunteerPage = () => {
             </div>
 
             {/* Section 5: Program Features */}
-            <div className="volunteer-section-wrapper bg-white">
-                <div className="volunteer-container" style={{ paddingBottom: 0 }}>
+            <div className="volunteer-section-wrapper bg-soft-green">
+                <div className="volunteer-container" style={{ paddingBottom: '60px' }}>
                     {/* Features */}
-                    <section className="features-section">
-                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <span style={{ color: 'var(--primary-green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>Experience Excellence</span>
-                        <h3 className="section-heading-modern" style={{ marginTop: '10px' }}>Program Features</h3>
-                    </div>
-                    <div className="features-grid">
-                        {[
-                            { title: "Project Training", icon: "fa-chalkboard-user", desc: "Comprehensive orientation and hands-on skill training before you start." },
-                            { title: "Local Coordinator", icon: "fa-user-group", desc: "24/7 dedicated support from our experienced on-site leaders." },
-                            { title: "Shared Living", icon: "fa-house-chimney", desc: "Safe, comfortable accommodation in volunteer houses or host families." },
-                            { title: "Impact Certificate", icon: "fa-certificate", desc: "Official recognition of your volunteer hours and community contributions." }
-                        ].map((item, i) => (
-                            <div key={i} className="feature-item">
-                                <div className="feature-icon-container">
-                                    <i className={`fa-solid ${item.icon}`}></i>
+                    <section className="features-section-modern">
+                        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                            <span style={{ 
+                                display: 'inline-block',
+                                color: 'var(--primary-green)', 
+                                background: 'rgba(27, 163, 82, 0.1)',
+                                padding: '8px 20px',
+                                borderRadius: '100px',
+                                fontWeight: 800, 
+                                textTransform: 'uppercase', 
+                                letterSpacing: '2px', 
+                                fontSize: '0.85rem' 
+                            }}>Experience Excellence</span>
+                            <h3 style={{ 
+                                fontSize: 'clamp(2rem, 4vw, 3rem)', 
+                                fontWeight: 900, 
+                                color: '#111', 
+                                letterSpacing: '-0.03em', 
+                                margin: '20px 0 0 0' 
+                            }}>Program Features</h3>
+                        </div>
+                        <div style={{ 
+                            display: 'grid', 
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
+                            gap: '30px' 
+                        }}>
+                            {[
+                                { title: "Project Training", icon: "fa-chalkboard-user", desc: "Comprehensive orientation and hands-on skill training before you start.", color: "#3b82f6", bg: "#eff6ff" },
+                                { title: "Local Coordinator", icon: "fa-user-group", desc: "24/7 dedicated support from our experienced on-site leaders.", color: "#10b981", bg: "#ecfdf5" },
+                                { title: "Shared Living", icon: "fa-house-chimney", desc: "Safe, comfortable accommodation in volunteer houses or host families.", color: "#f59e0b", bg: "#fffbeb" },
+                                { title: "Impact Certificate", icon: "fa-certificate", desc: "Official recognition of your volunteer hours and community contributions.", color: "#8b5cf6", bg: "#f5f3ff" }
+                            ].map((item, i) => (
+                                <div key={i} style={{
+                                    background: '#fff',
+                                    borderRadius: '24px',
+                                    padding: '40px 30px',
+                                    boxShadow: '0 15px 35px rgba(0,0,0,0.04)',
+                                    border: '1px solid rgba(0,0,0,0.03)',
+                                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    cursor: 'pointer'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-8px)';
+                                    e.currentTarget.style.boxShadow = '0 30px 60px rgba(0,0,0,0.08)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(0,0,0,0.04)';
+                                }}
+                                >
+                                    <div style={{
+                                        width: '60px',
+                                        height: '60px',
+                                        borderRadius: '16px',
+                                        background: item.bg,
+                                        color: item.color,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '1.5rem',
+                                        marginBottom: '24px'
+                                    }}>
+                                        <i className={`fa-solid ${item.icon}`}></i>
+                                    </div>
+                                    <h4 style={{ 
+                                        fontSize: '1.25rem', 
+                                        fontWeight: 800, 
+                                        color: '#1d1d1f', 
+                                        marginBottom: '12px',
+                                        letterSpacing: '-0.01em'
+                                    }}>{item.title}</h4>
+                                    <p style={{ 
+                                        fontSize: '0.95rem', 
+                                        color: '#64748b', 
+                                        lineHeight: 1.6,
+                                        margin: 0
+                                    }}>{item.desc}</p>
                                 </div>
-                                <div className="feature-text-content">
-                                    <h4 className="feature-title">{item.title}</h4>
-                                    <p className="feature-desc">{item.desc}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
             </div>
 
             {/* Volunteer Opportunities */}

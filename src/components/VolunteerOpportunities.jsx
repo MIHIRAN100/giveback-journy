@@ -18,7 +18,7 @@ const VolunteerOpportunities = () => {
     };
 
     return (
-        <section className="volunteer-opp-section" style={{ padding: '80px 0', background: '#f2f9f5', position: 'relative' }}>
+        <section id="opportunities" className="volunteer-opp-section" style={{ padding: '80px 0', background: '#f2f9f5', position: 'relative' }}>
             <div style={{ maxWidth: '1920px', margin: '0 auto', padding: '0 6%', position: 'relative' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px' }}>
                     <div>

@@ -1,6 +1,6 @@
 import essentialCover from '../assets/bro.jpg';
 import southernCover from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
-import adventureCover from '../assets/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg';
+import adventureCover from '../assets/WhatsApp Image 2026-06-20 at 08.11.21.jpeg';
 import mistMountainsCover from '../assets/WhatsApp Image 2026-05-25 at 19.37.51.jpeg';
 import wildSafariCover from '../assets/Hurulu Eco Park.jpg';
 import galleFortCover from '../assets/Galle Fort, Sri Lanka.jpg';

@@ -23,10 +23,11 @@ import volunteer2 from '../assets/volunteer_2.png';
 import volunteer3 from '../assets/volunteer_3.png';
 import volunteer4 from '../assets/volunteer_4.png';
 import cultureExp from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
-import teachingImg from '../assets/teaching volunteers/hiu.jpg';
+import teachingImg from '../assets/teaching volunteers/WhatsApp Image 2026-06-20 at 08.17.53.jpeg';
 import teachingGallery2 from '../assets/teaching volunteers/IMG_2741.jpg';
 import teachingGallery3 from '../assets/teaching volunteers/IMG_4271.jpg';
 import teachingGallery4 from '../assets/IMG-20241111-WA0002.jpg';
+import teachingGallery5 from '../assets/teaching-gallery-5.jpeg';
 import interviewImg from '../assets/interview_volunteer.png';
 import kandyTrain from '../assets/Kandy to Ella Train Journey _ Lanka Tour Experts.jpg';
 import ellaImg from '../assets/Wanderlust Sri Lanka - Mini Adams Peak Ella.jpg';
@@ -157,7 +158,7 @@ export const volunteerPrograms = [
     {
         id: "sri-lanka-childcare",
         title: "Teaching Volunteer Program",
-        location: "Kandy District",
+        location: "Galle & Kandy Districts",
         duration: "1-24 Weeks",
         housing: "Shared or Private",
         price: "190",
@@ -172,13 +173,15 @@ export const volunteerPrograms = [
             { src: teachingImg, caption: "Teaching English" },
             { src: teachingGallery2, caption: "Working With Children" },
             { src: teachingGallery3, caption: "Cultural Exchange" },
-            { src: teachingGallery4, caption: "Community Work" }
+            { src: teachingGallery5, caption: "Volunteer Activities" }
         ],
         highlights: [
             "Support local schools, preschools, and community education centers in Kandy",
             "Teach conversational English to children, young adults, or Buddhist monks",
             "Experience authentic Sri Lankan Buddhist culture and daily life",
-            "Ideal for patient, creative, and adaptable volunteers (No experience required)"
+            "Ideal for patient, creative, and adaptable volunteers (No experience required)",
+            "Build meaningful connections and empower students with vital communication skills",
+            "Gain valuable international teaching experience while making a lasting grassroots impact"
         ],
         sections: [
             {
@@ -412,7 +415,7 @@ export const volunteerPrograms = [
     {
         id: "village-school-renovation",
         title: "Construction & Renovation",
-        location: "Kandy District",
+        location: "Galle & Kandy Districts",
         duration: "1-4 Weeks",
         housing: "Shared or Private",
         price: "190",
