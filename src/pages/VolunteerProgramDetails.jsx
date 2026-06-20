@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { volunteerPrograms } from '../data/volunteerPrograms';
 import stayEatBg from '../assets/548331228.jpg';
 import { volunteerReviews } from '../data/volunteerReviews';
 import { useCurrency } from '../context/CurrencyContext';
+import { publicHolidays } from '../data/holidays';
 
 const VolunteerProgramDetails = () => {
     const { id } = useParams();
@@ -17,6 +18,7 @@ const VolunteerProgramDetails = () => {
     const [selectedSkills, setSelectedSkills] = useState([]);
     const [showImportantNotes, setShowImportantNotes] = useState(true);
     const [showWhatsIncluded, setShowWhatsIncluded] = useState(true);
+    const [showHolidaysModal, setShowHolidaysModal] = useState(false);
 
     const toggleSkill = (skillTitle, skillPrice) => {
         setSelectedSkills(prev => {
@@ -730,41 +732,58 @@ const VolunteerProgramDetails = () => {
                         </div>
                         <div style={{ color: '#424245', fontSize: '1.05rem', lineHeight: 1.7 }}>
                             <p style={{ marginBottom: '16px', fontWeight: 700, color: 'var(--primary-green)' }}>Weekdays:</p>
-                            <p style={{ marginBottom: '16px' }}>Volunteers can expect to work 5 hours a day with 3 hours in the morning followed by a lunch break then 2-3 hours in the afternoon.</p>
-                            <p style={{ marginBottom: '24px' }}>A typical daily schedule is as follows:</p>
+                            <p style={{ marginBottom: '16px' }}>Volunteers generally spend around 4–6 hours per day at their project placements. Most placements operate with a morning session followed by a lunch break and an afternoon session. Exact working hours may vary depending on the project, local conditions, and the needs of the community.</p>
+                            <p style={{ marginBottom: '24px' }}>A typical weekday may look like this:</p>
                             
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
-                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>7:00 - 8:00 AM</div>
-                                    <div>Breakfast at the volunteer accommodation.</div>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>07:00 – 08:00 AM</div>
+                                    <div>Enjoy breakfast with fellow volunteers at the accommodation and prepare for the day ahead.</div>
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
-                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>8:45 AM</div>
-                                    <div>Volunteers are transported to the placement and begin work on their project.</div>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>08:30 – 08:45 AM</div>
+                                    <div>Travel to the project site with the local team and receive instructions for the day's activities.</div>
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
-                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>12:00 - 1:00 PM</div>
-                                    <div>Volunteer break for lunch.</div>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>09:00 AM – 12:00 PM</div>
+                                    <div>Morning project session. Volunteers participate in activities alongside local staff and community members. Duties will vary depending on the chosen project and may include teaching, childcare, renovation work, community outreach, or observational experiences.</div>
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
-                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>1:30 PM</div>
-                                    <div>Travel back to the volunteer placement and join local placement staff to begin afternoon shift.</div>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>12:00 PM – 01:00 PM</div>
+                                    <div>Lunch break. Volunteers may return to the accommodation or enjoy lunch near the placement, depending on the location.</div>
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
-                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>3:30 PM</div>
-                                    <div>Transfer back to the volunteer accommodation.</div>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>01:30 PM – 03:30 PM</div>
+                                    <div>Break for lesson planning if required or you will be able to relax a bit.</div>
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
-                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>7:00 - 8:00 PM</div>
-                                    <div>Dinner.</div>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>03:30 PM – 05:30 PM</div>
+                                    <div>Afternoon project session. Continue working with local staff and contribute to ongoing activities and community initiatives. Return to the volunteer accommodation. Free time can be used to relax, explore the local area, or spend time with other participants.</div>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, 160px) 1fr', gap: '16px' }}>
+                                    <div style={{ fontWeight: 800, color: '#424245', fontSize: '0.95rem' }}>07:00 PM – 08:00 PM</div>
+                                    <div>Dinner is served at the volunteer accommodation, providing an opportunity to share experiences and connect with volunteers from around the world.</div>
                                 </div>
                             </div>
                             
-                            <p style={{ marginBottom: '24px', fontStyle: 'italic', fontSize: '0.95rem' }}>Please note that the schedule may occasionally change due to weather, public or school holidays, or other unforeseen events that could affect your placement. We recommend checking in advance whether your intended travel dates coincide with any public or school holidays.</p>
+                            <p style={{ marginBottom: '24px', fontStyle: 'italic', fontSize: '0.95rem' }}>Please note that daily schedules may vary depending on weather conditions, public holidays, school holidays, local festivals, and the requirements of individual placements. Some projects may operate with slightly different hours or schedules. We recommend checking your travel dates in advance to determine whether they coincide with any <span onClick={() => setShowHolidaysModal(true)} style={{ fontWeight: 'bold', color: '#007aff', textDecoration: 'underline', cursor: 'pointer' }}>local holidays</span>, as these may affect project activities.</p>
                             
-                            <p style={{ marginBottom: '16px' }}>
-                                <strong style={{ color: 'var(--primary-green)' }}>Weekends:</strong> On the weekends volunteers are free to explore the surrounding area or travel further afield. There are many activities to do nearby such as local markets, beaches, or historic temples.
-                            </p>
+                            <p style={{ marginBottom: '16px', fontWeight: 700, color: 'var(--primary-green)' }}>Weekends:</p>
+                            <p style={{ marginBottom: '16px' }}>Weekends are free for volunteers to relax and discover more of Sri Lanka. Participants often use this time to travel independently, join optional excursions, or simply enjoy the local surroundings.</p>
+                            
+                            <p style={{ marginBottom: '12px', fontWeight: 600 }}>Popular weekend activities include:</p>
+                            <ul style={{ marginBottom: '24px', paddingLeft: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <li>Visiting beautiful beaches and coastal towns.</li>
+                                <li>Exploring ancient temples and cultural sites.</li>
+                                <li>Hiking and nature walks.</li>
+                                <li>Wildlife safaris and national parks.</li>
+                                <li>Shopping at local markets.</li>
+                                <li>Experiencing traditional Sri Lankan cuisine.</li>
+                                <li>Taking part in cultural activities and village visits.</li>
+                                <li>Joining organized tours and weekend excursions offered by the local team.</li>
+                            </ul>
+                            
+                            <p style={{ marginBottom: '0' }}>Weekends provide an excellent opportunity to experience Sri Lanka's rich culture, natural beauty, and warm hospitality while creating lasting memories with fellow volunteers.</p>
                         </div>
                     </div>
                 </div>
@@ -1049,7 +1068,8 @@ const VolunteerProgramDetails = () => {
                                 <div style={{ background: '#ffffff' }}>
                                     {[1, 2, 3, 4].map((week, idx) => {
                                         const basePrice = parseInt(program.price) || 190;
-                                        const fee = basePrice * week;
+                                        const extraWeekPrice = parseInt(program.extraWeekPrice) || 50;
+                                        const fee = week === 1 ? basePrice : basePrice + ((week - 1) * extraWeekPrice);
                                         const perDay = Math.round(fee / (week * 7));
                                         return (
                                             <div key={week} style={{ 
@@ -1770,6 +1790,110 @@ const VolunteerProgramDetails = () => {
                     }
                 }
             `}} />
+
+            {/* Local Holidays Modal */}
+            <AnimatePresence>
+                {showHolidaysModal && (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setShowHolidaysModal(false)}
+                        style={{
+                            position: 'fixed',
+                            inset: 0,
+                            background: 'rgba(0, 0, 0, 0.5)',
+                            backdropFilter: 'blur(4px)',
+                            WebkitBackdropFilter: 'blur(4px)',
+                            zIndex: 9999,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '20px'
+                        }}
+                    >
+                        <motion.div 
+                            initial={{ y: 50, opacity: 0, scale: 0.95 }}
+                            animate={{ y: 0, opacity: 1, scale: 1 }}
+                            exit={{ y: 20, opacity: 0, scale: 0.95 }}
+                            onClick={(e) => e.stopPropagation()}
+                            style={{
+                                background: '#ffffff',
+                                borderRadius: '24px',
+                                padding: '30px',
+                                maxWidth: '800px',
+                                width: '100%',
+                                maxHeight: '65vh',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+                            }}
+                        >
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                    <i className="bi bi-calendar-event" style={{ fontSize: '1.5rem', color: '#007aff' }}></i>
+                                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0, color: '#1d1d1f' }}>Local Holidays</h3>
+                                </div>
+                                <button onClick={() => setShowHolidaysModal(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.8rem', color: '#86868b', lineHeight: 1 }}>&times;</button>
+                            </div>
+                            <p style={{ color: '#424245', lineHeight: 1.6, marginBottom: '24px', fontSize: '0.95rem', flexShrink: 0 }}>
+                                Sri Lanka observes several public and religious holidays throughout the year, including monthly Poya Days (full moon days). Please note that the government may occasionally announce additional ad-hoc holidays due to special situations. During these times, schools, public institutions, and some volunteer placements may be closed or operate on a limited schedule.
+                            </p>
+                            
+                            <div style={{ overflowY: 'auto', flex: 1, paddingRight: '10px', marginBottom: '24px' }}>
+                                {[2026, 2027, 2028].map(year => {
+                                    const yearHolidays = publicHolidays.filter(h => h.year === year);
+                                    if (yearHolidays.length === 0) return null;
+                                    return (
+                                        <div key={year} style={{ marginBottom: '24px' }}>
+                                            <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1d1d1f', marginBottom: '12px', paddingBottom: '8px', borderBottom: '2px solid #f5f5f7' }}>{year} Public Holidays</h4>
+                                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+                                                <thead>
+                                                    <tr style={{ background: '#f9f9f9' }}>
+                                                        <th style={{ textAlign: 'left', padding: '10px', fontWeight: 700, color: '#86868b', width: '25%', borderRadius: '8px 0 0 8px' }}>Date</th>
+                                                        <th style={{ textAlign: 'left', padding: '10px', fontWeight: 700, color: '#86868b', width: '20%' }}>Day</th>
+                                                        <th style={{ textAlign: 'left', padding: '10px', fontWeight: 700, color: '#86868b', borderRadius: '0 8px 8px 0' }}>Holiday</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {yearHolidays.map((holiday, idx) => (
+                                                        <tr key={idx} style={{ borderBottom: '1px solid #f5f5f7' }}>
+                                                            <td style={{ padding: '12px 10px', color: '#1d1d1f', fontWeight: 700 }}>{holiday.date}</td>
+                                                            <td style={{ padding: '12px 10px', color: '#424245' }}>{holiday.day}</td>
+                                                            <td style={{ padding: '12px 10px', color: '#424245' }}>{holiday.name}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            <button 
+                                onClick={() => setShowHolidaysModal(false)}
+                                style={{
+                                    background: '#f5f5f7',
+                                    color: '#1d1d1f',
+                                    border: 'none',
+                                    padding: '12px 24px',
+                                    borderRadius: '50px',
+                                    fontWeight: 700,
+                                    cursor: 'pointer',
+                                    width: '100%',
+                                    transition: 'background 0.2s ease',
+                                    flexShrink: 0
+                                }}
+                                onMouseEnter={(e) => e.currentTarget.style.background = '#e8e8ed'}
+                                onMouseLeave={(e) => e.currentTarget.style.background = '#f5f5f7'}
+                            >
+                                Got it
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
         </div>
     );
 };

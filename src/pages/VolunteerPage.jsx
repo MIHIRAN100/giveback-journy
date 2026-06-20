@@ -105,27 +105,27 @@ export const programWeeklyRates = {
     },
     "sri-lanka-childcare": {
         baseWeeks: 1,
-        basePrice: 200,
+        basePrice: 190,
         extraWeekPrice: 50
     },
     "special-needs-support": {
         baseWeeks: 1,
-        basePrice: 200,
+        basePrice: 190,
         extraWeekPrice: 50
     },
     "village-school-renovation": {
         baseWeeks: 1,
-        basePrice: 200,
+        basePrice: 190,
         extraWeekPrice: 50
     },
     "zen-and-temple-yoga": {
         baseWeeks: 1,
-        basePrice: 200,
+        basePrice: 190,
         extraWeekPrice: 50
     },
     "medical-volunteer": {
         baseWeeks: 1,
-        basePrice: 200,
+        basePrice: 190,
         extraWeekPrice: 170
     }
 };
