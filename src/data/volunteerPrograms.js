@@ -35,6 +35,10 @@ import galleImg from '../assets/galle.jpg';
 import elephantImg from '../assets/elephant_wildlife.png';
 import mirissaImg from '../assets/mirissa_beach.png';
 import teaPlantation from '../assets/tea_plantation.png';
+import teachingVideo from '../assets/IMG_5768 (2).MOV';
+import img4412 from '../assets/IMG_4412.jpg';
+import newImg6 from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
+import newImg8 from '../assets/teaching volunteers/6f5f5865-bf9d-4547-a1a7-eb130c2bce35.jpg';
 
 export const volunteerPrograms = [
     {
@@ -170,10 +174,16 @@ export const volunteerPrograms = [
         description: "Our Teaching Volunteer Program in Sri Lanka provides volunteers with the opportunity to support local schools, preschools, community education centers, and English-learning programs in and around Kandy. This program is designed to support communities where access to English education, educational resources, and individual learning support can often be limited. Volunteers help create engaging, interactive, and confidence-building learning environments while experiencing authentic Sri Lankan culture and daily life. The program is ideal for volunteers who are patient, creative, adaptable, and passionate about education and cultural exchange. Previous teaching experience is helpful but not required. What matters most is a positive attitude, flexibility, and a willingness to contribute respectfully.",
         color: "#ff6b6b",
         galleryImages: [
+            { src: teachingVideo, type: 'video', caption: "Volunteer Experience Video" },
             { src: teachingImg, caption: "Teaching English" },
             { src: teachingGallery2, caption: "Working With Children" },
             { src: teachingGallery3, caption: "Cultural Exchange" },
-            { src: teachingGallery5, caption: "Volunteer Activities" }
+            { src: teachingGallery5, caption: "Volunteer Activities" },
+            { src: newImg6, caption: "Community Impact" },
+            { src: img4412, caption: "Volunteer Work" },
+            { src: newImg8, caption: "Classroom Preparation" },
+            { src: interviewImg, caption: "Local Interactions" },
+            { src: volunteer2, caption: "Supporting Education" }
         ],
         highlights: [
             "Support local schools, preschools, and community education centers in Kandy",

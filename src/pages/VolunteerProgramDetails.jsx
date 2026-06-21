@@ -3,9 +3,13 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { volunteerPrograms } from '../data/volunteerPrograms';
 import stayEatBg from '../assets/548331228.jpg';
+import stayImg1 from '../assets/823542472.jpg';
+import stayImg2 from '../assets/bhliddcrgzqq8yrfvels.webp';
+import stayImg3 from '../assets/668863567.jpg';
 import { volunteerReviews } from '../data/volunteerReviews';
 import { useCurrency } from '../context/CurrencyContext';
 import { publicHolidays } from '../data/holidays';
+import brandLogo from '../assets/brand_logo.png';
 
 const VolunteerProgramDetails = () => {
     const { id } = useParams();
@@ -19,9 +23,11 @@ const VolunteerProgramDetails = () => {
     const [showImportantNotes, setShowImportantNotes] = useState(true);
     const [showWhatsIncluded, setShowWhatsIncluded] = useState(true);
     const [showHolidaysModal, setShowHolidaysModal] = useState(false);
+    const [showGalleryModal, setShowGalleryModal] = useState(false);
+    const [activeGalleryIdx, setActiveGalleryIdx] = useState(0);
 
     useEffect(() => {
-        if (showHolidaysModal) {
+        if (showHolidaysModal || showGalleryModal) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
@@ -29,7 +35,7 @@ const VolunteerProgramDetails = () => {
         return () => {
             document.body.style.overflow = 'auto';
         };
-    }, [showHolidaysModal]);
+    }, [showHolidaysModal, showGalleryModal]);
 
     const toggleSkill = (skillTitle, skillPrice) => {
         setSelectedSkills(prev => {
@@ -128,32 +134,35 @@ const VolunteerProgramDetails = () => {
             </div>
 
             {/* Sticky Subnav (IVHQ Style) */}
-            <div className="local-subnav" style={{
-                position: 'sticky',
-                top: '70px',
+            <div className="local-subnav-wrapper" style={{
+                position: '-webkit-sticky',
+                position: 'sticky', /* eslint-disable-line */
+                top: '90px',
+                zIndex: 999,
                 background: '#f9f9f9',
                 borderBottom: '1px solid rgba(0,0,0,0.08)',
-                zIndex: 999,
-                overflowX: 'auto',
-                whiteSpace: 'nowrap',
                 boxShadow: '0 4px 10px rgba(0,0,0,0.03)'
             }}>
-                <div style={{
-                    maxWidth: '1200px',
-                    margin: '0 auto',
-                    padding: '16px 5%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '30px'
+                <div className="local-subnav" style={{
+                    overflowX: 'auto',
+                    whiteSpace: 'nowrap',
                 }}>
-                    <a href="#overview" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Overview</a>
-                    {program.highlights && <a href="#highlights" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Highlights</a>}
-                    {program.accommodation && <a href="#accommodation" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Accommodation & Meals</a>}
-                    <a href="#pricing" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Pricing</a>
-                    <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                        <i className="bi bi-heart" style={{ fontSize: '1.2rem', cursor: 'pointer', color: '#1d1d1f' }}></i>
-                        <div style={{ cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '6px', color: '#1d1d1f' }} onClick={() => window.scrollTo(0,0)}>
-                            Top <i className="bi bi-chevron-up"></i>
+                    <div style={{
+                        maxWidth: '1200px',
+                        margin: '0 auto',
+                        padding: '16px 5%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '30px'
+                    }}>
+                        <a href="#overview" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Overview</a>
+                        {program.highlights && <a href="#highlights" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Highlights</a>}
+                        {program.accommodation && <a href="#accommodation" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Accommodation & Meals</a>}
+                        <a href="#pricing" style={{ textDecoration: 'none', color: '#1d1d1f', fontWeight: 600, fontSize: '0.85rem' }} className="subnav-link">Pricing</a>
+                        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                            <div style={{ cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '6px', color: '#1d1d1f' }} onClick={() => window.scrollTo(0,0)}>
+                                Top <i className="bi bi-chevron-up"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -315,7 +324,66 @@ const VolunteerProgramDetails = () => {
                         marginBottom: '45px',
                         borderBottom: '1px solid #eaeaea'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                        <style>
+                            {`
+                                .modern-vol-gallery {
+                                    display: grid;
+                                    grid-template-columns: 2.5fr 4fr 2.5fr 1.5fr;
+                                    grid-template-rows: repeat(4, 120px);
+                                    gap: 8px;
+                                    border-radius: 16px;
+                                    overflow: hidden;
+                                }
+                                .modern-vol-gallery-item {
+                                    position: relative;
+                                    overflow: hidden;
+                                    cursor: pointer;
+                                }
+                                .modern-vol-gallery-item:nth-child(1) { grid-column: 1; grid-row: 1 / span 4; }
+                                .modern-vol-gallery-item:nth-child(2) { grid-column: 2; grid-row: 1 / span 4; }
+                                .modern-vol-gallery-item:nth-child(3) { grid-column: 3; grid-row: 1 / span 2; }
+                                .modern-vol-gallery-item:nth-child(4) { grid-column: 3; grid-row: 3 / span 2; }
+                                .modern-vol-gallery-item:nth-child(5) { grid-column: 4; grid-row: 1; }
+                                .modern-vol-gallery-item:nth-child(6) { grid-column: 4; grid-row: 2; }
+                                .modern-vol-gallery-item:nth-child(7) { grid-column: 4; grid-row: 3; }
+                                .modern-vol-gallery-item:nth-child(8) { grid-column: 4; grid-row: 4; }
+                                
+                                .modern-vol-gallery-item img, .modern-vol-gallery-item video {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+                                    display: block;
+                                }
+                                .modern-vol-gallery-item:hover img, .modern-vol-gallery-item:hover video {
+                                    transform: scale(1.05);
+                                }
+                                
+                                @media (max-width: 900px) {
+                                    .modern-vol-gallery {
+                                        grid-template-columns: repeat(4, 1fr);
+                                        grid-template-rows: repeat(4, 150px);
+                                    }
+                                    .modern-vol-gallery-item:nth-child(1) { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+                                    .modern-vol-gallery-item:nth-child(2) { grid-column: 3 / span 2; grid-row: 1 / span 2; }
+                                    .modern-vol-gallery-item:nth-child(3) { grid-column: 1 / span 2; grid-row: 3; }
+                                    .modern-vol-gallery-item:nth-child(4) { grid-column: 3 / span 2; grid-row: 3; }
+                                    .modern-vol-gallery-item:nth-child(5) { grid-column: 1; grid-row: 4; }
+                                    .modern-vol-gallery-item:nth-child(6) { grid-column: 2; grid-row: 4; }
+                                    .modern-vol-gallery-item:nth-child(7) { grid-column: 3; grid-row: 4; }
+                                    .modern-vol-gallery-item:nth-child(8) { grid-column: 4; grid-row: 4; }
+                                }
+                                @media (max-width: 600px) {
+                                    .modern-vol-gallery {
+                                        grid-template-columns: repeat(2, 1fr);
+                                        grid-auto-rows: 150px;
+                                    }
+                                    .modern-vol-gallery-item:nth-child(1) { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+                                    .modern-vol-gallery-item:nth-child(n+2) { grid-column: span 1; grid-row: span 1; }
+                                }
+                            `}
+                        </style>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                             <div style={{
                                 width: '4px',
                                 height: '28px',
@@ -324,57 +392,171 @@ const VolunteerProgramDetails = () => {
                             }}></div>
                             <h2 className="section-heading-modern" style={{ margin: 0 }}>Photo Gallery</h2>
                         </div>
-                        <div className="vol-gallery-grid" style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(4, 1fr)',
-                            gridTemplateRows: '200px',
-                            gap: '12px'
+                        <p style={{ color: '#555', fontSize: '1.05rem', lineHeight: '1.6', marginTop: '10px', marginBottom: '20px', maxWidth: '800px' }}>
+                            Get a glimpse into the everyday life, community connections, and unforgettable moments you'll experience during your Giveback Journey in Sri Lanka.
+                        </p>
+                        
+                        {/* Meta Info Bar */}
+                        <div style={{ 
+                            display: 'flex', 
+                            flexWrap: 'wrap', 
+                            alignItems: 'center', 
+                            justifyContent: 'space-between', 
+                            paddingBottom: '20px', 
+                            marginBottom: '24px', 
+                            borderBottom: '1px solid #eaeaea',
+                            color: '#222222',
+                            fontSize: '0.95rem',
+                            gap: '16px'
                         }}>
-                            {program.galleryImages.map((img, idx) => (
+                            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', fontWeight: 500 }}>
+                                <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>Excellent 4.89<i className="bi bi-star-fill" style={{ marginLeft: '4px', fontSize: '0.85rem' }}></i></span>
+                                <span style={{ color: '#717171' }}>·</span>
+                                <a href="#reviews" style={{ textDecoration: 'underline', color: 'inherit', cursor: 'pointer', fontWeight: 600 }}>100+ reviews</a>
+                                <span style={{ color: '#717171' }}>·</span>
+                                <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-green)' }}><i className="bi bi-patch-check"></i> Verified</span>
+                                <span style={{ color: '#717171' }}>·</span>
+                                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'underline', cursor: 'pointer', fontWeight: 500 }}>
+                                    <i className="bi bi-geo-alt-fill" style={{ color: '#717171' }}></i> {program.location}
+                                </span>
+                            </div>
+                            
+                        </div>
+
+                        <div className="modern-vol-gallery">
+                            {program.galleryImages.slice(0, 8).map((img, idx) => {
+                                const isLastImg = idx === 7 && program.galleryImages.length > 8;
+                                return (
                                 <motion.div 
                                     key={idx} 
-                                    className="vol-gallery-item" 
+                                    className="modern-vol-gallery-item" 
                                     initial={{ opacity: 0, y: 35, scale: 0.94 }}
                                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                                     viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                                    style={{
-                                        position: 'relative',
-                                        borderRadius: '16px',
-                                        overflow: 'hidden',
-                                        cursor: 'pointer'
+                                    transition={{ duration: 1.2, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                    onClick={() => {
+                                        setActiveGalleryIdx(idx);
+                                        setShowGalleryModal(true);
                                     }}
                                 >
-                                    <img 
-                                        src={img.src} 
-                                        alt={img.caption}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            transition: 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)'
-                                        }}
-                                        className="vol-gallery-img"
-                                    />
-                                    <div className="vol-gallery-caption" style={{
+                                    {img.type === 'video' || (typeof img.src === 'string' && (img.src.toLowerCase().endsWith('.mov') || img.src.toLowerCase().endsWith('.mp4'))) ? (
+                                        <>
+                                            <video
+                                                src={img.src}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    transition: 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                                                }}
+                                            />
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%)',
+                                                width: '64px',
+                                                height: '64px',
+                                                borderRadius: '50%',
+                                                background: 'rgba(0,0,0,0.4)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: 'white',
+                                                zIndex: 1,
+                                                backdropFilter: 'blur(4px)',
+                                                border: '2px solid rgba(255,255,255,0.8)'
+                                            }}>
+                                                <i className="bi bi-play-fill" style={{ fontSize: '2.5rem', marginLeft: '6px' }}></i>
+                                            </div>
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '16px',
+                                                left: '16px',
+                                                zIndex: 3,
+                                                background: 'rgba(255, 255, 255, 0.15)',
+                                                backdropFilter: 'blur(12px)',
+                                                WebkitBackdropFilter: 'blur(12px)',
+                                                border: '1px solid rgba(255, 255, 255, 0.4)',
+                                                padding: '6px 14px',
+                                                borderRadius: '30px',
+                                                color: '#ffffff',
+                                                fontWeight: 700,
+                                                fontSize: '0.85rem',
+                                                letterSpacing: '0.5px',
+                                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                                                boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                                            }}>
+                                                Giveback Journey
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <img 
+                                            src={img.src} 
+                                            alt={img.caption}
+                                        />
+                                    )}
+                                    
+                                    <div style={{
                                         position: 'absolute',
                                         bottom: 0,
                                         left: 0,
                                         right: 0,
-                                        padding: '24px 16px 12px',
-                                        background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                                        height: '50%',
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%)',
+                                        pointerEvents: 'none',
+                                        zIndex: 1
+                                    }}></div>
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: '16px',
+                                        left: '16px',
+                                        right: '16px',
                                         color: 'white',
-                                        fontSize: '0.8rem',
-                                        fontWeight: 700,
-                                        letterSpacing: '0.02em',
-                                        opacity: 0,
-                                        transform: 'translateY(8px)',
-                                        transition: 'all 0.3s ease'
+                                        fontWeight: 600,
+                                        fontSize: '0.95rem',
+                                        zIndex: 2,
+                                        textShadow: '0 2px 8px rgba(0,0,0,0.6)',
+                                        pointerEvents: 'none'
                                     }}>
-                                        {img.caption}
+                                        <span style={{ 
+                                            display: 'block',
+                                            overflow: 'hidden', 
+                                            textOverflow: 'ellipsis', 
+                                            whiteSpace: 'nowrap',
+                                            maxWidth: isLastImg ? 'calc(100% - 110px)' : '100%'
+                                        }}>
+                                            {img.caption}
+                                        </span>
                                     </div>
+                                    {isLastImg && (
+                                        <div style={{
+                                            position: 'absolute',
+                                            bottom: '12px',
+                                            right: '12px',
+                                            background: 'rgba(0,0,0,0.8)',
+                                            color: 'white',
+                                            padding: '8px 14px',
+                                            borderRadius: '6px',
+                                            fontSize: '0.85rem',
+                                            fontWeight: 600,
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                            zIndex: 2,
+                                            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                                        }}>
+                                            <i className="bi bi-images"></i>
+                                            {program.galleryImages.length} Photos
+                                        </div>
+                                    )}
                                 </motion.div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 )}
@@ -804,47 +986,191 @@ const VolunteerProgramDetails = () => {
             {program.galleryImages && program.galleryImages.length > 1 && (
                 <div style={{
                     position: 'relative',
-                    height: '350px',
+                    minHeight: '420px',
                     width: '100%',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    display: 'flex',
+                    alignItems: 'stretch'
                 }}>
                     <img 
                         src={stayEatBg} 
                         alt="Program experience"
                         style={{
+                            position: 'absolute',
+                            inset: 0,
                             width: '100%',
                             height: '100%',
-                            objectFit: 'cover'
+                            objectFit: 'cover',
+                            zIndex: 1
                         }}
                     />
                     <div style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)',
+                        position: 'relative',
+                        width: '100%',
+                        background: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.6) 100%)',
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        padding: '40px 5%'
+                        alignItems: 'center',
+                        padding: '50px 5%',
+                        zIndex: 2
                     }}>
-                        <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
-                            <span style={{
-                                fontSize: '0.7rem',
-                                fontWeight: 800,
-                                textTransform: 'uppercase',
-                                letterSpacing: '2px',
-                                color: 'rgba(255,255,255,0.7)',
-                                marginBottom: '8px',
-                                display: 'block'
-                            }}>Your Journey</span>
-                            <h3 style={{
-                                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                                fontWeight: 900,
-                                color: 'white',
-                                margin: 0,
-                                letterSpacing: '-0.03em',
-                                lineHeight: 1.15,
-                                textShadow: '0 2px 20px rgba(0,0,0,0.3)'
-                            }}>Where you'll stay & what you'll eat</h3>
+                        <div style={{ 
+                            maxWidth: '1200px', 
+                            margin: '0 auto', 
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            gap: '40px',
+                            flexWrap: 'wrap'
+                        }}>
+                            {/* Left side info */}
+                            <div style={{ flex: '1 1 500px', minWidth: '300px' }}>
+                                <span style={{
+                                    fontSize: '0.75rem',
+                                    fontWeight: 800,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '2px',
+                                    color: 'rgba(255,255,255,0.85)',
+                                    marginBottom: '10px',
+                                    display: 'block'
+                                }}>Your Journey</span>
+                                <h3 style={{
+                                    fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
+                                    fontWeight: 900,
+                                    color: 'white',
+                                    margin: 0,
+                                    letterSpacing: '-0.03em',
+                                    lineHeight: 1.15,
+                                    textShadow: '0 2px 20px rgba(0,0,0,0.4)'
+                                }}>Where you'll stay & what you'll eat</h3>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '28px', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 600, fontSize: '0.98rem' }}>
+                                        <i className="bi bi-house-door" style={{ fontSize: '1.35rem', color: 'var(--primary-green)' }}></i> Private & Shared Rooms
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 600, fontSize: '0.98rem' }}>
+                                        <i className="bi bi-cup-hot" style={{ fontSize: '1.35rem', color: 'var(--primary-green)' }}></i> 3 Local Meals
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 600, fontSize: '0.98rem' }}>
+                                        <i className="bi bi-droplet-half" style={{ fontSize: '1.35rem', color: 'var(--primary-green)' }}></i> Hot Showers
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 600, fontSize: '0.98rem' }}>
+                                        <i className="bi bi-shield-check" style={{ fontSize: '1.35rem', color: 'var(--primary-green)' }}></i> 24/7 Security
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 600, fontSize: '0.98rem' }}>
+                                        <i className="bi bi-badge-wc" style={{ fontSize: '1.35rem', color: 'var(--primary-green)' }}></i> Western Bathroom
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 600, fontSize: '0.98rem' }}>
+                                        <i className="bi bi-headset" style={{ fontSize: '1.35rem', color: 'var(--primary-green)' }}></i> 24h Support
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right side: 3 small image cards */}
+                            <div style={{ 
+                                display: 'flex', 
+                                gap: '20px',
+                                flex: '0 1 auto',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                padding: '10px 20px',
+                                flexWrap: 'wrap'
+                            }} className="stay-eat-cards-container">
+                                {/* Card 1 */}
+                                <div style={{
+                                    position: 'relative',
+                                    width: '150px',
+                                    height: '210px',
+                                    borderRadius: '24px',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 15px 35px rgba(0,0,0,0.35)',
+                                    border: '1px solid rgba(255,255,255,0.25)'
+                                }} className="stay-eat-card">
+                                    <img src={stayImg1} alt="Breakfast" style={{ width: '100%', height: '100%', objectFit: 'cover' }} className="stay-eat-card-img" />
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: '14px',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)',
+                                        background: 'rgba(0, 0, 0, 0.65)',
+                                        backdropFilter: 'blur(8px)',
+                                        WebkitBackdropFilter: 'blur(8px)',
+                                        border: '1px solid rgba(255,255,255,0.15)',
+                                        padding: '6px 14px',
+                                        borderRadius: '20px',
+                                        whiteSpace: 'nowrap',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                                    }}>
+                                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'white', letterSpacing: '0.5px' }}>Shared Rooms</span>
+                                    </div>
+                                </div>
+
+                                {/* Card 2 */}
+                                <div style={{
+                                    position: 'relative',
+                                    width: '150px',
+                                    height: '210px',
+                                    borderRadius: '24px',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 20px 45px rgba(0,0,0,0.4)',
+                                    border: '1px solid rgba(255,255,255,0.3)'
+                                }} className="stay-eat-card">
+                                    <img src={stayImg2} alt="Accommodation" style={{ width: '100%', height: '100%', objectFit: 'cover' }} className="stay-eat-card-img" />
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: '14px',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)',
+                                        background: 'rgba(0, 0, 0, 0.65)',
+                                        backdropFilter: 'blur(8px)',
+                                        WebkitBackdropFilter: 'blur(8px)',
+                                        border: '1px solid rgba(255,255,255,0.15)',
+                                        padding: '6px 14px',
+                                        borderRadius: '20px',
+                                        whiteSpace: 'nowrap',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                                    }}>
+                                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'white', letterSpacing: '0.5px' }}>Private Rooms</span>
+                                    </div>
+                                </div>
+
+                                {/* Card 3 */}
+                                <div style={{
+                                    position: 'relative',
+                                    width: '150px',
+                                    height: '210px',
+                                    borderRadius: '24px',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 15px 35px rgba(0,0,0,0.35)',
+                                    border: '1px solid rgba(255,255,255,0.25)'
+                                }} className="stay-eat-card">
+                                    <img src={stayImg3} alt="Local Cuisine" style={{ width: '100%', height: '100%', objectFit: 'cover' }} className="stay-eat-card-img" />
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: '14px',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)',
+                                        background: 'rgba(0, 0, 0, 0.65)',
+                                        backdropFilter: 'blur(8px)',
+                                        WebkitBackdropFilter: 'blur(8px)',
+                                        border: '1px solid rgba(255,255,255,0.15)',
+                                        padding: '6px 14px',
+                                        borderRadius: '20px',
+                                        whiteSpace: 'nowrap',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                                    }}>
+                                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'white', letterSpacing: '0.5px' }}>Bathroom</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1560,7 +1886,6 @@ const VolunteerProgramDetails = () => {
                     box-shadow: 0 15px 45px rgba(0,0,0,0.05) !important;
                 }
                 .config-tile:hover {
-                    border-color: rgba(27, 163, 82, 0.4) !important;
                     background: white !important;
                     box-shadow: 0 15px 45px rgba(0,0,0,0.04) !important;
                     transform: translateY(-3px);
@@ -1818,6 +2143,42 @@ const VolunteerProgramDetails = () => {
                     scrollbar-width: thin;
                     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
                 }
+                
+                /* Stay & Eat cards styling */
+                .stay-eat-card {
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                    cursor: pointer;
+                }
+                .stay-eat-card-img {
+                    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                }
+                .stay-eat-card:hover {
+                    transform: translateY(-15px) scale(1.06) !important;
+                    box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 25px rgba(255,255,255,0.15) !important;
+                    border-color: rgba(255, 255, 255, 0.8) !important;
+                    z-index: 10 !important;
+                }
+                .stay-eat-card:hover .stay-eat-card-img {
+                    transform: scale(1.12) !important;
+                }
+                
+                @media (max-width: 768px) {
+                    .stay-eat-cards-container {
+                        margin-top: 30px !important;
+                        justify-content: center !important;
+                        width: 100% !important;
+                        padding: 10px 0 !important;
+                        gap: 12px !important;
+                    }
+                    .stay-eat-card {
+                        width: 110px !important;
+                        height: 155px !important;
+                        border-radius: 18px !important;
+                    }
+                    .stay-eat-card:hover {
+                        transform: translateY(-10px) scale(1.06) !important;
+                    }
+                }
             `}} />
 
             {/* Local Holidays Modal */}
@@ -1919,6 +2280,133 @@ const VolunteerProgramDetails = () => {
                                 Got it
                             </button>
                         </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Gallery Lightbox Modal */}
+            <AnimatePresence>
+                {showGalleryModal && program.galleryImages && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        style={{
+                            position: 'fixed',
+                            inset: 0,
+                            background: 'rgba(0, 0, 0, 0.95)',
+                            zIndex: 10000,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        {/* Close button */}
+                        <div 
+                            style={{
+                                position: 'absolute',
+                                top: '20px',
+                                right: '30px',
+                                color: 'white',
+                                fontSize: '2rem',
+                                cursor: 'pointer',
+                                zIndex: 10001
+                            }}
+                            onClick={() => setShowGalleryModal(false)}
+                        >
+                            <i className="bi bi-x-lg"></i>
+                        </div>
+
+                        {/* Navigation Prev */}
+                        <div 
+                            style={{
+                                position: 'absolute',
+                                left: '30px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                color: 'white',
+                                fontSize: '2.5rem',
+                                cursor: 'pointer',
+                                zIndex: 10001,
+                                display: program.galleryImages.length > 1 ? 'block' : 'none',
+                                opacity: activeGalleryIdx > 0 ? 1 : 0.3
+                            }}
+                            onClick={() => {
+                                if (activeGalleryIdx > 0) setActiveGalleryIdx(activeGalleryIdx - 1);
+                            }}
+                        >
+                            <i className="bi bi-chevron-left"></i>
+                        </div>
+
+                        {/* Main Image or Video */}
+                        {program.galleryImages[activeGalleryIdx].type === 'video' || (typeof program.galleryImages[activeGalleryIdx].src === 'string' && (program.galleryImages[activeGalleryIdx].src.toLowerCase().endsWith('.mov') || program.galleryImages[activeGalleryIdx].src.toLowerCase().endsWith('.mp4'))) ? (
+                            <motion.video
+                                key={activeGalleryIdx}
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                src={program.galleryImages[activeGalleryIdx].src}
+                                autoPlay
+                                controls
+                                playsInline
+                                style={{
+                                    maxWidth: '90%',
+                                    maxHeight: '80vh',
+                                    objectFit: 'contain',
+                                    borderRadius: '8px'
+                                }}
+                            />
+                        ) : (
+                            <motion.img
+                                key={activeGalleryIdx}
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                src={program.galleryImages[activeGalleryIdx].src}
+                                alt={program.galleryImages[activeGalleryIdx].caption}
+                                style={{
+                                    maxWidth: '90%',
+                                    maxHeight: '80vh',
+                                    objectFit: 'contain',
+                                    borderRadius: '8px'
+                                }}
+                            />
+                        )}
+
+                        {/* Caption */}
+                        <div style={{
+                            color: 'white',
+                            marginTop: '20px',
+                            fontSize: '1.2rem',
+                            fontWeight: 600,
+                            letterSpacing: '1px'
+                        }}>
+                            {program.galleryImages[activeGalleryIdx].caption} ({activeGalleryIdx + 1} / {program.galleryImages.length})
+                        </div>
+
+                        {/* Navigation Next */}
+                        <div 
+                            style={{
+                                position: 'absolute',
+                                right: '30px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                color: 'white',
+                                fontSize: '2.5rem',
+                                cursor: 'pointer',
+                                zIndex: 10001,
+                                display: program.galleryImages.length > 1 ? 'block' : 'none',
+                                opacity: activeGalleryIdx < program.galleryImages.length - 1 ? 1 : 0.3
+                            }}
+                            onClick={() => {
+                                if (activeGalleryIdx < program.galleryImages.length - 1) setActiveGalleryIdx(activeGalleryIdx + 1);
+                            }}
+                        >
+                            <i className="bi bi-chevron-right"></i>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
