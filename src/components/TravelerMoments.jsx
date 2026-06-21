@@ -142,6 +142,8 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
 const TravelerMoments = () => {
     const scrollRef = useRef(null);
     const [activeCardId, setActiveCardId] = React.useState(null);
+    const [filterOpen, setFilterOpen] = React.useState(false);
+    const [activeFilter, setActiveFilter] = React.useState(null);
 
     const moments = [
         {
@@ -224,6 +226,9 @@ const TravelerMoments = () => {
         }
     ];
 
+    const uniqueProjects = Array.from(new Set(moments.map(m => m.title)));
+    const filteredMoments = activeFilter ? moments.filter(m => m.title === activeFilter) : moments;
+
     const scroll = (direction) => {
         if (scrollRef.current) {
             const scrollAmount = 350;
@@ -238,33 +243,77 @@ const TravelerMoments = () => {
         <section id="feedback-shorts" className="who-we-are-section">
             <div className="who-we-are-header" style={{ alignItems: 'flex-start' }}>
                 <div>
-                    <h2>Traveler Feedback Shorts</h2>
+                    <h2>Volunteer Feedback Shorts</h2>
                     <p style={{ marginTop: '10px', color: '#666', fontSize: '1.05rem', maxWidth: '600px', lineHeight: '1.6' }}>
                         Watch <span style={{ color: 'var(--primary-green)', fontWeight: 600 }}>real moments</span> captured by our travelers. Discover authentic experiences and unforgettable adventures in Sri Lanka.
                     </p>
                 </div>
-                <div className="who-nav-btns" style={{ alignSelf: 'center' }}>
-                    <button className="who-nav-btn" onClick={() => scroll('left')}>
-                        <i className="fa-solid fa-chevron-left"></i>
+                <div style={{ alignSelf: 'center', position: 'relative' }}>
+                    <button 
+                        className="btn-modern btn-white" 
+                        onClick={() => setFilterOpen(!filterOpen)}
+                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '500px', border: `1px solid ${activeFilter ? 'var(--primary-green)' : '#e5e7eb'}`, cursor: 'pointer', background: activeFilter ? '#f0fdf4' : '#fff', color: activeFilter ? 'var(--primary-green)' : '#111', fontWeight: '600', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+                    >
+                        <i className="fa-solid fa-filter" style={{ color: 'var(--primary-green)' }}></i> 
+                        {activeFilter ? activeFilter : 'Filter Projects'}
                     </button>
-                    <button className="who-nav-btn" onClick={() => scroll('right')}>
-                        <i className="fa-solid fa-chevron-right"></i>
-                    </button>
+
+                    {filterOpen && (
+                        <div style={{ position: 'absolute', top: '110%', right: 0, background: '#fff', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', zIndex: 100, width: '240px', maxHeight: '300px', overflowY: 'auto', border: '1px solid #e5e7eb' }}>
+                            <div 
+                                style={{ padding: '12px 20px', cursor: 'pointer', borderBottom: '1px solid #f3f4f6', fontWeight: activeFilter === null ? '700' : '500', color: activeFilter === null ? 'var(--primary-green)' : '#444' }}
+                                onClick={() => { setActiveFilter(null); setFilterOpen(false); }}
+                                onMouseEnter={(e) => e.target.style.backgroundColor = '#f9fafb'}
+                                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                            >
+                                All Projects
+                            </div>
+                            {uniqueProjects.map((project, idx) => (
+                                <div 
+                                    key={project}
+                                    style={{ padding: '12px 20px', cursor: 'pointer', borderBottom: idx === uniqueProjects.length - 1 ? 'none' : '1px solid #f3f4f6', fontWeight: activeFilter === project ? '700' : '500', color: activeFilter === project ? 'var(--primary-green)' : '#444' }}
+                                    onClick={() => { setActiveFilter(project); setFilterOpen(false); }}
+                                    onMouseEnter={(e) => e.target.style.backgroundColor = '#f9fafb'}
+                                    onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                                >
+                                    {project}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 
-            <div 
-                className={`who-moments-grid scroll-row ${activeCardId !== null ? 'has-active-video' : ''}`} 
-                ref={scrollRef}
-                style={moments.length === 1 ? { justifyContent: 'center' } : {}}
-            >                {moments.map((moment) => (
-                    <MomentCard 
-                        key={moment.id} 
-                        moment={moment} 
-                        activeCardId={activeCardId}
-                        setActiveCardId={setActiveCardId}
-                    />
-                ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <button 
+                    className="who-nav-btn" 
+                    onClick={() => scroll('left')}
+                    style={{ flexShrink: 0, boxShadow: '0 4px 15px rgba(0,0,0,0.15)', backgroundColor: '#1a2332', color: '#ffffff', zIndex: 10 }}
+                >
+                    <i className="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div 
+                    className={`who-moments-grid scroll-row ${activeCardId !== null ? 'has-active-video' : ''}`} 
+                    ref={scrollRef}
+                    style={{ flex: 1, minWidth: 0, ...(filteredMoments.length === 1 ? { justifyContent: 'center' } : {}) }}
+                >                {filteredMoments.map((moment) => (
+                        <MomentCard 
+                            key={moment.id} 
+                            moment={moment} 
+                            activeCardId={activeCardId}
+                            setActiveCardId={setActiveCardId}
+                        />
+                    ))}
+                </div>
+
+                <button 
+                    className="who-nav-btn" 
+                    onClick={() => scroll('right')}
+                    style={{ flexShrink: 0, boxShadow: '0 4px 15px rgba(0,0,0,0.15)', backgroundColor: '#1a2332', color: '#ffffff', zIndex: 10 }}
+                >
+                    <i className="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </section>
     );

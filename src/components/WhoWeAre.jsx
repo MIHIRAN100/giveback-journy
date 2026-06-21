@@ -9,7 +9,7 @@ const WhoWeAre = () => {
     return (
         <section className="who-we-are-modern" id="about-us">
             <div className="who-container">
-                <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                <div style={{ textAlign: 'left', marginBottom: '50px' }}>
                     <span style={{ 
                         display: 'inline-block',
                         padding: '8px 24px',
@@ -271,7 +271,8 @@ const WhoWeAre = () => {
                     font-size: 1rem;
                     font-weight: 700;
                     color: #333;
-                    text-align: center;
+                    text-align: left;
+                    padding: 0 10px;
                 }
 
                 /* Impact Card Styling */
@@ -286,7 +287,7 @@ const WhoWeAre = () => {
                     box-shadow: 0 15px 35px rgba(27, 163, 82, 0.2);
                 }
                 .who-impact-content {
-                    text-align: center;
+                    text-align: left;
                 }
                 .who-impact-icon {
                     font-size: 2rem;
