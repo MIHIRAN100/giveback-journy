@@ -4,9 +4,17 @@ import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/WhatsApp Image 2026-05-28 at 11.58.31.jpeg';
 import specialNeedsGallery1 from '../assets/sp need project/e4d809ba-aff8-43dd-a7a6-216fdf33707c.jpg';
-import specialNeedsOrientationVideo from '../assets/sp need project/c856b379-5486-4db2-bc0e-63dc941e9832.mp4';
-import renovationImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
-import renovationCoverImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
+import renovationImg from '../assets/IMG_6076.jpg';
+import renovationCoverImg from '../assets/IMG_6076.jpg';
+import renovationGallery1 from '../assets/construction volunteer/5cc85c60-1030-4ac7-9a36-08ecdb1ffdd2.jpg';
+import renovationGallery2 from '../assets/construction volunteer/ea4e67c3-5685-4733-a815-1f5fabe9925d.jpg';
+import renovationVideo from '../assets/construction volunteer/WhatsApp Video 2026-06-22 at 20.43.34.mp4';
+import renovationGallery3 from '../assets/construction volunteer/WhatsApp Image 2026-06-01 at 15.37.50.jpeg';
+import renovationGallery4 from '../assets/construction volunteer/WhatsApp Image 2026-06-02 at 17.36.37.jpeg';
+import renovationGallery5 from '../assets/construction volunteer/WhatsApp Image 2026-06-02 at 17.36.38.jpeg';
+import renovationGallery6 from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
+import renovationGallery7 from '../assets/construction volunteer/e1549044-4ab2-4347-a925-392d39c5e8f0.jpg';
+import renovationGallery8 from '../assets/construction volunteer/ed117f23-dc49-48b2-9f4e-6eab9fda1153.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 import bodyMindImg from '../assets/IMG_6270.jpg';
 import professionalImpactImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
@@ -300,9 +308,13 @@ export const volunteerPrograms = [
         color: "#4e73df",
         galleryImages: [
             { src: specialNeedsGallery1, caption: "Supporting Care" },
-            { src: specialNeedsOrientationVideo, type: "video", caption: "Volunteer Orientation" },
+            { src: interviewImg, caption: "Volunteer Orientation" },
             { src: cultureExp, caption: "Cultural Immersion" },
-            { src: volunteer3, caption: "Making A Difference" }
+            { src: volunteer3, caption: "Making A Difference" },
+            { src: volunteer1, caption: "Shared Moments" },
+            { src: volunteer4, caption: "Deep Connection" },
+            { src: volunteerWildlife, caption: "Weekend Safaris" },
+            { src: volunteerCommunity, caption: "Community Bonding" }
         ],
         highlights: [
             "Support Children And Adults With Physical Disabilities & Developmental Conditions",
@@ -440,16 +452,23 @@ export const volunteerPrograms = [
         description: "Our Construction & Renovation Volunteer Program in Sri Lanka gives volunteers the opportunity to support grassroots community projects in rural and semi-rural areas around Kandy and other parts of the country. This program focuses on improving community spaces that are used daily by local families, schools, children, elderly residents, temples, and community organizations that often struggle with limited funding and very little external support. Many communities in Sri Lanka simply do not have the financial resources, equipment, or workforce needed to maintain and improve their buildings and public spaces. Even basic repairs, painting, beautification, and maintenance work can remain unfinished for years due to economic hardship and lack of manpower. By volunteering, participants directly support local communities through practical hands-on work while experiencing authentic Sri Lankan culture and community life.",
         color: "#f6ad55",
         galleryImages: [
-            { src: volunteer1, caption: "School Renovation" },
-            { src: teachingImg, caption: "Learning Spaces" },
-            { src: cultureExp, caption: "Village Life" },
-            { src: volunteerCommunity, caption: "Team Work" }
+            { src: renovationGallery1, caption: "Temple Renovation" },
+            { src: renovationGallery2, caption: "Learning Spaces" },
+            { src: renovationVideo, type: 'video', caption: "Village Life" },
+            { src: renovationGallery7, caption: "Team Work" },
+            { src: renovationGallery8, caption: "Cultural Experience" },
+            { src: renovationGallery3, caption: "Community Impact" },
+            { src: renovationGallery4, caption: "Building Futures" },
+            { src: renovationGallery5, caption: "Renovation Work" },
+            { src: renovationGallery6, caption: "Local Helpers" }
         ],
         highlights: [
             "Support grassroots community renovation and painting projects in rural areas around Kandy",
             "Help improve classrooms, schools, Buddhist temples, and community centers",
             "Hands-on volunteering including painting, beautification, gardening, and light repairs",
-            "Experience authentic Sri Lankan culture while working side-by-side with local villagers"
+            "Experience authentic Sri Lankan culture while working side-by-side with local villagers",
+            "Work closely with local coordinators and community leaders to support high-priority local needs",
+            "Perfect for active, hands-on volunteers who want to see the immediate physical results of their efforts"
         ],
         sections: [
             {

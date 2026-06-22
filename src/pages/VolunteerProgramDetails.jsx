@@ -410,9 +410,9 @@ const VolunteerProgramDetails = () => {
                             gap: '16px'
                         }}>
                             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', fontWeight: 500 }}>
-                                <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>Excellent 4.89<i className="bi bi-star-fill" style={{ marginLeft: '4px', fontSize: '0.85rem' }}></i></span>
+                                <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>Excellent 4.15<i className="bi bi-star-fill" style={{ marginLeft: '4px', fontSize: '0.85rem' }}></i></span>
                                 <span style={{ color: '#717171' }}>·</span>
-                                <a href="#reviews" style={{ textDecoration: 'underline', color: 'inherit', cursor: 'pointer', fontWeight: 600 }}>100+ reviews</a>
+                                <a href="#reviews" style={{ textDecoration: 'underline', color: 'inherit', cursor: 'pointer', fontWeight: 600 }}>75+ reviews</a>
                                 <span style={{ color: '#717171' }}>·</span>
                                 <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--primary-green)' }}><i className="bi bi-patch-check"></i> Verified</span>
                                 <span style={{ color: '#717171' }}>·</span>
