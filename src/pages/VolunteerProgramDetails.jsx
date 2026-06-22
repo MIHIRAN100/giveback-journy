@@ -5,7 +5,7 @@ import { volunteerPrograms } from '../data/volunteerPrograms';
 import stayEatBg from '../assets/548331228.jpg';
 import stayImg1 from '../assets/823542472.jpg';
 import stayImg2 from '../assets/bhliddcrgzqq8yrfvels.webp';
-import stayImg3 from '../assets/668863567.jpg';
+import stayImg3 from '../assets/caption.jpg';
 import { volunteerReviews } from '../data/volunteerReviews';
 import { useCurrency } from '../context/CurrencyContext';
 import { publicHolidays } from '../data/holidays';

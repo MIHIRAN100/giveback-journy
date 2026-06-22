@@ -3,6 +3,8 @@ import ceylonSkillOdysseyImg from '../assets/IMG_3131.jpg';
 import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/WhatsApp Image 2026-05-28 at 11.58.31.jpeg';
+import specialNeedsGallery1 from '../assets/sp need project/e4d809ba-aff8-43dd-a7a6-216fdf33707c.jpg';
+import specialNeedsOrientationVideo from '../assets/sp need project/c856b379-5486-4db2-bc0e-63dc941e9832.mp4';
 import renovationImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
 import renovationCoverImg from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
@@ -297,8 +299,8 @@ export const volunteerPrograms = [
         description: "Our Special Needs Support Program in Sri Lanka offers volunteers the opportunity to work alongside local teachers, caregivers, and support staff in schools and care homes around Kandy. These placements support children and adults with physical disabilities, learning difficulties, developmental conditions, and additional support needs. Many of the institutions we work with operate with limited funding, minimal resources, and not enough helping hands. Volunteers play an important role in providing extra care, attention, creativity, and emotional support to both the staff and residents. This program is ideal for people who are patient, open-minded, compassionate, and willing to learn through hands-on experience. Previous experience or qualifications in education, psychology, healthcare, therapy, or special needs support can be helpful, but they are not mandatory. We welcome volunteers from different backgrounds who are willing to contribute positively and respectfully.",
         color: "#4e73df",
         galleryImages: [
-            { src: volunteer2, caption: "Supporting Care" },
-            { src: interviewImg, caption: "Volunteer Orientation" },
+            { src: specialNeedsGallery1, caption: "Supporting Care" },
+            { src: specialNeedsOrientationVideo, type: "video", caption: "Volunteer Orientation" },
             { src: cultureExp, caption: "Cultural Immersion" },
             { src: volunteer3, caption: "Making A Difference" }
         ],
