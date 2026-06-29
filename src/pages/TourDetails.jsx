@@ -1506,6 +1506,69 @@ const TourDetails = () => {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Volunteering Banner */}
+                        <div style={{
+                            marginTop: '25px',
+                            background: 'linear-gradient(135deg, #1a2332 0%, #111 100%)',
+                            borderRadius: '20px',
+                            padding: '30px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            boxShadow: '0 15px 35px rgba(0,0,0,0.15)',
+                            position: 'relative',
+                            overflow: 'hidden'
+                        }}>
+                            {/* Decorative Background Element */}
+                            <div style={{
+                                position: 'absolute',
+                                right: '-10%',
+                                top: '-20%',
+                                width: '200px',
+                                height: '200px',
+                                background: 'radial-gradient(circle, var(--primary-green) 0%, rgba(27,163,82,0) 70%)',
+                                opacity: 0.15,
+                                borderRadius: '50%',
+                                pointerEvents: 'none'
+                            }}></div>
+                            
+                            <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                                    <span style={{ background: 'var(--primary-green)', color: 'white', padding: '4px 10px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>Give Back</span>
+                                    <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', fontWeight: 600 }}>Make Your Trip Meaningful</span>
+                                </div>
+                                <h3 style={{ color: 'white', fontSize: '1.4rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.3 }}>
+                                    Add Volunteering to Your Journey
+                                </h3>
+                                <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0, fontSize: '0.95rem', lineHeight: 1.5, maxWidth: '90%' }}>
+                                    Make a real impact during your stay in Sri Lanka. Explore our community and wildlife conservation programs.
+                                </p>
+                            </div>
+                            
+                            <div style={{ position: 'relative', zIndex: 1, marginLeft: '20px' }}>
+                                <a href="/volunteer" style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    background: 'var(--primary-green)',
+                                    color: 'white',
+                                    padding: '14px 24px',
+                                    borderRadius: '12px',
+                                    textDecoration: 'none',
+                                    fontWeight: 800,
+                                    fontSize: '0.9rem',
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 8px 20px rgba(27,163,82,0.3)',
+                                    whiteSpace: 'nowrap'
+                                }}
+                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 25px rgba(27,163,82,0.4)'; }}
+                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(27,163,82,0.3)'; }}
+                                >
+                                    Explore Programs <i className="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Summary Card Section */}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ChatBot from './components/ChatBot';
 import CookieBar from './components/CookieBar';
 import HeroPromoBadge from './components/HeroPromoBadge';
 import Home from './pages/Home';
@@ -70,7 +69,6 @@ const AppContent = () => {
         </Routes>
       </main>
       <Footer />
-      <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} />
       <CookieBar onVisibilityChange={setCookieVisible} />
       {showGlobalBadge && <HeroPromoBadge />}
 
