@@ -1070,23 +1070,30 @@ const TourDetails = () => {
                 }
                 .breakdown-bar {
                     height: 100%;
-                    background: var(--primary-green);
                     border-radius: 10px;
+                    position: relative;
+                    overflow: hidden;
                 }
-                @keyframes infiniteRising {
-                    0% { width: 70%; }
-                    50% { width: 85%; }
-                    100% { width: 70%; }
+                .breakdown-bar.star-5 { background: #1ba352; }
+                .breakdown-bar.star-4 { background: #84cc16; }
+                .breakdown-bar.star-3 { background: #eab308; }
+                .breakdown-bar.star-2 { background: #f97316; }
+                .breakdown-bar.star-1 { background: #ef4444; }
+                
+                @keyframes sleekShimmer {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
                 }
-                @keyframes shimmerGradient {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-                .breakdown-bar.animated-rising {
-                    animation: infiniteRising 3s ease-in-out infinite, shimmerGradient 3s linear infinite;
-                    background: linear-gradient(-45deg, var(--primary-green), #81c784, var(--primary-green));
-                    background-size: 200% 200%;
+                
+                .breakdown-bar.star-5::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+                    animation: sleekShimmer 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 .breakdown-count {
                     min-width: 30px;
@@ -1957,6 +1964,10 @@ const TourDetails = () => {
                                         {item}
                                     </li>
                                 ))}
+                                <li style={{ fontSize: '0.95rem', color: '#666', marginBottom: '10px', display: 'flex', alignItems: 'flex-start' }}>
+                                    <i className="bi bi-x" style={{ color: '#c0392b', marginRight: '10px', fontWeight: 900 }}></i>
+                                    Some meals mentioned in the itinerary
+                                </li>
                             </ul>
                         </div>
                         
@@ -2169,7 +2180,7 @@ const TourDetails = () => {
                                             <div className="breakdown-label">{star} stars</div>
                                             <div className="breakdown-bar-container">
                                                 <div 
-                                                    className={`breakdown-bar ${star === 5 ? 'animated-rising' : ''}`} 
+                                                    className={`breakdown-bar star-${star}`} 
                                                     style={{ width: `${percentage}%` }}
                                                 ></div>
                                             </div>

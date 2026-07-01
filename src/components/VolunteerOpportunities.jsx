@@ -185,19 +185,43 @@ const VolunteerOpportunities = () => {
                                     {opp.shortDesc}
                                 </p>
  
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '12px' }}>
-                                    <div>
-                                        <div style={{ fontSize: '0.6rem', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>Program Fee</div>
-                                        <div style={{ fontSize: '1.05rem', fontWeight: 900, color: '#111' }}>
-                                            <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600, marginRight: '4px' }}>From</span>
-                                            {formatPrice(opp.price)}
+                                <div style={{
+                                    border: '1px solid #f1f5f9',
+                                    borderRadius: '12px',
+                                    padding: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: opp.wasPrice ? 'space-between' : 'center',
+                                    textAlign: 'center',
+                                    marginBottom: '12px',
+                                    background: '#fafcff'
+                                }}>
+                                    <div style={{ flex: opp.wasPrice ? '1' : 'none', paddingRight: opp.wasPrice ? '12px' : '0' }}>
+                                        <div style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 600, marginBottom: '2px' }}>
+                                            {opp.duration} from (USD)
+                                        </div>
+                                        <div style={{ fontSize: '1.7rem', fontWeight: 900, color: '#111', lineHeight: 1.1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+                                            <span style={{ fontSize: '0.85rem', marginTop: '4px', marginRight: '2px', fontWeight: 700 }}>$</span>
+                                            {formatPrice(opp.price).replace(/[^0-9.,]/g, '')}
+                                        </div>
+                                        <div style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 500, marginTop: '2px' }}>
+                                            Per volunteer
                                         </div>
                                     </div>
-                                    <div style={{ fontSize: '0.6rem', color: '#1ba352', fontWeight: 800, background: 'rgba(27, 163, 82, 0.1)', padding: '4px 8px', borderRadius: '4px' }}>
-                                        USD / Program
-                                    </div>
+                                    {opp.wasPrice && (
+                                        <>
+                                            <div style={{ width: '1px', height: '40px', background: '#e2e8f0' }}></div>
+                                            <div style={{ paddingLeft: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                                <div style={{ fontSize: '0.65rem', color: '#94a3b8', fontWeight: 600, textDecoration: 'line-through', marginBottom: '4px' }}>
+                                                    WAS ${formatPrice(opp.wasPrice).replace(/[^0-9.,]/g, '')}
+                                                </div>
+                                                <div style={{ fontSize: '0.6rem', color: '#ef4444', fontWeight: 800, background: '#fee2e2', padding: '2px 6px', borderRadius: '100px' }}>
+                                                    SAVE ${parseInt(opp.wasPrice) - parseInt(opp.price)}
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
- 
                                 <Link to={`/volunteer-program/${opp.id}`} className="opp-card-btn" style={{
                                     marginTop: 'auto',
                                     background: '#1a2332',

@@ -15,6 +15,7 @@ import renovationGallery5 from '../assets/construction volunteer/WhatsApp Image 
 import renovationGallery6 from '../assets/construction volunteer/WhatsApp Image 2026-06-03 at 17.39.33.jpeg';
 import renovationGallery7 from '../assets/construction volunteer/e1549044-4ab2-4347-a925-392d39c5e8f0.jpg';
 import renovationGallery8 from '../assets/construction volunteer/ed117f23-dc49-48b2-9f4e-6eab9fda1153.jpg';
+import renovationNewImg from '../assets/construction volunteer/1d191161-28fb-4cfb-b1db-154e3c646f95.jpg';
 import yogaImg from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
 import bodyMindImg from '../assets/IMG_6270.jpg';
 import professionalImpactImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
@@ -22,7 +23,9 @@ import medicalImg from '../assets/WhatsApp Image 2026-05-26 at 15.22.42.jpeg';
 import medicalVolunteerWhatsAppImg from '../assets/WhatsApp Image 2026-05-26 at 10.34.53.jpeg';
 import medicalGallery1 from '../assets/medical_gallery_new_1.jpg';
 import medicalGallery2 from '../assets/medical_gallery_new_2.jpg';
-import medicalNewGalleryImg from '../assets/dde7d2b38e6f6993d2fa13e839e96704.jpg';
+import medicalNewFirstImg from '../assets/medical/19fe554a-ad19-4619-be31-d67c397eb5dc.jpg';
+import medicalNewCoverImg from '../assets/medical/1ac3d4dd-f770-49e7-9422-d5534d371855.jpg';
+import medicalVideo from '../assets/medical/WhatsApp Video 2026-07-01 at 09.09.16.mp4';
 
 
 // Gallery images
@@ -58,6 +61,7 @@ export const volunteerPrograms = [
         duration: "27 Days",
         housing: "Shared Rooms",
         price: "1400",
+        wasPrice: "1600",
         image: breatheSriLankaImg,
         minAge: "18+",
         pickup: "Included",
@@ -176,6 +180,7 @@ export const volunteerPrograms = [
         duration: "1-24 Weeks",
         housing: "Shared or Private",
         price: "190",
+        wasPrice: "240",
         image: teachingImg,
         minAge: "18+",
         pickup: "Included",
@@ -299,6 +304,7 @@ export const volunteerPrograms = [
         duration: "1-8 Weeks",
         housing: "Private or Shared",
         price: "190",
+        wasPrice: "240",
         image: specialNeedsImg,
         minAge: "18+",
         pickup: "Included",
@@ -443,6 +449,7 @@ export const volunteerPrograms = [
         duration: "1-4 Weeks",
         housing: "Shared or Private",
         price: "190",
+        wasPrice: "240",
         image: renovationImg,
         coverImage: renovationCoverImg,
         minAge: "18+",
@@ -460,7 +467,9 @@ export const volunteerPrograms = [
             { src: renovationGallery3, caption: "Community Impact" },
             { src: renovationGallery4, caption: "Building Futures" },
             { src: renovationGallery5, caption: "Renovation Work" },
-            { src: renovationGallery6, caption: "Local Helpers" }
+            { src: renovationGallery6, caption: "Local Helpers" },
+            { src: renovationImg, caption: "Construction Projects" },
+            { src: renovationNewImg, caption: "Volunteering Impact" }
         ],
         highlights: [
             "Support grassroots community renovation and painting projects in rural areas around Kandy",
@@ -590,6 +599,7 @@ export const volunteerPrograms = [
         duration: "1-4 Weeks",
         housing: "Shared or Private",
         price: "190",
+        wasPrice: "240",
         image: medicalGallery1,
         bgPosition: "center 85%",
         minAge: "18+",
@@ -599,10 +609,17 @@ export const volunteerPrograms = [
         description: "The Give Back Journey Medical Observation & Community Health Program offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
         color: "#e74c3c",
         galleryImages: [
-            { src: medicalNewGalleryImg, caption: "Hospital Placement" },
+            { src: medicalNewFirstImg, caption: "Hospital Placement" },
             { src: medicalGallery1, caption: "Volunteer Life & Culture" },
             { src: medicalVolunteerWhatsAppImg, caption: "Medical Experience" },
-            { src: medicalImg, caption: "Medical Program Cover" }
+            { src: medicalNewCoverImg, caption: "Medical Program Cover" },
+            { src: medicalGallery2, caption: "Hospital Observation" },
+            { src: volunteerCommunity, caption: "Community Bonding" },
+            { src: medicalVideo, type: 'video', caption: "Medical Placement Video" },
+            { src: cultureExp, caption: "Cultural Immersion" },
+            { src: volunteer1, caption: "Shared Moments" },
+            { src: medicalImg, caption: "Medical Volunteer Work" },
+            { src: volunteer3, caption: "Making A Difference" }
         ],
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",

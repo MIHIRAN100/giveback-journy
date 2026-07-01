@@ -2018,7 +2018,8 @@ const VolunteerPage = () => {
                                     "Return Airport Transfer",
                                     selectedWeeks === 1 ? "Airport Arrival Pickup (1-wk stays)" : null,
                                     "Daily Personal Expenses",
-                                    "Weekend Excursion Budgets"
+                                    "Weekend Excursion Budgets",
+                                    "Some meals mentioned in the itinerary"
                                 ].filter(Boolean).map((exc, i) => (
                                     <li key={i} style={{ fontSize: '0.88rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 600 }}>
                                         <i className="fa-solid fa-xmark" style={{ color: '#cbd5e1', fontSize: '0.85rem' }}></i> {exc}
