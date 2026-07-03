@@ -251,8 +251,7 @@ const Hero = ({ onSearch }) => {
                             color: 'white',
                             textAlign: 'left'
                         }}>
-                            <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>{slide.title}</h3>
-                            <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: 'rgba(255,255,255,0.9)', lineHeight: 1.3, textShadow: '0 1px 3px rgba(0,0,0,0.9)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{slide.snippet}</p>
+                            <p style={{ margin: 0, fontSize: '0.8rem', color: 'rgba(255,255,255,0.9)', lineHeight: 1.3, textShadow: '0 1px 3px rgba(0,0,0,0.9)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{slide.snippet}</p>
                         </div>
                     </div>
                     );
@@ -266,15 +265,15 @@ const Hero = ({ onSearch }) => {
                     <h1>Journey Through the <br/> Soul of the Island</h1>
                     <p>From misty emerald tea plantations to pristine azure shores, we curate authentic experiences that reveal the hidden magic of Sri Lanka.</p>
                     
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '-15px', marginBottom: '25px' }} className="hero-travelers-stats">
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '-15px', marginBottom: '25px' }} className="hero-travelers-stats">
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <img src="https://i.pravatar.cc/150?img=47" alt="Traveler" style={{ width: '35px', height: '35px', borderRadius: '50%', border: '2px solid white', objectFit: 'cover', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
-                            <img src="https://i.pravatar.cc/150?img=11" alt="Traveler" style={{ width: '35px', height: '35px', borderRadius: '50%', border: '2px solid white', objectFit: 'cover', marginLeft: '-12px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
-                            <img src="https://i.pravatar.cc/150?img=32" alt="Traveler" style={{ width: '35px', height: '35px', borderRadius: '50%', border: '2px solid white', objectFit: 'cover', marginLeft: '-12px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
+                            <img src="https://i.pravatar.cc/150?img=47" alt="Traveler" style={{ width: '28px', height: '28px', borderRadius: '50%', border: '2px solid white', objectFit: 'cover', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Traveler" style={{ width: '28px', height: '28px', borderRadius: '50%', border: '2px solid white', objectFit: 'cover', marginLeft: '-9px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
+                            <img src="https://i.pravatar.cc/150?img=32" alt="Traveler" style={{ width: '28px', height: '28px', borderRadius: '50%', border: '2px solid white', objectFit: 'cover', marginLeft: '-9px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
                         </div>
                         <span 
                             onClick={() => document.getElementById('feedback-shorts')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                            style={{ fontSize: '0.9rem', fontWeight: '400', color: 'rgba(255,255,255,0.95)', textShadow: '0 2px 4px rgba(0,0,0,0.6)', textDecoration: 'underline', textUnderlineOffset: '3px', cursor: 'pointer', transition: 'color 0.2s ease' }}
+                            style={{ fontSize: '0.8rem', fontWeight: '400', color: 'rgba(255,255,255,0.95)', textShadow: '0 2px 4px rgba(0,0,0,0.6)', textDecoration: 'underline', textUnderlineOffset: '3px', cursor: 'pointer', transition: 'color 0.2s ease' }}
                             onMouseOver={(e) => e.target.style.color = '#fff'}
                             onMouseOut={(e) => e.target.style.color = 'rgba(255,255,255,0.95)'}
                         >
