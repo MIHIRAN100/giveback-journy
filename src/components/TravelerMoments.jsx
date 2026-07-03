@@ -5,6 +5,8 @@ import TravelerVideo4 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at
 import TravelerVideo5 from '../assets/feedback clip/WhatsApp Video 2026-05-30 at 11.02.50.mp4';
 import TravelerVideo6 from '../assets/feedback clip/WhatsApp Video 2026-05-31 at 13.18.52.mp4';
 import TravelerVideo7 from '../assets/feedback clip/WhatsApp Video 2026-05-31 at 13.37.40.mp4';
+import TravelerVideoSam from '../assets/feedback clip/WhatsApp Video 2026-07-02 at 11.01.07.mp4';
+import TravelerVideoAlex from '../assets/feedback clip/WhatsApp Video 2026-07-02 at 11.12.16.mp4';
 import Volunteer1 from '../assets/volunteer_1.png';
 import Volunteer2 from '../assets/volunteer_2.png';
 import Volunteer3 from '../assets/volunteer_3.png';
@@ -194,35 +196,21 @@ const TravelerMoments = () => {
         },
         {
             id: 6,
-            user: "Sam",
+            user: "Emma and Annie",
             avatar: "fa-solid fa-users",
             image: NewImg1,
-            title: "Community Outreach",
-            overlayTitle: "SUPPORTING LOCAL COMMUNITIES",
+            video: TravelerVideoSam,
+            title: "Special Needs Care",
+            overlayTitle: "EMBRACING SPECIAL NEEDS CARE",
         },
         {
             id: 7,
             user: "Alex",
-            avatar: "fa-solid fa-leaf",
+            avatar: "fa-solid fa-chalkboard-user",
             image: NewImg2,
-            title: "Wildlife Conservation",
-            overlayTitle: "PRESERVING NATURE'S BEAUTY",
-        },
-        {
-            id: 8,
-            user: "Emma",
-            avatar: "fa-solid fa-masks-theater",
-            image: NewImg3,
-            title: "Cultural Exchange",
-            overlayTitle: "LEARNING ANCIENT TRADITIONS",
-        },
-        {
-            id: 9,
-            user: "David",
-            avatar: "fa-solid fa-om",
-            image: NewImg4,
-            title: "Yoga & Meditation",
-            overlayTitle: "FINDING INNER PEACE",
+            video: TravelerVideoAlex,
+            title: "Teaching Volunteers",
+            overlayTitle: "TEACHING WITH HEART",
         }
     ];
 

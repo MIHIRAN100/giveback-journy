@@ -12,9 +12,11 @@ import raftingImg from '../assets/Rafting.jpg';
 import grandLoopImg from '../assets/Sri lanka 🇱🇰 @lilychvt.jpg';
 import islandCrossoverCover from '../assets/island_crossover_cover.png';
 import breatheSriLankaImg from '../assets/WhatsApp Image 2026-05-26 at 15.13.22.jpeg';
-import sigiriyaSafariCover from '../assets/TAL-tourists-sigiriya-sri-Lanka-WLCMASIANDEST0125-d5608fddc86e4b0f984c8e15ea637b0b.jpg';
+import sigiriyaSafariCover from '../assets/b7f8179e-7e30-41bb-bb99-477f25c24d60.jpg';
 import sigiriyaEscapeCover from '../assets/WhatsApp Image 2026-06-01 at 15.37.23.jpeg';
 import routeMapSigiriyaEscape from '../assets/route_map_sigiriya_escape.png';
+import jakeReviewImg from '../assets/fda10c4a-9947-44e1-9d7c-e3b9e89e4762.jpg';
+import jakeReviewImg2 from '../assets/12bc54bb-c32d-4ce9-a230-a4181339ca51.jpg';
 
 
 import routeMapEssential from '../assets/route_map_essential_v2.png';
@@ -151,7 +153,7 @@ const coastalReviews = [
 ];
 
 const adventureReviews = [
-    { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2026", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every bit of it.", color: "#e8f5e9" },
+    { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2026", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every bit of it.", color: "#e8f5e9", images: [jakeReviewImg, jakeReviewImg2] },
     { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2024", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the rainforest to the mountains of Ella was spectacular.", color: "#e3f2fd" },
     { id: 3, name: "Ryan Reyn", rating: 5, date: "August 2022", profile: "Canadian", trip: "Highlands & Coast", comment: "Seeing a leopard in Yala was the highlight of my trip. The guide was expert.", color: "#fff3e0" },
     { id: 4, name: "Gal Gadot", rating: 5, date: "July 2020", profile: "Israel", trip: "Highlands & Coast", comment: "Little Adam's Peak hike was easy but offered the most incredible views of Ella.", color: "#f3e5f5" },

@@ -327,9 +327,6 @@ const Navbar = () => {
                             </AnimatePresence>
                         </div>
 
-                        <Link to="/packages" className="btn-modern btn-solid-green mobile-book-btn">
-                            Apply
-                        </Link>
                         <div className="mobile-menu-btn" onClick={toggleMenu}>
                             <i className={isMenuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
                         </div>

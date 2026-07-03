@@ -2240,14 +2240,24 @@ const TourDetails = () => {
                                         {review.name}, {review.date}
                                     </div>
                                     <p className="review-text">{review.comment}</p>
-                                    {idx === 0 && galleryImages && galleryImages.length >= 3 && (
+                                    {((review.images && review.images.length > 0) || (idx === 0 && galleryImages && galleryImages.length >= 3)) && (
                                         <div className="review-images-container">
-                                            <div className="review-img-wrapper">
-                                                <img src={galleryImages[1]} alt="Review photo 1" />
-                                            </div>
-                                            <div className="review-img-wrapper">
-                                                <img src={galleryImages[2]} alt="Review photo 2" />
-                                            </div>
+                                            {review.images && review.images.length > 0 ? (
+                                                review.images.map((img, imgIdx) => (
+                                                    <div key={imgIdx} className="review-img-wrapper">
+                                                        <img src={img} alt={`Review photo ${imgIdx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <>
+                                                    <div className="review-img-wrapper">
+                                                        <img src={galleryImages[1]} alt="Review photo 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                    </div>
+                                                    <div className="review-img-wrapper">
+                                                        <img src={galleryImages[2]} alt="Review photo 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                     )}
                                     <div className="review-actions">

@@ -23,7 +23,6 @@ import NDAPage from './pages/NDAPage';
 import CookiePolicy from './pages/CookiePolicy';
 
 import LoadingScreen from './components/LoadingScreen';
-import MobileBottomBar from './components/MobileBottomBar';
 import BottomAdBanner from './components/BottomAdBanner';
 import Breadcrumbs from './components/Breadcrumbs';
 import ScrollToTop from './components/ScrollToTop';
@@ -71,8 +70,6 @@ const AppContent = () => {
       <Footer />
       <CookieBar onVisibilityChange={setCookieVisible} />
       {showGlobalBadge && <HeroPromoBadge />}
-
-      {!hideMobileBottomBar && <MobileBottomBar />}
       <BottomAdBanner isCookieVisible={cookieVisible} />
     </div>
   );

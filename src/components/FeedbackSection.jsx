@@ -23,7 +23,7 @@ const FeedbackSection = () => {
         {
             name: "Emma Robertson",
             profile: "Australian, 20",
-            trip: "Cultural Triangle Discovery",
+            trip: "Sigiriya Nature & Culture Escape",
             text: "Managing a budget while wanting a premium experience was tough until I found this team. They handled every detail perfectly and the heritage sites were so welcoming!",
             rating: 5,
             color: "#fff3e0" 
@@ -31,7 +31,7 @@ const FeedbackSection = () => {
         {
             name: "Michael Ross",
             profile: "Canadian, 25",
-            trip: "Wild Safari & Highland Explorer",
+            trip: "Highlands & Southern Coast",
             text: "The safari in Yala was perfectly timed. We avoided the crowds and saw three leopards in one afternoon. Truly a magical experience for any nature lover.",
             rating: 5,
             color: "#f3e5f5" 
@@ -47,7 +47,7 @@ const FeedbackSection = () => {
         {
             name: "Lucas Berger",
             profile: "German, 24",
-            trip: "Scenic Highlands & Tea Trails",
+            trip: "5-Day Mist & Mountains",
             text: "Fast Wi-Fi in the most beautiful places. I worked from Ella for a week and it was the most scenic office I've ever had. Truly productive and peaceful.",
             rating: 5,
             color: "#fbe9e7" 
