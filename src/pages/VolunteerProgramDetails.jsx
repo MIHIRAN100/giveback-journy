@@ -69,10 +69,11 @@ const VolunteerProgramDetails = () => {
         );
     }
 
-    let isGray = false;
+    let bgIndex = 0;
     const getNextBgClass = () => {
-        const bgClass = isGray ? 'gray-bg' : 'white-bg';
-        isGray = !isGray;
+        const bgClasses = ['white-bg', 'gray-bg', 'green-bg', 'blue-bg', 'gold-bg'];
+        const bgClass = bgClasses[bgIndex % bgClasses.length];
+        bgIndex++;
         return bgClass;
     };
 
@@ -1331,7 +1332,7 @@ const VolunteerProgramDetails = () => {
             {/* Meals Specs Section */}
             {program.mealsInfo && (() => {
                 return (
-                    <div className="detail-section" id="meals" style={{ background: '#f5f5f7' }}>
+                    <div className={`detail-section ${getNextBgClass()}`} id="meals">
                         <div className="detail-section-inner">
                             <div className="section-card" style={{
                                 background: 'transparent',
@@ -1374,7 +1375,7 @@ const VolunteerProgramDetails = () => {
     })()}
 
             {/* Pricing Section */}
-            <div className="detail-section" style={{ background: '#f4f7f8' }} id="pricing">
+            <div className={`detail-section ${getNextBgClass()}`} id="pricing">
                 <div className="detail-section-inner">
                     <div style={{ marginBottom: '30px' }}>
                         <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#1d1d1f', margin: 0 }}>Pricing</h2>
@@ -1765,6 +1766,15 @@ const VolunteerProgramDetails = () => {
                 }
                 .detail-section.gray-bg {
                     background: #f5f5f7 !important;
+                }
+                .detail-section.green-bg {
+                    background: #f2f9f5 !important;
+                }
+                .detail-section.blue-bg {
+                    background: #f0f7fc !important;
+                }
+                .detail-section.gold-bg {
+                    background: #fdfaf2 !important;
                 }
                 .detail-section-inner {
                     max-width: 1200px;

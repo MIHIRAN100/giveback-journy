@@ -37,6 +37,7 @@ const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isTourDetails = location.pathname.startsWith('/package/');
+  const isVolunteerDetails = location.pathname.startsWith('/volunteer-program/');
   const hideMobileBottomBar = location.pathname.startsWith('/package/') || location.pathname.startsWith('/volunteer-program/');
   const showGlobalBadge = ['/packages', '/sri-lanka', '/volunteer', '/exclusive-journeys', '/contact'].includes(location.pathname);
 
@@ -45,7 +46,7 @@ const AppContent = () => {
       <LoadingScreen />
       <Navbar />
       <main style={{flex: 1, paddingTop: isHomePage ? '0' : '90px'}}>
-        {isTourDetails && <TourDetailsPromoBanner />}
+        {(isTourDetails || isVolunteerDetails) && <TourDetailsPromoBanner />}
         {!isHomePage && <Breadcrumbs />}
         <Routes>
           <Route path="/" element={<Home />} />

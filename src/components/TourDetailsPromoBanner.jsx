@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useCurrency } from '../context/CurrencyContext';
 
 const TourDetailsPromoBanner = () => {
+    const { formatPrice } = useCurrency();
     // Target date: August 16, 2026 at 4:29:00 AM
     const targetDate = new Date('2026-08-16T04:29:00').getTime();
-    const [timeLeft, setTimeLeft] = useState('');
+    const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00' });
 
     useEffect(() => {
         const updateTimer = () => {
@@ -11,27 +13,24 @@ const TourDetailsPromoBanner = () => {
             const difference = targetDate - now;
 
             if (difference <= 0) {
-                setTimeLeft('Ended');
+                setTimeLeft({ days: '00', hours: '00', minutes: '00' });
                 return;
             }
 
             const days = Math.floor(difference / (1000 * 60 * 60 * 24));
             const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            let timeString = '';
-            if (days > 0) timeString += `${days}d `;
-            timeString += `${hours.toString().padStart(2, '0')}h `;
-            timeString += `${minutes.toString().padStart(2, '0')}m `;
-            timeString += `${seconds.toString().padStart(2, '0')}s`;
-
-            setTimeLeft(timeString);
+            setTimeLeft({
+                days: days.toString().padStart(2, '0'),
+                hours: hours.toString().padStart(2, '0'),
+                minutes: minutes.toString().padStart(2, '0')
+            });
         };
 
         // Run initially
         updateTimer();
-        const intervalId = setInterval(updateTimer, 1000);
+        const intervalId = setInterval(updateTimer, 60000); // Update every minute to conserve performance
 
         return () => clearInterval(intervalId);
     }, [targetDate]);
@@ -45,63 +44,97 @@ const TourDetailsPromoBanner = () => {
             boxSizing: 'border-box'
         }}>
             <div style={{
-                background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', // Sleek dark slate blue
-                border: '1px solid rgba(59, 127, 186, 0.25)', // Subtle blue border
-                borderRadius: '12px',
-                padding: '12px 24px',
+                background: 'linear-gradient(90deg, #0c3a21 0%, #1ba352 50%, #0d9488 100%)', // Custom branding green-teal gradient
+                border: '1px solid rgba(27, 163, 82, 0.25)', 
+                borderRadius: '16px',
+                padding: '10px 24px',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 color: 'white',
-                fontSize: '0.92rem',
-                fontWeight: 600,
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                boxShadow: '0 8px 32px rgba(27, 163, 82, 0.1)',
                 flexWrap: 'wrap',
-                gap: '12px',
-                fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                gap: '16px',
+                fontFamily: "'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
             }} className="tour-promo-banner-inner">
-                <div style={{ 
-                    flex: 1, 
-                    textAlign: 'center',
-                    fontSize: '0.95rem',
-                    letterSpacing: '0.3px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px'
-                }}>
-                    <span style={{ 
-                        color: '#3b7fba', // var(--accent-gold) / Website blue
-                        textTransform: 'uppercase', 
-                        fontWeight: 900, 
-                        fontSize: '0.75rem',
-                        letterSpacing: '1.5px',
-                        background: 'rgba(59, 127, 186, 0.15)',
-                        padding: '3px 10px',
-                        borderRadius: '50px',
-                        border: '1px solid rgba(59, 127, 186, 0.3)'
-                    }}>Flash Sale</span>
-                    <span>Up to 20% off selected trips</span>
-                </div>
                 
+                {/* Left Text Callout */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '1.25rem', fontWeight: 900, letterSpacing: '-0.02em' }}>
+                        Ready, Save, <span style={{ color: 'var(--accent-gold)', fontWeight: 900 }}>GO!</span>
+                    </span>
+                </div>
+
+                {/* Central White Flash Card */}
                 <div style={{
-                    background: '#3b7fba', // Website blue background for the timeout badge
-                    border: '1px solid rgba(255, 255, 255, 0.25)',
-                    color: 'white', 
-                    padding: '6px 14px',
-                    borderRadius: '8px',
+                    background: '#ffffff',
+                    borderRadius: '10px',
+                    padding: '6px 18px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '0.82rem',
-                    fontWeight: 800,
-                    whiteSpace: 'nowrap',
-                    letterSpacing: '0.2px',
-                    boxShadow: '0 4px 12px rgba(59, 127, 186, 0.3)'
+                    gap: '20px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                    color: '#1d1d1f',
+                    flexWrap: 'wrap'
                 }}>
-                    <i className="bi bi-stopwatch-fill" style={{ fontSize: '0.95rem' }}></i>
-                    <span>Ends in: {timeLeft}</span>
+                    {/* Discount Value */}
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#86868b' }}>Save</span>
+                        <span style={{ fontSize: '1.4rem', fontWeight: 900, color: '#1d1d1f', letterSpacing: '-1px' }}>
+                            {formatPrice(150)}
+                        </span>
+                        <span style={{ fontSize: '0.62rem', fontWeight: 800, color: '#86868b', textTransform: 'uppercase', lineHeight: 1.1 }}>
+                            Per<br/>Person
+                        </span>
+                    </div>
+
+                    {/* Green Tag Badge */}
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div style={{
+                            background: 'var(--primary-green)',
+                            color: 'white',
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                            fontWeight: 900,
+                            fontSize: '0.82rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            boxShadow: '0 2px 8px rgba(27, 163, 82, 0.15)'
+                        }}>
+                            <i className="bi bi-tag-fill" style={{ fontSize: '0.85rem' }}></i>
+                            1
+                        </div>
+                    </div>
+
+                    {/* Thin Divider */}
+                    <div style={{ width: '1px', height: '24px', background: '#e5e5ea' }}></div>
+
+                    {/* Countdown Timer */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#1d1d1f', lineHeight: 1 }}>{timeLeft.days}</div>
+                            <div style={{ fontSize: '0.55rem', fontWeight: 800, color: '#86868b', textTransform: 'uppercase', marginTop: '2px' }}>Days</div>
+                        </div>
+                        <span style={{ fontWeight: 900, color: 'var(--primary-green)', fontSize: '1.1rem' }}>:</span>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#1d1d1f', lineHeight: 1 }}>{timeLeft.hours}</div>
+                            <div style={{ fontSize: '0.55rem', fontWeight: 800, color: '#86868b', textTransform: 'uppercase', marginTop: '2px' }}>Hours</div>
+                        </div>
+                        <span style={{ fontWeight: 900, color: 'var(--primary-green)', fontSize: '1.1rem' }}>:</span>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#1d1d1f', lineHeight: 1 }}>{timeLeft.minutes}</div>
+                            <div style={{ fontSize: '0.55rem', fontWeight: 800, color: '#86868b', textTransform: 'uppercase', marginTop: '2px' }}>Mins</div>
+                        </div>
+                    </div>
                 </div>
+
+                {/* Right Terms Block */}
+                <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.9)', textAlign: 'right', lineHeight: 1.3 }}>
+                    <div style={{ fontWeight: 800 }}>Drop 1 Ends 14 Aug</div>
+                    <div style={{ opacity: 0.8, fontSize: '0.65rem' }}>T&Cs apply.*</div>
+                </div>
+
             </div>
         </div>
     );
