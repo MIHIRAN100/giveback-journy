@@ -21,7 +21,7 @@ const WelcomeSriLanka = () => {
                                 Beyond the breathtaking vistas, Sri Lanka’s true heart lies in its people. Through our curated experiences, we invite you to connect deeply with local communities, participate in meaningful conservation efforts, and discover the authentic soul of the island. Whether you're seeking serenity on a secluded southern beach or adventure in the rugged wilderness, your journey here will be as impactful as it is unforgettable.
                             </p>
                         </div>
-                        <Link to="/sri-lanka" className="btn-modern btn-black" style={{ display: 'inline-block' }}>Explore the Island</Link>
+                        <Link to="/packages" className="btn-modern btn-black" style={{ display: 'inline-block' }}>Explore Our Tours</Link>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import CookieBar from './components/CookieBar';
 import HeroPromoBadge from './components/HeroPromoBadge';
 import Home from './pages/Home';
-import SriLanka from './pages/SriLanka';
 import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -39,7 +38,7 @@ const AppContent = () => {
   const isTourDetails = location.pathname.startsWith('/package/');
   const isVolunteerDetails = location.pathname.startsWith('/volunteer-program/');
   const hideMobileBottomBar = location.pathname.startsWith('/package/') || location.pathname.startsWith('/volunteer-program/');
-  const showGlobalBadge = ['/packages', '/sri-lanka', '/volunteer', '/exclusive-journeys', '/contact'].includes(location.pathname);
+  const showGlobalBadge = ['/packages', '/volunteer', '/exclusive-journeys', '/contact'].includes(location.pathname);
 
   return (
     <div className="App" style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
@@ -50,7 +49,6 @@ const AppContent = () => {
         {!isHomePage && <Breadcrumbs />}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sri-lanka" element={<SriLanka />} />
           <Route path="/packages" element={<PackagesPage />} />
           <Route path="/package/:id" element={<TourDetails />} />
           <Route path="/inquiry/:id" element={<BookingInquiryPage />} />

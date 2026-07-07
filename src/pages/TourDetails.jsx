@@ -1434,9 +1434,9 @@ const TourDetails = () => {
                 </div>
             )}
 
-            <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
-                
-                {/* Header: Title & Sale Badge */}
+            <div className="tour-details-section" style={{ background: '#ffffff', padding: '40px 0 60px 0' }}>
+                <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+                    {/* Header: Title & Sale Badge */}
                 <div className="tour-details-header">
                     <h1 className="tour-title" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, color: '#111', margin: 0 }}>
                         {pkg.name}
@@ -1741,9 +1741,14 @@ const TourDetails = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                {/* Content Section */}
-                <div className="details-grid content-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '50px' }}>
+            {/* Section 2: Overview & Inclusions */}
+            <div className="tour-details-section" style={{ background: '#f8f9fa', padding: '60px 0', borderTop: '1px solid #eaeaea', borderBottom: '1px solid #eaeaea' }}>
+                <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+                    {/* Content Section */}
+                    <div className="details-grid content-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '50px' }}>
                     
                     {/* Left Column */}
                     <div className="tour-overview">
@@ -2002,9 +2007,13 @@ const TourDetails = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                {/* Itinerary Section */}
-                <div style={{ marginTop: '80px', borderTop: '1px solid #eee', paddingTop: '60px' }}>
+            {/* Section 3: Itinerary */}
+            <div className="tour-details-section" style={{ background: '#ffffff', padding: '60px 0', borderBottom: '1px solid #eaeaea' }}>
+                <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+                    <div style={{ marginTop: '0', paddingTop: '0' }}>
                     <div className="itinerary-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                         <h2 style={{ fontSize: '2.0rem', fontWeight: 800, color: '#111' }}>Itinerary</h2>
                         <div style={{ display: 'flex', gap: '15px' }}>
@@ -2113,9 +2122,13 @@ const TourDetails = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                {/* Impactful Way Section */}
-                <div className="impact-section">
+            {/* Section 4: Volunteering & Notes */}
+            <div className="tour-details-section" style={{ background: '#fafaf9', padding: '60px 0', borderBottom: '1px solid #eaeaea' }}>
+                <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+                    <div className="impact-section" style={{ marginTop: '0' }}>
                     <div className="impact-card">
                         <div className="impact-icon">
                             <i className="fa-solid fa-hand-holding-heart"></i>
@@ -2141,7 +2154,7 @@ const TourDetails = () => {
 
                 {/* Important Notes */}
                 {pkg.importantNotes && (
-                    <div className="important-notes-section" style={{ marginTop: '80px', padding: '20px 0' }}>
+                    <div className="important-notes-section" style={{ marginTop: '40px', padding: '20px 0 0 0', borderTop: '1px solid #eaeaea' }}>
                         <h2 style={{ fontSize: '2.0rem', fontWeight: 800, color: '#111', marginBottom: '20px', fontFamily: 'inherit' }}>Important notes</h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                             {pkg.importantNotes.map((note, i) => (
@@ -2153,10 +2166,14 @@ const TourDetails = () => {
                         </div>
                     </div>
                 )}
+                </div>
+            </div>
 
-                {/* Guest Reviews */}
-                {pkg.reviews && (
-                    <div className="reviews-container" id="reviews">
+            {/* Section 5: Reviews */}
+            {pkg.reviews && (
+                <div className="tour-details-section" style={{ background: '#f4f6f8', padding: '60px 0', borderBottom: '1px solid #eaeaea' }}>
+                    <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+                        <div className="reviews-container" id="reviews" style={{ marginTop: '0' }}>
                         <h2 style={{ fontSize: '2.0rem', fontWeight: 800, color: '#111', marginBottom: '30px' }}>Reviews</h2>
                         
                         <div className="reviews-summary">
@@ -2305,10 +2322,14 @@ const TourDetails = () => {
                             </div>
                         )}
                     </div>
-                )}
+                </div>
+            </div>
+        )}
 
-                {/* Customers Who Bought This Tour Also Bought */}
-                <div className="also-bought-container">
+            {/* Section 6: Recommendations */}
+            <div className="tour-details-section" style={{ background: '#ffffff', padding: '60px 0' }}>
+                <div className="details-main-content" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 5%' }}>
+                    <div className="also-bought-container" style={{ marginTop: '0', paddingTop: '0', borderTop: 'none', paddingBottom: '0' }}>
                     <h2 className="also-bought-title">Customers Who Bought This Tour Also Bought</h2>
                     <div className="also-bought-grid">
                         {tourPackages
@@ -2358,6 +2379,7 @@ const TourDetails = () => {
                     </div>
                 </div>
             </div>
+        </div>
 
             <SriLankaGlance />
 

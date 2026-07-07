@@ -100,30 +100,6 @@ const Navbar = () => {
                 }
             ]
         },
-        { 
-            name: 'Island Guide', 
-            path: '/sri-lanka',
-            columns: [
-                {
-                    title: 'Top Regions',
-                    items: [
-                        { name: 'Cultural Triangle', path: '/sri-lanka' },
-                        { name: 'Hill Country', path: '/sri-lanka' },
-                        { name: 'Southern Coast', path: '/sri-lanka' },
-                        { name: 'Northern Wonders', path: '/sri-lanka' }
-                    ]
-                },
-                {
-                    title: 'Travel Essentials',
-                    items: [
-                        { name: 'Best Time to Visit', path: '/sri-lanka' },
-                        { name: 'Visa & Entry', path: '/sri-lanka' },
-                        { name: 'Local Etiquette', path: '/sri-lanka' },
-                        { name: 'Packing Guide', path: '/sri-lanka' }
-                    ]
-                }
-            ]
-        },
         { name: 'Price', path: '/volunteer#pricing' },
         { name: 'About Us', path: '/exclusive-journeys' }
     ];
@@ -157,6 +133,7 @@ const Navbar = () => {
                                 >
                                     <Link to={item.path} className="nav-item" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                                         <span>{item.name}</span>
+                                        {item.name === 'Giveback Volunteer' && <span className="nav-badge-new">New</span>}
                                         {item.columns && (
                                             <i className="bi bi-chevron-down" style={{ 
                                                 fontSize: '0.65rem', 
@@ -370,7 +347,10 @@ const Navbar = () => {
                 </div>
                 {navItems.map((item, idx) => (
                     <div key={idx} className="mobile-nav-group">
-                        <Link to={item.path} className="nav-item mobile" onClick={toggleMenu}>{item.name}</Link>
+                        <Link to={item.path} className="nav-item mobile" onClick={toggleMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span>{item.name}</span>
+                            {item.name === 'Giveback Volunteer' && <span className="nav-badge-new">New</span>}
+                        </Link>
                         {item.columns && (
                             <div className="mobile-dropdown-items">
                                 {item.columns.map(col => col.items.map((sub, sIdx) => (

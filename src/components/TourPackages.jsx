@@ -4,7 +4,11 @@ import { tourPackages } from '../data/tours';
 import { useCurrency } from '../context/CurrencyContext';
 
 export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
-    const { formatPrice } = useCurrency();
+    const { currency, currencies } = useCurrency();
+    const currentCurrency = currencies[currency] || currencies.USD;
+    const symbol = currentCurrency.symbol + (currency === 'LKR' ? ' ' : '');
+    const rate = currentCurrency.rate;
+
     const getPriceVal = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         if (pkg.id === 1) return 840;
@@ -19,8 +23,12 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 
     const originalPrice = Math.floor(getPriceVal() / getDiscountFactor());
     const discountPercent = Math.round((1 - getPriceVal() / originalPrice) * 100);
-    const getPrice = () => formatPrice(getPriceVal());
-    const getOriginalPrice = () => formatPrice(originalPrice);
+
+    const convertedPrice = Math.round(getPriceVal() * rate);
+    const formattedPriceVal = convertedPrice.toLocaleString();
+
+    const convertedOriginalPrice = Math.round(originalPrice * rate);
+    const formattedOriginalPrice = `${symbol}${convertedOriginalPrice.toLocaleString()}`;
 
     // Days & nights
     const daysNum = parseInt(pkg.days);
@@ -116,19 +124,39 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     )}
                 </div>
 
-                {/* Price + More button */}
-                <div className="gyg-card-footer">
-                    <div className="gyg-card-price">
-                        {originalPrice > getPriceVal() ? (
-                            <>
-                                <span className="gyg-price-current">{getPrice()}</span>
-                                <span className="gyg-price-original">{getOriginalPrice()}</span>
-                            </>
-                        ) : (
-                            <span className="gyg-price-from">From <strong>{getPrice()}</strong></span>
-                        )}
+                {/* Premium Price Box (styled like requested image) */}
+                <div className="tour-price-box-wrapper">
+                    <div className="tour-price-box-top">
+                        <div className="tour-price-box-left">
+                            <div className="tour-price-duration-label">{pkg.days.split(' / ')[0]} from ({currency})</div>
+                            <div className="tour-price-amount-container">
+                                <span className="tour-price-symbol">{symbol}</span>
+                                <span className="tour-price-value">{formattedPriceVal}</span>
+                            </div>
+                            <div className="tour-price-twin-share">Per person (all-inclusive)</div>
+                        </div>
+                        
+                        <div className="tour-price-box-divider"></div>
+                        
+                        <div className="tour-price-box-right">
+                            <div className="tour-price-valued-label">Regular Price</div>
+                            <div className="tour-price-valued-amount">{formattedOriginalPrice}</div>
+                            <span className="tour-price-save-badge">SAVE {discountPercent}%</span>
+                        </div>
                     </div>
-                    <span className="gyg-more-btn">More</span>
+                    
+                    <div className="tour-price-box-bottom">
+                        <i className="bi bi-sliders" style={{ color: 'var(--primary-green)' }}></i>
+                        <span>Free Itinerary Customization</span>
+                    </div>
+                </div>
+
+                {/* Promo deal banner below price box */}
+                <div className="tour-promo-banner">
+                    <div className="tour-promo-icon-circle" style={{ backgroundColor: 'var(--primary-green)' }}>
+                        <i className="bi bi-car-front-fill"></i>
+                    </div>
+                    <span>Local Driver & Private Vehicle Included</span>
                 </div>
             </div>
         </Link>
