@@ -3142,10 +3142,11 @@ h1, h2, h3, .logo-text {
 
 /* Branding Footer Styles */
 .brand-footer {
+    position: relative;
     background: #1a2332;
     color: var(--white);
     padding: 100px 5% 40px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: none;
 }
 
 .footer-grid {

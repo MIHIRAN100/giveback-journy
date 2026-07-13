@@ -7,6 +7,34 @@ const Footer = () => {
     const { currency, setCurrency, currencies } = useCurrency();
     return (
         <footer className="brand-footer">
+            {/* Curved/Wavy top border overlay */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                overflow: 'hidden',
+                lineHeight: 0,
+                transform: 'translateY(-99%)',
+                zIndex: 1,
+                pointerEvents: 'none'
+            }}>
+                <svg
+                    viewBox="0 0 1200 120"
+                    preserveAspectRatio="none"
+                    style={{
+                        position: 'relative',
+                        display: 'block',
+                        width: 'calc(100% + 1.3px)',
+                        height: 'clamp(35px, 5vw, 65px)'
+                    }}
+                >
+                    <path
+                        d="M0,90 Q700,-20 1200,60 L1200,120 L0,120 Z"
+                        fill="#1a2332"
+                    ></path>
+                </svg>
+            </div>
             <div className="footer-grid">
                 {/* Column 1: Brand & Contact */}
                 <div className="footer-column">

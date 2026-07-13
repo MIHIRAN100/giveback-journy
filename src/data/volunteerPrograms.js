@@ -4,6 +4,8 @@ import childcareImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.01.jpeg';
 import dogImg from '../assets/sri_lanka_dog_volunteer_1778937417628.png';
 import specialNeedsImg from '../assets/WhatsApp Image 2026-05-28 at 11.58.31.jpeg';
 import specialNeedsGallery1 from '../assets/sp need project/e4d809ba-aff8-43dd-a7a6-216fdf33707c.jpg';
+import imagesJpg from '../assets/images.jpg';
+import peaceSmileImg from '../assets/peace_begins_with_a_smile.jpg';
 import renovationImg from '../assets/IMG_6076.jpg';
 import renovationCoverImg from '../assets/IMG_6076.jpg';
 import renovationGallery1 from '../assets/construction volunteer/5cc85c60-1030-4ac7-9a36-08ecdb1ffdd2.jpg';
@@ -314,7 +316,8 @@ export const volunteerPrograms = [
         color: "#4e73df",
         galleryImages: [
             { src: specialNeedsGallery1, caption: "Supporting Care" },
-            { src: interviewImg, caption: "Volunteer Orientation" },
+            { src: peaceSmileImg, caption: "Peace Begins With A Smile" },
+            { src: imagesJpg, caption: "Special Needs Activity" },
             { src: cultureExp, caption: "Cultural Immersion" },
             { src: volunteer3, caption: "Making A Difference" },
             { src: volunteer1, caption: "Shared Moments" },
@@ -326,7 +329,9 @@ export const volunteerPrograms = [
             "Support Children And Adults With Physical Disabilities & Developmental Conditions",
             "Work Alongside Local Teachers, Caregivers, And Support Staff In Schools & Care Homes",
             "Ideal For Patient, Open-Minded, And Compassionate Volunteers Who Want Hands-On Experience",
-            "Includes Shared Kandy Volunteer Accommodation and 3 Traditional Meals Daily"
+            "Includes Shared Kandy Volunteer Accommodation and 3 Traditional Meals Daily",
+            "Gain Practical Experience in Special Education, Childcare, and Therapy Settings",
+            "Foster Meaningful Connection and Bring Joy to Under-resourced Care Facilities"
         ],
         sections: [
             {
