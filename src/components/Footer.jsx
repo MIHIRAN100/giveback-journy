@@ -92,6 +92,23 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="footer-disclaimer" style={{
+                borderTop: '1px solid rgba(255,255,255,0.05)',
+                paddingTop: '20px',
+                marginTop: '30px',
+                color: 'rgba(255,255,255,0.4)',
+                fontSize: '0.72rem',
+                lineHeight: '1.7',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+            }}>
+                <p>† Regular price values are based on comparable tour elements, private vehicle hire with local drivers, and standard guesthouse accommodation costs in Sri Lanka at the time of publication.</p>
+                <p>* Giveback Journey contribution scheme ensures a portion of your tour package costs directly funds our grassroots partners and ongoing projects in community education, wildlife conservation, and eco-farming across Sri Lanka. Impact verification is conducted quarterly and published for transparency.</p>
+                <p>Due to the dynamic nature of volunteering projects and tropical weather, itineraries and community placement activities are subject to slight changes to ensure safety and maximum project benefits. Any major updates will be verified and communicated directly to guests.</p>
+                <p>Apple® and Apple Logo® are registered trademarks of Apple Inc. Google Play and the Google Play Logo are trademarks of Google LLC.</p>
+            </div>
         </footer>
     );
 };

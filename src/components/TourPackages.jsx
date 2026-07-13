@@ -163,6 +163,147 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     );
 };
 
+const PromoCountdownBanner = () => {
+    const targetDate = new Date('2026-12-15T23:59:59').getTime();
+    const [timeLeft, setTimeLeft] = React.useState({ days: 155, hours: 12, minutes: 30, seconds: 0 });
+
+    React.useEffect(() => {
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                setTimeLeft({ days, hours, minutes, seconds });
+            }
+        };
+
+        updateTimer();
+        const interval = setInterval(updateTimer, 1000); // update every second
+        return () => clearInterval(interval);
+    }, [targetDate]);
+
+    return (
+        <div className="promo-countdown-banner" style={{
+            background: 'linear-gradient(135deg, #3b7fba 0%, #24527a 100%)',
+            borderRadius: '20px',
+            padding: '16px 28px',
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '30px',
+            boxShadow: '0 10px 30px rgba(59, 127, 186, 0.15)',
+            fontFamily: 'inherit',
+            flexWrap: 'wrap',
+            gap: '15px'
+        }}>
+            <style>
+                {`
+                @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.3; }
+                }
+                @media (max-width: 992px) {
+                    .promo-countdown-banner {
+                        flex-direction: column !important;
+                        text-align: center !important;
+                        align-items: center !important;
+                        padding: 20px !important;
+                    }
+                    .promo-countdown-banner .banner-middle {
+                        margin: 10px 0 !important;
+                        flex-wrap: wrap !important;
+                        justify-content: center !important;
+                    }
+                    .promo-countdown-banner .banner-right {
+                        align-items: center !important;
+                        text-align: center !important;
+                    }
+                }
+                `}
+            </style>
+            
+            {/* Left side: Heading */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                <h2 style={{ margin: 0, fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.3px', color: '#fff' }}>
+                    Ready, Save, <span style={{ color: '#8cd2ff' }}>GO!</span>
+                </h2>
+            </div>
+
+            {/* Middle: Pill Countdown */}
+            <div className="banner-middle" style={{
+                background: 'white',
+                borderRadius: '50px',
+                padding: '8px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '20px',
+                color: '#111',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.06)'
+            }}>
+                {/* Save info */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+                        <span style={{ fontSize: '0.62rem', fontWeight: 800, color: '#888', textTransform: 'uppercase', letterSpacing: '0.5px' }}>SAVE</span>
+                        <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#111' }}>$150</span>
+                        <span style={{ fontSize: '0.55rem', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.5px' }}>PER PERSON</span>
+                    </div>
+                    {/* Tag badge */}
+                    <div style={{
+                        background: '#3b7fba',
+                        color: 'white',
+                        borderRadius: '6px',
+                        padding: '4px 8px',
+                        fontSize: '0.85rem',
+                        fontWeight: 800,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px'
+                    }}>
+                        <i className="bi bi-tag-fill" style={{ fontSize: '0.85rem' }}></i>
+                        <span>1</span>
+                    </div>
+                </div>
+
+                {/* Vertical Divider */}
+                <div style={{ height: '30px', borderLeft: '1px solid #e0e0e0' }}></div>
+
+                {/* Timer block */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '32px' }}>
+                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#111', lineHeight: 1.1 }}>{timeLeft.days}</span>
+                        <span style={{ fontSize: '0.52rem', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.3px', marginTop: '2px' }}>DAYS</span>
+                    </div>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#3b7fba', animation: 'blink 1s infinite', alignSelf: 'flex-start', marginTop: '-2px' }}>:</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '32px' }}>
+                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#111', lineHeight: 1.1 }}>{timeLeft.hours}</span>
+                        <span style={{ fontSize: '0.52rem', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.3px', marginTop: '2px' }}>HOURS</span>
+                    </div>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#3b7fba', animation: 'blink 1s infinite', alignSelf: 'flex-start', marginTop: '-2px' }}>:</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '32px' }}>
+                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#111', lineHeight: 1.1 }}>{timeLeft.minutes}</span>
+                        <span style={{ fontSize: '0.52rem', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.3px', marginTop: '2px' }}>MINS</span>
+                    </div>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#3b7fba', animation: 'blink 1s infinite', alignSelf: 'flex-start', marginTop: '-2px' }}>:</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '32px' }}>
+                        <span style={{ fontSize: '1.15rem', fontWeight: 900, color: '#111', lineHeight: 1.1 }}>{timeLeft.seconds}</span>
+                        <span style={{ fontSize: '0.52rem', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.3px', marginTop: '2px' }}>SECS</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Right side: Drop Info */}
+            <div className="banner-right" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px', fontFamily: 'inherit' }}>
+                <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.1px' }}>Drop 1 Ends 15 Dec</span>
+                <span style={{ fontSize: '0.62rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>T&Cs apply.*</span>
+            </div>
+        </div>
+    );
+};
+
 const TourPackages = ({ searchTerm }) => {
     const [filterCategory, setFilterCategory] = React.useState('all');
 
@@ -393,6 +534,9 @@ const TourPackages = ({ searchTerm }) => {
                     Reset
                 </button>
             </div>
+
+            {/* Promo Countdown Banner */}
+            <PromoCountdownBanner />
 
             {/* MAIN LAYOUT: Sidebar Filters + Tour Listings */}
             <div className="tours-page-layout">
