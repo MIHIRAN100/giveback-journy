@@ -48,16 +48,14 @@ const Footer = () => {
                         Empowering local communities through meaningful travel. We reveal Sri Lanka's soul through curated heritage, wilderness, and impactful experiences.
                     </p>
                     <div className="footer-contact-info" style={{fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)'}}>
-                        <p style={{marginBottom: '8px'}}><i className="fa-solid fa-location-dot" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> No. 45, Peradeniya Road, Kandy, Sri Lanka</p>
-                        <p style={{marginBottom: '8px'}}><i className="fa-solid fa-phone" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> +94 81 234 5678</p>
+                        <p style={{marginBottom: '8px'}}><i className="fa-solid fa-location-dot" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> Sirimadura, Viharagoda, Wathugedara, Ambalangoda, Sri Lanka</p>
+                        <p style={{marginBottom: '8px'}}><i className="fa-solid fa-phone" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> +94 77 494 4909</p>
                         <p style={{marginBottom: '20px'}}><i className="fa-solid fa-envelope" style={{marginRight: '10px', color: 'var(--primary-green)'}}></i> Hello@givebackjourney.com</p>
                     </div>
                     <div className="footer-social" style={{display: 'flex', gap: '15px', fontSize: '1.4rem'}}>
                         <a href="https://wa.me/94774944909" target="_blank" rel="noreferrer" className="footer-link"><i className="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" className="footer-link"><i className="fa-brands fa-instagram"></i></a>
-                        <a href="#" className="footer-link"><i className="fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/journeygiveback?igsh=a21oZWZreHIzdTkw" target="_blank" rel="noreferrer" className="footer-link"><i className="fa-brands fa-instagram"></i></a>
                         <a href="#" className="footer-link"><i className="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" className="footer-link"><i className="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
 

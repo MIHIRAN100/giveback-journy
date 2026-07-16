@@ -345,7 +345,7 @@ Signed by: Mihiran G. (Managing Director)
                                     <div className="ds-doc-body">
                                         <p>This Mutual Non-Disclosure Agreement (the "Agreement") is entered into on <strong>{new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong> ("Effective Date"), by and between:</p>
                                         
-                                        <p><strong>1. Give Back Journey (Pvt) Ltd.</strong>, having its registered address at No. 45, Peradeniya Road, Kandy, Sri Lanka (hereinafter referred to as the <strong>"Disclosing Party"</strong>), and</p>
+                                        <p><strong>1. Give Back Journey (Pvt) Ltd.</strong>, having its registered address at Sirimadura, Viharagoda, Wathugedara, Ambalangoda, Sri Lanka (hereinafter referred to as the <strong>"Disclosing Party"</strong>), and</p>
                                         
                                         <p><strong>2. {signerName}</strong>, residing at/operating with the email contact <strong>{signerEmail}</strong> {signerOrg ? `and representing ${signerOrg}` : ''} (hereinafter referred to as the <strong>"Receiving Party"</strong>).</p>
 
