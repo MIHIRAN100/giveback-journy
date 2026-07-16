@@ -30,6 +30,7 @@ import TourDetailsPromoBanner from './components/TourDetailsPromoBanner';
 import { CompareProvider } from './context/CompareContext';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { ReactLenis } from 'lenis/react';
+import { Analytics } from '@vercel/analytics/react';
 
 const AppContent = () => {
   const [cookieVisible, setCookieVisible] = useState(false);
@@ -82,6 +83,7 @@ function App() {
         <CurrencyProvider>
           <CompareProvider>
             <AppContent />
+            <Analytics />
           </CompareProvider>
         </CurrencyProvider>
       </Router>

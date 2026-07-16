@@ -90,7 +90,7 @@ const ContactPage = () => {
                                     <div className="channel-info">
                                         <h4>WhatsApp Support</h4>
                                         <p>Fastest for quick questions</p>
-                                        <a href="https://wa.me/94771234567" target="_blank" rel="noreferrer">+94 77 123 4567</a>
+                                        <a href="https://wa.me/94774944909" target="_blank" rel="noreferrer">+94 77 494 4909</a>
                                     </div>
                                 </div>
 
