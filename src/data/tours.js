@@ -48,360 +48,347 @@ import routeMapKandyPremium from '../assets/route_map_kandy_premium.png';
 import routeMapKitulgalaPremium from '../assets/route_map_kitulgala_premium.png';
 import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
 
-const signatureReviews = [
-    { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2026", profile: "British, 24", trip: "Signature Experience", comment: "The sunrise climb at Sigiriya was the highlight of my trip! Everything was perfectly organized.", color: "#fff3e0" },
-    { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", profile: "USA, 29", trip: "Signature Experience", comment: "The train journey from Kandy to Ella was breathtaking. Highly recommend this signature tour.", color: "#f3e5f5" },
-    { id: 3, name: "Elena Rossi", rating: 5, date: "August 2024", profile: "Italian, 22", trip: "Signature Experience", comment: "Minneriya safari was amazing! We saw so many elephants. A truly essential Sri Lanka experience.", color: "#e0f2f1" },
-    { id: 4, name: "James Wilson", rating: 5, date: "July 2023", profile: "Canadian, 31", trip: "Signature Experience", comment: "Perfect balance between culture and relaxation. The south coast stay was the perfect ending.", color: "#fbe9e7" },
-    { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2022", profile: "French, 20", trip: "Signature Experience", comment: "Galle Fort at sunset is a dream. The hospitality throughout the week was exceptional.", color: "#e8f5e9" },
-    { id: 6, name: "Robert Brown", rating: 5, date: "May 2021", profile: "USA", trip: "Signature Experience", comment: "The tour guide was exceptionally knowledgeable. Highly recommended!", color: "#fff" },
-    { id: 7, name: "Alice Green", rating: 4, date: "April 2020", profile: "UK", trip: "Signature Experience", comment: "Great experience overall, though the bus ride was a bit long.", color: "#fff" },
-    { id: 8, name: "Tom Cruise", rating: 5, date: "March 2019", profile: "USA", trip: "Signature Experience", comment: "Felt like a movie! Every location was stunning.", color: "#fff" },
-    { id: 9, name: "Emma Stone", rating: 5, date: "February 2018", profile: "Australia", trip: "Signature Experience", comment: "The wildlife safari was out of this world.", color: "#fff" },
-    { id: 10, name: "Lucas Silva", rating: 5, date: "January 2017", profile: "Brazil", trip: "Signature Experience", comment: "Amazing food and culture. Love Sri Lanka!", color: "#fff" },
-    { id: 11, name: "Zoe Kravitz", rating: 5, date: "December 2016", profile: "USA", trip: "Signature Experience", comment: "The beaches are pristine. Very relaxing.", color: "#fff" },
-    { id: 12, name: "Ryan Gosling", rating: 4, date: "November 2015", profile: "Canada", trip: "Signature Experience", comment: "Great service and beautiful hotels.", color: "#fff" },
-    { id: 13, name: "Michael Chen", rating: 3, date: "October 2023", profile: "Singapore", trip: "Signature Experience", comment: "The sights were incredible, but the weather was unusually rainy during our train ride which blocked some views.", color: "#fff" },
-    { id: 14, name: "Sophia Martinez", rating: 2, date: "September 2022", profile: "Spain", trip: "Signature Experience", comment: "Beautiful country, but I found the local food much too spicy for my stomach. Ensure you ask for non-spicy versions.", color: "#fff" },
-    { id: 15, name: "David Beckham", rating: 4, date: "August 2021", profile: "UK", trip: "Signature Experience", comment: "Excellent itinerary and private transport. Smooth communication with our tour consultant.", color: "#fff" },
-    { id: 16, name: "Liam Hemsworth", rating: 3, date: "July 2020", profile: "Australia", trip: "Signature Experience", comment: "Enjoyed the safari and beach towns, but the drives between cities can feel a bit exhausting.", color: "#fff" },
-    // Adding 140 more reviews with a mix of 5, 4, 3, and 2 stars to reach 150+ reviews
-    ...Array(140).fill().map((_, i) => ({
-        id: i + 17,
-        name: ["Alexander M.", "Charlotte S.", "Daniel K.", "Emily R.", "Frederic L.", "Gabriella N.", "James P.", "Katherine H.", "Oliver V.", "Sophia W."][i % 10],
-        rating: (i % 14 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)),
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
-        trip: "Essential Sri Lanka",
-        comment: [
-            "Sigiriya Lion Rock at sunrise was out of this world. Highly recommend climbing Pidurangala as well!",
-            "Excellent 7-day overview of the country. The scenic train from Kandy to Ella was a major highlight.",
-            "Wonderful experience seeing the wild elephants on safari. A well-organized tour with safe drivers.",
-            "The perfect balance of cultural heritage and coastal beach relaxation. Galle Fort was incredibly charming.",
-            "Beautiful landscapes and very welcoming local people. Ella was our favorite stop on the tour.",
-            "Great itinerary, though the drive from Sigiriya to Kandy had a bit of local traffic. Still worth it!",
-            "Sigiriya and Ella were spectacular. The Ceylon tea factory visit was very educational and tasty.",
-            "Loved Negombo beach and the south coast! The hotels were clean and located in fantastic spots.",
-            "Amazing trip! Climbing Sigiriya was tough but the view from the top is absolutely breathtaking.",
-            "Very well planned tour. Our driver was extremely friendly, professional, and knew the best local lunch spots."
-        ][i % 10],
-        color: "#fff"
-    }))
+// --- UNIQUE REVIEW GENERATOR SYSTEM ---
+const REVIEW_FIRST_NAMES = [
+    "Alexander", "Charlotte", "Daniel", "Emily", "Frederic", "Gabriella", "James", "Katherine", 
+    "Oliver", "Sophia", "Lucas", "Emma", "Benjamin", "Mia", "William", "Amelia", 
+    "Henry", "Evelyn", "Sebastian", "Harper", "Jack", "Abigail", "Owen", "Ella", 
+    "Liam", "Aria", "Jackson", "Chloe", "Levi", "Camila", "Mateo", "Penelope", 
+    "Wyatt", "Layla", "Noah", "Riley", "Julian", "Zoey", "Ethan", "Nora", 
+    "Leo", "Lily", "David", "Eleanor", "Thomas", "Hannah", "Caleb", "Lillian", 
+    "Ryan", "Addison", "Adrian", "Aubrey", "Eli", "Ellie", "Gabriel", "Stella", 
+    "Isaac", "Natalie", "Francis", "Zoe", "Hugo", "Clara", "Antoine", "Elena",
+    "Marco", "Sven", "Astrid", "Yuki", "Kenji", "Priya", "Arjun", "Lars",
+    "Matteo", "Isabella", "Dominic", "Valerie", "Felix", "Saskia", "Tobias", "Nico"
 ];
 
-const kandyReviews = [
-    { id: 1, name: "Jessica Lee", rating: 5, date: "October 2026", profile: "Traveler", trip: "Kandy Day Trip", comment: "Watching the elephants walk to the river in Pinnawala was magical! A must-do day trip.", color: "#e8f5e9" },
-    { id: 2, name: "David Miller", rating: 5, date: "September 2024", profile: "Traveler", trip: "Kandy Day Trip", comment: "The Temple of the Tooth is so spiritual and peaceful. Kandy is a beautiful city.", color: "#e3f2fd" },
-    { id: 3, name: "Emma Watson", rating: 5, date: "August 2022", profile: "UK", trip: "Kandy Day Trip", comment: "Botanical gardens were stunning. Our driver was very helpful with picking us up.", color: "#fff3e0" },
-    { id: 4, name: "Hans Zimmer", rating: 5, date: "July 2019", profile: "German", trip: "Kandy Day Trip", comment: "The cultural show music and dance were very impressive. Great way to spend a day.", color: "#f3e5f5" },
-    { id: 5, name: "Sofia Loren", rating: 5, date: "June 2016", profile: "Italy", trip: "Kandy Day Trip", comment: "Short but very comprehensive. We saw all the major sights in just one day.", color: "#e0f2f1" },
-    // Adding 125 more reviews with a mix of 5, 4, 3, and 2 stars
-    ...Array(125).fill().map((_, i) => ({
-        id: i + 6,
-        name: ["John D.", "Sarah M.", "David L.", "Emily W.", "Michael K.", "Anna S.", "James B.", "Elena P.", "Robert C.", "Laura G."][i % 10],
-        rating: (i % 15 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)),
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Traveler", "Solo Explorer", "Family Trip", "Couple", "Backpacker"][i % 5],
-        trip: "Kandy Day Trip",
-        comment: [
-            "Had an amazing time in Kandy. The Pinnawala experience was absolutely beautiful!",
-            "Great tour with professional guide. The tea factory visit was very educational.",
-            "Really enjoyed seeing the elephants bath in the river. Truly a unique experience.",
-            "Highly recommended day trip. Covered all key sights comfortably.",
-            "Loved the botanical gardens and the scenic drive up the hills.",
-            "Elephants were wonderful to watch, but the driving in Kandy can be slow due to traffic.",
-            "Well organised trip, worth the money. Driver was friendly and knowledgeable.",
-            "Ceylon tea tasting was superb! A great introduction to Sri Lankan tea culture.",
-            "Fascinating process at the dung paper factory. Highly recommend seeing it.",
-            "A packed day full of beautiful sights, culture, and nature. Very happy we booked."
-        ][i % 10],
-        color: "#fff"
-    }))
+const REVIEW_LAST_INITIALS = ["M.", "S.", "K.", "R.", "L.", "N.", "P.", "H.", "V.", "W.", "B.", "C.", "D.", "F.", "G.", "J.", "T.", "O.", "A.", "E.", "Z.", "Y."];
+
+const REVIEW_PROFILES = [
+    "Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker",
+    "Culture Lover", "Nature Lover", "Thrill Seeker", "History Buff", "Photography Enthusiast"
 ];
 
-const coastalReviews = [
-    { id: 1, name: "Mateo Silva", rating: 5, date: "October 2026", profile: "Brazilian", trip: "Southern Escape", comment: "Surfing in Weligama was a dream. The coastal vibe of this tour is perfect.", color: "#fff3e0" },
-    { id: 2, name: "Yuna Kim", rating: 5, date: "September 2024", profile: "Korean", trip: "Southern Escape", comment: "Mirissa beaches are the best. Watching the whales was a life-changing experience.", color: "#f3e5f5" },
-    { id: 3, name: "Noah Williams", rating: 5, date: "August 2022", profile: "USA", trip: "Southern Escape", comment: "Galle Fort is so historic and charming. Loved the boutique stays along the coast.", color: "#e0f2f1" },
-    { id: 4, name: "Mia Dubois", rating: 5, date: "July 2020", profile: "French", trip: "Southern Escape", comment: "The seafood dinners by the beach were incredible. Such a relaxing week.", color: "#fbe9e7" },
-    { id: 5, name: "Leo Rossi", rating: 5, date: "June 2018", profile: "Italian", trip: "Southern Escape", comment: "Sunset at Coconut Tree Hill is a must-see. The southern coast is beautiful.", color: "#e8f5e9" },
-    { id: 6, name: "Sandro Moretti", rating: 3, date: "May 2016", profile: "Italy", trip: "Southern Escape", comment: "The beaches were beautiful, but the travel times between coastal towns were longer than expected due to local traffic.", color: "#fff" },
-    { id: 7, name: "Anna Schmidt", rating: 4, date: "April 2015", profile: "Germany", trip: "Southern Escape", comment: "Well-organized tour with great guesthouse selections. Some locations were a bit crowded.", color: "#fff" },
-    { id: 8, name: "Robert Klein", rating: 2, date: "March 2023", profile: "Netherlands", trip: "Southern Escape", comment: "Unfortunately, the extreme humidity during this season made the outdoor activities very difficult for me personally.", color: "#fff" },
-    // Adding 142 more reviews with a mix to reach 150 total
-    ...Array(142).fill().map((_, i) => ({
-        id: i + 9,
-        name: ["James L.", "Elena P.", "Chen W.", "Sarah J.", "Ahmed K.", "Linda M.", "Hiroshi T.", "Clara S.", "David R.", "Emma B."][i % 10],
-        rating: (i % 12 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 4 === 0) ? 4 : 5)), // Mix of 2, 3, 4, and 5 stars
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Traveler", "Solo Explorer", "Family Trip", "Couple", "Backpacker"][i % 5],
-        trip: "Southern Escape",
-        comment: [
-            "Amazing coastal experience! The sunsets were unforgettable.",
-            "Great value for money. The local seafood is a must-try.",
-            "A bit hot and humid, but the beaches make up for it.",
-            "Well paced tour. Galle Fort was my favorite part.",
-            "Wonderful guide and comfortable transport throughout.",
-            "The whale watching was incredible, saw three different whales!",
-            "Beautiful beaches but some areas were quite busy with tourists.",
-            "Loved the surf lessons in Weligama, the instructors were great.",
-            "A very relaxing week by the ocean. Highly recommended.",
-            "The hospitality of the guesthouse owners was heartwarming."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+const REVIEW_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-const adventureReviews = [
-    { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2026", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every bit of it.", color: "#e8f5e9", images: [jakeReviewImg, jakeReviewImg2] },
-    { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2024", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the rainforest to the mountains of Ella was spectacular.", color: "#e3f2fd" },
-    { id: 3, name: "Ryan Reyn", rating: 5, date: "August 2022", profile: "Canadian", trip: "Highlands & Coast", comment: "Seeing a leopard in Yala was the highlight of my trip. The guide was expert.", color: "#fff3e0" },
-    { id: 4, name: "Gal Gadot", rating: 5, date: "July 2020", profile: "Israel", trip: "Highlands & Coast", comment: "Little Adam's Peak hike was easy but offered the most incredible views of Ella.", color: "#f3e5f5" },
-    { id: 5, name: "Chris Evans", rating: 5, date: "June 2018", profile: "USA", trip: "Highlands & Coast", comment: "Hikkaduwa is the perfect place to end an adventure. Great food and beach vibes.", color: "#e0f2f1" },
-    { id: 6, name: "Priya Kapoor", rating: 5, date: "May 2016", profile: "India", trip: "Highlands & Coast", comment: "The Madu River safari was so peaceful. Seeing the cinnamon peeling was a unique experience I'll never forget.", color: "#fff3e0" },
-    { id: 7, name: "Oliver Hughes", rating: 4, date: "April 2015", profile: "Australian, 27", trip: "Highlands & Coast", comment: "Yala safari was incredible but the early morning start was tough. Totally worth it when we spotted elephants and a sloth bear!", color: "#e3f2fd" },
-    { id: 8, name: "Camille Laurent", rating: 5, date: "March 2023", profile: "French, 25", trip: "Highlands & Coast", comment: "From jungle rafting to beach sunsets in one week, this tour has the perfect mix of adventure and relaxation.", color: "#e8f5e9" },
-    // Adding 155 dynamic reviews with a combination of 1, 2, 3, 4, and 5 stars
-    ...Array(155).fill().map((_, i) => ({
-        id: i + 9,
-        name: ["Benjamin M.", "Sophia R.", "Lucas D.", "Emma F.", "Arthur L.", "Mia N.", "William P.", "Olivia H.", "Gabriel V.", "Chara W."][i % 10],
-        rating: (i % 25 === 0) ? 1 : ((i % 15 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
-        trip: "Highlands & Coast",
-        comment: [
-            "White water rafting in Kitulgala was so thrilling and safe! An absolute must-do.",
-            "Loved the hiking around Little Adam's Peak. The views were breathtaking.",
-            "Yala safari was incredible! We saw an elusive Sri Lankan leopard basking on a rock.",
-            "Wonderful boat safari on the Madu River, seeing the cinnamon harvesting islands was great.",
-            "Hikkaduwa beach is pristine! The seafood dinner by the waves was the perfect finale.",
-            "Excellent tour itinerary and friendly driver. Highly recommended for adventure seekers.",
-            "The transition from jungle rafting to misty mountains to the coast was beautiful.",
-            "We enjoyed the safari and the train ride, but the drive between Yala and Hikkaduwa felt a bit long.",
-            "Great experience! The Nine Arches Bridge is a beautiful architectural marvel in the jungle.",
-            "Amazing hospitality from the local guides and guesthouses. We felt so taken care of."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+function buildTourReviews(tourId, tourTripName, featuredReviews, commentPool, totalCount = 130) {
+    const result = [...featuredReviews];
+    const startId = featuredReviews.length + 1;
+    const needCount = totalCount - featuredReviews.length;
 
-const galleReviews = [
-    { id: 1, name: "Isabella Müller", rating: 5, date: "October 2026", profile: "German, 28", trip: "Galle Fort Escape", comment: "Walking along the fort ramparts at sunset was absolutely magical. The boutique cafes inside the fort are charming!", color: "#fff3e0" },
-    { id: 2, name: "Luca Bianchi", rating: 5, date: "September 2023", profile: "Italian, 32", trip: "Galle Fort Escape", comment: "Galle Fort is a hidden gem. The colonial architecture, the lighthouse, and the local artisan shops made this a perfect short getaway.", color: "#e0f2f1" },
-    { id: 3, name: "Charlotte Brown", rating: 4, date: "August 2020", profile: "UK, 26", trip: "Galle Fort Escape", comment: "Loved the history and the slow pace of life inside the fort. The cliff divers were so entertaining to watch!", color: "#f3e5f5" },
-    { id: 4, name: "Hiroshi Tanaka", rating: 5, date: "July 2017", profile: "Japanese, 30", trip: "Galle Fort Escape", comment: "Three days was the perfect amount of time. The Dutch hospital area has amazing restaurants and the jewelry workshops were fascinating.", color: "#e8f5e9" },
-    // Adding 90 dynamic reviews to reach 90+ reviews total
-    ...Array(90).fill().map((_, i) => ({
-        id: i + 5,
-        name: ["Julian S.", "Victoria M.", "Daniel O.", "Isabella R.", "Christian L.", "Camila N.", "Elijah P.", "Aria H.", "Gabriel B.", "Hailey W."][i % 10],
-        rating: (i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)), // Star rating distribution (2, 3, 4, 5 stars)
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "History Buff"][i % 5],
-        trip: "Galle Fort Escape",
-        comment: [
-            "Walking along the ancient Dutch fort ramparts at sunset was magical! A highly recommended experience.",
-            "Wonderful short escape. Galle Fort is rich in history and colonial charm, perfect for couples.",
-            "Loved the boutique cafes, local craft shopping, and the famous Galle Lighthouse.",
-            "Excellent dining at the Dutch Hospital courtyard. The seafood was absolutely exquisite.",
-            "A beautifully paced 3-day tour. Our private guide made history come alive.",
-            "Galle Fort has a wonderful bohemian atmosphere. The gem and jewelry stores were fascinating.",
-            "Perfect weekend getaway! Safe streets, beautiful architecture, and lovely ocean breezes.",
-            "Loved watching the local cliff divers from the ramparts. A very unique highlight!",
-            "Great stay inside the historic fort. Very clean guesthouses and wonderful Sri Lankan hospitality.",
-            "Excellent value. Strolling through the cobblestone streets lined with colonial villas was so relaxing."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+    for (let i = 0; i < needCount; i++) {
+        const fnIndex = (tourId * 19 + i * 7) % REVIEW_FIRST_NAMES.length;
+        const liIndex = (tourId * 23 + i * 11) % REVIEW_LAST_INITIALS.length;
+        const name = `${REVIEW_FIRST_NAMES[fnIndex]} ${REVIEW_LAST_INITIALS[liIndex]}`;
 
-const mistReviews = [
-    { id: 1, name: "Freya Andersen", rating: 5, date: "October 2026", profile: "Danish, 24", trip: "Mist & Mountains", comment: "The Blue Train journey was the most beautiful rail experience of my life. Leaning out the window through the tea estates was pure magic.", color: "#e8f5e9" },
-    { id: 2, name: "Tomás García", rating: 5, date: "September 2023", profile: "Spanish, 29", trip: "Mist & Mountains", comment: "Nuwara Eliya felt like stepping into another world. The tea factory visit and tasting were highlights I didn't expect to love so much.", color: "#e3f2fd" },
-    { id: 3, name: "Sophie Taylor", rating: 4, date: "August 2020", profile: "Australian, 27", trip: "Mist & Mountains", comment: "Ella Rock hike was challenging but the view from the top was absolutely worth every step. Nine Arches Bridge is iconic!", color: "#fff3e0" },
-    { id: 4, name: "Henrik Johansson", rating: 5, date: "July 2017", profile: "Swedish, 33", trip: "Mist & Mountains", comment: "Kandy's Temple of the Tooth was deeply spiritual. The entire 5-day journey through the highlands felt like a dream.", color: "#f3e5f5" },
-    // Adding 196 dynamic reviews to reach 200 total reviews
-    ...Array(196).fill().map((_, i) => ({
-        id: i + 5,
-        name: ["Julian S.", "Victoria M.", "Daniel O.", "Isabella R.", "Christian L.", "Camila N.", "Elijah P.", "Aria H.", "Gabriel B.", "Hailey W."][i % 10],
-        rating: (i % 25 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 12 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "Nature Lover"][i % 5],
-        trip: "Mist & Mountains",
-        comment: [
-            "The train ride through the misty tea estates was unforgettable. Like a dream!",
-            "Loved the cool climate in Nuwara Eliya. The tea factory tour was very insightful.",
-            "Ella Rock is a challenging hike but the views at the top are incredible.",
-            "Beautiful landscapes everywhere you look. The Nine Arches Bridge is amazing.",
-            "Great itinerary, but the winding roads were a bit nauseating. Still worth it.",
-            "Such a peaceful trip into nature. The guesthouses had stunning mountain views.",
-            "Kandy was too busy for me, but once we reached the mountains it was perfect.",
-            "The scenery is beautiful but it rained heavily during our trip, limiting visibility.",
-            "Wonderful guide and comfortable transport. Enjoyed learning about Ceylon tea.",
-            "Disappointed because we missed the train due to schedule changes, but the drive was nice."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+        const monthIndex = (tourId * 5 + i * 13) % REVIEW_MONTHS.length;
+        const year = 2019 + ((tourId * 3 + i * 2) % 8); // 2019 - 2026
+        const date = `${REVIEW_MONTHS[monthIndex]} ${year}`;
 
-const kandyHighlightsReviews = [
-    { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2026", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were absolutely stunning, the orchid collection alone is worth the visit. Our guide was so knowledgeable!", color: "#e8f5e9" },
-    { id: 2, name: "Ben Carter", rating: 5, date: "September 2025", profile: "USA, 31", trip: "Kandy Highlights", comment: "The cultural dance show was electrifying! The fire-walkers were incredible. Perfect introduction to Sri Lankan culture.", color: "#e3f2fd" },
-    { id: 3, name: "Yuki Nakamura", rating: 4, date: "August 2024", profile: "Japanese, 28", trip: "Kandy Highlights", comment: "Kandy Lake at sunset is so peaceful. A great day trip that covers all the must-see spots without feeling rushed.", color: "#fff3e0" },
-    // 2-star reviews (5 requested)
-    { id: 4, name: "Mark Wilson", rating: 2, date: "July 2023", profile: "UK", trip: "Kandy Highlights", comment: "The temple was beautiful but way too crowded. We spent more time in traffic than actually seeing the sights.", color: "#fff" },
-    { id: 5, name: "Elena Schmidt", rating: 2, date: "June 2022", profile: "Germany", trip: "Kandy Highlights", comment: "The botanical gardens were nice, but the guide rushed us through. Felt like a tourist trap at the spice garden.", color: "#fff" },
-    { id: 6, name: "John Doe", rating: 2, date: "May 2021", profile: "USA", trip: "Kandy Highlights", comment: "Too much driving for a one-day trip. Kandy is chaotic and the humidity was unbearable.", color: "#fff" },
-    { id: 7, name: "Sarah Miller", rating: 2, date: "April 2020", profile: "Canada", trip: "Kandy Highlights", comment: "The cultural show was okay, but the seating was very uncomfortable and it was extremely loud.", color: "#fff" },
-    { id: 8, name: "Pierre Dubois", rating: 2, date: "March 2019", profile: "France", trip: "Kandy Highlights", comment: "Disappointed with the lunch options provided. The 'authentic' meal was way too spicy and made me feel unwell.", color: "#fff" },
-    // 1-star reviews (4 requested)
-    { id: 9, name: "Robert Taylor", rating: 1, date: "February 2018", profile: "Australia", trip: "Kandy Highlights", comment: "Our driver was late and spoke very little English. We missed half the itinerary due to poor planning.", color: "#fff" },
-    { id: 10, name: "Linda Brown", rating: 1, date: "January 2017", profile: "UK", trip: "Kandy Highlights", comment: "Waste of money. The Pinnawala experience felt unethical and the city of Kandy was just dirty and loud.", color: "#fff" },
-    { id: 11, name: "Michael Chen", rating: 1, date: "December 2016", profile: "Singapore", trip: "Kandy Highlights", comment: "It rained the whole day and there was no backup plan. We just sat in the car for 4 hours.", color: "#fff" },
-    { id: 12, name: "Sophia Rossi", rating: 1, date: "November 2015", profile: "Italy", trip: "Kandy Highlights", comment: "The tour was cancelled last minute with no proper explanation. Very unprofessional service.", color: "#fff" },
-    // Adding 195 dynamic reviews to reach 200+ reviews total
-    ...Array(195).fill().map((_, i) => ({
-        id: i + 13,
-        name: ["John D.", "Emma S.", "Oliver L.", "Charlotte W.", "William M.", "Amelia K.", "James B.", "Sophia P.", "Benjamin C.", "Mia G."][i % 10],
-        rating: (i % 30 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Star rating distribution (1, 2, 3, 4, 5 stars)
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Getaway", "Couple", "Culture Lover"][i % 5],
-        trip: "Kandy Highlights",
-        comment: [
-            "The Temple of the Tooth Relic was deeply spiritual and peaceful. A beautiful cultural experience.",
-            "Loved the Royal Botanical Gardens in Peradeniya! The orchid house is magnificent.",
-            "The cultural dance show and fire-walkers were amazing. The drumming was electrifying!",
-            "Kandy Lake at sunset is so scenic and peaceful. A great way to end a day tour.",
-            "Wonderful private tour of Kandy. Our guide was very knowledgeable and friendly.",
-            "A well-organized day trip. The botanical gardens were beautiful, though traffic in Kandy is quite heavy.",
-            "The Ceylon tea tasting session was excellent! Very educational and fresh.",
-            "Loved the local architecture and Kandy streets. Great service from start to finish.",
-            "A packed day full of beautiful sights, history, and vibrant culture. Very happy we booked.",
-            "Amazing experience seeing the Temple. Highly recommend this tour for a quick Kandy visit."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+        const profileIndex = (tourId * 7 + i * 3) % REVIEW_PROFILES.length;
+        const profile = REVIEW_PROFILES[profileIndex];
 
-const adamsPeakReviews = [
-    { id: 1, name: "Marcus Weber", rating: 5, date: "October 2025", profile: "German, 27", trip: "Adam's Peak Quest", comment: "The night climb was grueling but watching the sunrise from the summit made everything worth it. A truly spiritual experience.", color: "#e8f5e9" },
-    { id: 2, name: "Anika Patel", rating: 5, date: "September 2025", profile: "Indian, 25", trip: "Adam's Peak Quest", comment: "Climbing alongside thousands of pilgrims with lanterns lighting the path was unforgettable. The shadow of the peak at sunrise is mystical.", color: "#e3f2fd" },
-    { id: 3, name: "James O'Brien", rating: 4, date: "August 2025", profile: "Irish, 30", trip: "Adam's Peak Quest", comment: "Physically demanding but one of the most rewarding experiences of my life. The drive through tea country to Dalhousie was gorgeous too.", color: "#fff3e0" },
-    { id: 4, name: "Clara Nilsson", rating: 5, date: "July 2025", profile: "Swedish, 23", trip: "Adam's Peak Quest", comment: "I've climbed mountains all over the world, but Adam's Peak has a magic that's unlike anywhere else. The communal spirit of the climb is beautiful.", color: "#f3e5f5" },
-    { id: 5, name: "Luca Rossi", rating: 5, date: "June 2025", profile: "Italian, 29", trip: "Adam's Peak Quest", comment: "The view from the top is simply out of this world. Hard climb, but the guides were very supportive.", color: "#fff" },
-    { id: 6, name: "Emma Thompson", rating: 5, date: "May 2025", profile: "UK, 31", trip: "Adam's Peak Quest", comment: "A spiritual journey that everyone should experience once. The energy at the summit is incredible.", color: "#fff" },
-    { id: 7, name: "Liam Chen", rating: 4, date: "April 2025", profile: "Singapore, 26", trip: "Adam's Peak Quest", comment: "Very steep stairs but well maintained. The sunrise was the highlight of my trip to Sri Lanka.", color: "#fff" },
-    { id: 8, name: "Sarah Jenkins", rating: 5, date: "March 2025", profile: "USA, 34", trip: "Adam's Peak Quest", comment: "Truly life-changing. The lanterns stretching up the mountain looked like a stairway to heaven.", color: "#fff" },
-    { id: 9, name: "Hiroshi Tanaka", rating: 5, date: "February 2025", profile: "Japan, 40", trip: "Adam's Peak Quest", comment: "A profound cultural and physical challenge. Very happy I did this with Give Back Journey.", color: "#fff" },
-    { id: 10, name: "Elena Petrova", rating: 4, date: "January 2025", profile: "Russia, 28", trip: "Adam's Peak Quest", comment: "Cold at the top! Bring a jacket. The sunrise was spectacular.", color: "#fff" },
-    // Adding 114 more reviews with a mix to reach ~4.7 average
-    ...Array(114).fill().map((_, i) => ({
-        id: i + 11,
-        name: ["John D.", "Maria S.", "David L.", "Sophie K.", "Alex M.", "Rachel T.", "Thomas B.", "Oliver W.", "Emily H.", "Daniel F."][i % 10],
-        rating: (i % 7 === 0) ? 3 : ((i % 3 === 0) ? 4 : 5), // Mix of 3, 4, and 5 stars
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: "Verified Traveler",
-        trip: "Adam's Peak Quest",
-        comment: [
-            "Unforgettable experience! The sunrise was magical.",
-            "Hardest climb of my life but worth every step.",
-            "Stunning views and amazing atmosphere.",
-            "A must-do in Sri Lanka. Truly spiritual.",
-            "Well organized tour and great support from the team.",
-            "The climb was tough but the reward was better.",
-            "Simply breathtaking. I will never forget that sunrise.",
-            "Great cultural experience. Loved the pilgrim atmosphere.",
-            "A physical challenge with a beautiful reward.",
-            "Magical night under the stars climbing to the peak."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+        const commentObj = commentPool[i % commentPool.length];
+        const comment = typeof commentObj === 'string' ? commentObj : commentObj.comment;
+        const rating = (typeof commentObj === 'object' && commentObj.rating) 
+            ? commentObj.rating 
+            : ((i % 18 === 0) ? 2 : ((i % 10 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5)));
 
-const kitulgalaReviews = [
-    { id: 1, name: "Daniel Cooper", rating: 5, date: "October 2025", profile: "UK, 28", trip: "Kitulgala Rafting", comment: "The rapids were exciting but safe, perfect for a first-timer like me! The jungle scenery around the river was breathtaking.", color: "#e8f5e9" },
-    { id: 2, name: "Maria Santos", rating: 5, date: "September 2025", profile: "Portuguese, 24", trip: "Kitulgala Rafting", comment: "The riverside lunch after rafting was so authentic and delicious. Sitting by the Kelani River in the jungle was pure bliss.", color: "#e3f2fd" },
-    { id: 3, name: "Ethan Brooks", rating: 4, date: "August 2025", profile: "Australian, 32", trip: "Kitulgala Rafting", comment: "Great day trip from Kandy! The drive through the countryside was scenic and the rafting guide was professional and fun.", color: "#fff3e0" },
-    // Adding 147 dynamic reviews to reach 150 total reviews
-    ...Array(147).fill().map((_, i) => ({
-        id: i + 4,
-        name: ["Samuel T.", "Rebecca W.", "Jacob S.", "Chloe M.", "Ethan P.", "Mia L.", "Benjamin H.", "Lily C.", "William R.", "Ava G."][i % 10],
-        rating: (i % 25 === 0) ? 1 : ((i % 18 === 0) ? 2 : ((i % 12 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // 1, 2, 3, 4, 5 star rating distribution
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple", "Thrill Seeker"][i % 5],
-        trip: "Kitulgala Rafting",
-        comment: [
-            "White water rafting here was amazing! The guides were very professional and made it fun.",
-            "Loved the beautiful jungle scenery along the Kelani River. A great escape.",
-            "The rapids were exciting but safe. Perfect activity for our family.",
-            "A well-organized day trip. The riverside lunch was a highlight for me.",
-            "The drive from Kandy was quite long, but the rafting experience made up for it.",
-            "Really fun experience, though the water levels were a bit low during our visit.",
-            "I felt a bit nervous at first, but the instructors were very reassuring.",
-            "It started raining halfway through, which made it even more adventurous!",
-            "Great value for an action-packed day. Highly recommend if you like adventure.",
-            "The changing facilities were basic, but the rafting itself was fantastic."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+        result.push({
+            id: startId + i,
+            name,
+            rating,
+            date,
+            profile,
+            trip: tourTripName,
+            comment,
+            color: "#fff"
+        });
+    }
 
-const sigiriyaEscapeReviews = [
-    { id: 1, name: "Charlotte S.", rating: 5, date: "November 2025", profile: "Verified Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "The sunrise at Sigiriya Fortress was absolutely breath-taking, and the overnight stay at the nature resort was peaceful. Perfect 2-day escape!", color: "#fff3e0" },
-    { id: 2, name: "Alexander M.", rating: 5, date: "October 2025", profile: "Couple", trip: "Sigiriya Nature & Culture Escape", comment: "We loved the sunset hike up Pidurangala and the Dambulla Cave Temple. The driver was professional and safe.", color: "#e8f5e9" },
-    { id: 3, name: "Mia N.", rating: 4, date: "September 2025", profile: "Solo Explorer", trip: "Sigiriya Nature & Culture Escape", comment: "Excellent overnight tour. The elephant safari was amazing, saw so many wild herds. Accommodations were clean and cozy.", color: "#e3f2fd" },
-    { id: 4, name: "Lucas D.", rating: 2, date: "August 2025", profile: "Verified Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "Great sights but the weather was very hot, making the climb difficult. Guest house wifi was slow.", color: "#fbe9e7" },
-    { id: 5, name: "Oliver H.", rating: 1, date: "July 2025", profile: "Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "Had to cancel the climb due to heavy rain. No alternative activities were offered for the afternoon.", color: "#fff" },
-    ...Array(195).fill().map((_, i) => ({
-        id: i + 6,
-        name: ["John D.", "Sarah M.", "David L.", "Emily W.", "Michael K.", "Anna S.", "James B.", "Elena P.", "Robert C.", "Laura G."][i % 10],
-        rating: (i % 22 === 0) ? 1 : ((i % 14 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Mix of 1, 2, 3, 4, and 5 stars
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Trip", "Couple", "Nature Lover"][i % 5],
-        trip: "Sigiriya Nature & Culture Escape",
-        comment: [
-            "Pidurangala hike at sunset was stunning. The view of Lion Rock is unbelievable.",
-            "Wonderful elephant safari! Highly recommend the overnight stay to avoid rushing.",
-            "The ancient cave temple in Dambulla is rich in history and art. Very spiritual place.",
-            "Great 2-day overview of the Cultural Triangle. Perfectly paced and very comfortable.",
-            "Sunrise at Sigiriya is tough but beautiful. Watch out for the monkeys at the base!",
-            "Excellent hospitality at the guest house. The traditional dinner and breakfast were delicious.",
-            "The jeep safari was the highlight of our trip. Saw majestic giants up close.",
-            "A well-planned overnight tour from Kandy. Driver was informative and extremely friendly.",
-            "Lovely experience visiting the Matale Hindu temple on the return. So colorful!",
-            "Perfect blend of culture, history, and nature. Highly recommend Sigiriya!"
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+    return result;
+}
 
-const sigiriyaSafariReviews = [
-    { id: 1, name: "David K.", rating: 5, date: "November 2025", profile: "Verified Traveler", trip: "Sigiriya & Elephant Safari", comment: "Outstanding day trip! Climbing Sigiriya in the morning and seeing herds of wild elephants in the afternoon was magical. Our driver was wonderful.", color: "#fff3e0" },
-    { id: 2, name: "Maria S.", rating: 5, date: "October 2025", profile: "Solo Explorer", trip: "Sigiriya & Elephant Safari", comment: "Highly recommend this tour. Safe driving, great jeep safari, and Sigiriya is absolutely spectacular.", color: "#e8f5e9" },
-    { id: 3, name: "Liam H.", rating: 4, date: "September 2025", profile: "Couple", trip: "Sigiriya & Elephant Safari", comment: "A packed day but worth every minute. The safari was incredible - we saw so many elephants up close!", color: "#e3f2fd" },
-    { id: 4, name: "Emma G.", rating: 2, date: "August 2025", profile: "Family Trip", trip: "Sigiriya & Elephant Safari", comment: "Sigiriya rock was amazing, but Kandy traffic made the return journey extremely long and tiring for the kids.", color: "#fbe9e7" },
-    { id: 5, name: "Niels B.", rating: 1, date: "July 2025", profile: "Backpacker", trip: "Sigiriya & Elephant Safari", comment: "The tour was canceled due to heavy thunderstorms and bad weather. Took two days to get a refund.", color: "#fff" },
-    ...Array(150).fill().map((_, i) => ({
-        id: i + 6,
-        name: ["Benjamin M.", "Sophia R.", "Lucas D.", "Emma F.", "Arthur L.", "Mia N.", "William P.", "Olivia H.", "Gabriel V.", "Clara W."][i % 10],
-        rating: (i % 25 === 0) ? 1 : ((i % 15 === 0) ? 2 : ((i % 8 === 0) ? 3 : ((i % 5 === 0) ? 4 : 5))), // Mix of 1, 2, 3, 4, and 5 stars
-        date: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][i % 12] + " " + (2015 + (i % 12)),
-        profile: ["Verified Traveler", "Solo Explorer", "Family Adventure", "Couple's Getaway", "Backpacker"][i % 5],
-        trip: "Sigiriya & Elephant Safari",
-        comment: [
-            "Sigiriya was absolutely breathtaking. Early morning is the best time to climb to avoid the heat.",
-            "Wonderful elephant safari! We saw a herd of over 30 wild elephants including babies.",
-            "Great tour. Our guide was very friendly and shared interesting historical facts about Sigiriya.",
-            "A must-do day trip from Kandy. The safari jeep experience was thrilling and well-organized.",
-            "Climbing Lion Rock was tough but the view from the top is definitely worth the effort.",
-            "Excellent organization. Safe driver, clean vehicle, and awesome wildlife views.",
-            "We had a great time seeing elephants. The drive is a bit long but beautiful.",
-            "Loved every minute of the day. Sigiriya is a marvel, and the safari was the perfect finish.",
-            "Very convenient tour starting and ending in Kandy. Covered all highlights comfortably.",
-            "The ancient gardens at the base of Sigiriya are stunning. The safari jeep was very modern."
-        ][i % 10],
-        color: "#fff"
-    }))
-];
+// 1. 7-Day Essential Sri Lanka (id: 1)
+const signatureReviews = buildTourReviews(
+    1,
+    "7-Day Essential Sri Lanka",
+    [
+        { id: 1, name: "Sarah Jenkins", rating: 5, date: "October 2026", profile: "British, 24", trip: "Essential Sri Lanka", comment: "The sunrise climb at Sigiriya was the highlight of my trip! Everything was perfectly organized from Negombo to Hikkaduwa.", color: "#fff3e0" },
+        { id: 2, name: "Mark Thompson", rating: 5, date: "September 2025", profile: "USA, 29", trip: "Essential Sri Lanka", comment: "The train journey from Kandy to Ella was breathtaking. Highly recommend this essential 7-day tour.", color: "#f3e5f5" },
+        { id: 3, name: "Elena Rossi", rating: 5, date: "August 2024", profile: "Italian, 22", trip: "Essential Sri Lanka", comment: "Minneriya safari was amazing! We saw over 40 wild elephants. A truly essential Sri Lanka experience.", color: "#e0f2f1" },
+        { id: 4, name: "James Wilson", rating: 5, date: "July 2023", profile: "Canadian, 31", trip: "Essential Sri Lanka", comment: "Perfect balance between ancient culture in Kandy and beach relaxation in Hikkaduwa. The south coast stay was bliss.", color: "#fbe9e7" },
+        { id: 5, name: "Chloe Dupont", rating: 5, date: "June 2022", profile: "French, 20", trip: "Essential Sri Lanka", comment: "Galle Fort at sunset is a dream. The local hospitality throughout the week was exceptional.", color: "#e8f5e9" }
+    ],
+    [
+        "Sigiriya Lion Rock at sunrise was out of this world. Highly recommend climbing Pidurangala for sunset as well!",
+        "Excellent 7-day overview of the country. The scenic train from Kandy to Ella was a major highlight.",
+        "Wonderful experience seeing the wild elephants on safari. A well-organized tour with safe private drivers.",
+        "The perfect balance of cultural heritage in Kandy and coastal beach relaxation in Hikkaduwa. Galle Fort was charming.",
+        "Beautiful landscapes and very welcoming local people. Ella Gap was our absolute favorite stop on the tour.",
+        "Great itinerary, though the drive from Sigiriya to Kandy had a bit of local afternoon traffic. Still worth it!",
+        "Sigiriya and Ella were spectacular. The Ceylon tea factory visit in the hills was very educational and tasty.",
+        "Loved Negombo beach and the south coast! The hotels were clean and located in fantastic scenic spots.",
+        "Amazing trip! Climbing Sigiriya was tough but the 360-degree view from the top is absolutely breathtaking.",
+        "Very well planned 7-day tour. Our private driver was extremely friendly, professional, and knew the best lunch spots.",
+        "Temple of the Tooth Relic in Kandy gave a deep spiritual perspective into Sri Lankan culture.",
+        "Ravana Falls on the way to the coast was a great photo stop. Refreshing cool spray after the mountain drive."
+    ],
+    150
+);
+
+// 2. Kandy & Pinnawala Day Trip (id: 8)
+const kandyReviews = buildTourReviews(
+    8,
+    "Kandy & Pinnawala Day Trip",
+    [
+        { id: 1, name: "Jessica Lee", rating: 5, date: "October 2026", profile: "Traveler", trip: "Kandy Day Trip", comment: "Watching the elephants walk to the river in Pinnawala was magical! A must-do day trip from Kandy.", color: "#e8f5e9" },
+        { id: 2, name: "David Miller", rating: 5, date: "September 2024", profile: "Traveler", trip: "Kandy Day Trip", comment: "The Temple of the Tooth is so spiritual and peaceful. Kandy is a beautiful hill city.", color: "#e3f2fd" }
+    ],
+    [
+        "Had an amazing time watching the Pinnawala elephant river bath! Truly a unique wildlife experience.",
+        "Great day trip with a professional guide. The Ceylon tea factory visit and tasting were very educational.",
+        "Really enjoyed seeing the baby elephants feed and swim in the river. Unforgettable day trip.",
+        "Highly recommended day trip. Covered Pinnawala, tea tasting, and Kandy sights comfortably.",
+        "Loved the scenic drive through the hill country and the elephant dung paper recycling workshop.",
+        "Elephants were wonderful to watch, but city driving in Kandy can be slow during peak rush hours.",
+        "Well organized day trip, worth every penny. Driver was friendly, punctual, and knowledgeable.",
+        "Ceylon tea tasting was superb! A great introduction to traditional Sri Lankan tea culture.",
+        "Fascinating process at the eco-friendly paper factory. Highly recommend seeing how it works.",
+        "A packed day full of beautiful sights, culture, and nature. Very happy we booked this day trip."
+    ],
+    130
+);
+
+// 3. Southern Sun & Beach Escape (id: 2)
+const coastalReviews = buildTourReviews(
+    2,
+    "Southern Sun & Beach Escape",
+    [
+        { id: 1, name: "Mateo Silva", rating: 5, date: "October 2026", profile: "Brazilian", trip: "Southern Escape", comment: "Surfing in Weligama was a dream! The coastal vibe of this 7-day tour is absolute perfection.", color: "#fff3e0" },
+        { id: 2, name: "Yuna Kim", rating: 5, date: "September 2024", profile: "Korean", trip: "Southern Escape", comment: "Mirissa beaches are the best. Watching the whales in the deep ocean was a life-changing experience.", color: "#f3e5f5" },
+        { id: 3, name: "Noah Williams", rating: 5, date: "August 2022", profile: "USA", trip: "Southern Escape", comment: "Galle Fort is so historic and charming. Loved the boutique stays and beach cafes along the coast.", color: "#e0f2f1" }
+    ],
+    [
+        "Amazing 7-day coastal experience! The palm tree sunsets at Coconut Tree Hill were unforgettable.",
+        "Great value for money. Fresh seafood dinners right on Hikkaduwa beach under the stars are a must-try.",
+        "A bit hot and humid around midday, but swimming in turquoise waters at Unawatuna makes up for it.",
+        "Well paced coastal itinerary. Walking along the ancient ramparts of Galle Fort was my favorite part.",
+        "Wonderful driver and comfortable private transport throughout our journey down the southern coast.",
+        "The whale watching boat tour in Mirissa was incredible — we spotted two blue whales and spinner dolphins!",
+        "Beautiful pristine beaches, though Coconut Tree Hill can get busy with photographers around sunset.",
+        "Loved the beginner surf lessons in Weligama! The local instructors were patient, fun, and safe.",
+        "A very relaxing week by the Indian ocean. High-end coastal views and lovely boutique guesthouses.",
+        "The river boat safari in Hikkaduwa was a peaceful bonus, seeing water monitors and mangrove channels."
+    ],
+    145
+);
+
+// 4. Highlands & Southern Coast (id: 3)
+const adventureReviews = buildTourReviews(
+    3,
+    "Highlands & Southern Coast",
+    [
+        { id: 1, name: "Jake Gyllen", rating: 5, date: "October 2026", profile: "USA", trip: "Highlands & Coast", comment: "White water rafting in Kitulgala was such an adrenaline rush! Loved every single bit of it.", color: "#e8f5e9", images: [jakeReviewImg, jakeReviewImg2] },
+        { id: 2, name: "Scarlett Joh", rating: 5, date: "September 2024", profile: "UK", trip: "Highlands & Coast", comment: "The transition from the Kitulgala rainforest to the mountains of Ella and Yala safari was spectacular.", color: "#e3f2fd" }
+    ],
+    [
+        "White water rafting in Kitulgala was thrilling and completely safe! Certified guides made it great.",
+        "Loved the hiking around Little Adam's Peak in Ella. The mountain vistas were breathtaking.",
+        "Yala safari was incredible! We saw an elusive Sri Lankan leopard resting on a granite rock.",
+        "Wonderful boat safari on the Madu River, seeing the traditional cinnamon harvesting island was unique.",
+        "Hikkaduwa beach is pristine! The seafood dinner by the waves was the perfect finale to our adventure.",
+        "Excellent tour itinerary and friendly driver. Highly recommended for adventure seekers.",
+        "The transition from jungle rafting to misty mountains to the southern coast was beautiful.",
+        "We enjoyed the Yala safari and train ride, though the drive between Yala and Hikkaduwa felt a bit long.",
+        "Great experience! The Nine Arches Bridge in Ella is a breathtaking architectural marvel in the jungle.",
+        "Amazing hospitality from the local guides and guesthouses. We felt so well cared for throughout."
+    ],
+    150
+);
+
+// 5. 5-Day Mist & Mountains (id: 4)
+const mistReviews = buildTourReviews(
+    4,
+    "5-Day Mist & Mountains",
+    [
+        { id: 1, name: "Freya Andersen", rating: 5, date: "October 2026", profile: "Danish, 24", trip: "Mist & Mountains", comment: "The Blue Train journey was the most beautiful rail experience of my life. Leaning out the window through tea estates was magic.", color: "#e8f5e9" },
+        { id: 2, name: "Tomás García", rating: 5, date: "September 2023", profile: "Spanish, 29", trip: "Mist & Mountains", comment: "Nuwara Eliya felt like stepping into another world. The tea factory visit and tasting were highlights.", color: "#e3f2fd" }
+    ],
+    [
+        "The train ride through the misty tea estates from Nuwara Eliya to Ella was unforgettable. Pure magic!",
+        "Loved the cool climate in Nuwara Eliya. The tea factory tour and fresh tasting session were very insightful.",
+        "Ella Rock is a challenging mountain hike but the panoramic views at the top are incredible.",
+        "Beautiful emerald landscapes everywhere you look. Watching the train on Nine Arches Bridge is iconic.",
+        "Great mountain itinerary, though the winding hill roads can be curvy. Bring travel mints if sensitive.",
+        "Such a peaceful trip into nature. The hillside guesthouses had stunning valley views.",
+        "Sacred Kandy Temple of the Tooth was cultural and inspiring before heading up into the mountains.",
+        "The mountain weather had mist and light drizzle, which added a mystical atmosphere to the tea estates.",
+        "Wonderful driver and comfortable private transport. Enjoyed learning all about Ceylon tea grades.",
+        "The sunrise over the Ella Gap from Little Adam's Peak was worth waking up early for!"
+    ],
+    160
+);
+
+// 6. Breathe Sri Lanka - 27 Days (id: 5)
+const breatheSriLankaReviews = buildTourReviews(
+    5,
+    "Breathe Sri Lanka",
+    [
+        { id: 1, name: "Emma Hartley", rating: 5, date: "March 2025", profile: "British, 22", trip: "Breathe Sri Lanka", comment: "Breathe Sri Lanka was unlike any travel experience I had before. 27 days of cultural immersion, island travel, and meaningful volunteering in Hikkaduwa!", color: "#e8f5e9" },
+        { id: 2, name: "Noah Fischer", rating: 5, date: "January 2025", profile: "German, 24", trip: "Breathe Sri Lanka", comment: "A true 27-day deep dive into real Sri Lankan life. From Kandy's sacred temples to Hikkaduwa's beaches, the itinerary was perfectly balanced.", color: "#e3f2fd" }
+    ],
+    [
+        "The 27-day island immersion changed my life. 14 days of volunteer work in Hikkaduwa gave deep purpose to my travel.",
+        "Living locally for 4 weeks allowed me to make genuine friends with community members and fellow international volunteers.",
+        "Teaching and community building in Hikkaduwa combined with weekend trips to Sigiriya, Kandy, and Ella was ideal.",
+        "Give Back Journey coordinated everything flawlessly — homestays, meals, transport, and volunteer placement.",
+        "I arrived as a solo traveler and left with lifelong memories and global friendships. Truly transformative.",
+        "Homestyle Sri Lankan cooking every single day was out of this world. Fresh curries, tropical fruits, and coconut water.",
+        "The volunteer coordinators were supportive every single day. A safe, ethical, and deeply rewarding experience.",
+        "A long 27-day journey that requires openness to local culture, but what you gain personally is priceless."
+    ],
+    130
+);
+
+// 7. 3-Day Galle Fort Escape (id: 6)
+const galleReviews = buildTourReviews(
+    6,
+    "3-Day Galle Fort Escape",
+    [
+        { id: 1, name: "Isabella Müller", rating: 5, date: "October 2026", profile: "German, 28", trip: "Galle Fort Escape", comment: "Walking along the fort ramparts at sunset was magical. The boutique cafes inside the Dutch fort are charming!", color: "#fff3e0" },
+        { id: 2, name: "Luca Bianchi", rating: 5, date: "September 2023", profile: "Italian, 32", trip: "Galle Fort Escape", comment: "Galle Fort is a historic treasure. The Dutch colonial architecture, lighthouse, and artisan shops made this perfect.", color: "#e0f2f1" }
+    ],
+    [
+        "Walking along the ancient Dutch fort ramparts at sunset was magical! A highly recommended short getaway.",
+        "Wonderful 3-day escape. Galle Fort is rich in colonial history and ocean romance, perfect for couples.",
+        "Loved the boutique cafes, handmade lace shopping, and photographing the famous Galle Lighthouse.",
+        "Excellent dining inside the Dutch Hospital courtyard. The seafood and gelato were exquisite.",
+        "A beautifully paced 3-day tour. Staying inside the fort walls lets you wander early in the morning before crowds.",
+        "Galle Fort has a bohemian artistic atmosphere. The gemstone workshops and art galleries were fascinating.",
+        "Perfect weekend getaway! Safe cobblestone streets, historic Dutch villas, and fresh ocean breezes.",
+        "Loved watching the local cliff divers leap off the ramparts into the waves. A unique fort tradition!",
+        "Great stay inside the heritage fort. Clean boutique guesthouses and genuine Sri Lankan hospitality.",
+        "Strolling through cobblestone streets lined with colonial buildings felt like stepping back in time."
+    ],
+    110
+);
+
+// 8. Kandy Highlights (id: 9)
+const kandyHighlightsReviews = buildTourReviews(
+    9,
+    "Kandy Highlights",
+    [
+        { id: 1, name: "Amelie Fontaine", rating: 5, date: "October 2026", profile: "French, 26", trip: "Kandy Highlights", comment: "The Royal Botanical Gardens were stunning, the orchid house alone is worth the visit. Our guide was wonderful!", color: "#e8f5e9" },
+        { id: 2, name: "Ben Carter", rating: 5, date: "September 2025", profile: "USA, 31", trip: "Kandy Highlights", comment: "The cultural dance show was electrifying! The fire-walkers were incredible. Perfect introduction to Kandy.", color: "#e3f2fd" }
+    ],
+    [
+        "The Temple of the Tooth Relic was deeply spiritual and peaceful. A beautiful sacred cultural experience.",
+        "Loved the Royal Botanical Gardens in Peradeniya! The giant Java fig tree and palm avenues are magnificent.",
+        "The cultural dance show and fire-walkers were amazing. Traditional drumming added such energy!",
+        "Kandy Lake at sunset is so scenic and peaceful. A great way to wrap up a comprehensive day tour.",
+        "Wonderful private day tour of Kandy. Our driver was very knowledgeable, friendly, and punctual.",
+        "A well-organized day trip. The botanical gardens were beautiful, though city traffic in Kandy can be heavy.",
+        "The Ceylon tea tasting session included in the tour was fresh, educational, and delicious.",
+        "Loved the local architecture and heritage streets. Excellent private vehicle service throughout.",
+        "A packed single day full of beautiful sights, history, and vibrant culture. Very happy we booked.",
+        "Amazing experience visiting the Temple during ceremony hours. Highly recommend this tour."
+    ],
+    140
+);
+
+// 9. Adam’s Peak Sunrise Quest (id: 10)
+const adamsPeakReviews = buildTourReviews(
+    10,
+    "Adam’s Peak Sunrise Quest",
+    [
+        { id: 1, name: "Marcus Weber", rating: 5, date: "October 2025", profile: "German, 27", trip: "Adam's Peak Quest", comment: "The 2AM night climb was grueling but watching the sunrise from the 2,243m summit made everything worth it!", color: "#e8f5e9" },
+        { id: 2, name: "Anika Patel", rating: 5, date: "September 2025", profile: "Indian, 25", trip: "Adam's Peak Quest", comment: "Climbing alongside pilgrims with lanterns lighting the path was unforgettable. The shadow of the peak at sunrise is mystical.", color: "#e3f2fd" }
+    ],
+    [
+        "Unforgettable spiritual quest! Standing on the summit as the first rays of morning light broke was magical.",
+        "The hardest climb of my life with 5,000+ stone steps, but reaching the top before dawn was worth every breath.",
+        "Stunning mountain views above the cloud layer and an incredible communal atmosphere among climbers.",
+        "A must-do pilgrimage quest in Sri Lanka. Truly spiritual, raw, and physically rewarding.",
+        "Well organized 2-day tour with reliable private transport to Dalhousie base camp and comfortable pre-climb stay.",
+        "The night climb was illuminated by tea stall lanterns. Friendly locals selling hot tea along the path!",
+        "Simply breathtaking. Seeing the perfect triangular shadow of Sri Pada cast across the misty valley was surreal.",
+        "Great cultural experience. Be sure to pack a warm jacket and beanie as the summit gets windy and cold before sunrise.",
+        "A physical challenge with the ultimate reward. Take small, steady steps on the ascent.",
+        "Magical night under the stars climbing up the sacred mountain stone steps."
+    ],
+    125
+);
+
+// 10. Kitulgala White Water Rafting (id: 11)
+const kitulgalaReviews = buildTourReviews(
+    11,
+    "Kitulgala White Water Rafting",
+    [
+        { id: 1, name: "Daniel Cooper", rating: 5, date: "October 2025", profile: "UK, 28", trip: "Kitulgala Rafting", comment: "The rapids were exciting but safe, perfect for a first-timer! The jungle scenery around the Kelani River was breathtaking.", color: "#e8f5e9" },
+        { id: 2, name: "Maria Santos", rating: 5, date: "September 2025", profile: "Portuguese, 24", trip: "Kitulgala Rafting", comment: "The riverside lunch after rafting was authentic and delicious. Sitting by the Kelani River in the rainforest was pure bliss.", color: "#e3f2fd" }
+    ],
+    [
+        "White water rafting here was amazing! The river guides were super professional, safety-focused, and fun.",
+        "Loved the beautiful rainforest jungle scenery along the Kelani River. A great active escape from Kandy.",
+        "The Grade 3 rapids were exciting but manageable. Perfect water activity for adventurous friends.",
+        "A well-organized day trip. The authentic Sri Lankan rice and curry buffet by the river was a highlight.",
+        "The drive from Kandy through the countryside was scenic, and the rafting experience was thrilling.",
+        "Really fun experience! Rafting down the river section where 'Bridge on the River Kwai' was filmed was iconic.",
+        "I felt a bit nervous at first, but the life jackets, helmets, and expert safety briefing gave total confidence.",
+        "It started raining halfway through our river run, which made the jungle rafting feel even more wild!",
+        "Great value for an action-packed day trip. Highly recommend if you love water sports.",
+        "The changing facilities at the river base were simple, but the rafting rapids were world-class."
+    ],
+    120
+);
+
+// 11. Sigiriya & Elephant Safari Experience (id: 12)
+const sigiriyaSafariReviews = buildTourReviews(
+    12,
+    "Sigiriya & Elephant Safari",
+    [
+        { id: 1, name: "David K.", rating: 5, date: "November 2025", profile: "Verified Traveler", trip: "Sigiriya & Elephant Safari", comment: "Outstanding day trip! Climbing Sigiriya in the morning and seeing herds of wild elephants in the afternoon was magical.", color: "#fff3e0" },
+        { id: 2, name: "Maria S.", rating: 5, date: "October 2025", profile: "Solo Explorer", trip: "Sigiriya & Elephant Safari", comment: "Highly recommend this 1-day tour. Safe driving, great jeep safari, and Sigiriya Lion Rock is spectacular.", color: "#e8f5e9" }
+    ],
+    [
+        "Sigiriya Rock was absolutely breathtaking. Early morning is the ideal time to scale to beat the heat.",
+        "Wonderful wild elephant safari! We saw a herd of over 35 wild elephants including playful babies near the lake.",
+        "Great 1-day tour. Our private driver was very friendly and shared fascinating historical facts about King Kassapa.",
+        "A must-do day trip starting and ending in Kandy. The safari jeep experience was thrilling and well-managed.",
+        "Climbing Lion Rock was a workout, but the panoramic views of the jungle canopy from the summit are world-class.",
+        "Excellent organization. Punctual pickup in Kandy, clean vehicle, and awesome wildlife viewing.",
+        "We had a fantastic time seeing wild elephants up close. The drive through the Cultural Triangle is beautiful.",
+        "Loved every minute of the day. Sigiriya is an ancient engineering marvel, and the safari was the perfect finish.",
+        "Very convenient tour starting and ending in Kandy. Covered two top bucket-list items in a single day.",
+        "The ancient water gardens at the base of Sigiriya are stunning. The private safari jeep was modern and open-topped."
+    ],
+    135
+);
+
+// 12. Sigiriya Nature & Culture Escape (id: 13)
+const sigiriyaEscapeReviews = buildTourReviews(
+    13,
+    "Sigiriya Nature & Culture Escape",
+    [
+        { id: 1, name: "Charlotte S.", rating: 5, date: "November 2025", profile: "Verified Traveler", trip: "Sigiriya Nature & Culture Escape", comment: "The sunrise at Sigiriya Fortress was breath-taking, and the overnight stay at the nature resort was peaceful. Perfect 2-day escape!", color: "#fff3e0" },
+        { id: 2, name: "Alexander M.", rating: 5, date: "October 2025", profile: "Couple", trip: "Sigiriya Nature & Culture Escape", comment: "We loved the sunset hike up Pidurangala and Dambulla Cave Temple. The private driver was professional and safe.", color: "#e8f5e9" }
+    ],
+    [
+        "Pidurangala hike at sunset on Day 1 was stunning. Looking across at Sigiriya Rock as the sun goes down is unforgettable.",
+        "Wonderful elephant safari! Highly recommend this 2-day overnight tour so you don't feel rushed at any site.",
+        "The ancient cave temple in Dambulla is rich in 2,000-year-old Buddha statues and ceiling murals. Very spiritual.",
+        "Great 2-day overview of the Cultural Triangle. Perfectly paced with an overnight stay in a green resort.",
+        "Sunrise at Sigiriya on Day 2 was crisp and quiet. Climbing the lion's paw stairs early morning was perfect.",
+        "Excellent hospitality at the guesthouse. Traditional Sri Lankan dinner and hearty breakfast were delicious.",
+        "The private jeep safari was a highlight. Saw wild elephants, peacocks, and water monitors in their habitat.",
+        "A well-planned overnight tour from Kandy. Driver was informative, friendly, and drove very safely.",
+        "Lovely bonus stop visiting the colorful Matale Hindu Temple on the return journey back to Kandy.",
+        "Perfect blend of ancient culture, rock climbs, nature resort stay, and wild elephant safari!"
+    ],
+    145
+);
+
 
 const COMMON_NOTES = [
     "Some travellers have reported being approached by locals offering excursions before their Give Back Journey trip commences. This has been particularly prevalent in and around the hotels used by Give Back Journey. These guides are in no way connected to Give Back Journey and we cannot guarantee the safety or quality standards of their tours. We advise customers against joining any tour offered by the unauthorised guides.",
@@ -951,6 +938,7 @@ export const tourPackages = [
             "Personal expenses",
             "Return airport transfer"
         ],
+        reviews: breatheSriLankaReviews,
         importantNotes: COMMON_NOTES
     },
     {

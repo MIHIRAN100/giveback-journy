@@ -42,7 +42,7 @@ const Navbar = () => {
 
     const navItems = [
         { 
-            name: 'Travel Deals', 
+            name: 'Tours', 
             path: '/packages',
             columns: [
                 {

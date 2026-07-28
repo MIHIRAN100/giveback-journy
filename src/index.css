@@ -191,9 +191,9 @@ h1, h2, h3, .logo-text {
 .banner {
     background: #1a2332;
     color: rgba(255, 255, 255, 0.85);
-    padding: 9px 5%;
+    padding: 8px 5%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     font-size: 0.78rem;
@@ -201,9 +201,13 @@ h1, h2, h3, .logo-text {
     font-weight: 500;
 }
 
+.banner-left-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .banner-stat {
-    position: absolute;
-    left: 5%;
     display: flex;
     align-items: center;
     gap: 7px;
@@ -232,9 +236,55 @@ h1, h2, h3, .logo-text {
     color: #fff;
 }
 
+.banner-right-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.banner-item {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.76rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s ease;
+}
+
+.banner-item:hover {
+    opacity: 0.85;
+}
+
+.banner-divider {
+    opacity: 0.35;
+    margin: 0 2px;
+    font-size: 0.75rem;
+}
+
+.banner-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    margin-left: 2px;
+}
+
+.banner-social a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.banner-social a:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
 .banner-close {
-    position: absolute;
-    right: 5%;
     cursor: pointer;
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.4);
@@ -252,19 +302,28 @@ h1, h2, h3, .logo-text {
     background: rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 768px) {
-    .banner {
-        padding: 9px 15px;
-        font-size: 0.65rem;
-    }
+@media (max-width: 1200px) {
     .banner-stat {
         display: none;
     }
-    .banner-cta {
+}
+
+@media (max-width: 992px) {
+    .banner {
+        justify-content: center;
+    }
+    .banner-right-group {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 8px 15px;
         font-size: 0.65rem;
     }
-    .banner-close {
-        right: 15px;
+    .banner-cta {
+        font-size: 0.65rem;
     }
 }
 /* Modern Ticker Banner (Full-Width Bottom) */
@@ -524,21 +583,22 @@ h1, h2, h3, .logo-text {
 
 .nav-item {
     text-decoration: none;
-    color: var(--pitch-black);
+    color: #000000;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     transition: var(--transition);
-    opacity: 0.6;
+    opacity: 1;
     padding: 15px 0;
     letter-spacing: -0.01em;
 }
 
 .nav-item:hover {
+    color: var(--primary-green);
     opacity: 1;
 }
 
 .nav-badge-new {
-    background-color: #3b7fba;
+    background-color: #08519c;
     color: #ffffff;
     font-size: 0.6rem;
     font-weight: 800;
@@ -3683,9 +3743,9 @@ h1, h2, h3, .logo-text {
 .mobile-drawer .nav-item {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--pitch-black);
+    color: #000000;
     text-decoration: none;
-    opacity: 0.8;
+    opacity: 1;
     display: block;
     width: 100%;
     padding: 10px 0;

@@ -1265,23 +1265,23 @@ const TourDetails = () => {
                     border-top: 1px solid #eee;
                     padding-top: 60px;
                     margin-bottom: 60px;
-                    padding-left: 60px;
-                    padding-right: 60px;
-                    max-width: 1100px;
+                    padding-left: 0;
+                    padding-right: 0;
+                    max-width: 1300px;
                     margin-left: auto;
                     margin-right: auto;
                 }
                 .also-bought-title {
-                    font-size: 1.2rem;
+                    font-size: 1.6rem;
                     font-weight: 800;
                     color: #111;
-                    margin-bottom: 20px;
+                    margin-bottom: 25px;
                 }
                 .also-bought-grid {
                     display: flex;
-                    gap: 20px;
+                    gap: 25px;
                     overflow-x: auto;
-                    padding: 10px 0 30px 0;
+                    padding: 10px 0 35px 0;
                     scrollbar-width: none;
                     ms-overflow-style: none;
                 }
@@ -1289,23 +1289,24 @@ const TourDetails = () => {
                     display: none;
                 }
                 .tour-card-mini {
-                    flex: 0 0 260px;
+                    flex: 0 0 320px;
                     background: white;
-                    border-radius: 12px;
+                    border-radius: 16px;
                     border: 1px solid #eee;
                     overflow: hidden;
                     transition: transform 0.3s, box-shadow 0.3s;
                     cursor: pointer;
                     display: flex;
                     flex-direction: column;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
                 }
                 .tour-card-mini:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+                    transform: translateY(-6px);
+                    box-shadow: 0 16px 35px rgba(0,0,0,0.1);
                 }
                 .card-image-wrapper {
                     position: relative;
-                    height: 160px;
+                    height: 200px;
                 }
                 .card-image-wrapper img {
                     width: 100%;
@@ -1314,32 +1315,34 @@ const TourDetails = () => {
                 }
                 .heart-icon {
                     position: absolute;
-                    top: 8px;
-                    right: 8px;
-                    width: 26px;
-                    height: 26px;
+                    top: 12px;
+                    right: 12px;
+                    width: 34px;
+                    height: 34px;
                     background: white;
                     border-radius: 50%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
                     color: #666;
-                    font-size: 0.8rem;
+                    font-size: 0.95rem;
                 }
                 .category-tag {
                     position: absolute;
-                    bottom: 8px;
-                    left: 8px;
-                    background: rgba(0,0,0,0.6);
+                    bottom: 12px;
+                    left: 12px;
+                    background: rgba(0,0,0,0.7);
+                    backdrop-filter: blur(4px);
                     color: white;
-                    padding: 3px 8px;
-                    border-radius: 4px;
-                    font-size: 0.65rem;
-                    font-weight: 600;
+                    padding: 4px 10px;
+                    border-radius: 6px;
+                    font-size: 0.72rem;
+                    font-weight: 700;
+                    letter-spacing: 0.3px;
                 }
                 .card-content {
-                    padding: 12px;
+                    padding: 18px;
                     flex: 1;
                     display: flex;
                     flex-direction: column;
@@ -1347,29 +1350,29 @@ const TourDetails = () => {
                 .card-location {
                     display: flex;
                     align-items: center;
-                    gap: 5px;
-                    font-size: 0.72rem;
+                    gap: 6px;
+                    font-size: 0.8rem;
                     color: #666;
                     margin-bottom: 6px;
                 }
                 .card-rating {
                     display: flex;
                     align-items: center;
-                    gap: 5px;
-                    font-size: 0.75rem;
+                    gap: 6px;
+                    font-size: 0.85rem;
                     color: #111;
                     font-weight: 700;
-                    margin-bottom: 8px;
+                    margin-bottom: 10px;
                 }
                 .card-rating i {
                     color: var(--primary-green);
                 }
                 .card-title {
-                    font-size: 0.82rem;
+                    font-size: 1.0rem;
                     font-weight: 800;
                     color: #111;
                     line-height: 1.4;
-                    margin-bottom: 10px;
+                    margin-bottom: 12px;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
@@ -1377,24 +1380,25 @@ const TourDetails = () => {
                     height: 2.8em;
                 }
                 .card-features {
-                    margin-bottom: 10px;
+                    margin-bottom: 12px;
                 }
                 .feature-item {
                     display: flex;
                     align-items: center;
                     gap: 6px;
-                    font-size: 0.75rem;
+                    font-size: 0.8rem;
                     color: #555;
                     margin-bottom: 5px;
                 }
                 .card-price {
                     margin-top: auto;
-                    font-size: 0.8rem;
-                    color: #111;
+                    font-size: 0.88rem;
+                    color: #555;
                 }
                 .card-price strong {
-                    font-size: 1.0rem;
-                    font-weight: 800;
+                    font-size: 1.15rem;
+                    font-weight: 900;
+                    color: #111;
                 }
  
                 @media (max-width: 1024px) {

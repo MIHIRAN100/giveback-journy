@@ -664,7 +664,7 @@ const TourPackages = ({ searchTerm }) => {
                             onClick={() => setDealsExpanded(!dealsExpanded)}
                             style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
                         >
-                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Travel deals</span>
+                            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#111', fontFamily: 'inherit' }}>Special offers</span>
                             <i className={`bi bi-chevron-${dealsExpanded ? 'up' : 'down'}`} style={{ color: '#666' }}></i>
                         </div>
                         {dealsExpanded && (
