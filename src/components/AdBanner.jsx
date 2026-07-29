@@ -32,7 +32,7 @@ const AdBanner = () => {
                         <a href="https://wa.me/94774944909" target="_blank" rel="noreferrer" title="WhatsApp">
                             <i className="fa-brands fa-whatsapp"></i>
                         </a>
-                        <a href="https://www.instagram.com/journeygiveback?igsh=a21oZWZreHIzdTkw" target="_blank" rel="noreferrer" title="Instagram">
+                        <a href="https://www.instagram.com/giveback_journey?igsh=b3J1ZzJkN2t5aG1l" target="_blank" rel="noreferrer" title="Instagram">
                             <i className="fa-brands fa-instagram"></i>
                         </a>
                         <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">

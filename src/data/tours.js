@@ -487,28 +487,66 @@ export const tourPackages = [
     {
         id: 8,
         name: "Kandy & Pinnawala Day Trip",
-        days: "1 Day",
-        startLocation: "Kandy",
-        endLocation: "Pinnawala",
-        description: "A memorable day combining wildlife, culture, and scenic experiences around Kandy, including the famous Pinnawala Elephant Orphanage and a Ceylon tea factory.",
+        days: "1 Day (6–8 Hours)",
+        startLocation: "Kandy (Hotels or residences)",
+        endLocation: "Pinnawala / Kandy",
+        description: "Enjoy a comfortable day trip from Kandy to Pinnawala with reliable private transportation. Explore the famous Pinnawala Elephant Orphanage at your own pace and customize your day with optional stops along the way.",
         price: "$125",
         image: budgetPromoImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "Pinnawala & Kandy Scenic Day Tour", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
-                activities: ["Elephant Feeding & Bathing", "Riverside Interaction", "Dung Paper Recycling", "Tea Factory Visit", "Fresh Ceylon Tea Tasting"],
-                optionalActivities: ["Kandy Cultural Dance Show", "Royal Botanical Gardens stroll", "Sacred Temple of the Tooth visit"]
+                title: "8:00 AM – Pickup from Kandy", 
+                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a scenic drive through Sri Lanka's beautiful countryside.", 
+                activities: ["Pickup from Kandy Hotel / Residence", "Private Air-Conditioned Vehicle", "Scenic Countryside Drive"]
+            },
+            { 
+                day: 2, 
+                title: "9:30 AM – Arrive at Pinnawala", 
+                desc: "Spend time exploring the Pinnawala Elephant Orphanage at your own pace. Watch the elephants, visit the river where they bathe (depending on the daily schedule), and enjoy the surrounding area.<br/><br/><b>Please Note:</b> Entrance tickets and personal expenses are not included.", 
+                activities: ["Pinnawala Elephant Orphanage", "Watch Elephants Bathing in River", "Explore at Your Own Pace"]
+            },
+            { 
+                day: 3, 
+                title: "12:30 PM – Lunch Break", 
+                desc: "Enjoy lunch at a restaurant of your choice. Your driver can recommend local restaurants if needed.", 
+                activities: ["Lunch at Restaurant of Choice", "Local Driver Dining Recommendations"]
+            },
+            { 
+                day: 4, 
+                title: "2:00 PM – Optional Stops", 
+                desc: "If time permits, you may choose to visit:<br/><ul style='margin-top: 8px; margin-bottom: 8px; padding-left: 20px;'><li>A local spice and herbal garden</li><li>A tea factory or tea plantation</li><li>Local handicraft or souvenir shops</li></ul>These stops are optional and can be arranged based on your preferences.", 
+                activities: ["Spice & Herbal Garden (Optional)", "Tea Factory or Plantation (Optional)", "Handicraft & Souvenir Shops (Optional)"]
+            },
+            { 
+                day: 5, 
+                title: "4:00 PM – Return Journey & Drop-Off", 
+                desc: "After your visit, your driver will begin the return journey.<br/><br/><b>Drop-Off:</b> Standard drop-off is in Kandy.<br/><i>If you would like to be dropped off at a different destination, we are happy to arrange it for an additional fee, depending on the location.</i>", 
+                activities: ["Return Scenic Drive to Kandy", "Hotel / Residence Drop-Off in Kandy"]
             }
         ],
-        inclusions: ["Private transport (Taxi)", "Elephant orphanage visit", "Tea factory tour", "Hotel pick-up & drop-off"],
-        exclusions: ["Lunch", "Personal expenses", "Entrance fees for optional sites"],
+        inclusions: [
+            "Private vehicle with an experienced driver",
+            "Pickup from your hotel or preferred location in Kandy",
+            "Comfortable, air-conditioned transportation",
+            "Flexible itinerary with optional stops"
+        ],
+        exclusions: [
+            "Entrance fees",
+            "Meals and beverages",
+            "Personal expenses",
+            "Guide services"
+        ],
         routeMap: routeMapKandyPinnawalaPremium,
         reviews: kandyReviews,
         rating: 4.7,
         ratingLabel: "Highly Rated",
-        importantNotes: COMMON_NOTES
+        importantNotes: [
+            "Guests are free to arrange their own activities and sightseeing during the trip.",
+            "We provide transportation only, allowing you the flexibility to enjoy the day at your own pace.",
+            "Entrance tickets and personal expenses are not included.",
+            "Additional charges apply for drop-offs outside the Kandy area."
+        ]
     },
     {
         id: 2,
@@ -862,32 +900,75 @@ export const tourPackages = [
         id: 10,
         name: "Adam’s Peak Sunrise Quest",
         days: "2 Days / 1 Night",
-        description: "Embark on a soul-stirring pilgrimage to the sacred summit of Adam’s Peak (Sri Pada), a mountain revered by multiple faiths for centuries.\n\nThis immersive 2-day journey takes you through the lush tea country to the base at Dalhousie, where your quest begins in the quiet of the night. Join thousands of pilgrims on an ancient stone path illuminated by lanterns, reaching the 2,243m summit just as the first rays of light break over the horizon.\n\nWitness the legendary sunrise and the mountain's perfect triangular shadow cast across the misty plains below, a moment of profound beauty and spiritual reflection that stays with you forever.",
+        startLocation: "Kandy (Hotels or residences)",
+        endLocation: "Nallathanniya / Kandy",
+        description: "Experience one of Sri Lanka's most iconic pilgrimages with a comfortable private transfer from Kandy to Adam's Peak (Sri Pada). Whether you're climbing for the breathtaking sunrise, spiritual significance, or stunning mountain views, we'll provide safe and reliable transportation so you can enjoy the journey at your own pace.",
         price: "$280",
         image: adamsPeakImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "Highland Drive to Dalhousie", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
-                activities: ["Scenic Highlands Drive", "Tea Plantation Views", "Pre-Climb Rest"],
-                optionalActivities: ["Visit to St. Clair's Falls", "Tea tasting at Mlesna Tea Castle", "Laxapana Falls short detour"]
+                title: "2:00 PM – Pickup from Kandy & Scenic Drive", 
+                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Sit back and enjoy the scenic drive through Sri Lanka's beautiful hill country.", 
+                activities: ["Pickup from Kandy Hotel / Residence", "Private Air-Conditioned Transport", "Scenic Hill Country Drive"]
+            },
+            { 
+                day: 1, 
+                title: "5:30 PM – Arrive at Adam's Peak (Nallathanniya)", 
+                desc: "Arrive in the Nallathanniya (Dalhousie) area and check in to your included hotel accommodation.<br/><br/><b>Hotel Included:</b> Comfortable overnight accommodation in Nallathanniya (Dalhousie) is provided as part of your package.<br/><br/>Spend the evening relaxing, having dinner at a local restaurant, and preparing for the overnight climb.", 
+                activities: ["Arrive in Nallathanniya (Dalhousie)", "Check-in to Included Hotel", "Dinner & Pre-Climb Evening Rest"]
             },
             { 
                 day: 2, 
-                title: "The Sacred Sunrise & Descent", 
-                desc: "The climb begins at 2AM in the silence of the night, joining thousands of pilgrims on the <b>ancient stone path</b>. During the pilgrimage season (December to May), the way is beautifully illuminated by lanterns; if you are climbing outside of this season, we highly recommend hiring a local guide for safety and navigation.<br/><br/>Reach the peak in the pre-dawn hours to witness a <b>breathtaking sunrise</b> that illuminates the entire island, a spiritual experience like no other. After the descent, enjoy <b>breakfast</b> before your return transfer to Kandy, carrying the light of the sunrise with you.", 
-                activities: ["Breakfast", "Adam's Peak Climb", "Private Transfer"] 
+                title: "2:00 AM – Begin the Ascent & Witness Sunrise", 
+                desc: "Start your hike to the summit of Adam's Peak in time to witness the unforgettable sunrise from the top. Take your time exploring the summit before descending at your own pace.", 
+                activities: ["2:00 AM Night Ascent to Summit", "Pilgrimage Stone Path Climb", "Unforgettable Sunrise at Peak", "Summit Exploration & Descent"] 
+            },
+            { 
+                day: 2, 
+                title: "9:00 AM – Return to Accommodation & Refresh", 
+                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Return to your hotel, freshen up, enjoy a delicious included breakfast, and check out of your accommodation.", 
+                activities: ["Return to Accommodation", "Freshen Up & Breakfast Included", "Hotel Check-out"] 
+            },
+            { 
+                day: 2, 
+                title: "11:00 AM – Return Journey to Kandy", 
+                desc: "Meet your driver and begin the drive back through the scenic tea highlands.", 
+                activities: ["Meet Private Driver", "Return Scenic Highland Drive"] 
+            },
+            { 
+                day: 2, 
+                title: "3:00 PM – Arrive & Drop-Off in Kandy", 
+                desc: "Standard drop-off is in Kandy.<br/><br/><i>If you would like to be dropped off at another destination, we can arrange this for an additional fee, depending on the location.</i>", 
+                activities: ["Kandy Hotel / Residence Drop-Off", "Custom Drop-Off Option Available"] 
             }
         ],
-        inclusions: ["Private transport (Taxi/TukTuk)", "Guesthouse stay (1 Night)", "Breakfast", "Hotel Pick-up & Drop-off"],
-        exclusions: ["Dinner", "Lunch", "Personal snacks/water", "Hiking gear"],
+        inclusions: [
+            "1 Night Hotel Accommodation in Nallathanniya (Dalhousie)",
+            "Day 2 Breakfast included",
+            "Private air-conditioned vehicle",
+            "Professional and experienced driver",
+            "Pickup from your hotel or preferred location in Kandy",
+            "Return transportation from Adam's Peak",
+            "Flexible schedule to suit your travel plans"
+        ],
+        exclusions: [
+            "Entrance fees (if applicable)",
+            "Meals and beverages (except Day 2 Breakfast)",
+            "Guide services",
+            "Personal expenses"
+        ],
         routeMap: routeMapAdamsPeakPremium,
         reviews: adamsPeakReviews,
         rating: 4.7,
         ratingLabel: "Must Experience",
         physicalIntensity: 5,
-        importantNotes: COMMON_NOTES
+        importantNotes: [
+            "1 Night hotel accommodation in Nallathanniya and Day 2 breakfast are fully included in your package.",
+            "If your pickup location is outside Kandy, we are happy to arrange transportation for an additional charge, depending on the pickup location.",
+            "Wear comfortable hiking shoes and warm clothing, as temperatures at the summit can be cool before sunrise.",
+            "Bring a flashlight or headlamp, drinking water, snacks, and a light jacket for the climb."
+        ]
     },
     {
         id: 11,

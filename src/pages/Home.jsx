@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import FeaturesScroll from '../components/FeaturesScroll';
 import PartnerSlider from '../components/PartnerSlider';
@@ -34,7 +35,9 @@ const Home = () => {
                     <div className="cta-content">
                         <h2>Ready to Begin Your Journey?</h2>
                         <p>Connect with our expert travel designers to create a bespoke itinerary tailored exclusively for you.</p>
-                        <button className="btn-modern btn-black cta-btn">Talk to an Expert</button>
+                        <Link to="/contact" className="btn-modern btn-black cta-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                            Talk to an Expert
+                        </Link>
                     </div>
                 </section>
             </ScrollReveal>

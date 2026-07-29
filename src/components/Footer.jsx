@@ -54,7 +54,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-social" style={{display: 'flex', gap: '15px', fontSize: '1.4rem'}}>
                         <a href="https://wa.me/94774944909" target="_blank" rel="noreferrer" className="footer-link"><i className="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/journeygiveback?igsh=a21oZWZreHIzdTkw" target="_blank" rel="noreferrer" className="footer-link"><i className="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/giveback_journey?igsh=b3J1ZzJkN2t5aG1l" target="_blank" rel="noreferrer" className="footer-link"><i className="fa-brands fa-instagram"></i></a>
                         <a href="#" className="footer-link"><i className="fa-brands fa-facebook-f"></i></a>
                     </div>
                 </div>
