@@ -498,7 +498,7 @@ export const tourPackages = [
                 day: 1, 
                 title: "8:00 AM – Pickup from Kandy", 
                 desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a scenic drive through Sri Lanka's beautiful countryside.", 
-                activities: ["Pickup from Kandy Hotel / Residence", "Private Air-Conditioned Vehicle", "Scenic Countryside Drive"]
+                activities: ["Pickup from Kandy Hotel / Residence", "Private Transport", "Scenic Countryside Drive"]
             },
             { 
                 day: 2, 
@@ -528,7 +528,7 @@ export const tourPackages = [
         inclusions: [
             "Private vehicle with an experienced driver",
             "Pickup from your hotel or preferred location in Kandy",
-            "Comfortable, air-conditioned transportation",
+            "Comfortable private transportation",
             "Flexible itinerary with optional stops"
         ],
         exclusions: [
@@ -875,26 +875,92 @@ export const tourPackages = [
     },
     {
         id: 9,
-        name: "Kandy Highlights",
+        name: "Kandy Highlights Full-Day Tour",
         days: "1 Day",
-        description: "A relaxing introduction to the cultural and natural beauty of Kandy, including the Temple of the Tooth, Kandy Lake, and Royal Botanical Gardens.",
+        startLocation: "Kandy (Hotels or residences)",
+        endLocation: "Kandy",
+        description: "Discover the cultural heart of Sri Lanka with a full-day tour of Kandy. Explore historic landmarks, beautiful gardens, breathtaking viewpoints, and local attractions at your own pace while enjoying the comfort of a private vehicle with an experienced driver.",
         price: "$120",
         image: kandyDayImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "Kandy Highlights", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
-                activities: ["Temple of the Tooth Visit", "Royal Botanical Gardens", "Cultural Dance Show", "Private Transport"] 
+                title: "8:00 AM – Pickup from Kandy Hotel / Residence", 
+                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a comfortable journey as you begin exploring Sri Lanka's last royal kingdom.", 
+                activities: ["Pickup from Kandy Hotel / Residence", "Private Transport", "Scenery Drive in Kandy"]
+            },
+            { 
+                day: 1, 
+                title: "8:30 AM – Temple of the Sacred Tooth Relic", 
+                desc: "Visit one of Sri Lanka's most sacred Buddhist temples and explore its beautiful architecture, rich history, and spiritual atmosphere.", 
+                activities: ["Sacred Tooth Relic Temple Visit", "Historic Architecture Tour", "Spiritual & Cultural Exploration"]
+            },
+            { 
+                day: 1, 
+                title: "10:00 AM – Royal Botanical Gardens, Peradeniya", 
+                desc: "Stroll through one of Asia's most famous botanical gardens, home to thousands of species of tropical plants, orchids, towering palm trees, and giant bamboo.", 
+                activities: ["Peradeniya Royal Botanical Gardens", "Orchid House & Giant Bamboo", "Tropical Flora Stroll"]
+            },
+            { 
+                day: 1, 
+                title: "12:30 PM – Lunch Break", 
+                desc: "Enjoy lunch at a local restaurant of your choice. Your driver will be happy to recommend popular dining options.", 
+                activities: ["Lunch at Choice Restaurant", "Local Driver Dining Recommendations"]
+            },
+            { 
+                day: 1, 
+                title: "2:00 PM – Kandy View Point", 
+                desc: "Take in panoramic views of Kandy City, the surrounding mountains, and Kandy Lake—an ideal stop for memorable photographs.", 
+                activities: ["Panoramic Kandy City View", "Surrounding Mountain Vistas", "Kandy Lake Scenic Photography"]
+            },
+            { 
+                day: 1, 
+                title: "2:45 PM – Bahirawakanda Buddha Statue", 
+                desc: "Visit the iconic giant Buddha statue overlooking Kandy and enjoy spectacular views of the city below.", 
+                activities: ["Giant Bahirawakanda Buddha Statue", "Panoramic Overlook of Kandy"]
+            },
+            { 
+                day: 1, 
+                title: "3:30 PM – Gem Museum or Wood Carving Centre (Optional)", 
+                desc: "Choose to visit a local gem museum, batik factory, handicraft centre, or wood carving workshop to learn about Sri Lanka's traditional craftsmanship.", 
+                activities: ["Gem Museum & Lapidary (Optional)", "Wood Carving Workshop (Optional)", "Handicrafts & Batik (Optional)"]
+            },
+            { 
+                day: 1, 
+                title: "4:30 PM – Kandy Lake Promenade", 
+                desc: "Enjoy a relaxing walk around the scenic Kandy Lake before beginning your return journey.", 
+                activities: ["Kandy Lake Promenade Stroll", "Relaxing Lake Breeze"]
+            },
+            { 
+                day: 1, 
+                title: "5:00 PM Return Journey & 6:00 PM Drop-Off", 
+                desc: "After a memorable day exploring Kandy, your driver will begin the return journey.<br/><br/><b>6:00 PM Drop-off:</b> Your driver will drop you off at your hotel or preferred location in Kandy.<br/><i>If you would like to be dropped off at another destination, we are happy to arrange this for an additional fee, depending on the location.</i>", 
+                activities: ["Return Transportation", "6:00 PM Kandy Hotel Drop-Off", "Custom Location Drop-Off Available"]
             }
         ],
-        inclusions: ["Pick-up & Drop-off (within 1km of city)", "Temple of the Tooth visit", "Botanical Garden tour", "Cultural show tickets"],
-        exclusions: ["Lunch", "Locations outside 1km radius", "Personal expenses"],
+        inclusions: [
+            "Private transportation",
+            "Professional and experienced driver",
+            "Pickup and drop-off within Kandy",
+            "Flexible itinerary with optional stops"
+        ],
+        exclusions: [
+            "Entrance fees",
+            "Meals and beverages",
+            "Guide services",
+            "Personal expenses"
+        ],
         routeMap: routeMapKandyPremium,
         reviews: kandyHighlightsReviews,
         rating: 4.6,
         ratingLabel: "Excellent",
-        importantNotes: COMMON_NOTES
+        importantNotes: [
+            "Standard pickup and drop-off are within Kandy.",
+            "Pickup from anywhere else in Sri Lanka can be arranged for an additional charge, depending on your location.",
+            "Drop-off outside Kandy is also available for an additional fee.",
+            "Entrance tickets, meals, and personal expenses are not included.",
+            "Guests are free to explore each attraction at their own pace while your driver waits."
+        ]
     },
     {
         id: 10,
@@ -902,7 +968,7 @@ export const tourPackages = [
         days: "2 Days / 1 Night",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Nallathanniya / Kandy",
-        description: "Experience one of Sri Lanka's most iconic pilgrimages with a comfortable private transfer from Kandy to Adam's Peak (Sri Pada). Whether you're climbing for the breathtaking sunrise, spiritual significance, or stunning mountain views, we'll provide safe and reliable transportation so you can enjoy the journey at your own pace.",
+        description: "Experience one of Sri Lanka's most iconic pilgrimages with a comfortable private transfer from Kandy to Adam's Peak (Sri Pada). Whether you're climbing during the official pilgrimage season (December to May) or the off-season (June to November), we'll provide safe and reliable transportation so you can enjoy the journey at your own pace.",
         price: "$280",
         image: adamsPeakImg,
         itinerary: [
@@ -910,18 +976,18 @@ export const tourPackages = [
                 day: 1, 
                 title: "2:00 PM – Pickup from Kandy & Scenic Drive", 
                 desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Sit back and enjoy the scenic drive through Sri Lanka's beautiful hill country.", 
-                activities: ["Pickup from Kandy Hotel / Residence", "Private Air-Conditioned Transport", "Scenic Hill Country Drive"]
+                activities: ["Pickup from Kandy Hotel / Residence", "Private Transport", "Scenic Hill Country Drive"]
             },
             { 
                 day: 1, 
                 title: "5:30 PM – Arrive at Adam's Peak (Nallathanniya)", 
-                desc: "Arrive in the Nallathanniya (Dalhousie) area and check in to your included hotel accommodation.<br/><br/><b>Hotel Included:</b> Comfortable overnight accommodation in Nallathanniya (Dalhousie) is provided as part of your package.<br/><br/>Spend the evening relaxing, having dinner at a local restaurant, and preparing for the overnight climb.", 
-                activities: ["Arrive in Nallathanniya (Dalhousie)", "Check-in to Included Hotel", "Dinner & Pre-Climb Evening Rest"]
+                desc: "Arrive in the Nallathanniya (Dalhousie) area and check in to your included hotel accommodation.<br/><br/><b>Hotel Included:</b> Comfortable overnight accommodation in Nallathanniya (Dalhousie) is provided as part of your package.<br/><br/>Spend the evening relaxing, enjoying dinner at a local restaurant (dinner is not included), and preparing for the overnight climb.", 
+                activities: ["Arrive in Nallathanniya (Dalhousie)", "Check-in to Included Hotel", "Pre-Climb Evening Rest (Dinner Not Included)"]
             },
             { 
                 day: 2, 
                 title: "2:00 AM – Begin the Ascent & Witness Sunrise", 
-                desc: "Start your hike to the summit of Adam's Peak in time to witness the unforgettable sunrise from the top. Take your time exploring the summit before descending at your own pace.", 
+                desc: "Start your hike to the summit of Adam's Peak in time to witness the unforgettable sunrise from the top. Take your time exploring the summit before descending at your own pace.<br/><br/><b>Essential Preparation & Season Guidance:</b><br/>• <b>Climbing Season & Timing:</b> The official pilgrimage season runs from December to May (drier weather, path lights lit, tea stalls open along the trail). The off-season is from June to November. The night climb begins around 2:00 AM to reach the 2,243m summit before sunrise.<br/>• <b>Cold & Rainy Weather:</b> It can be rainy and gets very cold as you ascend higher towards the summit. Be sure to bring warm jackets, hoodies, rain protection, and extra layers.<br/>• <b>Path Night Lights:</b> Trail lights are illuminated during season months, but may be turned off during the off-season, so please bring a reliable flashlight or headlamp.", 
                 activities: ["2:00 AM Night Ascent to Summit", "Pilgrimage Stone Path Climb", "Unforgettable Sunrise at Peak", "Summit Exploration & Descent"] 
             },
             { 
@@ -946,7 +1012,7 @@ export const tourPackages = [
         inclusions: [
             "1 Night Hotel Accommodation in Nallathanniya (Dalhousie)",
             "Day 2 Breakfast included",
-            "Private air-conditioned vehicle",
+            "Private transport vehicle",
             "Professional and experienced driver",
             "Pickup from your hotel or preferred location in Kandy",
             "Return transportation from Adam's Peak",
@@ -954,7 +1020,7 @@ export const tourPackages = [
         ],
         exclusions: [
             "Entrance fees (if applicable)",
-            "Meals and beverages (except Day 2 Breakfast)",
+            "Dinner, lunches and beverages (except Day 2 Breakfast)",
             "Guide services",
             "Personal expenses"
         ],
@@ -964,35 +1030,88 @@ export const tourPackages = [
         ratingLabel: "Must Experience",
         physicalIntensity: 5,
         importantNotes: [
-            "1 Night hotel accommodation in Nallathanniya and Day 2 breakfast are fully included in your package.",
-            "If your pickup location is outside Kandy, we are happy to arrange transportation for an additional charge, depending on the pickup location.",
-            "Wear comfortable hiking shoes and warm clothing, as temperatures at the summit can be cool before sunrise.",
-            "Bring a flashlight or headlamp, drinking water, snacks, and a light jacket for the climb."
+            "1 Night hotel accommodation in Nallathanniya and Day 2 breakfast are fully included in your package (Dinner is not included).",
+            "Season & Timing: The official pilgrimage season runs from December to May (drier weather, lit path, open tea stalls). Off-season runs from June to November (heavier rain, unlit path, closed stalls). The climb starts at 2:00 AM to reach the summit for sunrise.",
+            "Weather & Clothing: Adam's Peak can be rainy, and temperatures drop significantly as you climb higher and higher towards the summit. Please bring warm jackets, hoodies, rain jackets, and warm extra layers.",
+            "Path Night Lights & Off-Season Climbing: During off-season months, trail lights along the mountain path are often turned off, so it is essential to bring a reliable flashlight, headlamp, or torch.",
+            "Wear sturdy, comfortable hiking shoes and carry sufficient drinking water, snacks, and a light backpack for the night climb.",
+            "If your pickup location is outside Kandy, we are happy to arrange transportation for an additional charge, depending on your location."
         ]
     },
     {
         id: 11,
         name: "Kitulgala White Water Rafting",
         days: "1 Day",
-        description: "A thrilling adventure from Kandy to Kitulgala, home to the famous Kelani River rapids. Perfect for beginners and adrenaline seekers alike.",
+        startLocation: "Kandy (Hotels or residences)",
+        endLocation: "Kitulgala / Kandy",
+        description: "Discover the perfect blend of adventure and nature with a day trip to Kitulgala. Enjoy an exciting white water rafting experience on the Kelani River, visit the historic Belilena Cave, and admire the breathtaking scenery along one of Sri Lanka's most beautiful rivers. Complete your experience with a delicious traditional Sri Lankan lunch, all while traveling comfortably with private transportation from Kandy.",
         price: "$152",
         image: raftingImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "River Rapids Adventure", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
-                activities: ["White Water Rafting", "Lunch", "Private Transfer"] 
+                title: "7:30 AM – Pickup from Kandy & Scenic Hill Country Drive", 
+                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a scenic drive through Sri Lanka's picturesque hill country on your way to Kitulgala.", 
+                activities: ["Pickup from Kandy Hotel / Residence", "Private Transport", "Scenic Hill Country Drive"]
+            },
+            { 
+                day: 1, 
+                title: "10:00 AM – Explore the Picturesque Kelani River", 
+                desc: "Arrive in Kitulgala and spend some time enjoying the beautiful Kelani River, famous for its crystal-clear waters, lush rainforest surroundings, and stunning landscapes. Capture memorable photos and take in the peaceful atmosphere before your adventure begins.", 
+                activities: ["Arrive in Kitulgala", "Kelani River Exploration", "Lush Rainforest Scenery", "Photography & Peaceful Atmosphere"]
+            },
+            { 
+                day: 1, 
+                title: "10:30 AM – White Water Rafting Adventure", 
+                desc: "Meet your professional rafting guides for a safety briefing before beginning your thrilling white water rafting adventure on the Kelani River. Experience a series of exciting rapids while enjoying the spectacular rainforest scenery. This activity is suitable for both beginners and experienced adventurers.", 
+                activities: ["Professional Safety Briefing", "Kelani River White Water Rafting", "Exciting Rapids Experience", "Safety Gear & Guides Included"]
+            },
+            { 
+                day: 1, 
+                title: "12:30 PM – Traditional Sri Lankan Lunch", 
+                desc: "After your rafting experience, enjoy a delicious traditional Sri Lankan lunch at a local restaurant.", 
+                activities: ["Traditional Sri Lankan Meal", "Riverside Dining & Relaxation"]
+            },
+            { 
+                day: 1, 
+                title: "2:00 PM – Visit Historic Belilena Cave", 
+                desc: "Continue your adventure with a visit to the famous Belilena Cave, one of Sri Lanka's most significant prehistoric archaeological sites. Enjoy a scenic forest hike to the cave while taking in the natural beauty of the surrounding rainforest.", 
+                activities: ["Prehistoric Belilena Cave Visit", "Scenic Rainforest Forest Hike", "Archaeological Site Exploration"]
+            },
+            { 
+                day: 1, 
+                title: "4:00 PM Return Journey & 6:30 PM Drop-Off", 
+                desc: "After exploring Belilena Cave, begin your return journey to Kandy.<br/><br/><b>6:30 PM Drop-off:</b> Your driver will drop you off at your hotel or preferred location in Kandy.<br/><i>If you would like to be dropped off at another destination, we are happy to arrange this for an additional fee, depending on the location.</i>", 
+                activities: ["Return Drive to Kandy", "Hotel / Residence Drop-Off in Kandy", "Custom Destination Drop-Off Available"]
             }
         ],
-        inclusions: ["Private transport (Taxi/TukTuk)", "Rafting equipment & guide", "Traditional Lunch", "Hotel Pick-up & Drop-off"],
-        exclusions: ["Personal expenses", "Tips", "Travel insurance"],
+        inclusions: [
+            "Private transportation",
+            "Pickup and drop-off within Kandy",
+            "White water rafting experience",
+            "Professional rafting guides and safety equipment",
+            "Visit to the Kelani River",
+            "Visit to Belilena Cave",
+            "Traditional Sri Lankan lunch",
+            "All rafting activity fees"
+        ],
+        exclusions: [
+            "Personal expenses",
+            "Additional food and beverages",
+            "Optional activities not mentioned in the itinerary"
+        ],
         routeMap: routeMapKitulgalaPremium,
         reviews: kitulgalaReviews,
         rating: 4.7,
         ratingLabel: "Thrill Seekers",
         physicalIntensity: 3,
-        importantNotes: COMMON_NOTES
+        importantNotes: [
+            "Pickup and drop-off are included within Kandy only.",
+            "Pickup from locations outside Kandy or drop-off at a different destination can be arranged for an additional charge, depending on the location.",
+            "Wear comfortable clothing and secure footwear suitable for both rafting and hiking.",
+            "Bring a change of clothes, a towel, sunscreen, insect repellent, drinking water, and a camera to capture the day's highlights.",
+            "This tour is suitable for most fitness levels. The hike to Belilena Cave involves uphill walking and uneven terrain."
+        ]
     },
     {
         id: 5,
