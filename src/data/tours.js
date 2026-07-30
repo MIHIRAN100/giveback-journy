@@ -545,7 +545,8 @@ export const tourPackages = [
             "Guests are free to arrange their own activities and sightseeing during the trip.",
             "We provide transportation only, allowing you the flexibility to enjoy the day at your own pace.",
             "Entrance tickets and personal expenses are not included.",
-            "Additional charges apply for drop-offs outside the Kandy area."
+            "Additional charges apply for drop-offs outside the Kandy area.",
+            ...COMMON_NOTES
         ]
     },
     {
@@ -880,72 +881,60 @@ export const tourPackages = [
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Kandy",
         description: "Discover the cultural heart of Sri Lanka with a full-day tour of Kandy. Explore historic landmarks, beautiful gardens, breathtaking viewpoints, and local attractions at your own pace while enjoying the comfort of a private vehicle with an experienced driver.",
-        price: "$120",
+        price: "$130",
         image: kandyDayImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "8:00 AM – Pickup from Kandy Hotel / Residence", 
-                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a comfortable journey as you begin exploring Sri Lanka's last royal kingdom.", 
+                title: "8:30 AM – Pickup from Kandy Hotel / Residence", 
+                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a comfortable journey as you begin exploring Sri Lanka's central highlands.", 
                 activities: ["Pickup from Kandy Hotel / Residence", "Private Transport", "Scenery Drive in Kandy"]
             },
             { 
                 day: 1, 
-                title: "8:30 AM – Temple of the Sacred Tooth Relic", 
-                desc: "Visit one of Sri Lanka's most sacred Buddhist temples and explore its beautiful architecture, rich history, and spiritual atmosphere.", 
-                activities: ["Sacred Tooth Relic Temple Visit", "Historic Architecture Tour", "Spiritual & Cultural Exploration"]
-            },
-            { 
-                day: 1, 
-                title: "10:00 AM – Royal Botanical Gardens, Peradeniya", 
+                title: "11:00 AM – Royal Botanical Gardens, Peradeniya", 
                 desc: "Stroll through one of Asia's most famous botanical gardens, home to thousands of species of tropical plants, orchids, towering palm trees, and giant bamboo.", 
                 activities: ["Peradeniya Royal Botanical Gardens", "Orchid House & Giant Bamboo", "Tropical Flora Stroll"]
             },
             { 
                 day: 1, 
-                title: "12:30 PM – Lunch Break", 
+                title: "1:30 PM – Lunch Break", 
                 desc: "Enjoy lunch at a local restaurant of your choice. Your driver will be happy to recommend popular dining options.", 
-                activities: ["Lunch at Choice Restaurant", "Local Driver Dining Recommendations"]
+                activities: ["Lunch Break", "Local Driver Dining Recommendations"]
             },
             { 
                 day: 1, 
-                title: "2:00 PM – Kandy View Point", 
-                desc: "Take in panoramic views of Kandy City, the surrounding mountains, and Kandy Lake—an ideal stop for memorable photographs.", 
-                activities: ["Panoramic Kandy City View", "Surrounding Mountain Vistas", "Kandy Lake Scenic Photography"]
-            },
-            { 
-                day: 1, 
-                title: "2:45 PM – Bahirawakanda Buddha Statue", 
-                desc: "Visit the iconic giant Buddha statue overlooking Kandy and enjoy spectacular views of the city below.", 
-                activities: ["Giant Bahirawakanda Buddha Statue", "Panoramic Overlook of Kandy"]
+                title: "2:30 PM – Kandy View Point & Batik Factory (Optional)", 
+                desc: "Take in panoramic views of Kandy City, the surrounding mountains, and Kandy Lake—an ideal stop for memorable photographs. You can also take an optional stop at a traditional local Batik factory to see how colorful wax-resist dyed textiles are handmade.", 
+                activities: ["Panoramic Kandy City View", "Surrounding Mountain Vistas", "Kandy Lake Scenic Photography", "Batik Factory Visit (Optional)"]
             },
             { 
                 day: 1, 
                 title: "3:30 PM – Gem Museum or Wood Carving Centre (Optional)", 
-                desc: "Choose to visit a local gem museum, batik factory, handicraft centre, or wood carving workshop to learn about Sri Lanka's traditional craftsmanship.", 
-                activities: ["Gem Museum & Lapidary (Optional)", "Wood Carving Workshop (Optional)", "Handicrafts & Batik (Optional)"]
+                desc: "Choose to visit a local gem museum or wood carving workshop to learn about Sri Lanka's rich heritage and traditional artisan craftsmanship.", 
+                activities: ["Gem Museum & Lapidary (Optional)", "Wood Carving Workshop (Optional)"]
             },
             { 
                 day: 1, 
-                title: "4:30 PM – Kandy Lake Promenade", 
-                desc: "Enjoy a relaxing walk around the scenic Kandy Lake before beginning your return journey.", 
-                activities: ["Kandy Lake Promenade Stroll", "Relaxing Lake Breeze"]
+                title: "5:30 PM – Bahirawakanda Buddha Statue & Sunset Vistas", 
+                desc: "Visit the iconic giant Buddha statue perched on the hill overlooking Kandy, enjoying breathtaking panoramic views of the city as the sun begins to set.", 
+                activities: ["Giant Bahirawakanda Buddha Statue", "Panoramic City Sunset View", "Hilltop Exploration"]
             },
             { 
                 day: 1, 
-                title: "5:00 PM Return Journey & 6:00 PM Drop-Off", 
-                desc: "After a memorable day exploring Kandy, your driver will begin the return journey.<br/><br/><b>6:00 PM Drop-off:</b> Your driver will drop you off at your hotel or preferred location in Kandy.<br/><i>If you would like to be dropped off at another destination, we are happy to arrange this for an additional fee, depending on the location.</i>", 
-                activities: ["Return Transportation", "6:00 PM Kandy Hotel Drop-Off", "Custom Location Drop-Off Available"]
+                title: "6:30 PM – Return Journey & Drop-Off in Kandy", 
+                desc: "After enjoying the sunset over Kandy, your driver will begin the return journey.<br/><br/><b>Drop-off:</b> Your driver will drop you off at your hotel or preferred location in Kandy.<br/><i>If you would like to be dropped off at another destination, we are happy to arrange this for an additional fee, depending on the location.</i>", 
+                activities: ["Return Transportation", "Kandy Hotel / Residence Drop-Off", "Custom Location Drop-Off Available"]
             }
         ],
         inclusions: [
+            "All entrance tickets to mentioned places",
             "Private transportation",
             "Professional and experienced driver",
             "Pickup and drop-off within Kandy",
             "Flexible itinerary with optional stops"
         ],
         exclusions: [
-            "Entrance fees",
             "Meals and beverages",
             "Guide services",
             "Personal expenses"
@@ -954,13 +943,7 @@ export const tourPackages = [
         reviews: kandyHighlightsReviews,
         rating: 4.6,
         ratingLabel: "Excellent",
-        importantNotes: [
-            "Standard pickup and drop-off are within Kandy.",
-            "Pickup from anywhere else in Sri Lanka can be arranged for an additional charge, depending on your location.",
-            "Drop-off outside Kandy is also available for an additional fee.",
-            "Entrance tickets, meals, and personal expenses are not included.",
-            "Guests are free to explore each attraction at their own pace while your driver waits."
-        ]
+        importantNotes: COMMON_NOTES
     },
     {
         id: 10,
@@ -1035,7 +1018,8 @@ export const tourPackages = [
             "Weather & Clothing: Adam's Peak can be rainy, and temperatures drop significantly as you climb higher and higher towards the summit. Please bring warm jackets, hoodies, rain jackets, and warm extra layers.",
             "Path Night Lights & Off-Season Climbing: During off-season months, trail lights along the mountain path are often turned off, so it is essential to bring a reliable flashlight, headlamp, or torch.",
             "Wear sturdy, comfortable hiking shoes and carry sufficient drinking water, snacks, and a light backpack for the night climb.",
-            "If your pickup location is outside Kandy, we are happy to arrange transportation for an additional charge, depending on your location."
+            "If your pickup location is outside Kandy, we are happy to arrange transportation for an additional charge, depending on your location.",
+            ...COMMON_NOTES
         ]
     },
     {
@@ -1110,7 +1094,8 @@ export const tourPackages = [
             "Pickup from locations outside Kandy or drop-off at a different destination can be arranged for an additional charge, depending on the location.",
             "Wear comfortable clothing and secure footwear suitable for both rafting and hiking.",
             "Bring a change of clothes, a towel, sunscreen, insect repellent, drinking water, and a camera to capture the day's highlights.",
-            "This tour is suitable for most fitness levels. The hike to Belilena Cave involves uphill walking and uneven terrain."
+            "This tour is suitable for most fitness levels. The hike to Belilena Cave involves uphill walking and uneven terrain.",
+            ...COMMON_NOTES
         ]
     },
     {

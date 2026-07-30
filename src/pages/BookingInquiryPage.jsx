@@ -60,10 +60,10 @@ const BookingInquiryPage = () => {
         
         let perAdult = currentBase;
         if (formData.transport === 'tuktuk') {
-            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 30 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 90 : (pkg.id === 13 ? 110 : 300)))))));
+            const discount = pkg.id === 1 ? 200 : (pkg.id === 2 ? 110 : (pkg.id === 3 ? 200 : (pkg.id === 8 ? 35 : (pkg.id === 9 ? 40 : (pkg.id === 10 ? 90 : (pkg.id === 12 ? 90 : (pkg.id === 13 ? 110 : 300)))))));
             perAdult -= discount;
         } else if (formData.transport === 'van') {
-            perAdult += (pkg.id === 12 ? 40 : (pkg.id === 13 ? 65 : 150));
+            perAdult += (pkg.id === 9 ? 140 : (pkg.id === 12 ? 40 : (pkg.id === 13 ? 65 : 150)));
         }
 
         const total = (formData.adults * perAdult) + (formData.kids * perAdult * 0.5) + (formData.infants * 0);
