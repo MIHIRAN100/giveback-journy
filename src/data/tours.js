@@ -922,9 +922,9 @@ export const tourPackages = [
             },
             { 
                 day: 1, 
-                title: "6:30 PM – Return Journey & Drop-Off in Kandy", 
-                desc: "After enjoying the sunset over Kandy, your driver will begin the return journey.<br/><br/><b>Drop-off:</b> Your driver will drop you off at your hotel or preferred location in Kandy.<br/><i>If you would like to be dropped off at another destination, we are happy to arrange this for an additional fee, depending on the location.</i>", 
-                activities: ["Return Transportation", "Kandy Hotel / Residence Drop-Off", "Custom Location Drop-Off Available"]
+                title: "6:30 PM – Cooking Lesson with a Local Family, Dinner & Return", 
+                desc: "Enjoy an authentic Sri Lankan cooking lesson with a local family, learning traditional culinary secrets and spices. A delicious home-cooked dinner is included at the same location. After dinner, your driver will begin the return journey.<br/><br/><b>Drop-off:</b> Your driver will drop you off at your hotel or preferred location in Kandy.<br/><i>If you would like to be dropped off at another destination, we are happy to arrange this for an additional fee, depending on the location.</i>", 
+                activities: ["Cooking Lesson with Local Family", "Dinner Included with Local Family", "Authentic Sri Lankan Cuisine", "Return Transportation", "Kandy Hotel / Residence Drop-Off"]
             }
         ],
         inclusions: [

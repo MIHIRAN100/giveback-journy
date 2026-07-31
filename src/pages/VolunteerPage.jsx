@@ -5,6 +5,8 @@ import effortImg from '../assets/IMG_5892.JPG.jpeg';
 import yukiImg from '../assets/IMG_4378.jpg';
 import impactJourneyImg from '../assets/WhatsApp Image 2026-05-20 at 11.50.00.jpeg';
 import VolunteerOpportunities from '../components/VolunteerOpportunities';
+import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
+import ReadySaveGoBanner from '../components/ReadySaveGoBanner';
 import { useCurrency } from '../context/CurrencyContext';
 
 // Section assets
@@ -1723,8 +1725,14 @@ const VolunteerPage = () => {
                 </div>
             </div>
 
+            {/* Ready, Save, GO! Promotional Countdown Banner */}
+            <ReadySaveGoBanner />
+
             {/* Volunteer Opportunities */}
             <VolunteerOpportunities />
+
+            {/* Newsletter Subscription Banner */}
+            <NewsletterSubscribeBanner />
 
             {/* Section 6: Transparent Pricing */}
             <div className="volunteer-section-wrapper bg-soft-gray" id="pricing">

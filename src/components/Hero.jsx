@@ -5,6 +5,7 @@ import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
 import HeroPromoBadge from './HeroPromoBadge';
+import heroLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
 
 
 const mobileImages = tourPackages.map(pkg => ({

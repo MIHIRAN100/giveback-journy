@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { tourPackages } from '../data/tours';
 import { useCurrency } from '../context/CurrencyContext';
+import cardLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
 
 export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
+    const location = useLocation();
+    const isPackagesPage = location.pathname.includes('/packages');
     const { currency, currencies } = useCurrency();
     const currentCurrency = currencies[currency] || currencies.USD;
     const symbol = currentCurrency.symbol + (currency === 'LKR' ? ' ' : '');
@@ -72,6 +75,28 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
         <Link to={pkg.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${pkg.id}`} className={`package-card gyg-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="gyg-card-img-wrapper">
                 <img src={pkg.image} alt={pkg.name} className="gyg-card-img" />
+                
+                {/* Small Logo Badge on Left Bottom Corner (Only on Tour Packages page) */}
+                {isPackagesPage && (
+                    <div style={{
+                        position: 'absolute',
+                        bottom: '10px',
+                        left: '10px',
+                        zIndex: 10,
+                        background: 'transparent',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        pointerEvents: 'none'
+                    }}>
+                        <img 
+                            src={cardLogo} 
+                            alt="Logo" 
+                            style={{ height: '24px', width: 'auto', display: 'block', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }} 
+                        />
+                    </div>
+                )}
+
                 {pkg.name.includes('Breathe Sri Lanka') && (
                     <div style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--primary-green)', color: 'white', padding: '4px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold', zIndex: 10, boxShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
                         Volunteer Combined

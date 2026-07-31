@@ -54,6 +54,7 @@ import teachingVideo from '../assets/IMG_5768 (2).MOV';
 import img4412 from '../assets/IMG_4412.jpg';
 import newImg6 from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
 import newImg8 from '../assets/teaching volunteers/6f5f5865-bf9d-4547-a1a7-eb130c2bce35.jpg';
+import womensEmpowermentImg from '../assets/WhatsApp Image 2026-07-31 at 13.55.45.jpeg';
 
 export const volunteerPrograms = [
     {
@@ -917,6 +918,116 @@ export const volunteerPrograms = [
                 breakfast: "Options ranging from traditional local breakfast to continental",
                 lunch: "Local meals during placement or at nearby restaurants",
                 dinner: "Flexible dining options based on your preferences"
+            }
+        }
+    },
+    {
+        id: "womens-skills-program",
+        title: "Women's Skills & Livelihoods",
+        location: "Kandy & Galle",
+        duration: "1-12 Weeks",
+        housing: "Shared or Private",
+        price: "190",
+        wasPrice: "240",
+        image: womensEmpowermentImg,
+        minAge: "18+",
+        pickup: "Included",
+        meals: "3 Daily",
+        category: "Women Empowerment",
+        shortDesc: "Empowering women from rural Sri Lankan communities through practical skills, vocational workshops, creativity, and sustainable income opportunities.",
+        description: "The Give Back Journey Women's Skills & Sustainable Livelihoods Program offers international volunteers the opportunity to work alongside women from rural communities in Sri Lanka, sharing practical skills that can help create long-term economic opportunities and strengthen local livelihoods. This is not a traditional teaching project. The focus is on transferring practical, income-generating skills that women can continue using long after the program ends.",
+        color: "#ec4899",
+        galleryImages: [
+            { src: womensEmpowermentImg, caption: "Women's Skills Workshop" },
+            { src: cultureExp, caption: "Crafts & Sewing Session" },
+            { src: interviewImg, caption: "Community Collaboration" },
+            { src: peaceSmileImg, caption: "Empowerment & Smiles" }
+        ],
+        highlights: [
+            "Support women's economic empowerment and financial independence in Sri Lanka",
+            "Share practical skills in sewing, jewelry, beauty, food production, and sustainable crafts",
+            "Teach practical business knowledge including pricing, budgeting, and digital marketing",
+            "Base your placement in Kandy or Galle while experiencing authentic Sri Lankan village life",
+            "Promote entrepreneurship, encourage creativity, and help build sustainable livelihoods"
+        ],
+        sections: [
+            {
+                title: "About the Program",
+                paragraphs: [
+                    "The Women's Skills & Sustainable Livelihoods Program is part of Give Back Journey, an initiative connecting international volunteers with local communities through meaningful cultural exchange and hands-on learning experiences.",
+                    "The program operates in Kandy (the cultural capital of Sri Lanka) and Galle, working with women from surrounding villages who are eager to develop practical skills that contribute to their financial independence and support their families.",
+                    "Rather than focusing on purely academic subjects, the program places particular emphasis on vocational and entrepreneurial skills that women can transform into small businesses or home-based income opportunities.",
+                    "**The goal is simple:** Build confidence, Encourage creativity, Develop practical skills, Promote entrepreneurship, Create sustainable livelihoods, and Strengthen local communities."
+                ]
+            },
+            {
+                title: "What Will You Be Doing?",
+                paragraphs: [
+                    "Volunteers work closely with local women in small groups, workshops, and informal training sessions. Activities vary depending on the volunteer's background, skills, and current community needs. The emphasis is always on practical, income-generating skills.",
+                    "**1. Sewing & Textile Production:** Garment making, children's clothing, reusable shopping bags, cushion covers, fabric upcycling, embroidery, and hand stitching to enable home-based micro-businesses.",
+                    "**2. Jewellery & Handmade Crafts:** Handmade jewellery, beadwork, natural crafts using local materials, eco-friendly souvenirs, and accessories for local markets.",
+                    "**3. Beauty & Wellness Skills:** Hairstyling, bridal preparation, basic beauty treatments, natural skincare products, henna art, and traditional wellness practices.",
+                    "**4. Food Production & Small Businesses:** Jam/chutney production, spice packaging, traditional sweets, dried fruits, homemade snacks, and product presentation.",
+                    "**5. Sustainable Agriculture:** Home gardening, mushroom cultivation, organic farming, herbal products, and composting.",
+                    "**6. Entrepreneurship & Business Skills:** Basic bookkeeping, pricing & costing, budgeting, product branding, customer service, and business planning.",
+                    "**7. Digital Marketing & Online Sales:** Product photography with smartphones, social media marketing, creating online ads, and WhatsApp business tools."
+                ]
+            },
+            {
+                title: "Cultural Exchange & Community Learning",
+                paragraphs: [
+                    "The Give Back Journey program is a mutual learning experience. Volunteers learn just as much from the women they work with.",
+                    "Participants have the opportunity to: Experience authentic Sri Lankan village life, Learn traditional crafts and customs, Share stories and ideas, Understand local challenges, and Build lifelong friendships while experiencing true Sri Lankan hospitality."
+                ]
+            },
+            {
+                title: "Important Information & School Holidays",
+                paragraphs: [
+                    "Volunteers are strongly encouraged to contact the local team at least two weeks before arrival to discuss their professional background, workshop ideas, and any specific materials needed.",
+                    "**During school holidays**, some women may care for their children at home. During these periods, volunteers may organize creative workshops for children, lead sports & games, or assist with community events.",
+                    "**Women's Health & Wellbeing:** Female medical professionals participating in either the Women's Skills Program or the Medical Program may also lead women's health awareness sessions and basic health education."
+                ]
+            },
+            {
+                title: "Volunteer Requirements",
+                paragraphs: [
+                    "Must be at least 18 years old (16–17 accepted with parental consent).",
+                    "Family volunteers are welcome.",
+                    "Adequate travel insurance and basic English communication skills required.",
+                    "Volunteers should arrive with an open mind, flexibility, and a genuine desire to share practical skills."
+                ]
+            }
+        ],
+        accommodation: {
+            description: "Volunteers stay in comfortable shared volunteer accommodation or local homestays in Kandy or Galle.",
+            options: [
+                {
+                    title: "Shared Volunteer House",
+                    subtitle: "Allocated by Gender (Included)",
+                    icon: "bi-house-heart-fill",
+                    description: "Shared rooms allocated by gender with Western-style toilets, shared living area, and friendly community environment."
+                },
+                {
+                    title: "Private Homestay Option",
+                    subtitle: "Upgrade Available",
+                    icon: "bi-shield-lock-fill",
+                    description: "Private room upgrade available in a vetted local host family homestay."
+                }
+            ],
+            features: [
+                { label: "Wi-Fi", value: "Available in Common Areas" },
+                { label: "People Per Room", value: "3–4 (Shared)" },
+                { label: "Single Sex Rooms", value: "Yes" },
+                { label: "Bathroom Facilities", value: "Western & Shared" },
+                { label: "Airport Transfer", value: "Included" }
+            ]
+        },
+        mealsInfo: {
+            description: "Three traditional Sri Lankan meals per day are provided during the program, including fresh rice and curry, seasonal tropical fruits, and local breakfast items.",
+            examples: {
+                breakfast: "Local hoppers, roti, toast, and fresh tea",
+                lunch: "Traditional Rice & Curry with fresh local vegetables",
+                dinner: "Delicious home-style Sri Lankan dinners"
             }
         }
     }
