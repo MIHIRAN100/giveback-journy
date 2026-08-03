@@ -462,6 +462,20 @@ const TourDetails = () => {
                     background: #fff;
                     padding-top: 20px;
                 }
+                .itinerary-scroll-container::-webkit-scrollbar {
+                    width: 6px;
+                }
+                .itinerary-scroll-container::-webkit-scrollbar-track {
+                    background: #f1f8f3;
+                    border-radius: 10px;
+                }
+                .itinerary-scroll-container::-webkit-scrollbar-thumb {
+                    background: var(--primary-green);
+                    border-radius: 10px;
+                }
+                .itinerary-scroll-container::-webkit-scrollbar-thumb:hover {
+                    background: #128240;
+                }
                 .itinerary-desc-content {
                     font-size: 1.05rem;
                     line-height: 1.8;
@@ -2204,9 +2218,9 @@ const TourDetails = () => {
                         </div>
                     </div>
 
-                    <div ref={itineraryRef} className="itinerary-content-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '60px', padding: '20px', background: 'white' }}>
-                        {/* Left Column: Map */}
-                        <div>
+                    <div ref={itineraryRef} className="itinerary-content-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: '40px', padding: '20px', background: 'white' }}>
+                        {/* Left Column: Map (Sticky) */}
+                        <div style={{ position: 'sticky', top: '100px', alignSelf: 'start' }}>
                             <div 
                                 onClick={() => setIsMapZoomed(true)}
                                 style={{ 
@@ -2253,8 +2267,20 @@ const TourDetails = () => {
                             </div>
                         </div>
 
-                        {/* Right Column: Accordion */}
-                        <div>
+                        {/* Right Column: Accordion with Internal Scroll */}
+                        <div 
+                            className="itinerary-scroll-container"
+                            style={{ 
+                                maxHeight: '680px', 
+                                overflowY: 'auto', 
+                                paddingRight: '12px',
+                                border: '1px solid #eef3f0',
+                                borderRadius: '24px',
+                                padding: '20px',
+                                background: '#ffffff',
+                                boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.02)'
+                            }}
+                        >
                             {pkg.itinerary && pkg.itinerary.length > 0 ? (
                                 pkg.itinerary.map((step, index) => (
                                     <ItineraryDay 
