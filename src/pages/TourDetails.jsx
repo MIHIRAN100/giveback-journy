@@ -128,30 +128,52 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay, isSingleDayTour }) =>
                         <div style={{ 
                             marginTop: '25px', 
                             display: 'grid', 
-                            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', 
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', 
                             gap: '12px',
-                            background: '#fcfcfc',
+                            background: '#f8fdf9',
                             padding: '20px',
-                            borderRadius: '16px',
-                            border: '1px solid #eee'
+                            borderRadius: '18px',
+                            border: '1px solid rgba(27, 163, 82, 0.18)',
+                            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.02)'
                         }}>
-                            {step.activities.map((act, i) => (
-                                <div key={i} style={{ 
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '10px',
-                                    fontSize: '0.9rem', 
-                                    fontWeight: 700,
-                                    color: '#333'
-                                }}>
-                                    <i className="bi bi-check2-circle" style={{ 
-                                        color: 'var(--primary-green)', 
-                                        fontSize: '1.1rem',
-                                        fontWeight: 900
-                                    }}></i>
-                                    {act}
-                                </div>
-                            ))}
+                            {step.activities.map((act, i) => {
+                                const getIcon = (t) => {
+                                    const text = t.toLowerCase();
+                                    if (text.includes('breakfast') || text.includes('dining') || text.includes('food') || text.includes('seafood') || text.includes('meal') || text.includes('cooking')) return 'bi bi-cup-hot-fill';
+                                    if (text.includes('overnight') || text.includes('hotel') || text.includes('stay') || text.includes('accommodation')) return 'bi bi-house-door-fill';
+                                    if (text.includes('beach') || text.includes('coastal') || text.includes('ocean') || text.includes('sunset') || text.includes('viewpoint') || text.includes('sun')) return 'bi bi-sun-fill';
+                                    if (text.includes('fort') || text.includes('galle') || text.includes('colonial') || text.includes('history') || text.includes('heritage') || text.includes('temple') || text.includes('culture')) return 'bi bi-bank2';
+                                    if (text.includes('safari') || text.includes('elephant') || text.includes('wildlife') || text.includes('park') || text.includes('animal')) return 'bi bi-compass-fill';
+                                    if (text.includes('mountain') || text.includes('peak') || text.includes('hike') || text.includes('hill') || text.includes('falls') || text.includes('waterfall') || text.includes('adam')) return 'bi bi-geo-alt-fill';
+                                    if (text.includes('train') || text.includes('rail') || text.includes('journey')) return 'bi bi-train-front-fill';
+                                    if (text.includes('marine') || text.includes('snorkel') || text.includes('surf') || text.includes('turtle') || text.includes('river') || text.includes('water')) return 'bi bi-water';
+                                    if (text.includes('tea') || text.includes('plantation')) return 'bi bi-tree-fill';
+                                    if (text.includes('give back') || text.includes('volunteer') || text.includes('community')) return 'bi bi-heart-fill';
+                                    if (text.includes('transport') || text.includes('transfer') || text.includes('drive')) return 'bi bi-car-front-fill';
+                                    return 'bi bi-check-circle-fill';
+                                };
+                                return (
+                                    <div key={i} style={{ 
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '10px',
+                                        fontSize: '0.9rem', 
+                                        fontWeight: 700,
+                                        color: '#1a2332',
+                                        background: '#ffffff',
+                                        padding: '10px 14px',
+                                        borderRadius: '12px',
+                                        border: '1px solid #eef6f0',
+                                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)'
+                                    }}>
+                                        <i className={getIcon(act)} style={{ 
+                                            color: 'var(--primary-green)', 
+                                            fontSize: '1.05rem'
+                                        }}></i>
+                                        {act}
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
 
@@ -196,19 +218,34 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay, isSingleDayTour }) =>
                                     animation: 'fadeInUp 0.4s ease'
                                 }}>
                                     <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-                                        {step.optionalActivities.map((act, i) => (
-                                            <li key={i} style={{ 
-                                                marginBottom: '12px', 
-                                                display: 'flex', 
-                                                gap: '15px', 
-                                                alignItems: 'flex-start',
-                                                fontSize: '0.95rem',
-                                                color: '#444'
-                                            }}>
-                                                <i className="bi bi-plus-circle" style={{ color: 'var(--primary-green)', marginTop: '4px', fontSize: '0.9rem' }}></i>
-                                                <span style={{ fontWeight: 500 }}>{act}</span>
-                                            </li>
-                                        ))}
+                                        {step.optionalActivities.map((act, i) => {
+                                            const getOptIcon = (t) => {
+                                                const text = t.toLowerCase();
+                                                if (text.includes('safari') || text.includes('elephant') || text.includes('park') || text.includes('national')) return 'bi bi-compass';
+                                                if (text.includes('surf') || text.includes('snorkel') || text.includes('scuba') || text.includes('river') || text.includes('marine')) return 'bi bi-water';
+                                                if (text.includes('turtle')) return 'bi bi-life-preserver';
+                                                if (text.includes('whale')) return 'bi bi-water';
+                                                if (text.includes('tea') || text.includes('tasting')) return 'bi bi-cup-hot';
+                                                if (text.includes('zipline') || text.includes('hike') || text.includes('adventure') || text.includes('walk')) return 'bi bi-signpost-split';
+                                                if (text.includes('cooking') || text.includes('dining')) return 'bi bi-egg-fried';
+                                                if (text.includes('ayurvedic') || text.includes('massage')) return 'bi bi-flower1';
+                                                return 'bi bi-plus-circle';
+                                            };
+                                            return (
+                                                <li key={i} style={{ 
+                                                    marginBottom: '12px', 
+                                                    display: 'flex', 
+                                                    gap: '12px', 
+                                                    alignItems: 'center',
+                                                    fontSize: '0.95rem',
+                                                    color: '#333',
+                                                    fontWeight: 500
+                                                }}>
+                                                    <i className={getOptIcon(act)} style={{ color: 'var(--primary-green)', fontSize: '1rem' }}></i>
+                                                    <span>{act}</span>
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
                                 </div>
                             )}

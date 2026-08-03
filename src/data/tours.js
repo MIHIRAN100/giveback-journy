@@ -553,118 +553,112 @@ export const tourPackages = [
         id: 2,
         name: "Southern Sun & Beach Escape",
         days: "7 Days / 6 Nights",
-        description: "Escape to the sun-drenched southern coast of Sri Lanka, where golden beaches meet colonial history and vibrant local culture.\n\nThis journey takes you through the cobblestone streets of the historic Galle Fort, into the turquoise waters of Weligama for a surf session, and along the pristine shores of Mirissa. It's the ultimate coastal retreat for those seeking relaxation and beauty.\n\nDiscover the rhythm of the ocean and the charm of the south in this perfectly curated 6-day escape.",
-        price: "$650",
+        description: "Explore the best of Sri Lanka in one unforgettable journey — from tropical beaches and historic coastal towns to wildlife adventures, misty mountains, tea plantations, scenic train rides, and the cultural heart of the island.\n\nThis 7-day small-group experience has been carefully designed for travellers who want to discover the beauty of Sri Lanka while connecting with local culture, nature, and authentic experiences.\n\nTravel from the relaxing beaches of Hikkaduwa and Mirissa, through Sri Lanka's wildlife-rich countryside, into the breathtaking hill country of Ella, before finishing in Kandy — Sri Lanka's cultural capital.",
+        price: "$549",
         image: southernCover,
         itinerary: [
             { 
                 day: 1, 
-                title: "Arrival in Hikkaduwa", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
-                activities: ["Airport Transfer", "Private Transport"],
-                optionalActivities: [
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park",
-                    "Surfing for beginners at Hikkaduwa Beach", 
-                    "Ayurvedic Head & Shoulder Massage", 
-                    "Candlelight Dinner by the ocean"
-                ]
+                title: "Welcome to Hikkaduwa & Sunset at Galle Fort", 
+                desc: "<b>Overnight: Hikkaduwa</b><br/><br/>Your Sri Lankan adventure begins on the golden south coast.<br/><br/><b><i class='bi bi-geo-alt-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Hikkaduwa Beach Arrival & Check-In</b><br/>Settle into your accommodation in Hikkaduwa, famous for its surfing culture, coral reefs, and laid-back coastal atmosphere.<br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: UNESCO Galle Fort Exploration</b><br/>Travel to the historic 16th-century fortress city of Galle. Wander through charming Dutch colonial streets filled with artisan shops, boutique cafés, and historic architecture.<br/><br/><b><i class='bi bi-sun-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Sunset Rampart Promenade</b><br/>Enjoy a sunset walk along the ancient fort ramparts overlooking the Indian Ocean.", 
+                activities: ["Hikkaduwa Beach Town", "Galle Fort Exploration", "Sunset Views from Fort Walls", "Colonial History & Local Culture"],
+                optionalActivities: ["Boutique Cafe Exploration inside Fort", "Traditional Gemstone Shop Visit"]
             },
             { 
                 day: 2, 
-                title: "Marine Life & Boat Safari Adventure", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Start your morning with a tranquil <b>river boat safari</b>. This unique experience allows you to view the vibrant natural world from the water, perfect for a peaceful start to the day.<br/><br/><b>At Your Own Pace:</b><br/><ul><li><i class='bi bi-water' style='color: #888; margin-right: 6px;'></i> <b>Coral Sanctuary Snorkeling:</b> Hikkaduwa is home to a spectacular reef where you can spot colorful tropical fish and majestic sea turtles.</li><li><i class='bi bi-umbrella' style='color: #888; margin-right: 6px;'></i> <b>Beachside Relaxation:</b> Spend the rest of your day relaxing on the sand or exploring local surf shops and boutiques along the main road.</li></ul><br/><b>Overnight stay in Hikkaduwa</b>", 
-                activities: ["Breakfast", "Morning River Boat Safari"],
+                title: "Hikkaduwa Marine Experience & Beach Discovery", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Hikkaduwa</b><br/><br/><b><i class='bi bi-water' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Mangrove River Safari (Optional)</b><br/>Embark on a morning river boat safari through lush mangrove waterways, spotting local birdlife and river monitor lizards.<br/><br/><b><i class='bi bi-life-preserver' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Coral Reef & Turtle Sanctuary</b><br/>Discover Hikkaduwa's marine sanctuary. Swim in clear shallow waters where sea turtles frequently visit the shore.<br/><br/><b><i class='bi bi-umbrella-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Beachside Leisure & Local Cafés</b><br/>Relax on golden sands, explore beachfront surf shops, or indulge in an authentic Ayurvedic massage.", 
+                activities: ["Breakfast", "Tropical Beaches", "Marine Life Experience", "Relaxed Coastal Lifestyle"],
                 optionalActivities: [
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park",
-                    "Scuba Diving for beginners (Seasonal)", 
-                    "Deep Sea Fishing Excursion", 
-                    "Visit to a local spice garden"
+                    "Mangrove River Safari",
+                    "Turtle Watching on shore",
+                    "Snorkeling at Hikkaduwa Coral Reef",
+                    "Beginner Surf Lessons",
+                    "Scuba Diving",
+                    "Ayurvedic Treatments"
                 ]
             },
             { 
                 day: 3, 
-                title: "Historic Galle Fort & Colonial Charms", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Today, we take a short journey south to the UNESCO World Heritage site of <b>Galle Fort</b>. This 16th-century fortress is a living piece of history, where <b>Dutch colonial architecture</b> meets modern Sri Lankan life.<br/><br/>Wander through the narrow, cobblestone streets lined with <b>beautifully restored villas</b>, <b>art galleries</b>, and <b>boutique cafes</b> that whisper stories of a bygone era.<br/><br/>Walk along the <b>ancient ramparts</b> as the sea breeze cools the afternoon air, and don't miss the chance to photograph the <b>iconic Galle Lighthouse</b> standing tall against the blue horizon.<br/><br/>After soaking in the culture and perhaps enjoying a <b>gelato in the fort</b>, we return to the relaxed atmosphere of Hikkaduwa.<br/><br/><b>Overnight stay in Hikkaduwa</b>", 
-                activities: ["Breakfast", "Private Transport", "Galle Fort Walk", "Art Gallery Visits", "Galle Lighthouse"],
+                title: "Mirissa Beach Escape", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Mirissa</b><br/><br/><b><i class='bi bi-car-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Southern Coastal Scenic Drive</b><br/>Journey along Sri Lanka's postcard-perfect southern shoreline towards the bay of Mirissa.<br/><br/><b><i class='bi bi-camera-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Coconut Tree Hill Viewpoint</b><br/>Visit the island's iconic red-cliff headland topped with towering palm trees for panoramic ocean photos.<br/><br/><b><i class='bi bi-sun-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Mirissa Bay Sunset & Beach Dining</b><br/>Unwind on the soft crescent beach of Mirissa and watch the sunset from vibrant beachfront dining spots.", 
+                activities: ["Breakfast", "Private Transport", "Scenic Coastal Journey", "Mirissa Beach", "Coconut Tree Hill", "Sunset Experience"],
                 optionalActivities: [
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park",
-                    "Dutch Architecture Tour", 
-                    "Galle Fort Cooking Class with a local family", 
-                    "Boutique Shopping for traditional textiles", 
-                    "Traditional Puppet Museum visit"
+                    "Whale Watching Safari (Seasonal)",
+                    "Surfing in Mirissa Bay",
+                    "Beachside Seafood Dining"
                 ]
             },
             { 
                 day: 4, 
-                title: "Unawatuna & Jungle Beach", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Discover the crescent-shaped bay of <b>Unawatuna</b>, often cited as one of the most beautiful beaches in the world. Today is about exploring the <b>diverse coastal landscapes</b> of the south.<br/><br/>You can choose to relax on the main beach or take a <b>short trek</b> through the lush greenery to reach <b>Jungle Beach</b>, a hidden gem where the forest meets the sea in a secluded, tranquil cove.<br/><br/>The waters here are calm and <b>perfect for swimming</b>. In the evening, Unawatuna’s beachfront transforms into a <b>vibrant dining scene</b>, where you can enjoy a <b>candlelit dinner on the sand</b> with the sound of the waves as your soundtrack.<br/><br/><b>Overnight stay in Unawatuna</b>", 
-                activities: ["Breakfast", "Private Transport", "Unawatuna Beach", "Beach Swimming"],
+                title: "Wildlife Safari Adventure & Journey to Ella", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Ella</b><br/><br/><b><i class='bi bi-compass-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Udawalawe National Park Wildlife Safari (Optional)</b><br/>Leave the coast behind and head into the wild savannah. Join an open-top jeep safari to witness wild elephant herds in their natural habitat.<br/><br/><b><i class='bi bi-geo-alt-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Scenic Mountain Countryside Ascent</b><br/>Ascend into the misty green hills as the climate cools and tropical forests transform into emerald tea estates.<br/><br/><b><i class='bi bi-house-door-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Arrival in Ella Mountain Village</b><br/>Check in to your hillside accommodation and soak up the laid-back mountain charm of Ella town.", 
+                activities: ["Breakfast", "Private Transport", "Wildlife Countryside Drive", "Elephant Country", "Scenic Mountain Drive", "Ella Arrival"],
                 optionalActivities: [
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park",
-                    "Jungle Beach Trek", 
-                    "Seaside Dining Experience", 
-                    "Sunset Yoga on the beach", 
-                    "Stilt Fishing Observation and Photo Op", 
-                    "Japanese Peace Pagoda Hike"
+                    "Udawalawe National Park Jeep Safari (Approx. USD 40–45 entrance + USD 50–60 jeep per vehicle)"
                 ]
             },
             { 
                 day: 5, 
-                title: "Mirissa & Coconut Tree Hill", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Our coastal journey continues to <b>Mirissa</b>, a picturesque bay known for its <b>stunning sunsets</b> and laid-back atmosphere.<br/><br/>One of the highlights of today is a visit to <b>Coconut Tree Hill</b>, an iconic viewpoint where a cluster of palm trees sits atop a <b>red-cliffed headland</b>, offering panoramic views of the ocean.<br/><br/>Spend your afternoon enjoying the <b>soft sands of Mirissa Beach</b> or exploring the <b>small rocky outcrops</b> that dot the bay.<br/><br/>As the sun begins to set, the sky turns into a <b>canvas of pink and orange</b>, providing the perfect backdrop for a relaxing evening at one of the many <b>beachfront bars</b>.<br/><br/><b>Overnight stay in Mirissa</b>", 
-                activities: ["Breakfast", "Private Transport", "Coconut Tree Hill", "Mirissa Beach Relaxation", "Ocean Viewpoint"],
+                title: "Discover Ella – Mountains & Tea Country", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Ella</b><br/><br/><b><i class='bi bi-signpost-split-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Little Adam's Peak Hike</b><br/>Take a refreshing morning hike up Little Adam's Peak for panoramic views over the famous Ella Gap.<br/><br/><b><i class='bi bi-train-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Nine Arches Bridge Landmark</b><br/>Walk to the historic colonial Nine Arches Bridge nestled deep in the mountain jungle to watch the train pass.<br/><br/><b><i class='bi bi-water' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Ravana Waterfalls & Tea Estates</b><br/>Visit cascading Ravana Falls and enjoy the scenic tea plantation landscapes surrounding Ella.", 
+                activities: ["Breakfast", "Little Adam's Peak Hike", "Nine Arches Bridge", "Ravana Falls", "Tea Plantation Views"],
                 optionalActivities: [
-                    "Sunset Cocktails at a beachfront bar",
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park"
+                    "Tea Factory Visit & Tasting",
+                    "Flying Ravana Zipline Adventure",
+                    "Traditional Sri Lankan Cooking Class",
+                    "Local Village Walk"
                 ]
             },
             { 
                 day: 6, 
-                title: "Deep Sea Adventure & Beach Relaxation", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>Enjoy a final morning of <b>adventure on the high seas</b> or pure coastal leisure. Whether you want to catch one last <b>surf session</b> in the turquoise waves, indulge in a <b>traditional Ayurvedic massage</b>, or simply reflect on your journey from a <b>beach hammock</b>, the day is yours to enjoy at your own pace.<br/><br/>Mirissa offers the perfect backdrop for a relaxing final full day on the island, where the rhythm of the ocean and the warmth of the sand create a peaceful atmosphere for reflection.<br/><br/><b>Overnight stay in Mirissa</b>", 
-                activities: ["Breakfast", "Private Transport", "Beach Relaxation", "Ocean Reflection"],
+                title: "Scenic Train Journey to Kandy – Cultural Capital", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Kandy</b><br/><br/><b><i class='bi bi-train-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Iconic Hill Country Train Ride</b><br/>Board the legendary blue mountain train and ride through endless rolling tea estates, pine forests, and mountain viaducts.<br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Arrival in Kandy Sacred City</b><br/>Arrive in Sri Lanka's spiritual capital, surrounded by green mountains and the tranquil Kandy Lake.<br/><br/><b><i class='bi bi-music-note-beamed' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Cultural Evening & Traditional Performance</b><br/>Explore local markets or choose to attend a traditional Kandyan cultural dance and fire-walking show.", 
+                activities: ["Breakfast", "Scenic Train Ticket", "Tea Country Rail Views", "Arrival in Kandy", "Cultural Introduction", "Private Transport"],
                 optionalActivities: [
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park",
-                    "Surfing Session in the turquoise waves", 
-                    "Traditional Ayurvedic Massage", 
-                    "Private Surf Lesson for intermediate level", 
-                    "Traditional Fishing boat tour in Mirissa", 
-                    "Visit to a local Cinnamon Plantation"
+                    "Kandy Cultural Dance & Fire-Walking Show",
+                    "Kandy Evening Market Walk"
                 ]
             },
             { 
                 day: 7, 
-                title: "Departure", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
-                activities: ["Breakfast"],
+                title: "Explore Kandy & Continue Your Sri Lankan Journey", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>End of Tour in Kandy</b><br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Temple of the Sacred Tooth Relic</b><br/>Visit Sri Lanka's most sacred Buddhist temple located beside Kandy Lake.<br/><br/><b><i class='bi bi-tree-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Royal Botanical Gardens Peradeniya</b><br/>Stroll through world-famous botanical grounds featuring giant Java fig trees and orchid houses.<br/><br/><b><i class='bi bi-heart-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Transition to Give Back Journey Volunteering</b><br/>Extend your adventure seamlessly by joining community initiatives (teaching, wildlife, medical, or women's empowerment) starting directly from Kandy!", 
+                activities: ["Breakfast", "Kandy Cultural Exploration", "Optional Give Back Journey Transition"],
                 optionalActivities: [
-                    "Morning Whale Watching Safari in the deep blue",
-                    "Exciting Wildlife Jeep Safari to Yala National Park",
-                    "Elephant-focused safari at Udawalawe National Park"
+                    "Join Give Back Journey Volunteer Programs (Teaching, Medical, Wildlife)",
+                    "Private Transfer to Airport or Next Destination"
                 ]
- 
             }
         ],
-        inclusions: ["Accommodation", "Breakfast", "Transfers"],
-        exclusions: ["Lunch & Dinner", "Personal expenses", "Entrance fees"],
+        inclusions: [
+            "6 nights shared accommodation (max 3 per room)",
+            "Daily breakfast",
+            "Transportation between destinations",
+            "Scenic train journey ticket through hill country",
+            "Local assistance throughout the journey",
+            "Support with arranging optional activities"
+        ],
+        exclusions: [
+            "International flights",
+            "Airport transfers",
+            "Lunch and dinner",
+            "National park entrance fees",
+            "Safari jeep charges",
+            "Attraction entrance tickets",
+            "Optional activities & Personal expenses"
+        ],
         routeMap: routeMapSouthernPremium,
         reviews: coastalReviews,
-        rating: 4.6,
-        ratingLabel: "Bestseller",
+        rating: 4.9,
+        ratingLabel: "Small Group Favorite",
         physicalIntensity: 2,
-        importantNotes: COMMON_NOTES
+        importantNotes: [
+            "Price is based on minimum 5 participants and shared accommodation (max 3 people per room).",
+            "For smaller groups, solo travelers, families, or private departures, customized pricing is available.",
+            "Room upgrades (Private room or Twin-sharing) are available at an additional cost depending on availability.",
+            ...COMMON_NOTES
+        ]
     },
     { 
         id: 3, 
