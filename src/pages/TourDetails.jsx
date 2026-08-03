@@ -1872,6 +1872,10 @@ const TourDetails = () => {
                                         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                             <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
                                                 <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
+                                                <strong>Trip Type:</strong> This journey is a small group trip experience, carefully designed for solo travelers, couples, and friends who want to discover Sri Lanka together in an authentic and social environment.
+                                            </li>
+                                            <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
+                                                <div style={{ color: 'var(--primary-green)', fontWeight: 900 }}>•</div>
                                                 Though its equatorial position means fairly constant year-round temperatures, the summer months in Sri Lanka are very hot with short, sharp monsoons in the south-west of the country. Be sure to use adequate sun protection and drink plenty of water.
                                             </li>
                                             <li style={{ marginBottom: '20px', display: 'flex', gap: '15px', color: '#444', lineHeight: 1.7 }}>
@@ -1887,13 +1891,13 @@ const TourDetails = () => {
                                     {activeBookingTab === 'Accommodation' && (
                                         <div style={{ color: '#444', lineHeight: 1.8 }}>
                                             <p style={{ marginBottom: '20px' }}>
-                                                Our accommodation is based on clean, comfortable budget stays that provide all the essential amenities for a pleasant and relaxed experience. These are not boutique hotels or colonial-style luxury properties, but carefully selected places that offer good value, convenience, and a local feel.
+                                                Our accommodation is arranged in comfortable local guesthouses and budget hotels. <strong>The focus is on comfort, cleanliness, location, and supporting locally owned businesses.</strong>
                                             </p>
                                             <p style={{ marginBottom: '20px' }}>
-                                                Most accommodations include private rooms, attached western bathrooms, and basic comforts such as Wi-Fi and air conditioning or fan options, depending on the location.
+                                                Most accommodations include shared or private rooms, attached western bathrooms, and essential comforts such as Wi-Fi and air conditioning or fan options, depending on the destination.
                                             </p>
                                             <p style={{ fontWeight: 600, color: '#111' }}>
-                                                If you are able to travel with one or more (friends/partners), the cost per person will be lower, as transport and accommodation expenses can be shared. This makes the program more cost-effective while still enjoying the same experiences.
+                                                If you are able to travel with one or more (friends/partners), the cost per person will be lower, as transport and accommodation expenses can be shared. This makes the program more cost-effective while still enjoying the same authentic experiences.
                                             </p>
                                         </div>
                                     )}
