@@ -20,6 +20,7 @@ import southernSlide4 from '../assets/1f8f75930498b2c5d3372acb2b1846b7.jpg';
 import southernSlide5 from '../assets/a735dcb73a82a89825015f4d36176403.jpg';
 import southernSlide6 from '../assets/054ff48fcfa601cd27a05ae96c945843.jpg';
 import SpotifyAdCard from '../components/SpotifyAdCard';
+import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -63,7 +64,7 @@ import sigiriyaEscapeSlide3 from '../assets/10616d78083ff17e45530b47e969f4a4.jpg
 import sigiriyaEscapeSlide4 from '../assets/d382f4efe9231656c4f21a04ff5e36b9.jpg';
 import sigiriyaEscapeSlide5 from '../assets/f98be6281003c7c7e80fcf331faa3e1a.jpg';
 import sigiriyaEscapeSlide6 from '../assets/e5a6a83faee0d03f0e2aae72baabba0c.jpg';
-import medicalVolunteersCardBg from '../assets/medical_volunteers_card_bg.jpg';
+import medicalVolunteersCardBg from '../assets/medical_gallery_new_1.jpg';
 
 const ItineraryDay = ({ step, index, forceOpen, isLastDay, isSingleDayTour }) => {
     const [isOpen, setIsOpen] = useState(index === 0);
@@ -1998,109 +1999,6 @@ const TourDetails = () => {
                                 <span>100% Locally Owned & Operated</span>
                             </div>
                         </div>
-
-                        {/* Volunteering Ad Card */}
-                        <div style={{
-                            marginTop: '30px',
-                            position: 'relative',
-                            borderRadius: '24px',
-                            overflow: 'hidden',
-                            backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 55%, rgba(0, 0, 0, 0.35) 100%), url(${medicalVolunteersCardBg})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            padding: '35px 30px',
-                            color: '#ffffff',
-                            boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                            minHeight: '230px'
-                        }}>
-                            <div>
-                                <span style={{
-                                    background: 'transparent',
-                                    border: '1.5px solid #ffffff',
-                                    color: '#ffffff',
-                                    fontWeight: 900,
-                                    fontSize: '0.75rem',
-                                    letterSpacing: '1px',
-                                    padding: '5px 14px',
-                                    borderRadius: '6px',
-                                    textTransform: 'uppercase',
-                                    display: 'inline-block',
-                                    marginBottom: '15px',
-                                    backdropFilter: 'blur(4px)'
-                                }}>
-                                    GIVE BACK JOURNEY
-                                </span>
-                                <h3 style={{
-                                    fontSize: '1.75rem',
-                                    fontWeight: 800,
-                                    lineHeight: 1.2,
-                                    margin: '0 0 10px 0',
-                                    color: '#ffffff',
-                                    letterSpacing: '-0.5px'
-                                }}>
-                                    Check Out Our<br />Volunteer Project Pricings.
-                                </h3>
-                                <p style={{
-                                    fontSize: '0.92rem',
-                                    color: 'rgba(255, 255, 255, 0.95)',
-                                    margin: '0 0 8px 0',
-                                    fontWeight: 600,
-                                    maxWidth: '90%',
-                                    lineHeight: 1.5
-                                }}>
-                                    No hidden fees. Transparent & impact-driven.
-                                </p>
-                                <p style={{
-                                    fontSize: '0.88rem',
-                                    color: 'rgba(255, 255, 255, 0.85)',
-                                    margin: '0 0 20px 0',
-                                    fontWeight: 400,
-                                    maxWidth: '90%',
-                                    lineHeight: 1.5
-                                }}>
-                                    This journey can be combined with Volunteering.
-                                </p>
-                            </div>
-                            <div>
-                                <button 
-                                    onClick={() => {
-                                        navigate('/volunteer');
-                                        setTimeout(() => {
-                                            const el = document.getElementById('pricing');
-                                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                                        }, 150);
-                                    }}
-                                    style={{
-                                        background: '#24527a',
-                                        border: 'none',
-                                        color: '#ffffff',
-                                        padding: '12px 26px',
-                                        borderRadius: '12px',
-                                        fontWeight: 700,
-                                        fontSize: '0.9rem',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: '8px',
-                                        boxShadow: '0 4px 14px rgba(36, 82, 122, 0.4)'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = '#ffffff';
-                                        e.currentTarget.style.color = '#24527a';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.background = '#24527a';
-                                        e.currentTarget.style.color = '#ffffff';
-                                    }}
-                                >
-                                    View Volunteer Pricing <i className="bi bi-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Right Column */}
@@ -2171,6 +2069,9 @@ const TourDetails = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Newsletter Subscribe Banner under Tour Details */}
+            <NewsletterSubscribeBanner />
         </div>
 
             {/* Section 3: Itinerary */}

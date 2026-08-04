@@ -1,190 +1,198 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bgImage from '../assets/newsletter_beach_bg.png';
+import defaultBgImage from '../assets/newsletter_beach_bg.png';
+import medicalBgImage from '../assets/medical_gallery_new_1.jpg';
+import supportAgentImg from '../assets/support_agent_headshot.png';
 
-const phrases = [
-    "you can't find anywhere else",
-    "customized by local travel experts",
-    "handcrafted for unforgettable memories",
-    "tailored for your dream journey"
-];
-
-const NewsletterSubscribeBanner = () => {
+const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
     const navigate = useNavigate();
-    const [index, setIndex] = useState(0);
-    const [fade, setFade] = useState(true);
+    const [email, setEmail] = useState('');
+    const [subscribed, setSubscribed] = useState(false);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setFade(false);
+    const handleSubscribe = (e) => {
+        e.preventDefault();
+        if (email) {
+            setSubscribed(true);
             setTimeout(() => {
-                setIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-                setFade(true);
-            }, 300); // 300ms fade out before swapping text
-        }, 3500); // cycle every 3.5 seconds
-
-        return () => clearInterval(interval);
-    }, []);
+                setSubscribed(false);
+                setEmail('');
+            }, 4000);
+        }
+    };
 
     return (
-        <section className="newsletter-banner-wrapper">
+        <section className="newsletter-subscribe-banner-wrapper" style={{ width: '100%', margin: '40px 0 20px 0' }}>
             <style>{`
-                .newsletter-banner-container {
+                .subscribe-banner-container {
                     position: relative;
                     width: 100%;
-                    max-width: 100%;
-                    margin: 40px 0 20px 0;
-                    border-radius: 0;
-                    overflow: hidden;
-                    background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.45) 50%, rgba(15, 23, 42, 0.25) 100%), url(${bgImage});
+                    background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.52) 55%, rgba(15, 23, 42, 0.25) 100%), url(${bgImage});
                     background-size: cover;
-                    background-position: center bottom;
+                    background-position: center 58%;
+                    background-attachment: fixed;
                     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-                    padding: 55px 5%;
+                    padding: 42px 6%;
                     box-sizing: border-box;
                     color: #ffffff;
-                    font-family: inherit;
-                }
-
-                .newsletter-banner-content {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     flex-wrap: wrap;
                     gap: 30px;
-                    max-width: 1400px;
-                    margin: 0 auto;
                 }
 
-                .newsletter-text-side {
-                    flex: 1;
-                    min-width: 300px;
-                }
-
-                .newsletter-title {
-                    font-size: 2.5rem;
+                .subscribe-left-title {
+                    font-size: 2.3rem;
                     font-weight: 800;
-                    line-height: 1.2;
+                    line-height: 1.15;
                     margin: 0;
                     color: #ffffff;
                     letter-spacing: -0.5px;
                 }
 
-                .newsletter-title-line1 {
-                    position: relative;
-                    display: inline-block;
-                    margin-bottom: 6px;
-                }
-
-                /* Cyan curved underline accent */
-                .cyan-underline-svg {
+                .subscribe-cyan-underline {
                     position: absolute;
-                    bottom: -8px;
+                    bottom: -6px;
                     left: 0;
                     width: 100%;
-                    height: 12px;
+                    height: 10px;
                     pointer-events: none;
                 }
 
-                .newsletter-title-line2 {
-                    display: block;
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                    min-height: 1.3em;
-                    color: rgba(255, 255, 255, 0.95);
+                .subscribe-form-box {
+                    flex: 1;
+                    max-width: 560px;
+                    min-width: 280px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
                 }
 
-                .newsletter-title-line2.fade-in {
-                    opacity: 1;
-                    transform: translateY(0px);
+                .subscribe-input-group {
+                    display: flex;
+                    width: 100%;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
                 }
 
-                .newsletter-title-line2.fade-out {
-                    opacity: 0;
-                    transform: translateY(-8px);
+                .subscribe-input-field {
+                    flex: 1;
+                    padding: 16px 22px;
+                    border: none;
+                    outline: none;
+                    font-size: 0.95rem;
+                    color: #222;
+                    background: #ffffff;
                 }
 
-                .banner-action-btn {
-                    background-color: #3b7fba;
+                .subscribe-submit-btn {
+                    background: #00bcda;
                     color: #ffffff;
                     border: none;
-                    padding: 16px 42px;
-                    font-size: 1.1rem;
-                    font-weight: 700;
-                    border-radius: 8px;
+                    padding: 16px 30px;
+                    font-weight: 800;
+                    font-size: 1rem;
                     cursor: pointer;
-                    transition: all 0.25s ease;
-                    font-family: inherit;
                     white-space: nowrap;
-                    box-shadow: 0 8px 24px rgba(59, 127, 186, 0.4);
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                    text-decoration: none;
+                    transition: background 0.3s ease;
                 }
 
-                .banner-action-btn:hover {
-                    background-color: #24527a;
-                    transform: translateY(-2px);
-                    box-shadow: 0 12px 28px rgba(36, 82, 122, 0.5);
+                .subscribe-submit-btn:hover {
+                    background: #009cb5;
+                }
+
+                .subscribe-disclaimer {
+                    margin: 0;
+                    font-size: 0.78rem;
+                    color: rgba(255, 255, 255, 0.9);
+                    line-height: 1.4;
+                }
+
+                .subscribe-need-help-card {
+                    background: #ffffff;
+                    border-radius: 16px;
+                    padding: 16px 22px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+                    cursor: pointer;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    min-width: 130px;
+                }
+
+                .subscribe-need-help-card:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
                 }
 
                 @media (max-width: 992px) {
-                    .newsletter-banner-container {
-                        padding: 40px 5%;
-                        border-radius: 0;
-                        margin: 30px 0;
-                        width: 100%;
-                    }
-                    .newsletter-title {
-                        font-size: 2rem;
-                    }
-                }
-
-                @media (max-width: 600px) {
-                    .newsletter-banner-container {
-                        padding: 30px 20px;
+                    .subscribe-banner-container {
+                        padding: 35px 5%;
+                        justify-content: center;
                         text-align: center;
                     }
-                    .newsletter-banner-content {
-                        justify-content: center;
+                    .subscribe-left-title {
+                        font-size: 1.9rem;
                     }
-                    .newsletter-title {
-                        font-size: 1.65rem;
-                    }
-                    .banner-action-btn {
-                        width: 100%;
-                        justify-content: center;
+                    .subscribe-form-box {
+                        max-width: 100%;
                     }
                 }
             `}</style>
 
-            <div className="newsletter-banner-container">
-                <div className="newsletter-banner-content">
-                    {/* Left Title Text */}
-                    <div className="newsletter-text-side">
-                        <h2 className="newsletter-title">
-                            <span className="newsletter-title-line1">
-                                Best tours in{' '}
-                                <span style={{ position: 'relative', display: 'inline-block' }}>
-                                    Sri Lanka
-                                    <svg className="cyan-underline-svg" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 9C40 3 140 2 198 8" stroke="#3b7fba" strokeWidth="4" strokeLinecap="round" />
-                                    </svg>
-                                </span>
-                            </span>
-                            <span className={`newsletter-title-line2 ${fade ? 'fade-in' : 'fade-out'}`}>
-                                {phrases[index]}
-                            </span>
-                        </h2>
-                    </div>
+            <div className="subscribe-banner-container">
+                {/* Left Title */}
+                <div>
+                    <h2 className="subscribe-left-title">
+                        <span style={{ position: 'relative', display: 'inline-block' }}>
+                            Volunteer &
+                            <svg className="subscribe-cyan-underline" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 9C40 3 140 2 198 8" stroke="#00bcda" strokeWidth="4" strokeLinecap="round" />
+                            </svg>
+                        </span>
+                        <br />
+                        Make an Impact
+                    </h2>
+                </div>
 
-                    {/* Right Button */}
-                    <div className="newsletter-btn-side">
-                        <button className="banner-action-btn" onClick={() => navigate('/contact')}>
-                            <span>Explore Tours</span>
-                            <i className="bi bi-arrow-right" style={{ fontSize: '1.1rem' }}></i>
-                        </button>
-                    </div>
+                {/* Center Form */}
+                <div className="subscribe-form-box">
+                    {subscribed ? (
+                        <div style={{ background: 'rgba(0, 188, 218, 0.25)', border: '1px solid #00bcda', padding: '14px 20px', borderRadius: '8px', color: '#fff', fontWeight: 700, textAlign: 'center' }}>
+                            ✓ Thank you! We've sent the Volunteer Project Guide & Pricings to your email.
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubscribe} className="subscribe-input-group">
+                            <input 
+                                type="email" 
+                                placeholder="Enter email for Volunteer Guide & Pricing" 
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="subscribe-input-field"
+                            />
+                            <button type="submit" className="subscribe-submit-btn">
+                                Get Info Guide
+                            </button>
+                        </form>
+                    )}
+                    <p className="subscribe-disclaimer">
+                        Get detailed medical, teaching & wildlife project pricings and dates. Read our <a href="/terms" style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}>Privacy Policy</a> and <a href="/terms" style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}>Terms & Conditions</a>.
+                    </p>
+                </div>
+
+                {/* Right Floating Need Help Card */}
+                <div className="subscribe-need-help-card" onClick={() => navigate('/volunteer')}>
+                    <img 
+                        src={supportAgentImg} 
+                        alt="Volunteer Support Advisor" 
+                        style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #00bcda' }} 
+                    />
+                    <span style={{ fontWeight: 800, fontSize: '0.85rem', color: '#111', whiteSpace: 'nowrap' }}>Volunteer Advisor</span>
                 </div>
             </div>
         </section>

@@ -41,6 +41,7 @@ import routeMapMistInfographic from '../assets/mist_mountains_route_map_infograp
 import routeMapEssentialInfographic from '../assets/essential_sri_lanka_route_map_v3_1778651779812.png';
 import routeMapGallePremium from '../assets/route_map_galle_premium.png';
 import routeMapSouthernPremium from '../assets/route_map_southern_premium.png';
+import routeMapSouthern7Day from '../assets/route_map_southern_7day_new.png';
 import routeMapHighlandsPremium from '../assets/route_map_highlands_premium.png';
 import routeMapKandyPinnawalaPremium from '../assets/route_map_kandy_pinnawala_premium.png';
 import routeMapAdamsPeakPremium from '../assets/route_map_adams_peak_premium.png';
@@ -544,7 +545,6 @@ export const tourPackages = [
         importantNotes: [
             "Guests are free to arrange their own activities and sightseeing during the trip.",
             "We provide transportation only, allowing you the flexibility to enjoy the day at your own pace.",
-            "Entrance tickets and personal expenses are not included.",
             "Additional charges apply for drop-offs outside the Kandy area.",
             ...COMMON_NOTES
         ]
@@ -553,14 +553,14 @@ export const tourPackages = [
         id: 2,
         name: "Southern Sun & Beach Escape",
         days: "7 Days / 6 Nights",
-        description: "Explore the best of Sri Lanka in one unforgettable journey — from tropical beaches and historic coastal towns to wildlife adventures, misty mountains, tea plantations, scenic train rides, and the cultural heart of the island.\n\nThis 7-day small-group experience has been carefully designed for travellers who want to discover the beauty of Sri Lanka while connecting with local culture, nature, and authentic experiences.\n\nTravel from the relaxing beaches of Hikkaduwa and Mirissa, through Sri Lanka's wildlife-rich countryside, into the breathtaking hill country of Ella, before finishing in Kandy — Sri Lanka's cultural capital.",
+        description: "Explore the best of Sri Lanka in one unforgettable journey: from tropical beaches and historic coastal towns to wildlife adventures, misty mountains, tea plantations, scenic train rides, and the cultural heart of the island.\n\nThis 7 day small group experience has been carefully designed for travellers who want to discover the beauty of Sri Lanka while connecting with local culture, nature, and authentic experiences.\n\nTravel from the relaxing beaches of Hikkaduwa and Mirissa, through Sri Lanka's wildlife rich countryside, into the breathtaking hill country of Ella, before finishing in Kandy: Sri Lanka's cultural capital.",
         price: "$549",
         image: southernCover,
         itinerary: [
             { 
                 day: 1, 
                 title: "Welcome to Hikkaduwa & Sunset at Galle Fort", 
-                desc: "<b>Overnight: Hikkaduwa</b><br/><br/>Your Sri Lankan adventure begins on the golden south coast.<br/><br/><b><i class='bi bi-geo-alt-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Hikkaduwa Beach Arrival & Check-In</b><br/>Settle into your accommodation in Hikkaduwa, famous for its surfing culture, coral reefs, and laid-back coastal atmosphere.<br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: UNESCO Galle Fort Exploration</b><br/>Travel to the historic 16th-century fortress city of Galle. Wander through charming Dutch colonial streets filled with artisan shops, boutique cafés, and historic architecture.<br/><br/><b><i class='bi bi-sun-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Sunset Rampart Promenade</b><br/>Enjoy a sunset walk along the ancient fort ramparts overlooking the Indian Ocean.", 
+                desc: "<b>Overnight: Hikkaduwa</b><br/><br/>Your Sri Lankan adventure begins on the golden south coast.<br/><br/><b><i class='bi bi-geo-alt-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Hikkaduwa Beach Arrival & Check In</b><br/>Settle into your accommodation in Hikkaduwa, famous for its surfing culture, coral reefs, and laid back coastal atmosphere.<br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: UNESCO Galle Fort Exploration</b><br/>Travel to the historic 16th century fortress city of Galle. Wander through charming Dutch colonial streets filled with artisan shops, boutique cafés, and historic architecture.<br/><br/><b><i class='bi bi-sun-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Sunset Rampart Promenade</b><br/>Enjoy a sunset walk along the ancient fort walls overlooking the Indian Ocean.", 
                 activities: ["Hikkaduwa Beach Town", "Galle Fort Exploration", "Sunset Views from Fort Walls", "Colonial History & Local Culture"],
                 optionalActivities: ["Boutique Cafe Exploration inside Fort", "Traditional Gemstone Shop Visit"]
             },
@@ -581,7 +581,7 @@ export const tourPackages = [
             { 
                 day: 3, 
                 title: "Mirissa Beach Escape", 
-                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Mirissa</b><br/><br/><b><i class='bi bi-car-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Southern Coastal Scenic Drive</b><br/>Journey along Sri Lanka's postcard-perfect southern shoreline towards the bay of Mirissa.<br/><br/><b><i class='bi bi-camera-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Coconut Tree Hill Viewpoint</b><br/>Visit the island's iconic red-cliff headland topped with towering palm trees for panoramic ocean photos.<br/><br/><b><i class='bi bi-sun-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Mirissa Bay Sunset & Beach Dining</b><br/>Unwind on the soft crescent beach of Mirissa and watch the sunset from vibrant beachfront dining spots.", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Mirissa</b><br/><br/><b><i class='bi bi-car-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Southern Coastal Scenic Drive</b><br/>Journey along Sri Lanka's postcard perfect southern shoreline towards the bay of Mirissa.<br/><br/><b><i class='bi bi-camera-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Coconut Tree Hill Viewpoint</b><br/>Visit the island's iconic red cliff headland topped with towering palm trees for panoramic ocean photos.<br/><br/><b><i class='bi bi-sun-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Mirissa Bay Sunset & Beach Dining</b><br/>Unwind on the soft crescent beach of Mirissa and watch the sunset from vibrant beachfront dining spots.", 
                 activities: ["Breakfast", "Private Transport", "Scenic Coastal Journey", "Mirissa Beach", "Coconut Tree Hill", "Sunset Experience"],
                 optionalActivities: [
                     "Whale Watching Safari (Seasonal)",
@@ -592,15 +592,15 @@ export const tourPackages = [
             { 
                 day: 4, 
                 title: "Wildlife Safari Adventure & Journey to Ella", 
-                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Ella</b><br/><br/><b><i class='bi bi-compass-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Udawalawe National Park Wildlife Safari (Optional)</b><br/>Leave the coast behind and head into the wild savannah. Join an open-top jeep safari to witness wild elephant herds in their natural habitat.<br/><br/><b><i class='bi bi-geo-alt-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Scenic Mountain Countryside Ascent</b><br/>Ascend into the misty green hills as the climate cools and tropical forests transform into emerald tea estates.<br/><br/><b><i class='bi bi-house-door-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Arrival in Ella Mountain Village</b><br/>Check in to your hillside accommodation and soak up the laid-back mountain charm of Ella town.", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Ella</b><br/><br/><b><i class='bi bi-compass-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Udawalawe National Park Wildlife Safari (Optional)</b><br/>Leave the coast behind and head into the wild savannah. Join an open top jeep safari to witness wild elephant herds in their natural habitat.<br/><br/><b><i class='bi bi-geo-alt-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Scenic Mountain Countryside Ascent</b><br/>Ascend into the misty green hills as the climate cools and tropical forests transform into emerald tea estates.<br/><br/><b><i class='bi bi-house-door-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Arrival in Ella Mountain Village</b><br/>Check in to your hillside accommodation and soak up the laid back mountain charm of Ella town.", 
                 activities: ["Breakfast", "Private Transport", "Wildlife Countryside Drive", "Elephant Country", "Scenic Mountain Drive", "Ella Arrival"],
                 optionalActivities: [
-                    "Udawalawe National Park Jeep Safari (Approx. USD 40–45 entrance + USD 50–60 jeep per vehicle)"
+                    "Udawalawe National Park Jeep Safari (Approx. USD 40 to 45 entrance + USD 50 to 60 jeep per vehicle)"
                 ]
             },
             { 
                 day: 5, 
-                title: "Discover Ella – Mountains & Tea Country", 
+                title: "Discover Ella: Mountains & Tea Country", 
                 desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Ella</b><br/><br/><b><i class='bi bi-signpost-split-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Little Adam's Peak Hike</b><br/>Take a refreshing morning hike up Little Adam's Peak for panoramic views over the famous Ella Gap.<br/><br/><b><i class='bi bi-train-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Nine Arches Bridge Landmark</b><br/>Walk to the historic colonial Nine Arches Bridge nestled deep in the mountain jungle to watch the train pass.<br/><br/><b><i class='bi bi-water' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Ravana Waterfalls & Tea Estates</b><br/>Visit cascading Ravana Falls and enjoy the scenic tea plantation landscapes surrounding Ella.", 
                 activities: ["Breakfast", "Little Adam's Peak Hike", "Nine Arches Bridge", "Ravana Falls", "Tea Plantation Views"],
                 optionalActivities: [
@@ -612,11 +612,11 @@ export const tourPackages = [
             },
             { 
                 day: 6, 
-                title: "Scenic Train Journey to Kandy – Cultural Capital", 
-                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Kandy</b><br/><br/><b><i class='bi bi-train-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Iconic Hill Country Train Ride</b><br/>Board the legendary blue mountain train and ride through endless rolling tea estates, pine forests, and mountain viaducts.<br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Arrival in Kandy Sacred City</b><br/>Arrive in Sri Lanka's spiritual capital, surrounded by green mountains and the tranquil Kandy Lake.<br/><br/><b><i class='bi bi-music-note-beamed' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Cultural Evening & Traditional Performance</b><br/>Explore local markets or choose to attend a traditional Kandyan cultural dance and fire-walking show.", 
+                title: "Scenic Train Journey to Kandy: Cultural Capital", 
+                desc: "<b><i class='bi bi-cup-hot-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Breakfast included</b> | <b>Overnight: Kandy</b><br/><br/><b><i class='bi bi-train-front-fill' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 1: Iconic Hill Country Train Ride</b><br/>Board the legendary blue mountain train and ride through endless rolling tea estates, pine forests, and mountain viaducts.<br/><br/><b><i class='bi bi-bank2' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 2: Arrival in Kandy Sacred City</b><br/>Arrive in Sri Lanka's spiritual capital, surrounded by green mountains and the tranquil Kandy Lake.<br/><br/><b><i class='bi bi-music-note-beamed' style='color: var(--primary-green); margin-right: 6px;'></i> Stop 3: Cultural Evening & Traditional Performance</b><br/>Explore local markets or choose to attend a traditional Kandyan cultural dance and fire walking show.", 
                 activities: ["Breakfast", "Scenic Train Ticket", "Tea Country Rail Views", "Arrival in Kandy", "Cultural Introduction", "Private Transport"],
                 optionalActivities: [
-                    "Kandy Cultural Dance & Fire-Walking Show",
+                    "Kandy Cultural Dance & Fire Walking Show",
                     "Kandy Evening Market Walk"
                 ]
             },
@@ -648,7 +648,7 @@ export const tourPackages = [
             "Attraction entrance tickets",
             "Optional activities & Personal expenses"
         ],
-        routeMap: routeMapSouthernPremium,
+        routeMap: routeMapSouthern7Day,
         reviews: coastalReviews,
         rating: 4.9,
         ratingLabel: "Small Group Favorite",
@@ -656,7 +656,7 @@ export const tourPackages = [
         importantNotes: [
             "Price is based on minimum 5 participants and shared accommodation (max 3 people per room).",
             "For smaller groups, solo travelers, families, or private departures, customized pricing is available.",
-            "Room upgrades (Private room or Twin-sharing) are available at an additional cost depending on availability.",
+            "Room upgrades (Private room or Twin sharing) are available at an additional cost depending on availability.",
             ...COMMON_NOTES
         ]
     },
