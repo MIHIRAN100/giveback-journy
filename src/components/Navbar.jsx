@@ -58,6 +58,8 @@ const Navbar = () => {
                 {
                     title: 'Day Trips & Adventures',
                     items: [
+                        { name: 'Sigiriya & Elephant Safari Experience', path: '/package/12' },
+                        { name: 'Sigiriya Nature & Culture Escape', path: '/package/13' },
                         { name: 'Kandy & Pinnawala Day Trip', path: '/package/8' },
                         { name: 'Kandy Highlights', path: '/package/9' },
                         { name: "Adam's Peak Sunrise Quest", path: '/package/10' },

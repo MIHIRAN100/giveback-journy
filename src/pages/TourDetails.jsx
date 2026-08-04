@@ -102,38 +102,38 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay, isSingleDayTour }) =>
             <div 
                 onClick={() => setIsOpen(!isOpen)}
                 style={{ 
-                    padding: '22px 0', 
+                    padding: '16px 0', 
                     display: 'flex', 
                     justifyContent: 'space-between', 
                     alignItems: 'center', 
                     cursor: 'pointer' 
                 }}
             >
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <div style={{ fontSize: '0.95rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                     <span style={{ 
                         background: 'var(--primary-green)', 
                         color: '#fff', 
-                        padding: '2px 10px', 
+                        padding: '2px 8px', 
                         borderRadius: '6px', 
-                        fontSize: '0.8rem', 
+                        fontSize: '0.75rem', 
                         fontWeight: 800 
                     }}>{isSingleDayTour ? `STOP ${index + 1}` : `DAY ${step.day}`}</span>
                     <span style={{ color: '#111' }}>{step.title}</span>
                 </div>
-                <i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} style={{ color: 'var(--primary-green)', fontWeight: 800, fontSize: '1.1rem' }}></i>
+                <i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} style={{ color: 'var(--primary-green)', fontWeight: 800, fontSize: '0.9rem' }}></i>
             </div>
             {isOpen && (
-                <div style={{ padding: '0 0 30px 0', color: '#555', lineHeight: 1.8, fontSize: '1.05rem', whiteSpace: 'pre-line' }}>
+                <div style={{ padding: '0 0 24px 0', color: '#555', lineHeight: 1.6, fontSize: '0.86rem', whiteSpace: 'pre-line' }}>
                     <div className="itinerary-desc-content" dangerouslySetInnerHTML={{ __html: step.desc }} />
                     {step.activities && (
                         <div style={{ 
-                            marginTop: '25px', 
+                            marginTop: '20px', 
                             display: 'grid', 
-                            gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', 
-                            gap: '12px',
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(190px, 1fr))', 
+                            gap: '10px',
                             background: '#f8fdf9',
-                            padding: '20px',
-                            borderRadius: '18px',
+                            padding: '16px',
+                            borderRadius: '14px',
                             border: '1px solid rgba(27, 163, 82, 0.18)',
                             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.02)'
                         }}>
@@ -157,19 +157,19 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay, isSingleDayTour }) =>
                                     <div key={i} style={{ 
                                         display: 'flex',
                                         alignItems: 'center',
-                                        gap: '10px',
-                                        fontSize: '0.9rem', 
+                                        gap: '8px',
+                                        fontSize: '0.8rem', 
                                         fontWeight: 700,
                                         color: '#1a2332',
                                         background: '#ffffff',
-                                        padding: '10px 14px',
-                                        borderRadius: '12px',
+                                        padding: '8px 12px',
+                                        borderRadius: '10px',
                                         border: '1px solid #eef6f0',
                                         boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)'
                                     }}>
                                         <i className={getIcon(act)} style={{ 
                                             color: 'var(--primary-green)', 
-                                            fontSize: '1.05rem'
+                                            fontSize: '0.9rem'
                                         }}></i>
                                         {act}
                                     </div>
@@ -478,8 +478,8 @@ const TourDetails = () => {
                     background: #128240;
                 }
                 .itinerary-desc-content {
-                    font-size: 1.05rem;
-                    line-height: 1.8;
+                    font-size: 0.86rem;
+                    line-height: 1.6;
                     color: #555;
                 }
                 .itinerary-desc-content b, .itinerary-desc-content strong {
@@ -487,15 +487,16 @@ const TourDetails = () => {
                     font-weight: 800;
                 }
                 .itinerary-desc-content ul {
-                    margin-top: 15px !important;
+                    margin-top: 10px !important;
                     padding-left: 5px !important;
                     list-style: none !important;
                 }
                 .itinerary-desc-content li {
-                    margin-bottom: 12px !important;
+                    margin-bottom: 8px !important;
                     position: relative !important;
-                    padding-left: 28px !important;
-                    line-height: 1.6 !important;
+                    padding-left: 22px !important;
+                    line-height: 1.5 !important;
+                    font-size: 0.86rem !important;
                 }
                 .itinerary-desc-content li::before {
                     content: '•';
@@ -503,7 +504,7 @@ const TourDetails = () => {
                     left: 0;
                     color: var(--primary-green);
                     font-weight: 900;
-                    font-size: 1.8rem;
+                    font-size: 1.4rem;
                     line-height: 1;
                     top: -2px;
                 }

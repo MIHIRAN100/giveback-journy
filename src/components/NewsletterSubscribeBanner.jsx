@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { jsPDF } from 'jspdf';
 import defaultBgImage from '../assets/newsletter_beach_bg.png';
 import medicalBgImage from '../assets/medical_gallery_new_1.jpg';
 import supportAgentImg from '../assets/support_agent_headshot.png';
@@ -7,16 +8,175 @@ import supportAgentImg from '../assets/support_agent_headshot.png';
 const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const [subscribed, setSubscribed] = useState(false);
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [downloaded, setDownloaded] = useState(false);
 
-    const handleSubscribe = (e) => {
+    const handleDownloadPDF = (e) => {
         e.preventDefault();
-        if (email) {
-            setSubscribed(true);
+        setIsDownloading(true);
+
+        try {
+            const doc = new jsPDF('p', 'pt', 'a4');
+            const pageWidth = doc.internal.pageSize.getWidth();
+
+            // Page 1 Header
+            doc.setFillColor(27, 163, 82); // Primary Green
+            doc.rect(0, 0, pageWidth, 90, 'F');
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(20);
+            doc.setFont('helvetica', 'bold');
+            doc.text('GIVEBACK JOURNEY - SRI LANKA', 40, 42);
+
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Official Volunteer Programs & Pricing Breakdown 2026', 40, 65);
+
+            // Metadata Bar
+            doc.setTextColor(100, 116, 139);
+            doc.setFontSize(9);
+            const userRef = email ? email : 'Valued Volunteer';
+            doc.text(`Requested by: ${userRef}`, 40, 110);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, pageWidth - 140, 110);
+
+            doc.setDrawColor(226, 232, 240);
+            doc.setLineWidth(1);
+            doc.line(40, 120, pageWidth - 40, 120);
+
+            // Intro Text
+            doc.setTextColor(30, 41, 59);
+            doc.setFontSize(13);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Official Volunteer Project Pricing Matrix', 40, 142);
+
+            doc.setFontSize(9.5);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(71, 85, 105);
+            doc.text('All prices are in USD ($) and reflect direct website rates. Programs include 3 daily meals, lodging, airport pickup, and 24/7 dedicated support.', 40, 158, { maxWidth: pageWidth - 80 });
+
+            let y = 185;
+
+            const programs = [
+                {
+                    title: "Medical Volunteer Program",
+                    location: "Kandy District (Teaching Hospital Placement)",
+                    desc: "Shadow senior Sri Lankan doctors in surgery, pediatrics, OB-GYN, and emergency medicine.",
+                    pricing: "1 Wk: $190  |  2 Wks: $360  |  3 Wks: $530  |  4 Wks: $700  (+$170/extra wk)"
+                },
+                {
+                    title: "Teaching Volunteer Program",
+                    location: "Kandy District (Local Primary Schools)",
+                    desc: "Teach conversational English, IT, and creative arts in rural community centers.",
+                    pricing: "1 Wk: $190  |  2 Wks: $240  |  3 Wks: $290  |  4 Wks: $340  (+$50/extra wk)"
+                },
+                {
+                    title: "Village School Construction & Renovation",
+                    location: "Kandy District",
+                    desc: "Build and restore classrooms, playgrounds, and community facilities alongside locals.",
+                    pricing: "1 Wk: $190  |  2 Wks: $240  |  3 Wks: $290  |  4 Wks: $340  (+$50/extra wk)"
+                },
+                {
+                    title: "Special Needs Support Program",
+                    location: "Kandy District",
+                    desc: "Provide care, physical therapy support, and creative activities for children with special needs.",
+                    pricing: "1 Wk: $190  |  2 Wks: $240  |  3 Wks: $290  |  4 Wks: $340  (+$50/extra wk)"
+                },
+                {
+                    title: "Body & Mind Wellness Week",
+                    location: "Hikkaduwa, Southern Coast",
+                    desc: "Temple yoga, meditation sessions, beach wellness, and cultural immersion.",
+                    pricing: "1 Wk: $190  |  2 Wks: $240  (+$50/extra wk)"
+                },
+                {
+                    title: "Breathe Sri Lanka (The Real Experience)",
+                    location: "Kandy & Southern Coast",
+                    desc: "27-Day full immersion across wildlife, medical, teaching, and heritage projects.",
+                    pricing: "Fixed 27 Days (4 Weeks): $1,400 USD Complete Package"
+                }
+            ];
+
+            programs.forEach((prog) => {
+                doc.setFillColor(248, 250, 252);
+                doc.setDrawColor(226, 232, 240);
+                doc.roundedRect(40, y, pageWidth - 80, 68, 6, 6, 'FD');
+
+                doc.setTextColor(27, 163, 82);
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'bold');
+                doc.text(prog.title, 52, y + 20);
+
+                doc.setTextColor(100, 116, 139);
+                doc.setFontSize(8.5);
+                doc.setFont('helvetica', 'normal');
+                doc.text(`Location: ${prog.location}`, pageWidth - 260, y + 20);
+
+                doc.setTextColor(71, 85, 105);
+                doc.setFontSize(9);
+                doc.text(prog.desc, 52, y + 36, { maxWidth: pageWidth - 104 });
+
+                doc.setTextColor(15, 23, 42);
+                doc.setFontSize(9.5);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`Official Pricing: ${prog.pricing}`, 52, y + 54);
+
+                y += 76;
+            });
+
+            // What's Included Section
+            y += 10;
+            doc.setTextColor(30, 41, 59);
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'bold');
+            doc.text('What Is Included in All Volunteer Programs:', 40, y);
+
+            y += 16;
+            const inclusions = [
+                '✔ Airport Pick-up & Transport to Housing',
+                '✔ Clean Accommodation in Locally Owned Hostels',
+                '✔ 3 Daily Sri Lankan Meals (Breakfast, Lunch & Dinner)',
+                '✔ In-Country Orientation & Cultural Training',
+                '✔ 24/7 Dedicated Emergency & Program Support',
+                '✔ Official Certificate of Completion & Work Letter'
+            ];
+
+            doc.setFontSize(8.5);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(51, 65, 85);
+            
+            // Render inclusions in 2 columns
+            inclusions.forEach((item, index) => {
+                const colX = index % 2 === 0 ? 45 : 300;
+                const rowY = y + Math.floor(index / 2) * 16;
+                doc.text(item, colX, rowY);
+            });
+
+            // Contact Footer Box
+            y += 56;
+            doc.setFillColor(240, 253, 244);
+            doc.setDrawColor(27, 163, 82);
+            doc.roundedRect(40, y, pageWidth - 80, 44, 6, 6, 'FD');
+
+            doc.setTextColor(27, 163, 82);
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Questions or Ready to Book Your Placement?', 52, y + 18);
+
+            doc.setTextColor(51, 65, 85);
+            doc.setFontSize(8.5);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Email: Hello@givebackjourney.com  |  WhatsApp / Call: +94 77 494 4909', 52, y + 32);
+
+            // Save PDF immediately
+            doc.save('GiveBack_Journey_Volunteer_Pricing_Guide_2026.pdf');
+
+            setIsDownloading(false);
+            setDownloaded(true);
             setTimeout(() => {
-                setSubscribed(false);
-                setEmail('');
-            }, 4000);
+                setDownloaded(false);
+            }, 5000);
+        } catch (err) {
+            console.error('Failed to generate PDF:', err);
+            setIsDownloading(false);
         }
     };
 
@@ -31,7 +191,7 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     background-position: center 58%;
                     background-attachment: fixed;
                     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-                    padding: 42px 6%;
+                    padding: 42px 190px 42px 6%;
                     box-sizing: border-box;
                     color: #ffffff;
                     display: flex;
@@ -61,11 +221,14 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
 
                 .subscribe-form-box {
                     flex: 1;
-                    max-width: 560px;
+                    max-width: 580px;
                     min-width: 280px;
+                    margin: 0 auto;
                     display: flex;
                     flex-direction: column;
-                    gap: 8px;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
                 }
 
                 .subscribe-input-group {
@@ -90,12 +253,15 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     background: #00bcda;
                     color: #ffffff;
                     border: none;
-                    padding: 16px 30px;
+                    padding: 16px 28px;
                     font-weight: 800;
-                    font-size: 1rem;
+                    font-size: 0.98rem;
                     cursor: pointer;
                     white-space: nowrap;
                     transition: background 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
                 }
 
                 .subscribe-submit-btn:hover {
@@ -107,26 +273,33 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     font-size: 0.78rem;
                     color: rgba(255, 255, 255, 0.9);
                     line-height: 1.4;
+                    text-align: center;
+                    width: 100%;
                 }
 
                 .subscribe-need-help-card {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
                     background: #ffffff;
-                    border-radius: 16px;
-                    padding: 16px 22px;
+                    border-radius: 16px 0 0 16px;
+                    padding: 18px 24px 18px 22px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    gap: 8px;
-                    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+                    gap: 6px;
+                    box-shadow: -4px 8px 25px rgba(0,0,0,0.18);
                     cursor: pointer;
                     transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    min-width: 130px;
+                    min-width: 125px;
+                    z-index: 2;
                 }
 
                 .subscribe-need-help-card:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+                    transform: translateY(-50%) translateX(-4px);
+                    box-shadow: -8px 12px 30px rgba(0,0,0,0.25);
                 }
 
                 @media (max-width: 992px) {
@@ -140,6 +313,17 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     }
                     .subscribe-form-box {
                         max-width: 100%;
+                    }
+                    .subscribe-need-help-card {
+                        position: relative;
+                        right: auto;
+                        top: auto;
+                        transform: none;
+                        border-radius: 16px;
+                        margin-top: 15px;
+                    }
+                    .subscribe-need-help-card:hover {
+                        transform: translateY(-3px);
                     }
                 }
             `}</style>
@@ -159,40 +343,42 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     </h2>
                 </div>
 
-                {/* Center Form */}
+                {/* Center Form with Real-Time PDF Download */}
                 <div className="subscribe-form-box">
-                    {subscribed ? (
-                        <div style={{ background: 'rgba(0, 188, 218, 0.25)', border: '1px solid #00bcda', padding: '14px 20px', borderRadius: '8px', color: '#fff', fontWeight: 700, textAlign: 'center' }}>
-                            ✓ Thank you! We've sent the Volunteer Project Guide & Pricings to your email.
+                    {downloaded ? (
+                        <div style={{ background: 'rgba(0, 188, 218, 0.3)', border: '1px solid #00bcda', padding: '14px 20px', borderRadius: '8px', color: '#fff', fontWeight: 700, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                            <i className="bi bi-file-earmark-check-fill" style={{ fontSize: '1.3rem', color: '#00bcda' }}></i>
+                            <span>✓ Volunteer Pricing Guide PDF Downloaded Successfully!</span>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubscribe} className="subscribe-input-group">
+                        <form onSubmit={handleDownloadPDF} className="subscribe-input-group">
                             <input 
                                 type="email" 
-                                placeholder="Enter email for Volunteer Guide & Pricing" 
+                                placeholder="Enter email to Download Volunteer Pricing Guide" 
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="subscribe-input-field"
                             />
-                            <button type="submit" className="subscribe-submit-btn">
-                                Get Info Guide
+                            <button type="submit" className="subscribe-submit-btn" disabled={isDownloading}>
+                                <i className={isDownloading ? "bi bi-hourglass-split" : "bi bi-file-earmark-pdf-fill"}></i>
+                                <span>{isDownloading ? 'Generating...' : 'Download Guide & Pricing'}</span>
                             </button>
                         </form>
                     )}
                     <p className="subscribe-disclaimer">
-                        Get detailed medical, teaching & wildlife project pricings and dates. Read our <a href="/terms" style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}>Privacy Policy</a> and <a href="/terms" style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}>Terms & Conditions</a>.
+                        Instantly download official medical, teaching & wildlife project pricings. Read our <Link to="/privacy-policy" style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}>Privacy Policy</Link> and <Link to="/terms-and-conditions" style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}>Terms & Conditions</Link>.
                     </p>
                 </div>
 
                 {/* Right Floating Need Help Card */}
-                <div className="subscribe-need-help-card" onClick={() => navigate('/volunteer')}>
+                <div className="subscribe-need-help-card" onClick={() => navigate('/contact')}>
                     <img 
                         src={supportAgentImg} 
-                        alt="Volunteer Support Advisor" 
-                        style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #00bcda' }} 
+                        alt="Customer Support Agent" 
+                        style={{ width: '54px', height: '54px', borderRadius: '50%', objectFit: 'cover', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }} 
                     />
-                    <span style={{ fontWeight: 800, fontSize: '0.85rem', color: '#111', whiteSpace: 'nowrap' }}>Volunteer Advisor</span>
+                    <span style={{ fontWeight: 800, fontSize: '0.95rem', color: '#222', whiteSpace: 'nowrap', marginTop: '2px' }}>Need Help?</span>
                 </div>
             </div>
         </section>
