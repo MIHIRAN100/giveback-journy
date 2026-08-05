@@ -488,64 +488,74 @@ export const tourPackages = [
     {
         id: 8,
         name: "Kandy & Pinnawala Day Trip",
-        days: "1 Day (6–8 Hours)",
+        days: "1 Day (8:30 AM – Drop-off)",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Pinnawala / Kandy",
-        description: "Enjoy a comfortable day trip from Kandy to Pinnawala with reliable private transportation. Explore the famous Pinnawala Elephant Orphanage at your own pace and customize your day with optional stops along the way.",
+        description: "Experience a meaningful blend of ethical elephant conservation and cultural heritage. From a small-scale elephant rescue center to the famous Pinnawala Orphanage, riverside lunch, traditional herbal garden, and panoramic Kandy Viewpoint.",
         price: "$125",
         image: budgetPromoImg,
         itinerary: [
             { 
                 day: 1, 
-                title: "8:00 AM – Pickup from Kandy", 
-                desc: "Your driver will pick you up from your hotel or preferred location in Kandy. Relax and enjoy a scenic drive through Sri Lanka's beautiful countryside.", 
-                activities: ["Pickup from Kandy Hotel / Residence", "Private Transport", "Scenic Countryside Drive"]
+                title: "08:30 AM – Departure from Kandy & Small Rescue Center", 
+                desc: "Meet your driver at your accommodation at 08:30 AM and begin your journey to a small elephant rescue and rehabilitation center.<br/><br/>Unlike large sanctuaries, this center operates on a very small scale and usually cares for only one elephant at a time, allowing the team to provide personalized attention and dedicated care. In Sri Lanka, domesticated elephants have historically played an important role in religious ceremonies, traditional processions, and local communities. Unfortunately, some elephants have suffered from years of hard work, inadequate care, and poor living conditions.<br/><br/>This rescue center focuses on providing a safe and peaceful environment for elephants in need, helping them recover physically and emotionally. By visiting, you will support a meaningful conservation initiative that prioritizes animal welfare and ethical treatment.<br/><br/>During your visit, you will have the opportunity to learn about these majestic and sacred animals, observe them up close, and gain a deeper understanding of their behaviour and history. You will also have the chance to feed the elephant and interact with its caretakers.<br/><br/><b>Please note:</b> Elephant riding is strictly prohibited at the center, and the project does not support any activities that involve riding or exploiting elephants.", 
+                activities: ["08:30 AM Hotel Pickup", "Small Elephant Rescue Center", "Elephant Care & Feeding", "Ethical Welfare & History", "Strict No-Riding Policy"]
             },
             { 
-                day: 2, 
-                title: "9:30 AM – Arrive at Pinnawala", 
-                desc: "Spend time exploring the Pinnawala Elephant Orphanage at your own pace. Watch the elephants, visit the river where they bathe (depending on the daily schedule), and enjoy the surrounding area.<br/><br/><b>Please Note:</b> Entrance tickets and personal expenses are not included.", 
-                activities: ["Pinnawala Elephant Orphanage", "Watch Elephants Bathing in River", "Explore at Your Own Pace"]
+                day: 1, 
+                title: "11:30 AM – Riverside Lunch Experience", 
+                desc: "Enjoy a traditional Sri Lankan packed lunch beside a beautiful riverside setting. Prepared with local flavors and fresh ingredients, this meal offers an authentic taste of Sri Lankan cuisine and provides a unique cultural experience surrounded by nature.", 
+                activities: ["Riverside Packed Lunch", "Traditional Sri Lankan Cuisine", "Nature & River Vistas"]
             },
             { 
-                day: 3, 
-                title: "12:30 PM – Lunch Break", 
-                desc: "Enjoy lunch at a restaurant of your choice. Your driver can recommend local restaurants if needed.", 
-                activities: ["Lunch at Restaurant of Choice", "Local Driver Dining Recommendations"]
+                day: 1, 
+                title: "12:00 PM – Farewell to the Rescue Center", 
+                desc: "After lunch, say goodbye to the elephant and the dedicated team before continuing your journey to the world-famous Pinnawala Elephant Orphanage.", 
+                activities: ["Farewell to Rescue Center", "Transfer to Pinnawala"]
             },
             { 
-                day: 4, 
-                title: "2:00 PM – Optional Stops", 
-                desc: "If time permits, you may choose to visit:<br/><ul style='margin-top: 8px; margin-bottom: 8px; padding-left: 20px;'><li>A local spice and herbal garden</li><li>A tea factory or tea plantation</li><li>Local handicraft or souvenir shops</li></ul>These stops are optional and can be arranged based on your preferences.", 
-                activities: ["Spice & Herbal Garden (Optional)", "Tea Factory or Plantation (Optional)", "Handicraft & Souvenir Shops (Optional)"]
+                day: 1, 
+                title: "01:15 PM – Visit to Pinnawala Elephant Orphanage", 
+                desc: "Arrive at Pinnawala Elephant Orphanage, one of Sri Lanka's most iconic wildlife attractions and home to one of the world's largest groups of captive elephants.<br/><br/>Established in 1975, the orphanage provides shelter and care for orphaned, injured, and abandoned elephants. Here, you will witness the afternoon feeding session and observe these magnificent animals as they interact with one another in a natural and spacious environment.<br/><br/>Spend time watching the elephants and learning about their daily lives and the conservation efforts carried out by the orphanage.<br/><br/><b>Please note:</b> Visitors are not permitted to touch the elephants during this experience.", 
+                activities: ["Pinnawala Elephant Orphanage", "Afternoon Feeding Session", "Large Herd Observation", "Conservation Insights"]
             },
             { 
-                day: 5, 
-                title: "4:00 PM – Return Journey & Drop-Off", 
-                desc: "After your visit, your driver will begin the return journey.<br/><br/><b>Drop-Off:</b> Standard drop-off is in Kandy.<br/><i>If you would like to be dropped off at a different destination, we are happy to arrange it for an additional fee, depending on the location.</i>", 
-                activities: ["Return Scenic Drive to Kandy", "Hotel / Residence Drop-Off in Kandy"]
+                day: 1, 
+                title: "03:00 PM – Departure Towards Kandy & Cultural Stops", 
+                desc: "Leave Pinnawala and begin your return journey to Kandy.<br/><br/><b>Traditional Herbal Garden Experience:</b><br/>On the way back, stop at a traditional Sri Lankan herbal garden, where you will discover the island's rich heritage of Ayurvedic medicine and natural healing practices. During your visit, you will learn about a variety of medicinal plants, herbs, and spices that have been used in Sri Lankan culture for centuries to promote health and well-being.<br/><br/><b>Kandy Viewpoint:</b><br/>Continue to the famous Kandy Viewpoint, located high above the city. From here, you will enjoy breathtaking panoramic views of Kandy, surrounded by lush green hills and centered around the beautiful Kandy Lake. Take in the stunning scenery and capture unforgettable photographs.", 
+                activities: ["Return Journey to Kandy", "Ayurvedic Herbal Garden Tour", "Kandy Viewpoint & Lake Vistas", "Photography Stop"]
+            },
+            { 
+                day: 1, 
+                title: "Drop-off at Your Accommodation in Kandy", 
+                desc: "After enjoying the spectacular views, you will be transferred back to your accommodation.<br/><br/><b>End of the program for the day.</b>", 
+                activities: ["Hotel / Residence Drop-Off", "End of Day Program"]
             }
         ],
         inclusions: [
             "Private vehicle with an experienced driver",
-            "Pickup from your hotel or preferred location in Kandy",
-            "Comfortable private transportation",
-            "Flexible itinerary with optional stops"
+            "Pickup from your accommodation in Kandy (08:30 AM)",
+            "Visit to Small Elephant Rescue Center (feeding & care)",
+            "Traditional Sri Lankan packed lunch by the riverside",
+            "Pinnawala Elephant Orphanage visit",
+            "Traditional Herbal & Ayurvedic Garden tour",
+            "Kandy Viewpoint photo stop",
+            "Return drop-off at your accommodation"
         ],
         exclusions: [
-            "Entrance fees",
-            "Meals and beverages",
-            "Personal expenses",
+            "Entrance fees (Pinnawala & Rescue Center)",
+            "Personal expenses & beverages",
+            "Tips and gratuities",
             "Guide services"
         ],
         routeMap: routeMapKandyPinnawalaPremium,
         reviews: kandyReviews,
-        rating: 4.7,
-        ratingLabel: "Highly Rated",
+        rating: 4.8,
+        ratingLabel: "Must Experience",
         importantNotes: [
-            "Guests are free to arrange their own activities and sightseeing during the trip.",
-            "We provide transportation only, allowing you the flexibility to enjoy the day at your own pace.",
-            "Additional charges apply for drop-offs outside the Kandy area.",
+            "Elephant Riding Policy: Elephant riding is strictly prohibited at the rescue center and is not supported in any form.",
+            "Pinnawala Interaction Policy: Visitors are not permitted to touch the elephants at Pinnawala Elephant Orphanage.",
+            "Pickup & Drop-off: Standard pickup (08:30 AM) and drop-off are in Kandy. Additional charges apply for transfers outside Kandy.",
             ...COMMON_NOTES
         ]
     },

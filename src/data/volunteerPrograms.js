@@ -55,6 +55,7 @@ import img4412 from '../assets/IMG_4412.jpg';
 import newImg6 from '../assets/teaching volunteers/IMG-20241203-WA0044.jpg';
 import newImg8 from '../assets/teaching volunteers/6f5f5865-bf9d-4547-a1a7-eb130c2bce35.jpg';
 import womensEmpowermentImg from '../assets/WhatsApp Image 2026-07-31 at 13.55.45.jpeg';
+import womanGallery2 from '../assets/woman/3a035335-4a5f-48b1-9c9e-78e5ab89b972.jpg';
 
 export const volunteerPrograms = [
     {
@@ -939,7 +940,7 @@ export const volunteerPrograms = [
         color: "#ec4899",
         galleryImages: [
             { src: womensEmpowermentImg, caption: "Women's Skills Workshop" },
-            { src: cultureExp, caption: "Crafts & Sewing Session" },
+            { src: womanGallery2, caption: "Crafts & Sewing Session" },
             { src: interviewImg, caption: "Community Collaboration" },
             { src: peaceSmileImg, caption: "Empowerment & Smiles" }
         ],
