@@ -955,7 +955,7 @@ export const tourPackages = [
         days: "2 Days / 1 Night",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Nallathanniya / Kandy",
-        description: "Experience one of Sri Lanka's most iconic pilgrimages with a comfortable private transfer from Kandy to Adam's Peak (Sri Pada). Whether you're climbing during the official pilgrimage season (December to May) or the off-season (June to November), we'll provide safe and reliable transportation so you can enjoy the journey at your own pace.",
+        description: "Embark on an unforgettable journey to Sri Pada (Adam's Peak), one of Sri Lanka's most sacred and breathtaking mountain summits standing tall at 2,243 meters above sea level.\n\nThis 2-day overnight adventure takes you from Kandy through misty tea country and cascading waterfalls to Nallathanniya (Dalhousie) at the base of the peak. After checking in and resting at your included hotel accommodation, you'll start the midnight ascent under starry skies to reach the summit before dawn.\n\nAs the first light breaks, witness the legendary sunrise over Sri Lanka's central highlands and the famous triangular shadow of the sacred peak projected across the surrounding clouds. Whether climbing during the vibrant pilgrimage season (December to May) or exploring the serene off-season, our package includes private transfers, dedicated driver support, hotel stay, and breakfast for a seamless, rewarding quest.",
         price: "$280",
         image: adamsPeakImg,
         itinerary: [

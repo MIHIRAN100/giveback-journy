@@ -519,6 +519,13 @@ const TourDetails = () => {
                     grid-template-columns: 1.4fr 1fr;
                     gap: 40px;
                     margin-bottom: 60px;
+                    align-items: start;
+                }
+                .summary-card-container {
+                    position: sticky;
+                    top: 100px;
+                    align-self: start;
+                    z-index: 100;
                 }
                 .tour-gallery-container {
                     position: relative;
@@ -828,6 +835,7 @@ const TourDetails = () => {
                         width: 100% !important;
                         padding: 0 !important;
                         margin: 0 !important;
+                        position: static !important;
                     }
                     .before-you-book-box {
                         padding: 20px !important;
@@ -1575,60 +1583,47 @@ const TourDetails = () => {
                         {/* Volunteering Banner */}
                         <div style={{
                             marginTop: '25px',
-                            background: 'linear-gradient(135deg, #1a2332 0%, #111 100%)',
+                            background: '#ffffff',
                             borderRadius: '20px',
-                            padding: '30px',
+                            border: '1px solid #e2e8f0',
+                            padding: '24px 28px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            boxShadow: '0 15px 35px rgba(0,0,0,0.15)',
-                            position: 'relative',
-                            overflow: 'hidden'
+                            boxShadow: '0 4px 15px rgba(0,0,0,0.02)',
+                            gap: '20px'
                         }}>
-                            {/* Decorative Background Element */}
-                            <div style={{
-                                position: 'absolute',
-                                right: '-10%',
-                                top: '-20%',
-                                width: '200px',
-                                height: '200px',
-                                background: 'radial-gradient(circle, var(--primary-green) 0%, rgba(27,163,82,0) 70%)',
-                                opacity: 0.15,
-                                borderRadius: '50%',
-                                pointerEvents: 'none'
-                            }}></div>
-                            
-                            <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                                    <span style={{ background: 'var(--primary-green)', color: 'white', padding: '4px 10px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>Give Back</span>
-                                    <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', fontWeight: 600 }}>Make Your Trip Meaningful</span>
+                            <div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                                    <span style={{ background: 'rgba(27, 163, 82, 0.1)', color: 'var(--primary-green)', padding: '4px 10px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Give Back</span>
+                                    <span style={{ color: '#64748b', fontSize: '0.85rem', fontWeight: 600 }}>Make Your Trip Meaningful</span>
                                 </div>
-                                <h3 style={{ color: 'white', fontSize: '1.4rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.3 }}>
+                                <h3 style={{ color: '#0f172a', fontSize: '1.25rem', fontWeight: 800, margin: '0 0 6px 0', lineHeight: 1.3 }}>
                                     Add Volunteering to Your Journey
                                 </h3>
-                                <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0, fontSize: '0.95rem', lineHeight: 1.5, maxWidth: '90%' }}>
-                                    Make a real impact during your stay in Sri Lanka. Explore our community and wildlife conservation programs.
+                                <p style={{ color: '#475569', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
+                                    Make a real impact during your stay in Sri Lanka with our community and wildlife programs.
                                 </p>
                             </div>
                             
-                            <div style={{ position: 'relative', zIndex: 1, marginLeft: '20px' }}>
+                            <div style={{ flexShrink: 0 }}>
                                 <a href="/volunteer" style={{
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '8px',
                                     background: 'var(--primary-green)',
                                     color: 'white',
-                                    padding: '14px 24px',
+                                    padding: '12px 22px',
                                     borderRadius: '12px',
                                     textDecoration: 'none',
                                     fontWeight: 800,
-                                    fontSize: '0.9rem',
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: '0 8px 20px rgba(27,163,82,0.3)',
+                                    fontSize: '0.88rem',
+                                    transition: 'all 0.2s ease',
+                                    boxShadow: '0 4px 12px rgba(27,163,82,0.2)',
                                     whiteSpace: 'nowrap'
                                 }}
-                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 25px rgba(27,163,82,0.4)'; }}
-                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(27,163,82,0.3)'; }}
+                                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
                                 >
                                     Explore Programs <i className="bi bi-arrow-right"></i>
                                 </a>
@@ -1639,71 +1634,122 @@ const TourDetails = () => {
                     {/* Summary Card Section */}
                     <div className="summary-card-container">
                         <div className="summary-card" style={{
-                            background: 'white',
-                            padding: '35px',
-                            borderRadius: '24px',
-                            boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
-                            border: '1px solid rgba(0,0,0,0.05)',
+                            background: 'linear-gradient(180deg, #ffffff 0%, #fafcff 100%)',
+                            padding: '32px 28px',
+                            borderRadius: '28px',
+                            boxShadow: '0 25px 60px -15px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02)',
+                            border: '1px solid rgba(226, 232, 240, 0.9)',
+                            position: 'relative',
+                            overflow: 'hidden'
                         }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '25px' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ color: 'var(--primary-green)', fontSize: '1.2rem' }}><i className="fa-solid fa-star"></i></span>
-                                    <span style={{ fontSize: '1.4rem', fontWeight: 900 }}>{pkg.rating}</span>
-                                    <a href="#reviews" style={{ fontSize: '0.85rem', color: '#0066cc', textDecoration: 'underline', fontWeight: 600 }}>{reviews.length} reviews</a>
+                            {/* Top Accent Bar */}
+                            <div style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                height: '5px',
+                                background: 'var(--primary-green)'
+                            }}></div>
+
+                            {/* Header: Rating Badge & Trip Code */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px', paddingTop: '4px' }}>
+                                <div style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '8px', 
+                                    background: 'rgba(255, 193, 7, 0.1)', 
+                                    padding: '6px 14px', 
+                                    borderRadius: '50px',
+                                    border: '1px solid rgba(255, 193, 7, 0.25)' 
+                                }}>
+                                    <span style={{ color: '#d97706', fontSize: '1rem' }}><i className="fa-solid fa-star"></i></span>
+                                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#1e293b' }}>{pkg.rating}</span>
+                                    <span style={{ color: '#cbd5e1' }}>•</span>
+                                    <a href="#reviews" style={{ fontSize: '0.82rem', color: 'var(--primary-green)', textDecoration: 'none', fontWeight: 800 }}>{reviews.length} reviews</a>
                                 </div>
-                                <div style={{ textAlign: 'right' }}>
-                                    <span style={{ fontSize: '0.65rem', color: '#999', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '1px' }}>Trip code: HPKS</span>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#f1f5f9', padding: '5px 12px', borderRadius: '20px' }}>
+                                    <i className="bi bi-shield-check" style={{ color: 'var(--primary-green)', fontSize: '0.85rem' }}></i>
+                                    <span style={{ fontSize: '0.72rem', color: '#475569', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Verified Agency</span>
                                 </div>
                             </div>
 
-                            <div style={{ marginBottom: '30px', borderBottom: '1px solid #eee', paddingBottom: '20px' }}>
-                                <div style={{ marginBottom: '15px' }}>
-                                    <span style={{ fontSize: '0.85rem', color: '#555', fontWeight: 700 }}>Start: </span>
-                                    <span style={{ fontSize: '0.85rem', color: '#111', fontWeight: 800 }}>{pkg.startLocation || pkg.itinerary[0].title.split(',')[0]}, Sri Lanka</span>
+                            {/* Route Flow Card */}
+                            <div style={{ 
+                                background: '#f8fafc', 
+                                padding: '16px 18px', 
+                                borderRadius: '18px', 
+                                border: '1px solid #e2e8f0', 
+                                marginBottom: '24px' 
+                            }}>
+                                <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', color: '#64748b', letterSpacing: '0.8px', marginBottom: '10px' }}>
+                                    Trip Route Flow
                                 </div>
-                                <div style={{ marginBottom: '20px' }}>
-                                    <span style={{ fontSize: '0.85rem', color: '#555', fontWeight: 700 }}>End: </span>
-                                    <span style={{ fontSize: '0.85rem', color: '#111', fontWeight: 800 }}>{pkg.endLocation || pkg.itinerary[pkg.itinerary.length-1].title.split(',')[0]}, Sri Lanka</span>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                        <i className="bi bi-geo-alt-fill" style={{ color: 'var(--primary-green)', fontSize: '0.95rem' }}></i>
+                                        <span style={{ fontSize: '0.86rem', fontWeight: 800, color: '#0f172a' }}>{pkg.startLocation || pkg.itinerary[0].title.split(',')[0]}</span>
+                                    </div>
+                                    <i className="bi bi-arrow-right" style={{ color: '#94a3b8', fontSize: '0.85rem' }}></i>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                        <i className="bi bi-pin-map-fill" style={{ color: 'var(--primary-green)', fontSize: '0.95rem' }}></i>
+                                        <span style={{ fontSize: '0.86rem', fontWeight: 800, color: '#0f172a' }}>{pkg.endLocation || pkg.itinerary[pkg.itinerary.length-1].title.split(',')[0]}</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '25px 15px', marginBottom: '35px' }}>
-                                <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Duration</span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>{pkg.days}</span>
+                            {/* Quick Stats 2x3 Micro-Cards */}
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '26px' }}>
+                                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '12px 14px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, marginBottom: '4px' }}>
+                                        <i className="bi bi-clock-history" style={{ color: 'var(--primary-green)' }}></i> Duration
+                                    </div>
+                                    <span style={{ fontSize: '0.92rem', fontWeight: 900, color: '#0f172a' }}>{pkg.days}</span>
                                 </div>
-                                <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Group size</span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>1 to 12</span>
+
+                                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '12px 14px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, marginBottom: '4px' }}>
+                                        <i className="bi bi-people-fill" style={{ color: 'var(--primary-green)' }}></i> Group Size
+                                    </div>
+                                    <span style={{ fontSize: '0.92rem', fontWeight: 900, color: '#0f172a' }}>1 to 12 Guests</span>
                                 </div>
-                                <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Minimum age</span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>10 years old</span>
+
+                                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '12px 14px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, marginBottom: '4px' }}>
+                                        <i className="bi bi-person-check-fill" style={{ color: 'var(--primary-green)' }}></i> Minimum Age
+                                    </div>
+                                    <span style={{ fontSize: '0.92rem', fontWeight: 900, color: '#0f172a' }}>10+ years old</span>
                                 </div>
-                                <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Style</span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>Simple Stay</span>
+
+                                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '12px 14px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, marginBottom: '4px' }}>
+                                        <i className="bi bi-award-fill" style={{ color: 'var(--primary-green)' }}></i> Tour Style
+                                    </div>
+                                    <span style={{ fontSize: '0.92rem', fontWeight: 900, color: '#0f172a' }}>Private Transfer</span>
                                 </div>
-                                <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Theme</span>
-                                    <span style={{ fontSize: '1rem', fontWeight: 900 }}>Explorer</span>
+
+                                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '12px 14px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, marginBottom: '4px' }}>
+                                        <i className="bi bi-compass-fill" style={{ color: 'var(--primary-green)' }}></i> Theme
+                                    </div>
+                                    <span style={{ fontSize: '0.92rem', fontWeight: 900, color: '#0f172a' }}>Explorer & Nature</span>
                                 </div>
-                                <div>
-                                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Intensity</span>
-                                    <div style={{ display: 'flex', gap: '6px', marginTop: '5px' }}>
+
+                                <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '12px 14px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, marginBottom: '6px' }}>
+                                        <i className="bi bi-lightning-charge-fill" style={{ color: 'var(--primary-green)' }}></i> Intensity
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '5px' }}>
                                         {[1, 2, 3].map(i => {
                                             const rawIntensity = pkg.physicalIntensity || 2;
-                                            // Map 1-5 scale to 1-3
                                             const intensity = rawIntensity <= 2 ? 1 : (rawIntensity <= 4 ? 2 : 3);
-                                            const colors = ['#27ae60', '#f39c12', '#e74c3c'];
-                                            const activeColor = colors[intensity - 1];
-                                            
+                                            const activeColor = 'var(--primary-green)';
                                             return (
                                                 <div key={i} style={{ 
-                                                    width: '20px', 
-                                                    height: '5px', 
-                                                    background: i <= intensity ? activeColor : '#eee', 
-                                                    borderRadius: '3px',
+                                                    width: '24px', 
+                                                    height: '6px', 
+                                                    background: i <= intensity ? activeColor : '#e2e8f0', 
+                                                    borderRadius: '4px',
                                                     transition: 'all 0.3s ease'
                                                 }}></div>
                                             );
@@ -1712,19 +1758,39 @@ const TourDetails = () => {
                                 </div>
                             </div>
 
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', gap: '10px', marginBottom: '25px' }}>
-                                <span style={{ fontSize: '0.8rem', color: '#666', fontWeight: 700, marginBottom: '8px' }}>From</span>
-                                <span style={{ fontSize: '2.2rem', fontWeight: 900, color: '#111', lineHeight: 1 }}>{formatPrice(getPrice())}</span>
+                            {/* Modern Price Display Box */}
+                            <div style={{ 
+                                background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', 
+                                padding: '18px 22px', 
+                                borderRadius: '18px', 
+                                color: 'white',
+                                display: 'flex', 
+                                justifyContent: 'space-between', 
+                                alignItems: 'center',
+                                marginBottom: '22px',
+                                boxShadow: '0 10px 25px -5px rgba(15, 23, 42, 0.25)'
+                            }}>
+                                <div>
+                                    <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700, display: 'block', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Package Rate</span>
+                                    <span style={{ fontSize: '0.75rem', color: 'var(--primary-green)', fontWeight: 800 }}>Best Price Guarantee</span>
+                                </div>
+                                <div style={{ textAlign: 'right' }}>
+                                    <span style={{ fontSize: '0.75rem', color: '#cbd5e1', fontWeight: 600, marginRight: '4px' }}>From</span>
+                                    <span style={{ fontSize: '2.1rem', fontWeight: 900, color: '#ffffff', lineHeight: 1 }}>{formatPrice(getPrice())}</span>
+                                </div>
                             </div>
 
                             {/* Vehicle Type Selector Row */}
-                            <div style={{ marginBottom: '25px' }}>
-                                <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#888', display: 'block', marginBottom: '10px', letterSpacing: '1px' }}>
-                                    Select Vehicle Type
-                                </label>
+                            <div style={{ marginBottom: '24px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                                    <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#475569', letterSpacing: '0.8px' }}>
+                                        Select Vehicle Type
+                                    </label>
+                                    <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700 }}>Private Chauffeur</span>
+                                </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
                                     {[
-                                        { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: 'Standard' },
+                                        { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: pkg.id === 9 ? 'Standard' : 'Standard' },
                                         { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: pkg.id === 9 ? '+$140' : (pkg.id === 12 ? '+$40' : (pkg.id === 13 ? '+$65' : '+$150')) },
                                         { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 6 ? '-$100' : (pkg.id === 9 ? '-$40' : (pkg.id === 12 ? '-$90' : (pkg.id === 13 ? '-$110' : '-$300'))))))) }
                                     ].map(v => (
@@ -1733,14 +1799,14 @@ const TourDetails = () => {
                                             onClick={() => setTransport(v.id)}
                                             style={{
                                                 padding: '12px 8px',
-                                                background: transport === v.id ? '#1a2332' : '#fcfcfc',
-                                                color: transport === v.id ? 'white' : '#333',
-                                                borderRadius: '14px',
-                                                border: `2px solid ${transport === v.id ? '#1a2332' : '#eee'}`,
+                                                background: transport === v.id ? '#1a2332' : '#ffffff',
+                                                color: transport === v.id ? 'white' : '#334155',
+                                                borderRadius: '16px',
+                                                border: `2px solid ${transport === v.id ? '#1a2332' : '#e2e8f0'}`,
                                                 textAlign: 'center',
                                                 cursor: 'pointer',
                                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                boxShadow: transport === v.id ? '0 8px 20px rgba(26, 35, 50, 0.25)' : 'none',
+                                                boxShadow: transport === v.id ? '0 10px 25px -5px rgba(26, 35, 50, 0.3)' : '0 2px 4px rgba(0,0,0,0.02)',
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
@@ -1749,7 +1815,7 @@ const TourDetails = () => {
                                             }}
                                         >
                                             {v.id === 'tuktuk' ? (
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: transport === v.id ? 'white' : '#1a2332' }}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: transport === v.id ? 'white' : 'var(--primary-green)' }}>
                                                     <path d="M6 7c0-2 2-3 6-3s6 1 6 3v4H6V7z" />
                                                     <rect x="7" y="7" width="10" height="4" rx="0.5" />
                                                     <path d="M5 11h14l-2 7H7l-2-7z" />
@@ -1759,7 +1825,7 @@ const TourDetails = () => {
                                                     <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none" />
                                                 </svg>
                                             ) : (
-                                                <i className={v.icon} style={{ fontSize: '1.3rem', color: transport === v.id ? 'white' : '#1a2332' }}></i>
+                                                <i className={v.icon} style={{ fontSize: '1.25rem', color: transport === v.id ? 'white' : 'var(--primary-green)' }}></i>
                                             )}
                                             <span style={{ fontSize: '0.85rem', fontWeight: 800, lineHeight: 1.1 }}>{v.label}</span>
                                             <span style={{ fontSize: '0.65rem', fontWeight: 700, opacity: transport === v.id ? 0.9 : 0.6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -1770,29 +1836,56 @@ const TourDetails = () => {
                                 </div>
                                 <div style={{ 
                                     marginTop: '12px', 
-                                    padding: '10px 15px', 
-                                    background: '#f8f9fa', 
-                                    borderRadius: '10px', 
-                                    border: '1px dashed #ddd',
+                                    padding: '10px 14px', 
+                                    background: '#f8fafc', 
+                                    borderRadius: '12px', 
+                                    border: '1px dashed #cbd5e1',
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '10px'
                                 }}>
                                     <i className="bi bi-briefcase-fill" style={{ color: 'var(--primary-green)' }}></i>
-                                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#555' }}>
-                                        Baggage Allowance: <span style={{ color: '#111' }}>{getBaggageInfo()}</span>
+                                    <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#475569' }}>
+                                        Baggage Allowance: <span style={{ color: '#0f172a', fontWeight: 800 }}>{getBaggageInfo()}</span>
                                     </span>
                                 </div>
                             </div>
 
-                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '25px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
+                            {/* Card Footer Actions */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f1f5f9', paddingTop: '18px' }}>
                                 <button 
                                     onClick={() => addToCompare(pkg)}
-                                    style={{ background: 'none', border: 'none', color: '#444', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+                                    style={{ 
+                                        background: '#f1f5f9', 
+                                        border: 'none', 
+                                        color: '#334155', 
+                                        fontWeight: 800, 
+                                        fontSize: '0.82rem', 
+                                        padding: '8px 16px', 
+                                        borderRadius: '12px', 
+                                        cursor: 'pointer', 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '6px',
+                                        transition: 'all 0.2s ease'
+                                    }}
                                 >
-                                    <i className="bi bi-plus-lg"></i> Add to compare
+                                    <i className="bi bi-arrow-left-right" style={{ color: 'var(--primary-green)' }}></i> Add to Compare
                                 </button>
-                                <button style={{ background: 'none', border: 'none', color: '#444', fontSize: '1.2rem', cursor: 'pointer' }}>
+                                <button style={{ 
+                                    background: '#f8fafc', 
+                                    border: '1px solid #e2e8f0', 
+                                    color: '#ef4444', 
+                                    width: '38px', 
+                                    height: '38px', 
+                                    borderRadius: '12px', 
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '1.1rem',
+                                    transition: 'all 0.2s ease'
+                                }} title="Save to wishlist">
                                     <i className="bi bi-heart"></i>
                                 </button>
                             </div>
@@ -1839,7 +1932,7 @@ const TourDetails = () => {
                                                 padding: '12px 0',
                                                 fontSize: '1rem',
                                                 fontWeight: 700,
-                                                color: activeBookingTab === tab ? '#ff4d4d' : '#111',
+                                                color: activeBookingTab === tab ? 'var(--primary-green)' : '#111',
                                                 cursor: 'pointer',
                                                 position: 'relative',
                                                 whiteSpace: 'nowrap',
@@ -1850,9 +1943,9 @@ const TourDetails = () => {
                                             }}
                                         >
                                             <i className={
-                                                tab === 'Is this trip right for you?' ? 'bi bi-flag' : 
-                                                tab === 'Accommodation' ? 'bi bi-houses' : 'bi bi-geo-alt'
-                                            } style={{ fontSize: '1.1rem', color: activeBookingTab === tab ? '#ff4d4d' : '#666' }}></i>
+                                                tab === 'Is this trip right for you?' ? 'bi bi-flag-fill' : 
+                                                tab === 'Accommodation' ? 'bi bi-houses-fill' : 'bi bi-geo-alt-fill'
+                                            } style={{ fontSize: '1.1rem', color: 'var(--primary-green)' }}></i>
                                             {tab}
                                             {activeBookingTab === tab && (
                                                 <div style={{ 
@@ -1861,7 +1954,7 @@ const TourDetails = () => {
                                                     left: 0, 
                                                     right: 0, 
                                                     height: '4px', 
-                                                    background: '#ff4d4d',
+                                                    background: 'var(--primary-green)',
                                                     borderRadius: '2px'
                                                 }}></div>
                                             )}
@@ -1933,86 +2026,77 @@ const TourDetails = () => {
 
                         {/* Vehicle selector moved to Summary Card */}
 
-                        {/* Why You'll Love This Trip */}
+                        {/* Why You'll Love This Trip Card */}
                         <div className="why-love-section" style={{
                             marginTop: '30px',
-                            padding: '30px',
-                            background: 'white',
+                            padding: '24px 28px',
+                            background: '#ffffff',
                             borderRadius: '20px',
-                            border: '1px solid rgba(0,0,0,0.05)',
-                            boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
+                            border: '1px solid #e2e8f0',
+                            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.02)'
                         }}>
-                            <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '20px' }}>
-                                Why you'll love this trip
-                            </h4>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                                <div style={{ display: 'flex', gap: '15px' }}>
-                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-camera-retro"></i></div>
-                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Stunning Photo Ops:</strong> Capture the iconic Nine Arches Bridge and sunrise at Sigiriya.</p>
-                                </div>
-                                <div style={{ display: 'flex', gap: '15px' }}>
-                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-leaf"></i></div>
-                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Value Stays:</strong> Relax in hand-picked, clean and comfortable local guesthouses.</p>
-                                </div>
-                                <div style={{ display: 'flex', gap: '15px' }}>
-                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-user-shield"></i></div>
-                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Expert Drivers:</strong> Navigate the island safely with our professional, local knowledge experts.</p>
-                                </div>
-                                <div style={{ display: 'flex', gap: '15px' }}>
-                                    <div style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}><i className="fa-solid fa-gem"></i></div>
-                                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#555', lineHeight: 1.5 }}><strong>Hidden Gems:</strong> Go beyond the guidebook with exclusive local village experiences.</p>
-                                </div>
-                            </div>
+                            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: '0 0 16px 0', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <i className="bi bi-heart-fill" style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}></i>
+                                Why You'll Love This Trip
+                            </h3>
+
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                {[
+                                    'Capture iconic sights like Nine Arches Bridge & Sigiriya sunrise',
+                                    'Relax in hand-picked, comfortable local guesthouses',
+                                    'Travel safely with our professional, local drivers',
+                                    'Discover hidden gems with authentic village experiences'
+                                ].map((point, idx) => (
+                                    <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.95rem', color: '#334155', fontWeight: 600 }}>
+                                        <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)', fontSize: '1.15rem', flexShrink: 0 }}></i>
+                                        <span>{point}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
-                        {/* Responsible Travel Pledge Card */}
+                        {/* Travel with Purpose Card */}
                         <div className="responsible-travel-card" style={{
-                            marginTop: '30px',
-                            padding: '30px',
-                            background: 'linear-gradient(145deg, #ffffff 0%, #f9fdfa 100%)',
+                            marginTop: '24px',
+                            padding: '24px 28px',
+                            background: '#ffffff',
                             borderRadius: '20px',
-                            border: '1px solid rgba(27, 163, 82, 0.15)',
-                            boxShadow: '0 10px 30px rgba(27, 163, 82, 0.04)'
+                            border: '1px solid #e2e8f0',
+                            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.02)'
                         }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
-                                <div style={{ 
-                                    background: 'rgba(27, 163, 82, 0.1)', 
-                                    color: 'var(--primary-green)', 
-                                    width: '36px', 
-                                    height: '36px', 
-                                    borderRadius: '10px', 
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    justifyContent: 'center',
-                                    fontSize: '1.2rem'
-                                }}>
-                                    <i className="fa-solid fa-hand-holding-heart"></i>
-                                </div>
-                                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, margin: 0, color: '#111' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <i className="fa-solid fa-hand-holding-heart" style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}></i>
                                     Travel with Purpose
-                                </h4>
+                                </h3>
+                                <span style={{
+                                    fontSize: '0.75rem',
+                                    fontWeight: 800,
+                                    color: 'var(--primary-green)',
+                                    background: 'rgba(27, 163, 82, 0.08)',
+                                    padding: '4px 12px',
+                                    borderRadius: '50px'
+                                }}>
+                                    100% Locally Owned
+                                </span>
                             </div>
-                            <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: 1.6, margin: 0 }}>
-                                A portion of your trip directly supports our ongoing community-driven and wildlife conservation projects across Sri Lanka. Experience the real culture while leaving a lasting positive footprint.
+                            <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: 1.6, margin: 0 }}>
+                                A portion of your trip directly supports local community and wildlife conservation projects across Sri Lanka.
                             </p>
-                            <div style={{ marginTop: '15px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--primary-green)' }}>
-                                <i className="bi bi-arrow-right-circle-fill"></i>
-                                <span>100% Locally Owned & Operated</span>
-                            </div>
                         </div>
                     </div>
 
                     {/* Right Column */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                         {/* Inclusions */}
-                        <div className="inclusions-box" style={{ background: 'white', border: '1px solid rgba(0,0,0,0.05)', boxShadow: '0 10px 30px rgba(0,0,0,0.02)', padding: '30px', borderRadius: '20px' }}>
-                            <h5 style={{ fontSize: '1.2rem', marginBottom: '20px', fontWeight: 800 }}>
+                        <div className="inclusions-box" style={{ background: 'white', border: '1px solid #e2e8f0', boxShadow: '0 10px 30px -5px rgba(15, 23, 42, 0.04)', padding: '32px', borderRadius: '24px' }}>
+                            <h5 style={{ fontSize: '1.25rem', marginBottom: '22px', fontWeight: 800, color: '#0f172a' }}>
                                 <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)', marginRight: '10px' }}></i> What's Included
                             </h5>
-                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                 {pkg.inclusions && pkg.inclusions.map((item, i) => (
-                                    <li key={i} style={{ fontSize: '0.95rem', color: '#555', marginBottom: '10px', display: 'flex', alignItems: 'flex-start' }}>
-                                        <i className="bi bi-check" style={{ color: 'var(--primary-green)', marginRight: '10px', fontWeight: 900 }}></i>
+                                    <li key={i} style={{ fontSize: '0.95rem', color: '#475569', marginBottom: '12px', display: 'flex', alignItems: 'flex-start', lineHeight: 1.5 }}>
+                                        <i className="bi bi-check2-circle" style={{ color: 'var(--primary-green)', marginRight: '10px', fontWeight: 900, fontSize: '1.1rem' }}></i>
                                         {item}
                                     </li>
                                 ))}
@@ -2020,31 +2104,86 @@ const TourDetails = () => {
                         </div>
 
                         {/* Exclusions */}
-                        <div className="exclusions-box" style={{ background: '#fff9f9', border: '1px solid rgba(255, 0, 0, 0.05)', padding: '30px', borderRadius: '20px' }}>
-                            <h5 style={{ fontSize: '1.2rem', marginBottom: '20px', fontWeight: 800, color: '#c0392b' }}>
-                                <i className="bi bi-x-circle-fill" style={{ marginRight: '10px' }}></i> Not Included
-                            </h5>
-                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                        <div className="exclusions-box" style={{ 
+                            background: '#ffffff', 
+                            border: '1px solid #e2e8f0', 
+                            boxShadow: '0 10px 30px -5px rgba(15, 23, 42, 0.04)', 
+                            padding: '28px 32px', 
+                            borderRadius: '24px' 
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+                                <h5 style={{ fontSize: '1.2rem', margin: 0, fontWeight: 800, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <div style={{
+                                        width: '36px',
+                                        height: '36px',
+                                        borderRadius: '10px',
+                                        background: 'rgba(239, 68, 68, 0.08)',
+                                        color: '#ef4444',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '1.1rem'
+                                    }}>
+                                        <i className="bi bi-x-circle-fill"></i>
+                                    </div>
+                                    Not Included
+                                </h5>
+                                <span style={{ 
+                                    fontSize: '0.75rem', 
+                                    fontWeight: 800, 
+                                    color: '#64748b', 
+                                    background: '#f8fafc', 
+                                    padding: '4px 12px', 
+                                    borderRadius: '50px',
+                                    border: '1px solid #e2e8f0',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.5px'
+                                }}>Exclusions</span>
+                            </div>
+
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 {pkg.exclusions && pkg.exclusions.map((item, i) => (
-                                    <li key={i} style={{ fontSize: '0.95rem', color: '#666', marginBottom: '10px', display: 'flex', alignItems: 'flex-start' }}>
-                                        <i className="bi bi-x" style={{ color: '#c0392b', marginRight: '10px', fontWeight: 900 }}></i>
-                                        {item}
+                                    <li key={i} style={{ 
+                                        fontSize: '0.92rem', 
+                                        color: '#475569', 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '12px',
+                                        background: '#f8fafc',
+                                        padding: '10px 14px',
+                                        borderRadius: '12px',
+                                        border: '1px solid #f1f5f9',
+                                        fontWeight: 500
+                                    }}>
+                                        <i className="bi bi-x-lg" style={{ color: '#ef4444', fontSize: '0.85rem', fontWeight: 900, flexShrink: 0 }}></i>
+                                        <span>{item}</span>
                                     </li>
                                 ))}
-                                <li style={{ fontSize: '0.95rem', color: '#666', marginBottom: '10px', display: 'flex', alignItems: 'flex-start' }}>
-                                    <i className="bi bi-x" style={{ color: '#c0392b', marginRight: '10px', fontWeight: 900 }}></i>
-                                    Some meals mentioned in the itinerary
+                                <li style={{ 
+                                    fontSize: '0.92rem', 
+                                    color: '#475569', 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '12px',
+                                    background: '#f8fafc',
+                                    padding: '10px 14px',
+                                    borderRadius: '12px',
+                                    border: '1px solid #f1f5f9',
+                                    fontWeight: 500
+                                }}>
+                                    <i className="bi bi-x-lg" style={{ color: '#ef4444', fontSize: '0.85rem', fontWeight: 900, flexShrink: 0 }}></i>
+                                    <span>Some meals mentioned in the itinerary</span>
                                 </li>
                             </ul>
                         </div>
                         
                         {/* Departure Airport Transfer Note */}
-                        <div style={{ marginTop: '20px', background: '#eef5f9', borderLeft: '4px solid var(--primary-green)', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.02)' }}>
+                        <div style={{ background: '#f8fafc', borderLeft: '4px solid var(--primary-green)', padding: '22px 24px', borderRadius: '18px', border: '1px solid #e2e8f0', borderLeftWidth: '5px' }}>
                             <h5 style={{ fontSize: '1.05rem', margin: '0 0 10px 0', color: 'var(--primary-green)', fontWeight: 800 }}>
                                 <i className="bi bi-info-circle-fill" style={{ marginRight: '8px' }}></i>
                                 Departure Airport Transfer
                             </h5>
-                            <p style={{ margin: 0, fontSize: '0.9rem', color: '#444', lineHeight: 1.6 }}>
+                            <p style={{ margin: 0, fontSize: '0.9rem', color: '#475569', lineHeight: 1.6 }}>
                                 Please note that on departure dates, airport transfer is <b>not included</b> in the package. You can arrange your own transport to the airport, or we can easily arrange a private transfer for you for an additional fee.
                             </p>
                         </div>
@@ -2053,18 +2192,18 @@ const TourDetails = () => {
 
                         {/* Cost-Benefit Travel Card */}
                         <div style={{
-                            padding: '35px',
-                            background: '#f0fdf4',
-                            borderRadius: '24px',
-                            border: '1px solid rgba(27, 163, 82, 0.1)',
-                            marginTop: '20px'
+                            padding: '24px 28px',
+                            background: '#ffffff',
+                            borderRadius: '20px',
+                            border: '1px solid #e2e8f0',
+                            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.02)'
                         }}>
-                            <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--primary-green)', marginBottom: '15px' }}>
-                                <i className="bi bi-people-fill" style={{ marginRight: '10px' }}></i>
+                            <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0f172a', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <i className="bi bi-people-fill" style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}></i>
                                 Travel Together, Save More
                             </h4>
-                            <p style={{ fontSize: '0.95rem', color: '#444', lineHeight: 1.6, margin: 0 }}>
-                                If you are able to travel with one or more (friends/partners), the cost per person will be lower, as transport and accommodation expenses can be shared. This makes the program more cost-effective while still enjoying the same experiences.
+                            <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: 1.6, margin: 0 }}>
+                                Travel with friends or family to share transport and accommodation costs, reducing the per-person rate for your trip.
                             </p>
                         </div>
                     </div>
@@ -2227,7 +2366,7 @@ const TourDetails = () => {
                     </div>
 
                     <div className="impact-card" style={{ background: '#fff' }}>
-                        <div className="impact-icon" style={{ background: '#111' }}>
+                        <div className="impact-icon" style={{ background: 'var(--primary-green)' }}>
                             <i className="fa-solid fa-envelope-open-text"></i>
                         </div>
                         <h3>Customized Journeys</h3>
