@@ -21,6 +21,7 @@ import southernSlide5 from '../assets/a735dcb73a82a89825015f4d36176403.jpg';
 import southernSlide6 from '../assets/054ff48fcfa601cd27a05ae96c945843.jpg';
 import SpotifyAdCard from '../components/SpotifyAdCard';
 import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
+import PromotedExperiences from '../components/PromotedExperiences';
 import { useCompare } from '../context/CompareContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -118,7 +119,7 @@ const ItineraryDay = ({ step, index, forceOpen, isLastDay, isSingleDayTour }) =>
                         fontSize: '0.75rem', 
                         fontWeight: 800 
                     }}>{isSingleDayTour ? `STOP ${index + 1}` : `DAY ${step.day}`}</span>
-                    <span style={{ color: '#111' }}>{step.title}</span>
+                    <span style={{ color: '#111' }}>{step.title.replace(/\s*[–—\-]\s*/g, ' ')}</span>
                 </div>
                 <i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} style={{ color: 'var(--primary-green)', fontWeight: 800, fontSize: '0.9rem' }}></i>
             </div>
@@ -669,9 +670,9 @@ const TourDetails = () => {
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    background: rgba(255, 255, 255, 0.75);
-                    backdrop-filter: blur(30px) saturate(200%);
-                    -webkit-backdrop-filter: blur(30px) saturate(200%);
+                    background: rgba(255, 255, 255, 0.4);
+                    backdrop-filter: blur(40px) saturate(200%);
+                    -webkit-backdrop-filter: blur(40px) saturate(200%);
                     padding: 15px 5%;
                     box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
                     z-index: 10000;
@@ -973,7 +974,6 @@ const TourDetails = () => {
                         width: auto !important;
                         border-radius: 16px !important;
                         border: 1px solid #eee !important;
-                        border-left: 5px solid var(--primary-green) !important;
                         box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
                     }
                     .transport-selector-box label {
@@ -1014,9 +1014,9 @@ const TourDetails = () => {
                         bottom: 0 !important;
                         left: 0 !important;
                         right: 0 !important;
-                        background: rgba(255, 255, 255, 0.75) !important;
-                        backdrop-filter: blur(30px) saturate(200%) !important;
-                        -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+                        background: rgba(255, 255, 255, 0.4) !important;
+                        backdrop-filter: blur(40px) saturate(200%) !important;
+                        -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
                         padding: 15px 5% !important;
                         box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6) !important;
                         z-index: 10000 !important;
@@ -1580,6 +1580,22 @@ const TourDetails = () => {
                             ))}
                         </div>
 
+                        {/* Book Ahead Banner */}
+                        <div style={{
+                            marginTop: '20px',
+                            background: '#f2f2f2',
+                            borderRadius: '8px',
+                            padding: '12px 16px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '10px'
+                        }}>
+                            <i className="bi bi-fire" style={{ color: 'var(--primary-green)', fontSize: '1.2rem', display: 'flex', marginTop: '-2px' }}></i>
+                            <div style={{ fontSize: '0.95rem', color: '#111' }}>
+                                <strong style={{ fontWeight: 800 }}>Book ahead!</strong> <span style={{ fontWeight: 500 }}>On average, this is booked 7 days in advance.</span>
+                            </div>
+                        </div>
+
                         {/* Volunteering Banner */}
                         <div style={{
                             marginTop: '25px',
@@ -1642,31 +1658,19 @@ const TourDetails = () => {
                             position: 'relative',
                             overflow: 'hidden'
                         }}>
-                            {/* Top Accent Bar */}
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                height: '5px',
-                                background: 'var(--primary-green)'
-                            }}></div>
+
 
                             {/* Header: Rating Badge & Trip Code */}
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '22px', paddingTop: '4px' }}>
                                 <div style={{ 
                                     display: 'flex', 
                                     alignItems: 'center', 
-                                    gap: '8px', 
-                                    background: 'rgba(255, 193, 7, 0.1)', 
-                                    padding: '6px 14px', 
-                                    borderRadius: '50px',
-                                    border: '1px solid rgba(255, 193, 7, 0.25)' 
+                                    gap: '6px'
                                 }}>
                                     <span style={{ color: '#d97706', fontSize: '1rem' }}><i className="fa-solid fa-star"></i></span>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#1e293b' }}>{pkg.rating}</span>
-                                    <span style={{ color: '#cbd5e1' }}>•</span>
-                                    <a href="#reviews" style={{ fontSize: '0.82rem', color: 'var(--primary-green)', textDecoration: 'none', fontWeight: 800 }}>{reviews.length} reviews</a>
+                                    <span style={{ fontSize: '1rem', fontWeight: 800, color: '#111' }}>{pkg.rating}</span>
+                                    <span style={{ color: '#94a3b8', fontSize: '0.9rem' }}>•</span>
+                                    <a href="#reviews" style={{ fontSize: '0.9rem', color: '#64748b', textDecoration: 'underline', fontWeight: 500 }}>{reviews.length} reviews</a>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#f1f5f9', padding: '5px 12px', borderRadius: '20px' }}>
                                     <i className="bi bi-shield-check" style={{ color: 'var(--primary-green)', fontSize: '0.85rem' }}></i>
@@ -1906,7 +1910,7 @@ const TourDetails = () => {
                         <h2 className="section-title" style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '20px' }}>Overview</h2>
                         <div className="overview-content">
                             {pkg.description.split('\n').map((para, i) => (
-                                <p key={i} className="overview-text" style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#555', marginBottom: '20px' }}>
+                                <p key={i} className="overview-text" style={{ fontSize: '0.98rem', lineHeight: 1.7, color: '#475569', marginBottom: '18px' }}>
                                     {para.trim()}
                                 </p>
                             ))}
@@ -2035,8 +2039,7 @@ const TourDetails = () => {
                             border: '1px solid #e2e8f0',
                             boxShadow: '0 4px 15px rgba(0, 0, 0, 0.02)'
                         }}>
-                            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: '0 0 16px 0', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <i className="bi bi-heart-fill" style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}></i>
+                            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: '0 0 16px 0', color: '#0f172a' }}>
                                 Why You'll Love This Trip
                             </h3>
 
@@ -2178,14 +2181,37 @@ const TourDetails = () => {
                         </div>
                         
                         {/* Departure Airport Transfer Note */}
-                        <div style={{ background: '#f8fafc', borderLeft: '4px solid var(--primary-green)', padding: '22px 24px', borderRadius: '18px', border: '1px solid #e2e8f0', borderLeftWidth: '5px' }}>
-                            <h5 style={{ fontSize: '1.05rem', margin: '0 0 10px 0', color: 'var(--primary-green)', fontWeight: 800 }}>
-                                <i className="bi bi-info-circle-fill" style={{ marginRight: '8px' }}></i>
-                                Departure Airport Transfer
-                            </h5>
-                            <p style={{ margin: 0, fontSize: '0.9rem', color: '#475569', lineHeight: 1.6 }}>
-                                Please note that on departure dates, airport transfer is <b>not included</b> in the package. You can arrange your own transport to the airport, or we can easily arrange a private transfer for you for an additional fee.
-                            </p>
+                        <div style={{
+                            marginTop: '24px',
+                            padding: '20px',
+                            background: 'linear-gradient(145deg, #ffffff, #f8fafc)',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(226, 232, 240, 0.8)',
+                            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
+                            display: 'flex',
+                            gap: '20px',
+                            alignItems: 'flex-start'
+                        }}>
+                            <div style={{
+                                width: '46px',
+                                height: '46px',
+                                borderRadius: '14px',
+                                background: 'rgba(34, 197, 94, 0.1)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexShrink: 0
+                            }}>
+                                <i className="bi bi-airplane-fill" style={{ color: 'var(--primary-green)', fontSize: '1.4rem' }}></i>
+                            </div>
+                            <div>
+                                <h5 style={{ fontSize: '1.05rem', margin: '0 0 8px 0', color: '#0f172a', fontWeight: 800 }}>
+                                    Departure Airport Transfer
+                                </h5>
+                                <p style={{ margin: 0, fontSize: '0.9rem', color: '#475569', lineHeight: 1.6 }}>
+                                    Please note that on departure dates, airport transfer is <b>not included</b> in the package. You can arrange your own transport, or we can easily arrange a private transfer for you for an additional fee.
+                                </p>
+                            </div>
                         </div>
 
                         <SpotifyAdCard margin="10px 0 0 0" />
@@ -2206,6 +2232,8 @@ const TourDetails = () => {
                                 Travel with friends or family to share transport and accommodation costs, reducing the per-person rate for your trip.
                             </p>
                         </div>
+                        
+                        <PromotedExperiences />
                     </div>
                 </div>
             </div>

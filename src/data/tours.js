@@ -409,7 +409,7 @@ export const tourPackages = [
         id: 1,
         name: "7-Day Essential Sri Lanka",
         days: "7 Days / 6 Nights",
-        description: "A carefully designed journey blending culture, nature, and adventure: perfect for travelers who want to experience the best of Sri Lanka in a short time.\n\nFrom the ancient heights of Sigiriya Lion Rock to the misty emerald hills of Ella, this tour captures the island's most iconic landscapes. You'll wander through the sacred temples of Kandy and end your journey on the golden palm-fringed beaches of the south coast.\n\nExperience authentic Sri Lankan hospitality and create memories that will last a lifetime in just seven extraordinary days.",
+        description: "A masterfully crafted 7-day expedition designed to showcase the very best of Sri Lanka in one unforgettable week. Perfectly balanced between ancient UNESCO heritage sites, misty highland train rides, wildlife encounters, and tropical beach relaxation, this signature itinerary is ideal for first-time visitors, solo travelers, couples, and families alike.\n\nYour adventure begins on the coastal shores of Negombo before heading inland toward the island's famed Cultural Triangle. Stand in awe of the ancient 5th-century Sigiriya Lion Rock Fortress at sunrise, trek up Pidurangala for breathtaking valley views, scale sacred cave temples in Dambulla, and embark on an exciting jeep safari to spot herds of wild Asian elephants in their natural habitat.\n\nTransitioning into the cool, lush hill country, immerse yourself in Sri Lanka's spiritual heart in Kandy with a visit to the sacred Temple of the Tooth Relic. Board the legendary scenic mountain train as it winds past rolling emerald tea estates and cascading waterfalls toward the bohemian mountain town of Ella, home to the iconic Nine Arches Bridge and Little Adam's Peak.\n\nFinally, descend to the pristine southern coastline in Hikkaduwa. Unwind along golden palm-fringed beaches, stroll through the historic cobblestone streets of Galle Fort at sunset, and savor fresh seafood by the ocean waves. Guided by an experienced private driver with air-conditioned comfort throughout, this 7-day journey offers an authentic, seamless, and deeply immersive Sri Lankan experience.",
         price: "$650",
         image: essentialCover,
         itinerary: [
@@ -491,7 +491,7 @@ export const tourPackages = [
         days: "1 Day (8:30 AM – Drop-off)",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Pinnawala / Kandy",
-        description: "Experience a meaningful blend of ethical elephant conservation and cultural heritage. From a small-scale elephant rescue center to the famous Pinnawala Orphanage, riverside lunch, traditional herbal garden, and panoramic Kandy Viewpoint.",
+        description: "Embark on a deeply meaningful 1-day sanctuary and cultural journey starting and ending in Kandy. Specially designed for conscious travelers and animal lovers, this tour offers a rare, ethical perspective on elephant welfare alongside classic island heritage.\n\nYour day begins at a small-scale elephant rescue and rehabilitation center dedicated to providing individualized care, physical therapy, and emotional healing for rescued working elephants. Learn about Sri Lankan elephant history, assist dedicated caretakers with daily feeding, and observe these gentle giants in a peaceful, natural setting with a strict no-riding policy.\n\nFollowing a delicious traditional packed lunch along a scenic riverbank, visit the world-renowned Pinnawala Elephant Orphanage to witness large herds bathing and splashing in the river. Conclude your day trip with a drive back into Kandy, stopping at panoramic city viewpoints and traditional herbal gardens for a rich, well-rounded single-day experience.",
         price: "$125",
         image: budgetPromoImg,
         itinerary: [
@@ -563,7 +563,7 @@ export const tourPackages = [
         id: 2,
         name: "Southern Sun & Beach Escape",
         days: "7 Days / 6 Nights",
-        description: "Explore the best of Sri Lanka in one unforgettable journey: from tropical beaches and historic coastal towns to wildlife adventures, misty mountains, tea plantations, scenic train rides, and the cultural heart of the island.\n\nThis 7 day small group experience has been carefully designed for travellers who want to discover the beauty of Sri Lanka while connecting with local culture, nature, and authentic experiences.\n\nTravel from the relaxing beaches of Hikkaduwa and Mirissa, through Sri Lanka's wildlife rich countryside, into the breathtaking hill country of Ella, before finishing in Kandy: Sri Lanka's cultural capital.",
+        description: "Embark on an epic 7-day coastal and island escape through the sun-drenched south and misty central highlands of Sri Lanka. Expertly curated for beach lovers, adventure seekers, wildlife enthusiasts, and cultural explorers, this immersive tour offers a seamless blend of tropical relaxation, vibrant local traditions, breathtaking mountain landscapes, and meaningful travel connections.\n\nYour expedition begins along the golden, palm-fringed shores of Hikkaduwa and Mirissa. Relax on pristine sand beaches, swim in turquoise waters alongside giant sea turtles, stand atop iconic Coconut Tree Hill at sunset, and explore the historic 16th-century Dutch fortress city of Galle with its charming cobblestone alleys, artisan boutiques, and rampart ocean vistas.\n\nLeaving the ocean behind, journey inland through the wild savannah plains of Udawalawe, home to free-roaming herds of wild Asian elephants and exotic birdlife. Experience the thrill of an early morning jeep safari, capturing photographs of these magnificent creatures in their natural habitat. Ascend into the dramatic, cloud-wrapped mountain sanctuary of Ella, where you'll trek up Little Adam's Peak for panoramic valley views, visit the world-famous colonial Nine Arches Bridge nestled deep in the jungle, and marvel at cascading waterfalls. The crisp mountain air and stunning vistas provide the perfect backdrop for relaxation and exploration.\n\nHighlighting your central highland adventure, board the world-famous Blue Train as it winds through endless rolling emerald tea estates and pine-scented valleys toward Kandy—the sacred cultural heartland of Sri Lanka. Conclude your tour exploring the revered Temple of the Tooth Relic and lush Royal Botanical Gardens, with flexible options to seamlessly transition into local Give Back Journey volunteering projects. You will also have the opportunity to savor authentic Sri Lankan cuisine, meet welcoming local communities, and create memories that will last a lifetime. Featuring private air-conditioned transport, daily breakfast, and local guidance throughout, this 7-day escape is the ultimate Sri Lankan tropical holiday.",
         price: "$549",
         image: southernCover,
         itinerary: [
@@ -674,7 +674,7 @@ export const tourPackages = [
         id: 3, 
         name: "Highlands & Southern Coast", 
         days: "7 Days / 6 Nights",
-        description: "A well-balanced journey through rainforest adventure, misty mountains, wildlife, and tropical beaches, designed for travelers who want maximum experience with great value.\n\nFrom white-water rafting in the jungle rivers of Kitulgala to the cool, tea-scented air of the Ella highlands, this tour is an adventure for the soul. You'll explore the wild landscapes of Yala in search of leopards and finally unwind on the vibrant beaches of Hikkaduwa.\n\nIt's the perfect fusion of thrill and tranquility, capturing the very essence of the island's diverse natural beauty.",
+        description: "Experience the ultimate adrenaline-fueled and nature-rich 7-day expedition across Sri Lanka's most exhilarating landscapes. Meticulously designed for adventure seekers, outdoor enthusiasts, and nature lovers, this action-packed itinerary seamlessly connects dense tropical rainforests, misty high-altitude tea plantations, thrilling wildlife safaris, and golden Indian Ocean beaches.\n\nYour journey kicks off in the jungle paradise of Kitulgala, famous as the setting for the classic film 'Bridge on the River Kwai'. Navigate Grade 3 white-water rapids along the roaring Kelani River before climbing into the cool, tea-scented highlands of Ella. Trek through lush green valleys to Little Adam's Peak, marvel at the iconic colonial Nine Arches Bridge as mountain trains rumble past, and stand before cascading waterfalls.\n\nVenture south into the dense dry-zone wilderness of Yala National Park, world-famous for having one of the highest densities of leopards on Earth. Board an open-top 4x4 safari jeep to track elusive Sri Lankan leopards, sloth bears, wild Asian elephants, mugger crocodiles, and vibrant bird species in their untamed natural habitat.\n\nConclude your 7-day adventure by descending to the vibrant coastal paradise of Hikkaduwa. Unwind on golden sands, swim with wild sea turtles in crystal-clear waters, and explore the historic 16th-century Dutch ramparts of Galle Fort at sunset. With dedicated private transport, professional local guidance, and daily breakfast included, this tour delivers the perfect harmony of heart-pumping thrill and coastal serenity.",
         price: "$680",
         image: adventureCover,
         itinerary: [
@@ -775,7 +775,7 @@ export const tourPackages = [
         id: 4,
         name: "5-Day Mist & Mountains",
         days: "5 Days",
-        description: "Venture into the emerald heart of Sri Lanka on this immersive 5-day journey through the central highlands. This tour is perfectly crafted for nature lovers and those seeking a cool, misty escape from the tropical heat.\n\nYou will begin in the sacred city of Kandy to witness ancient traditions, then ascend into the rolling hills of Nuwara Eliya to uncover the secrets of Ceylon tea. Experience the world-renowned Blue Train journey as it winds through stunning valleys, and challenge yourself with a rewarding hike up Ella Rock.\n\nFrom cascading waterfalls to colonial-era bridges, every day presents a new breathtaking vista in the island's most serene region.",
+        description: "Venture deep into the serene, emerald heart of Sri Lanka on this immersive 5-day mountain escape through the central highlands. Crafted for nature lovers, hikers, and travelers seeking a cool, refreshing reprieve from the tropical heat, this journey showcases the island's most breathtaking elevated landscapes.\n\nStarting in the sacred hillside city of Kandy, visit the revered Temple of the Tooth Relic before ascending into the misty, pine-scented tea valleys of Nuwara Eliya, affectionately known as 'Little England'. Explore colonial heritage estates, witness traditional tea plucking, and sample authentic Ceylon single-origin teas.\n\nHighlighting your highland adventure, board the world-famous Blue Train for an epic rail journey through dramatic mountain passes, cascading waterfalls, and cloud forests to Ella. Challenge yourself with a summit trek up Ella Rock, walk across the jungle-clad Nine Arches Bridge, and enjoy sweeping vistas of the Ella Gap. Complete with private transfers, hand-picked hillside stays, and daily breakfast, this 5-day tour is the ultimate highland retreat.",
         price: "$550",
         image: mistMountainsCover,
         itinerary: [
@@ -844,7 +844,7 @@ export const tourPackages = [
         id: 6,
         name: "3-Day Galle Fort Escape",
         days: "3 Days",
-        description: "A quick but immersive journey into the colonial heart of Sri Lanka.",
+        description: "Step back in time with a charming 3-day romantic and cultural getaway to the historic Dutch Fort of Galle, one of Asia's best-preserved UNESCO World Heritage fortified cities. Tailored for history lovers, culture enthusiasts, and travelers looking for a refined coastal retreat, this short escape captures the timeless beauty and bohemian allure of Sri Lanka's southern coast.\n\nNestled within centuries-old coral-and-granite ramparts, your stay offers an intimate look into living history. Stroll along peaceful cobblestone avenues lined with colonial Dutch villas, whitewashed churches, vibrant art galleries, and chic boutique cafes. Watch local artisans craft fine handmade lace, visit traditional gemstone workshops, and marvel at the iconic Galle Lighthouse standing guard over the Indian Ocean.\n\nAs golden hour approaches, join locals and fellow travelers atop the massive stone ramparts for an unforgettable sunset walk, enjoying panoramic ocean views and watching daring cliff divers leap into the turquoise waves below. Complete with charming boutique accommodation, authentic local dining experiences, and total relaxation by the ocean, this 3-day retreat is the perfect short escape.",
         price: "$320",
         image: galleFortCover,
         itinerary: [
@@ -884,7 +884,7 @@ export const tourPackages = [
         days: "1 Day",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Kandy",
-        description: "Discover the cultural heart of Sri Lanka with a full-day tour of Kandy. Explore historic landmarks, beautiful gardens, breathtaking viewpoints, and local attractions at your own pace while enjoying the comfort of a private vehicle with an experienced driver.",
+        description: "Discover the rich spiritual heritage, royal history, and lush mountain landscapes of Sri Lanka's cultural capital on this comprehensive full-day Kandy tour. Designed for travelers who want to absorb all of Kandy's highlights in a single day, this private tour provides maximum flexibility and personal comfort.\n\nExplore the world-renowned Royal Botanical Gardens in Peradeniya, home to over 4,000 tropical plant species, giant Java fig trees, and breathtaking orchid houses. Drive up to panoramic hilltop viewpoints overlooking Kandy Lake and surrounding mountain ranges, with optional stops at traditional gemstone lapidaries, wood carving workshops, and handmade batik studios.\n\nIn the late afternoon, visit the sacred Bahirawakanda Giant Buddha statue perched high above the city for sunset views, followed by an authentic hands-on Sri Lankan cooking lesson and home-cooked dinner with a local Kandyan family. Accompanied by an experienced private driver throughout, this full-day tour offers an authentic, hassle-free introduction to Kandy.",
         price: "$130",
         image: kandyDayImg,
         itinerary: [
@@ -1032,7 +1032,7 @@ export const tourPackages = [
         days: "1 Day",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Kitulgala / Kandy",
-        description: "Discover the perfect blend of adventure and nature with a day trip to Kitulgala. Enjoy an exciting white water rafting experience on the Kelani River, visit the historic Belilena Cave, and admire the breathtaking scenery along one of Sri Lanka's most beautiful rivers. Complete your experience with a delicious traditional Sri Lankan lunch, all while traveling comfortably with private transportation from Kandy.",
+        description: "Unleash your inner adventurer on an exhilarating 1-day white-water rafting and jungle expedition to Kitulgala, Sri Lanka's premier outdoor sports haven. Located along the scenic banks of the Kelani River—famous as the filming location for the Oscar-winning movie 'The Bridge on the River Kwai'—this day trip promises heart-pumping thrills in a pristine rainforest setting.\n\nUnder the guidance of certified safety experts, navigate Grade 3 rapids as you splash through turbulent river bends, pristine jungle gorges, and refreshing natural pools. After your river run, recharge with a hearty, authentic Sri Lankan rice-and-curry buffet lunch beside the riverbank.\n\nIn the afternoon, embark on a forest trek to the historic Belilena Cave, one of South Asia's most significant prehistoric archaeological sites, where remains of 30,000-year-old 'Balangoda Man' were discovered. Complete with private round-trip transportation from Kandy and all safety gear, this day trip offers the ultimate outdoor escape.",
         price: "$152",
         image: raftingImg,
         itinerary: [
@@ -1107,7 +1107,7 @@ export const tourPackages = [
         name: "Breathe Sri Lanka",
         days: "27 Days",
         location: "Kandy & Coast",
-        description: "A complete 27-day island immersion combining culture, adventure, and meaningful community work. Journey through ancient temples in Kandy, hike emerald hills in Ella, relax on southern beaches, and dedicate 14 days to volunteering in Hikkaduwa.",
+        description: "Transform your travel experience with 'Breathe Sri Lanka'—an extraordinary 27-day island immersion combining deep cultural exploration, highland hiking, beach relaxation, and 14 rewarding days of community volunteering. Purpose-built for slow travelers, gap year students, and conscious volunteers, this signature program connects you with the heart and soul of Sri Lanka.\n\nSpend your initial weeks exploring iconic island destinations: scale ancient rock fortresses in Sigiriya, wander sacred temples in Kandy, ride the scenic mountain train through misty tea estates in Ella, and soak up the sun along the southern beaches of Mirissa and Galle Fort.\n\nThe centerpiece of your journey is a dedicated 14-day volunteer placement in Hikkaduwa. Work alongside local communities in childcare, teaching, special needs support, or eco-conservation while staying in welcoming local homestays. With all coordination, meals, accommodations, and guided excursions handled by Give Back Journey, this 27-day program offers a life-changing blend of exploration and impact.",
         price: "$1,155",
         image: breatheSriLankaImg,
         tags: ["volunteer", "impact", "giveback", "meaningful"],
@@ -1132,31 +1132,65 @@ export const tourPackages = [
     },
     {
         id: 12,
-        name: "Sigiriya & Elephant Safari Experience",
-        days: "1 Day",
-        description: "Experience the cultural heart and wildlife beauty of Sri Lanka in one unforgettable day. This premium day tour takes you from Kandy to the ancient Sigiriya Rock Fortress and on an exciting elephant safari in their natural habitat, starting and ending in Kandy.",
-        price: "$200",
+        name: "Sigiriya & Dambulla Heritage Adventure",
+        days: "1 Day (Full-Day Tour)",
+        startLocation: "Kandy",
+        endLocation: "Kandy",
+        description: "Discover two of Sri Lanka's most iconic UNESCO World Heritage Sites on this unforgettable full-day heritage trip from Kandy. Designed for culture enthusiasts, history lovers, and adventure seekers alike, this private expedition takes you deep into the heart of the island's celebrated Cultural Triangle.\n\nYour journey begins with a scenic drive through lush rural villages and tropical countryside before reaching the ancient Dambulla Cave Temple. Carved into a massive granite rock rising high above the plains, this 2,000-year-old sacred sanctuary features five majestic caves housing hundreds of serene Buddha statues and intricate wall murals depicting ancient Sinhalese royalty and spiritual legends.\n\nIn the afternoon, ascend the awe-inspiring Sigiriya Rock Fortress, often hailed as the 'Eighth Wonder of the World'. Built in the 5th century by King Kashyapa, this sheer 200-meter citadel features world-renowned ancient frescoes, the polished Mirror Wall, water gardens, and the legendary Lion's Paws gate leading to breathtaking 360-degree panoramic views across the jungle canopy.\n\nFor those seeking even more thrill, enhance your day with an optional wild elephant safari in a nearby national park before your comfortable return transfer back to Kandy. Enjoy dedicated private transportation, inclusive entrance tickets, and an experienced local driver to ensure a seamless and enriching day trip.",
+        price: "$220",
         image: sigiriyaSafariCover,
         itinerary: [
             {
                 day: 1,
-                title: "Sigiriya Rock & Elephant Safari Journey",
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.",
-                activities: ["Sigiriya Rock Climbing", "Wild Elephant Safari", "Private Jeep Tour", "Private Transport"],
-                optionalActivities: ["Traditional village lunch", "Herbal garden tour", "Wood carving workshop"]
+                title: "07:30 AM – Departure from Kandy",
+                desc: "After breakfast, meet your driver at your accommodation and begin your journey towards Sri Lanka's Cultural Triangle. The drive from Kandy takes approximately two and a half hours and passes through picturesque villages, lush forests and rural landscapes.<br/><br/>Along the way, your driver will be happy to share insights into local life and Sri Lankan culture.",
+                activities: ["07:30 AM Departure", "Private Transportation", "Scenic Cultural Triangle Drive", "Local Life & Culture Insights"]
+            },
+            {
+                day: 1,
+                title: "10:00 AM – Visit to Dambulla Cave Temple",
+                desc: "Your first stop will be the magnificent Dambulla Cave Temple, the largest and best-preserved cave temple complex in Sri Lanka and a UNESCO World Heritage Site.<br/><br/>Dating back more than 2,000 years, the temple consists of five caves filled with hundreds of Buddha statues, ancient murals and colorful paintings covering the cave walls and ceilings.<br/><br/>The temple sits on top of a large rock, offering spectacular views of the surrounding countryside. It remains an important place of worship and provides visitors with a fascinating insight into Sri Lanka's Buddhist heritage and history.<br/><br/>You will have approximately one and a half hours to explore the caves and admire the remarkable artwork.",
+                activities: ["Dambulla Cave Temple (UNESCO Site)", "Ancient Cave Murals & Statues", "Panoramic Rock Vistas"]
+            },
+            {
+                day: 1,
+                title: "12:30 PM – Lunch Break (Optional)",
+                desc: "Enjoy lunch at a local restaurant (not included in the tour price), where you will have the opportunity to sample authentic Sri Lankan cuisine.<br/><br/>Your driver will be happy to recommend restaurants based on your preferences.",
+                activities: ["Lunch Break", "Authentic Sri Lankan Cuisine", "Local Dining Recommendations"]
+            },
+            {
+                day: 1,
+                title: "02:00 PM – Explore Sigiriya Rock Fortress",
+                desc: "After lunch, continue to the world-famous Sigiriya Rock Fortress, often referred to as the \"Eighth Wonder of the World.\"<br/><br/>Built in the fifth century by King Kashyapa, Sigiriya rises nearly 200 metres above the surrounding plains and once served as a royal palace and fortress.<br/><br/>The climb to the summit takes approximately one and a half to two hours and includes:<br/><ul><li>The Royal Gardens</li><li>Ancient water gardens and fountains</li><li>The famous Mirror Wall</li><li>The Lion's Gate</li><li>Ancient frescoes</li><li>Panoramic views from the summit</li></ul><br/>Today, Sigiriya is considered one of the most important archaeological sites in Asia and attracts visitors from around the world.",
+                activities: ["Sigiriya Rock Fortress (UNESCO Site)", "Royal & Water Gardens", "Mirror Wall & Lion's Gate", "Ancient Frescoes", "Summit Panoramic Views"]
+            },
+            {
+                day: 1,
+                title: "05:00 PM – Return to Kandy",
+                desc: "After your visit to Sigiriya, begin your journey back to Kandy, arriving in the evening.<br/><br/>Sit back, relax and enjoy the scenic drive through Sri Lanka's beautiful countryside.",
+                activities: ["Return Journey to Kandy", "Scenic Evening Countryside Drive"]
+            },
+            {
+                day: 1,
+                title: "Optional Add-on – Wild Elephant Safari",
+                desc: "For travelers seeking an even greater adventure, an optional wild elephant safari can be added to the itinerary.<br/><br/>Travel by jeep into one of Sri Lanka's national parks, where you may encounter wild elephants roaming freely in their natural habitat. Depending on the season, you may also spot deer, monkeys, crocodiles, peacocks and many other species of wildlife.<br/><br/><i>Additional charges apply. The safari can be arranged either before or after your visit to Sigiriya, depending on park conditions and your preferences.</i>",
+                activities: ["Optional Wild Elephant Safari", "Jeep Safari in National Park", "Wildlife Spotting"]
             }
         ],
         inclusions: [
-            "Private transportation (Starting & Ending in Kandy)",
-            "Breakfast during the journey",
-            "Safari Jeep experience",
-            "Entrance fees for Sigiriya Rock and Safari",
-            "Driver assistance"
+            "Entrance ticket to Dambulla Cave Temple",
+            "Entrance ticket to Sigiriya Rock Fortress",
+            "Private air-conditioned transportation throughout the tour",
+            "English-speaking driver",
+            "Hotel pick-up and drop-off in Kandy",
+            "Fuel, parking and highway charges"
         ],
         exclusions: [
-            "Lunch and dinners",
+            "Lunch and beverages",
+            "Optional wild elephant safari",
             "Personal expenses",
-            "Tips and gratuities"
+            "Tips and gratuities",
+            "Travel insurance"
         ],
         routeMap: routeMapWild,
         reviews: sigiriyaSafariReviews,
@@ -1164,7 +1198,15 @@ export const tourPackages = [
         ratingLabel: "Must Experience",
         physicalIntensity: 3,
         importantNotes: [
-            "Departure time is flexible based on your preference and weather conditions.",
+            "Comfortable walking shoes are highly recommended.",
+            "The climb to Sigiriya involves approximately 1,200 steps.",
+            "Please wear clothing that covers your shoulders and knees when visiting Dambulla Cave Temple.",
+            "Bring sunscreen, a hat and plenty of water, especially during the hotter months.",
+            "The tour operates in all weather conditions.",
+            "Optional Wild Elephant Safari: Available upon request (additional cost). The safari can be arranged either before or after your visit to Sigiriya, depending on park conditions and your preferences.",
+            "Duration: Full day (approximately 12 hours)",
+            "Starting point: Kandy",
+            "Ending point: Kandy",
             ...COMMON_NOTES
         ]
     },
@@ -1172,46 +1214,71 @@ export const tourPackages = [
         id: 13,
         name: "Sigiriya Nature & Culture Escape",
         days: "2 Days / 1 Night",
-        description: "Experience the perfect combination of history, culture, nature, and wildlife during this unforgettable overnight journey through the cultural triangle of Sri Lanka. Starting and ending in Kandy, this tour includes visits to Dambulla Cave Temple, Pidurangala sunset hike, Sigiriya Sunrise climb, Matale Hindu Temple, and a wild elephant safari.",
-        price: "$320",
+        startLocation: "Kandy",
+        endLocation: "Kandy",
+        description: "Embark on an unforgettable two-day expedition from Kandy into the ancient heart of Sri Lanka's Cultural Triangle, where rich history meets breathtaking natural beauty. Meticulously designed for travelers seeking a perfect balance of heritage and wilderness, this overnight escape takes you deep into the island's most iconic landscapes and UNESCO World Heritage sites, ensuring you experience the true essence of Sri Lanka without feeling rushed.\n\nYour adventure begins with a scenic drive through vibrant tropical countryside to the magnificent Dambulla Cave Temple. This ancient, 2,000-year-old sanctuary is perched high on a granite outcrop and adorned with intricate murals and hundreds of serene Buddha statues. As evening approaches, challenge yourself to a rewarding hike up Pidurangala Rock. From this spectacular vantage point, you will be treated to unparalleled panoramic sunset views of the surrounding jungle canopy and the majestic Sigiriya Lion Rock glowing in the fading light. Relax and recharge overnight in a peaceful guesthouse surrounded by the tranquil, untouched atmosphere of rural Sri Lanka.\n\nOn your second day, rise before dawn to conquer the world-famous Sigiriya Rock Fortress. Climbing this 'Eighth Wonder of the World' in the cool morning air rewards you with an awe-inspiring sunrise and a glimpse into the opulent ruins of King Kassapa's ancient sky palace. Marvel at the preserved frescoes, the Mirror Wall, and the imposing Lion's Paws as you ascend to the summit. The adventure then transitions from ancient history to thrilling wildlife with an open-top jeep safari through a nearby national park, offering the incredible chance to witness wild Asian elephants, crocodiles, and exotic birds roaming freely in their natural habitat.\n\nConcluding with a visit to the vibrant, architecturally stunning Matale Hindu Temple, this comprehensive tour delivers a seamless, deeply immersive cultural and wildlife experience. With private transportation, local guidance, and carefully selected accommodations included, every detail is handled so you can focus entirely on the adventure.",
+        price: "$345",
         image: sigiriyaEscapeCover,
         itinerary: [
             {
                 day: 1,
-                title: "Kandy to Sigiriya | Cave Temple & Pidurangala sunset",
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.",
-                activities: ["Dambulla Cave Temple Visit", "Pidurangala Sunset Hike", "Guesthouse Check-in", "Local Dinner"],
-                optionalActivities: ["Traditional wood carving workshop", "Ayurvedic massage in Dambulla"]
+                title: "Kandy to Sigiriya | Cave Temple & Pidurangala Sunset",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Meals included: Breakfast and dinner</b><br/><br/>
+                After breakfast, leave Kandy and begin your journey towards Sigiriya, passing through picturesque villages, lush forests and rural landscapes.<br/><br/>
+                <strong>Morning: Dambulla Cave Temple</strong><br/>
+                Your first stop will be the magnificent Dambulla Cave Temple, Sri Lanka's largest and best-preserved cave temple complex and a UNESCO World Heritage Site.<br/><br/>
+                Dating back more than 2,000 years, the temple consists of five caves filled with hundreds of Buddha statues, ancient murals and colorful paintings. Perched on top of a giant rock, the temple offers breathtaking views of the surrounding countryside and provides visitors with a fascinating insight into Sri Lanka's rich Buddhist heritage.<br/><br/>
+                <strong>Afternoon: Guesthouse Check-in</strong><br/>
+                After exploring Dambulla, continue to your guesthouse in Sigiriya and enjoy some free time to relax and take in the peaceful atmosphere of rural Sri Lanka.<br/><br/>
+                <strong>Evening: Pidurangala Sunset Hike</strong><br/>
+                In the late afternoon, set off on a hike to Pidurangala Rock, one of Sri Lanka's most spectacular viewpoints.<br/><br/>
+                The climb takes approximately 30–45 minutes and rewards you with stunning panoramic views of Sigiriya Rock Fortress and the surrounding jungle. Watch the sun slowly disappear behind the horizon while the sky transforms into beautiful shades of orange and pink.<br/><br/>
+                <strong>Evening: Traditional Sri Lankan Dinner</strong><br/>
+                Return to your guesthouse and enjoy a delicious homemade Sri Lankan dinner prepared with fresh local ingredients.<br/><br/>
+                Overnight stay in Sigiriya.`,
+                activities: ["Dambulla Cave Temple", "Guesthouse Check-in", "Pidurangala Sunset Hike", "Traditional Sri Lankan Dinner"]
             },
             {
                 day: 2,
-                title: "Sunrise, Wildlife & Return to Kandy",
-                desc: `<strong>Early Morning: Sigiriya Sunrise Climb</strong><br/>
-                Rise early and proceed to the majestic <b>Sigiriya Rock Fortress</b>. Scale the rock steps in the cool morning air to witness the amazing sunrise over the treetops. Explore the ancient ruins of King Kassapa's palace, the water gardens, and the famous Lion's Paw gate, enjoying one of Sri Lanka's most iconic and historic views.<br/><br/>
-
-                <strong>Morning: Breakfast & Check-Out</strong><br/>
-                Return to the guesthouse to enjoy a fresh, hearty breakfast. Collect your belongings and check out of your stay.<br/><br/>
-
+                title: "Sigiriya Sunrise, Wildlife & Return to Kandy",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Meals included: Breakfast</b><br/><br/>
+                <strong>Early Morning: Sigiriya Sunrise Climb</strong><br/>
+                Wake up before dawn and proceed to the world-famous Sigiriya Rock Fortress, often referred to as the "Eighth Wonder of the World."<br/><br/>
+                Built in the fifth century by King Kassapa, Sigiriya rises nearly 200 metres above the surrounding plains and once served as a royal palace and fortress.<br/><br/>
+                Climb the ancient staircases in the cool morning air and witness a spectacular sunrise over Sri Lanka's Cultural Triangle. Explore the royal gardens, ancient frescoes, the famous Lion's Paw entrance and enjoy one of the most iconic views in Asia.<br/><br/>
+                <strong>Morning: Breakfast & Check-out</strong><br/>
+                Return to the guesthouse and enjoy a fresh breakfast before checking out and preparing for the day's final adventure.<br/><br/>
                 <strong>Afternoon: Wild Elephant Safari</strong><br/>
-                Set off for an exciting <b>wildlife safari experience</b> in a national park near Sigiriya. Hop into a private safari jeep to witness the majestic wild giants of Sri Lanka—elephants in their natural habitat—along with monkeys, crocodiles, exotic birds, and beautiful landscapes.<br/><br/>
-
-                <strong>Return Journey & Matale Temple</strong><br/>
-                Embark on the drive back to Kandy. On the way, visit the famous <b>Matale Hindu Temple</b>, experiencing its towering colorful gopuram architecture and spiritual atmosphere. Arrive back in Kandy in the evening and drop off at your Kandy accommodation.`,
-                activities: ["Sigiriya Sunrise Climb", "Guesthouse Breakfast", "Elephant Jeep Safari", "Matale Hindu Temple Visit", "Private Transport"],
-                optionalActivities: ["Spice & Herbal Garden Tour in Matale", "Village Tuk-Tuk Food Tour"]
+                Set off on an unforgettable jeep safari in one of the national parks near Sigiriya.<br/><br/>
+                Travel through forests, lakes and open grasslands in search of Sri Lanka's majestic wild elephants roaming freely in their natural habitat. Depending on the season, you may also spot monkeys, crocodiles, deer, peacocks and many species of birds.<br/><br/>
+                <strong>Evening: Matale Hindu Temple & Return to Kandy</strong><br/>
+                On the journey back to Kandy, stop at the famous Matale Hindu Temple, known for its colorful architecture and impressive carvings.<br/><br/>
+                Take some time to admire the spiritual atmosphere before continuing your drive back to Kandy, where you will be dropped off at your accommodation in the evening.<br/><br/>
+                End of the tour.`,
+                activities: ["Sigiriya Sunrise Climb", "Wild Elephant Safari", "Matale Hindu Temple", "Return Journey to Kandy"],
+                optionalActivities: [
+                    "Spice and Herbal Garden Tour in Matale: Learn about Sri Lanka's ancient Ayurvedic traditions.",
+                    "Village Tuk-Tuk Food Tour: Experience authentic village life and sample traditional food by tuk-tuk."
+                ]
             }
         ],
         inclusions: [
-            "Private transportation (Starting & Ending in Kandy)",
-            "Guesthouse Accommodation (1 Night)",
-            "Breakfast & Dinner at the guesthouse",
-            "Private Safari Jeep experience",
-            "Entrance fees for all mentioned sites (Dambulla, Pidurangala, Sigiriya, Safari, Matale)",
-            "Driver assistance"
+            "One night's accommodation in a guesthouse in Sigiriya",
+            "Breakfast on both days",
+            "Traditional Sri Lankan dinner on Day 1",
+            "Entrance fee to Dambulla Cave Temple",
+            "Entrance fee to Pidurangala Rock",
+            "Entrance fee to Sigiriya Rock Fortress",
+            "Wild elephant jeep safari",
+            "Visit to Matale Hindu Temple",
+            "Private transportation throughout the tour",
+            "English-speaking driver",
+            "Pick-up and drop-off in Kandy"
         ],
         exclusions: [
-            "Lunches",
+            "Lunches and beverages",
             "Personal expenses",
+            "Travel insurance",
             "Tips and gratuities"
         ],
         routeMap: routeMapSigiriyaEscape,
@@ -1220,7 +1287,11 @@ export const tourPackages = [
         ratingLabel: "Must Experience",
         physicalIntensity: 4,
         importantNotes: [
-            "Departure time is flexible based on your preference and weather conditions.",
+            "Comfortable walking shoes are highly recommended.",
+            "The Sigiriya climb involves approximately 1,200 steps.",
+            "Please wear clothing that covers your shoulders and knees when visiting temples.",
+            "Bring sunscreen, a hat and plenty of water.",
+            "Wildlife sightings cannot be guaranteed, although elephant encounters are very common.",
             ...COMMON_NOTES
         ]
     }

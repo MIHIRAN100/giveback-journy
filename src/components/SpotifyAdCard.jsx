@@ -1,178 +1,206 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import budgetPromoImg from '../assets/rajiv-perera-b1jeQiJwYQI-unsplash.jpg';
-import essentialSlide2 from '../assets/c9643fab2024fdb4eb79ec69b070e545.jpg';
-import gallerySlide3 from '../assets/87fd5839db5c013598d55c1c41ee72d5.jpg';
-import gallerySlide4 from '../assets/24b02737e3f0ac7e69426d35da060e5a.jpg';
-import gallerySlide5 from '../assets/e00c2772910971201b0e48853af8577a.jpg';
 
 const SpotifyAdCard = ({ margin = '0' }) => {
     const navigate = useNavigate();
-    const [bgIndex, setBgIndex] = useState(0);
-    const bgImages = [budgetPromoImg, essentialSlide2, gallerySlide3, gallerySlide4, gallerySlide5];
+    
+    // Countdown state (mock)
+    const [timeLeft, setTimeLeft] = useState({
+        days: '05', hours: '06', mins: '19', secs: '29'
+    });
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setBgIndex((prev) => (prev + 1) % bgImages.length);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, []);
+        const timer = setInterval(() => {
+            let s = parseInt(timeLeft.secs) - 1;
+            let m = parseInt(timeLeft.mins);
+            let h = parseInt(timeLeft.hours);
+            let d = parseInt(timeLeft.days);
+            
+            if (s < 0) { s = 59; m -= 1; }
+            if (m < 0) { m = 59; h -= 1; }
+            if (h < 0) { h = 23; d -= 1; }
+            
+            setTimeLeft({
+                days: d.toString().padStart(2, '0'),
+                hours: h.toString().padStart(2, '0'),
+                mins: m.toString().padStart(2, '0'),
+                secs: s.toString().padStart(2, '0')
+            });
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [timeLeft]);
 
     return (
-        <div className="spotify-ad-card" style={{
-            position: 'relative',
-            borderRadius: '24px',
-            overflow: 'hidden',
-            height: '480px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: '40px',
-            color: 'white',
-            background: '#121212',
-            boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
+        <div className="qantas-promo-banner" style={{
             margin: margin,
-            border: '1px solid rgba(255,255,255,0.1)',
-            cursor: 'default'
+            background: 'linear-gradient(90deg, #bc9355 0%, #faecd7 50%, #bc9355 100%)', // Gold gradient
+            borderRadius: '12px',
+            padding: '45px 30px',
+            minHeight: '200px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '30px',
+            boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
+            position: 'relative',
+            overflow: 'hidden',
+            fontFamily: 'Inter, Arial, sans-serif'
         }}>
-            {/* Absolute Background Image Layers for Cinematic Crossfade */}
-            {bgImages.map((img, index) => (
-                <div 
-                    key={index}
-                    style={{
-                        position: 'absolute',
-                        inset: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundImage: `linear-gradient(to bottom, rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.95)), url(${img})`,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        opacity: index === bgIndex ? 1 : 0,
-                        transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                        zIndex: 0,
-                        pointerEvents: 'none'
-                    }}
-                />
-            ))}
-
-            {/* Accent Gradient Overlay */}
-            <div style={{
-                position: 'absolute',
-                top: '-50px',
-                right: '-50px',
-                width: '350px',
-                height: '350px',
-                background: 'radial-gradient(circle, rgba(27,163,82,0.25) 0%, transparent 70%)',
-                zIndex: 0,
-                pointerEvents: 'none'
-            }}></div>
-
-            <div style={{ zIndex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '30px' }}>
-                    <div style={{ color: '#1ba352', fontSize: '1.6rem' }}>
-                        <i className="fa-solid fa-hand-holding-heart"></i>
-                    </div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 900, letterSpacing: '1px', textTransform: 'none', color: '#fff', opacity: 0.9 }}>Give Back Journey<span style={{color: '#1ba352'}}>.</span></span>
-                </div>
+            {/* Left section: Points and Title */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '25px', zIndex: 1 }}>
                 
-                <h3 style={{ 
-                    fontSize: 'clamp(2.2rem, 4vw, 3rem)', 
-                    fontWeight: 900, 
-                    lineHeight: 1, 
-                    margin: 0, 
-                    color: 'white',
-                    letterSpacing: '-2px',
-                    maxWidth: '400px'
-                }}>
-                    The Best <span style={{color: '#1ba352'}}>Budget</span> <br/>Tour Plan.
-                </h3>
-                <p style={{ color: '#e0e0e0', fontSize: '1.1rem', marginTop: '20px', fontWeight: 600, maxWidth: '350px', lineHeight: 1.4 }}>
-                    No hidden fees. Just pure adventure.
-                </p>
-            </div>
-
-            <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                <div style={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(10px)',
-                    padding: '15px 20px',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '15px'
-                }}>
-                    <div style={{ 
-                        width: '40px', 
-                        height: '40px', 
-                        background: '#1ba352', 
-                        borderRadius: '50%', 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center',
-                        fontSize: '1.2rem',
-                        color: 'black'
-                    }}>
-                        <i className="fa-solid fa-hand-holding-heart"></i>
+                {/* $200 text */}
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 900, lineHeight: 1, letterSpacing: '-2px', color: '#000' }}>
+                        $2<div style={{ 
+                            width: 'clamp(40px, 7vw, 60px)', 
+                            height: 'clamp(40px, 7vw, 60px)', 
+                            background: '#1ba352', 
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            margin: '0 4px',
+                            boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.2)'
+                        }}>
+                            <i className="fa-solid fa-hand-holding-heart" style={{ color: '#fff', fontSize: '1.4rem' }}></i>
+                        </div>0
                     </div>
-                    <p style={{ margin: 0, fontSize: '0.9rem', fontWeight: 700, color: '#fff' }}>
-                        This journey can be combined with <span style={{color: '#1ba352'}}>Volunteering</span>
-                    </p>
+                    <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#111', marginTop: '8px', letterSpacing: '0.5px' }}>
+                        Book Now & Save with this Discount
+                    </span>
                 </div>
 
-                <div 
-                    onClick={() => navigate('/volunteer')}
-                    className="spotify-btn"
-                    style={{ 
-                        fontSize: '1rem', 
-                        fontWeight: 900, 
-                        textTransform: 'uppercase', 
-                        letterSpacing: '1px',
-                        background: '#1ba352',
-                        color: 'black',
-                        padding: '16px 40px',
-                        borderRadius: '500px',
-                        width: 'fit-content',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        boxShadow: '0 10px 20px rgba(27, 163, 82, 0.3)'
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'scale(1.05)';
-                        e.currentTarget.style.backgroundColor = '#2bc36f';
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.backgroundColor = '#1ba352';
-                    }}
-                >
-                    Explore More
+                {/* Vertical Divider (Hidden on small screens) */}
+                <div className="d-none d-md-block" style={{ width: '2px', height: '60px', background: '#333', opacity: 0.8 }}></div>
+
+                {/* Ends Text */}
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.4rem', fontWeight: 900, color: '#000', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                        Ends 31 Aug
+                    </span>
+                    <span style={{ fontSize: '0.85rem', color: '#444', fontWeight: 500, marginTop: '4px' }}>
+                        T&Cs & exclusions apply.*
+                    </span>
                 </div>
             </div>
 
-            {/* Decorative Vinyl Record Style Circle */}
-            <div style={{
-                position: 'absolute',
-                bottom: '-100px',
-                right: '-100px',
-                width: '300px',
-                height: '300px',
-                borderRadius: '50%',
-                border: '1px solid rgba(255,255,255,0.05)',
-                zIndex: 0,
-                pointerEvents: 'none'
+            {/* Right section: Pill Timer */}
+            <div style={{ 
+                display: 'flex', 
+                borderRadius: '500px', 
+                overflow: 'visible',
+                boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
+                position: 'relative',
+                zIndex: 1,
+                border: '2px solid #fff',
+                marginLeft: 'auto'
             }}>
+                {/* PLUS badge */}
                 <div style={{
                     position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '200px',
-                    height: '200px',
-                    borderRadius: '50%',
-                    border: '1px solid rgba(255,255,255,0.03)',
-                }}></div>
+                    top: '-16px',
+                    left: '50px',
+                    background: '#1ba352', 
+                    color: '#fff',
+                    padding: '4px 12px',
+                    borderRadius: '6px',
+                    fontWeight: 900,
+                    fontSize: '0.85rem',
+                    transform: 'rotate(-5deg)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                    zIndex: 2,
+                    border: '2px solid #fff'
+                }}>
+                    BONUS
+                </div>
+
+                {/* Black Half */}
+                <div style={{ 
+                    background: '#000', 
+                    padding: '16px 28px', 
+                    borderTopLeftRadius: '500px', 
+                    borderBottomLeftRadius: '500px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <div style={{ color: '#fff', fontSize: '0.95rem', fontWeight: 700, display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+                        Save <span style={{ fontSize: '1.6rem', fontWeight: 900, letterSpacing: '-1px', color: '#1ba352' }}>$50</span> extra.
+                    </div>
+                    <div style={{ color: '#1ba352', fontSize: '0.9rem', fontWeight: 800, marginTop: '2px' }}>
+                        Ends 11 Aug.
+                    </div>
+                </div>
+
+                {/* White Half */}
+                <div style={{ 
+                    background: '#fff', 
+                    padding: '16px 28px', 
+                    borderTopRightRadius: '500px', 
+                    borderBottomRightRadius: '500px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '18px'
+                }}>
+                    <i className="bi bi-stopwatch-fill" style={{ fontSize: '2.2rem', color: '#1ba352' }}></i>
+                    
+                    <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
+                        {Object.entries(timeLeft).map(([label, value], i, arr) => (
+                            <React.Fragment key={label}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '1.2rem', fontWeight: 900, color: '#000', lineHeight: 1 }}>{value}</span>
+                                    <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#666', textTransform: 'uppercase', marginTop: '6px' }}>{label}</span>
+                                </div>
+                                {i < arr.length - 1 && <span style={{ color: '#1ba352', fontWeight: 900, fontSize: '1.4rem', margin: '0 -4px', alignSelf: 'flex-start' }}>.</span>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            
+            {/* Floating green coins (decorative) */}
+            <div style={{
+                position: 'absolute',
+                top: '-20px',
+                left: '-20px',
+                width: '80px',
+                height: '80px',
+                background: 'radial-gradient(circle at 30% 30%, #2bc36f, #1ba352)',
+                borderRadius: '50%',
+                boxShadow: 'inset -3px -3px 8px rgba(0,0,0,0.3), 3px 5px 15px rgba(0,0,0,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff',
+                fontSize: '0.6rem',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                transform: 'rotate(-15deg)',
+                zIndex: 0
+            }}>
+                <i className="fa-solid fa-leaf" style={{ fontSize: '1.8rem', transform: 'rotate(-25deg)' }}></i>
+            </div>
+            
+            <div style={{
+                position: 'absolute',
+                bottom: '15px',
+                left: '50px',
+                width: '50px',
+                height: '50px',
+                background: 'radial-gradient(circle at 30% 30%, #2bc36f, #1ba352)',
+                borderRadius: '50%',
+                boxShadow: 'inset -2px -2px 6px rgba(0,0,0,0.3), 2px 4px 10px rgba(0,0,0,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff',
+                transform: 'rotate(25deg)',
+                zIndex: 0
+            }}>
+                <i className="fa-solid fa-leaf" style={{ fontSize: '1.1rem', transform: 'rotate(-25deg)' }}></i>
             </div>
         </div>
     );

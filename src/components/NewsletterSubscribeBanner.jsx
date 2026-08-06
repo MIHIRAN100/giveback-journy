@@ -250,7 +250,7 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                 }
 
                 .subscribe-submit-btn {
-                    background: #00bcda;
+                    background: var(--primary-green, #10b981);
                     color: #ffffff;
                     border: none;
                     padding: 16px 28px;
@@ -258,14 +258,14 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     font-size: 0.98rem;
                     cursor: pointer;
                     white-space: nowrap;
-                    transition: background 0.3s ease;
+                    transition: all 0.3s ease;
                     display: flex;
                     align-items: center;
                     gap: 8px;
                 }
 
                 .subscribe-submit-btn:hover {
-                    background: #009cb5;
+                    filter: brightness(0.9);
                 }
 
                 .subscribe-disclaimer {
@@ -335,7 +335,7 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                         <span style={{ position: 'relative', display: 'inline-block' }}>
                             Volunteer &
                             <svg className="subscribe-cyan-underline" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 9C40 3 140 2 198 8" stroke="#00bcda" strokeWidth="4" strokeLinecap="round" />
+                                <path d="M2 9C40 3 140 2 198 8" stroke="var(--primary-green, #10b981)" strokeWidth="4" strokeLinecap="round" />
                             </svg>
                         </span>
                         <br />
@@ -346,8 +346,8 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                 {/* Center Form with Real-Time PDF Download */}
                 <div className="subscribe-form-box">
                     {downloaded ? (
-                        <div style={{ background: 'rgba(0, 188, 218, 0.3)', border: '1px solid #00bcda', padding: '14px 20px', borderRadius: '8px', color: '#fff', fontWeight: 700, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-                            <i className="bi bi-file-earmark-check-fill" style={{ fontSize: '1.3rem', color: '#00bcda' }}></i>
+                        <div style={{ background: 'rgba(16, 185, 129, 0.3)', border: '1px solid var(--primary-green, #10b981)', padding: '14px 20px', borderRadius: '8px', color: '#fff', fontWeight: 700, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                            <i className="bi bi-file-earmark-check-fill" style={{ fontSize: '1.3rem', color: 'var(--primary-green, #10b981)' }}></i>
                             <span>✓ Volunteer Pricing Guide PDF Downloaded Successfully!</span>
                         </div>
                     ) : (
