@@ -61,31 +61,31 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
                     title: "Medical Volunteer Program",
                     location: "Kandy District (Teaching Hospital Placement)",
                     desc: "Shadow senior Sri Lankan doctors in surgery, pediatrics, OB-GYN, and emergency medicine.",
-                    pricing: "1 Wk: $190  |  2 Wks: $360  |  3 Wks: $530  |  4 Wks: $700  (+$170/extra wk)"
+                    pricing: "1 Wk: $240  |  2 Wks: $410  |  3 Wks: $580  |  4 Wks: $750  (+$170/extra wk)"
                 },
                 {
                     title: "Teaching Volunteer Program",
                     location: "Kandy District (Local Primary Schools)",
                     desc: "Teach conversational English, IT, and creative arts in rural community centers.",
-                    pricing: "1 Wk: $190  |  2 Wks: $240  |  3 Wks: $290  |  4 Wks: $340  (+$50/extra wk)"
+                    pricing: "1 Wk: $175  |  2 Wks: $225  |  3 Wks: $275  |  4 Wks: $325  (+$50/extra wk)"
                 },
                 {
                     title: "Village School Construction & Renovation",
                     location: "Kandy District",
                     desc: "Build and restore classrooms, playgrounds, and community facilities alongside locals.",
-                    pricing: "1 Wk: $190  |  2 Wks: $240  |  3 Wks: $290  |  4 Wks: $340  (+$50/extra wk)"
+                    pricing: "1 Wk: $175  |  2 Wks: $225  |  3 Wks: $275  |  4 Wks: $325  (+$50/extra wk)"
                 },
                 {
                     title: "Special Needs Support Program",
                     location: "Kandy District",
                     desc: "Provide care, physical therapy support, and creative activities for children with special needs.",
-                    pricing: "1 Wk: $190  |  2 Wks: $240  |  3 Wks: $290  |  4 Wks: $340  (+$50/extra wk)"
+                    pricing: "1 Wk: $175  |  2 Wks: $225  |  3 Wks: $275  |  4 Wks: $325  (+$50/extra wk)"
                 },
                 {
                     title: "Body & Mind Wellness Week",
                     location: "Hikkaduwa, Southern Coast",
                     desc: "Temple yoga, meditation sessions, beach wellness, and cultural immersion.",
-                    pricing: "1 Wk: $190  |  2 Wks: $240  (+$50/extra wk)"
+                    pricing: "1 Wk: $175  |  2 Wks: $225  (+$50/extra wk)"
                 },
                 {
                     title: "Breathe Sri Lanka (The Real Experience)",

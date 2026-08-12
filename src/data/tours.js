@@ -1294,6 +1294,131 @@ export const tourPackages = [
             "Wildlife sightings cannot be guaranteed, although elephant encounters are very common.",
             ...COMMON_NOTES
         ]
+    },
+    // 14. Wild Sri Lanka (id: 14)
+    {
+        id: 14,
+        name: "Wild Sri Lanka – 8 Days",
+        days: "8 Days / 7 Nights",
+        startLocation: "Colombo / Airport",
+        endLocation: "Colombo / Airport",
+        description: "Embark on a wildly unforgettable 8-day journey through Sri Lanka's spectacular southern beaches, world-famous wildlife reserves, and misty mountain landscapes. Meticulously designed for nature lovers and wildlife enthusiasts, this expedition seamlessly blends tropical relaxation with thrilling animal encounters and cultural immersion.\n\nYour adventure begins on the golden southern coast, where you will explore the historic, cobblestone streets of Galle Fort and actively participate in vital sea turtle conservation efforts. As you journey inland, the landscape transforms into the dense, untamed wilderness of Yala National Park. Here, you'll board an open-top 4x4 safari jeep to track elusive Sri Lankan leopards, sloth bears, and crocodiles in their natural habitat.\n\nAscending into the cool, tea-scented central highlands, you'll discover the scenic beauty of Ella and board the world-famous hill country train, winding through mist-covered mountains and cascading waterfalls. The adventure continues in Kandy, where you'll engage in a deeply ethical, hands-on elephant rescue experience—learning about conservation while feeding and observing these majestic animals up close without riding them.\n\nFinally, conclude your journey by conquering the ancient Sigiriya Rock Fortress, an architectural marvel rising from the jungle canopy, followed by a final, heart-pounding wild elephant safari in Minneriya or Kaudulla National Park. With private transport, expert local guidance, and carefully selected comfortable accommodations throughout, this complete 8-day package delivers the ultimate balance of thrilling wilderness and serene Sri Lankan charm.",
+        price: "$1,220",
+        image: wildSafariCover,
+        itinerary: [
+            {
+                day: 1,
+                title: "Arrival and Transfer to Galle",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Accommodation and private transfer.</b><br/><br/>
+                Upon your arrival at the airport, you will be warmly welcomed by our team and begin your journey to the historic coastal district of Galle.<br/><br/>
+                Located on Sri Lanka's southern coast, Galle is famous for its colonial architecture, golden beaches, and laid-back atmosphere. After checking in to your accommodation, relax and enjoy your first evening in paradise.<br/><br/>
+                Overnight stay in the Galle area.`,
+                activities: ["Arrival", "Transfer to Galle"]
+            },
+            {
+                day: 2,
+                title: "Turtle Conservation, Mask Factory and Galle Fort",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast, lunch, accommodation and all activities.</b><br/><br/>
+                Spend the morning supporting local conservation efforts at a turtle hatchery, where you will learn about the protection of endangered sea turtles and the important work being done to preserve these incredible creatures and their nesting grounds.<br/><br/>
+                In the afternoon, visit a traditional mask factory and discover the fascinating history behind Sri Lanka's colorful masks, which are deeply connected to local folklore and traditions.<br/><br/>
+                Later, explore the world-famous Galle Fort, a UNESCO World Heritage Site built by the Portuguese and later expanded by the Dutch. Wander through its charming streets and witness a spectacular sunset over the Indian Ocean.<br/><br/>
+                Overnight stay in the Galle area.`,
+                activities: ["Turtle Conservation", "Mask Factory", "Galle Fort"]
+            },
+            {
+                day: 3,
+                title: "Yala Safari and Transfer to Ella",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast, accommodation and safari.</b><br/><br/>
+                Depart early in the morning for an unforgettable safari in Yala National Park, Sri Lanka's most famous wildlife reserve.<br/><br/>
+                Home to elephants, leopards, crocodiles, sloth bears and many species of birds, Yala offers an incredible opportunity to experience Sri Lanka's rich wildlife in its natural habitat.<br/><br/>
+                After the safari, continue your journey to the beautiful hill town of Ella.<br/><br/>
+                Overnight stay in Ella.`,
+                activities: ["Yala Safari", "Transfer to Ella"]
+            },
+            {
+                day: 4,
+                title: "Explore Ella",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast and accommodation.</b><br/><br/>
+                Enjoy a full day exploring Ella, one of Sri Lanka's most scenic destinations. Surrounded by tea plantations and misty mountains, Ella offers the perfect combination of adventure and relaxation.<br/><br/>
+                You may visit famous attractions such as the Nine Arches Bridge, Little Adam's Peak and Ravana Falls while taking in the breathtaking views of the hill country.<br/><br/>
+                Overnight stay in Ella.`,
+                activities: ["Explore Ella", "Nine Arches Bridge", "Little Adam's Peak", "Ravana Falls"]
+            },
+            {
+                day: 5,
+                title: "Scenic Train Journey to Kandy",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast, train ticket and accommodation.</b><br/><br/>
+                Board one of the world's most beautiful train journeys from Ella to Nanu Oya. Passing through tea plantations, waterfalls and mountain villages, this is an authentic local experience where you will travel alongside Sri Lankans rather than as a tourist.<br/><br/>
+                Upon arrival in Nanu Oya, continue to Kandy by private taxi, enjoying the stunning scenery of Sri Lanka's central highlands.<br/><br/>
+                Overnight stay in Kandy.`,
+                activities: ["Scenic Train Journey", "Transfer to Kandy"]
+            },
+            {
+                day: 6,
+                title: "Elephant Experience and Cultural Discoveries",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast, lunch, accommodation and all activities.</b><br/><br/>
+                Today, you will enjoy a unique and ethical elephant experience at a small rescue and rehabilitation center dedicated to caring for domesticated elephants in need.<br/><br/>
+                Learn about the challenges faced by these majestic animals and the efforts being made to improve their welfare. You will have the opportunity to observe the elephant up close and participate in feeding activities. Please note that elephant riding is strictly prohibited.<br/><br/>
+                Enjoy a traditional riverside lunch before visiting the famous Pinnawala Elephant Orphanage, where you will witness one of the daily feeding sessions.<br/><br/>
+                On the way back to Kandy, stop at a traditional herbal garden and finish the day with breathtaking views from the Kandy viewpoint.<br/><br/>
+                Overnight stay in Kandy.`,
+                activities: ["Ethical Elephant Experience", "Pinnawala Elephant Orphanage", "Herbal Garden", "Kandy Viewpoint"]
+            },
+            {
+                day: 7,
+                title: "Sigiriya and Wild Elephant Safari",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast, dinner, accommodation and safari.</b><br/><br/>
+                Begin your day with a visit to the magnificent Sigiriya Rock Fortress, a UNESCO World Heritage Site often referred to as the "Eighth Wonder of the World."<br/><br/>
+                Climb the ancient fortress and admire the spectacular views over Sri Lanka's cultural triangle.<br/><br/>
+                In the afternoon, embark on an exciting safari in search of wild elephants roaming freely in their natural habitat, along with many other species of wildlife.<br/><br/>
+                Return to Kandy in the evening.<br/><br/>
+                Overnight stay in Kandy.`,
+                activities: ["Sigiriya Rock Fortress", "Wild Elephant Safari"]
+            },
+            {
+                day: 8,
+                title: "Departure",
+                desc: `<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Included: Breakfast and airport transfer.</b><br/><br/>
+                After an unforgettable journey through Sri Lanka's southern beaches, wildlife reserves and misty mountains, it is time to say goodbye.<br/><br/>
+                Transfer to the airport for your departure, taking with you memories that will last a lifetime.`,
+                activities: ["Airport Transfer", "Departure"]
+            }
+        ],
+        inclusions: [
+            "Accommodation throughout the tour",
+            "Breakfast on all days except Day 1",
+            "Lunch on Day 2 and Day 6",
+            "Dinner on Day 7",
+            "Private transportation throughout the tour",
+            "English-speaking driver/guide",
+            "Turtle Conservation project",
+            "Mask factory visit",
+            "Galle Fort visit",
+            "Yala National Park Safari",
+            "Train ticket from Ella to Nanu Oya",
+            "Ethical elephant experience",
+            "Pinnawala Elephant Orphanage",
+            "Sigiriya Rock Fortress entrance",
+            "Wild Elephant Safari",
+            "Airport pick-up and drop-off"
+        ],
+        exclusions: [
+            "Lunches and dinners not mentioned",
+            "Personal expenses",
+            "Travel insurance",
+            "Tips and gratuities",
+            "Airfare and visa fees"
+        ],
+        reviews: buildTourReviews(14, "Wild Sri Lanka – 8 Days", [], ["Amazing wild experience!", "Loved the elephants.", "Great itinerary and guides.", "Highly recommended tour."], 125),
+        rating: 4.8,
+        ratingLabel: "Highly Recommended",
+        physicalIntensity: 3,
+        importantNotes: [
+            "Comfortable walking shoes are recommended.",
+            "Please wear clothing that covers your shoulders and knees when visiting temples.",
+            "Wildlife sightings cannot be guaranteed.",
+            ...COMMON_NOTES
+        ]
     }
 ];
 

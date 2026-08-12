@@ -1405,7 +1405,7 @@ const VolunteerProgramDetails = () => {
                                 
                                 <div style={{ background: '#ffffff' }}>
                                     {[1, 2, 3, 4].map((week, idx) => {
-                                        const basePrice = parseInt(program.price) || 190;
+                                        const basePrice = parseInt(program.price) || 175;
                                         const extraWeekPrice = parseInt(program.extraWeekPrice) || 50;
                                         const fee = week === 1 ? basePrice : basePrice + ((week - 1) * extraWeekPrice);
                                         const perDay = Math.round(fee / (week * 7));

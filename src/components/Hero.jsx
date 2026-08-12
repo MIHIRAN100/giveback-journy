@@ -15,13 +15,36 @@ const mobileImages = tourPackages.map(pkg => ({
 }));
 
 
+const supportTexts = [
+    { icon: "bi-chat-square-text-fill", bold: "24/7 customer support", text: "to help with bookings and on-tour support" },
+    { icon: "bi-shield-check", bold: "Guaranteed departures", text: "with 100% transparent pricing and zero hidden fees" },
+    { icon: "bi-star-fill", bold: "4.9/5 rated journeys", text: "curated for solo travelers, couples & small groups" },
+    { icon: "bi-heart-fill", bold: "Travel with Purpose", text: "incorporating authentic local community & wildlife programs" }
+];
+
 const Hero = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMuted, setIsMuted] = useState(true);
+    const [currentSupportIndex, setCurrentSupportIndex] = useState(0);
+    const [tickerStatus, setTickerStatus] = useState('idle');
     const playerRef = React.useRef(null);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setTickerStatus('exiting');
+            setTimeout(() => {
+                setCurrentSupportIndex((prev) => (prev + 1) % supportTexts.length);
+                setTickerStatus('entering');
+                setTimeout(() => {
+                    setTickerStatus('idle');
+                }, 40);
+            }, 350);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, []);
 
     React.useEffect(() => {
         // Load YouTube API if not already loaded
@@ -40,6 +63,11 @@ const Hero = ({ onSearch }) => {
                         if (isMuted) event.target.mute();
                         else event.target.unMute();
                         event.target.playVideo();
+                    },
+                    'onStateChange': (event) => {
+                        if (event.data === window.YT.PlayerState.ENDED) {
+                            event.target.playVideo();
+                        }
                     }
                 }
             });
@@ -142,7 +170,7 @@ const Hero = ({ onSearch }) => {
                 <iframe 
                     id="hero-youtube-player"
                     className="hero-video active"
-                    src={`https://www.youtube.com/embed/1APkmKJKAq4?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=1APkmKJKAq4&loop=1`}
+                    src={`https://www.youtube.com/embed/S4RR9WHn5Ik?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=S4RR9WHn5Ik&loop=1`}
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
@@ -258,6 +286,15 @@ const Hero = ({ onSearch }) => {
                                 ))}
                             </div>
                         )}
+                    </div>
+
+                    <div className="hero-support-ticker">
+                        <div className={`support-ticker-item ${tickerStatus}`}>
+                            <i className={`bi ${supportTexts[currentSupportIndex].icon}`}></i>
+                            <span>
+                                <strong>{supportTexts[currentSupportIndex].bold}</strong> {supportTexts[currentSupportIndex].text}
+                            </span>
+                        </div>
                     </div>
 
                     <div className="hero-mobile-actions">

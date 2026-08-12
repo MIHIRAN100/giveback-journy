@@ -40,11 +40,6 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     // Determine category & location from tour data
     const getCategory = () => {
         if (pkg.isVolunteer) return 'Volunteering & Impact';
-        const name = (pkg.name + ' ' + pkg.description).toLowerCase();
-        if (name.includes('safari') || name.includes('wild') || name.includes('leopard') || name.includes('elephant')) return 'Outdoor & sports activities';
-        if (name.includes('beach') || name.includes('coast') || name.includes('surf') || name.includes('southern')) return 'Tours';
-        if (name.includes('temple') || name.includes('cultural') || name.includes('heritage') || name.includes('kandy')) return 'Tours';
-        if (name.includes('rainforest') || name.includes('trek') || name.includes('hike')) return 'Nature & adventure';
         return 'Tours';
     };
 

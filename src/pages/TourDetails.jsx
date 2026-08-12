@@ -1796,26 +1796,29 @@ const TourDetails = () => {
                                     {[
                                         { id: 'taxi', label: 'Car', icon: 'bi bi-car-front-fill', modifier: pkg.id === 9 ? 'Standard' : 'Standard' },
                                         { id: 'van', label: 'Van', icon: 'bi bi-truck-front-fill', modifier: pkg.id === 9 ? '+$140' : (pkg.id === 12 ? '+$40' : (pkg.id === 13 ? '+$65' : '+$150')) },
-                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 6 ? '-$100' : (pkg.id === 9 ? '-$40' : (pkg.id === 12 ? '-$90' : (pkg.id === 13 ? '-$110' : '-$300'))))))) }
-                                    ].map(v => (
+                                        { id: 'tuktuk', label: 'Tuk Tuk', icon: 'fa-solid fa-motorcycle', modifier: pkg.id === 14 ? 'N/A' : (pkg.id === 8 ? '-$35' : (pkg.id === 1 ? '-$200' : (pkg.id === 2 ? '-$110' : (pkg.id === 3 ? '-$200' : (pkg.id === 6 ? '-$100' : (pkg.id === 9 ? '-$40' : (pkg.id === 12 ? '-$90' : (pkg.id === 13 ? '-$110' : '-$300')))))))) }
+                                    ].map(v => {
+                                        const isUnavailable = v.id === 'tuktuk' && pkg.id === 14;
+                                        return (
                                         <div
                                             key={v.id}
-                                            onClick={() => setTransport(v.id)}
+                                            onClick={() => { if (!isUnavailable) setTransport(v.id); }}
                                             style={{
                                                 padding: '12px 8px',
-                                                background: transport === v.id ? '#1a2332' : '#ffffff',
-                                                color: transport === v.id ? 'white' : '#334155',
+                                                background: transport === v.id ? '#1a2332' : (isUnavailable ? '#f8fafc' : '#ffffff'),
+                                                color: transport === v.id ? 'white' : (isUnavailable ? '#cbd5e1' : '#334155'),
                                                 borderRadius: '16px',
                                                 border: `2px solid ${transport === v.id ? '#1a2332' : '#e2e8f0'}`,
                                                 textAlign: 'center',
-                                                cursor: 'pointer',
+                                                cursor: isUnavailable ? 'not-allowed' : 'pointer',
                                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                boxShadow: transport === v.id ? '0 10px 25px -5px rgba(26, 35, 50, 0.3)' : '0 2px 4px rgba(0,0,0,0.02)',
+                                                boxShadow: transport === v.id ? '0 10px 25px -5px rgba(26, 35, 50, 0.3)' : 'none',
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
-                                                gap: '4px'
+                                                gap: '4px',
+                                                opacity: isUnavailable ? 0.5 : 1
                                             }}
                                         >
                                             {v.id === 'tuktuk' ? (
@@ -1836,7 +1839,8 @@ const TourDetails = () => {
                                                 {v.id === 'taxi' ? 'Standard' : (v.id === 'van' ? 'Spacious' : 'Friendly')}
                                             </span>
                                         </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                                 <div style={{ 
                                     marginTop: '12px', 

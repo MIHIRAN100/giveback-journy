@@ -32,7 +32,7 @@ const pricingPrograms = [
     },
     {
         name: "Teaching Volunteer Program",
-        price: 190,
+        price: 175,
         duration: "1-24 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -44,7 +44,7 @@ const pricingPrograms = [
     },
     {
         name: "Special Needs Support",
-        price: 190,
+        price: 175,
         duration: "1-8 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -56,7 +56,7 @@ const pricingPrograms = [
     },
     {
         name: "Construction & Renovation",
-        price: 190,
+        price: 175,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private",
@@ -68,7 +68,7 @@ const pricingPrograms = [
     },
     {
         name: "Body & Mind Wellness Week",
-        price: 190,
+        price: 175,
         duration: "1-2 Weeks",
         location: "Hikkaduwa, Sri Lanka",
         housing: "Shared Volunteer House",
@@ -80,7 +80,7 @@ const pricingPrograms = [
     },
     {
         name: "Medical Volunteer Program",
-        price: 190,
+        price: 240,
         duration: "1-4 Weeks",
         location: "Kandy District",
         housing: "Shared / Private Upgrade",
@@ -107,27 +107,27 @@ export const programWeeklyRates = {
     },
     "sri-lanka-childcare": {
         baseWeeks: 1,
-        basePrice: 190,
+        basePrice: 175,
         extraWeekPrice: 50
     },
     "special-needs-support": {
         baseWeeks: 1,
-        basePrice: 190,
+        basePrice: 175,
         extraWeekPrice: 50
     },
     "village-school-renovation": {
         baseWeeks: 1,
-        basePrice: 190,
+        basePrice: 175,
         extraWeekPrice: 50
     },
     "zen-and-temple-yoga": {
         baseWeeks: 1,
-        basePrice: 190,
+        basePrice: 175,
         extraWeekPrice: 50
     },
     "medical-volunteer": {
         baseWeeks: 1,
-        basePrice: 190,
+        basePrice: 240,
         extraWeekPrice: 170
     }
 };
@@ -147,8 +147,8 @@ export const getProgramPriceDetails = (progId, weeks) => {
     const isMinLimit = weeks < rate.baseWeeks;
     const actualWeeks = isMinLimit ? rate.baseWeeks : weeks;
     
-    // 1-week special pricing of 190 USD, otherwise normal price
-    const total = actualWeeks === 1 ? 190 : rate.basePrice + (actualWeeks - rate.baseWeeks) * rate.extraWeekPrice;
+    // Calculate total based on basePrice and extraWeekPrice
+    const total = actualWeeks === 1 ? rate.basePrice : rate.basePrice + (actualWeeks - rate.baseWeeks) * rate.extraWeekPrice;
     const average = Math.round(total / weeks);
 
     const baseAverage = Math.round(rate.basePrice / rate.baseWeeks);
