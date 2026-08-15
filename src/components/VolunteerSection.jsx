@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NewsletterSubscribeBanner from './NewsletterSubscribeBanner';
 import communityImg from '../assets/teaching volunteers/IMG_7118.JPG';
 import educationImg from '../assets/IMG_4412.jpg';
 import medicalGalleryImg from '../assets/WhatsApp Image 2026-06-20 at 08.04.37.jpeg';
 
 const VolunteerSection = () => {
     return (
-        <section className="volunteer-preview-section">
+        <div className="home-volunteer-section-wrapper" style={{ width: '100%', overflow: 'hidden' }}>
+            <NewsletterSubscribeBanner />
+            <section className="volunteer-preview-section">
             <div className="volunteer-preview-container">
                 <div className="volunteer-bento-grid">
                     {/* Item 1: Image */}
@@ -159,6 +162,7 @@ const VolunteerSection = () => {
                 </div>
             </div>
         </section>
+        </div>
     );
 };
 

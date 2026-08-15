@@ -181,7 +181,7 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
     };
 
     return (
-        <section className="newsletter-subscribe-banner-wrapper" style={{ width: '100%', margin: '40px 0 20px 0' }}>
+        <section className="newsletter-subscribe-banner-wrapper" style={{ width: '100%', margin: 0 }}>
             <style>{`
                 .subscribe-banner-container {
                     position: relative;

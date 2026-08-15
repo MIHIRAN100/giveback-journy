@@ -58,7 +58,8 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
     };
 
     return (
-        <div key={moment.id} className={`moment-card feedback-video ${isPlaying ? 'is-playing' : ''}`}>
+        <div key={moment.id} className={`moment-card feedback-video ${isPlaying ? 'is-playing' : ''}`} onClick={togglePlay}>
+            {/* Top User Avatar & Name */}
             <div className="moment-user">
                 <div className="moment-avatar">
                     {typeof moment.avatar === 'string' && moment.avatar.startsWith('http') ? (
@@ -70,22 +71,21 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                 <span className="moment-username">{moment.user}</span>
             </div>
             
-            <div 
-                className="play-button-overlay" 
-                onClick={(e) => {
-                    if (!moment.disablePlay) togglePlay(e);
-                }}
-                style={moment.disablePlay ? { cursor: 'not-allowed', opacity: 0.7 } : {}}
-            >
-                <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
-            </div>
-
+            {/* Mute button */}
             {moment.video && !moment.disablePlay && (
                 <div className="mute-button-overlay" onClick={toggleMute}>
                     <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
                 </div>
             )}
-            
+
+            {/* Circular Play / Pause Glass Button */}
+            {!moment.disablePlay && (
+                <div className="play-button-overlay" onClick={togglePlay}>
+                    <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
+                </div>
+            )}
+
+            {/* Video / Photo background */}
             {moment.video ? (
                 getYouTubeId(moment.video) ? (
                     <iframe
@@ -108,34 +108,24 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                 <img src={moment.image} alt={moment.title} />
             )}
             
-            {moment.overlayTitle && (
-                <div style={{
-                    position: 'absolute',
-                    top: '30%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: 3,
-                    color: 'white',
-                    fontSize: 'clamp(0.95rem, 2vw, 1.2rem)',
-                    fontWeight: 900,
-                    textTransform: 'uppercase',
-                    textAlign: 'center',
-                    lineHeight: 1.15,
-                    letterSpacing: '0.02em',
-                    padding: '0 20px',
-                    width: '85%',
-                    textShadow: '0 2px 15px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4)',
-                    pointerEvents: 'none',
-                    transition: 'opacity 0.4s ease',
-                    opacity: isPlaying ? 0 : 1,
-                }}>
-                    {moment.overlayTitle}
+            {/* Simple Clean Glass Panel at Bottom */}
+            <div className="moment-glass-panel">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <i className="fa-solid fa-star" style={{ color: '#10b981', fontSize: '0.8rem' }}></i>
+                    <span style={{ fontWeight: 800, fontSize: '0.82rem', color: '#ffffff' }}>
+                        Rating: {moment.rating || '5.0'} out of 5
+                    </span>
                 </div>
-            )}
 
-            <div className="moment-footer">
-                <span className="moment-title">{moment.title}</span>
-                <i className="fa-solid fa-video" style={{fontSize: '0.8rem', opacity: 0.7}}></i>
+                <p className="moment-description">
+                    "{moment.description || moment.overlayTitle}"
+                </p>
+
+                <div className="moment-author-box">
+                    <span className="moment-author-name">{moment.user}</span>
+                    <span style={{ opacity: 0.5, margin: '0 5px' }}>•</span>
+                    <span className="moment-author-role">{moment.title}</span>
+                </div>
             </div>
         </div>
     );
@@ -156,6 +146,8 @@ const TravelerMoments = () => {
             video: TravelerVideo3,
             title: "Volunteer Experience in Kandy",
             overlayTitle: "GIVING BACK TO GAIN SO MUCH MORE",
+            description: "Giving back to gain so much more. The local children and warm community in Kandy captured my heart completely.",
+            rating: "5.0"
         },
         {
             id: 2,
@@ -165,6 +157,8 @@ const TravelerMoments = () => {
             video: TravelerVideo4,
             title: "Special Need Care Volunteer",
             overlayTitle: "EVERY CHILD DESERVES A CHANCE",
+            description: "Every child deserves a chance. Working at the special needs center was the most fulfilling month of my life.",
+            rating: "5.0"
         },
         {
             id: 3,
@@ -174,6 +168,8 @@ const TravelerMoments = () => {
             video: TravelerVideo5,
             title: "Teaching in Kandy",
             overlayTitle: "TEACHING WITH HEART",
+            description: "Teaching with heart! Sharing English and learning so much from these inspiring, bright Sri Lankan students.",
+            rating: "4.9"
         },
         {
             id: 4,
@@ -183,6 +179,8 @@ const TravelerMoments = () => {
             video: TravelerVideo6,
             title: "Culture Immersion in Hikkaduwa",
             overlayTitle: "EXPERIENCING TRUE SRI LANKAN CULTURE",
+            description: "Experiencing true Sri Lankan culture. From peaceful temple morning rituals to cooking traditional meals with local families.",
+            rating: "5.0"
         },
         {
             id: 5,
@@ -193,15 +191,19 @@ const TravelerMoments = () => {
             disablePlay: true,
             title: "Village Life Experience",
             overlayTitle: "EMBRACING AUTHENTIC VILLAGE LIFE",
+            description: "Embracing authentic village life. Waking up to mountain views and genuine, heartfelt local hospitality every single day.",
+            rating: "5.0"
         },
         {
             id: 6,
-            user: "Emma and Annie",
+            user: "Emma & Annie",
             avatar: "fa-solid fa-users",
             image: NewImg1,
             video: TravelerVideoSam,
             title: "Special Needs Care",
             overlayTitle: "EMBRACING SPECIAL NEEDS CARE",
+            description: "Special needs support brought us so close to the community. An unforgettable bond with the children and local staff!",
+            rating: "5.0"
         },
         {
             id: 7,
@@ -211,6 +213,8 @@ const TravelerMoments = () => {
             video: TravelerVideoAlex,
             title: "Teaching Volunteers",
             overlayTitle: "TEACHING WITH HEART",
+            description: "Teaching volunteers making a real impact. An incredible experience that changed my perspective on life forever.",
+            rating: "4.9"
         }
     ];
 
