@@ -28,6 +28,8 @@ import medicalGallery2 from '../assets/medical_gallery_new_2.jpg';
 import medicalNewFirstImg from '../assets/medical/19fe554a-ad19-4619-be31-d67c397eb5dc.jpg';
 import medicalNewCoverImg from '../assets/medical/1ac3d4dd-f770-49e7-9422-d5534d371855.jpg';
 import medicalVideo from '../assets/medical/WhatsApp Video 2026-07-01 at 09.09.16.mp4';
+import medicalNew6thImg from '../assets/medical/f02f1014-8f43-45f8-b037-58943a8a236e.jpg';
+import medicalVideo2 from '../assets/medical/WhatsApp Video 2026-08-14 at 12.05.15.mp4';
 
 
 // Gallery images
@@ -601,7 +603,7 @@ export const volunteerPrograms = [
 
     {
         id: "medical-volunteer",
-        title: "Medical Observation & Community Health Program",
+        title: "Medical Elective Project",
         location: "Kandy District",
         duration: "1-4 Weeks",
         housing: "Shared or Private",
@@ -614,24 +616,24 @@ export const volunteerPrograms = [
         pickup: "Included",
         meals: "3 Daily",
         shortDesc: "Gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
-        description: "The Give Back Journey Medical Observation & Community Health Program offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
+        description: "The Give Back Journey Medical Elective Project offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.\n\nBased in the cultural capital of Kandy, this elective is conducted primarily at Kandy Teaching Hospital (Kandy General Hospital) — Sri Lanka's second-largest medical facility and a major tertiary referral center. Participants shadow senior consultants, resident doctors, and medical staff across a wide range of specialized departments including General Surgery, Pediatrics, Emergency Medicine, Cardiology, Neurology, Obstetrics & Gynecology, and Orthopedics.\n\nDesigned as an immersive educational and observational journey, the project provides international medical, nursing, pre-med, and healthcare students with invaluable exposure to global health challenges, tropical medicine, patient management, and clinical workflows in a resource-conscious healthcare setting. Alongside hospital clinical hours, participants experience authentic Sri Lankan hospitality, cultural immersion, and guided weekend excursions across the island.",
         color: "#e74c3c",
         galleryImages: [
-            { src: medicalNewFirstImg, caption: "Hospital Placement" },
+            { src: medicalVideo, type: 'video', caption: "Medical Placement Video" },
             { src: medicalGallery1, caption: "Volunteer Life & Culture" },
             { src: medicalVolunteerWhatsAppImg, caption: "Medical Experience" },
             { src: medicalNewCoverImg, caption: "Medical Program Cover" },
             { src: medicalGallery2, caption: "Hospital Observation" },
-            { src: volunteerCommunity, caption: "Community Bonding" },
-            { src: medicalVideo, type: 'video', caption: "Medical Placement Video" },
-            { src: cultureExp, caption: "Cultural Immersion" },
-            { src: volunteer1, caption: "Shared Moments" },
-            { src: medicalImg, caption: "Medical Volunteer Work" },
-            { src: volunteer3, caption: "Making A Difference" }
+            { src: medicalNew6thImg, caption: "Hospital & Community Interaction" },
+            { src: medicalNewFirstImg, caption: "Hospital Placement" },
+            { src: medicalVideo2, type: 'video', caption: "Medical Experience Video" },
+            { src: medicalImg, caption: "Medical Volunteer Work" }
         ],
         highlights: [
             "Contribute Towards The UN's Sustainable Development Goal No.3 - Health",
             "Gain Hospital Experience & Exposure Into The Sri Lankan Healthcare System",
+            "Observe Specialized Departments & Clinical Workflows at Kandy Teaching Hospital",
+            "Open to Medical, Nursing, Pre-Med, Public Health Students & Healthcare Professionals",
             "Structured Weekend Trips To Kandy, Yala National Park, and any other destination in Sri Lanka you wish to go",
             "Personalized Experiences, Exceptional Local Support & Authentic Sri Lankan Connections"
         ],
@@ -639,7 +641,7 @@ export const volunteerPrograms = [
             {
                 title: "Program Overview",
                 paragraphs: [
-                    "The Give Back Journey Medical Observation & Community Health Program offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
+                    "The Give Back Journey Medical Elective Project offers participants a unique opportunity to gain first-hand insight into Sri Lanka's healthcare system while experiencing one of the country's most respected medical institutions.",
                     "The program is based in Kandy, the cultural capital of Sri Lanka, and is conducted primarily at Kandy Teaching Hospital (Kandy General Hospital), the second-largest hospital in Sri Lanka and one of the country's leading teaching and referral hospitals.",
                     "This program has been designed as an educational, observational, and cultural exchange experience. Participants will gain valuable exposure to healthcare delivery in a developing country while learning about hospital operations, patient care systems, and the realities of healthcare provision in Sri Lanka."
                 ]
@@ -770,7 +772,7 @@ export const volunteerPrograms = [
             {
                 title: "Why Join Give Back Journey?",
                 paragraphs: [
-                    "The Give Back Journey Medical Observation & Community Health Program combines healthcare observation, professional development, cultural immersion, and meaningful community engagement.",
+                    "The Give Back Journey Medical Elective Project combines healthcare observation, professional development, cultural immersion, and meaningful community engagement.",
                     "Participants gain valuable exposure to one of Sri Lanka's leading teaching hospitals while developing a broader understanding of global healthcare systems and medical practice.",
                     "Whether you are preparing for a future career in healthcare, currently studying medicine or nursing, or already working as a healthcare professional, this program offers a unique opportunity to gain international exposure while experiencing the culture, hospitality, and healthcare environment of Sri Lanka.",
                     "Observe. Learn. Connect. Give Back.",

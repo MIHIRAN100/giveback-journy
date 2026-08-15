@@ -79,7 +79,7 @@ const pricingPrograms = [
         color: "#9b59b6"
     },
     {
-        name: "Medical Volunteer Program",
+        name: "Medical Elective Project",
         price: 240,
         duration: "1-4 Weeks",
         location: "Kandy District",

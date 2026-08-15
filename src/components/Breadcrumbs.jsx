@@ -7,8 +7,8 @@ const Breadcrumbs = ({ customName = null }) => {
     const location = useLocation();
     const path = location.pathname;
 
-    // Don't show breadcrumbs on Home page
-    if (path === '/') return null;
+    // Don't show breadcrumbs on Home page or Packages page
+    if (path === '/' || path === '/packages') return null;
 
     const getBreadcrumbs = () => {
         const crumbs = [

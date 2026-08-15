@@ -71,7 +71,7 @@ const VolunteerProgramDetails = () => {
 
     let bgIndex = 0;
     const getNextBgClass = () => {
-        const bgClasses = ['white-bg', 'gray-bg', 'green-bg', 'blue-bg', 'gold-bg'];
+        const bgClasses = ['white-bg', 'blue-bg'];
         const bgClass = bgClasses[bgIndex % bgClasses.length];
         bgIndex++;
         return bgClass;
@@ -473,26 +473,6 @@ const VolunteerProgramDetails = () => {
                                                 border: '2px solid rgba(255,255,255,0.8)'
                                             }}>
                                                 <i className="bi bi-play-fill" style={{ fontSize: '2.5rem', marginLeft: '6px' }}></i>
-                                            </div>
-                                            <div style={{
-                                                position: 'absolute',
-                                                top: '16px',
-                                                left: '16px',
-                                                zIndex: 3,
-                                                background: 'rgba(255, 255, 255, 0.15)',
-                                                backdropFilter: 'blur(12px)',
-                                                WebkitBackdropFilter: 'blur(12px)',
-                                                border: '1px solid rgba(255, 255, 255, 0.4)',
-                                                padding: '6px 14px',
-                                                borderRadius: '30px',
-                                                color: '#ffffff',
-                                                fontWeight: 700,
-                                                fontSize: '0.85rem',
-                                                letterSpacing: '0.5px',
-                                                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                                                boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
-                                            }}>
-                                                Giveback Journey
                                             </div>
                                         </>
                                     ) : (
@@ -1385,26 +1365,23 @@ const VolunteerProgramDetails = () => {
                         {/* Desktop Layout Uses CSS Grid or Flex, we use flex wrap for responsiveness */}
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
                             {/* Left Column: Pricing Table */}
-                            <div style={{ flex: '1 1 500px', background: 'white', borderRadius: '24px', border: '1px solid rgba(0,0,0,0.06)', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.04)' }}>
+                            <div style={{ flex: '1 1 500px', background: '#ffffff', borderRadius: '20px', border: '1px solid #e2e8f0', overflow: 'hidden', boxShadow: '0 10px 30px -5px rgba(0,0,0,0.04)' }}>
                                 <div style={{ 
-                                    background: '#2c3e50', 
-                                    padding: '24px 32px', 
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    borderBottom: '1px solid rgba(255,255,255,0.05)'
+                                    background: '#f8fafc', 
+                                    padding: '20px 28px', 
+                                    borderBottom: '1px solid #e2e8f0'
                                 }}>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', width: '100%' }}>
-                                        <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)' }}>Duration</div>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'center' }}>
+                                        <div style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px', fontSize: '0.75rem', color: '#64748b' }}>Duration</div>
                                         <div>
-                                            <div style={{ fontWeight: 800, marginBottom: '4px', fontSize: '1rem', color: '#ffffff' }}>Program Fee</div>
-                                            <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>Due 30 days before start, or within 48h if registering inside 30 days.</div>
+                                            <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0f172a' }}>Program Fee</div>
+                                            <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>Due 30 days before start, or within 48h if registering inside 30 days.</div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div style={{ background: '#ffffff' }}>
-                                    {[1, 2, 3, 4].map((week, idx) => {
+                                    {[1, 2, 3, 4].map((week) => {
                                         const basePrice = parseInt(program.price) || 175;
                                         const extraWeekPrice = parseInt(program.extraWeekPrice) || 50;
                                         const fee = week === 1 ? basePrice : basePrice + ((week - 1) * extraWeekPrice);
@@ -1414,32 +1391,32 @@ const VolunteerProgramDetails = () => {
                                                 display: 'grid', 
                                                 gridTemplateColumns: '120px 1fr', 
                                                 gap: '16px', 
-                                                padding: '24px 32px',
-                                                borderBottom: week < 4 ? '1px solid #f5f5f7' : 'none',
+                                                padding: '20px 28px',
+                                                borderBottom: week < 4 ? '1px solid #f1f5f9' : 'none',
                                                 background: '#ffffff',
                                                 alignItems: 'center',
-                                                transition: 'background 0.3s ease'
+                                                transition: 'background 0.2s ease'
                                             }}
-                                            onMouseEnter={(e) => e.currentTarget.style.background = '#fcfcfc'}
+                                            onMouseEnter={(e) => e.currentTarget.style.background = '#f8fafc'}
                                             onMouseLeave={(e) => e.currentTarget.style.background = '#ffffff'}
                                             >
-                                                <div style={{ color: '#1d1d1f', fontSize: '1.1rem', fontWeight: 800 }}>{week} {week === 1 ? 'week' : 'weeks'}</div>
+                                                <div style={{ color: '#0f172a', fontSize: '1.05rem', fontWeight: 700 }}>{week} {week === 1 ? 'week' : 'weeks'}</div>
                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                                    <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                                                        <div style={{ fontWeight: 800, color: '#1d1d1f', fontSize: '1.3rem', letterSpacing: '-0.02em' }}>{formatPrice ? formatPrice(fee) : `$${fee}`}</div>
-                                                        <div style={{ color: 'var(--primary-green)', fontSize: '0.85rem', fontWeight: 800, background: 'rgba(27, 163, 82, 0.1)', padding: '6px 12px', borderRadius: '50px', letterSpacing: '0.5px' }}>Eq. {formatPrice ? formatPrice(perDay) : `$${perDay}`}/day</div>
+                                                    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+                                                        <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '1.25rem', letterSpacing: '-0.02em' }}>{formatPrice ? formatPrice(fee) : `$${fee}`}</div>
+                                                        <div style={{ color: '#0284c7', fontSize: '0.78rem', fontWeight: 600, background: '#f0f9ff', border: '1px solid #bae6fd', padding: '3px 10px', borderRadius: '50px' }}>{formatPrice ? formatPrice(perDay) : `$${perDay}`} / day</div>
                                                     </div>
-                                                    <div style={{ display: 'flex', gap: '16px', fontSize: '0.8rem', color: '#86868b', fontWeight: 500, marginTop: '4px' }}>
-                                                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                            <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)' }}></i> No Reg Fee
+                                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', fontSize: '0.78rem', color: '#64748b', fontWeight: 500, marginTop: '2px' }}>
+                                                        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                                            <i className="bi bi-check-circle-fill" style={{ color: '#10b981' }}></i> No Reg Fee
                                                         </span>
                                                         {week === 1 ? (
-                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                                <i className="bi bi-info-circle-fill" style={{ color: '#007aff' }}></i> Airport pickup available for an extra fee
+                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                                                <i className="bi bi-info-circle-fill" style={{ color: '#0284c7' }}></i> Airport pickup available for extra fee
                                                             </span>
                                                         ) : (
-                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                                <i className="bi bi-check-circle-fill" style={{ color: 'var(--primary-green)' }}></i> Airport Pickup Included
+                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                                                <i className="bi bi-check-circle-fill" style={{ color: '#10b981' }}></i> Airport Pickup Included
                                                             </span>
                                                         )}
                                                     </div>
@@ -1697,43 +1674,71 @@ const VolunteerProgramDetails = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '100%', justifyContent: 'space-between' }}>
                     <div className="bottom-price-info" style={{ display: 'flex', flexDirection: 'column', gap: '3px', textAlign: 'left' }}>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-                            <span className="bottom-price-label" style={{ fontSize: '0.65rem', color: '#86868b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>From</span>
-                            <span className="bottom-price-amount" style={{ fontSize: '1.3rem', fontWeight: 900, color: 'var(--primary-green)', lineHeight: 1 }}>{formatPrice(program.price)}</span>
+                            <span className="bottom-price-label" style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>From</span>
+                            <span className="bottom-price-amount" style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0f172a', lineHeight: 1, letterSpacing: '-0.02em' }}>{formatPrice(program.price)}</span>
                         </div>
                         {program.id !== 'real-sri-lanka-experience' && program.id !== 'professional-impact-program' ? (
-                            <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
+                            <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#64748b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
                                 * Includes accommodation, meals & pickup (2+ wks stays only)
                             </span>
                         ) : (
-                            <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#86868b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
+                            <span className="desktop-spec-text" style={{ fontSize: '0.62rem', color: '#64748b', fontWeight: 600, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
                                 * Includes accommodation, meals & pickup
                             </span>
                         )}
-                        <span className="desktop-spec-text" style={{ fontSize: '0.58rem', color: 'var(--primary-green)', fontWeight: 700, letterSpacing: '0.2px', textTransform: 'uppercase', whiteSpace: 'nowrap', marginTop: '1px' }}>No Registration & Hidden Fees</span>
+                        <span className="desktop-spec-text" style={{ 
+                            fontSize: '0.58rem', 
+                            color: '#0284c7', 
+                            background: '#f0f9ff',
+                            border: '1px solid #bae6fd',
+                            padding: '2px 8px',
+                            borderRadius: '6px',
+                            fontWeight: 700, 
+                            letterSpacing: '0.3px', 
+                            textTransform: 'uppercase', 
+                            whiteSpace: 'nowrap', 
+                            marginTop: '3px',
+                            display: 'inline-block',
+                            width: 'fit-content'
+                        }}>
+                            No Registration & Hidden Fees
+                        </span>
                         <span className="mobile-spec-text">23kg luggage allowance inc.</span>
                     </div>
                     <Link 
                         to={getInquiryUrl()} 
                         className="btn-apple-solid bottom-bar-btn" 
                         style={{ 
-                            background: '#1d1d1f', 
-                            color: 'white',
-                            padding: '14px 34px', 
-                            fontSize: '0.95rem', 
+                            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', 
+                            color: '#ffffff',
+                            padding: '12px 28px', 
+                            fontSize: '0.92rem', 
                             fontWeight: 700,
                             borderRadius: '50px',
                             textDecoration: 'none',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '10px',
-                            transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                            boxShadow: '0 6px 20px rgba(0,0,0,0.12)',
-                            whiteSpace: 'nowrap'
+                            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                            boxShadow: '0 10px 25px -5px rgba(15, 23, 42, 0.25)',
+                            whiteSpace: 'nowrap',
+                            border: '1px solid rgba(255, 255, 255, 0.1)'
                         }}
                     >
                         <span className="desktop-btn-text">Apply to Volunteer</span>
                         <span className="mobile-btn-text">Apply Now</span>
-                        <i className="bi bi-arrow-right" style={{ fontSize: '1rem' }}></i>
+                        <div style={{
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            background: 'rgba(255, 255, 255, 0.12)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginLeft: '2px'
+                        }}>
+                            <i className="bi bi-arrow-right" style={{ fontSize: '0.82rem', color: '#38bdf8' }}></i>
+                        </div>
                     </Link>
                 </div>
             </div>

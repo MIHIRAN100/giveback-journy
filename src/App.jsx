@@ -57,6 +57,7 @@ const AppContent = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/exclusive-journeys" element={<ExclusiveJourneys />} />
+          <Route path="/about-us" element={<ExclusiveJourneys />} />
           <Route path="/volunteer" element={<VolunteerPage />} />
           <Route path="/volunteer-program/:id" element={<VolunteerProgramDetails />} />
           <Route path="/volunteer-inquiry" element={<VolunteerInquiryPage />} />

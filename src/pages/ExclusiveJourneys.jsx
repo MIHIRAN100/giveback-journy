@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
+import WhoWeAre from '../components/WhoWeAre';
 import HeroImg from '../assets/tom-paisley-v2zEiziFb44-unsplash.jpg';
 
 const ExclusiveJourneys = () => {
@@ -51,6 +52,11 @@ const ExclusiveJourneys = () => {
                     </ScrollReveal>
                 </div>
             </section>
+
+            {/* Section: Our Identity & Mission */}
+            <ScrollReveal>
+                <WhoWeAre />
+            </ScrollReveal>
 
             {/* Section 2: What we do - with dashed background */}
             <section className="what-we-do-section">

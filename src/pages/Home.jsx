@@ -4,7 +4,6 @@ import Hero from '../components/Hero';
 import FeaturesScroll from '../components/FeaturesScroll';
 import PartnerSlider from '../components/PartnerSlider';
 import WelcomeSriLanka from '../components/WelcomeSriLanka';
-import WhoWeAre from '../components/WhoWeAre';
 import TravelerMoments from '../components/TravelerMoments';
 import ExclusiveExperiences from '../components/ExclusiveExperiences';
 import FAQSection from '../components/FAQSection';
@@ -20,7 +19,6 @@ const Home = () => {
             <Hero />
             <ScrollReveal><WelcomeSriLanka /></ScrollReveal>
             <ScrollReveal><FeaturesScroll /></ScrollReveal>
-            <ScrollReveal><WhoWeAre /></ScrollReveal>
             <ScrollReveal><PackageHighlight /></ScrollReveal>
             <ScrollReveal><TravelerMoments /></ScrollReveal>
             <ScrollReveal><ExclusiveExperiences /></ScrollReveal>

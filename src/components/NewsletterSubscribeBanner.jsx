@@ -58,7 +58,7 @@ const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
 
             const programs = [
                 {
-                    title: "Medical Volunteer Program",
+                    title: "Medical Elective Project",
                     location: "Kandy District (Teaching Hospital Placement)",
                     desc: "Shadow senior Sri Lankan doctors in surgery, pediatrics, OB-GYN, and emergency medicine.",
                     pricing: "1 Wk: $240  |  2 Wks: $410  |  3 Wks: $580  |  4 Wks: $750  (+$170/extra wk)"

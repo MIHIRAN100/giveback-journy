@@ -165,8 +165,9 @@ const Hero = ({ onSearch }) => {
 
 
     return (
-        <section className="hero">
-            <div className="hero-video-container">
+        <div className="hero-container-outer">
+            <section className="hero">
+                <div className="hero-video-container">
                 <iframe 
                     id="hero-youtube-player"
                     className="hero-video active"
@@ -342,6 +343,7 @@ const Hero = ({ onSearch }) => {
                 </div>
             </div>
         </section>
+    </div>
     );
 };
 
