@@ -23,6 +23,7 @@ import CookiePolicy from './pages/CookiePolicy';
 
 import LoadingScreen from './components/LoadingScreen';
 import BottomAdBanner from './components/BottomAdBanner';
+import ChatBot from './components/ChatBot';
 import Breadcrumbs from './components/Breadcrumbs';
 import ScrollToTop from './components/ScrollToTop';
 import TourDetailsPromoBanner from './components/TourDetailsPromoBanner';
@@ -72,6 +73,7 @@ const AppContent = () => {
       <CookieBar onVisibilityChange={setCookieVisible} />
       {showGlobalBadge && <HeroPromoBadge />}
       <BottomAdBanner isCookieVisible={cookieVisible} />
+      <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} />
     </div>
   );
 };

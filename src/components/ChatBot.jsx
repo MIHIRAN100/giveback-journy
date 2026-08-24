@@ -53,6 +53,8 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                             window.tidioChatApi.show();
                             window.tidioChatApi.open();
                             setShowNotification(false);
+                        } else {
+                            window.location.href = '/contact';
                         }
                     }} 
                     title="Live Chat" 
