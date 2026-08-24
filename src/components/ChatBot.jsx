@@ -58,8 +58,8 @@ const ChatBot = ({ cookieVisible, isTourDetails }) => {
                     title="Live Chat" 
                     style={{ 
                         position: 'relative', 
-                        background: 'var(--primary-green, #1ba352)',
-                        boxShadow: '0 15px 40px rgba(27, 163, 82, 0.4)',
+                        background: '#3B7FBA',
+                        boxShadow: '0 15px 40px rgba(59, 127, 186, 0.4)',
                         border: 'none',
                         display: 'flex',
                         alignItems: 'center',

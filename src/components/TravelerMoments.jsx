@@ -237,16 +237,16 @@ const TravelerMoments = () => {
                 <div>
                     <h2>Volunteer Feedback Shorts</h2>
                     <p style={{ marginTop: '10px', color: '#666', fontSize: '1.05rem', maxWidth: '600px', lineHeight: '1.6' }}>
-                        Watch <span style={{ color: 'var(--primary-green)', fontWeight: 600 }}>real moments</span> captured by our travelers. Discover authentic experiences and unforgettable adventures in Sri Lanka.
+                        Watch <span style={{ color: '#3B7FBA', fontWeight: 700 }}>real moments</span> captured by our travelers. Discover authentic experiences and unforgettable adventures in Sri Lanka.
                     </p>
                 </div>
                 <div style={{ alignSelf: 'center', position: 'relative' }}>
                     <button 
                         className="btn-modern btn-white" 
                         onClick={() => setFilterOpen(!filterOpen)}
-                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '500px', border: `1px solid ${activeFilter ? 'var(--primary-green)' : '#e5e7eb'}`, cursor: 'pointer', background: activeFilter ? '#f0fdf4' : '#fff', color: activeFilter ? 'var(--primary-green)' : '#111', fontWeight: '600', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '500px', border: `1px solid ${activeFilter ? '#3B7FBA' : '#e5e7eb'}`, cursor: 'pointer', background: activeFilter ? '#f0f7ff' : '#fff', color: activeFilter ? '#3B7FBA' : '#111', fontWeight: '600', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
                     >
-                        <i className="fa-solid fa-filter" style={{ color: 'var(--primary-green)' }}></i> 
+                        <i className="fa-solid fa-filter" style={{ color: '#3B7FBA' }}></i> 
                         {activeFilter ? activeFilter : 'Filter Projects'}
                     </button>
 

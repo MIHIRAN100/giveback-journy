@@ -51,6 +51,46 @@ const FeedbackSection = () => {
             text: "Fast Wi-Fi in the most beautiful places. I worked from Ella for a week and it was the most scenic office I've ever had. Truly productive and peaceful.",
             rating: 5,
             color: "#fbe9e7" 
+        },
+        {
+            name: "Amara & Liam Patel",
+            profile: "American, 28 & 30",
+            trip: "Breathe Sri Lanka Journey",
+            text: "Combining volunteering in local schools with traveling around the coast was the ultimate honeymoon experience. The local team welcomed us like family from day one.",
+            rating: 5,
+            color: "#fef3c7"
+        },
+        {
+            name: "Henrik Lindqvist",
+            profile: "Swedish, 34",
+            trip: "3-Day Galle Fort Escape",
+            text: "As a solo traveler, safety and seamless transportation were my top concerns. The private driver was punctual, knowledgeable, and gave the best authentic food recommendations!",
+            rating: 5,
+            color: "#ede9fe"
+        },
+        {
+            name: "Aisha & Fatima Al-Mansoori",
+            profile: "Emirati, 26 & 29",
+            trip: "Sigiriya & Dambulla Heritage Adventure",
+            text: "The cultural depth of the ancient ruins paired with luxury eco-lodges exceeded all expectations. Exceptional hospitality and attention to dietary preferences throughout!",
+            rating: 5,
+            color: "#ecfdf5"
+        },
+        {
+            name: "Mateo Silva",
+            profile: "Brazilian, 27",
+            trip: "Kitulgala White Water Rafting",
+            text: "Adrenaline overload! The rafting and waterfall rappelling guides were top-notch professionals. If you love adventure and untouched nature, this trip is an absolute must.",
+            rating: 5,
+            color: "#fff7ed"
+        },
+        {
+            name: "Chloe Dubois",
+            profile: "French, 23",
+            trip: "Teaching Volunteer Program",
+            text: "Teaching English in Kandy was life-changing. The warmth of the children and local villagers filled my heart. I left a piece of my soul in Sri Lanka and will definitely be back!",
+            rating: 5,
+            color: "#fce7f3"
         }
     ];
 

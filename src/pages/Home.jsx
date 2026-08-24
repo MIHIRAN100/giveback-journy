@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
+import TopDealsSection from '../components/TopDealsSection';
+import HomeMetricsSection from '../components/HomeMetricsSection';
 import FeaturesScroll from '../components/FeaturesScroll';
 import PartnerSlider from '../components/PartnerSlider';
 import WelcomeSriLanka from '../components/WelcomeSriLanka';
@@ -17,6 +19,8 @@ const Home = () => {
     return (
         <div className="home-page">
             <Hero />
+            <ScrollReveal><TopDealsSection /></ScrollReveal>
+            <ScrollReveal><HomeMetricsSection /></ScrollReveal>
             <ScrollReveal><WelcomeSriLanka /></ScrollReveal>
             <ScrollReveal><FeaturesScroll /></ScrollReveal>
             <ScrollReveal><PackageHighlight /></ScrollReveal>

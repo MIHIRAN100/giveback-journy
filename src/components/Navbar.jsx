@@ -4,6 +4,7 @@ import { useCompare } from '../context/CompareContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/brand_logo.png';
+import gbRoundLogo from '../assets/gb_round_logo.png';
 import AdBanner from './AdBanner';
 
 
@@ -86,6 +87,7 @@ const Navbar = () => {
                     items: [
                         { name: 'Teaching Volunteer', path: '/volunteer-program/sri-lanka-childcare' },
                         { name: 'Special Needs Support', path: '/volunteer-program/special-needs-support' },
+                        { name: 'Women Empowerment', path: '/volunteer-program/womens-skills-program' },
                         { name: 'Construction & Renovation', path: '/volunteer-program/village-school-renovation' },
                         { name: 'Medical Volunteer', path: '/volunteer-program/medical-volunteer' }
                     ]
@@ -118,8 +120,8 @@ const Navbar = () => {
                 <AdBanner isScrolled={isScrolled} />
                 <nav className={`navbar-container ${isScrolled ? 'scrolled' : ''}`}>
                     <Link to="/" className="logo-area" title="Giveback Journey Logo" onMouseEnter={() => setActiveMegaMenu(null)}>
-                        <div className="logo-image-container">
-                            <img src={logo} alt="Give Back Journey Logo" title="Giveback Journey Logo" className="logo-image" />
+                        <div className="logo-image-container" style={{ width: '38px', height: '38px' }}>
+                            <img src={gbRoundLogo} alt="Give Back Journey Logo" title="Giveback Journey Logo" className="logo-image" style={{ borderRadius: '50%' }} />
                         </div>
                         <span className="logo-text">Giveback Journey<span className="logo-dot">.</span></span>
                     </Link>

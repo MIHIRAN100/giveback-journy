@@ -4,7 +4,7 @@ import { tourPackages } from '../data/tours';
 import { volunteerPrograms } from '../data/volunteerPrograms';
 
 const Breadcrumbs = ({ customName = null }) => {
-    const location = useLocation();
+    return null;
     const path = location.pathname;
 
     // Don't show breadcrumbs on Home page or Packages page

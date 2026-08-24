@@ -171,7 +171,7 @@ const Hero = ({ onSearch }) => {
                 <iframe 
                     id="hero-youtube-player"
                     className="hero-video active"
-                    src={`https://www.youtube.com/embed/S4RR9WHn5Ik?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=S4RR9WHn5Ik&loop=1`}
+                    src={`https://www.youtube.com/embed/Uykx2FMptb0?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=Uykx2FMptb0&loop=1`}
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen

@@ -166,17 +166,17 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
                     </div>
                     
                     <div className="tour-price-box-bottom">
-                        <i className="bi bi-sliders" style={{ color: 'var(--primary-green)' }}></i>
+                        <i className="bi bi-sliders" style={{ color: '#3B7FBA' }}></i>
                         <span>Free Itinerary Customization</span>
                     </div>
-                </div>
 
-                {/* Promo deal banner below price box */}
-                <div className="tour-promo-banner">
-                    <div className="tour-promo-icon-circle" style={{ backgroundColor: 'var(--primary-green)' }}>
-                        <i className="bi bi-car-front-fill"></i>
+                    {/* Promo deal banner below price box */}
+                    <div className="tour-promo-banner">
+                        <div className="tour-promo-icon-circle" style={{ backgroundColor: '#3B7FBA' }}>
+                            <i className="bi bi-car-front-fill"></i>
+                        </div>
+                        <span>Local Driver & Private Vehicle Included</span>
                     </div>
-                    <span>Local Driver & Private Vehicle Included</span>
                 </div>
             </div>
         </Link>

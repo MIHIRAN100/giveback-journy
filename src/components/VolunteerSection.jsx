@@ -138,6 +138,10 @@ const VolunteerSection = () => {
                             <i className="fa-solid fa-hands-holding-child"></i>
                             <span>Special Needs Support</span>
                         </Link>
+                        <Link to="/volunteer-program/womens-skills-program" className="perk-item" style={{ textDecoration: 'none' }}>
+                            <i className="fa-solid fa-venus"></i>
+                            <span>Women Empowerment</span>
+                        </Link>
                         <Link to="/volunteer-program/village-school-renovation" className="perk-item" style={{ textDecoration: 'none' }}>
                             <i className="fa-solid fa-trowel-bricks"></i>
                             <span>Construction & Renovation</span>

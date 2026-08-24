@@ -16,6 +16,10 @@ import educationImg from '../assets/IMG_5894.JPG.jpeg';
 import educationImg2 from '../assets/teaching volunteers/WhatsApp Image 2026-06-20 at 08.17.53.jpeg';
 import kandyImg from '../assets/photo-1642095012245-bda8033e8ee3.jpg';
 import galleImg from '../assets/photo-1547818832-470a7998a99a.jpg';
+import Volunteer1 from '../assets/volunteer_1.png';
+import Volunteer2 from '../assets/volunteer_2.png';
+import Volunteer3 from '../assets/volunteer_3.png';
+import nuweraEliyaImg from '../assets/Nuwera Eliya day tour.jpg';
 
 const pricingPrograms = [
     {
@@ -232,54 +236,314 @@ const VolunteerPage = () => {
                     overflow-x: hidden;
                 }
                 
-                .volunteer-hero {
-                    height: 75vh;
-                    min-height: 500px;
+                .giveback-hero-redesign {
                     position: relative;
+                    min-height: 82vh;
+                    display: flex;
+                    align-items: center;
+                    background: linear-gradient(90deg, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.78) 45%, rgba(15, 23, 42, 0.25) 100%), url(${effortImg}) no-repeat center 35%/cover;
+                    color: #ffffff;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    margin-bottom: 20px;
+                }
+
+                .giveback-hero-inner {
+                    max-width: 1350px;
+                    width: 100%;
+                    margin: auto;
+                    padding: 80px 5% 40px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    gap: 40px;
+                    position: relative;
+                    z-index: 2;
+                    box-sizing: border-box;
+                }
+
+                .giveback-hero-copy {
+                    max-width: 580px;
+                    text-align: left;
+                }
+
+                .carenest-hero-title {
+                    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+                    font-weight: 800;
+                    color: #ffffff;
+                    line-height: 1.1;
+                    margin: 0 0 20px 0;
+                    letter-spacing: -0.02em;
+                }
+
+                .carenest-hero-desc {
+                    font-size: 0.92rem;
+                    line-height: 1.6;
+                    color: rgba(255, 255, 255, 0.8);
+                    max-width: 460px;
+                    margin-bottom: 30px;
+                    font-weight: 400;
+                }
+
+                .carenest-hero-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 12px;
+                    background: rgba(0, 0, 0, 0.4);
+                    border: 1.5px solid rgba(255, 255, 255, 0.35);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    padding: 8px 10px 8px 24px;
+                    border-radius: 50px;
+                    color: #ffffff;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    margin-bottom: 110px;
+                }
+
+                .carenest-hero-btn:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    border-color: #ffffff;
+                    transform: translateY(-2px);
+                }
+
+                .carenest-btn-icon {
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 50%;
+                    background: var(--primary-green);
+                    color: #0f172a;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    text-align: center;
-                    color: white;
-                    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${effortImg}) no-repeat center/cover;
-                    margin-bottom: 40px;
+                    font-size: 0.8rem;
                 }
 
-                .hero-content {
-                    max-width: 1000px;
-                    padding: 0 25px;
-                    z-index: 2;
+                .carenest-hero-trust-bar {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-top: 25px;
                 }
 
-                .hero-tag {
-                    text-transform: uppercase;
-                    letter-spacing: 2px;
-                    font-size: 0.72rem;
+                .carenest-avatar-group {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .carenest-avatar-group img {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid #ffffff;
+                    margin-left: -12px;
+                }
+
+                .carenest-avatar-group img:first-child {
+                    margin-left: 0;
+                }
+
+                .carenest-trust-text {
+                    font-size: 0.88rem;
+                    color: rgba(255, 255, 255, 0.9);
+                    font-weight: 500;
+                }
+
+                .carenest-hero-card-right {
+                    position: absolute;
+                    right: 15px;
+                    bottom: 10px;
+                    z-index: 3;
+                    background: rgba(15, 23, 42, 0.72);
+                    backdrop-filter: blur(18px);
+                    -webkit-backdrop-filter: blur(18px);
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                    border-radius: 20px;
+                    padding: 20px;
+                    max-width: 380px;
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                    text-align: left;
+                }
+
+                .carenest-card-avatar {
+                    width: 85px;
+                    height: 105px;
+                    border-radius: 14px;
+                    object-fit: cover;
+                    flex-shrink: 0;
+                }
+
+                .carenest-card-content {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .carenest-card-quote {
+                    font-size: 0.78rem;
+                    line-height: 1.45;
+                    color: rgba(255, 255, 255, 0.9);
+                    margin: 0 0 10px 0;
+                    font-style: normal;
+                }
+
+                .carenest-card-author {
+                    font-size: 0.85rem;
                     font-weight: 800;
-                    background: var(--primary-green);
-                    padding: 6px 18px;
-                    border-radius: 100px;
-                    display: inline-block;
-                    margin-bottom: 20px;
-                    box-shadow: 0 6px 15px rgba(27, 163, 82, 0.2);
-                }
-
-                .hero-title {
-                    font-size: clamp(2.8rem, 8vw, 5rem);
-                    font-weight: 900;
-                    letter-spacing: -0.04em;
-                    line-height: 1.05;
+                    color: #ffffff;
                     margin: 0;
                 }
 
-                .hero-desc {
-                    font-size: clamp(1.1rem, 3vw, 1.4rem);
-                    margin-top: 30px;
-                    opacity: 0.95;
-                    line-height: 1.6;
-                    font-weight: 400;
-                    max-width: 750px;
-                    margin: 30px auto 0;
+                .carenest-card-role {
+                    font-size: 0.7rem;
+                    color: rgba(255, 255, 255, 0.6);
+                }
+
+                @media (max-width: 992px) {
+                    .giveback-hero-inner {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 40px;
+                    }
+                    .carenest-hero-card-right {
+                        position: relative;
+                        right: auto;
+                        bottom: auto;
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                }
+
+                .hero-avatar-stack {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .hero-avatar-stack img {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid #ffffff;
+                    margin-left: -10px;
+                }
+
+                .hero-avatar-stack img:first-child {
+                    margin-left: 0;
+                }
+
+                .hero-trust-stars {
+                    display: flex;
+                    gap: 2px;
+                    color: var(--primary-green);
+                    font-size: 0.75rem;
+                    margin-bottom: 2px;
+                }
+
+                .hero-trust-text {
+                    font-size: 0.78rem;
+                    color: rgba(255, 255, 255, 0.88);
+                }
+
+                .giveback-hero-card-float {
+                    background: rgba(15, 23, 42, 0.65);
+                    backdrop-filter: blur(16px);
+                    -webkit-backdrop-filter: blur(16px);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 20px;
+                    padding: 16px;
+                    max-width: 420px;
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                    text-align: left;
+                    margin-bottom: 10px;
+                }
+
+                .hero-card-thumb {
+                    width: 100px;
+                    height: 90px;
+                    border-radius: 12px;
+                    object-fit: cover;
+                    flex-shrink: 0;
+                }
+
+                .hero-card-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+
+                .hero-card-title {
+                    font-size: 0.92rem;
+                    font-weight: 800;
+                    color: #ffffff;
+                    margin: 0;
+                    line-height: 1.3;
+                }
+
+                .hero-card-desc {
+                    font-size: 0.76rem;
+                    color: rgba(255, 255, 255, 0.75);
+                    margin: 0 0 6px 0;
+                    line-height: 1.35;
+                }
+
+                .hero-card-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: rgba(255, 255, 255, 0.15);
+                    color: #ffffff;
+                    padding: 5px 12px;
+                    border-radius: 50px;
+                    font-size: 0.72rem;
+                    font-weight: 700;
+                    text-decoration: none;
+                    align-self: flex-start;
+                    transition: background 0.2s ease;
+                }
+
+                .hero-card-btn:hover {
+                    background: var(--primary-green);
+                }
+
+                .giveback-hero-footer-bar {
+                    width: 100%;
+                    border-top: 1px solid rgba(255, 255, 255, 0.15);
+                    padding: 16px 5%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 0.8rem;
+                    color: rgba(255, 255, 255, 0.65);
+                    font-weight: 500;
+                    box-sizing: border-box;
+                    z-index: 2;
+                }
+
+                @media (max-width: 992px) {
+                    .giveback-hero-inner {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 30px;
+                        padding-bottom: 20px;
+                    }
+                    .giveback-hero-card-float {
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                    .giveback-hero-footer-bar {
+                        flex-direction: column;
+                        gap: 8px;
+                        text-align: center;
+                    }
                 }
 
                 .volunteer-container {
@@ -992,16 +1256,52 @@ const VolunteerPage = () => {
                 `}
             </style>
 
-            {/* Hero Section */}
-            <section className="volunteer-hero">
-                <div className="hero-content">
-                    <span className="hero-tag">Give Back to the Island</span>
-                    <h1 className="hero-title">
-                        Volunteer <br/> Experiences<span style={{ color: 'var(--primary-green)' }}>.</span>
-                    </h1>
-                    <p className="hero-desc">
-                        Join our mission to empower local communities through education, sustainable development, and hands-on support.
-                    </p>
+            {/* Hero Section - Matching Carenest Reference Design */}
+            <section className="giveback-hero-redesign">
+                <div className="giveback-hero-inner">
+                    {/* Left Column: Title, Subtitle, Button & Trust Bar */}
+                    <div className="giveback-hero-copy">
+                        <h1 className="carenest-hero-title">
+                            Volunteering That<br />
+                            Helps Children
+                        </h1>
+                        <p className="carenest-hero-desc">
+                            Giveback Journey is a volunteer and community initiative committed to supporting local Sri Lankan children through education, special needs care, protection, and village development.
+                        </p>
+
+                        {/* Action Pill Button with Accent Arrow Badge */}
+                        <Link to="/volunteer-inquiry" className="carenest-hero-btn">
+                            <span>Apply Now</span>
+                            <div className="carenest-btn-icon">
+                                <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </Link>
+
+                        {/* Overlapping Avatars Trust Bar */}
+                        <div className="carenest-hero-trust-bar">
+                            <div className="carenest-avatar-group">
+                                <img src={Volunteer1} alt="Volunteer 1" />
+                                <img src={Volunteer2} alt="Volunteer 2" />
+                                <img src={Volunteer3} alt="Volunteer 3" />
+                                <img src={yukiImg} alt="Volunteer 4" />
+                            </div>
+                            <span className="carenest-trust-text">
+                                Over <strong>1K+ volunteers</strong> have made an impact.
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Right Floating Supporter Testimonial Card */}
+                    <div className="carenest-hero-card-right">
+                        <img src={nuweraEliyaImg} alt="Supporter Volunteer" className="carenest-card-avatar" />
+                        <div className="carenest-card-content">
+                            <p className="carenest-card-quote">
+                                "This organization makes it easy to understand where support goes. Knowing that my contribution directly helps local children is deeply fulfilling."
+                            </p>
+                            <h5 className="carenest-card-author">Emma Mitchell</h5>
+                            <span className="carenest-card-role">Volunteer Traveler, UK</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 

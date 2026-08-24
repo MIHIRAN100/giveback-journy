@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 import defaultBgImage from '../assets/newsletter_beach_bg.png';
 import medicalBgImage from '../assets/medical_gallery_new_1.jpg';
-import supportAgentImg from '../assets/support_agent_headshot.png';
+import supportAgentImg from '../assets/1768303274897.jpg';
 
 const NewsletterSubscribeBanner = ({ bgImage = medicalBgImage }) => {
     const navigate = useNavigate();

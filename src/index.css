@@ -153,13 +153,14 @@ h1, h2, h3, .logo-text {
     z-index: 1000;
     transition: all 0.4s ease;
     background: var(--white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .brand-header.header-scrolled {
     background: var(--white) !important;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
     border-bottom: none !important;
 }
 
@@ -356,8 +357,8 @@ h1, h2, h3, .logo-text {
 }
 
 .bottom-ad-tag {
-    background: var(--primary-green);
-    color: var(--pitch-black);
+    background: #3B7FBA;
+    color: #ffffff;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.65rem;
@@ -434,6 +435,7 @@ h1, h2, h3, .logo-text {
     align-items: center;
     justify-content: space-between;
     border-bottom: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
                 padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
                 border-bottom 0.5s ease, 
@@ -448,7 +450,7 @@ h1, h2, h3, .logo-text {
     -webkit-backdrop-filter: none;
     padding: 10px 5%;
     border-bottom: none;
-    box-shadow: none;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
 }
 
 @media (max-width: 768px) {
@@ -1024,28 +1026,28 @@ h1, h2, h3, .logo-text {
 }
 
 .hero-search-bar {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     padding: 10px 10px 10px 30px;
     border-radius: 100px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
 
 .hero-search-bar:focus-within {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: #ffffff;
+    border-color: #3B7FBA;
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     transform: translateY(-2px);
 }
 
 .hero-search-bar i.bi-search {
-    color: var(--primary-green);
+    color: #3B7FBA;
     font-size: 1.2rem;
     margin-right: 15px;
 }
@@ -1053,7 +1055,7 @@ h1, h2, h3, .logo-text {
 .hero-search-bar input {
     background: transparent;
     border: none;
-    color: var(--white);
+    color: #1e293b;
     font-size: 1.1rem;
     font-weight: 600;
     width: 100%;
@@ -1061,12 +1063,12 @@ h1, h2, h3, .logo-text {
 }
 
 .hero-search-bar input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: #64748b;
     font-weight: 500;
 }
 
 .hero-search-btn {
-    background: linear-gradient(135deg, #1ba352 0%, #2bc36f 50%, #1ba352 100%);
+    background: linear-gradient(135deg, #2D6CA4 0%, #3B7FBA 50%, #2D6CA4 100%);
     background-size: 200% 200%;
     color: #ffffff;
     border: none;
@@ -1085,7 +1087,7 @@ h1, h2, h3, .logo-text {
     white-space: nowrap;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(27, 163, 82, 0.3);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
     animation: btnGradientShift 3s ease infinite;
 }
 
@@ -1139,10 +1141,10 @@ h1, h2, h3, .logo-text {
 }
 
 .hero-search-btn:hover {
-    background: linear-gradient(135deg, #2bc36f 0%, #23e865 50%, #2bc36f 100%);
+    background: linear-gradient(135deg, #3B7FBA 0%, #4B8FCB 50%, #3B7FBA 100%);
     background-size: 200% 200%;
     transform: scale(1.06) translateY(-2px);
-    box-shadow: 0 8px 30px rgba(27, 163, 82, 0.45), 0 0 20px rgba(27, 163, 82, 0.2);
+    box-shadow: 0 8px 30px rgba(59, 127, 186, 0.45), 0 0 20px rgba(59, 127, 186, 0.2);
 }
 
 .hero-search-btn:hover .btn-text {
@@ -1248,15 +1250,16 @@ h1, h2, h3, .logo-text {
     .hero-search-bar {
         padding: 8px 8px 8px 20px;
         border-radius: 50px;
-        background: rgba(255, 255, 255, 0.18) !important;
-        backdrop-filter: blur(24px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.35) !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+        background: #ffffff !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
     }
     
     .hero-search-bar input {
         font-size: 0.95rem;
+        color: #1e293b !important;
     }
     
     .hero-search-btn {
@@ -3867,7 +3870,7 @@ h1, h2, h3, .logo-text {
 .chat-toggle {
     width: 55px;
     height: 55px;
-    background: #1a2332;
+    background: #3B7FBA;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -3875,7 +3878,7 @@ h1, h2, h3, .logo-text {
     justify-content: center;
     font-size: 1.6rem;
     cursor: pointer;
-    box-shadow: 0 15px 40px rgba(26, 35, 50, 0.4);
+    box-shadow: 0 15px 40px rgba(59, 127, 186, 0.4);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
 }
@@ -4444,14 +4447,14 @@ h1, h2, h3, .logo-text {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: var(--primary-green);
+    background: #3B7FBA;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
     font-weight: 800;
-    border: none;
+    border: 2px solid #3B7FBA;
 }
 
 .moment-username {
@@ -5892,10 +5895,10 @@ h1, h2, h3, .logo-text {
 }
 
 .hero-search-bar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 500px;
     padding: 10px 10px 10px 30px;
     display: flex;
@@ -5906,8 +5909,8 @@ h1, h2, h3, .logo-text {
 }
 
 .hero-search-bar:focus-within {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: var(--primary-green);
+    background: #ffffff;
+    border-color: #3B7FBA;
     transform: translateY(-5px);
 }
 
@@ -5915,18 +5918,18 @@ h1, h2, h3, .logo-text {
     flex: 1;
     background: transparent;
     border: none;
-    color: white;
+    color: #1e293b;
     font-size: 1.1rem;
     font-weight: 500;
     outline: none;
 }
 
 .hero-search-bar input::placeholder {
-    color: rgba(255,255,255,0.6);
+    color: #64748b;
 }
 
 .hero-search-btn {
-    background: linear-gradient(135deg, #1ba352 0%, #2bc36f 50%, #1ba352 100%);
+    background: linear-gradient(135deg, #2D6CA4 0%, #3B7FBA 50%, #2D6CA4 100%);
     background-size: 200% 200%;
     color: #ffffff;
     border: none;
@@ -5940,15 +5943,15 @@ h1, h2, h3, .logo-text {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(27, 163, 82, 0.3);
+    box-shadow: 0 4px 15px rgba(59, 127, 186, 0.35);
     animation: btnGradientShift 3s ease infinite;
 }
 
 .hero-search-btn:hover {
-    background: linear-gradient(135deg, #2bc36f 0%, #23e865 50%, #2bc36f 100%);
+    background: linear-gradient(135deg, #3B7FBA 0%, #4B8FCB 50%, #3B7FBA 100%);
     background-size: 200% 200%;
     transform: scale(1.06) translateY(-2px);
-    box-shadow: 0 8px 30px rgba(27, 163, 82, 0.45), 0 0 20px rgba(27, 163, 82, 0.2);
+    box-shadow: 0 8px 30px rgba(59, 127, 186, 0.5), 0 0 20px rgba(59, 127, 186, 0.3);
 }
 
 .hero-mobile-actions {
@@ -6092,33 +6095,33 @@ h1, h2, h3, .logo-text {
 
     /* Glass-effect search bar on mobile */
     .hero-search-bar {
-        background: rgba(255, 255, 255, 0.15) !important;
-        backdrop-filter: blur(24px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        background: #ffffff !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
         border-radius: 100px !important;
         flex-direction: row !important;
         padding: 6px 6px 6px 18px !important;
         gap: 10px !important;
         align-items: center !important;
-        border: 1px solid rgba(255, 255, 255, 0.35) !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
     }
 
     .hero-search-bar i.bi-search {
-        color: var(--primary-green) !important;
+        color: #3B7FBA !important;
         font-size: 1rem !important;
     }
     
     .hero-search-bar input {
         font-size: 0.95rem !important;
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: #1e293b !important;
         padding: 8px 0 !important;
         border-bottom: none !important;
         flex: 1 !important;
     }
     
     .hero-search-bar input::placeholder {
-        color: rgba(255, 255, 255, 0.55) !important;
+        color: #64748b !important;
     }
     
     .hero-search-btn {
@@ -7677,7 +7680,7 @@ h1, h2, h3, .logo-text {
 }
 
 .welcome-tag {
-    color: var(--primary-green);
+    color: #3B7FBA;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -7695,7 +7698,7 @@ h1, h2, h3, .logo-text {
 }
 
 .text-highlight {
-    color: var(--primary-green);
+    color: #3B7FBA;
 }
 
 .welcome-description {
@@ -8814,7 +8817,7 @@ h1, h2, h3, .logo-text {
 
 .tour-price-box-bottom i {
     font-size: 0.8rem;
-    color: #6b7280;
+    color: #3B7FBA;
 }
 
 /* Promo Banner below the price box */
@@ -8835,7 +8838,7 @@ h1, h2, h3, .logo-text {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background-color: #dc2626;
+    background-color: #3B7FBA;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8873,3 +8876,10 @@ h1, h2, h3, .logo-text {
     }
 }
 
+.top-deal-card:hover {
+    transform: translateY(-4px);
+}
+
+.top-deal-card:hover .top-deal-img {
+    transform: scale(1.06);
+}
