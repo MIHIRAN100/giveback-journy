@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import logo from '../assets/brand_logo.png';
+import logo from '../assets/gb_round_logo.png';
 
 let isFirstLoad = true;
 
@@ -53,9 +53,9 @@ const LoadingScreen = () => {
                             right: '-4px',
                             bottom: '-4px',
                             borderRadius: '50%',
-                            border: '3.5px solid rgba(27, 163, 82, 0.08)',
-                            borderTopColor: 'var(--primary-green)',
-                            borderRightColor: 'var(--primary-green)',
+                            border: '3.5px solid rgba(59, 127, 186, 0.12)',
+                            borderTopColor: '#3b7fba',
+                            borderRightColor: '#3b7fba',
                             pointerEvents: 'none',
                             zIndex: 1
                         }}
@@ -70,13 +70,13 @@ const LoadingScreen = () => {
                             height: '90px',
                             borderRadius: '50%',
                             background: '#ffffff',
-                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.05)',
+                            boxShadow: '0 8px 32px rgba(59, 127, 186, 0.12)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             zIndex: 2,
                             overflow: 'hidden',
-                            border: '1px solid rgba(0, 0, 0, 0.03)'
+                            border: '1px solid rgba(59, 127, 186, 0.1)'
                         }}
                         animate={{ scale: [1, 1.04, 1] }}
                         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -84,7 +84,7 @@ const LoadingScreen = () => {
                         <img 
                             src={logo} 
                             alt="Logo" 
-                            style={{ width: '70%', height: '70%', objectFit: 'contain' }}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
                         />
                     </motion.div>
                 </div>

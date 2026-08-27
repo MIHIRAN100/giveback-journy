@@ -15,6 +15,7 @@ import NewImg1 from '../assets/teaching volunteers/IMG-20241203-WA0041.jpg';
 import NewImg2 from '../assets/volunteer-wildlife.png';
 import NewImg3 from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
 import NewImg4 from '../assets/yoga_meditation_temple_sri_lanka_1778936481374.png';
+import gbRoundLogo from '../assets/gb_round_logo.png';
 
 const getYouTubeId = (url) => {
     if (!url) return null;
@@ -58,29 +59,22 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
     };
 
     return (
-        <div key={moment.id} className={`moment-card feedback-video ${isPlaying ? 'is-playing' : ''}`} onClick={togglePlay}>
-            {/* Top User Avatar & Name */}
-            <div className="moment-user">
-                <div className="moment-avatar">
-                    {typeof moment.avatar === 'string' && moment.avatar.startsWith('http') ? (
-                        <img src={moment.avatar} alt={moment.user} style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}} />
-                    ) : (
-                        <i className={moment.avatar} style={{ fontSize: '0.85rem', color: 'white' }}></i>
-                    )}
-                </div>
-                <span className="moment-username">{moment.user}</span>
+        <div key={moment.id} className={`moment-card shorts-card ${isPlaying ? 'is-playing' : ''}`} onClick={togglePlay}>
+            {/* Top Large Bold Centered Title */}
+            <div className="shorts-title-overlay">
+                {moment.overlayTitle || moment.title}
             </div>
-            
-            {/* Mute button */}
+
+            {/* Mute button overlay */}
             {moment.video && !moment.disablePlay && (
                 <div className="mute-button-overlay" onClick={toggleMute}>
                     <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
                 </div>
             )}
 
-            {/* Circular Play / Pause Glass Button */}
+            {/* Center Circular Play Button */}
             {!moment.disablePlay && (
-                <div className="play-button-overlay" onClick={togglePlay}>
+                <div className="shorts-play-button" onClick={togglePlay}>
                     <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
                 </div>
             )}
@@ -108,24 +102,9 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                 <img src={moment.image} alt={moment.title} />
             )}
             
-            {/* Simple Clean Glass Panel at Bottom */}
-            <div className="moment-glass-panel">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <i className="fa-solid fa-star" style={{ color: '#10b981', fontSize: '0.8rem' }}></i>
-                    <span style={{ fontWeight: 800, fontSize: '0.82rem', color: '#ffffff' }}>
-                        Rating: {moment.rating || '5.0'} out of 5
-                    </span>
-                </div>
-
-                <p className="moment-description">
-                    "{moment.description || moment.overlayTitle}"
-                </p>
-
-                <div className="moment-author-box">
-                    <span className="moment-author-name">{moment.user}</span>
-                    <span style={{ opacity: 0.5, margin: '0 5px' }}>•</span>
-                    <span className="moment-author-role">{moment.title}</span>
-                </div>
+            {/* Bottom Centered Social Handle */}
+            <div className="shorts-handle-overlay">
+                {moment.handle}
             </div>
         </div>
     );
@@ -141,6 +120,7 @@ const TravelerMoments = () => {
         {
             id: 1,
             user: "Natasha",
+            handle: "@NELLYAROUNDTHEWORLD",
             avatar: "fa-solid fa-hands-holding-child",
             image: Moment1,
             video: TravelerVideo3,
@@ -152,39 +132,43 @@ const TravelerMoments = () => {
         {
             id: 2,
             user: "Piper",
+            handle: "@JIMMY__OUTDOORS",
             avatar: "fa-solid fa-hand-holding-heart",
             image: Volunteer1,
             video: TravelerVideo4,
             title: "Special Need Care Volunteer",
-            overlayTitle: "EVERY CHILD DESERVES A CHANCE",
+            overlayTitle: "PROTECTING THE SMALLEST CREATURES",
             description: "Every child deserves a chance. Working at the special needs center was the most fulfilling month of my life.",
             rating: "5.0"
         },
         {
             id: 3,
             user: "Nick",
+            handle: "@ARIELBREE_UNDERTHESEA",
             avatar: "fa-solid fa-chalkboard-user",
             image: Volunteer2,
             video: TravelerVideo5,
             title: "Teaching in Kandy",
-            overlayTitle: "TEACHING WITH HEART",
+            overlayTitle: "SAVING OUR OCEANS",
             description: "Teaching with heart! Sharing English and learning so much from these inspiring, bright Sri Lankan students.",
             rating: "4.9"
         },
         {
             id: 4,
             user: "Lara",
+            handle: "@ALEXANDRA.LAFOREST",
             avatar: "fa-solid fa-hands-praying",
             image: Volunteer3,
             video: TravelerVideo6,
             title: "Culture Immersion in Hikkaduwa",
-            overlayTitle: "EXPERIENCING TRUE SRI LANKAN CULTURE",
+            overlayTitle: "TRAVELING WITH PURPOSE",
             description: "Experiencing true Sri Lankan culture. From peaceful temple morning rituals to cooking traditional meals with local families.",
             rating: "5.0"
         },
         {
             id: 5,
             user: "Mia",
+            handle: "@MIA_AROUNDTHEWORLD",
             avatar: "fa-solid fa-house-chimney",
             image: Volunteer4,
             video: TravelerVideo7,
@@ -197,17 +181,19 @@ const TravelerMoments = () => {
         {
             id: 6,
             user: "Emma & Annie",
+            handle: "@EMMA_AND_ANNIE",
             avatar: "fa-solid fa-users",
             image: NewImg1,
             video: TravelerVideoSam,
             title: "Special Needs Care",
-            overlayTitle: "EMBRACING SPECIAL NEEDS CARE",
+            overlayTitle: "SPECIAL NEEDS CARE SUPPORT",
             description: "Special needs support brought us so close to the community. An unforgettable bond with the children and local staff!",
             rating: "5.0"
         },
         {
             id: 7,
             user: "Alex",
+            handle: "@ALEX_TEACHES",
             avatar: "fa-solid fa-chalkboard-user",
             image: NewImg2,
             video: TravelerVideoAlex,

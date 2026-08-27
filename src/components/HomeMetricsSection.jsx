@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HomeMetricsSection = () => {
     return (
-        <section className="home-metrics-section" style={{ background: '#ffffff', padding: '60px 5% 40px' }}>
+        <section className="home-metrics-section" style={{ background: '#f0f7ff', padding: '60px 5% 40px' }}>
             <style>{`
                 .metrics-container {
                     max-width: 1350px;

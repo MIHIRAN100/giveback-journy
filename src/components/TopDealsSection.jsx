@@ -100,8 +100,8 @@ const TopDealsSection = () => {
     };
 
     return (
-        <section className="top-deals-section" style={{ padding: '35px 0 15px', maxWidth: '1280px', margin: '0 auto' }}>
-            <div className="section-container" style={{ padding: '0 20px' }}>
+        <section className="top-deals-section" style={{ background: '#ffffff', padding: '35px 0 15px', width: '100%' }}>
+            <div className="section-container" style={{ padding: '0 20px', maxWidth: '1280px', margin: '0 auto' }}>
                 {/* Header with Category Filter Pills & Controls */}
                 <div className="top-deals-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '15px', flexWrap: 'wrap', marginBottom: '25px' }}>
                     {/* Left Scrollable Filter Tabs */}
