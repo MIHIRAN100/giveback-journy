@@ -73,7 +73,7 @@ const AppContent = () => {
       <CookieBar onVisibilityChange={setCookieVisible} />
       {showGlobalBadge && <HeroPromoBadge />}
       <BottomAdBanner isCookieVisible={cookieVisible} />
-      <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} />
+      <ChatBot cookieVisible={cookieVisible} isTourDetails={isTourDetails} isVolunteerDetails={isVolunteerDetails} />
     </div>
   );
 };

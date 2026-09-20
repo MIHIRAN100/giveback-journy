@@ -416,8 +416,8 @@ export const tourPackages = [
         itinerary: [
             { 
                 day: 1, 
-                title: "Arrival in Negombo", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                title: "Arrival in Negombo & Island Welcome", 
+                desc: "<b><i class='bi bi-airplane-engines' style='color: #888; margin-right: 6px;'></i> Welcome to Sri Lanka!</b><br/><br/>Upon your arrival at Bandaranaike International Airport (CMB), meet your friendly private driver at the arrivals hall and enjoy a swift, comfortable transfer to the coastal haven of <b>Negombo</b>.<br/><br/>After checking in to your seaside hotel, spend the remainder of the day relaxing and unwinding after your flight. Take a gentle stroll along the golden sands of Negombo Beach, feel the warm Indian Ocean breeze, and watch traditional outrigger fishing boats glide across the horizon.<br/><br/>In the evening, explore local beachside cafes or savor your first authentic Sri Lankan dinner as you prepare for your grand journey into the Cultural Triangle tomorrow.<br/><br/><b>Overnight stay in Negombo</b>", 
                 activities: ["Airport Transfer", "Private Transport", "Beachside Relaxation", "Island Welcome", "Coastal Walk"], 
                 optionalActivities: [
                     "A serene beach walk along the golden Negombo coastline",
@@ -681,8 +681,8 @@ export const tourPackages = [
         itinerary: [
             { 
                 day: 1, 
-                title: "Arrival & Transfer to Kitulgala", 
-                desc: "<b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Breakfast included.</b><br/><br/>After breakfast, you can arrange your own transfer to wherever you wish to go by your own taxi. For an additional fee, we can arrange this transfer for you. Alternatively, you can choose to continue this journey by joining our volunteering programs.", 
+                title: "Arrival & Transfer to Kitulgala Rainforest", 
+                desc: "<b><i class='bi bi-airplane-engines' style='color: #888; margin-right: 6px;'></i> Welcome to Sri Lanka!</b><br/><br/>Upon your arrival at the airport (or pickup from your preferred location), meet your dedicated private driver and begin your scenic inland drive towards <b>Kitulgala</b>, the island's lush adventure capital tucked deep within tropical rainforests.<br/><br/>Watch as the coastal roads transition into winding mountain passes surrounded by rubber estates, cascading jungle streams, and emerald canopies. Arrive at your riverside eco-accommodation set along the tranquil banks of the historic Kelani River.<br/><br/>Spend the afternoon unwinding in nature—take a refreshing dip in the clear river waters, listen to the calls of endemic jungle birds, or take a peaceful guided nature walk before tomorrow’s white-water rafting thrill.<br/><br/><b><i class='bi bi-cup-hot' style='color: #888; margin-right: 6px;'></i> Dinner included at the lodge</b><br/><b>Overnight stay in Kitulgala</b>", 
                 activities: ["Airport Transfer", "Private Transport", "Dinner"],
                 optionalActivities: [
                     "Join a guided nature walk to discover local flora and fauna",

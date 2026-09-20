@@ -33,21 +33,21 @@ const ReadySaveGoBanner = () => {
     }, []);
 
     return (
-        <div className="ready-save-go-wrapper" style={{ padding: '0 5%', maxWidth: '1440px', margin: '35px auto' }}>
+        <div className="ready-save-go-wrapper" style={{ padding: '0 5%', maxWidth: '1440px', margin: '25px auto 20px auto' }}>
             <div style={{
                 background: '#3b7fba',
-                borderRadius: '24px',
-                padding: '20px 32px',
+                borderRadius: '16px',
+                padding: '12px 22px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
-                gap: '20px',
+                gap: '14px',
                 color: '#ffffff',
-                boxShadow: '0 12px 35px rgba(59, 127, 186, 0.25)'
+                boxShadow: '0 8px 25px rgba(59, 127, 186, 0.2)'
             }}>
                 {/* Left Title */}
-                <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.5px' }}>
+                <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.3px' }}>
                     Ready, Save, <span style={{ color: '#93c5fd' }}>GO!</span>
                 </div>
 
@@ -55,75 +55,75 @@ const ReadySaveGoBanner = () => {
                 <div style={{
                     background: '#ffffff',
                     borderRadius: '100px',
-                    padding: '8px 24px',
+                    padding: '5px 16px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '20px',
+                    gap: '14px',
                     color: '#0f172a',
-                    boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.08)',
                     flexWrap: 'wrap',
                     justifyContent: 'center'
                 }}>
                     {/* Discount Part */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <div>
-                            <div style={{ fontSize: '0.62rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', lineHeight: 1 }}>SAVE</div>
-                            <div style={{ fontSize: '1.3rem', fontWeight: 900, color: '#0f172a', lineHeight: 1.1 }}>{formatPrice(150)}</div>
-                            <div style={{ fontSize: '0.58rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', lineHeight: 1 }}>PER PERSON</div>
+                            <div style={{ fontSize: '0.52rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', lineHeight: 1 }}>SAVE</div>
+                            <div style={{ fontSize: '1rem', fontWeight: 900, color: '#0f172a', lineHeight: 1.1 }}>{formatPrice(150)}</div>
+                            <div style={{ fontSize: '0.48rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', lineHeight: 1 }}>PER PERSON</div>
                         </div>
                         <div style={{
                             background: '#3b7fba',
                             color: '#ffffff',
-                            padding: '6px 10px',
-                            borderRadius: '8px',
-                            fontSize: '0.75rem',
+                            padding: '4px 7px',
+                            borderRadius: '6px',
+                            fontSize: '0.62rem',
                             fontWeight: 800,
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '4px'
+                            gap: '3px'
                         }}>
                             <i className="fa-solid fa-tag"></i> 1
                         </div>
                     </div>
 
                     {/* Vertical Line */}
-                    <div style={{ height: '36px', width: '1px', background: '#e2e8f0' }}></div>
+                    <div style={{ height: '28px', width: '1px', background: '#e2e8f0' }}></div>
 
                     {/* Timer Part */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         {/* Days */}
                         <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.days}</div>
-                            <div style={{ fontSize: '0.58rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '2px' }}>DAYS</div>
+                            <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.days}</div>
+                            <div style={{ fontSize: '0.48rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '1px' }}>DAYS</div>
                         </div>
-                        <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#3b7fba', marginTop: '-10px' }}>:</span>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#3b7fba', marginTop: '-8px' }}>:</span>
 
                         {/* Hours */}
                         <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.hours}</div>
-                            <div style={{ fontSize: '0.58rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '2px' }}>HOURS</div>
+                            <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.hours}</div>
+                            <div style={{ fontSize: '0.48rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '1px' }}>HOURS</div>
                         </div>
-                        <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#3b7fba', marginTop: '-10px' }}>:</span>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#3b7fba', marginTop: '-8px' }}>:</span>
 
                         {/* Mins */}
                         <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.mins}</div>
-                            <div style={{ fontSize: '0.58rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '2px' }}>MINS</div>
+                            <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.mins}</div>
+                            <div style={{ fontSize: '0.48rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '1px' }}>MINS</div>
                         </div>
-                        <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#3b7fba', marginTop: '-10px' }}>:</span>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#3b7fba', marginTop: '-8px' }}>:</span>
 
                         {/* Secs */}
                         <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.secs}</div>
-                            <div style={{ fontSize: '0.58rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '2px' }}>SECS</div>
+                            <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#0f172a', lineHeight: 1 }}>{timeLeft.secs}</div>
+                            <div style={{ fontSize: '0.48rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', marginTop: '1px' }}>SECS</div>
                         </div>
                     </div>
                 </div>
 
                 {/* Right Text */}
                 <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '1.05rem', fontWeight: 900, color: '#ffffff' }}>Drop 1 Ends 15 Dec</div>
-                    <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.8)', fontWeight: 600, marginTop: '2px' }}>T&Cs apply.*</div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 900, color: '#ffffff' }}>Drop 1 Ends 15 Dec</div>
+                    <div style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.8)', fontWeight: 600, marginTop: '1px' }}>T&Cs apply.*</div>
                 </div>
             </div>
         </div>

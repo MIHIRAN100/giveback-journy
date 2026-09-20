@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import TourPackages, { TourCard } from '../components/TourPackages';
 import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
 import SriLankaGlance from '../components/SriLankaGlance';
+import TrustReviewsSection from '../components/TrustReviewsSection';
 
 import { tourPackages } from '../data/tours';
 import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
@@ -37,6 +38,8 @@ const PackagesPage = () => {
                     <p>Discover every corner of the island with our signature tour plans.</p>
                 </div>
             </div>
+            
+            <TrustReviewsSection />
             
             <TourPackages searchTerm={searchTerm} />
 

@@ -670,13 +670,13 @@ const TourDetails = () => {
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    background: rgba(255, 255, 255, 0.4);
-                    backdrop-filter: blur(40px) saturate(200%);
-                    -webkit-backdrop-filter: blur(40px) saturate(200%);
+                    background: #ffffff;
+                    backdrop-filter: none;
+                    -webkit-backdrop-filter: none;
                     padding: 15px 5%;
-                    box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+                    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
                     z-index: 10000;
-                    border-top: 1px solid rgba(255, 255, 255, 0.4);
+                    border-top: 1px solid rgba(0, 0, 0, 0.08);
                     width: 100%;
                 }
                 .sticky-bar-content {
@@ -704,20 +704,40 @@ const TourDetails = () => {
                     color: #111;
                 }
                 .sticky-book-btn {
-                    background: #1a2332;
-                    color: white;
-                    padding: 15px 45px;
-                    border-radius: 14px;
-                    font-weight: 900;
-                    font-size: 1.1rem;
-                    border: none;
-                    box-shadow: 0 8px 25px rgba(26, 35, 50, 0.3);
-                    transition: all 0.3s ease;
-                    cursor: pointer;
+                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+                    color: #ffffff !important;
+                    padding: 12px 28px !important;
+                    border-radius: 50px !important;
+                    font-weight: 700 !important;
+                    font-size: 0.92rem !important;
+                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25) !important;
+                    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 10px !important;
+                    white-space: nowrap !important;
+                    cursor: pointer !important;
                 }
                 .sticky-book-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 12px 30px rgba(26, 35, 50, 0.4);
+                    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+                    transform: translateY(-2px) scale(1.02) !important;
+                    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+                }
+                .sticky-btn-icon-circle {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.12);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 2px;
+                    flex-shrink: 0;
+                }
+                .sticky-btn-icon-circle i {
+                    font-size: 0.82rem;
+                    color: #38bdf8;
                 }
 
                 /* Ensure Chat Bot is not covered by Sticky Bar */
@@ -1014,13 +1034,13 @@ const TourDetails = () => {
                         bottom: 0 !important;
                         left: 0 !important;
                         right: 0 !important;
-                        background: rgba(255, 255, 255, 0.4) !important;
-                        backdrop-filter: blur(40px) saturate(200%) !important;
-                        -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+                        background: #ffffff !important;
+                        backdrop-filter: none !important;
+                        -webkit-backdrop-filter: none !important;
                         padding: 15px 5% !important;
-                        box-shadow: 0 -10px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6) !important;
+                        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
                         z-index: 10000 !important;
-                        border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
+                        border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
                         width: 100% !important;
                         border-radius: 0 !important;
                         max-width: none !important;
@@ -1049,15 +1069,32 @@ const TourDetails = () => {
                         color: #111 !important;
                     }
                     .sticky-book-btn {
-                        background: #1a2332 !important;
-                        color: white !important;
-                        padding: 12px 28px !important;
-                        border-radius: 12px !important;
-                        font-weight: 900 !important;
-                        font-size: 0.9rem !important;
-                        border: none !important;
-                        box-shadow: 0 8px 20px rgba(26, 35, 50, 0.2) !important;
-                        transition: all 0.3s ease !important;
+                        padding: 10px 20px !important;
+                        font-size: 0.82rem !important;
+                        border-radius: 50px !important;
+                        gap: 8px !important;
+                    }
+                    .sticky-btn-icon-circle {
+                        width: 22px !important;
+                        height: 22px !important;
+                    }
+                    .sticky-btn-icon-circle i {
+                        font-size: 0.75rem !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .sticky-book-btn {
+                        padding: 8px 14px !important;
+                        font-size: 0.75rem !important;
+                        gap: 6px !important;
+                    }
+                    .sticky-btn-icon-circle {
+                        width: 20px !important;
+                        height: 20px !important;
+                    }
+                    .sticky-btn-icon-circle i {
+                        font-size: 0.7rem !important;
                     }
                 }
 
@@ -2339,7 +2376,7 @@ const TourDetails = () => {
                                 background: '#fff' 
                             }}>
                                 <p style={{ margin: 0, fontSize: '0.95rem', color: '#444', lineHeight: 1.6 }}>
-                                    This trip generates <strong style={{ borderBottom: '2px solid #333' }}>{pkg.co2 || (42 + (pkg.id * 7) % 25)} kg</strong> of CO<sub>2</sub>-e per person per day. <span style={{ color: '#2e7d32', fontWeight: 600 }}>Fact:</span> We locally offset 100% of these emissions by planting native trees and restoring critical elephant corridors in Sri Lanka.
+                                    <span style={{ color: '#1ba352', fontWeight: 700 }}>Impact & Sustainability:</span> Every journey with us directly supports local Sri Lankan communities and wildlife conservation. Experience authentic heritage, pristine nature, and meaningful travel while leaving a positive footprint.
                                 </p>
                             </div>
                         </div>
@@ -2398,7 +2435,7 @@ const TourDetails = () => {
                     </div>
 
                     <div className="impact-card" style={{ background: '#fff' }}>
-                        <div className="impact-icon" style={{ background: 'var(--primary-green)' }}>
+                        <div className="impact-icon" style={{ background: '#3b7fba', boxShadow: '0 10px 20px rgba(59, 127, 186, 0.25)' }}>
                             <i className="fa-solid fa-envelope-open-text"></i>
                         </div>
                         <h3>Customized Journeys</h3>
@@ -2657,7 +2694,10 @@ const TourDetails = () => {
                         </div>
                     </div>
                     <button className="sticky-book-btn" onClick={() => navigate(`/inquiry/${pkg.id}?transport=${transport}`)}>
-                        Book Now
+                        <span>Book Now</span>
+                        <div className="sticky-btn-icon-circle">
+                            <i className="bi bi-arrow-right"></i>
+                        </div>
                     </button>
                 </div>
             </div>

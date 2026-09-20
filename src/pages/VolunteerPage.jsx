@@ -8,7 +8,12 @@ import VolunteerOpportunities from '../components/VolunteerOpportunities';
 import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
 import ReadySaveGoBanner from '../components/ReadySaveGoBanner';
 import { useCurrency } from '../context/CurrencyContext';
-
+import { volunteerPrograms } from '../data/volunteerPrograms';
+import feedbackVideo1 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.09.28.mp4';
+import feedbackVideo2 from '../assets/feedback clip/WhatsApp Video 2026-05-23 at 20.17.18.mp4';
+import feedbackVideo3 from '../assets/feedback clip/WhatsApp Video 2026-05-30 at 11.02.50.mp4';
+import feedbackVideo4 from '../assets/feedback clip/WhatsApp Video 2026-05-31 at 13.18.52.mp4';
+import feedbackVideo5 from '../assets/feedback clip/WhatsApp Video 2026-05-31 at 13.37.40.mp4';
 // Section assets
 import constructionImg from '../assets/construction volunteer/WhatsApp Image 2026-06-02 at 17.36.37.jpeg';
 import constructionImg2 from '../assets/construction volunteer/WhatsApp Image 2026-06-01 at 15.37.50.jpeg';
@@ -170,6 +175,15 @@ export const getProgramPriceDetails = (progId, weeks) => {
 const VolunteerPage = () => {
     const { formatPrice } = useCurrency();
     const [selectedWeeks, setSelectedWeeks] = useState(2);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    
+    // Filter volunteer programs based on search query
+    const filteredSuggestions = volunteerPrograms.filter(prog => 
+        prog.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        prog.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prog.category?.toLowerCase().includes(searchQuery.toLowerCase())
+    ).slice(0, 5); // limit to 5 suggestions
     const testimonials = [
         {
             quote: "This wasn't just a trip; it was a transformation. Seeing the local communities thrive and being part of the wildlife conservation made me realize the power of small actions.",
@@ -1253,54 +1267,525 @@ const VolunteerPage = () => {
                         padding: 50px 0;
                     }
                 }
+
+                /* Where to Volunteer? Hero Search */
+                .vol-search-hero {
+                    text-align: center;
+                    padding: 50px 5% 45px;
+                    background: #ffffff;
+                    font-family: 'DM Sans', sans-serif;
+                }
+
+                .vol-search-title {
+                    font-size: clamp(2.2rem, 5vw, 3.5rem);
+                    font-weight: 800;
+                    color: #000000;
+                    margin: 0 0 28px 0;
+                    letter-spacing: -0.03em;
+                    line-height: 1.1;
+                }
+
+                .vol-search-tabs {
+                    display: flex;
+                    justify-content: center;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    margin-bottom: 30px;
+                }
+
+                .vol-search-tab {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    background: none;
+                    border: none;
+                    padding: 10px 18px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    color: #4a5568;
+                    cursor: pointer;
+                    border-radius: 50px;
+                    transition: all 0.25s ease;
+                    white-space: nowrap;
+                }
+
+                .vol-search-tab:hover {
+                    color: #0f4a2e;
+                    background: #f0fdf4;
+                }
+
+                .vol-search-tab.active {
+                    color: #0f4a2e;
+                    border-bottom: 3px solid #0f4a2e;
+                    border-radius: 0;
+                    font-weight: 800;
+                }
+
+                .vol-search-tab i {
+                    font-size: 0.95rem;
+                }
+
+                .vol-search-bar-wrapper {
+                    max-width: 720px;
+                    margin: 0 auto;
+                    padding: 0 10px;
+                }
+
+                .vol-search-bar {
+                    display: flex;
+                    align-items: center;
+                    background: #ffffff;
+                    border: 2px solid #e2e8f0;
+                    border-radius: 50px;
+                    padding: 6px 6px 6px 22px;
+                    gap: 10px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+                    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .vol-search-bar:focus-within {
+                    border-color: #1ba352;
+                    box-shadow: 0 4px 25px rgba(27, 163, 82, 0.12);
+                }
+
+                .vol-search-icon {
+                    color: #a0aec0;
+                    font-size: 1rem;
+                    flex-shrink: 0;
+                }
+
+                .vol-search-input {
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    font-size: 0.95rem;
+                    color: #2d3748;
+                    background: transparent;
+                    min-width: 0;
+                }
+
+                .vol-search-input::placeholder {
+                    color: #a0aec0;
+                }
+
+                .vol-search-ask-btn {
+                    padding: 10px 20px;
+                    border-radius: 50px;
+                    border: 1.5px solid #e2e8f0;
+                    background: #ffffff;
+                    color: #2d3748;
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                }
+
+                .vol-search-ask-btn:hover {
+                    border-color: #1ba352;
+                    color: #1ba352;
+                }
+
+                .vol-search-btn {
+                    padding: 10px 28px;
+                    border-radius: 50px;
+                    border: none;
+                    background: #1ba352;
+                    color: #ffffff;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    transition: all 0.2s ease;
+                }
+
+                .vol-search-btn:hover {
+                    background: #148a43;
+                    transform: translateY(-1px);
+                }
+
+                .vol-search-suggestions {
+                    position: absolute;
+                    top: calc(100% + 5px);
+                    left: 10px;
+                    right: 10px;
+                    background: #ffffff;
+                    border-radius: 16px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                    overflow: hidden;
+                    z-index: 100;
+                    text-align: left;
+                    border: 1px solid #e2e8f0;
+                }
+
+                .vol-search-suggestion-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 18px;
+                    gap: 14px;
+                    text-decoration: none;
+                    color: inherit;
+                    border-bottom: 1px solid #f1f5f9;
+                    transition: background 0.2s;
+                }
+
+                .vol-search-suggestion-item:last-child {
+                    border-bottom: none;
+                }
+
+                .vol-search-suggestion-item:hover {
+                    background: #f8fafc;
+                }
+
+                .suggestion-icon {
+                    color: #94a3b8;
+                    font-size: 1.1rem;
+                    background: #f1f5f9;
+                    padding: 10px;
+                    border-radius: 50%;
+                }
+
+                .suggestion-title {
+                    font-weight: 700;
+                    color: #0f172a;
+                    font-size: 0.95rem;
+                    margin-bottom: 3px;
+                }
+
+                .suggestion-location {
+                    font-size: 0.8rem;
+                    color: #64748b;
+                }
+
+                .vol-search-no-results {
+                    padding: 18px;
+                    color: #64748b;
+                    font-size: 0.95rem;
+                    text-align: center;
+                }
+
+                @media (max-width: 600px) {
+                    .vol-search-hero {
+                        padding: 35px 4% 30px;
+                    }
+                    .vol-search-tabs {
+                        gap: 4px;
+                    }
+                    .vol-search-tab {
+                        padding: 8px 12px;
+                        font-size: 0.78rem;
+                    }
+                    .vol-search-bar {
+                        padding: 5px 5px 5px 14px;
+                        gap: 6px;
+                    }
+                    .vol-search-ask-btn {
+                        display: none;
+                    }
+                    .vol-search-input {
+                        font-size: 0.85rem;
+                    }
+                }
+
+                /* Volunteer Feedback Shorts */
+                .vol-shorts-section {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 35px 5% 10px;
+                }
+
+                .vol-shorts-header {
+                    margin-bottom: 20px;
+                }
+
+                .vol-shorts-title {
+                    font-size: 1.25rem;
+                    font-weight: 800;
+                    color: #000000;
+                    margin: 0 0 4px 0;
+                    letter-spacing: -0.02em;
+                }
+
+                .vol-shorts-subtitle {
+                    font-size: 0.88rem;
+                    color: #64748b;
+                    margin: 0;
+                    font-weight: 400;
+                }
+
+                .vol-shorts-scroll-container {
+                    overflow-x: auto;
+                    padding-bottom: 20px;
+                    scrollbar-width: none; /* Firefox */
+                }
+                .vol-shorts-scroll-container::-webkit-scrollbar {
+                    display: none; /* Chrome, Safari, Opera */
+                }
+
+                .vol-shorts-track {
+                    display: flex;
+                    gap: 16px;
+                    min-width: max-content;
+                }
+
+                .vol-short-vid-card {
+                    position: relative;
+                    width: 260px;
+                    height: 420px; /* Reduced height */
+                    border-radius: 16px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    background: #000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .vol-short-vid-card:hover .vol-short-play-btn {
+                    transform: scale(1.1);
+                }
+
+                .vol-short-vid-card.playing .vol-short-play-btn {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                .vol-short-video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .vol-short-overlay-top {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 20px 15px;
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+                    text-align: center;
+                }
+
+                .vol-short-title {
+                    font-size: 1rem;
+                    font-weight: 800;
+                    color: #ffffff;
+                    margin: 0;
+                    line-height: 1.3;
+                    text-transform: uppercase;
+                }
+
+                .vol-short-play-btn {
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.8);
+                    color: #000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                    padding-left: 4px;
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                    z-index: 2;
+                }
+
+                .vol-short-overlay-bottom {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 20px 15px;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .vol-short-volume {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    z-index: 3;
+                    transition: background 0.3s;
+                }
+
+                .vol-short-volume:hover {
+                    background: rgba(0, 0, 0, 0.8);
+                }
+
+                .vol-short-handle {
+                    font-size: 0.75rem;
+                    color: #ffffff;
+                    font-weight: 700;
+                }
+
+                @media (max-width: 768px) {
+                    .vol-short-vid-card {
+                        width: 220px;
+                        height: 360px; /* Reduced mobile height */
+                    }
+                    .vol-shorts-section {
+                        padding: 25px 4% 5px;
+                    }
+                    .vol-shorts-title {
+                        font-size: 1.05rem;
+                    }
+                    .vol-shorts-subtitle {
+                        font-size: 0.78rem;
+                    }
+                    .vol-short-title {
+                        font-size: 0.85rem;
+                    }
+                }
                 `}
             </style>
 
-            {/* Hero Section - Matching Carenest Reference Design */}
-            <section className="giveback-hero-redesign">
-                <div className="giveback-hero-inner">
-                    {/* Left Column: Title, Subtitle, Button & Trust Bar */}
-                    <div className="giveback-hero-copy">
-                        <h1 className="carenest-hero-title">
-                            Volunteering That<br />
-                            Helps Children
-                        </h1>
-                        <p className="carenest-hero-desc">
-                            Giveback Journey is a volunteer and community initiative committed to supporting local Sri Lankan children through education, special needs care, protection, and village development.
-                        </p>
 
-                        {/* Action Pill Button with Accent Arrow Badge */}
-                        <Link to="/volunteer-inquiry" className="carenest-hero-btn">
-                            <span>Apply Now</span>
-                            <div className="carenest-btn-icon">
-                                <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </Link>
-
-                        {/* Overlapping Avatars Trust Bar */}
-                        <div className="carenest-hero-trust-bar">
-                            <div className="carenest-avatar-group">
-                                <img src={Volunteer1} alt="Volunteer 1" />
-                                <img src={Volunteer2} alt="Volunteer 2" />
-                                <img src={Volunteer3} alt="Volunteer 3" />
-                                <img src={yukiImg} alt="Volunteer 4" />
-                            </div>
-                            <span className="carenest-trust-text">
-                                Over <strong>1K+ volunteers</strong> have made an impact.
-                            </span>
-                        </div>
+            {/* Where to Volunteer? Hero Search Section */}
+            <section className="vol-search-hero">
+                <h1 className="vol-search-title">What to Volunteer?</h1>
+                <div className="vol-search-tabs">
+                    {[
+                        { label: 'Search All', icon: 'fa-solid fa-magnifying-glass', scrollTo: 'opportunities' },
+                        { label: 'Location', icon: 'fa-solid fa-location-dot', scrollTo: 'locations' },
+                        { label: 'Where We Stay', icon: 'fa-solid fa-house-chimney', scrollTo: null },
+                        { label: 'Projects', icon: 'fa-solid fa-clipboard-list', scrollTo: 'opportunities' },
+                        { label: 'Fees', icon: 'fa-solid fa-tag', scrollTo: 'pricing' },
+                    ].map((tab, i) => (
+                        <button
+                            key={tab.label}
+                            className={`vol-search-tab ${i === 0 ? 'active' : ''}`}
+                            onClick={(e) => {
+                                e.currentTarget.parentElement.querySelectorAll('.vol-search-tab').forEach(b => b.classList.remove('active'));
+                                e.currentTarget.classList.add('active');
+                                if (tab.scrollTo) {
+                                    document.getElementById(tab.scrollTo)?.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }}
+                        >
+                            <i className={tab.icon}></i> {tab.label}
+                        </button>
+                    ))}
+                </div>
+                <div className="vol-search-bar-wrapper" style={{ position: 'relative' }}>
+                    <div className="vol-search-bar">
+                        <i className="fa-solid fa-magnifying-glass vol-search-icon"></i>
+                        <input
+                            type="text"
+                            className="vol-search-input"
+                            placeholder="Programs, locations, causes..."
+                            value={searchQuery}
+                            onChange={(e) => {
+                                setSearchQuery(e.target.value);
+                                setShowSuggestions(true);
+                            }}
+                            onFocus={() => setShowSuggestions(true)}
+                            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth' });
+                                    setShowSuggestions(false);
+                                }
+                            }}
+                        />
+                        <Link to="/volunteer-inquiry" className="vol-search-ask-btn">Apply Now</Link>
+                        <button className="vol-search-btn" onClick={() => {
+                            document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth' });
+                            setShowSuggestions(false);
+                        }}>Search</button>
                     </div>
 
-                    {/* Right Floating Supporter Testimonial Card */}
-                    <div className="carenest-hero-card-right">
-                        <img src={nuweraEliyaImg} alt="Supporter Volunteer" className="carenest-card-avatar" />
-                        <div className="carenest-card-content">
-                            <p className="carenest-card-quote">
-                                "This organization makes it easy to understand where support goes. Knowing that my contribution directly helps local children is deeply fulfilling."
-                            </p>
-                            <h5 className="carenest-card-author">Emma Mitchell</h5>
-                            <span className="carenest-card-role">Volunteer Traveler, UK</span>
+                    {showSuggestions && searchQuery.trim() !== '' && (
+                        <div className="vol-search-suggestions">
+                            {filteredSuggestions.length > 0 ? (
+                                filteredSuggestions.map((prog, index) => (
+                                    <Link key={index} to={`/volunteer-program/${prog.id}`} className="vol-search-suggestion-item">
+                                        <i className="fa-solid fa-magnifying-glass suggestion-icon"></i>
+                                        <div className="suggestion-text">
+                                            <div className="suggestion-title">{prog.title}</div>
+                                            <div className="suggestion-location">{prog.location}</div>
+                                        </div>
+                                    </Link>
+                                ))
+                            ) : (
+                                <div className="vol-search-no-results">No projects found. Try another search.</div>
+                            )}
                         </div>
+                    )}
+                </div>
+            </section>
+
+            {/* Volunteer Feedback Shorts */}
+            <section className="vol-shorts-section">
+                <div className="vol-shorts-header">
+                    <h2 className="vol-shorts-title">Volunteer Feedback Shorts</h2>
+                    <p className="vol-shorts-subtitle">Real stories from our volunteers on the ground</p>
+                </div>
+                <div className="vol-shorts-scroll-container">
+                    <div className="vol-shorts-track">
+                        {[
+                            { title: "GIVING BACK TO GAIN SO MUCH MORE", handle: "@NELLYAROUNDTHEWORLD", video: feedbackVideo1 },
+                            { title: "PROTECTING THE SMALLEST CREATURES", handle: "@JIMMY__OUTDOORS", video: feedbackVideo2 },
+                            { title: "SAVING OUR OCEANS", handle: "@ARIELBREE_UNDERTHESEA", video: feedbackVideo3 },
+                            { title: "TRAVELING WITH PURPOSE", handle: "@ALEXANDRA.LAFOREST", video: feedbackVideo4 },
+                            { title: "EMBRACING AUTHENTIC VILLAGE LIFE", handle: "@MIA_AROUNDTHEWORLD", video: feedbackVideo5 }
+                        ].map((short, i) => (
+                            <div key={i} className="vol-short-vid-card" onClick={(e) => {
+                                const video = e.currentTarget.querySelector('video');
+                                if (video.paused) {
+                                    // Pause all other videos
+                                    document.querySelectorAll('.vol-short-video').forEach(v => {
+                                        if (v !== video) {
+                                            v.pause();
+                                            v.parentElement.classList.remove('playing');
+                                        }
+                                    });
+                                    video.play();
+                                    e.currentTarget.classList.add('playing');
+                                } else {
+                                    video.pause();
+                                    e.currentTarget.classList.remove('playing');
+                                }
+                            }}>
+                                <video src={short.video} loop muted playsInline className="vol-short-video"></video>
+                                <div className="vol-short-overlay-top">
+                                    <h3 className="vol-short-title">{short.title}</h3>
+                                </div>
+                                <div className="vol-short-volume" onClick={(e) => {
+                                    e.stopPropagation();
+                                    const video = e.currentTarget.parentElement.querySelector('video');
+                                    video.muted = !video.muted;
+                                    const icon = e.currentTarget.querySelector('i');
+                                    if (video.muted) {
+                                        icon.className = 'fa-solid fa-volume-xmark';
+                                    } else {
+                                        icon.className = 'fa-solid fa-volume-high';
+                                    }
+                                }}>
+                                    <i className="fa-solid fa-volume-xmark"></i>
+                                </div>
+                                <div className="vol-short-play-btn">
+                                    <i className="fa-solid fa-play"></i>
+                                </div>
+                                <div className="vol-short-overlay-bottom">
+                                    <div className="vol-short-handle">{short.handle}</div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -1725,7 +2210,7 @@ const VolunteerPage = () => {
             </div>
 
             {/* Section 4: Destinations Section */}
-            <div className="volunteer-section-wrapper bg-soft-blue" style={{ background: '#f8fafc' }}>
+            <div className="volunteer-section-wrapper bg-soft-blue" id="locations" style={{ background: '#f8fafc' }}>
                 <div className="volunteer-container" style={{ paddingBottom: 0 }}>
                     {/* Destinations Section */}
                     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0' }}>
@@ -2024,9 +2509,6 @@ const VolunteerPage = () => {
                     </section>
                 </div>
             </div>
-
-            {/* Ready, Save, GO! Promotional Countdown Banner */}
-            <ReadySaveGoBanner />
 
             {/* Volunteer Opportunities */}
             <VolunteerOpportunities />

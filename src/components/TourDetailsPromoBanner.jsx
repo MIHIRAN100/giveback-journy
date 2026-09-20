@@ -40,7 +40,7 @@ const TourDetailsPromoBanner = () => {
     return (
         <div style={{
             maxWidth: '1300px',
-            margin: '20px auto 0 auto',
+            margin: '20px auto 25px auto',
             padding: '0 5%',
             width: '100%',
             boxSizing: 'border-box'

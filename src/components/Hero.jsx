@@ -6,7 +6,12 @@ import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
 import HeroPromoBadge from './HeroPromoBadge';
 import heroLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
+import heroVideo1 from '../assets/hero/IMG_8432.MOV';
+import heroVideo2 from '../assets/hero/IMG_8436.MOV';
+import heroVideo3 from '../assets/hero/IMG_8433.MOV';
+import heroVideo4 from '../assets/hero/IMG_8437.MOV';
 
+const heroVideos = [heroVideo1, heroVideo2, heroVideo3, heroVideo4];
 
 const mobileImages = tourPackages.map(pkg => ({
     image: pkg.image,
@@ -30,7 +35,8 @@ const Hero = ({ onSearch }) => {
     const [isMuted, setIsMuted] = useState(true);
     const [currentSupportIndex, setCurrentSupportIndex] = useState(0);
     const [tickerStatus, setTickerStatus] = useState('idle');
-    const playerRef = React.useRef(null);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const videoRefs = React.useRef([]);
 
     React.useEffect(() => {
         const interval = setInterval(() => {
@@ -46,47 +52,37 @@ const Hero = ({ onSearch }) => {
         return () => clearInterval(interval);
     }, []);
 
+    // Handle seamless video playlist playback
     React.useEffect(() => {
-        // Load YouTube API if not already loaded
-        if (!window.YT) {
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        }
-
-        const initPlayer = () => {
-            new window.YT.Player('hero-youtube-player', {
-                events: {
-                    'onReady': (event) => {
-                        playerRef.current = event.target;
-                        if (isMuted) event.target.mute();
-                        else event.target.unMute();
-                        event.target.playVideo();
-                    },
-                    'onStateChange': (event) => {
-                        if (event.data === window.YT.PlayerState.ENDED) {
-                            event.target.playVideo();
-                        }
-                    }
+        videoRefs.current.forEach((videoEl, index) => {
+            if (!videoEl) return;
+            videoEl.muted = isMuted;
+            if (index === currentVideoIndex) {
+                videoEl.currentTime = 0;
+                const playPromise = videoEl.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {});
                 }
-            });
-        };
+            } else {
+                setTimeout(() => {
+                    if (videoEl && index !== currentVideoIndex) {
+                        videoEl.pause();
+                    }
+                }, 800);
+            }
+        });
+    }, [currentVideoIndex]);
 
-        if (window.YT && window.YT.Player) {
-            initPlayer();
-        } else {
-            window.onYouTubeIframeAPIReady = initPlayer;
-        }
-    }, []);
-
-    // Sync mute state with player
+    // Keep mute status synchronized across all videos
     React.useEffect(() => {
-        if (playerRef.current) {
-            if (isMuted) playerRef.current.mute();
-            else playerRef.current.unMute();
-        }
+        videoRefs.current.forEach((videoEl) => {
+            if (videoEl) videoEl.muted = isMuted;
+        });
     }, [isMuted]);
+
+    const toggleMute = () => {
+        setIsMuted((prev) => !prev);
+    };
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -168,23 +164,35 @@ const Hero = ({ onSearch }) => {
         <div className="hero-container-outer">
             <section className="hero">
                 <div className="hero-video-container">
-                <iframe 
-                    id="hero-youtube-player"
-                    className="hero-video active"
-                    src={`https://www.youtube.com/embed/rI6YayG2Qtk?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&origin=${window.location.origin}&playlist=rI6YayG2Qtk&loop=1`}
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title="Hero Background Video"
-                ></iframe>
-                <button 
-                    className="video-mute-toggle" 
-                    onClick={() => setIsMuted(!isMuted)}
-                    title={isMuted ? "Unmute" : "Mute"}
-                >
-                    <i className={isMuted ? "bi bi-volume-mute" : "bi bi-volume-up"}></i>
-                </button>
-            </div>
+                    {heroVideos.map((videoSrc, index) => {
+                        const isActive = index === currentVideoIndex;
+                        return (
+                            <video 
+                                key={index}
+                                ref={(el) => (videoRefs.current[index] = el)}
+                                className={`hero-video ${isActive ? 'active' : 'inactive'}`}
+                                autoPlay={index === 0}
+                                muted={isMuted}
+                                playsInline
+                                preload="auto"
+                                onEnded={() => {
+                                    setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
+                                }}
+                            >
+                                <source src={videoSrc} type="video/quicktime" />
+                                <source src={videoSrc} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        );
+                    })}
+                    <button 
+                        className="video-mute-toggle" 
+                        onClick={toggleMute}
+                        title={isMuted ? "Unmute" : "Mute"}
+                    >
+                        <i className={isMuted ? "bi bi-volume-mute" : "bi bi-volume-up"}></i>
+                    </button>
+                </div>
 
             {/* Bring a Friend Promo Banner Overlaying Video */}
             <HeroPromoBadge />
@@ -247,7 +255,7 @@ const Hero = ({ onSearch }) => {
                             <i className="bi bi-search"></i>
                             <input 
                                 type="text" 
-                                placeholder="Search for 'Sigiriya', '7 Days', 'Coastal Soul'..." 
+                                placeholder={typeof window !== 'undefined' && window.innerWidth <= 640 ? "Search tours, places..." : "Search for 'Sigiriya', '7 Days', 'Coastal Soul'..."} 
                                 value={searchTerm}
                                 onChange={handleSearchChange}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSearchSubmit()}

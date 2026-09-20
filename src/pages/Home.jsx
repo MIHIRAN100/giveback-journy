@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import TopDealsSection from '../components/TopDealsSection';
 import HomeMetricsSection from '../components/HomeMetricsSection';
-import FeaturesScroll from '../components/FeaturesScroll';
 import PartnerSlider from '../components/PartnerSlider';
 import WelcomeSriLanka from '../components/WelcomeSriLanka';
-import TrustReviewsSection from '../components/TrustReviewsSection';
 import TravelerMoments from '../components/TravelerMoments';
 import ExclusiveExperiences from '../components/ExclusiveExperiences';
 import FAQSection from '../components/FAQSection';
@@ -23,8 +21,6 @@ const Home = () => {
             <ScrollReveal><TopDealsSection /></ScrollReveal>
             <ScrollReveal><HomeMetricsSection /></ScrollReveal>
             <ScrollReveal><WelcomeSriLanka /></ScrollReveal>
-            <ScrollReveal><TrustReviewsSection /></ScrollReveal>
-            <ScrollReveal><FeaturesScroll /></ScrollReveal>
             <ScrollReveal><PackageHighlight /></ScrollReveal>
             <ScrollReveal><TravelerMoments /></ScrollReveal>
             <ScrollReveal><ExclusiveExperiences /></ScrollReveal>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const ChatBot = ({ cookieVisible, isTourDetails }) => {
+const ChatBot = ({ cookieVisible, isTourDetails, isVolunteerDetails }) => {
+    if (isVolunteerDetails) return null;
     const [isTidioOpen, setIsTidioOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [showNotification, setShowNotification] = useState(false);

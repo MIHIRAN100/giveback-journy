@@ -10,7 +10,7 @@ const TrustReviewsSection = () => {
                         <div className="trust-reviews-text">
                             <h3>Real Traveler Reviews</h3>
                             <p>
-                                Make every booking with peace of mind, thanks to <span className="highlight-link">genuine reviews from fellow travelers</span>. Explore firsthand accounts of trips, operators, and destinations to ensure your next adventure is exactly what you're looking for. Real experiences, real feedback, real inspiration.
+                                Book your Sri Lankan journey with complete peace of mind, backed by <span className="highlight-link">genuine reviews from fellow travelers & volunteers</span>. Explore firsthand accounts of curated tours, community projects, and island destinations to ensure your next adventure is exactly what you're looking for. Real experiences, real feedback, real impact.
                             </p>
                         </div>
                         <div className="trust-reviews-icon">
@@ -27,7 +27,7 @@ const TrustReviewsSection = () => {
                         <div className="trust-reviews-text">
                             <h3>Trust and Confidence</h3>
                             <p>
-                                Shop and book thousands of operators in one place with direct messaging, secure and flexible payment options, booking protection, 24/7 customer support, and additional perks. <span className="highlight-link">We've got your back</span>
+                                Plan your dream Sri Lanka tour or volunteer placement with our dedicated local team, featuring direct messaging, flexible booking protection, transparent pricing, 24/7 on-ground support, and personalized itineraries. <span className="highlight-link">We've got your back every step of the way</span>
                             </p>
                         </div>
                         <div className="trust-reviews-icon">
