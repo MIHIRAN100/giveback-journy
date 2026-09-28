@@ -968,7 +968,7 @@ h1, h2, h3, .logo-text {
     max-width: 1400px;
     margin: 0 auto;
     border-radius: 36px;
-    overflow: hidden;
+    overflow: visible;
     z-index: 20;
     display: flex;
     align-items: center;
@@ -992,6 +992,7 @@ h1, h2, h3, .logo-text {
     height: 100%;
     z-index: 1;
     overflow: hidden;
+    border-radius: 36px;
 }
 
 .hero-video-container iframe,
@@ -1453,56 +1454,114 @@ video.hero-video {
 
 .search-suggestions {
     position: absolute;
-    top: calc(100% + 15px);
-    left: 20px;
-    right: 20px;
-    background: rgba(18, 18, 18, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 15px;
-    z-index: 1000;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 8px 0;
+    z-index: 5000;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    animation: suggestionSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.suggestions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 4px;
+}
+
+.suggestions-header-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.suggestions-header-label i {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.suggestions-header-count {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #aaa;
 }
 
 .suggestion-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px 20px;
-    border-radius: 16px;
+    gap: 14px;
+    padding: 12px 24px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    color: rgba(255, 255, 255, 0.8);
+    transition: background 0.2s ease;
+    color: #222;
     text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
 }
 
 .suggestion-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-    transform: translateX(5px);
+    background: #f7f7f7;
+}
+
+.suggestion-icon-circle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green, #1ba352);
+    font-size: 1.05rem;
+    transition: transform 0.2s ease;
+}
+
+.suggestion-item:hover .suggestion-icon-circle {
+    transform: scale(1.08);
 }
 
 .suggestion-item i {
-    color: var(--primary-green);
+    color: var(--primary-green, #1ba352);
     font-size: 1rem;
 }
 
 .suggestion-info {
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .suggestion-title {
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1a1a1a;
 }
 
 .suggestion-meta {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    font-weight: 600;
+    font-size: 0.78rem;
+    color: #999;
+    font-weight: 400;
+}
+
+@keyframes suggestionSlideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
@@ -2647,6 +2706,66 @@ video.hero-video {
         font-size: 0.65rem;
     }
 
+    /* Responsive Grid */
+    @media (max-width: 768px) {
+        .who-we-are-header h2 {
+            font-size: 1.8rem;
+        }
+        
+        .who-moments-grid.scroll-row {
+            gap: 10px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        
+        .moment-card {
+            flex: 0 0 42vw;
+            height: 240px;
+            border-radius: 12px;
+        }
+
+        .moment-card.shorts-card {
+            flex: 0 0 42vw;
+            height: 240px;
+            border-radius: 12px;
+        }
+
+        .shorts-title-overlay {
+            font-size: 0.6rem !important;
+            padding: 10px 8px !important;
+        }
+
+        .shorts-handle-overlay {
+            font-size: 0.5rem !important;
+            padding: 6px 8px !important;
+        }
+
+        .shorts-play-button {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 0.75rem !important;
+        }
+
+        .mute-button-overlay {
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 0.6rem !important;
+            top: 6px !important;
+            right: 6px !important;
+        }
+
+        .moment-play-story-btn {
+            bottom: 100px;
+            padding: 4px 10px;
+            font-size: 0.6rem;
+        }
+
+        .moment-description {
+            font-size: 0.7rem;
+            -webkit-line-clamp: 2;
+        }
+    }
+
     .gyg-price-from {
         font-size: 0.72rem;
     }
@@ -2977,18 +3096,17 @@ video.hero-video {
 
 .search-suggestions {
     position: absolute;
-    top: calc(100% + 15px);
+    top: calc(100% + 12px);
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 24px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 25px 80px rgba(0,0,0,0.2);
-    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 8px 0;
     z-index: 5000;
-    animation: slideDown 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    max-height: 420px;
+    overflow-y: auto;
 }
 
 .itinerary-detailed-view {
@@ -6125,29 +6243,33 @@ video.hero-video {
 
 .search-suggestions {
     position: absolute;
-    top: calc(100% + 15px);
+    top: calc(100% + 12px);
     left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    right: 0;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 8px 0;
     z-index: 5000;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    max-height: 420px;
+    overflow-y: auto;
 }
 
 .suggestion-item {
-    padding: 15px 25px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
+    padding: 12px 24px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s ease;
+    color: #222;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .suggestion-item:hover {
-    background: rgba(27, 163, 82, 0.05);
+    background: #f7f7f7;
 }
 
 

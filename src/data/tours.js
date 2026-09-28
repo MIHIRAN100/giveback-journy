@@ -489,7 +489,7 @@ export const tourPackages = [
     {
         id: 8,
         name: "Kandy & Pinnawala Day Trip",
-        days: "1 Day (8:30 AM – Drop-off)",
+        days: "1 Day",
         startLocation: "Kandy (Hotels or residences)",
         endLocation: "Pinnawala / Kandy",
         description: "Embark on a deeply meaningful 1-day sanctuary and cultural journey starting and ending in Kandy. Specially designed for conscious travelers and animal lovers, this tour offers a rare, ethical perspective on elephant welfare alongside classic island heritage.\n\nYour day begins at a small-scale elephant rescue and rehabilitation center dedicated to providing individualized care, physical therapy, and emotional healing for rescued working elephants. Learn about Sri Lankan elephant history, assist dedicated caretakers with daily feeding, and observe these gentle giants in a peaceful, natural setting with a strict no-riding policy.\n\nFollowing a delicious traditional packed lunch along a scenic riverbank, visit the world-renowned Pinnawala Elephant Orphanage to witness large herds bathing and splashing in the river. Conclude your day trip with a drive back into Kandy, stopping at panoramic city viewpoints and traditional herbal gardens for a rich, well-rounded single-day experience.",

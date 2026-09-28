@@ -280,13 +280,19 @@ const Hero = ({ onSearch }) => {
 
                         {showSuggestions && suggestions.length > 0 && (
                             <div className="search-suggestions">
+                                <div className="suggestions-header">
+                                    <span className="suggestions-header-label"><i className="bi bi-compass"></i> Tours</span>
+                                    <span className="suggestions-header-count">{suggestions.length} {suggestions.length === 1 ? 'result' : 'results'}</span>
+                                </div>
                                 {suggestions.map((pkg) => (
                                     <div 
                                         key={pkg.id} 
                                         className="suggestion-item"
                                         onClick={() => handleSuggestionClick(pkg.name)}
                                     >
-                                        <i className="bi bi-geo-alt"></i>
+                                        <div className="suggestion-icon-circle">
+                                            <i className="bi bi-geo-alt-fill"></i>
+                                        </div>
                                         <div className="suggestion-info">
                                             <span className="suggestion-title">{pkg.name}</span>
                                             <span className="suggestion-meta">{pkg.days} • {pkg.price}</span>
