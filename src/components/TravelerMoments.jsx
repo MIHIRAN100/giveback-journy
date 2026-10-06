@@ -149,7 +149,7 @@ const TravelerMoments = () => {
             image: Volunteer2,
             video: TravelerVideo5,
             title: "Teaching in Kandy",
-            overlayTitle: "SAVING OUR OCEANS",
+            overlayTitle: "TEACHING ENGLISH TO KIDS",
             description: "Teaching with heart! Sharing English and learning so much from these inspiring, bright Sri Lankan students.",
             rating: "4.9"
         },

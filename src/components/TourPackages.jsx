@@ -445,6 +445,22 @@ const TourPackages = ({ searchTerm }) => {
         <section className="premium-filter-section" id="tours">
             <style>
                 {`
+                .premium-filter-section {
+                    padding-top: 70px !important;
+                }
+                .premium-filter-header {
+                    margin-top: 15px;
+                    margin-bottom: 35px;
+                }
+                .premium-filter-header h1::after {
+                    content: '';
+                    display: block;
+                    width: 140px;
+                    height: 4px;
+                    background: #3b7fba;
+                    border-radius: 4px;
+                    margin: 14px auto 0 auto;
+                }
                 .tours-page-layout {
                     display: grid;
                     grid-template-columns: 280px 1fr;
@@ -494,7 +510,6 @@ const TourPackages = ({ searchTerm }) => {
                 `}
             </style>
             <div className="premium-filter-header">
-                <span className="about-tag">Handpicked Journeys</span>
                 <h1>All Sri Lanka Tours & Meaningful Experiences in 2026</h1>
             </div>
 

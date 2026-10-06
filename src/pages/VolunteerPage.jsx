@@ -21,10 +21,12 @@ import educationImg from '../assets/IMG_5894.JPG.jpeg';
 import educationImg2 from '../assets/teaching volunteers/WhatsApp Image 2026-06-20 at 08.17.53.jpeg';
 import kandyImg from '../assets/photo-1642095012245-bda8033e8ee3.jpg';
 import galleImg from '../assets/photo-1547818832-470a7998a99a.jpg';
-import Volunteer1 from '../assets/volunteer_1.png';
-import Volunteer2 from '../assets/volunteer_2.png';
-import Volunteer3 from '../assets/volunteer_3.png';
+import img2741 from '../assets/teaching volunteers/IMG_2741.jpg';
+import paintingVolunteerImg from '../assets/WhatsApp Image 2026-06-20 at 08.24.00.jpeg';
 import nuweraEliyaImg from '../assets/Nuwera Eliya day tour.jpg';
+import gbRoundLogo from '../assets/gb_round_logo.png';
+import specialNeedsVolunteerImg from '../assets/special_needs_care_volunteer.jpg';
+import medicalVolunteerImg from '../assets/medical/1ac3d4dd-f770-49e7-9422-d5534d371855.jpg';
 
 const pricingPrograms = [
     {
@@ -248,6 +250,222 @@ const VolunteerPage = () => {
                 .volunteer-page {
                     background: #fff;
                     overflow-x: hidden;
+                }
+                
+                /* Modern Bento Hero Section */
+                .vol-modern-hero {
+                    background: #ffffff;
+                    padding: 50px 4% 60px;
+                    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                    box-sizing: border-box;
+                }
+
+                .vol-modern-hero-header {
+                    max-width: 820px;
+                    margin: 0 auto 45px auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                }
+
+                .vol-studio-badge {
+                    position: absolute;
+                    right: -80px;
+                    top: 10px;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    background: #f8fafc;
+                    padding: 6px 16px;
+                    border-radius: 100px;
+                    border: 1px solid #e2e8f0;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    color: #3b7fba;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                }
+
+                .vol-social-proof {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 12px;
+                    margin-bottom: 22px;
+                    font-size: 0.85rem;
+                    color: #64748b;
+                    font-weight: 500;
+                }
+
+                .vol-social-proof-avatars {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .vol-social-proof-avatars img {
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    border: 2px solid #ffffff;
+                    margin-left: -8px;
+                    object-fit: cover;
+                }
+
+                .vol-social-proof-avatars img:first-child {
+                    margin-left: 0;
+                }
+
+                .vol-modern-title {
+                    font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+                    font-weight: 800;
+                    line-height: 1.15;
+                    letter-spacing: -1.2px;
+                    color: #0f172a;
+                    margin: 0 0 18px 0;
+                    max-width: 780px;
+                }
+
+                .vol-modern-subtitle {
+                    font-size: 1.05rem;
+                    line-height: 1.65;
+                    color: #475569;
+                    max-width: 600px;
+                    margin: 0 auto 30px auto;
+                    font-weight: 400;
+                }
+
+                .vol-modern-actions {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 18px;
+                }
+
+                .vol-modern-btn-primary {
+                    background: #3b7fba;
+                    color: #ffffff !important;
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    padding: 12px 28px;
+                    border-radius: 100px;
+                    text-decoration: none;
+                    box-shadow: 0 4px 14px rgba(59, 127, 186, 0.35);
+                    transition: all 0.25s ease;
+                }
+
+                .vol-modern-btn-primary:hover {
+                    background: #2d6698;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 18px rgba(59, 127, 186, 0.45);
+                }
+
+                .vol-modern-btn-secondary {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    color: #334155;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                    text-decoration: none;
+                    cursor: pointer;
+                    transition: color 0.2s ease;
+                }
+
+                .vol-modern-btn-secondary:hover {
+                    color: #0f172a;
+                }
+
+                .vol-bento-grid {
+                    display: grid;
+                    grid-template-columns: 1.15fr 1fr 1.1fr 1.15fr 1.15fr;
+                    gap: 16px;
+                    max-width: 1320px;
+                    margin: 0 auto;
+                    align-items: end;
+                }
+
+                .vol-bento-col {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+
+                .vol-bento-card-img {
+                    border-radius: 18px;
+                    overflow: hidden;
+                    position: relative;
+                    background: #f1f5f9;
+                    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+                }
+
+                .vol-bento-card-img img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.4s ease;
+                }
+
+                .vol-bento-card-img:hover img {
+                    transform: scale(1.03);
+                }
+
+                .vol-bento-blue-card {
+                    background: linear-gradient(140deg, #2f699c 0%, #173759 55%, #0b1c2e 100%);
+                    color: #ffffff;
+                    padding: 22px 20px;
+                    border-radius: 18px;
+                    text-align: left;
+                    display: flex;
+                    align-items: center;
+                    font-size: 0.92rem;
+                    font-weight: 600;
+                    line-height: 1.45;
+                    box-shadow: 0 10px 28px rgba(11, 28, 46, 0.28);
+                    box-sizing: border-box;
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                }
+
+                .vol-bento-overlay-text {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 22px 20px;
+                    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 65%, transparent 100%);
+                    color: #ffffff;
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                    line-height: 1.4;
+                    text-align: left;
+                }
+
+                @media (max-width: 1200px) {
+                    .vol-studio-badge {
+                        position: static;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media (max-width: 992px) {
+                    .vol-bento-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 14px;
+                    }
+                    .vol-modern-hero {
+                        padding: 30px 4% 40px;
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    .vol-bento-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    .vol-bento-col {
+                        gap: 12px;
+                    }
                 }
                 
                 .giveback-hero-redesign {
@@ -1655,137 +1873,81 @@ const VolunteerPage = () => {
             </style>
 
 
-            {/* Where to Volunteer? Hero Search Section */}
-            <section className="vol-search-hero">
-                <h1 className="vol-search-title">What to Volunteer?</h1>
-                <div className="vol-search-tabs">
-                    {[
-                        { label: 'Search All', icon: 'fa-solid fa-magnifying-glass', scrollTo: 'opportunities' },
-                        { label: 'Location', icon: 'fa-solid fa-location-dot', scrollTo: 'locations' },
-                        { label: 'Where We Stay', icon: 'fa-solid fa-house-chimney', scrollTo: null },
-                        { label: 'Projects', icon: 'fa-solid fa-clipboard-list', scrollTo: 'opportunities' },
-                        { label: 'Fees', icon: 'fa-solid fa-tag', scrollTo: 'pricing' },
-                    ].map((tab, i) => (
-                        <button
-                            key={tab.label}
-                            className={`vol-search-tab ${i === 0 ? 'active' : ''}`}
+            {/* Bento Asymmetric Modern Hero Section */}
+            <section className="vol-modern-hero">
+                <div className="vol-modern-hero-header">
+                    <h1 className="vol-modern-title">
+                        One heart. One smile. One brighter future.
+                    </h1>
+
+                    <p className="vol-modern-subtitle">
+                        Share your surplus time, love, and skills with communities that need it most. Because every life we touch is one step closer to a brighter future.
+                    </p>
+
+                    <div className="vol-modern-actions">
+                        <Link to="/volunteer-inquiry" className="vol-modern-btn-primary">
+                            Apply Now
+                        </Link>
+                        <a 
+                            href="#opportunities" 
+                            className="vol-modern-btn-secondary"
                             onClick={(e) => {
-                                e.currentTarget.parentElement.querySelectorAll('.vol-search-tab').forEach(b => b.classList.remove('active'));
-                                e.currentTarget.classList.add('active');
-                                if (tab.scrollTo) {
-                                    document.getElementById(tab.scrollTo)?.scrollIntoView({ behavior: 'smooth' });
-                                }
+                                e.preventDefault();
+                                document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth' });
                             }}
                         >
-                            <i className={tab.icon}></i> {tab.label}
-                        </button>
-                    ))}
+                            Learn how it works <i className="fa-solid fa-chevron-right" style={{ fontSize: '0.75rem', marginLeft: '4px' }}></i>
+                        </a>
+                    </div>
                 </div>
-                <div className="vol-search-bar-wrapper" style={{ position: 'relative' }}>
-                    <div className="vol-search-bar">
-                        <i className="fa-solid fa-magnifying-glass vol-search-icon"></i>
-                        <input
-                            type="text"
-                            className="vol-search-input"
-                            placeholder="Programs, locations, causes..."
-                            value={searchQuery}
-                            onChange={(e) => {
-                                setSearchQuery(e.target.value);
-                                setShowSuggestions(true);
-                            }}
-                            onFocus={() => setShowSuggestions(true)}
-                            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth' });
-                                    setShowSuggestions(false);
-                                }
-                            }}
-                        />
-                        <Link to="/volunteer-inquiry" className="vol-search-ask-btn">Apply Now</Link>
-                        <button className="vol-search-btn" onClick={() => {
-                            document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth' });
-                            setShowSuggestions(false);
-                        }}>Search</button>
+
+                {/* 5-Column Asymmetric Bento Grid matching the reference */}
+                <div className="vol-bento-grid">
+                    {/* Column 1 */}
+                    <div className="vol-bento-col col-1">
+                        <div className="vol-bento-card-img" style={{ height: '330px' }}>
+                            <img src={img2741} alt="Volunteer teaching children" style={{ objectPosition: 'center 20%' }} />
+                        </div>
+                        <div className="vol-bento-blue-card" style={{ height: '130px' }}>
+                            <p style={{ margin: 0 }}>Be part of a growing community creating real change one day at a time.</p>
+                        </div>
                     </div>
 
-                    {showSuggestions && searchQuery.trim() !== '' && (
-                        <div className="vol-search-suggestions">
-                            {filteredSuggestions.length > 0 ? (
-                                filteredSuggestions.map((prog, index) => (
-                                    <Link key={index} to={`/volunteer-program/${prog.id}`} className="vol-search-suggestion-item">
-                                        <i className="fa-solid fa-magnifying-glass suggestion-icon"></i>
-                                        <div className="suggestion-text">
-                                            <div className="suggestion-title">{prog.title}</div>
-                                            <div className="suggestion-location">{prog.location}</div>
-                                        </div>
-                                    </Link>
-                                ))
-                            ) : (
-                                <div className="vol-search-no-results">No projects found. Try another search.</div>
-                            )}
+                    {/* Column 2 */}
+                    <div className="vol-bento-col col-2">
+                        <div className="vol-bento-card-img" style={{ height: '190px' }}>
+                            <img src={educationImg2} alt="Teaching volunteers" />
                         </div>
-                    )}
-                </div>
-            </section>
+                        <div className="vol-bento-card-img" style={{ height: '270px' }}>
+                            <img src={educationImg} alt="Volunteers in action" />
+                        </div>
+                    </div>
 
-            {/* Volunteer Feedback Shorts */}
-            <section className="vol-shorts-section">
-                <div className="vol-shorts-header">
-                    <h2 className="vol-shorts-title">Volunteer Feedback Shorts</h2>
-                    <p className="vol-shorts-subtitle">Real stories from our volunteers on the ground</p>
-                </div>
-                <div className="vol-shorts-scroll-container">
-                    <div className="vol-shorts-track">
-                        {[
-                            { title: "GIVING BACK TO GAIN SO MUCH MORE", handle: "@NELLYAROUNDTHEWORLD", video: feedbackVideo1 },
-                            { title: "PROTECTING THE SMALLEST CREATURES", handle: "@JIMMY__OUTDOORS", video: feedbackVideo2 },
-                            { title: "SAVING OUR OCEANS", handle: "@ARIELBREE_UNDERTHESEA", video: feedbackVideo3 },
-                            { title: "TRAVELING WITH PURPOSE", handle: "@ALEXANDRA.LAFOREST", video: feedbackVideo4 },
-                            { title: "EMBRACING AUTHENTIC VILLAGE LIFE", handle: "@MIA_AROUNDTHEWORLD", video: feedbackVideo5 }
-                        ].map((short, i) => (
-                            <div key={i} className="vol-short-vid-card" onClick={(e) => {
-                                const video = e.currentTarget.querySelector('video');
-                                if (video.paused) {
-                                    // Pause all other videos
-                                    document.querySelectorAll('.vol-short-video').forEach(v => {
-                                        if (v !== video) {
-                                            v.pause();
-                                            v.parentElement.classList.remove('playing');
-                                        }
-                                    });
-                                    video.play();
-                                    e.currentTarget.classList.add('playing');
-                                } else {
-                                    video.pause();
-                                    e.currentTarget.classList.remove('playing');
-                                }
-                            }}>
-                                <video src={short.video} loop muted playsInline className="vol-short-video"></video>
-                                <div className="vol-short-overlay-top">
-                                    <h3 className="vol-short-title">{short.title}</h3>
-                                </div>
-                                <div className="vol-short-volume" onClick={(e) => {
-                                    e.stopPropagation();
-                                    const video = e.currentTarget.parentElement.querySelector('video');
-                                    video.muted = !video.muted;
-                                    const icon = e.currentTarget.querySelector('i');
-                                    if (video.muted) {
-                                        icon.className = 'fa-solid fa-volume-xmark';
-                                    } else {
-                                        icon.className = 'fa-solid fa-volume-high';
-                                    }
-                                }}>
-                                    <i className="fa-solid fa-volume-xmark"></i>
-                                </div>
-                                <div className="vol-short-play-btn">
-                                    <i className="fa-solid fa-play"></i>
-                                </div>
-                                <div className="vol-short-overlay-bottom">
-                                    <div className="vol-short-handle">{short.handle}</div>
-                                </div>
+                    {/* Column 3 - Centerpiece hands together */}
+                    <div className="vol-bento-col col-3">
+                        <div className="vol-bento-card-img" style={{ height: '370px' }}>
+                            <img src={specialNeedsVolunteerImg} alt="Special needs care volunteer" style={{ objectPosition: 'center 35%' }} />
+                        </div>
+                    </div>
+
+                    {/* Column 4 - Large smiling kids card with text overlay */}
+                    <div className="vol-bento-col col-4">
+                        <div className="vol-bento-card-img" style={{ height: '476px' }}>
+                            <img src={medicalVolunteerImg} alt="Medical volunteers in Sri Lanka" style={{ objectPosition: 'center 15%' }} />
+                            <div className="vol-bento-overlay-text">
+                                Together, we can turn kindness into smiles.
                             </div>
-                        ))}
+                        </div>
+                    </div>
+
+                    {/* Column 5 */}
+                    <div className="vol-bento-col col-5">
+                        <div className="vol-bento-card-img" style={{ height: '330px' }}>
+                            <img src={paintingVolunteerImg} alt="Volunteer participating in community renovation" style={{ objectPosition: 'center center' }} />
+                        </div>
+                        <div className="vol-bento-blue-card" style={{ height: '130px' }}>
+                            <p style={{ margin: 0 }}>Together, we can turn compassion into smiles.</p>
+                        </div>
                     </div>
                 </div>
             </section>

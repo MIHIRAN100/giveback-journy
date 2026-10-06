@@ -3,10 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import TourPackages, { TourCard } from '../components/TourPackages';
 import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
 import SriLankaGlance from '../components/SriLankaGlance';
-import TrustReviewsSection from '../components/TrustReviewsSection';
 
 import { tourPackages } from '../data/tours';
-import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
+import heroBg from '../assets/tour_packages_hero.jpg';
 import brandLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
 
 const PackagesPage = () => {
@@ -24,7 +23,7 @@ const PackagesPage = () => {
 
     return (
         <div className="packages-page">
-            <div className="secondary-hero" style={{ backgroundImage: `url(${heroBg})` }}>
+            <div className="secondary-hero" style={{ backgroundImage: `url("${heroBg}")` }}>
                 <div className="hero-overlay"></div>
                 <div className="hero-content">
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '22px' }}>
@@ -38,8 +37,6 @@ const PackagesPage = () => {
                     <p>Discover every corner of the island with our signature tour plans.</p>
                 </div>
             </div>
-            
-            <TrustReviewsSection />
             
             <TourPackages searchTerm={searchTerm} />
 
