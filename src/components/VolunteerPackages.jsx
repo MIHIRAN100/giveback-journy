@@ -7,9 +7,11 @@ import renovationImg from '../assets/construction volunteer/WhatsApp Image 2026-
 import cultureImg from '../assets/culture_experience_sri_lanka_volunteer_1778936526264.png';
 import wildlifeImg from '../assets/volunteer-wildlife.png';
 import { useCurrency } from '../context/CurrencyContext';
+import { useProducts } from '../hooks/useProducts';
 
 const VolunteerPackages = ({ lightTheme = true }) => {
     const { formatPrice } = useCurrency();
+    const { products: dbProducts, loading } = useProducts('volunteer');
     const packages = [
         {
             duration: "2 Weeks",
@@ -70,6 +72,20 @@ const VolunteerPackages = ({ lightTheme = true }) => {
         }
     ];
 
+    const mappedDbProducts = (dbProducts || []).map(p => ({
+        duration: p.duration || p.details?.duration || "Variable",
+        title: p.name,
+        price: p.price ? `$${p.price.toLocaleString()}` : 'Free',
+        originalPrice: '',
+        image: p.featured_image || wildlifeImg,
+        features: p.details?.included_activities || [],
+        color: "#1ba352",
+        rating: 5.0,
+        gradient: "linear-gradient(135deg, #1ba352 0%, #168a45 100%)"
+    }));
+
+    const allPackages = [...packages, ...mappedDbProducts];
+
     return (
         <section className={`volunteer-packages-section ${!lightTheme ? 'dark-theme' : ''}`} style={{ padding: '60px 0', position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px' }}>
@@ -97,7 +113,7 @@ const VolunteerPackages = ({ lightTheme = true }) => {
                 WebkitOverflowScrolling: 'touch'
             }} className="no-scrollbar">
                 <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
-                {packages.map((pkg, i) => (
+                {allPackages.map((pkg, i) => (
                     <div key={i} className="volunteer-card-modern" style={{ 
                         flex: '0 0 360px',
                         background: 'white',

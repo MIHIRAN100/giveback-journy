@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { tourPackages } from '../data/tours';
+import { tourPackages as staticTourPackages } from '../data/tours';
 import { useCurrency } from '../context/CurrencyContext';
+import { useProducts } from '../hooks/useProducts';
 import cardLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
 
 export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
@@ -325,6 +326,25 @@ const PromoCountdownBanner = () => {
 };
 
 const TourPackages = ({ searchTerm }) => {
+    const { products: dbProducts, loading } = useProducts('tour');
+    
+    // Map DB products to match the static package structure
+    const mappedDbProducts = (dbProducts || []).map(p => ({
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        description: p.short_description || p.full_description || '',
+        price: p.price ? `$${p.price.toLocaleString()}` : '$0',
+        days: p.duration ? p.duration.split(' ')[0] : '1',
+        isVolunteer: false,
+        location: p.location || '',
+        category: p.product_type,
+        image: p.featured_image || '',
+        ...p.details
+    }));
+    
+    const allPackages = [...staticTourPackages, ...mappedDbProducts];
+
     const [filterCategory, setFilterCategory] = React.useState('all');
 
     // Sidebar Filter States
@@ -365,10 +385,10 @@ const TourPackages = ({ searchTerm }) => {
     // Check if the searchTerm is an exact match
     const searchLower = (searchTerm || "").toLowerCase();
     const exactMatch = searchLower.length > 2 
-        ? tourPackages.find(pkg => pkg.name.toLowerCase().includes(searchLower))
+        ? allPackages.find(pkg => pkg.name.toLowerCase().includes(searchLower))
         : null;
 
-    const filteredPackages = tourPackages.filter(pkg => {
+    const filteredPackages = allPackages.filter(pkg => {
         // Search Filter
         const searchWords = searchLower.split(' ').filter(w => w.length > 0);
         const searchMatch = searchWords.every(word => {

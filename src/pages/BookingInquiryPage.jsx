@@ -4,12 +4,15 @@ import { tourPackages } from '../data/tours';
 import { useCurrency } from '../context/CurrencyContext';
 import ScrollReveal from '../components/ScrollReveal';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../lib/supabase';
+import { useAuth } from '../context/AuthContext';
 import DocuSignModal from '../components/DocuSignModal';
 
 
 const BookingInquiryPage = () => {
-    const { id } = useParams();
+    const { user } = useAuth();
     const navigate = useNavigate();
+    const { id } = useParams();
     const [searchParams] = useSearchParams();
     const { formatPrice } = useCurrency();
     const initialTransport = searchParams.get('transport') || 'taxi';
@@ -182,6 +185,8 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
 =========================================================
 `;
 
+        const booking_reference = `GBJ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
         const templateParams = {
             name: formData.userName,
             email: cleanEmail,
@@ -211,7 +216,7 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
             referral: formData.referral,
             
             price: priceData.total,
-            booking_id: `GBJ-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
+            booking_id: booking_reference,
             submitted_at: new Date().toLocaleString(),
             to_email: "hello@givebackjourney.com",
             terms_agreed: "Yes (Verified via Checkout)",
@@ -219,14 +224,52 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
         };
 
         try {
-            // Send to Admin
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
-            // Send Confirmation to Customer
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY);
+            // Check session for logged in user
+            const { data: { session } } = await supabase.auth.getSession();
+            const currentUserId = session?.user?.id || null;
+
+            const cleanPrice = parseFloat(String(priceData.total).replace(/[^0-9.]/g, '')) || 0;
+
+            // 1. SAVE TO DATABASE FIRST
+            const { data: bookingData, error: bookingError } = await supabase
+                .from('bookings')
+                .insert({
+                    user_id: currentUserId,
+                    booking_reference: booking_reference,
+                    customer_name: formData.userName,
+                    customer_email: cleanEmail,
+                    customer_phone: formData.userPhone,
+                    legacy_product_name: pkg.name,
+                    legacy_product_type: 'tour',
+                    booking_date: formData.arrivalDate || new Date().toISOString().split('T')[0],
+                    participants: parseInt(formData.adults) + parseInt(formData.children || 0),
+                    amount_due: cleanPrice,
+                    amount_received: 0,
+                    currency: 'USD',
+                    payment_method: 'cash',
+                    payment_status: 'awaiting_payment',
+                    booking_status: 'pending',
+                    notes: `Transport: ${formData.transport}, Children: ${formData.childrenAges}\nDiet: ${formData.dietary}\nVolunteering: ${formData.wantsVolunteering ? 'Yes' : 'No'}\n${ndaManifest}`
+                })
+                
+                ;
+
+            if (bookingError) throw new Error("Database error: " + bookingError.message);
+
+            // 2. SEND EMAILJS NOTIFICATIONS (Do not block success if email fails)
+            try {
+                // Send to Admin
+                await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY);
+                // Send Confirmation to Customer
+                await emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY);
+            } catch (emailErr) {
+                console.error("EmailJS Error - Booking is in DB though:", emailErr);
+            }
+
             setSubmitted(true);
         } catch (err) {
-            console.error('Email error:', err);
-            setSubmitted(true); 
+            console.error('Database/Email error:', err);
+            alert('Something went wrong processing your booking: ' + err.message);
         } finally {
             setLoading(false);
             isSending.current = false;

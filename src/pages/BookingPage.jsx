@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../lib/supabase';
+import { useAuth } from '../context/AuthContext';
 import { tourPackages } from '../data/tours';
 import DocuSignModal from '../components/DocuSignModal';
 
@@ -13,11 +15,13 @@ const ADMIN_TEMPLATE_ID = 'template_pnw73ln';
 const CUSTOMER_TEMPLATE_ID = 'template_xd7jlaq';
 
 const BookingPage = () => {
+    const { user, profile } = useAuth();
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const pkgId = searchParams.get('id');
     const initialPrice = searchParams.get('price');
     const initialPackage = searchParams.get('package');
+    const initialType = searchParams.get('type'); // 'tour' or 'volunteer'
     
     const selectedPkg = tourPackages.find(p => p.id === parseInt(pkgId)) || null;
 
@@ -78,7 +82,19 @@ const BookingPage = () => {
                 joining_point: getDerivedJoiningPoint(selectedPkg)
             }));
         }
-    }, [selectedPkg]);
+
+        // Prefill user profile info if logged in
+        if (profile && !formData.first_name) {
+            const names = (profile.full_name || '').split(' ');
+            setFormData(prev => ({
+                ...prev,
+                first_name: names[0] || '',
+                last_name: names.slice(1).join(' ') || '',
+                email: profile.email || '',
+                phone: profile.phone || ''
+            }));
+        }
+    }, [selectedPkg, profile]);
 
     const handleNdaSignComplete = (envelopeId, signerName, signedDate) => {
         localStorage.setItem('nda_signed', 'true');
@@ -93,19 +109,20 @@ const BookingPage = () => {
         });
     };
 
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     const generateBookingId = () => {
-        const random = Math.floor(100000 + Math.random() * 900000);
-        return `BK-${random}`;
+        const year = new Date().getFullYear();
+        const random = Math.floor(1000 + Math.random() * 9000); // 4-digit random
+        return `GBJ-${year}-${random}`;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!termsAccepted) {
             alert('Please agree to the Terms & Conditions and Privacy Policy.');
             return;
@@ -115,11 +132,12 @@ const BookingPage = () => {
             return;
         }
         if (isSending.current) return;
+        
         isSending.current = true;
         setIsSubmitting(true);
         setStatus({ type: '', message: '' });
 
-        const booking_id = generateBookingId();
+        const booking_reference = generateBookingId();
         const submitted_at = new Date().toLocaleString();
 
         const ndaSignedName = localStorage.getItem('nda_signed_name') || '';
@@ -139,47 +157,89 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
             ...formData,
             name: `${formData.first_name} ${formData.last_name}`,
             notes: `${formData.notes}\n\n${ndaManifest}`,
-            booking_id,
+            booking_id: booking_reference,
             submitted_at,
-            to_email: "hello@givebackjourney.com",
+            to_email: formData.email, // using customer's email
             terms_agreed: "Yes (Verified via Checkout)",
             nda_agreed: ndaDetails.signed ? "Yes (DocuSign Verified)" : "Yes (Agreed via Checkout)"
         };
 
         try {
-            // Send to Admin
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                ADMIN_TEMPLATE_ID,
-                templateParams,
-                EMAILJS_PUBLIC_KEY
-            );
+            // Determine if it's a UUID product or legacy
+            const isUuid = pkgId && pkgId.includes('-');
+            const dbProductId = isUuid ? pkgId : null;
+            
+            const cleanPrice = parseFloat(formData.price.toString().replace(/[^0-9.]/g, '')) || 0;
+            const totalDue = cleanPrice * parseInt(formData.travelers);
+            const isVol = initialType === 'volunteer' || (selectedPkg && selectedPkg.isVolunteer);
 
-            // Send Confirmation to Customer
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                CUSTOMER_TEMPLATE_ID,
-                templateParams,
-                EMAILJS_PUBLIC_KEY
-            );
+            // 1. SAVE TO DATABASE FIRST
+            const { data: bookingData, error: bookingError } = await supabase
+                .from('bookings')
+                .insert({
+                    user_id: user ? user.id : null, // nullable for guests
+                    booking_reference: booking_reference,
+                    customer_name: templateParams.name,
+                    customer_email: formData.email,
+                    customer_phone: formData.phone,
+                    product_id: dbProductId,
+                    legacy_product_name: dbProductId ? null : formData.tour_package,
+                    legacy_product_type: dbProductId ? null : (isVol ? 'volunteer' : 'tour'),
+                    booking_date: formData.booking_date,
+                    participants: parseInt(formData.travelers),
+                    amount_due: totalDue,
+                    amount_received: 0,
+                    currency: 'USD',
+                    payment_method: 'cash',
+                    payment_status: 'awaiting_payment',
+                    booking_status: 'pending',
+                    notes: templateParams.notes
+                })
+                
+                ;
 
-            setStatus({ type: 'success', message: 'Booking submitted successfully!' });
-            setFormData({
-                first_name: '',
-                last_name: '',
-                email: '',
-                phone: '',
-                birthday: '',
-                tour_package: selectedPkg ? selectedPkg.name : '',
-                booking_date: '',
-                travelers: '1',
-                joining_point: 'Katunayake Airport',
-                price: initialPrice || (selectedPkg ? selectedPkg.price : ''),
-                notes: ''
-            });
+            if (bookingError) {
+                console.error("Database Insert Error:", bookingError);
+                throw new Error("Failed to secure booking in the database. " + (bookingError.message || ''));
+            }
+
+
+
+            // 3. SEND EMAILJS NOTIFICATIONS (Do not block success if email fails)
+            try {
+                // Send to Admin
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    ADMIN_TEMPLATE_ID,
+                    templateParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+
+                // Send Confirmation to Customer
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    CUSTOMER_TEMPLATE_ID,
+                    templateParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+            } catch (emailError) {
+                console.error('EmailJS Error - Booking is safely in DB though:', emailError);
+            }
+
+            setStatus({ type: 'success', message: `Booking successful! Your reference is ${booking_reference}. We will contact you soon.` });
+            
+            // Redirect after a short delay
+            setTimeout(() => {
+                if (user) {
+                    navigate('/account');
+                } else {
+                    navigate('/'); // Guest goes to home
+                }
+            }, 4000);
+
         } catch (error) {
-            console.error('EmailJS Error:', error);
-            setStatus({ type: 'error', message: 'Something went wrong. Please try again later.' });
+            console.error('Submission Error:', error);
+            setStatus({ type: 'error', message: error.message || 'Something went wrong processing your booking. Please try again.' });
         } finally {
             setIsSubmitting(false);
             isSending.current = false;

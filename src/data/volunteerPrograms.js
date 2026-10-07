@@ -1036,3 +1036,19 @@ export const volunteerPrograms = [
         }
     }
 ];
+
+import { supabase } from '../lib/supabase.js';
+if (supabase) {
+    try {
+        const { data, error } = await supabase.from('products').select('*').eq('product_type', 'volunteer').eq('active', true);
+        if (data && !error && data.length > 0) {
+            data.forEach(dbVol => {
+                const existing = volunteerPrograms.find(v => v.id === dbVol.slug || v.title === dbVol.name);
+                if (existing) {
+                    existing.title = dbVol.name;
+                    existing.price = dbVol.price || existing.price;
+                }
+            });
+        }
+    } catch(e) {}
+}

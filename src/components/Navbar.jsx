@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCompare } from '../context/CompareContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/brand_logo.png';
 import gbRoundLogo from '../assets/gb_round_logo.png';
 import AdBanner from './AdBanner';
 
-
 const Navbar = () => {
+    const { user, isAdmin } = useAuth();
     const { compareList } = useCompare();
     const { currency, setCurrency, currencies } = useCurrency();
     const location = useLocation();
@@ -227,6 +228,21 @@ const Navbar = () => {
                             <i className="bi bi-shuffle"></i>
                             {compareList.length > 0 && <span className="compare-badge">{compareList.length}</span>}
                         </Link>
+                        
+                        {isAdmin && (
+                            <Link to="/admin" className="nav-icon-link" style={{ position: 'relative', marginRight: '15px', color: 'var(--pitch-black)', fontSize: '1.2rem' }} title="Admin Dashboard">
+                                <i className="bi bi-shield-lock"></i>
+                            </Link>
+                        )}
+                        
+                        {user ? (
+                            <Link to="/account" className="nav-icon-link" style={{ position: 'relative', marginRight: '15px', color: 'var(--pitch-black)', fontSize: '1.2rem' }} title="My Account">
+                                <i className="bi bi-person-circle"></i>
+                            </Link>
+                        ) : (
+                            <Link to="/login" className="nav-item" style={{ marginRight: '15px', fontWeight: 'bold' }}>Log In</Link>
+                        )}
+                        
                         <Link to="/contact" className="btn-modern btn-black">Contact Us</Link>
                     </div>
 
@@ -364,6 +380,21 @@ const Navbar = () => {
                         )}
                     </div>
                 ))}
+                
+                <div className="mobile-nav-group">
+                    {user ? (
+                        <Link to="/account" className="nav-item mobile" onClick={toggleMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <i className="bi bi-person-circle"></i>
+                            <span>My Account</span>
+                        </Link>
+                    ) : (
+                        <Link to="/login" className="nav-item mobile" onClick={toggleMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <i className="bi bi-box-arrow-in-right"></i>
+                            <span>Log In</span>
+                        </Link>
+                    )}
+                </div>
+
                 <div className="mobile-nav-group" style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid #eee' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                         <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#999', letterSpacing: '1px' }}>Preferred Currency</label>

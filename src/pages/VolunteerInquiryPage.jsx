@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../lib/supabase';
+import { useAuth } from '../context/AuthContext';
 import DocuSignModal from '../components/DocuSignModal';
 import { useCurrency } from '../context/CurrencyContext';
 import { getProgramPriceDetails } from './VolunteerPage';
 
 const VolunteerInquiryPage = () => {
+    const { user } = useAuth();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const { formatPrice } = useCurrency();
@@ -235,14 +238,57 @@ const VolunteerInquiryPage = () => {
         };
 
         try {
-            await Promise.all([
-                emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY),
-                emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY)
-            ]);
+            // Check local session
+            const { data: { session } } = await supabase.auth.getSession();
+            const currentUserId = session?.user?.id || null;
+
+            const cleanPrice = priceDetails ? priceDetails.total : 0;
+            const booking_reference = `GBJ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            // 1. SAVE TO DATABASE FIRST
+            const { data: bookingData, error: bookingError } = await supabase
+                .from('bookings')
+                .insert({
+                    user_id: currentUserId,
+                    booking_reference: booking_reference,
+                    customer_name: formData.userName,
+                    customer_email: cleanEmail,
+                    customer_phone: formData.userPhone,
+                    legacy_product_name: `VOLUNTEER: ${formData.program}`,
+                    legacy_product_type: 'volunteer',
+                    booking_date: formData.startDate || new Date().toISOString().split('T')[0],
+                    participants: 1,
+                    amount_due: cleanPrice,
+                    amount_received: 0,
+                    currency: 'USD',
+                    payment_method: 'cash',
+                    payment_status: 'awaiting_payment',
+                    booking_status: 'pending',
+                    notes: `Project: ${formData.volunteerProject}\nDuration: ${formData.duration}`
+                })
+                
+                ;
+
+            if (bookingError) throw new Error("Database error: " + bookingError.message);
+
+
+
+            // Attach booking_reference to emails if possible
+            templateParams.booking_id = booking_reference;
+
+            try {
+                await Promise.all([
+                    emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParams, PUBLIC_KEY),
+                    emailjs.send(SERVICE_ID, TEMPLATE_ID_USER, templateParams, PUBLIC_KEY)
+                ]);
+            } catch (emailErr) {
+                console.error("EmailJS Error - Booking is in DB though:", emailErr);
+            }
+
             setSubmitted(true);
         } catch (err) {
-            console.error('Email error:', err);
-            setSubmitted(true); 
+            console.error('Database/Email error:', err);
+            alert('Something went wrong processing your application. Please try again: ' + err.message);
         } finally {
             setLoading(false);
             isSending.current = false;

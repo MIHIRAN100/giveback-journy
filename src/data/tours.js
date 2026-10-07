@@ -1484,3 +1484,19 @@ export const tourPackages = [
 ];
 
 export const TOURS_DATA = tourPackages;
+
+import { supabase } from '../lib/supabase.js';
+if (supabase) {
+    try {
+        const { data, error } = await supabase.from('products').select('*').eq('product_type', 'tour').eq('active', true);
+        if (data && !error && data.length > 0) {
+            data.forEach(dbTour => {
+                const existing = tourPackages.find(t => t.id === dbTour.slug || t.title === dbTour.name);
+                if (existing) {
+                    existing.title = dbTour.name;
+                    existing.price = dbTour.price || existing.price;
+                }
+            });
+        }
+    } catch(e) {}
+}
