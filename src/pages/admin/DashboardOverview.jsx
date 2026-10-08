@@ -134,8 +134,11 @@ const DashboardOverview = () => {
             })
             .subscribe();
 
+        const interval = setInterval(() => { fetchDashboardData(); }, 30000);
+
         return () => {
             supabase.removeChannel(channel);
+            clearInterval(interval);
         };
     }, []);
 
@@ -327,6 +330,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
 
 
