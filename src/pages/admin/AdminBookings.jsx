@@ -24,17 +24,17 @@ const AdminBookings = () => {
             const { data, error } = await supabase
                 .from('bookings')
                 .select(`
-                    id, booking_reference, booking_date, participants, amount_due, amount_received, currency, booking_status, payment_status, user_id,
+                    id, booking_reference, booking_date, participants, amount_due, amount_received, currency, created_at, booking_status, payment_status, user_id,
                     customer_name, customer_email, customer_phone, legacy_product_name, legacy_product_type,
                     products ( name, product_type ),
                     volunteer_details ( volunteer_status )
                 `)
                 .order('created_at', { ascending: false });
-
+            
             if (error) throw error;
             setBookings(data || []);
-        } catch (err) {
-            console.error('Error fetching bookings:', err);
+        } catch (error) {
+            console.error('Error fetching admin bookings:', error);
         } finally {
             setLoading(false);
         }
@@ -51,7 +51,7 @@ const AdminBookings = () => {
             payment_status: booking.payment_status || 'awaiting_payment',
             amount_received: booking.amount_received || 0,
             amount_due: booking.amount_due || 0,
-            volunteer_status: booking.volunteer_details?.volunteer_status || 'application_pending'
+            volunteer_status: booking.volunteer_details?.[0]?.volunteer_status || 'application_pending'
         });
         setIsManageModalOpen(true);
     };
@@ -68,25 +68,23 @@ const AdminBookings = () => {
                     amount_due: parseFloat(manageForm.amount_due)
                 })
                 .eq('id', selectedBooking.id);
-                
+            
             if (bookingError) throw bookingError;
-            
-            // Update volunteer details if applicable
+
+            // If it's a volunteer, update volunteer_details too
             if (selectedBooking.products?.product_type === 'volunteer' || selectedBooking.legacy_product_type === 'volunteer') {
-                if (selectedBooking.volunteer_details) {
-                    const { error: volError } = await supabase
-                        .from('volunteer_details')
-                        .update({ volunteer_status: manageForm.volunteer_status })
-                        .eq('booking_id', selectedBooking.id);
-                    if (volError) throw volError;
-                }
+                const { error: volError } = await supabase
+                    .from('volunteer_details')
+                    .update({ volunteer_status: manageForm.volunteer_status })
+                    .eq('booking_id', selectedBooking.id);
+                if (volError) throw volError;
             }
-            
+
             setIsManageModalOpen(false);
-            fetchBookings(); // Refresh data
-        } catch (err) {
-            console.error('Error updating:', err);
-            alert('Failed to update booking: ' + err.message);
+            fetchBookings();
+        } catch (error) {
+            console.error('Error updating booking:', error);
+            alert('Failed to save changes. ' + error.message);
         }
     };
 
@@ -95,125 +93,186 @@ const AdminBookings = () => {
             return;
         }
         try {
-            // Volunteer details will automatically be deleted if there is an ON DELETE CASCADE foreign key,
-            // but just to be safe, delete volunteer_details first.
-            if (selectedBooking.volunteer_details) {
-                await supabase.from('volunteer_details').delete().eq('booking_id', selectedBooking.id);
-            }
-            
-            const { error } = await supabase.from('bookings').delete().eq('id', selectedBooking.id);
+            const { error } = await supabase
+                .from('bookings')
+                .delete()
+                .eq('id', selectedBooking.id);
             if (error) throw error;
-            
             setIsManageModalOpen(false);
             fetchBookings();
-        } catch (err) {
-            console.error('Error deleting:', err);
-            alert('Failed to delete booking: ' + err.message);
+        } catch (error) {
+            console.error('Error deleting booking:', error);
+            alert('Failed to delete booking.');
         }
     };
 
     const filteredBookings = bookings.filter(b => {
         if (filterType === 'all') return true;
-        if (filterType === 'tour') return b.products?.product_type === 'tour' || b.legacy_product_type === 'tour';
-        if (filterType === 'volunteer') return b.products?.product_type === 'volunteer' || b.legacy_product_type === 'volunteer';
-        if (filterType === 'pending_payment') return b.payment_status === 'awaiting_payment' || b.payment_status === 'partially_paid';
-        return true;
+        return b.booking_status === filterType;
     });
 
+    const pendingBookingsCount = bookings.filter(b => b.booking_status === 'pending').length;
+    const missingPaymentsCount = bookings.filter(b => b.payment_status === 'awaiting_payment').length;
+    const newBookingsCount = bookings.filter(b => new Date(b.created_at) > new Date(Date.now() - 7*24*60*60*1000)).length;
+
     return (
-        <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-                <h1 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#0f172a', margin: '0', letterSpacing: '-1px' }}>Bookings</h1>
-                
-                <select 
-                    value={filterType} 
-                    onChange={e => setFilterType(e.target.value)}
-                    style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }}
-                >
-                    <option value="all">All Bookings</option>
-                    <option value="tour">Tours Only</option>
-                    <option value="volunteer">Volunteers Only</option>
-                    <option value="pending_payment">Pending Payments</option>
-                </select>
-            </div>
+        <div style={{ backgroundColor: '#f4f7f6', minHeight: '100%', padding: '40px', fontFamily: 'Inter, sans-serif' }}>
             
-            <div style={{ background: '#ffffff', borderRadius: '16px', padding: '0', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-                {loading ? (
-                    <p>Loading bookings...</p>
-                ) : (
-                    <div style={{ overflowX: 'auto' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                            <thead>
-                                <tr style={{ borderBottom: '2px solid #eee' }}>
-                                    <th style={{ padding: '16px 20px', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Reference</th>
-                                    <th style={{ padding: '16px 20px', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Customer</th>
-                                    <th style={{ padding: '16px 20px', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Product</th>
-                                    <th style={{ padding: '16px 20px', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Date & Pax</th>
-                                    <th style={{ padding: '16px 20px', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Financials</th>
-                                    <th style={{ padding: '16px 20px', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Status</th>
-                                    <th style={{ padding: '16px 20px', textAlign: 'right', color: '#64748b', fontSize: '0.8rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filteredBookings.map(b => (
-                                    <tr key={b.id} style={{ borderBottom: '1px solid #eee' }}>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9', fontWeight: 'bold', color: '#1a73e8' }}>
-                                            {b.booking_reference || b.id.split('-')[0]}
-                                        </td>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9' }}>
-                                            <div style={{ fontWeight: 'bold' }}>{b.customer_name || 'Guest'}</div>
-                                            <div style={{ fontSize: '0.85rem', color: '#666' }}>{b.customer_email || 'No email'}</div>
-                                        </td>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9' }}>
-                                            <div style={{ fontWeight: 'bold' }}>{b.products?.name || b.legacy_product_name || 'Custom Booking'}</div>
-                                            <div style={{ fontSize: '0.75rem', color: '#999', textTransform: 'uppercase', letterSpacing: '1px' }}>{b.products?.product_type || b.legacy_product_type || 'Unknown'}</div>
-                                        </td>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9' }}>
-                                            <div>{new Date(b.booking_date).toLocaleDateString()}</div>
-                                            <div style={{ fontSize: '0.85rem', color: '#666' }}>{b.participants} Pax</div>
-                                        </td>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9' }}>
-                                            <div style={{ fontWeight: 'bold' }}>{b.currency} {b.amount_due}</div>
-                                            <div style={{ fontSize: '0.85rem', color: b.amount_received < b.amount_due ? 'red' : 'green' }}>
-                                                Paid: {b.amount_received}
-                                            </div>
-                                        </td>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9' }}>
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'flex-start' }}>
-                                                <span style={{ 
-                                                    display: 'inline-block', padding: '4px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold',
-                                                    background: b.payment_status === 'paid' ? '#e6f4ea' : '#fff3e0',
-                                                    color: b.payment_status === 'paid' ? '#1e8e3e' : '#e65100'
-                                                }}>
-                                                    Pay: {b.payment_status.replace('_', ' ')}
-                                                </span>
-                                                <span style={{ 
-                                                    display: 'inline-block', padding: '4px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold',
-                                                    background: b.booking_status === 'confirmed' ? '#e3f2fd' : '#f5f5f5',
-                                                    color: b.booking_status === 'confirmed' ? '#1565c0' : '#666'
-                                                }}>
-                                                    Book: {b.booking_status}
-                                                </span>
-                                                {(b.products?.product_type === 'volunteer' || b.legacy_product_type === 'volunteer') && b.volunteer_details && (
-                                                    <span style={{ 
-                                                        display: 'inline-block', padding: '4px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold',
-                                                        background: '#f3e5f5', color: '#6a1b9a'
-                                                    }}>
-                                                        Vol: {b.volunteer_details.volunteer_status.replace(/_/g, ' ')}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </td>
-                                        <td style={{ padding: '20px', borderBottom: '1px solid #f1f5f9', textAlign: 'right' }}>
-                                            <button onClick={() => handleManageClick(b)} style={{ padding: '6px 12px', background: '#111', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>
-                                                Manage
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+            {/* Top Tabs (Groups / Clients style) */}
+            <div style={{ display: 'flex', gap: '15px', marginBottom: '30px' }}>
+                <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', backgroundColor: '#fcd34d', border: 'none', borderRadius: '25px', fontWeight: 'bold', fontSize: '0.9rem', cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+                    <i className="bi bi-people-fill"></i> All Bookings <span style={{ backgroundColor: '#111', color: '#fff', padding: '2px 8px', borderRadius: '10px', fontSize: '0.75rem' }}>{bookings.length}</span>
+                </button>
+                <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', backgroundColor: 'transparent', border: 'none', fontWeight: 'bold', fontSize: '0.9rem', color: '#666', cursor: 'pointer' }}>
+                    <i className="bi bi-person"></i> Clients
+                </button>
+            </div>
+
+            {/* Missing Data / Alerts Area */}
+            <div style={{ marginBottom: '15px' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: '700', color: '#111', marginBottom: '15px' }}>Action Required / Last 7 Days</h3>
+                <div style={{ display: 'flex', gap: '20px', overflowX: 'auto', paddingBottom: '10px' }}>
+                    
+                    {/* Card 1 */}
+                    <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', minWidth: '250px', border: '1px solid #eaeaea', boxShadow: '0 2px 10px rgba(0,0,0,0.02)', flex: 1 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#d32f2f', fontSize: '0.8rem', fontWeight: '600', marginBottom: '15px' }}>
+                            <i className="bi bi-airplane" style={{ color: '#111', fontSize: '1.2rem' }}></i>
+                            <span><i className="bi bi-exclamation-triangle"></i> Pending Approvals</span>
+                        </div>
+                        <div style={{ fontSize: '2rem', fontWeight: '800', color: '#111', marginBottom: '5px' }}>{pendingBookingsCount}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#666', display: 'flex', justifyContent: 'space-between' }}>
+                            Pending Confirmations <i className="bi bi-arrow-right"></i>
+                        </div>
                     </div>
+
+                    {/* Card 2 */}
+                    <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', minWidth: '250px', border: '1px solid #eaeaea', boxShadow: '0 2px 10px rgba(0,0,0,0.02)', flex: 1 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#d32f2f', fontSize: '0.8rem', fontWeight: '600', marginBottom: '15px' }}>
+                            <i className="bi bi-credit-card" style={{ color: '#111', fontSize: '1.2rem' }}></i>
+                            <span><i className="bi bi-exclamation-triangle"></i> Missing Payments</span>
+                        </div>
+                        <div style={{ fontSize: '2rem', fontWeight: '800', color: '#111', marginBottom: '5px' }}>{missingPaymentsCount}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#666', display: 'flex', justifyContent: 'space-between' }}>
+                            Awaiting Payment <i className="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    {/* Card 3 */}
+                    <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '12px', minWidth: '250px', border: '1px solid #eaeaea', boxShadow: '0 2px 10px rgba(0,0,0,0.02)', flex: 1 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#166534', fontSize: '0.8rem', fontWeight: '600', marginBottom: '15px' }}>
+                            <i className="bi bi-calendar-check" style={{ color: '#111', fontSize: '1.2rem' }}></i>
+                            <span><i className="bi bi-check-circle"></i> New This Week</span>
+                        </div>
+                        <div style={{ fontSize: '2rem', fontWeight: '800', color: '#111', marginBottom: '5px' }}>{newBookingsCount}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#666', display: 'flex', justifyContent: 'space-between' }}>
+                            Recent Bookings <i className="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    {/* Illustration Placeholder (Optional, just keeping layout structure) */}
+                    <div style={{ flex: 1, minWidth: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ color: '#aaa', fontSize: '0.8rem', textAlign: 'center' }}>
+                            <i className="bi bi-image" style={{ fontSize: '2rem', display: 'block', marginBottom: '10px' }}></i>
+                            Analytics Graphic
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {/* Filter Bar */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '15px' }}>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <button style={{ background: '#fff', border: '1px solid #ddd', padding: '8px 12px', borderRadius: '8px', cursor: 'pointer' }}><i className="bi bi-search"></i></button>
+                    <button style={{ background: '#fff', border: '1px solid #ddd', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '600', fontSize: '0.85rem' }}>
+                        <i className="bi bi-calendar"></i> This Month <i className="bi bi-chevron-right"></i>
+                    </button>
+                    <button style={{ background: '#fff', border: '1px solid #ddd', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '600', fontSize: '0.85rem' }}>
+                        <i className="bi bi-sliders"></i> More Filters
+                    </button>
+                </div>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <div style={{ display: 'flex', background: '#fff', border: '1px solid #ddd', borderRadius: '8px', overflow: 'hidden' }}>
+                        <button style={{ padding: '8px 12px', border: 'none', background: '#f5f5f5', cursor: 'pointer' }}><i className="bi bi-list"></i></button>
+                        <button style={{ padding: '8px 12px', border: 'none', background: '#fff', cursor: 'pointer' }}><i className="bi bi-grid"></i></button>
+                    </div>
+                    <button style={{ background: '#fff', border: '1px solid #ddd', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '600', fontSize: '0.85rem' }}>
+                        <i className="bi bi-download"></i> Export to csv
+                    </button>
+                </div>
+            </div>
+
+            {/* Bookings List (Row Cards) */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {loading ? (
+                    <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>Loading bookings...</div>
+                ) : filteredBookings.length === 0 ? (
+                    <div style={{ textAlign: 'center', padding: '40px', color: '#666', background: '#fff', borderRadius: '12px' }}>No bookings found.</div>
+                ) : (
+                    filteredBookings.map((booking, idx) => (
+                        <div key={idx} style={{ backgroundColor: '#fff', borderRadius: '12px', padding: '15px 20px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '15px', alignItems: 'center', border: '1px solid #eaeaea', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                            
+                            {/* Col 1: Customer */}
+                            <div>
+                                <div style={{ fontWeight: '700', color: '#111', marginBottom: '4px', fontSize: '0.9rem' }}>{booking.customer_name || 'Guest User'}</div>
+                                <div style={{ fontSize: '0.75rem', color: '#888', display: 'flex', gap: '10px' }}>
+                                    <span><i className="bi bi-people" style={{ marginRight: '3px' }}></i> {booking.participants}</span>
+                                    <span><i className="bi bi-envelope" style={{ marginRight: '3px' }}></i> {booking.customer_email?.substring(0,6)}..</span>
+                                </div>
+                            </div>
+
+                            {/* Col 2: Payment Status */}
+                            <div>
+                                <span style={{ 
+                                    padding: '4px 10px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase',
+                                    backgroundColor: booking.payment_status === 'paid' ? '#dcfce7' : booking.payment_status === 'partially_paid' ? '#e0f2fe' : '#ffedd5',
+                                    color: booking.payment_status === 'paid' ? '#166534' : booking.payment_status === 'partially_paid' ? '#0369a1' : '#c2410c'
+                                }}>
+                                    {booking.payment_status === 'paid' ? 'Full paid' : booking.payment_status === 'partially_paid' ? 'Partially paid' : 'Awaiting'}
+                                </span>
+                            </div>
+
+                            {/* Col 3: Dates */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: '700', color: '#111' }}>
+                                <div>{new Date(booking.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</div>
+                                <i className="bi bi-airplane" style={{ color: '#aaa', transform: 'rotate(45deg)' }}></i>
+                                <div>{new Date(booking.booking_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</div>
+                            </div>
+
+                            {/* Col 4: Activity / Type */}
+                            <div style={{ display: 'flex', gap: '5px' }}>
+                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: '0.75rem' }} title={booking.products?.product_type || booking.legacy_product_type}><i className="bi bi-compass"></i></div>
+                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: '0.75rem' }}><i className="bi bi-geo"></i></div>
+                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: '0.75rem' }}><i className="bi bi-camera"></i></div>
+                            </div>
+
+                            {/* Col 5: Status */}
+                            <div>
+                                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '4px', fontWeight: '600' }}>Booking</div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: '700', color: booking.booking_status === 'confirmed' ? '#166534' : '#d32f2f', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                    <i className={`bi bi-${booking.booking_status === 'confirmed' ? 'check-circle-fill' : 'exclamation-circle-fill'}`}></i>
+                                    {booking.booking_status === 'confirmed' ? 'Confirmed' : 'Pending'}
+                                </div>
+                            </div>
+
+                            {/* Col 6: Remaining Balance */}
+                            <div>
+                                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '4px', fontWeight: '600' }}>Remaining Balance</div>
+                                <div style={{ fontSize: '0.85rem', fontWeight: '800', color: '#111', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: (booking.amount_due - (booking.amount_received || 0)) > 0 ? '#0284c7' : '#166534' }}></div>
+                                    {booking.currency} {Math.max(0, booking.amount_due - (booking.amount_received || 0))}
+                                </div>
+                            </div>
+
+                            {/* Col 7: Actions */}
+                            <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '15px' }}>
+                                <button onClick={() => handleManageClick(booking)} style={{ background: 'none', border: 'none', color: '#666', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', fontWeight: '600' }}>
+                                    <i className="bi bi-pencil-square"></i> Edit
+                                </button>
+                                <i className="bi bi-three-dots-vertical" style={{ color: '#aaa', cursor: 'pointer' }}></i>
+                            </div>
+                        </div>
+                    ))
                 )}
             </div>
 
