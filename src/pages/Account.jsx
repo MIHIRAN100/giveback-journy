@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { supabase } from '../lib/supabase';
 import ScrollReveal from '../components/ScrollReveal';
 
 const bgColors = ['#e6f4ea', '#e8f0fe', '#fce8e6', '#f3e5f5'];
 const Account = () => {
     const { user, logOut } = useAuth();
+    const { formatPrice } = useCurrency();
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
     
@@ -404,7 +406,7 @@ const Account = () => {
                                         {bookings.slice(0, 3).map((booking, idx) => (
                                             <div key={idx}>
                                                 <div style={{ fontSize: '0.85rem', color: '#111', fontWeight: '600', marginBottom: '4px' }}>
-                                                    {booking.amount_due > 0 ? `${booking.currency} ${booking.amount_due}` : 'Fully Paid'} 
+                                                    {booking.amount_due > 0 ? formatPrice(booking.amount_due) : 'Fully Paid'} 
                                                     <span style={{ color: '#888', fontWeight: '400' }}> for {(booking.products?.name || booking.legacy_product_name || 'Custom Booking').substring(0, 15)}...</span>
                                                 </div>
                                                 <div style={{ fontSize: '0.75rem', color: '#888' }}>
@@ -428,13 +430,6 @@ const Account = () => {
                                 {bookings.map((booking, idx) => (
                                     <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                            <div style={{ width: '60px', height: '60px', borderRadius: '8px', backgroundColor: bgColors[idx % 4], overflow: 'hidden' }}>
-                                                {booking.products?.featured_image ? (
-                                                    <img src={booking.products?.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
-                                                ) : (
-                                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}><i className="bi bi-image"></i></div>
-                                                )}
-                                            </div>
                                             <div>
                                                 <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>{booking.products?.name || booking.legacy_product_name || 'Custom Booking'}</div>
                                                 <div style={{ fontSize: '0.85rem', color: '#666' }}>Ref: {booking.booking_reference || booking.id.split('-')[0]} • Date: {new Date(booking.booking_date).toLocaleDateString()}</div>
@@ -462,7 +457,7 @@ const Account = () => {
                                             <div style={{ fontSize: '0.85rem', color: '#666' }}>Ref: {booking.booking_reference || booking.id.split('-')[0]}</div>
                                         </div>
                                         <div style={{ textAlign: 'right' }}>
-                                            <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#111', marginBottom: '5px' }}>{booking.amount_due > 0 ? `${booking.currency} ${booking.amount_due}` : 'Fully Paid'}</div>
+                                            <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#111', marginBottom: '5px' }}>{booking.amount_due > 0 ? formatPrice(booking.amount_due) : 'Fully Paid'}</div>
                                             <div style={{ fontSize: '0.85rem', fontWeight: '600', color: booking.payment_status === 'paid' ? 'green' : '#d32f2f', textTransform: 'capitalize' }}>{booking.payment_status.replace('_', ' ')}</div>
                                         </div>
                                     </div>
