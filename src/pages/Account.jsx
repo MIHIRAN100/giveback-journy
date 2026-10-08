@@ -171,7 +171,7 @@ const Account = () => {
     const shortId = user?.id ? user.id.substring(0, 8).toUpperCase() : 'UNKNOWN';
 
     return (
-        <div style={{ backgroundColor: '#fafafa', minHeight: '100vh', paddingTop: '90px', paddingBottom: '60px', fontFamily: 'Inter, sans-serif' }}>
+        <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', paddingTop: '90px', paddingBottom: '60px', fontFamily: 'Inter, sans-serif' }}>
             
             {/* Top Header & Tabs */}
             <div style={{ backgroundColor: '#fff', borderBottom: '1px solid #eaeaea', padding: '20px 5% 0 5%' }}>
@@ -197,7 +197,7 @@ const Account = () => {
                                     fontSize: '0.9rem',
                                     fontWeight: activeTab === tab ? '600' : '500',
                                     color: activeTab === tab ? '#111' : '#666',
-                                    borderBottom: activeTab === tab ? '2px solid #111' : '2px solid transparent',
+                                    borderBottom: activeTab === tab ? '3px solid #111' : '3px solid transparent', color: activeTab === tab ? '#111' : '#888',
                                     transition: 'all 0.2s ease'
                                 }}
                             >
@@ -211,15 +211,15 @@ const Account = () => {
             <div style={{ maxWidth: '1400px', margin: '30px auto', padding: '0 5%', display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
                 
                 {/* LEFT SIDEBAR (Profile Info) */}
-                <div style={{ width: '100%', maxWidth: '300px', flexShrink: 0 }}>
+                <div style={{ width: '100%', maxWidth: '320px', flexShrink: 0, backgroundColor: '#fff', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)', height: 'fit-content' }}>
                     
                     {/* User Header */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '30px' }}>
-                        <div style={{ position: 'relative', width: '70px', height: '70px' }}>
+                        <div style={{ position: 'relative', width: '85px', height: '85px' }}>
                             {profile.profile_photo ? (
-                                <img src={profile.profile_photo} alt="Profile" style={{ width: '100%', height: '100%', borderRadius: '16px', objectFit: 'cover' }} />
+                                <img src={profile.profile_photo} alt="Profile" style={{ width: '100%', height: '100%', borderRadius: '50%', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
                             ) : (
-                                <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundColor: '#e88931', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                <div style={{ width: '100%', height: '100%', borderRadius: '50%', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', background: 'linear-gradient(135deg, #111 0%, #333 100%)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 'bold' }}>
                                     {getInitials(profile.full_name)}
                                 </div>
                             )}
@@ -312,7 +312,7 @@ const Account = () => {
                     {activeTab === 'Overview' && (
                         <>
                             {/* Top Table Area (Mimicking "Job Information") -> We use it for "Upcoming Journeys" */}
-                            <div style={{ marginBottom: '40px' }}>
+                            <div style={{ marginBottom: '40px', backgroundColor: '#fff', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                                     <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>Journey Itinerary</h3>
                                     <button onClick={() => navigate('/packages')} style={{ background: 'none', border: 'none', color: '#d32f2f', fontSize: '0.85rem', cursor: 'pointer', fontWeight: '600' }}>
@@ -420,7 +420,7 @@ const Account = () => {
                             <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>All Bookings</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 {bookings.map((booking, idx) => (
-                                    <div key={idx} style={{ padding: '20px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #eaeaea', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                             <div style={{ width: '60px', height: '60px', borderRadius: '8px', backgroundColor: '#eee', overflow: 'hidden' }}>
                                                 {booking.products?.featured_image ? (
@@ -450,7 +450,7 @@ const Account = () => {
                             <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>All Payments</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 {bookings.map((booking, idx) => (
-                                    <div key={idx} style={{ padding: '20px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #eaeaea', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div>
                                             <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>Payment for {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}</div>
                                             <div style={{ fontSize: '0.85rem', color: '#666' }}>Ref: {booking.booking_reference || booking.id.split('-')[0]}</div>
