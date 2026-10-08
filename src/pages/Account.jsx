@@ -189,10 +189,10 @@ const Account = () => {
         <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', paddingTop: '90px', paddingBottom: '60px', fontFamily: 'Inter, sans-serif' }}>
             
             {/* Top Header & Tabs */}
-            <div style={{ backgroundColor: '#fff', borderBottom: '1px solid #eaeaea', padding: '20px 5% 0 5%' }}>
+            <div style={{ backgroundColor: '#1a2332', borderBottom: '1px solid #0f1620', padding: '20px 5% 0 5%' }}>
                 <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
-                        <h1 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '700', color: '#111' }}>Profile</h1>
+                        <h1 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '700', color: '#fff' }}>Profile</h1>
                         
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
                             <button 
@@ -202,7 +202,7 @@ const Account = () => {
                                 Log Out
                             </button>
                             {profile.country && (
-                                <div style={{ fontSize: '0.75rem', color: '#666', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
+                                <div style={{ fontSize: '0.75rem', color: '#aaa', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
                                     {getCountryCode(profile.country) ? (
                                         <img src={`https://flagcdn.com/w20/${getCountryCode(profile.country)}.png`} alt={profile.country} style={{ width: '16px', height: '11px', borderRadius: '2px' }} />
                                     ) : (
@@ -225,7 +225,7 @@ const Account = () => {
                                     fontSize: '0.9rem',
                                     fontWeight: activeTab === tab ? '600' : '500',
                                     color: activeTab === tab ? '#111' : '#666',
-                                    borderBottom: activeTab === tab ? '3px solid var(--primary-green)' : '3px solid transparent', color: activeTab === tab ? 'var(--primary-green)' : '#888',
+                                    borderBottom: activeTab === tab ? '3px solid var(--primary-green)' : '3px solid transparent', color: activeTab === tab ? 'var(--primary-green)' : '#aaa',
                                     transition: 'all 0.2s ease'
                                 }}
                             >
