@@ -26,7 +26,7 @@ const AdminBookings = () => {
                 .from('bookings')
                 .select(`
                     id, booking_reference, booking_date, participants, amount_due, amount_received, currency, booking_status, discount_given, payment_status, user_id,
-                    customer_name, customer_email, customer_phone, legacy_product_name, legacy_product_type,
+                    customer_name, customer_email, customer_phone, legacy_product_name, legacy_product_type, discount_given,
                     products ( name, product_type ),
                     volunteer_details ( volunteer_status )
                 `)
@@ -63,6 +63,7 @@ const AdminBookings = () => {
             payment_status: booking.payment_status || 'awaiting_payment',
             amount_received: booking.amount_received || 0,
             amount_due: booking.amount_due || 0,
+            discount_given: booking.discount_given || 0,
               discount_given: booking.discount_given || 0,
             volunteer_status: booking.volunteer_details?.volunteer_status || 'application_pending'
         });
@@ -79,6 +80,7 @@ const AdminBookings = () => {
                     payment_status: manageForm.payment_status,
                     amount_received: parseFloat(manageForm.amount_received),
                     amount_due: parseFloat(manageForm.amount_due),
+                    discount_given: parseFloat(manageForm.discount_given) || 0,
                     discount_given: parseFloat(manageForm.discount_given || 0)
                 })
                 .eq('id', selectedBooking.id);
