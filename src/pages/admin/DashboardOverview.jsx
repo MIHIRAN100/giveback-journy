@@ -72,7 +72,7 @@ const DashboardOverview = () => {
 
                 if (bookingsData) {
                     bookingsData.forEach(b => {
-                        revenue += (b.amount_due || 0);
+                        if (b.booking_status !== 'cancelled' && b.booking_status !== 'canceled') { revenue += (Number(b.amount_due) || 0); }
                         if (b.booking_status === 'confirmed') {
                             active++;
                             confirmed++;
@@ -321,6 +321,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
 
 
