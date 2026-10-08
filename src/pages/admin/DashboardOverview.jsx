@@ -178,7 +178,7 @@ const DashboardOverview = () => {
                     trend="+8.4%" 
                 />
                 <StatCard 
-                    title="Total Orders" 
+                    title="Total Bookings" 
                     value={stats.recentBookings.length} 
                     icon="bi-box-seam" 
                     color="#8b5cf6"
@@ -213,10 +213,10 @@ const DashboardOverview = () => {
             {/* Main Content Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
                 
-                {/* Recent Orders Table */}
+                {/* Recent Bookings Table */}
                 <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
-                        <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: '700', color: '#111' }}>Recent Orders</h2>
+                        <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: '700', color: '#111' }}>Recent Bookings</h2>
                         <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
                     </div>
 
