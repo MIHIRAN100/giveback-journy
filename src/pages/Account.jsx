@@ -205,8 +205,8 @@ const Account = () => {
                         </div>
                     </div>
                     
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid transparent' }}>
-    <div style={{ display: 'flex', gap: '30px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid transparent', flexWrap: 'wrap', gap: '15px' }}>
+    <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
         {['Overview', 'Bookings', 'Payments'].map(tab => (
             <div 
                 key={tab}
@@ -338,7 +338,7 @@ const Account = () => {
                 </div>
 
                 {/* RIGHT CONTENT AREA */}
-                <div style={{ flex: 1, minWidth: '300px' }}>
+                <div style={{ flex: 1, minWidth: '280px' }}>
                     
                     {activeTab === 'Overview' && (
                         <>
@@ -397,7 +397,7 @@ const Account = () => {
                             </div>
 
                             {/* Bottom Split Area (Mimicking "Activity" and "Compensation") */}
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px' }}>
                                 
                                 {/* Bookings Activity */}
                                 <div style={{ backgroundColor: 'transparent', padding: '10px 0' }}>
@@ -456,7 +456,7 @@ const Account = () => {
                             <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>All Bookings</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 {bookings.map((booking, idx) => (
-                                    <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                             <div>
                                                 <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>{booking.products?.name || booking.legacy_product_name || 'Custom Booking'}</div>
@@ -479,7 +479,7 @@ const Account = () => {
                             <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>All Payments</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 {bookings.map((booking, idx) => (
-                                    <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
                                         <div>
                                             <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>Payment for {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}</div>
                                             <div style={{ fontSize: '0.85rem', color: '#666' }}>Ref: {booking.booking_reference || booking.id.split('-')[0]}</div>
