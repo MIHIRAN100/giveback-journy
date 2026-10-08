@@ -335,17 +335,22 @@ const Account = () => {
                                         <tbody>
                                             {bookings.slice(0, 4).map((booking, idx) => (
                                                 <tr key={idx} style={{ borderBottom: '1px solid #f5f5f5' }}>
-                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                                        <div style={{ width: '36px', height: '36px', borderRadius: '6px', backgroundColor: bgColors[idx % 4], overflow: 'hidden', flexShrink: 0 }}>
-                                                            {booking.products?.featured_image ? (
-                                                                <img src={booking.products.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
-                                                            ) : (
-                                                                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}><i className="bi bi-image"></i></div>
-                                                            )}
-                                                        </div>
+                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold' }}>
                                                         {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}
                                                     </td>
-                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold', textTransform: 'capitalize' }}>{booking.booking_status}</td>
+                                                    <td style={{ padding: '15px 0' }}>
+                                                        <span style={{ 
+                                                            padding: '4px 10px', 
+                                                            borderRadius: '20px', 
+                                                            fontSize: '0.75rem', 
+                                                            fontWeight: 'bold', 
+                                                            textTransform: 'uppercase',
+                                                            backgroundColor: booking.booking_status === 'confirmed' ? '#dcfce7' : '#fef3c7',
+                                                            color: booking.booking_status === 'confirmed' ? '#166534' : '#92400e'
+                                                        }}>
+                                                            {booking.booking_status}
+                                                        </span>
+                                                    </td>
                                                     <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold' }}>{new Date(booking.booking_date).toLocaleDateString()}</td>
                                                     <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold' }}>{booking.participants}</td>
                                                     <td style={{ padding: '15px 0', color: '#666', textAlign: 'right' }}><i className="bi bi-three-dots"></i></td>
