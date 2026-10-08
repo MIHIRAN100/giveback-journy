@@ -304,9 +304,8 @@ const AdminBookings = () => {
                                 <button onClick={() => setIsManageModalOpen(false)} style={{ flex: 1, padding: '12px', background: '#eee', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>Cancel</button>
                                 <button onClick={handleSaveManage} style={{ flex: 1, padding: '12px', background: '#0f172a', color: 'white', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>Save Changes</button>
                             </div>
-                            <button onClick={handleDeleteBooking} style={{ width: '100%', padding: '12px', background: '#fff', border: '1px solid #ef4444', color: '#ef4444', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s' }}>
-                                Delete Booking
-                            </button>
+                            {manageForm.booking_status === 'cancelled' && <button onClick={handleDeleteBooking} style={{ width: '100%', padding: '12px', background: '#fff', border: '1px solid #ef4444', color: '#ef4444', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s' }}>
+                                Delete Booking</button>}
                         </div>
                     </div>
                 </div>
@@ -316,3 +315,4 @@ const AdminBookings = () => {
 };
 
 export default AdminBookings;
+

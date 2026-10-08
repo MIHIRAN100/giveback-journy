@@ -186,6 +186,12 @@ const DashboardOverview = () => {
                     icon="bi-heart-fill" 
                     color="#ec4899"
                 />
+                <StatCard 
+                    title="Cancellations" 
+                    value={stats.cancelledBookings} 
+                    icon="bi-x-circle-fill" 
+                    color="#e11d48"
+                />
             </div>
 
             {/* Main Content Grid */}
@@ -299,4 +305,6 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
+
 
