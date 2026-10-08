@@ -39,7 +39,10 @@ const DashboardOverview = () => {
         totalRevenue: 0,
         activeBookings: 0,
         totalCustomers: 0,
-        recentBookings: []
+        recentBookings: [],
+        pendingBookings: 0,
+        confirmedBookings: 0,
+        topTours: []
     });
     const [loading, setLoading] = useState(true);
 
@@ -49,28 +52,48 @@ const DashboardOverview = () => {
                 // Fetch recent bookings
                 const { data: bookingsData } = await supabase
                     .from('bookings')
-                    .select('id, amount_due, created_at, customer_name, customer_email, payment_status, booking_status, products(name)')
-                    .order('created_at', { ascending: false })
-                    .limit(10);
+                    .select('id, amount_due, created_at, customer_name, customer_email, payment_status, booking_status, legacy_product_name, products(name)')
+                    .order('created_at', { ascending: false });
 
                 // Calculate stats
                 let revenue = 0;
                 let active = 0;
+                let pending = 0;
+                let confirmed = 0;
                 const uniqueCustomers = new Set();
+                const tourCounts = {};
 
                 if (bookingsData) {
                     bookingsData.forEach(b => {
                         revenue += (b.amount_due || 0);
-                        if (b.booking_status === 'confirmed') active++;
+                        if (b.booking_status === 'confirmed') {
+                            active++;
+                            confirmed++;
+                        }
+                        if (b.booking_status === 'pending') {
+                            pending++;
+                        }
                         if (b.customer_email) uniqueCustomers.add(b.customer_email);
+
+                        const tourName = b.products?.name || b.legacy_product_name || 'Custom Booking';
+                        tourCounts[tourName] = (tourCounts[tourName] || 0) + 1;
                     });
                 }
+
+                // Sort top tours
+                const sortedTours = Object.keys(tourCounts).map(name => ({
+                    name,
+                    count: tourCounts[name]
+                })).sort((a, b) => b.count - a.count).slice(0, 3);
 
                 setStats({
                     totalRevenue: revenue,
                     activeBookings: active,
                     totalCustomers: uniqueCustomers.size,
-                    recentBookings: bookingsData || []
+                    recentBookings: bookingsData ? bookingsData.slice(0, 10) : [],
+                    pendingBookings: pending,
+                    confirmedBookings: confirmed,
+                    topTours: sortedTours
                 });
             } catch (err) {
                 console.error(err);
@@ -87,7 +110,7 @@ const DashboardOverview = () => {
     return (
         <div>
             {/* Header Area */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap', gap: '15px' }}>
                 <h1 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800', color: '#111' }}>Dashboard</h1>
                 
                 <div style={{ display: 'flex', gap: '10px' }}>
@@ -169,7 +192,7 @@ const DashboardOverview = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td style={{ padding: '16px 0', color: '#475569', fontWeight: '500' }}>{b.products?.name || 'Custom Booking'}</td>
+                                        <td style={{ padding: '16px 0', color: '#475569', fontWeight: '500' }}>{b.products?.name || b.legacy_product_name || 'Custom Booking'}</td>
                                         <td style={{ padding: '16px 0', color: '#10b981', fontWeight: '700' }}>{formatPrice(b.amount_due)}</td>
                                         <td style={{ padding: '16px 0' }}>
                                             <span style={{ 
@@ -190,40 +213,52 @@ const DashboardOverview = () => {
                     </div>
                 </div>
 
-                {/* Right Column (Placeholder for charts) */}
+                {/* Right Column (Cards) */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                     
-                    {/* Activity Widget */}
+                    {/* Booking Status Breakdown Widget */}
                     <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                            <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>System Status</h2>
+                            <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>Booking Status</h2>
                             <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}><i className="bi bi-server"></i></div>
-                                <div>
-                                    <div style={{ fontWeight: '700', color: '#111', fontSize: '0.9rem' }}>Database Active</div>
-                                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Connected to Supabase</div>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#dcfce7', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}><i className="bi bi-check-circle-fill"></i></div>
+                                <div style={{ flex: 1 }}>
+                                    <div style={{ fontWeight: '700', color: '#111', fontSize: '0.95rem' }}>Confirmed</div>
+                                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Ready for travel</div>
                                 </div>
+                                <div style={{ fontWeight: '800', fontSize: '1.1rem', color: '#111' }}>{stats.confirmedBookings}</div>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#dcfce7', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}><i className="bi bi-globe"></i></div>
-                                <div>
-                                    <div style={{ fontWeight: '700', color: '#111', fontSize: '0.9rem' }}>Vercel Edge Network</div>
-                                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>12 locations active</div>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}><i className="bi bi-clock-fill"></i></div>
+                                <div style={{ flex: 1 }}>
+                                    <div style={{ fontWeight: '700', color: '#111', fontSize: '0.95rem' }}>Pending</div>
+                                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Awaiting action</div>
                                 </div>
+                                <div style={{ fontWeight: '800', fontSize: '1.1rem', color: '#111' }}>{stats.pendingBookings}</div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Quick Actions */}
-                    <div style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', borderRadius: '20px', padding: '25px', border: '1px solid #e2e8f0' }}>
-                        <h2 style={{ margin: '0 0 15px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>AI Assistant</h2>
-                        <div style={{ background: '#fff', padding: '15px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.02)' }}>
-                            <i className="bi bi-chat-dots" style={{ color: '#94a3b8' }}></i>
-                            <input type="text" placeholder="Ask me anything..." style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1, fontSize: '0.85rem' }} />
-                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#2563eb', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><i className="bi bi-arrow-up-short"></i></div>
+                    {/* Top Tours Widget */}
+                    <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                            <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>Top Selling Tours</h2>
+                            <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                            {stats.topTours.map((tour, idx) => (
+                                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                    <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#f8fafc', color: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 'bold', border: '1px solid #e2e8f0' }}>#{idx + 1}</div>
+                                    <div style={{ flex: 1, overflow: 'hidden' }}>
+                                        <div style={{ fontWeight: '600', color: '#111', fontSize: '0.85rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{tour.name}</div>
+                                    </div>
+                                    <div style={{ fontWeight: '700', fontSize: '0.9rem', color: '#2563eb', background: '#eff6ff', padding: '4px 10px', borderRadius: '20px' }}>{tour.count} sold</div>
+                                </div>
+                            ))}
+                            {stats.topTours.length === 0 && <div style={{ fontSize: '0.85rem', color: '#888' }}>No data available</div>}
                         </div>
                     </div>
 
