@@ -59,6 +59,7 @@ const AppContent = () => {
   const isHomePage = location.pathname === '/';
   const isTourDetails = location.pathname.startsWith('/package/');
   const isVolunteerDetails = location.pathname.startsWith('/volunteer-program/');
+  const isAdminRoute = location.pathname.startsWith('/admin');
   const isProtectedOrAdmin = location.pathname.startsWith('/account') || location.pathname.startsWith('/admin');
   const hideMobileBottomBar = location.pathname.startsWith('/package/') || location.pathname.startsWith('/volunteer-program/');
   const showGlobalBadge = ['/packages', '/volunteer', '/exclusive-journeys', '/contact'].includes(location.pathname);
@@ -118,7 +119,7 @@ const AppContent = () => {
           </Route>
         </Routes>
       </main>
-      <Footer />
+      {!isAdminRoute && <Footer />}
       <CookieBar onVisibilityChange={setCookieVisible} />
       {showGlobalBadge && <HeroPromoBadge />}
       <BottomAdBanner isCookieVisible={cookieVisible} />
