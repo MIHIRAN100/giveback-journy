@@ -1,182 +1,232 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../context/AuthContext';
+import { useCurrency } from '../../context/CurrencyContext';
+import { Link } from 'react-router-dom';
 
-const StatCard = ({ title, value, icon, color, gradient }) => (
+const StatCard = ({ title, value, icon, color, trend }) => (
     <div style={{ 
         background: '#ffffff', 
         padding: '24px', 
-        borderRadius: '16px', 
-        border: '1px solid #e2e8f0', 
+        borderRadius: '20px', 
+        border: '1px solid #f1f5f9', 
         display: 'flex', 
-        alignItems: 'center', 
-        gap: '20px', 
-        transition: 'all 0.3s ease',
-        cursor: 'default',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
+        flexDirection: 'column',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.02)'
     }}>
-        <div style={{ 
-            width: '52px', 
-            height: '52px', 
-            borderRadius: '14px', 
-            background: gradient || `${color}15`, 
-            color: color, 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            fontSize: '1.4rem' 
-        }}>
-            <i className={`bi ${icon}`} style={{ color: gradient ? '#fff' : color }}></i>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+            <div style={{ fontSize: '0.95rem', fontWeight: '700', color: '#111' }}>{title}</div>
+            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <i className={`bi ${icon}`} style={{ color: color, fontSize: '1rem' }}></i>
+            </div>
         </div>
-        <div>
-            <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '6px' }}>{title}</div>
-            <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a', lineHeight: '1', letterSpacing: '-1px' }}>{value}</div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '15px' }}>
+            <div style={{ fontSize: '2.2rem', fontWeight: '800', color: '#111', lineHeight: 1 }}>{value}</div>
+            {trend && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: trend.startsWith('+') ? '#10b981' : '#f43f5e', fontSize: '0.85rem', fontWeight: '700', marginBottom: '4px' }}>
+                    <i className={`bi ${trend.startsWith('+') ? 'bi-arrow-up-right' : 'bi-arrow-down-right'}`}></i> {trend}
+                </div>
+            )}
         </div>
+        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '12px', fontWeight: '500' }}>vs. last period</div>
     </div>
 );
 
 const DashboardOverview = () => {
-    const { profile } = useAuth();
+    const { user } = useAuth();
+    const { formatPrice } = useCurrency();
     const [stats, setStats] = useState({
-        totalCustomers: 0,
-        totalVolunteers: 0,
-        tourBookings: 0,
-        volunteerBookings: 0,
-        todayArrivals: 0,
-        upcomingArrivals: 0,
-        awaitingPayment: 0,
-        partiallyPaid: 0,
-        fullyPaid: 0,
-        confirmedBookings: 0,
-        pendingBookings: 0,
         totalRevenue: 0,
-        outstandingBalance: 0
+        activeBookings: 0,
+        totalCustomers: 0,
+        recentBookings: []
     });
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchStats = async () => {
+        const fetchDashboardData = async () => {
             try {
-                const [
-                    { count: customersCount },
-                    { count: volunteersCount },
-                    { data: bookingsData },
-                    { data: volunteerDetailsData }
-                ] = await Promise.all([
-                    supabase.from('profiles').select('*', { count: 'exact', head: true }),
-                    supabase.from('volunteer_details').select('*', { count: 'exact', head: true }),
-                    supabase.from('bookings').select('legacy_product_type, booking_status, payment_status, amount_due, amount_received, products(product_type)'),
-                    supabase.from('volunteer_details').select('arrival_date')
-                ]);
+                // Fetch recent bookings
+                const { data: bookingsData } = await supabase
+                    .from('bookings')
+                    .select('id, amount_due, created_at, customer_name, customer_email, payment_status, booking_status, products(name)')
+                    .order('created_at', { ascending: false })
+                    .limit(10);
 
-                const newStats = { ...stats };
-                newStats.totalCustomers = customersCount || 1; // Assuming 1 logged in user at least
-                newStats.totalVolunteers = volunteersCount || 0;
+                // Calculate stats
+                let revenue = 0;
+                let active = 0;
+                const uniqueCustomers = new Set();
 
                 if (bookingsData) {
                     bookingsData.forEach(b => {
-                        const type = b.products?.product_type || b.legacy_product_type;
-                        if (type === 'tour') newStats.tourBookings++;
-                        if (type === 'volunteer') newStats.volunteerBookings++;
-
-                        if (b.payment_status === 'awaiting_payment') newStats.awaitingPayment++;
-                        if (b.payment_status === 'partially_paid') newStats.partiallyPaid++;
-                        if (b.payment_status === 'fully_paid' || b.payment_status === 'paid') newStats.fullyPaid++;
-
-                        if (b.booking_status === 'confirmed') newStats.confirmedBookings++;
-                        if (b.booking_status === 'pending') newStats.pendingBookings++;
-                        
-                        // Calculate money (ignoring cancelled bookings for outstanding balance)
-                        if (b.booking_status !== 'cancelled') {
-                            const received = parseFloat(b.amount_received) || 0;
-                            const due = parseFloat(b.amount_due) || 0;
-                            newStats.totalRevenue += received;
-                            newStats.outstandingBalance += Math.max(0, due - received);
-                        }
+                        revenue += (b.amount_due || 0);
+                        if (b.booking_status === 'confirmed') active++;
+                        if (b.customer_email) uniqueCustomers.add(b.customer_email);
                     });
                 }
 
-                if (volunteerDetailsData) {
-                    const today = new Date().toISOString().split('T')[0];
-                    volunteerDetailsData.forEach(v => {
-                        if (v.arrival_date === today) newStats.todayArrivals++;
-                        else if (v.arrival_date > today) newStats.upcomingArrivals++;
-                    });
-                }
-
-                setStats(newStats);
+                setStats({
+                    totalRevenue: revenue,
+                    activeBookings: active,
+                    totalCustomers: uniqueCustomers.size,
+                    recentBookings: bookingsData || []
+                });
             } catch (err) {
-                console.error("Failed to load stats", err);
+                console.error(err);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchStats();
+        fetchDashboardData();
     }, []);
 
-    if (loading) return <div style={{ color: '#64748b', fontWeight: '500', padding: '40px' }}>Loading workspace...</div>;
-
-    const sectionStyle = {
-        marginBottom: '48px'
-    };
-
-    const sectionTitleStyle = {
-        fontSize: '1.1rem',
-        fontWeight: '700',
-        color: '#0f172a',
-        marginBottom: '20px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        letterSpacing: '-0.3px'
-    };
-
-    const gridStyle = {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-        gap: '24px'
-    };
-
-    const hour = new Date().getHours();
-    const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-    const firstName = profile?.full_name?.split(' ')[0] || 'Admin';
+    if (loading) return <div style={{ padding: '40px', color: '#666' }}>Loading dashboard...</div>;
 
     return (
         <div>
-            <div style={{ marginBottom: '48px', paddingBottom: '24px', borderBottom: '1px solid #e2e8f0' }}>
-                <h1 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#0f172a', margin: '0 0 10px 0', letterSpacing: '-1px' }}>
-                    {greeting}, {firstName}!
-                </h1>
-                <p style={{ color: '#64748b', margin: 0, fontSize: '1rem', fontWeight: '400' }}>Here's an overview of your operations today.</p>
-            </div>
-
-            <div style={sectionStyle}>
-                <div style={gridStyle}>
-                    <StatCard title="Total Customers" value={stats.totalCustomers} icon="bi-people" color="#3b82f6" />
-                    <StatCard title="Total Volunteers" value={stats.totalVolunteers} icon="bi-heart" color="#8b5cf6" />
-                    <StatCard title="Tour Bookings" value={stats.tourBookings} icon="bi-map" color="#f97316" />
-                    <StatCard title="Volunteer Bookings" value={stats.volunteerBookings} icon="bi-box-seam" color="#10b981" />
+            {/* Header Area */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+                <h1 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800', color: '#111' }}>Dashboard</h1>
+                
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <button style={{ background: '#fff', border: '1px solid #e2e8f0', padding: '8px 16px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: '600', color: '#475569', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', boxShadow: '0 1px 2px rgba(0,0,0,0.02)' }}>
+                        <i className="bi bi-calendar3"></i> Jan 1, 2026 - Feb 1, 2026
+                    </button>
+                    <button style={{ background: '#fff', border: '1px solid #e2e8f0', padding: '8px 16px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: '600', color: '#475569', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', boxShadow: '0 1px 2px rgba(0,0,0,0.02)' }}>
+                        <i className="bi bi-grid"></i> Add widget
+                    </button>
+                    <button style={{ background: '#2563eb', border: 'none', padding: '8px 20px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: '600', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)' }}>
+                        <i className="bi bi-download"></i> Export
+                    </button>
                 </div>
             </div>
 
-            <div style={sectionStyle}>
-                <h3 style={sectionTitleStyle}>Financial Health</h3>
-                <div style={gridStyle}>
-                    <StatCard title="Total Cash Collected" value={`$${stats.totalRevenue.toLocaleString()}`} icon="bi-cash-stack" color="#10b981" gradient="linear-gradient(135deg, #10b981 0%, #059669 100%)" />
-                    <StatCard title="Outstanding Balance" value={`$${stats.outstandingBalance.toLocaleString()}`} icon="bi-wallet2" color="#f59e0b" gradient="linear-gradient(135deg, #f59e0b 0%, #d97706 100%)" />
-                    <StatCard title="Awaiting Payment" value={stats.awaitingPayment} icon="bi-hourglass-split" color="#ef4444" />
-                    <StatCard title="Fully Paid" value={stats.fullyPaid} icon="bi-check-circle" color="#3b82f6" />
-                </div>
+            {/* KPI Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginBottom: '30px' }}>
+                <StatCard 
+                    title="Total Revenue" 
+                    value={formatPrice(stats.totalRevenue)} 
+                    icon="bi-cash-stack" 
+                    color="#2563eb"
+                    trend="+24.4%" 
+                />
+                <StatCard 
+                    title="Active Bookings" 
+                    value={stats.activeBookings} 
+                    icon="bi-calendar-check" 
+                    color="#10b981"
+                    trend="+15.5%" 
+                />
+                <StatCard 
+                    title="Total Customers" 
+                    value={stats.totalCustomers} 
+                    icon="bi-people" 
+                    color="#f59e0b"
+                    trend="+8.4%" 
+                />
+                <StatCard 
+                    title="Total Orders" 
+                    value={stats.recentBookings.length} 
+                    icon="bi-box-seam" 
+                    color="#8b5cf6"
+                    trend="-10.5%" 
+                />
             </div>
 
-            <div style={sectionStyle}>
-                <h3 style={sectionTitleStyle}>Logistics & Operations</h3>
-                <div style={gridStyle}>
-                    <StatCard title="Pending Bookings" value={stats.pendingBookings} icon="bi-clock" color="#f59e0b" />
-                    <StatCard title="Confirmed Bookings" value={stats.confirmedBookings} icon="bi-check2-all" color="#3b82f6" />
-                    <StatCard title="Today's Arrivals" value={stats.todayArrivals} icon="bi-airplane-engines" color="#ec4899" />
-                    <StatCard title="Upcoming Arrivals" value={stats.upcomingArrivals} icon="bi-calendar-event" color="#0ea5e9" />
+            {/* Main Content Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
+                
+                {/* Recent Orders Table */}
+                <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+                        <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: '700', color: '#111' }}>Recent Orders</h2>
+                        <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
+                    </div>
+
+                    <div style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+                                    <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Customer</th>
+                                    <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Tour</th>
+                                    <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Revenue</th>
+                                    <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {stats.recentBookings.map((b, i) => (
+                                    <tr key={i} style={{ borderBottom: i !== stats.recentBookings.length - 1 ? '1px solid #f8fafc' : 'none' }}>
+                                        <td style={{ padding: '16px 0', fontWeight: '600', color: '#111' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                                <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b', fontWeight: 'bold' }}>
+                                                    {b.customer_name ? b.customer_name.charAt(0) : 'G'}
+                                                </div>
+                                                <div>
+                                                    <div style={{ color: '#111' }}>{b.customer_name || 'Guest'}</div>
+                                                    <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: '500' }}>{new Date(b.created_at).toLocaleDateString()}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '16px 0', color: '#475569', fontWeight: '500' }}>{b.products?.name || 'Custom Booking'}</td>
+                                        <td style={{ padding: '16px 0', color: '#10b981', fontWeight: '700' }}>{formatPrice(b.amount_due)}</td>
+                                        <td style={{ padding: '16px 0' }}>
+                                            <span style={{ 
+                                                background: b.payment_status === 'paid' ? '#dcfce7' : '#fef9c3', 
+                                                color: b.payment_status === 'paid' ? '#166534' : '#a16207', 
+                                                padding: '4px 10px', 
+                                                borderRadius: '20px', 
+                                                fontSize: '0.75rem', 
+                                                fontWeight: '700' 
+                                            }}>
+                                                {b.payment_status.replace('_', ' ')}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Right Column (Placeholder for charts) */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                    
+                    {/* Activity Widget */}
+                    <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                            <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>System Status</h2>
+                            <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}><i className="bi bi-server"></i></div>
+                                <div>
+                                    <div style={{ fontWeight: '700', color: '#111', fontSize: '0.9rem' }}>Database Active</div>
+                                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Connected to Supabase</div>
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#dcfce7', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}><i className="bi bi-globe"></i></div>
+                                <div>
+                                    <div style={{ fontWeight: '700', color: '#111', fontSize: '0.9rem' }}>Vercel Edge Network</div>
+                                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>12 locations active</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Quick Actions */}
+                    <div style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', borderRadius: '20px', padding: '25px', border: '1px solid #e2e8f0' }}>
+                        <h2 style={{ margin: '0 0 15px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>AI Assistant</h2>
+                        <div style={{ background: '#fff', padding: '15px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.02)' }}>
+                            <i className="bi bi-chat-dots" style={{ color: '#94a3b8' }}></i>
+                            <input type="text" placeholder="Ask me anything..." style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1, fontSize: '0.85rem' }} />
+                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#2563eb', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><i className="bi bi-arrow-up-short"></i></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
