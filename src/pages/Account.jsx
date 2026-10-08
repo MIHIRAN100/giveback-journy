@@ -6,6 +6,18 @@ import { supabase } from '../lib/supabase';
 import ScrollReveal from '../components/ScrollReveal';
 
 const bgColors = ['#e6f4ea', '#e8f0fe', '#fce8e6', '#f3e5f5'];
+
+    const getCountryCode = (countryName) => {
+        if (!countryName) return null;
+        const map = {
+            'sri lanka': 'lk', 'united states': 'us', 'usa': 'us', 'united kingdom': 'gb', 'uk': 'gb',
+            'australia': 'au', 'canada': 'ca', 'germany': 'de', 'france': 'fr', 'italy': 'it',
+            'spain': 'es', 'netherlands': 'nl', 'switzerland': 'ch', 'sweden': 'se', 'norway': 'no',
+            'india': 'in', 'japan': 'jp', 'china': 'cn', 'brazil': 'br', 'new zealand': 'nz'
+        };
+        return map[countryName.toLowerCase().trim()] || null;
+    };
+
 const Account = () => {
     const { user, logOut } = useAuth();
     const { formatPrice } = useCurrency();
@@ -181,12 +193,25 @@ const Account = () => {
                 <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
                         <h1 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '700', color: '#111' }}>Profile</h1>
-                        <button 
-                            onClick={handleLogout}
-                            style={{ padding: '8px 16px', backgroundColor: '#111', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: '600', cursor: 'pointer', fontSize: '0.85rem' }}
-                        >
-                            Log Out
-                        </button>
+                        
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
+                            <button 
+                                onClick={handleLogout}
+                                style={{ padding: '8px 16px', backgroundColor: 'var(--primary-green)', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: '600', cursor: 'pointer', fontSize: '0.85rem' }}
+                            >
+                                Log Out
+                            </button>
+                            {profile.country && (
+                                <div style={{ fontSize: '0.75rem', color: '#666', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '500' }}>
+                                    {getCountryCode(profile.country) ? (
+                                        <img src={`https://flagcdn.com/w20/${getCountryCode(profile.country)}.png`} alt={profile.country} style={{ width: '16px', height: '11px', borderRadius: '2px' }} />
+                                    ) : (
+                                        <i className="bi bi-geo-alt-fill" style={{ color: 'var(--primary-green)' }}></i>
+                                    )}
+                                    {profile.country}
+                                </div>
+                            )}
+                        </div>
                     </div>
                     
                     <div style={{ display: 'flex', gap: '30px', borderBottom: '1px solid transparent' }}>
@@ -200,7 +225,7 @@ const Account = () => {
                                     fontSize: '0.9rem',
                                     fontWeight: activeTab === tab ? '600' : '500',
                                     color: activeTab === tab ? '#111' : '#666',
-                                    borderBottom: activeTab === tab ? '3px solid #111' : '3px solid transparent', color: activeTab === tab ? '#111' : '#888',
+                                    borderBottom: activeTab === tab ? '3px solid var(--primary-green)' : '3px solid transparent', color: activeTab === tab ? 'var(--primary-green)' : '#888',
                                     transition: 'all 0.2s ease'
                                 }}
                             >
