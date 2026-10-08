@@ -42,6 +42,7 @@ const DashboardOverview = () => {
         recentBookings: [],
         pendingBookings: 0,
         confirmedBookings: 0,
+        cancelledBookings: 0,
         topTours: [],
         todaysArrivals: 0,
         totalVolunteers: 0
@@ -62,6 +63,7 @@ const DashboardOverview = () => {
                 let active = 0;
                 let pending = 0;
                 let confirmed = 0;
+                let cancelled = 0;
                 const uniqueCustomers = new Set();
                 const tourCounts = {};
                 let arrivalsToday = 0;
@@ -106,6 +108,7 @@ const DashboardOverview = () => {
                     recentBookings: bookingsData ? bookingsData.slice(0, 20) : [],
                     pendingBookings: pending,
                     confirmedBookings: confirmed,
+                    cancelledBookings: cancelled,
                     topTours: sortedTours,
                     todaysArrivals: arrivalsToday,
                     totalVolunteers: volCount
@@ -288,6 +291,25 @@ const DashboardOverview = () => {
                             {stats.topTours.length === 0 && <div style={{ fontSize: '0.85rem', color: '#888' }}>No data available</div>}
                         </div>
                     </div>
+                    </div>
+
+                    {/* Cancellations Widget */}
+                    <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                            <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>Cancellations</h2>
+                            <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#ffe4e6', color: '#e11d48', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+                                <i className="bi bi-x-circle-fill"></i>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div style={{ fontWeight: '700', color: '#111', fontSize: '0.95rem' }}>Cancelled Bookings</div>
+                                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Action required</div>
+                            </div>
+                            <div style={{ fontWeight: '800', fontSize: '1.1rem', color: '#111' }}>{stats.cancelledBookings}</div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -296,4 +318,5 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
