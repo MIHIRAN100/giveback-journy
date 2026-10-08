@@ -192,6 +192,12 @@ const DashboardOverview = () => {
                     icon="bi-x-circle-fill" 
                     color="#e11d48"
                 />
+                <StatCard 
+                    title="Discounts Given" 
+                    value={formatPrice(0)} 
+                    icon="bi-tag-fill" 
+                    color="#f59e0b"
+                />
             </div>
 
             {/* Main Content Grid */}
@@ -305,6 +311,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
 
 
