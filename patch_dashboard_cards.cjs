@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from 'react';
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'src', 'pages', 'admin', 'DashboardOverview.jsx');
+let content = fs.readFileSync(filePath, 'utf-8');
+
+const newContent = `import React, { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../context/AuthContext';
 import { useCurrency } from '../../context/CurrencyContext';
@@ -16,15 +22,15 @@ const StatCard = ({ title, value, icon, color, trend }) => (
     }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
             <div style={{ fontSize: '0.95rem', fontWeight: '700', color: '#111' }}>{title}</div>
-            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <i className={`bi ${icon}`} style={{ color: color, fontSize: '1rem' }}></i>
+            <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: \`\${color}15\`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <i className={\`bi \${icon}\`} style={{ color: color, fontSize: '1rem' }}></i>
             </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: '15px' }}>
             <div style={{ fontSize: '2.2rem', fontWeight: '800', color: '#111', lineHeight: 1 }}>{value}</div>
             {trend && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: trend.startsWith('+') ? '#10b981' : '#f43f5e', fontSize: '0.85rem', fontWeight: '700', marginBottom: '4px' }}>
-                    <i className={`bi ${trend.startsWith('+') ? 'bi-arrow-up-right' : 'bi-arrow-down-right'}`}></i> {trend}
+                    <i className={\`bi \${trend.startsWith('+') ? 'bi-arrow-up-right' : 'bi-arrow-down-right'}\`}></i> {trend}
                 </div>
             )}
         </div>
@@ -42,11 +48,7 @@ const DashboardOverview = () => {
         recentBookings: [],
         pendingBookings: 0,
         confirmedBookings: 0,
-        cancelledBookings: 0,
-        topTours: [],
-        todaysArrivals: 0,
-        totalVolunteers: 0,
-        totalDiscounts: 0
+        topTours: []
     });
     const [loading, setLoading] = useState(true);
 
@@ -56,7 +58,7 @@ const DashboardOverview = () => {
                 // Fetch recent bookings
                 const { data: bookingsData } = await supabase
                     .from('bookings')
-                    .select('id, amount_due, discount_given, created_at, booking_date, customer_name, customer_email, payment_status, booking_status, legacy_product_name, legacy_product_type, products(name, product_type)')
+                    .select('id, amount_due, created_at, customer_name, customer_email, payment_status, booking_status, legacy_product_name, products(name)')
                     .order('created_at', { ascending: false });
 
                 // Calculate stats
@@ -64,33 +66,20 @@ const DashboardOverview = () => {
                 let active = 0;
                 let pending = 0;
                 let confirmed = 0;
-                let cancelled = 0;
                 const uniqueCustomers = new Set();
                 const tourCounts = {};
-                let arrivalsToday = 0;
-                let volCount = 0;
-                
-                let totalDiscounts = 0;
-                const todayStr = new Date().toISOString().split('T')[0];
 
                 if (bookingsData) {
                     bookingsData.forEach(b => {
-                        if (b.booking_status !== 'cancelled' && b.booking_status !== 'canceled') { revenue += (Number(b.amount_due) || 0); }
-                        totalDiscounts += (Number(b.discount_given) || 0);
+                        revenue += (b.amount_due || 0);
                         if (b.booking_status === 'confirmed') {
                             active++;
                             confirmed++;
                         }
-                        if (b.booking_status === 'pending') { pending++; } if (b.booking_status === 'cancelled' || b.booking_status === 'canceled') { cancelled++; }
+                        if (b.booking_status === 'pending') {
+                            pending++;
+                        }
                         if (b.customer_email) uniqueCustomers.add(b.customer_email);
-                        
-                        if (b.booking_date && b.booking_date.startsWith(todayStr)) {
-                            arrivalsToday++;
-                        }
-                        
-                        if (b.legacy_product_type === 'volunteer' || b.products?.product_type === 'volunteer') {
-                            volCount++;
-                        }
 
                         const tourName = b.products?.name || b.legacy_product_name || 'Custom Booking';
                         tourCounts[tourName] = (tourCounts[tourName] || 0) + 1;
@@ -107,15 +96,10 @@ const DashboardOverview = () => {
                     totalRevenue: revenue,
                     activeBookings: active,
                     totalCustomers: uniqueCustomers.size,
-                    recentBookings: bookingsData ? bookingsData.slice(0, 20) : [],
+                    recentBookings: bookingsData ? bookingsData.slice(0, 10) : [],
                     pendingBookings: pending,
                     confirmedBookings: confirmed,
-                    cancelledBookings: cancelled,
-                    topTours: sortedTours,
-                    todaysArrivals: arrivalsToday,
-                    totalVolunteers: volCount,
-                    
-                    totalDiscounts: totalDiscounts
+                    topTours: sortedTours
                 });
             } catch (err) {
                 console.error(err);
@@ -125,21 +109,6 @@ const DashboardOverview = () => {
         };
 
         fetchDashboardData();
-        
-        const channel = supabase
-            .channel('dashboard-bookings-changes')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, (payload) => {
-                console.log('Dashboard Realtime Update:', payload);
-                fetchDashboardData();
-            })
-            .subscribe();
-
-        const interval = setInterval(() => { fetchDashboardData(); }, 30000);
-
-        return () => {
-            supabase.removeChannel(channel);
-            clearInterval(interval);
-        };
     }, []);
 
     if (loading) return <div style={{ padding: '40px', color: '#666' }}>Loading dashboard...</div>;
@@ -187,51 +156,27 @@ const DashboardOverview = () => {
                     trend="+8.4%" 
                 />
                 <StatCard 
-                    title="Total Bookings" 
+                    title="Total Orders" 
                     value={stats.recentBookings.length} 
                     icon="bi-box-seam" 
                     color="#8b5cf6"
                     trend="-10.5%" 
-                />
-                <StatCard 
-                    title="Today's Arrivals" 
-                    value={stats.todaysArrivals} 
-                    icon="bi-airplane-engines" 
-                    color="#0ea5e9"
-                />
-                <StatCard 
-                    title="Total Volunteers" 
-                    value={stats.totalVolunteers} 
-                    icon="bi-heart-fill" 
-                    color="#ec4899"
-                />
-                <StatCard 
-                    title="Cancellations" 
-                    value={stats.cancelledBookings} 
-                    icon="bi-x-circle-fill" 
-                    color="#e11d48"
-                />
-                <StatCard 
-                    title="Discounts Given" 
-                    value={formatPrice(stats.totalDiscounts)} 
-                    icon="bi-tag-fill" 
-                    color="#f59e0b"
                 />
             </div>
 
             {/* Main Content Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
                 
-                {/* Recent Bookings Table */}
+                {/* Recent Orders Table */}
                 <div style={{ background: '#fff', borderRadius: '20px', padding: '25px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f1f5f9' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
-                        <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: '700', color: '#111' }}>Recent Bookings</h2>
+                        <h2 style={{ margin: 0, fontSize: '1.2rem', fontWeight: '700', color: '#111' }}>Recent Orders</h2>
                         <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
                     </div>
 
-                    <div style={{ overflowX: 'auto', maxHeight: '400px', overflowY: 'auto' }}>
+                    <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
-                            <thead style={{ position: 'sticky', top: 0, background: '#fff', zIndex: 10 }}>
+                            <thead>
                                 <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
                                     <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Customer</th>
                                     <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Tour</th>
@@ -330,12 +275,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+`;
 
-
-
-
-
-
-
-
-
+fs.writeFileSync(filePath, newContent);
+console.log("Updated right column with valuable cards");

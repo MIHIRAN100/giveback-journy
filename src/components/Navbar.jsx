@@ -9,7 +9,7 @@ import gbRoundLogo from '../assets/gb_round_logo.png';
 import AdBanner from './AdBanner';
 
 const Navbar = () => {
-    const { user, isAdmin } = useAuth();
+    const { user, isAdmin, setAuthModalOpen, setAuthModalView } = useAuth();
     const { compareList } = useCompare();
     const { currency, setCurrency, currencies } = useCurrency();
     const location = useLocation();
@@ -240,7 +240,7 @@ const Navbar = () => {
                                 <i className="bi bi-person-circle"></i>
                             </Link>
                         ) : (
-                            <Link to="/login" className="nav-item" style={{ marginRight: '15px', fontWeight: 'bold' }}>Log In</Link>
+                            <span className="nav-item" onClick={() => { setAuthModalView('login'); setAuthModalOpen(true); }} style={{ marginRight: '15px', fontWeight: 'bold', cursor: 'pointer' }}>Log In</span>
                         )}
                         
                         <Link to="/contact" className="btn-modern btn-black">Contact Us</Link>
@@ -431,3 +431,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

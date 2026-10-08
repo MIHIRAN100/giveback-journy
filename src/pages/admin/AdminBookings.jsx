@@ -7,6 +7,8 @@ const AdminBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filterType, setFilterType] = useState('all');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [dateFilter, setDateFilter] = useState('');
 
     // Manage Modal State
     const [isManageModalOpen, setIsManageModalOpen] = useState(false);
@@ -25,7 +27,7 @@ const AdminBookings = () => {
             const { data, error } = await supabase
                 .from('bookings')
                 .select(`
-                    id, booking_reference, booking_date, participants, amount_due, amount_received, currency, booking_status, discount_given, payment_status, user_id,
+                    id, booking_reference, booking_date, participants, amount_due, amount_received, currency, booking_status, payment_status, user_id,
                     customer_name, customer_email, customer_phone, legacy_product_name, legacy_product_type, discount_given,
                     products ( name, product_type ),
                     volunteer_details ( volunteer_status )
@@ -79,9 +81,9 @@ const AdminBookings = () => {
                     booking_status: manageForm.booking_status,
                     payment_status: manageForm.payment_status,
                     amount_received: parseFloat(manageForm.amount_received),
-                    amount_due: parseFloat(manageForm.amount_due),
-                    discount_given: parseFloat(manageForm.discount_given) || 0,
-                    discount_given: parseFloat(manageForm.discount_given || 0)
+                    amount_due: parseFloat(manageForm.amount_due), discount_given: parseFloat(manageForm.discount_given) || 0,
+
+
                 })
                 .eq('id', selectedBooking.id);
                 
@@ -133,6 +135,8 @@ const AdminBookings = () => {
     };
 
     const filteredBookings = bookings.filter(b => {
+        if (searchQuery && !((b.customer_name || '').toLowerCase().includes(searchQuery.toLowerCase()) || (b.customer_email || '').toLowerCase().includes(searchQuery.toLowerCase()))) return false;
+        if (dateFilter && b.booking_date && !b.booking_date.startsWith(dateFilter)) return false;
         if (filterType === 'all') return true;
         if (filterType === 'tour') return b.products?.product_type === 'tour' || b.legacy_product_type === 'tour';
         if (filterType === 'volunteer') return b.products?.product_type === 'volunteer' || b.legacy_product_type === 'volunteer';
@@ -145,16 +149,31 @@ const AdminBookings = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
                 <h1 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#0f172a', margin: '0', letterSpacing: '-1px' }}>Bookings</h1>
                 
-                <select 
-                    value={filterType} 
-                    onChange={e => setFilterType(e.target.value)}
-                    style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }}
-                >
-                    <option value="all">All Bookings</option>
-                    <option value="tour">Tours Only</option>
-                    <option value="volunteer">Volunteers Only</option>
-                    <option value="pending_payment">Pending Payments</option>
-                </select>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <input 
+                        type="text" 
+                        placeholder="Search name or email..." 
+                        value={searchQuery} 
+                        onChange={e => setSearchQuery(e.target.value)}
+                        style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none', width: '200px' }}
+                    />
+                    <input 
+                        type="date" 
+                        value={dateFilter} 
+                        onChange={e => setDateFilter(e.target.value)}
+                        style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }}
+                    />
+                    <select 
+                        value={filterType} 
+                        onChange={e => setFilterType(e.target.value)}
+                        style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc', outline: 'none' }}
+                    >
+                        <option value="all">All Bookings</option>
+                        <option value="tour">Tours Only</option>
+                        <option value="volunteer">Volunteers Only</option>
+                        <option value="pending_payment">Pending Payments</option>
+                    </select>
+                </div>
             </div>
             
             <div style={{ background: '#ffffff', borderRadius: '16px', padding: '0', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -345,6 +364,7 @@ const AdminBookings = () => {
 };
 
 export default AdminBookings;
+
 
 
 

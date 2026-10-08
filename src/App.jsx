@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { supabase } from './lib/supabase';
 import Navbar from './components/Navbar';
+import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
 import CookieBar from './components/CookieBar';
 import HeroPromoBadge from './components/HeroPromoBadge';
@@ -68,6 +69,7 @@ const AppContent = () => {
     <div className="App" style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
       
       <Navbar />
+      <AuthModal />
       <main style={{flex: 1, paddingTop: (isHomePage || isProtectedOrAdmin) ? '0' : '90px'}}>
         {(isTourDetails || isVolunteerDetails) && <TourDetailsPromoBanner />}
         {!isHomePage && <Breadcrumbs />}

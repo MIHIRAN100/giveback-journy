@@ -13,6 +13,8 @@ export const AuthProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [isAuthModalOpen, setAuthModalOpen] = useState(false);
+    const [authModalView, setAuthModalView] = useState('login'); // 'login' or 'signup'
 
     const fetchProfile = async (userId) => {
         if (!userId) {
@@ -61,6 +63,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     // Login function
+    const logInWithProvider = async (provider) => {
+        return supabase.auth.signInWithOAuth({ provider });
+    };
+
+    // Login function
     const logIn = async (email, password) => {
         return supabase.auth.signInWithPassword({
             email,
@@ -92,9 +99,14 @@ export const AuthProvider = ({ children }) => {
         isAdmin,
         signUp,
         logIn,
+        logInWithProvider,
         logOut,
         resetPassword,
         updatePassword,
+        isAuthModalOpen,
+        setAuthModalOpen,
+        authModalView,
+        setAuthModalView,
     };
 
     return (
