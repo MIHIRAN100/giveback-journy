@@ -150,6 +150,15 @@ const Account = () => {
         reader.readAsDataURL(file);
     };
 
+    const handleLogout = async () => {
+        try {
+            await logOut();
+            navigate('/');
+        } catch (error) {
+            console.error('Failed to log out', error);
+        }
+    };
+
     const getInitials = (name) => {
         if (!name) return user?.email?.charAt(0).toUpperCase() || 'U';
         return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
