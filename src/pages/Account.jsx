@@ -234,7 +234,7 @@ const Account = () => {
                                     cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
                                 }}
                             >
-                                <i className="bi bi-camera-fill" style={{ fontSize: '10px', color: '#555' }}></i>
+                                <i className="bi bi-camera-fill" style={{ fontSize: '10px', color: '#111', fontWeight: 'bold' }}></i>
                             </button>
                             <input type="file" ref={fileInputRef} onChange={handleImageUpload} accept="image/*" style={{ display: 'none' }} />
                         </div>
@@ -264,11 +264,11 @@ const Account = () => {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                     <i className="bi bi-telephone" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                    <span>Phone: <span style={{ color: '#555' }}>{profile.phone || 'Not provided'}</span></span>
+                                    <span>Phone: <span style={{ color: '#111', fontWeight: 'bold' }}>{profile.phone || 'Not provided'}</span></span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                     <i className="bi bi-envelope" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                    <span>Email: <span style={{ color: '#555' }}>{profile.email}</span></span>
+                                    <span>Email: <span style={{ color: '#111', fontWeight: 'bold' }}>{profile.email}</span></span>
                                 </div>
                             </div>
                         )}
@@ -279,11 +279,11 @@ const Account = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                 <i className="bi bi-house-door" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                <span>Country: <span style={{ color: '#555' }}>{profile.country || 'Not provided'}</span></span>
+                                <span>Country: <span style={{ color: '#111', fontWeight: 'bold' }}>{profile.country || 'Not provided'}</span></span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                 <i className="bi bi-building" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                <span>Nationality: <span style={{ color: '#555' }}>{profile.nationality || 'Not provided'}</span></span>
+                                <span>Nationality: <span style={{ color: '#111', fontWeight: 'bold' }}>{profile.nationality || 'Not provided'}</span></span>
                             </div>
                         </div>
                     </div>
@@ -293,15 +293,15 @@ const Account = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                 <i className="bi bi-calendar-event" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                <span>Member since: <span style={{ color: '#555' }}>{new Date().getFullYear()}</span></span>
+                                <span>Member since: <span style={{ color: '#111', fontWeight: 'bold' }}>{new Date().getFullYear()}</span></span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                 <i className="bi bi-person-badge" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                <span>Account Status: <span style={{ color: '#555' }}>Active</span></span>
+                                <span>Account Status: <span style={{ color: '#111', fontWeight: 'bold' }}>Active</span></span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.85rem', color: '#333' }}>
                                 <i className="bi bi-briefcase" style={{ color: '#888', fontSize: '1rem' }}></i> 
-                                <span>Total Bookings: <span style={{ color: '#555' }}>{bookings.length}</span></span>
+                                <span>Total Bookings: <span style={{ color: '#111', fontWeight: 'bold' }}>{bookings.length}</span></span>
                             </div>
                         </div>
                     </div>
@@ -335,7 +335,7 @@ const Account = () => {
                                         <tbody>
                                             {bookings.slice(0, 4).map((booking, idx) => (
                                                 <tr key={idx} style={{ borderBottom: '1px solid #f5f5f5' }}>
-                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '12px' }}>
                                                         <div style={{ width: '36px', height: '36px', borderRadius: '6px', backgroundColor: bgColors[idx % 4], overflow: 'hidden', flexShrink: 0 }}>
                                                             {booking.products?.featured_image ? (
                                                                 <img src={booking.products.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
@@ -345,9 +345,9 @@ const Account = () => {
                                                         </div>
                                                         {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}
                                                     </td>
-                                                    <td style={{ padding: '15px 0', color: '#555', textTransform: 'capitalize' }}>{booking.booking_status}</td>
-                                                    <td style={{ padding: '15px 0', color: '#555' }}>{new Date(booking.booking_date).toLocaleDateString()}</td>
-                                                    <td style={{ padding: '15px 0', color: '#555' }}>{booking.participants}</td>
+                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold', textTransform: 'capitalize' }}>{booking.booking_status}</td>
+                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold' }}>{new Date(booking.booking_date).toLocaleDateString()}</td>
+                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: 'bold' }}>{booking.participants}</td>
                                                     <td style={{ padding: '15px 0', color: '#666', textAlign: 'right' }}><i className="bi bi-three-dots"></i></td>
                                                 </tr>
                                             ))}
@@ -365,7 +365,7 @@ const Account = () => {
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
                                 
                                 {/* Bookings Activity */}
-                                <div style={{ backgroundColor: '#f0fdf4', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.02)' }}>
+                                <div style={{ backgroundColor: 'transparent', padding: '10px 0' }}>
                                     <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#166534' }}>Booking Activity</h3>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                         {bookings.slice(0, 3).map((booking, idx) => (
@@ -393,7 +393,7 @@ const Account = () => {
                                 </div>
 
                                 {/* Payment History */}
-                                <div style={{ backgroundColor: '#fff7ed', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.02)' }}>
+                                <div style={{ backgroundColor: 'transparent', padding: '10px 0' }}>
                                     <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#9a3412' }}>Payment History</h3>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                         {bookings.slice(0, 3).map((booking, idx) => (
