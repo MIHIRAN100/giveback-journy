@@ -209,80 +209,309 @@ const AdminBookings = () => {
                 ) : filteredBookings.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '40px', color: '#666', background: '#fff', borderRadius: '12px' }}>No bookings found.</div>
                 ) : (
-                    filteredBookings.map((booking, idx) => (
-                        <div key={idx} style={{ backgroundColor: '#fff', borderRadius: '12px', padding: '15px 20px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '15px', alignItems: 'center', border: '1px solid #eaeaea', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                    filteredBookings.map((booking, idx) => {
+    const isPaid = booking.payment_status === 'paid';
+    const isPartial = booking.payment_status === 'partially_paid';
+    const balance = Math.max(0, booking.amount_due - (booking.amount_received || 0));
+
+    return (
+        <div key={idx} style={{ backgroundColor: '#fff', borderRadius: '12px', padding: '15px 25px', display: 'grid', gridTemplateColumns: 'minmax(200px, 1.5fr) 150px 150px 180px 130px 130px 160px 80px', gap: '15px', alignItems: 'center', border: '1px solid #eaeaea', boxShadow: '0 2px 4px rgba(0,0,0,0.01)', overflowX: 'auto' }}>
+            
+            {/* Col 1: Customer & Icons */}
+            <div>
+                <div style={{ fontWeight: '700', color: '#222', marginBottom: '6px', fontSize: '1rem' }}>{booking.customer_name || 'Guest User'}</div>
+                <div style={{ fontSize: '0.8rem', color: '#666', display: 'flex', gap: '12px', alignItems: 'center' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>{booking.participants} <i className="bi bi-people"></i></span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>2 <i className="bi bi-shield-check"></i></span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>1 <i className="bi bi-bag"></i></span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>1 <i className="bi bi-bell"></i></span>
+                </div>
+            </div>
+
+            {/* Col 2: Payment Status Pill */}
+            <div>
+                <span style={{ 
+                    padding: '6px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '5px',
+                    backgroundColor: isPaid ? '#dcfce7' : isPartial ? '#e0f2fe' : '#ffedd5',
+                    color: isPaid ? '#166534' : isPartial ? '#0369a1' : '#c2410c'
+                }}>
+                    <i className={isPaid ? "bi bi-check-circle-fill" : isPartial ? "bi bi-pie-chart-fill" : "bi bi-x-circle-fill"} style={{ fontSize: '0.8rem' }}></i>
+                    {isPaid ? 'Full paid 2/2' : isPartial ? 'Partially paid 1/2' : 'Cancelled'}
+                </span>
+            </div>
+
+            {/* Col 3: Dates */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <span style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111' }}>{new Date(booking.created_at).toLocaleDateString('en-GB', { day: '2-digit' })}</span>
+                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: '500' }}>{new Date(booking.created_at).toLocaleDateString('en-GB', { month: 'short' })}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#aaa', fontSize: '0.8rem', fontWeight: 'bold' }}>
+                    <span>-</span>
+                    <i className="bi bi-airplane" style={{ transform: 'rotate(90deg)', fontSize: '1.1rem', color: '#555' }}></i>
+                    <span>-</span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <span style={{ fontSize: '1.05rem', fontWeight: '800', color: '#111' }}>{new Date(booking.booking_date).toLocaleDateString('en-GB', { day: '2-digit' })}</span>
+                    <span style={{ fontSize: '0.75rem', color: '#888', fontWeight: '500' }}>{new Date(booking.booking_date).toLocaleDateString('en-GB', { month: 'short' })}</span>
+                </div>
+            </div>
+
+            {/* Col 4: Activities */}
+            <div>
+                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '8px', fontWeight: '700', letterSpacing: '0.5px' }}>ACTIVITIES</div>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #777', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}><i className="bi bi-image"></i></div>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #777', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}><i className="bi bi-star"></i></div>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #777', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}><i className="bi bi-truck"></i></div>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #777', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}><i className="bi bi-tree"></i></div>
+                </div>
+            </div>
+
+            {/* Col 5: Arrival */}
+            <div>
+                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.5px' }}>ARRIVAL</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: '600', color: '#555', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <i className="bi bi-check-circle-fill" style={{ color: '#22c55e', fontSize: '1rem' }}></i>
+                    Completed
+                </div>
+            </div>
+
+            {/* Col 6: Departure */}
+            <div>
+                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.5px' }}>DEPARTURE</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: '600', color: '#555', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <i className="bi bi-exclamation-circle-fill" style={{ color: '#ef4444', fontSize: '1rem' }}></i>
+                    In Complete
+                </div>
+            </div>
+
+            {/* Col 7: Remaining Balance */}
+            <div>
+                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.5px' }}>REMAINING BALANCE</div>
+                <div style={{ fontSize: '0.9rem', fontWeight: '800', color: '#111', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: balance > 0 ? '#0ea5e9' : '#22c55e' }}></div>
+                    {balance > 0 ? `${booking.currency || '  ))
+                )}
+            </div>
+
+            {/* Manage Modal */}
+            {isManageModalOpen && (
+                <div style={{
+                    position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
+                    background: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', 
+                    alignItems: 'center', zIndex: 1000
+                }}>
+                    <div style={{ background: 'white', padding: '30px', borderRadius: '15px', width: '400px', maxWidth: '90%' }}>
+                        <h2 style={{ marginTop: 0 }}>Manage Booking</h2>
+                        <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>
+                            Ref: {selectedBooking?.booking_reference || selectedBooking?.id.split('-')[0]}
+                        </p>
+                        
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                            <div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Booking Status</label>
+                                <select 
+                                    value={manageForm.booking_status}
+                                    onChange={e => setManageForm({...manageForm, booking_status: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                >
+                                    <option value="pending">Pending</option>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
                             
-                            {/* Col 1: Customer */}
                             <div>
-                                <div style={{ fontWeight: '700', color: '#111', marginBottom: '4px', fontSize: '0.9rem' }}>{booking.customer_name || 'Guest User'}</div>
-                                <div style={{ fontSize: '0.75rem', color: '#888', display: 'flex', gap: '10px' }}>
-                                    <span><i className="bi bi-people" style={{ marginRight: '3px' }}></i> {booking.participants}</span>
-                                    <span><i className="bi bi-envelope" style={{ marginRight: '3px' }}></i> {booking.customer_email?.substring(0,6)}..</span>
-                                </div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Payment Status</label>
+                                <select 
+                                    value={manageForm.payment_status}
+                                    onChange={e => setManageForm({...manageForm, payment_status: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                >
+                                    <option value="awaiting_payment">Awaiting Payment</option>
+                                    <option value="partially_paid">Partially Paid</option>
+                                    <option value="paid">Fully Paid</option>
+                                </select>
                             </div>
 
-                            {/* Col 2: Payment Status */}
                             <div>
-                                <span style={{ 
-                                    padding: '4px 10px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase',
-                                    backgroundColor: booking.payment_status === 'paid' ? '#dcfce7' : booking.payment_status === 'partially_paid' ? '#e0f2fe' : '#ffedd5',
-                                    color: booking.payment_status === 'paid' ? '#166534' : booking.payment_status === 'partially_paid' ? '#0369a1' : '#c2410c'
-                                }}>
-                                    {booking.payment_status === 'paid' ? 'Full paid' : booking.payment_status === 'partially_paid' ? 'Partially paid' : 'Awaiting'}
-                                </span>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Total Price / Amount Due ($)</label>
+                                <input 
+                                    type="number"
+                                    value={manageForm.amount_due}
+                                    onChange={e => setManageForm({...manageForm, amount_due: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                />
+                                <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>Edit this to apply discounts.</div>
                             </div>
 
-                            {/* Col 3: Dates */}
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                    <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#111' }}>{new Date(booking.created_at).toLocaleDateString('en-GB', { day: '2-digit' })}</span>
-                                    <span style={{ fontSize: '0.7rem', color: '#888', fontWeight: '500' }}>{new Date(booking.created_at).toLocaleDateString('en-GB', { month: 'short' })}</span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#aaa', fontSize: '0.8rem', fontWeight: 'bold' }}>
-                                    <span>-</span>
-                                    <i className="bi bi-airplane" style={{ transform: 'rotate(90deg)' }}></i>
-                                    <span>-</span>
-                                </div>
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                    <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#111' }}>{new Date(booking.booking_date).toLocaleDateString('en-GB', { day: '2-digit' })}</span>
-                                    <span style={{ fontSize: '0.7rem', color: '#888', fontWeight: '500' }}>{new Date(booking.booking_date).toLocaleDateString('en-GB', { month: 'short' })}</span>
-                                </div>
-                            </div>
-
-                            {/* Col 4: Activity / Type */}
-                            <div style={{ display: 'flex', gap: '5px' }}>
-                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: '0.75rem' }} title={booking.products?.product_type || booking.legacy_product_type}><i className="bi bi-compass"></i></div>
-                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: '0.75rem' }}><i className="bi bi-geo"></i></div>
-                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', fontSize: '0.75rem' }}><i className="bi bi-camera"></i></div>
-                            </div>
-
-                            {/* Col 5: Status */}
                             <div>
-                                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '4px', fontWeight: '600' }}>Booking</div>
-                                <div style={{ fontSize: '0.8rem', fontWeight: '700', color: booking.booking_status === 'confirmed' ? '#166534' : '#d32f2f', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                    <i className={`bi bi-${booking.booking_status === 'confirmed' ? 'check-circle-fill' : 'exclamation-circle-fill'}`}></i>
-                                    {booking.booking_status === 'confirmed' ? 'Confirmed' : 'Pending'}
-                                </div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Amount Received ($)</label>
+                                <input 
+                                    type="number"
+                                    value={manageForm.amount_received}
+                                    onChange={e => setManageForm({...manageForm, amount_received: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                />
                             </div>
 
-                            {/* Col 6: Remaining Balance */}
-                            <div>
-                                <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginBottom: '4px', fontWeight: '600' }}>Remaining Balance</div>
-                                <div style={{ fontSize: '0.85rem', fontWeight: '800', color: '#111', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: (booking.amount_due - (booking.amount_received || 0)) > 0 ? '#0284c7' : '#166534' }}></div>
-                                    {booking.currency} {Math.max(0, booking.amount_due - (booking.amount_received || 0))}
+                            {(selectedBooking?.products?.product_type === 'volunteer' || selectedBooking?.legacy_product_type === 'volunteer') && (
+                                <div>
+                                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Volunteer Status</label>
+                                    <select 
+                                        value={manageForm.volunteer_status}
+                                        onChange={e => setManageForm({...manageForm, volunteer_status: e.target.value})}
+                                        style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                    >
+                                        <option value="application_pending">Application Pending</option>
+                                        <option value="confirmed">Confirmed</option>
+                                        <option value="awaiting_arrival">Awaiting Arrival</option>
+                                        <option value="arrived">Arrived</option>
+                                        <option value="pickup_completed">Pickup Completed</option>
+                                        <option value="checked_in">Checked In</option>
+                                        <option value="active">Active</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
                                 </div>
-                            </div>
-
-                            {/* Col 7: Actions */}
-                            <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '15px' }}>
-                                <button onClick={() => handleManageClick(booking)} style={{ background: 'none', border: 'none', color: '#666', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', fontWeight: '600' }}>
-                                    <i className="bi bi-pencil-square"></i> Edit
-                                </button>
-                                <i className="bi bi-three-dots-vertical" style={{ color: '#aaa', cursor: 'pointer' }}></i>
-                            </div>
+                            )}
                         </div>
-                    ))
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '30px' }}>
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <button onClick={() => setIsManageModalOpen(false)} style={{ flex: 1, padding: '12px', background: '#eee', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>Cancel</button>
+                                <button onClick={handleSaveManage} style={{ flex: 1, padding: '12px', background: '#0f172a', color: 'white', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>Save Changes</button>
+                            </div>
+                            <button onClick={handleDeleteBooking} style={{ width: '100%', padding: '12px', background: '#fff', border: '1px solid #ef4444', color: '#ef4444', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s' }}>
+                                Delete Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default AdminBookings;
+}${balance.toLocaleString()}` : `${booking.currency || '  ))
+                )}
+            </div>
+
+            {/* Manage Modal */}
+            {isManageModalOpen && (
+                <div style={{
+                    position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
+                    background: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', 
+                    alignItems: 'center', zIndex: 1000
+                }}>
+                    <div style={{ background: 'white', padding: '30px', borderRadius: '15px', width: '400px', maxWidth: '90%' }}>
+                        <h2 style={{ marginTop: 0 }}>Manage Booking</h2>
+                        <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>
+                            Ref: {selectedBooking?.booking_reference || selectedBooking?.id.split('-')[0]}
+                        </p>
+                        
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                            <div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Booking Status</label>
+                                <select 
+                                    value={manageForm.booking_status}
+                                    onChange={e => setManageForm({...manageForm, booking_status: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                >
+                                    <option value="pending">Pending</option>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Payment Status</label>
+                                <select 
+                                    value={manageForm.payment_status}
+                                    onChange={e => setManageForm({...manageForm, payment_status: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                >
+                                    <option value="awaiting_payment">Awaiting Payment</option>
+                                    <option value="partially_paid">Partially Paid</option>
+                                    <option value="paid">Fully Paid</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Total Price / Amount Due ($)</label>
+                                <input 
+                                    type="number"
+                                    value={manageForm.amount_due}
+                                    onChange={e => setManageForm({...manageForm, amount_due: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                />
+                                <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>Edit this to apply discounts.</div>
+                            </div>
+
+                            <div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Amount Received ($)</label>
+                                <input 
+                                    type="number"
+                                    value={manageForm.amount_received}
+                                    onChange={e => setManageForm({...manageForm, amount_received: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                />
+                            </div>
+
+                            {(selectedBooking?.products?.product_type === 'volunteer' || selectedBooking?.legacy_product_type === 'volunteer') && (
+                                <div>
+                                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Volunteer Status</label>
+                                    <select 
+                                        value={manageForm.volunteer_status}
+                                        onChange={e => setManageForm({...manageForm, volunteer_status: e.target.value})}
+                                        style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                    >
+                                        <option value="application_pending">Application Pending</option>
+                                        <option value="confirmed">Confirmed</option>
+                                        <option value="awaiting_arrival">Awaiting Arrival</option>
+                                        <option value="arrived">Arrived</option>
+                                        <option value="pickup_completed">Pickup Completed</option>
+                                        <option value="checked_in">Checked In</option>
+                                        <option value="active">Active</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '30px' }}>
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <button onClick={() => setIsManageModalOpen(false)} style={{ flex: 1, padding: '12px', background: '#eee', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>Cancel</button>
+                                <button onClick={handleSaveManage} style={{ flex: 1, padding: '12px', background: '#0f172a', color: 'white', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>Save Changes</button>
+                            </div>
+                            <button onClick={handleDeleteBooking} style={{ width: '100%', padding: '12px', background: '#fff', border: '1px solid #ef4444', color: '#ef4444', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s' }}>
+                                Delete Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default AdminBookings;
+}0`}
+                </div>
+            </div>
+
+            {/* Col 8: Actions */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', gap: '15px' }}>
+                <i className="bi bi-three-dots-vertical" style={{ color: '#888', cursor: 'pointer', fontSize: '1.1rem' }}></i>
+                <button onClick={() => handleManageClick(booking)} style={{ background: 'none', border: 'none', color: '#111', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', fontWeight: '700', padding: 0 }}>
+                    <i className="bi bi-pencil-square" style={{ fontSize: '0.9rem' }}></i> View note
+                </button>
+            </div>
+        </div>
+    );
+})
+                )}  ))
                 )}
             </div>
 
