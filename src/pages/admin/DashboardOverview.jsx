@@ -90,7 +90,7 @@ const DashboardOverview = () => {
                     totalRevenue: revenue,
                     activeBookings: active,
                     totalCustomers: uniqueCustomers.size,
-                    recentBookings: bookingsData ? bookingsData.slice(0, 10) : [],
+                    recentBookings: bookingsData ? bookingsData.slice(0, 20) : [],
                     pendingBookings: pending,
                     confirmedBookings: confirmed,
                     topTours: sortedTours
@@ -168,9 +168,9 @@ const DashboardOverview = () => {
                         <i className="bi bi-three-dots" style={{ color: '#94a3b8', cursor: 'pointer' }}></i>
                     </div>
 
-                    <div style={{ overflowX: 'auto' }}>
+                    <div style={{ overflowX: 'auto', maxHeight: '400px', overflowY: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
-                            <thead>
+                            <thead style={{ position: 'sticky', top: 0, background: '#fff', zIndex: 10 }}>
                                 <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
                                     <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Customer</th>
                                     <th style={{ padding: '0 0 15px 0', color: '#94a3b8', fontWeight: '600', fontSize: '0.75rem', textTransform: 'uppercase' }}>Tour</th>
