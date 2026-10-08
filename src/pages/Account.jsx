@@ -71,7 +71,7 @@ const Account = () => {
                 const { data: bookingsData, error: bookingsError } = await supabase
                     .from('bookings')
                     .select(`
-                        id, booking_reference, booking_date, booking_status, payment_status, amount_due, currency, created_at, participants,
+                        id, booking_reference, booking_date, booking_status, payment_status, amount_due, currency, created_at, participants, legacy_product_name,
                         products ( name, featured_image, product_type )
                     `)
                     .eq('user_id', user.id)
