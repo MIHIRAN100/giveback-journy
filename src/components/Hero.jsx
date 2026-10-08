@@ -4,7 +4,7 @@ import { tourPackages } from '../data/tours';
 import img1 from '../assets/kevin-olson-ScBHbYokiQE-unsplash.jpg';
 import img2 from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import img3 from '../assets/matt-dany-FOYmbDX-sTs-unsplash.jpg';
-import HeroPromoBadge from './HeroPromoBadge';
+
 import heroLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
 import heroVideo1 from '../assets/hero/IMG_8432.MOV';
 import heroVideo2 from '../assets/hero/IMG_8436.MOV';
@@ -195,7 +195,7 @@ const Hero = ({ onSearch }) => {
                 </div>
 
             {/* Bring a Friend Promo Banner Overlaying Video */}
-            <HeroPromoBadge />
+            
 
             <div className="mobile-hero-slideshow">
                 {mobileImages.map((slide, index) => {
