@@ -50,17 +50,7 @@ const AdminLayout = () => {
                         </NavLink>
                     ))}
                     
-                    <div style={{ marginTop: 'auto', background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)', borderRadius: '16px', padding: '20px', color: '#fff', textAlign: 'center', boxShadow: '0 10px 25px rgba(37, 99, 235, 0.2)' }}>
-                        <div style={{ background: '#fff', color: '#2563eb', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto', fontSize: '1.2rem' }}>
-                            <i className="bi bi-shield-check"></i>
-                        </div>
-                        <h4 style={{ margin: '0 0 8px 0', fontSize: '1rem', fontWeight: '700' }}>Upgrade to Premium!</h4>
-                        <p style={{ margin: '0 0 15px 0', fontSize: '0.75rem', opacity: 0.9 }}>Upgrade your account and unlock all of the benefits.</p>
-                        <button style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '20px', padding: '8px 16px', color: '#fff', fontWeight: '600', fontSize: '0.8rem', cursor: 'pointer', width: '100%' }}>
-                            Upgrade premium
-                        </button>
-                    </div>
-                </nav>
+                    </nav>
             </div>
 
             {/* Main Content Area */}
@@ -74,3 +64,4 @@ const AdminLayout = () => {
 };
 
 export default AdminLayout;
+
