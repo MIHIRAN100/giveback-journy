@@ -187,7 +187,7 @@ const Account = () => {
                     </div>
                     
                     <div style={{ display: 'flex', gap: '30px', borderBottom: '1px solid transparent' }}>
-                        {['Overview', 'Bookings', 'Preferences', 'Payments', 'Files'].map(tab => (
+                        {['Overview', 'Bookings', 'Payments'].map(tab => (
                             <div 
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
@@ -334,7 +334,16 @@ const Account = () => {
                                         <tbody>
                                             {bookings.slice(0, 4).map((booking, idx) => (
                                                 <tr key={idx} style={{ borderBottom: '1px solid #f5f5f5' }}>
-                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: '500' }}>{booking.products?.name || 'Custom Booking'}</td>
+                                                    <td style={{ padding: '15px 0', color: '#111', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                                        <div style={{ width: '36px', height: '36px', borderRadius: '6px', backgroundColor: '#eee', overflow: 'hidden', flexShrink: 0 }}>
+                                                            {booking.products?.featured_image ? (
+                                                                <img src={booking.products.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
+                                                            ) : (
+                                                                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa' }}><i className="bi bi-image"></i></div>
+                                                            )}
+                                                        </div>
+                                                        {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}
+                                                    </td>
                                                     <td style={{ padding: '15px 0', color: '#555', textTransform: 'capitalize' }}>{booking.booking_status}</td>
                                                     <td style={{ padding: '15px 0', color: '#555' }}>{new Date(booking.booking_date).toLocaleDateString()}</td>
                                                     <td style={{ padding: '15px 0', color: '#555' }}>{booking.participants}</td>
@@ -369,7 +378,7 @@ const Account = () => {
                                                 </div>
                                                 <div>
                                                     <div style={{ fontSize: '0.85rem', color: '#111', fontWeight: '600' }}>
-                                                        {booking.products?.name || 'Custom Booking'} <span style={{ color: '#888', fontWeight: '400' }}>booked on {new Date(booking.created_at).toLocaleDateString()}</span>
+                                                        {booking.products?.name || booking.legacy_product_name || 'Custom Booking'} <span style={{ color: '#888', fontWeight: '400' }}>booked on {new Date(booking.created_at).toLocaleDateString()}</span>
                                                     </div>
                                                     <div style={{ fontSize: '0.75rem', color: '#888', marginTop: '3px' }}>
                                                         Ref: {booking.booking_reference || booking.id.split('-')[0]}
@@ -390,7 +399,7 @@ const Account = () => {
                                             <div key={idx}>
                                                 <div style={{ fontSize: '0.85rem', color: '#111', fontWeight: '600', marginBottom: '4px' }}>
                                                     {booking.amount_due > 0 ? `${booking.currency} ${booking.amount_due}` : 'Fully Paid'} 
-                                                    <span style={{ color: '#888', fontWeight: '400' }}> for {booking.products?.name?.substring(0, 15)}...</span>
+                                                    <span style={{ color: '#888', fontWeight: '400' }}> for {(booking.products?.name || booking.legacy_product_name || 'Custom Booking').substring(0, 15)}...</span>
                                                 </div>
                                                 <div style={{ fontSize: '0.75rem', color: '#888' }}>
                                                     Status: <span style={{ textTransform: 'capitalize', color: booking.payment_status === 'paid' ? 'green' : 'inherit' }}>{booking.payment_status.replace('_', ' ')}</span>
@@ -421,7 +430,7 @@ const Account = () => {
                                                 )}
                                             </div>
                                             <div>
-                                                <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>{booking.products?.name || 'Custom Booking'}</div>
+                                                <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>{booking.products?.name || booking.legacy_product_name || 'Custom Booking'}</div>
                                                 <div style={{ fontSize: '0.85rem', color: '#666' }}>Ref: {booking.booking_reference || booking.id.split('-')[0]} • Date: {new Date(booking.booking_date).toLocaleDateString()}</div>
                                             </div>
                                         </div>
@@ -443,7 +452,7 @@ const Account = () => {
                                 {bookings.map((booking, idx) => (
                                     <div key={idx} style={{ padding: '20px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #eaeaea', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div>
-                                            <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>Payment for {booking.products?.name || 'Custom Booking'}</div>
+                                            <div style={{ fontSize: '1rem', color: '#111', fontWeight: '600', marginBottom: '5px' }}>Payment for {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}</div>
                                             <div style={{ fontSize: '0.85rem', color: '#666' }}>Ref: {booking.booking_reference || booking.id.split('-')[0]}</div>
                                         </div>
                                         <div style={{ textAlign: 'right' }}>
@@ -454,14 +463,6 @@ const Account = () => {
                                 ))}
                                 {bookings.length === 0 && <div style={{ color: '#888', padding: '20px 0' }}>No payments found.</div>}
                             </div>
-                        </div>
-                    )}
-
-                    {(activeTab === 'Preferences' || activeTab === 'Files') && (
-                        <div style={{ padding: '40px', textAlign: 'center', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #eaeaea' }}>
-                            <i className="bi bi-tools" style={{ fontSize: '2rem', color: '#ccc', marginBottom: '15px', display: 'block' }}></i>
-                            <h3 style={{ margin: '0 0 10px 0', fontSize: '1.1rem', color: '#111' }}>{activeTab}</h3>
-                            <p style={{ color: '#888', margin: 0, fontSize: '0.9rem' }}>This section is currently under construction. Check back soon!</p>
                         </div>
                     )}
 
