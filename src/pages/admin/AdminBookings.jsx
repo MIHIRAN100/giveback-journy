@@ -16,6 +16,7 @@ const AdminBookings = () => {
         payment_status: '',
         amount_received: 0,
         amount_due: 0,
+          discount_given: 0,
         volunteer_status: ''
     });
 
@@ -24,7 +25,7 @@ const AdminBookings = () => {
             const { data, error } = await supabase
                 .from('bookings')
                 .select(`
-                    id, booking_reference, booking_date, participants, amount_due, amount_received, currency, booking_status, payment_status, user_id,
+                    id, booking_reference, booking_date, participants, amount_due, amount_received, currency, booking_status, discount_given, payment_status, user_id,
                     customer_name, customer_email, customer_phone, legacy_product_name, legacy_product_type,
                     products ( name, product_type ),
                     volunteer_details ( volunteer_status )
@@ -62,6 +63,7 @@ const AdminBookings = () => {
             payment_status: booking.payment_status || 'awaiting_payment',
             amount_received: booking.amount_received || 0,
             amount_due: booking.amount_due || 0,
+              discount_given: booking.discount_given || 0,
             volunteer_status: booking.volunteer_details?.volunteer_status || 'application_pending'
         });
         setIsManageModalOpen(true);
@@ -76,7 +78,8 @@ const AdminBookings = () => {
                     booking_status: manageForm.booking_status,
                     payment_status: manageForm.payment_status,
                     amount_received: parseFloat(manageForm.amount_received),
-                    amount_due: parseFloat(manageForm.amount_due)
+                    amount_due: parseFloat(manageForm.amount_due),
+                    discount_given: parseFloat(manageForm.discount_given || 0)
                 })
                 .eq('id', selectedBooking.id);
                 
@@ -280,7 +283,17 @@ const AdminBookings = () => {
                                     onChange={e => setManageForm({...manageForm, amount_due: e.target.value})}
                                     style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
                                 />
-                                <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>Edit this to apply discounts.</div>
+                                <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>Update amount if needed.</div>
+                            </div>
+
+                            <div>
+                                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '5px' }}>Discount Given</label>
+                                <input 
+                                    type="number"
+                                    value={manageForm.discount_given}
+                                    onChange={e => setManageForm({...manageForm, discount_given: e.target.value})}
+                                    style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+                                />
                             </div>
 
                             <div>
@@ -330,6 +343,8 @@ const AdminBookings = () => {
 };
 
 export default AdminBookings;
+
+
 
 
 

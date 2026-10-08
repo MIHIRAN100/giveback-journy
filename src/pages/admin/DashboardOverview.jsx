@@ -45,7 +45,8 @@ const DashboardOverview = () => {
         cancelledBookings: 0,
         topTours: [],
         todaysArrivals: 0,
-        totalVolunteers: 0
+        totalVolunteers: 0,
+        totalDiscounts: 0
     });
     const [loading, setLoading] = useState(true);
 
@@ -55,7 +56,7 @@ const DashboardOverview = () => {
                 // Fetch recent bookings
                 const { data: bookingsData } = await supabase
                     .from('bookings')
-                    .select('id, amount_due, created_at, booking_date, customer_name, customer_email, payment_status, booking_status, legacy_product_name, legacy_product_type, products(name, product_type)')
+                    .select('id, amount_due, discount_given, created_at, booking_date, customer_name, customer_email, payment_status, booking_status, legacy_product_name, legacy_product_type, products(name, product_type)')
                     .order('created_at', { ascending: false });
 
                 // Calculate stats
@@ -68,11 +69,13 @@ const DashboardOverview = () => {
                 const tourCounts = {};
                 let arrivalsToday = 0;
                 let volCount = 0;
+                let discountsSum = 0;
                 const todayStr = new Date().toISOString().split('T')[0];
 
                 if (bookingsData) {
                     bookingsData.forEach(b => {
                         if (b.booking_status !== 'cancelled' && b.booking_status !== 'canceled') { revenue += (Number(b.amount_due) || 0); }
+                        discountsSum += (Number(b.discount_given) || 0);
                         if (b.booking_status === 'confirmed') {
                             active++;
                             confirmed++;
@@ -109,7 +112,8 @@ const DashboardOverview = () => {
                     cancelledBookings: cancelled,
                     topTours: sortedTours,
                     todaysArrivals: arrivalsToday,
-                    totalVolunteers: volCount
+                    totalVolunteers: volCount,
+                    totalDiscounts: discountsSum
                 });
             } catch (err) {
                 console.error(err);
@@ -204,7 +208,7 @@ const DashboardOverview = () => {
                 />
                 <StatCard 
                     title="Discounts Given" 
-                    value={formatPrice(0)} 
+                    value={formatPrice(stats.totalDiscounts)} 
                     icon="bi-tag-fill" 
                     color="#f59e0b"
                 />
@@ -321,6 +325,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
 
 
