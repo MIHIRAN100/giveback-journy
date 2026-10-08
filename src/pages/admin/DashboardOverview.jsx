@@ -42,7 +42,9 @@ const DashboardOverview = () => {
         recentBookings: [],
         pendingBookings: 0,
         confirmedBookings: 0,
-        topTours: []
+        topTours: [],
+        todaysArrivals: 0,
+        totalVolunteers: 0
     });
     const [loading, setLoading] = useState(true);
 
@@ -52,7 +54,7 @@ const DashboardOverview = () => {
                 // Fetch recent bookings
                 const { data: bookingsData } = await supabase
                     .from('bookings')
-                    .select('id, amount_due, created_at, customer_name, customer_email, payment_status, booking_status, legacy_product_name, products(name)')
+                    .select('id, amount_due, created_at, booking_date, customer_name, customer_email, payment_status, booking_status, legacy_product_name, legacy_product_type, products(name, product_type)')
                     .order('created_at', { ascending: false });
 
                 // Calculate stats
@@ -62,6 +64,9 @@ const DashboardOverview = () => {
                 let confirmed = 0;
                 const uniqueCustomers = new Set();
                 const tourCounts = {};
+                let arrivalsToday = 0;
+                let volCount = 0;
+                const todayStr = new Date().toISOString().split('T')[0];
 
                 if (bookingsData) {
                     bookingsData.forEach(b => {
@@ -74,6 +79,14 @@ const DashboardOverview = () => {
                             pending++;
                         }
                         if (b.customer_email) uniqueCustomers.add(b.customer_email);
+                        
+                        if (b.booking_date && b.booking_date.startsWith(todayStr)) {
+                            arrivalsToday++;
+                        }
+                        
+                        if (b.legacy_product_type === 'volunteer' || b.products?.product_type === 'volunteer') {
+                            volCount++;
+                        }
 
                         const tourName = b.products?.name || b.legacy_product_name || 'Custom Booking';
                         tourCounts[tourName] = (tourCounts[tourName] || 0) + 1;
@@ -93,7 +106,9 @@ const DashboardOverview = () => {
                     recentBookings: bookingsData ? bookingsData.slice(0, 20) : [],
                     pendingBookings: pending,
                     confirmedBookings: confirmed,
-                    topTours: sortedTours
+                    topTours: sortedTours,
+                    todaysArrivals: arrivalsToday,
+                    totalVolunteers: volCount
                 });
             } catch (err) {
                 console.error(err);
@@ -155,6 +170,18 @@ const DashboardOverview = () => {
                     icon="bi-box-seam" 
                     color="#8b5cf6"
                     trend="-10.5%" 
+                />
+                <StatCard 
+                    title="Today's Arrivals" 
+                    value={stats.todaysArrivals} 
+                    icon="bi-airplane-engines" 
+                    color="#0ea5e9"
+                />
+                <StatCard 
+                    title="Total Volunteers" 
+                    value={stats.totalVolunteers} 
+                    icon="bi-heart-fill" 
+                    color="#ec4899"
                 />
             </div>
 
@@ -269,3 +296,4 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
