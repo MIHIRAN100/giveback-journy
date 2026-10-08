@@ -18,7 +18,7 @@ const AdminLayout = () => {
     return (
         <div style={{ display: 'flex', minHeight: '100vh', paddingTop: '90px', background: '#f4f7fb', fontFamily: '"Inter", system-ui, sans-serif' }}>
             {/* Light Sidebar */}
-            <div style={{ width: '260px', background: '#ffffff', padding: '30px 20px', display: 'flex', flexDirection: 'column', borderRight: '1px solid #eaeaea', zIndex: 10 }}>
+            <div style={{ width: '260px', background: '#ffffff', padding: '30px 20px', display: 'flex', flexDirection: 'column', borderRight: '1px solid #eaeaea', position: 'sticky', top: '90px', height: 'calc(100vh - 90px)', zIndex: 100 }}>
                 <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {navItems.map(item => (
                         <NavLink
