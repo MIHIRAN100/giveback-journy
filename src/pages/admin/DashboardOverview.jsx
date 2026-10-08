@@ -121,6 +121,18 @@ const DashboardOverview = () => {
         };
 
         fetchDashboardData();
+        
+        const channel = supabase
+            .channel('dashboard-bookings-changes')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, (payload) => {
+                console.log('Dashboard Realtime Update:', payload);
+                fetchDashboardData();
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
     }, []);
 
     if (loading) return <div style={{ padding: '40px', color: '#666' }}>Loading dashboard...</div>;
@@ -311,6 +323,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
 
 

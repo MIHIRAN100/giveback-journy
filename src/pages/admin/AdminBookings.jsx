@@ -42,6 +42,17 @@ const AdminBookings = () => {
 
     useEffect(() => {
         fetchBookings();
+        
+        const channel = supabase
+            .channel('admin-bookings-changes')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, (payload) => {
+                fetchBookings();
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
     }, []);
 
     const handleManageClick = (booking) => {
@@ -315,4 +326,5 @@ const AdminBookings = () => {
 };
 
 export default AdminBookings;
+
 
