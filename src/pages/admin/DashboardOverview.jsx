@@ -77,9 +77,7 @@ const DashboardOverview = () => {
                             active++;
                             confirmed++;
                         }
-                        if (b.booking_status === 'pending') {
-                            pending++;
-                        }
+                        if (b.booking_status === 'pending') { pending++; } if (b.booking_status === 'cancelled' || b.booking_status === 'canceled') { cancelled++; }
                         if (b.customer_email) uniqueCustomers.add(b.customer_email);
                         
                         if (b.booking_date && b.booking_date.startsWith(todayStr)) {
@@ -323,6 +321,7 @@ const DashboardOverview = () => {
 };
 
 export default DashboardOverview;
+
 
 
 
