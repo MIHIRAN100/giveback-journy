@@ -112,7 +112,11 @@ const AdminBookings = () => {
                 await supabase.from('volunteer_details').delete().eq('booking_id', selectedBooking.id);
             }
             
-            const { error } = await supabase.from('bookings').delete().eq('id', selectedBooking.id);
+            const { error, data } = await supabase.from('bookings').delete().eq('id', selectedBooking.id).select();
+            if (data && data.length === 0) {
+                alert('Deletion blocked! Your Supabase database is preventing the deletion. Please log into your Supabase Dashboard, go to Authentication > Policies, and make sure the ookings table has a DELETE policy enabled for authenticated users/admins.');
+                return;
+            }
             if (error) throw error;
             
             setIsManageModalOpen(false);
@@ -326,5 +330,6 @@ const AdminBookings = () => {
 };
 
 export default AdminBookings;
+
 
 
