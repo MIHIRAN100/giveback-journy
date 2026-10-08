@@ -233,10 +233,20 @@ const AdminBookings = () => {
                             </div>
 
                             {/* Col 3: Dates */}
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: '700', color: '#111' }}>
-                                <div>{new Date(booking.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</div>
-                                <i className="bi bi-airplane" style={{ color: '#aaa', transform: 'rotate(45deg)' }}></i>
-                                <div>{new Date(booking.booking_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}</div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#111' }}>{new Date(booking.created_at).toLocaleDateString('en-GB', { day: '2-digit' })}</span>
+                                    <span style={{ fontSize: '0.7rem', color: '#888', fontWeight: '500' }}>{new Date(booking.created_at).toLocaleDateString('en-GB', { month: 'short' })}</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#aaa', fontSize: '0.8rem', fontWeight: 'bold' }}>
+                                    <span>-</span>
+                                    <i className="bi bi-airplane" style={{ transform: 'rotate(90deg)' }}></i>
+                                    <span>-</span>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#111' }}>{new Date(booking.booking_date).toLocaleDateString('en-GB', { day: '2-digit' })}</span>
+                                    <span style={{ fontSize: '0.7rem', color: '#888', fontWeight: '500' }}>{new Date(booking.booking_date).toLocaleDateString('en-GB', { month: 'short' })}</span>
+                                </div>
                             </div>
 
                             {/* Col 4: Activity / Type */}
