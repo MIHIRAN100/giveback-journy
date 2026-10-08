@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
 import ScrollReveal from '../components/ScrollReveal';
 
+const bgColors = ['#e6f4ea', '#e8f0fe', '#fce8e6', '#f3e5f5'];
 const Account = () => {
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
@@ -335,11 +336,11 @@ const Account = () => {
                                             {bookings.slice(0, 4).map((booking, idx) => (
                                                 <tr key={idx} style={{ borderBottom: '1px solid #f5f5f5' }}>
                                                     <td style={{ padding: '15px 0', color: '#111', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                                        <div style={{ width: '36px', height: '36px', borderRadius: '6px', backgroundColor: '#eee', overflow: 'hidden', flexShrink: 0 }}>
+                                                        <div style={{ width: '36px', height: '36px', borderRadius: '6px', backgroundColor: bgColors[idx % 4], overflow: 'hidden', flexShrink: 0 }}>
                                                             {booking.products?.featured_image ? (
                                                                 <img src={booking.products.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
                                                             ) : (
-                                                                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa' }}><i className="bi bi-image"></i></div>
+                                                                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}><i className="bi bi-image"></i></div>
                                                             )}
                                                         </div>
                                                         {booking.products?.name || booking.legacy_product_name || 'Custom Booking'}
@@ -347,7 +348,7 @@ const Account = () => {
                                                     <td style={{ padding: '15px 0', color: '#555', textTransform: 'capitalize' }}>{booking.booking_status}</td>
                                                     <td style={{ padding: '15px 0', color: '#555' }}>{new Date(booking.booking_date).toLocaleDateString()}</td>
                                                     <td style={{ padding: '15px 0', color: '#555' }}>{booking.participants}</td>
-                                                    <td style={{ padding: '15px 0', color: '#aaa', textAlign: 'right' }}><i className="bi bi-three-dots"></i></td>
+                                                    <td style={{ padding: '15px 0', color: '#666', textAlign: 'right' }}><i className="bi bi-three-dots"></i></td>
                                                 </tr>
                                             ))}
                                             {bookings.length === 0 && (
@@ -364,21 +365,21 @@ const Account = () => {
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
                                 
                                 {/* Bookings Activity */}
-                                <div>
-                                    <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>Booking Activity</h3>
+                                <div style={{ backgroundColor: '#f0fdf4', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.02)' }}>
+                                    <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#166534' }}>Booking Activity</h3>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                         {bookings.slice(0, 3).map((booking, idx) => (
                                             <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                                <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#eee', overflow: 'hidden', flexShrink: 0 }}>
+                                                <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: bgColors[idx % 4], overflow: 'hidden', flexShrink: 0 }}>
                                                     {booking.products?.featured_image ? (
                                                         <img src={booking.products?.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
                                                     ) : (
-                                                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa' }}><i className="bi bi-geo-alt"></i></div>
+                                                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}><i className="bi bi-geo-alt"></i></div>
                                                     )}
                                                 </div>
                                                 <div>
                                                     <div style={{ fontSize: '0.85rem', color: '#111', fontWeight: '600' }}>
-                                                        {booking.products?.name || booking.legacy_product_name || 'Custom Booking'} <span style={{ color: '#888', fontWeight: '400' }}>booked on {new Date(booking.created_at).toLocaleDateString()}</span>
+                                                        <i className="bi bi-geo-alt" style={{ marginRight: '5px', color: '#5C3BBA' }}></i>{booking.products?.name || booking.legacy_product_name || 'Custom Booking'} <span style={{ color: '#888', fontWeight: '400' }}>booked on {new Date(booking.created_at).toLocaleDateString()}</span>
                                                     </div>
                                                     <div style={{ fontSize: '0.75rem', color: '#888', marginTop: '3px' }}>
                                                         Ref: {booking.booking_reference || booking.id.split('-')[0]}
@@ -392,8 +393,8 @@ const Account = () => {
                                 </div>
 
                                 {/* Payment History */}
-                                <div>
-                                    <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#111' }}>Payment History</h3>
+                                <div style={{ backgroundColor: '#fff7ed', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.02)' }}>
+                                    <h3 style={{ margin: '0 0 20px 0', fontSize: '1.1rem', fontWeight: '700', color: '#9a3412' }}>Payment History</h3>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                         {bookings.slice(0, 3).map((booking, idx) => (
                                             <div key={idx}>
@@ -422,11 +423,11 @@ const Account = () => {
                                 {bookings.map((booking, idx) => (
                                     <div key={idx} style={{ padding: '25px', backgroundColor: '#fff', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.02)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                            <div style={{ width: '60px', height: '60px', borderRadius: '8px', backgroundColor: '#eee', overflow: 'hidden' }}>
+                                            <div style={{ width: '60px', height: '60px', borderRadius: '8px', backgroundColor: bgColors[idx % 4], overflow: 'hidden' }}>
                                                 {booking.products?.featured_image ? (
                                                     <img src={booking.products?.featured_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="tour" />
                                                 ) : (
-                                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa' }}><i className="bi bi-image"></i></div>
+                                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}><i className="bi bi-image"></i></div>
                                                 )}
                                             </div>
                                             <div>
