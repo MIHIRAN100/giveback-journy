@@ -50,13 +50,16 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     // Signup function
-    const signUp = async (email, password, fullName, nationality) => {
+    const signUp = async (email, password, fullName, nationality, phone) => {
         return supabase.auth.signUp({
             email,
             password,
             options: {
                 data: {
-                    full_name: fullName, nationality: nationality,
+                    full_name: fullName, 
+                    nationality: nationality,
+                    phone: phone,
+                    country: nationality
                 }
             }
         });

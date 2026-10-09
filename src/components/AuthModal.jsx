@@ -5,13 +5,14 @@ import bgImage from '../assets/b7f8179e-7e30-41bb-bb99-477f25c24d60.jpg';
 import { countries } from '../data/countries';
 
 const AuthModal = () => {
-    const { isAuthModalOpen, setAuthModalOpen, authModalView, setAuthModalView, logIn, signUp, logInWithProvider } = useAuth();
+    const { isAuthModalOpen, setAuthModalOpen, authModalView, setAuthModalView, logIn, signUp, logInWithProvider, user } = useAuth();
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [country, setCountry] = useState('');
+    const [phone, setPhone] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [agreed, setAgreed] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
@@ -21,7 +22,7 @@ const AuthModal = () => {
     
     const navigate = useNavigate();
 
-    if (!isAuthModalOpen) return null;
+    if (!isAuthModalOpen || user) return null;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,7 +32,11 @@ const AuthModal = () => {
         }
 
         if (authModalView === 'signup' && !country) {
-            return setError("Please select your country");
+            return setError("Please select your country/nationality");
+        }
+        
+        if (authModalView === 'signup' && !phone) {
+            return setError("Please enter your phone number");
         }
         
         try {
@@ -42,7 +47,7 @@ const AuthModal = () => {
                 if (error) throw error;
             } else {
                 const fullName = `${firstName} ${lastName}`.trim();
-                const { error } = await signUp(email, password, fullName);
+                const { error } = await signUp(email, password, fullName, country, phone);
                 if (error) throw error;
             }
             setAuthModalOpen(false);
@@ -110,9 +115,20 @@ const AuthModal = () => {
                                 onChange={(e) => setCountry(e.target.value)}
                                 required
                             >
-                                <option value="" disabled>Select your country</option>
+                                <option value="" disabled>Select your nationality</option>
                                 {countries.map(c => <option key={c} value={c}>{c}</option>)}
                             </select>
+                        )}
+
+                        {authModalView === 'signup' && (
+                            <input
+                                style={styles.input}
+                                type="tel"
+                                placeholder="Phone number"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                required
+                            />
                         )}
 
                         <input

@@ -68,11 +68,11 @@ const Account = () => {
                 
                 if (profileData) {
                     setProfile({
-                        full_name: profileData.full_name || '',
+                        full_name: profileData.full_name || user?.user_metadata?.full_name || '',
                         email: profileData.email || user.email || '',
-                        phone: profileData.phone || '',
-                        nationality: profileData.nationality || '',
-                        country: profileData.country || '',
+                        phone: profileData.phone || user?.user_metadata?.phone || '',
+                        nationality: profileData.nationality || user?.user_metadata?.nationality || '',
+                        country: profileData.country || user?.user_metadata?.country || '',
                         profile_photo: profileData.profile_photo || '',
                         address: profileData.address || '',
                         city: profileData.city || '',

@@ -9,6 +9,7 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [country, setCountry] = useState('');
+    const [phone, setPhone] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [agreed, setAgreed] = useState(false);
     
@@ -27,7 +28,11 @@ const Signup = () => {
         }
         
         if (!country) {
-            return setError("Please select your country");
+            return setError("Please select your nationality");
+        }
+        
+        if (!phone) {
+            return setError("Please enter your phone number");
         }
         
         try {
@@ -35,7 +40,7 @@ const Signup = () => {
             setMessage('');
             setLoading(true);
             const fullName = `${firstName} ${lastName}`.trim();
-            const { error, data } = await signUp(email, password, fullName);
+            const { error, data } = await signUp(email, password, fullName, country, phone);
             // Note: you might also want to save the `country` to user profile in Supabase here.
             
             if (error) throw error;
@@ -92,9 +97,18 @@ const Signup = () => {
                             onChange={(e) => setCountry(e.target.value)}
                             required
                         >
-                            <option value="" disabled>Select your country</option>
+                            <option value="" disabled>Select your nationality</option>
                             {countries.map(c => <option key={c} value={c}>{c}</option>)}
                         </select>
+
+                        <input
+                            style={styles.input}
+                            type="tel"
+                            placeholder="Phone number"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
+                        />
 
                         <input
                             style={styles.input}
