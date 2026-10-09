@@ -106,7 +106,8 @@ const Navbar = () => {
             ]
         },
         { name: 'Price', path: '/volunteer#pricing' },
-        { name: 'About Us', path: '/exclusive-journeys' }
+        { name: 'About Us', path: '/exclusive-journeys' },
+        { name: 'Contact Us', path: '/contact' }
     ];
 
     return (
@@ -236,14 +237,10 @@ const Navbar = () => {
                         )}
                         
                         {user ? (
-                            <Link to="/account" className="nav-icon-link" style={{ position: 'relative', marginRight: '15px', color: 'var(--pitch-black)', fontSize: '1.2rem' }} title="My Account">
-                                <i className="bi bi-person-circle"></i>
-                            </Link>
+                            <Link to="/account" className="btn-modern btn-black">My Account</Link>
                         ) : (
-                            <span className="nav-item" onClick={() => { setAuthModalView('login'); setAuthModalOpen(true); }} style={{ marginRight: '15px', fontWeight: 'bold', cursor: 'pointer' }}>Log In</span>
+                            <button className="btn-modern btn-black" onClick={() => { setAuthModalView('login'); setAuthModalOpen(true); }} style={{ border: 'none', cursor: 'pointer' }}>Log In</button>
                         )}
-                        
-                        <Link to="/contact" className="btn-modern btn-black">Contact Us</Link>
                     </div>
 
                     <div className="mobile-right-actions">

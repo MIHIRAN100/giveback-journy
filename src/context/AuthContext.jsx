@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [isAuthModalOpen, setAuthModalOpen] = useState(false);
+    const [isAuthModalOpen, setAuthModalOpen] = useState(true);
     const [authModalView, setAuthModalView] = useState('login'); // 'login' or 'signup'
 
     const fetchProfile = async (userId) => {
@@ -50,13 +50,13 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     // Signup function
-    const signUp = async (email, password, fullName) => {
+    const signUp = async (email, password, fullName, nationality) => {
         return supabase.auth.signUp({
             email,
             password,
             options: {
                 data: {
-                    full_name: fullName,
+                    full_name: fullName, nationality: nationality,
                 }
             }
         });

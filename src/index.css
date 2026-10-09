@@ -1106,7 +1106,7 @@ video.hero-video {
     z-index: 2;
 }
 
-.hero-overlay {
+.hero-overlay { border-radius: inherit;
     position: absolute;
     top: 0;
     left: 0;
@@ -2221,7 +2221,7 @@ video.hero-video {
     z-index: 10;
 }
 
-.secondary-hero .hero-overlay {
+.secondary-hero .hero-overlay { border-radius: inherit;
     background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8)) !important;
 }
 

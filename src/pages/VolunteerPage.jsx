@@ -78,16 +78,16 @@ const pricingPrograms = [
         color: "#f6ad55"
     },
     {
-        name: "Body & Mind Wellness Week",
+        name: "Women Empowerment",
         price: 175,
-        duration: "1-2 Weeks",
-        location: "Hikkaduwa, Sri Lanka",
+        duration: "1-4 Weeks",
+        location: "Kandy District",
         housing: "Shared Volunteer House",
         meals: "3 Daily",
         pickup: "Included",
         support: "24/7 Support",
-        id: "zen-and-temple-yoga",
-        color: "#9b59b6"
+        id: "women-empowerment",
+        color: "#db2777"
     },
     {
         name: "Medical Elective Project",
@@ -131,7 +131,7 @@ export const programWeeklyRates = {
         basePrice: 175,
         extraWeekPrice: 50
     },
-    "zen-and-temple-yoga": {
+    "women-empowerment": {
         baseWeeks: 1,
         basePrice: 175,
         extraWeekPrice: 50

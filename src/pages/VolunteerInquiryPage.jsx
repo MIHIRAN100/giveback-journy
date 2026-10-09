@@ -298,9 +298,11 @@ const VolunteerInquiryPage = () => {
     // Map volunteerProject to programWeeklyRates ID
     const projectToRateKey = {
         'Breathe Sri Lanka': 'real-sri-lanka-experience',
+        'Ceylon Skill Odyssey': 'ceylon-skill-odyssey',
         'Teaching Volunteer Program': 'sri-lanka-childcare',
         'Special Needs Support': 'special-needs-support',
         'Construction & Renovation': 'village-school-renovation',
+        'Women Empowerment': 'women-empowerment',
         'Medical Volunteer': 'medical-volunteer'
     };
 
@@ -336,19 +338,53 @@ const VolunteerInquiryPage = () => {
     const weeks = getDurationWeeks(formData.duration);
     const priceDetails = rateKey ? getProgramPriceDetails(rateKey, weeks) : null;
 
+    const steps = [
+        { num: 1, label: 'Personal' },
+        { num: 2, label: 'Program' },
+        { num: 3, label: 'Arrival' },
+        { num: 4, label: 'Emergency' },
+        { num: 5, label: 'Skills' },
+        { num: 6, label: 'Health' }
+    ];
+
     const renderProgressBar = () => (
-        <div style={{ marginBottom: '40px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', fontSize: '0.8rem', fontWeight: 700, color: '#666' }}>
-                <span>Application Progress</span>
-                <span>Step {currentStep} of {totalSteps}</span>
-            </div>
-            <div style={{ width: '100%', height: '6px', background: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
-                <div style={{ 
-                    width: `${(currentStep / totalSteps) * 100}%`, 
-                    height: '100%', 
-                    background: 'var(--primary-green)', 
-                    transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)' 
-                }} />
+        <div style={{ marginBottom: '50px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', maxWidth: '100%', margin: '0 auto' }}>
+                <div style={{ position: 'absolute', top: '15px', left: '0', right: '0', height: '1px', background: '#E5E7EB', zIndex: 0 }}></div>
+                
+                {steps.map((step) => {
+                    const isActive = currentStep === step.num;
+                    const isPast = currentStep > step.num;
+                    return (
+                        <div key={step.num} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1, width: '70px' }}>
+                            <div style={{ 
+                                width: '32px', 
+                                height: '32px', 
+                                borderRadius: '50%', 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                fontSize: '0.9rem',
+                                fontWeight: isActive || isPast ? '600' : '400',
+                                backgroundColor: isActive ? '#3b7fba' : '#FFF',
+                                color: isActive ? '#FFF' : '#333',
+                                border: `1px solid ${isActive || isPast ? '#3b7fba' : '#CCC'}`,
+                                transition: 'all 0.3s ease',
+                                marginBottom: '10px'
+                            }}>
+                                {step.num}
+                            </div>
+                            <div style={{ 
+                                fontSize: '0.75rem', 
+                                color: isActive ? '#3b7fba' : '#888', 
+                                fontWeight: isActive ? '600' : '400',
+                                textAlign: 'center'
+                            }}>
+                                {step.label}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
@@ -478,6 +514,8 @@ const VolunteerInquiryPage = () => {
                                         const projects = [
                                             { id: 'Breathe Sri Lanka', label: 'Breathe Sri Lanka', icon: 'fa-solid fa-earth-asia', desc: 'Cultural immersion journey — 27 days', special: true },
                                             { id: 'Teaching Volunteer Program', label: 'Teaching Volunteer', icon: 'fa-solid fa-chalkboard-user', desc: 'Teach English in rural schools & temples' },
+                                            { id: 'Ceylon Skill Odyssey', label: 'Ceylon Skill Odyssey', icon: 'fa-solid fa-compass', desc: 'Short-term impact – 7 days', special: true },
+                                            { id: 'Women Empowerment', label: 'Women Empowerment', icon: 'fa-solid fa-venus', desc: 'Support and empower local women' },
                                             { id: 'Special Needs Support', label: 'Special Needs Support', icon: 'fa-solid fa-hands-holding-child', desc: 'Care & support for children with special needs' },
                                             { id: 'Construction & Renovation', label: 'Construction & Renovation', icon: 'fa-solid fa-hammer', desc: 'Build & renovate schools and community spaces' },
                                             { id: 'Medical Volunteer', label: 'Medical Volunteer', icon: 'fa-solid fa-kit-medical', desc: 'Healthcare placements in rural clinics' },
@@ -1062,24 +1100,63 @@ const VolunteerInquiryPage = () => {
                             </div>
 
                             {priceDetails && (
-                                <div className="summary-section" style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '20px' }}>
-                                    <div className="summary-section-title"><i className="fa-solid fa-credit-card"></i> Program Fee</div>
-                                    <div className="summary-item" style={{ alignItems: 'baseline' }}>
-                                        <span className="summary-label">Total Fee:</span>
-                                        <span className="summary-value highlight" style={{ fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>
-                                            {formatPrice(priceDetails.total)}
-                                        </span>
-                                    </div>
-                                    {!priceDetails.isFixed && (
-                                        <div className="summary-item">
-                                            <span className="summary-label">Weekly Average:</span>
-                                            <span className="summary-value">
-                                                {formatPrice(priceDetails.average)}/wk
-                                            </span>
+                                <div style={{ 
+                                    background: '#FFFFFF', 
+                                    borderRadius: '16px', 
+                                    padding: '24px', 
+                                    border: '1px solid #E5E7EB',
+                                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                                    marginBottom: '25px',
+                                    marginTop: '25px'
+                                }}>
+                                    <h4 style={{ 
+                                        fontSize: '1.1rem', 
+                                        fontWeight: 700, 
+                                        color: '#333', 
+                                        margin: '0 0 20px 0' 
+                                    }}>Price Breakdown</h4>
+                                    
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '1rem' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4B5563', alignItems: 'flex-start' }}>
+                                            <div>
+                                                <div style={{ color: '#4B5563', marginBottom: '6px' }}>Program Fee</div>
+                                                <div style={{ fontSize: '0.85rem', color: '#6B7280' }}>
+                                                    {weeks} {weeks === 1 ? 'Week' : 'Weeks'} {priceDetails.isFixed ? '' : `x ${formatPrice(priceDetails.average)}`}
+                                                </div>
+                                            </div>
+                                            <span style={{ color: '#4B5563' }}>{formatPrice(priceDetails.total)}</span>
                                         </div>
-                                    )}
+                                        
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#328b61', marginTop: '8px' }}>
+                                            <span>Volunteer Grant (20%)</span>
+                                            <span>- {formatPrice(priceDetails.total * 0.2)}</span>
+                                        </div>
+                                        
+                                        <div style={{ 
+                                            margin: '12px 0 16px 0', 
+                                            borderTop: '1px solid #E5E7EB' 
+                                        }}></div>
+                                        
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                                            <span style={{ 
+                                                color: '#d32f2f', 
+                                                textDecoration: 'line-through',
+                                                fontSize: '0.95rem'
+                                            }}>US{formatPrice(priceDetails.total)}</span>
+                                            
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+                                                <span style={{ fontWeight: 700, color: '#333', fontSize: '1.05rem' }}>Total due</span>
+                                                <span style={{ 
+                                                    fontWeight: 800, 
+                                                    color: '#222', 
+                                                    fontSize: '1.4rem'
+                                                }}>US{formatPrice(priceDetails.total * 0.8)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     {priceDetails.isMinLimit && (
-                                        <div style={{ fontSize: '0.75rem', color: '#ffedd5', background: 'rgba(234, 88, 12, 0.25)', padding: '8px 12px', borderRadius: '10px', marginTop: '10px', fontWeight: 700 }}>
+                                        <div style={{ fontSize: '0.75rem', color: '#b45309', background: '#fef3c7', padding: '10px 12px', borderRadius: '10px', marginTop: '16px', fontWeight: 600, border: '1px solid #fde68a' }}>
                                             <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '6px' }}></i>
                                             {priceDetails.minWeeks} Week Minimum Required
                                         </div>
@@ -1197,13 +1274,14 @@ const VolunteerInquiryPage = () => {
                 }
                 
                 .summary-card {
-                    background: linear-gradient(145deg, #1ba352 0%, #0a2e1a 100%);
-                    border-radius: 35px;
-                    padding: 45px 35px;
-                    color: white;
+                    background: linear-gradient(135deg, #ffffff 0%, #f4fbf7 100%);
+                    border-radius: 24px;
+                    padding: 40px 35px;
+                    color: #111827;
                     position: sticky;
                     top: 120px;
-                    box-shadow: 0 20px 50px rgba(27, 163, 82, 0.2);
+                    border: 1px solid rgba(27, 163, 82, 0.15);
+                    box-shadow: 0 20px 40px rgba(27, 163, 82, 0.08);
                 }
 
                 .summary-title {
@@ -1211,7 +1289,8 @@ const VolunteerInquiryPage = () => {
                     font-weight: 900;
                     margin-bottom: 30px;
                     padding-bottom: 25px;
-                    border-bottom: 1px solid rgba(255,255,255,0.15);
+                    border-bottom: 1px solid #E5E7EB;
+                    color: #111827;
                 }
 
                 .summary-section {
@@ -1223,7 +1302,7 @@ const VolunteerInquiryPage = () => {
                     font-weight: 800;
                     text-transform: uppercase;
                     letter-spacing: 1px;
-                    color: rgba(255,255,255,0.6);
+                    color: #6B7280;
                     margin-bottom: 18px;
                     display: flex;
                     align-items: center;
@@ -1239,7 +1318,7 @@ const VolunteerInquiryPage = () => {
                 }
 
                 .summary-label {
-                    color: rgba(255,255,255,0.7);
+                    color: #4B5563;
                     font-weight: 600;
                 }
 
@@ -1247,10 +1326,11 @@ const VolunteerInquiryPage = () => {
                     font-weight: 800;
                     text-align: right;
                     max-width: 60%;
+                    color: #111827;
                 }
 
                 .summary-value.highlight {
-                    color: #fff;
+                    color: #1ba352;
                 }
 
                 @media (max-width: 1024px) {

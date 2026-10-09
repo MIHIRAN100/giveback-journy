@@ -276,14 +276,52 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
         }
     };
 
+    const steps = [
+        { num: 1, label: 'Traveller details' },
+        { num: 2, label: 'Logistics' },
+        { num: 3, label: 'Group & Stay' },
+        { num: 4, label: 'Requirements' }
+    ];
+
     const renderStepIndicator = () => (
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '40px', justifyContent: 'center' }}>
-            {[1, 2, 3, 4].map(step => (
-                <div 
-                    key={step} 
-                    className={`step-dot ${currentStep === step ? 'active' : ''}`}
-                />
-            ))}
+        <div style={{ marginBottom: '50px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
+                <div style={{ position: 'absolute', top: '15px', left: '0', right: '0', height: '1px', background: '#E5E7EB', zIndex: 0 }}></div>
+                
+                {steps.map((step, index) => {
+                    const isActive = currentStep === step.num;
+                    const isPast = currentStep > step.num;
+                    return (
+                        <div key={step.num} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1, width: '100px' }}>
+                            <div style={{ 
+                                width: '32px', 
+                                height: '32px', 
+                                borderRadius: '50%', 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                fontSize: '0.9rem',
+                                fontWeight: isActive || isPast ? '600' : '400',
+                                backgroundColor: isActive ? '#3b7fba' : '#FFF',
+                                color: isActive ? '#FFF' : '#333',
+                                border: `1px solid ${isActive || isPast ? '#3b7fba' : '#CCC'}`,
+                                transition: 'all 0.3s ease',
+                                marginBottom: '10px'
+                            }}>
+                                {step.num}
+                            </div>
+                            <div style={{ 
+                                fontSize: '0.75rem', 
+                                color: isActive ? '#3b7fba' : '#888', 
+                                fontWeight: isActive ? '600' : '400',
+                                textAlign: 'center'
+                            }}>
+                                {step.label}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 
@@ -376,21 +414,21 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                     {/* Left side: Tour Summary */}
                     <ScrollReveal delay={0.1}>
                         <div style={{ 
-                            background: 'linear-gradient(135deg, #111e15 0%, #0a0f0b 100%)', 
-                            borderRadius: '30px', 
-                            boxShadow: '0 30px 60px rgba(0,0,0,0.15)',
-                            border: 'none',
+                            background: 'linear-gradient(135deg, #ffffff 0%, #f4fbf7 100%)', 
+                            borderRadius: '24px', 
+                            boxShadow: '0 20px 40px rgba(27, 163, 82, 0.08)',
+                            border: '1px solid rgba(27, 163, 82, 0.15)',
                             position: 'sticky',
                             top: '120px',
-                            color: 'white',
+                            color: '#111827',
                             overflow: 'hidden'
                         }}>
-                            <div style={{ position: 'relative', height: '240px' }}>
+                            <div style={{ position: 'relative', height: '260px' }}>
                                 <img src={pkg.image} alt={pkg.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 <div style={{ 
                                     position: 'absolute', 
                                     inset: 0, 
-                                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(10,15,11,0.9) 100%)' 
+                                    background: 'linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.8) 100%)' 
                                 }}></div>
                                 <div style={{
                                     position: 'absolute',
@@ -423,39 +461,45 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         textTransform: 'uppercase'
                                     }}>Signature Tour</span>
                                 </div>
+
+                                <div style={{ position: 'absolute', bottom: '24px', left: '24px', right: '24px' }}>
+                                    <h3 style={{ 
+                                        fontSize: '1.6rem', 
+                                        fontWeight: 900, 
+                                        margin: 0, 
+                                        color: 'white',
+                                        letterSpacing: '-0.02em',
+                                        lineHeight: 1.2,
+                                        textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                                        marginBottom: '8px'
+                                    }}>{pkg.name}</h3>
+                                    <p style={{
+                                        fontSize: '0.8rem',
+                                        color: 'rgba(255, 255, 255, 0.9)',
+                                        margin: 0,
+                                        lineHeight: 1.5,
+                                        display: '-webkit-box',
+                                        WebkitLineClamp: 2,
+                                        WebkitBoxOrient: 'vertical',
+                                        overflow: 'hidden'
+                                    }}>
+                                        {pkg.description ? pkg.description.split('.')[0] + '.' : 'Craft your perfect journey with our signature experience.'}
+                                    </p>
+                                </div>
                             </div>
                             
-                            <div style={{ padding: '30px 24px 24px' }}>
-                                <span style={{ 
-                                    fontSize: '0.7rem', 
-                                    fontWeight: 800, 
-                                    color: '#1ba352', 
-                                    letterSpacing: '2px', 
-                                    textTransform: 'uppercase', 
-                                    display: 'block', 
-                                    marginBottom: '8px' 
-                                }}>Selected Experience</span>
-                                <h3 style={{ 
-                                    fontSize: '1.5rem', 
-                                    fontWeight: 900, 
-                                    marginBottom: '20px', 
-                                    letterSpacing: '-0.03em',
-                                    lineHeight: 1.25,
-                                    background: 'linear-gradient(135deg, #ffffff 0%, #a2b0a7 100%)',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent'
-                                }}>{pkg.name}</h3>
-                                
+                            <div style={{ padding: '24px' }}>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '30px' }}>
                                     <div style={{ 
                                         display: 'flex', 
                                         alignItems: 'center', 
                                         gap: '8px', 
                                         fontSize: '0.8rem', 
-                                        background: 'rgba(255,255,255,0.06)', 
+                                        background: '#FFFFFF', 
                                         padding: '8px 14px', 
                                         borderRadius: '100px',
-                                        border: '1px solid rgba(255,255,255,0.05)'
+                                        border: '1px solid rgba(27, 163, 82, 0.2)',
+                                        color: '#111e15'
                                     }}>
                                         <i className="bi bi-calendar3" style={{ color: '#1ba352' }}></i>
                                         <span style={{ fontWeight: 600 }}>{pkg.days}</span>
@@ -465,10 +509,11 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         alignItems: 'center', 
                                         gap: '8px', 
                                         fontSize: '0.8rem', 
-                                        background: 'rgba(255,255,255,0.06)', 
+                                        background: '#FFFFFF', 
                                         padding: '8px 14px', 
                                         borderRadius: '100px',
-                                        border: '1px solid rgba(255,255,255,0.05)'
+                                        border: '1px solid rgba(27, 163, 82, 0.2)',
+                                        color: '#111e15'
                                     }}>
                                         <i className="bi bi-people" style={{ color: '#1ba352' }}></i>
                                         <span style={{ fontWeight: 600 }}>{formData.travelerType}</span>
@@ -478,10 +523,11 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         alignItems: 'center', 
                                         gap: '8px', 
                                         fontSize: '0.8rem', 
-                                        background: 'rgba(255,255,255,0.06)', 
+                                        background: '#FFFFFF', 
                                         padding: '8px 14px', 
                                         borderRadius: '100px',
-                                        border: '1px solid rgba(255,255,255,0.05)'
+                                        border: '1px solid rgba(27, 163, 82, 0.2)',
+                                        color: '#111e15'
                                     }}>
                                         <i className="bi bi-compass" style={{ color: '#1ba352' }}></i>
                                         <span style={{ fontWeight: 600, textTransform: 'capitalize' }}>
@@ -491,53 +537,68 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                 </div>
 
                                 <div style={{ 
-                                    background: 'rgba(255, 255, 255, 0.03)', 
-                                    borderRadius: '20px', 
+                                    background: '#FFFFFF', 
+                                    borderRadius: '16px', 
                                     padding: '24px', 
-                                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                                    border: '1px solid #E5E7EB',
+                                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
                                     marginBottom: '25px'
                                 }}>
-                                    <span style={{ 
-                                        fontSize: '0.7rem', 
-                                        fontWeight: 800, 
-                                        textTransform: 'uppercase', 
-                                        color: '#888', 
-                                        letterSpacing: '1px', 
-                                        display: 'block',
-                                        marginBottom: '15px' 
-                                    }}>Estimated Investment</span>
+                                    <h4 style={{ 
+                                        fontSize: '1.2rem', 
+                                        fontWeight: 700, 
+                                        color: '#333', 
+                                        margin: '0 0 20px 0' 
+                                    }}>Price Breakdown</h4>
                                     
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#ccc' }}>
-                                            <span>{formData.adults} {formData.adults === 1 ? 'Adult' : 'Adults'}</span>
-                                            <span style={{ fontWeight: 600 }}>{formatPrice(formData.adults * priceData.perAdult)}</span>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '1rem' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4B5563', alignItems: 'flex-start' }}>
+                                            <div>
+                                                <div style={{ color: '#4B5563', marginBottom: '6px' }}>{formData.roomPreference || 'Twin Room'}</div>
+                                                <div style={{ fontSize: '0.85rem', color: '#6B7280' }}>
+                                                    {formData.adults} {formData.adults === 1 ? 'Traveler' : 'Travelers'} x {formatPrice(priceData.perAdult)}
+                                                </div>
+                                            </div>
+                                            <span style={{ color: '#4B5563' }}>{formatPrice(formData.adults * priceData.perAdult)}</span>
                                         </div>
+                                        
                                         {formData.kids > 0 && (
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#ccc' }}>
-                                                <span>{formData.kids} Kids (50% Off)</span>
-                                                <span style={{ fontWeight: 600 }}>{formatPrice(formData.kids * priceData.perAdult * 0.5)}</span>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4B5563', alignItems: 'flex-start' }}>
+                                                <div>
+                                                    <div style={{ color: '#4B5563', marginBottom: '6px' }}>Children (50% Off)</div>
+                                                    <div style={{ fontSize: '0.85rem', color: '#6B7280' }}>
+                                                        {formData.kids} x {formatPrice(priceData.perAdult * 0.5)}
+                                                    </div>
+                                                </div>
+                                                <span style={{ color: '#4B5563' }}>{formatPrice(formData.kids * priceData.perAdult * 0.5)}</span>
                                             </div>
                                         )}
-                                        {formData.infants > 0 && (
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#1ba352' }}>
-                                                <span>{formData.infants} Infants (Free)</span>
-                                                <span style={{ fontWeight: 700 }}>Free</span>
-                                            </div>
-                                        )}
+                                        
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#328b61', marginTop: '8px' }}>
+                                            <span>Deals of The Week</span>
+                                            <span>- {formatPrice(priceData.total * 0.2)}</span>
+                                        </div>
                                         
                                         <div style={{ 
-                                            margin: '15px 0 10px', 
-                                            borderTop: '1px dashed rgba(255,255,255,0.1)' 
+                                            margin: '12px 0 16px 0', 
+                                            borderTop: '1px solid #E5E7EB' 
                                         }}></div>
                                         
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                                            <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>Total Price</span>
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
                                             <span style={{ 
-                                                fontWeight: 900, 
-                                                color: '#1ba352', 
-                                                fontSize: '1.6rem',
-                                                textShadow: '0 0 20px rgba(27, 163, 82, 0.25)' 
-                                            }}>{formatPrice(priceData.total)}</span>
+                                                color: '#d32f2f', 
+                                                textDecoration: 'line-through',
+                                                fontSize: '0.95rem'
+                                            }}>US{formatPrice(priceData.total)}</span>
+                                            
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+                                                <span style={{ fontWeight: 700, color: '#333', fontSize: '1.05rem' }}>Total due</span>
+                                                <span style={{ 
+                                                    fontWeight: 800, 
+                                                    color: '#222', 
+                                                    fontSize: '1.4rem'
+                                                }}>US{formatPrice(priceData.total * 0.8)}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -563,10 +624,10 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                 )}
 
                                 <div style={{ 
-                                    borderTop: '1px solid rgba(255,255,255,0.08)', 
+                                    borderTop: '1px solid #E5E7EB', 
                                     paddingTop: '20px', 
                                     fontSize: '0.75rem', 
-                                    color: '#888', 
+                                    color: '#6B7280', 
                                     lineHeight: 1.6 
                                 }}>
                                     <div style={{ display: 'flex', gap: '8px', alignItems: 'start' }}>
@@ -624,11 +685,8 @@ DocuSign Envelope ID: ${ndaEnvelopeId}
                                         <div className="step-content" style={{ flex: 1 }}>
                                             {currentStep === 1 && (
                                                 <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-                                                        <div style={{ width: '40px', height: '40px', background: '#121212', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
-                                                            <i className="bi bi-person"></i>
-                                                        </div>
-                                                        <h3 style={{ margin: 0, fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Traveler Profile</h3>
+                                                    <div style={{ marginBottom: '24px' }}>
+                                                        <h3 style={{ margin: 0, fontWeight: 700, fontSize: '2rem', letterSpacing: '-0.02em', color: '#222' }}>Traveller details</h3>
                                                     </div>
 
                                                     <div className="form-group">

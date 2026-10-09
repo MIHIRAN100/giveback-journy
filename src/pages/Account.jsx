@@ -194,15 +194,12 @@ const Account = () => {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
                         <h1 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '700', color: '#fff' }}>Profile</h1>
                         
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
-                            <button 
+                        <button 
                                 onClick={handleLogout}
                                 style={{ padding: '8px 16px', backgroundColor: 'var(--primary-green)', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: '600', cursor: 'pointer', fontSize: '0.85rem' }}
                             >
                                 Log Out
                             </button>
-                            
-                        </div>
                     </div>
                     
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid transparent', flexWrap: 'wrap', gap: '15px' }}>
@@ -228,7 +225,7 @@ const Account = () => {
     {profile.country && (
         <div style={{ fontSize: '0.85rem', color: '#aaa', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '500', paddingBottom: '15px' }}>
             {getCountryCode(profile.country) ? (
-                <img src={`https://flagcdn.com/w20/${getCountryCode(profile.country)}.png`} alt={profile.country} style={{ width: '18px', height: '13px', borderRadius: '2px' }} />
+                <img src={"https://flagcdn.com/w20/" + getCountryCode(profile.country) + ".png"} alt={profile.country} style={{ width: '18px', height: '13px', borderRadius: '2px' }} />
             ) : (
                 <i className="bi bi-geo-alt-fill" style={{ color: 'var(--primary-green)' }}></i>
             )}
@@ -288,6 +285,8 @@ const Account = () => {
                             <form onSubmit={handleUpdate} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <input type="text" placeholder="Full Name" value={profile.full_name} onChange={e => setProfile({...profile, full_name: e.target.value})} style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '0.85rem' }} />
                                 <input type="tel" placeholder="Phone" value={profile.phone} onChange={e => setProfile({...profile, phone: e.target.value})} style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '0.85rem' }} />
+                                <input type="text" placeholder="Nationality" value={profile.nationality} onChange={e => setProfile({...profile, nationality: e.target.value})} style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '0.85rem' }} />
+                                <input type="text" placeholder="Country of Residence" value={profile.country} onChange={e => setProfile({...profile, country: e.target.value})} style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px', fontSize: '0.85rem' }} />
                                 <button type="submit" disabled={updating} style={{ padding: '8px', backgroundColor: '#111', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem' }}>{updating ? 'Saving...' : 'Save'}</button>
                             </form>
                         ) : (
@@ -502,4 +501,12 @@ const Account = () => {
 };
 
 export default Account;
+
+
+
+
+
+
+
+
 
