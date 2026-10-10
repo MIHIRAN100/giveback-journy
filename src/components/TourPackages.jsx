@@ -13,6 +13,27 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
     const symbol = currentCurrency.symbol + (currency === 'LKR' ? ' ' : '');
     const rate = currentCurrency.rate;
 
+    const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+    const slideImages = [];
+    if (pkg.routeMap) slideImages.push(pkg.routeMap);
+    if (pkg.image && !slideImages.includes(pkg.image)) slideImages.push(pkg.image);
+    (pkg.itinerary || []).forEach(day => {
+        if (day.image && !slideImages.includes(day.image)) slideImages.push(day.image);
+    });
+    if (slideImages.length === 1) slideImages.push(pkg.image || pkg.routeMap);
+
+    const nextImage = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrentImageIndex((prev) => (prev + 1) % slideImages.length);
+    };
+
+    const prevImage = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrentImageIndex((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1));
+    };
+
     const getPriceVal = () => {
         const basePriceVal = parseInt(pkg.price.replace('$', '').replace(',', ''));
         if (pkg.id === 1) return 840;
@@ -69,8 +90,33 @@ export const TourCard = ({ pkg, isExactMatch, isRecommendation }) => {
 
     return (
         <Link to={pkg.isVolunteer ? `/volunteer-program/real-sri-lanka-experience` : `/package/${pkg.id}`} className={`package-card gyg-card ${isExactMatch ? 'exact-match' : ''} ${isRecommendation ? 'recommendation-card' : ''}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div className="gyg-card-img-wrapper">
-                <img src={pkg.image} alt={pkg.name} className="gyg-card-img" />
+            <div className="gyg-card-img-wrapper" style={{ position: 'relative' }}>
+                <img src={slideImages[currentImageIndex]} alt={pkg.name} className="gyg-card-img" />
+                
+                {slideImages.length > 1 && (
+                    <>
+                        <button 
+                            onClick={prevImage} 
+                            style={{ position: 'absolute', top: '50%', left: '10px', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.7)', color: '#000', border: 'none', borderRadius: '50%', width: '28px', height: '28px', cursor: 'pointer', zIndex: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <i className="bi bi-chevron-left" style={{ fontSize: '14px', strokeWidth: '1px' }}></i>
+                        </button>
+                        <button 
+                            onClick={nextImage} 
+                            style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.7)', color: '#000', border: 'none', borderRadius: '50%', width: '28px', height: '28px', cursor: 'pointer', zIndex: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <i className="bi bi-chevron-right" style={{ fontSize: '14px', strokeWidth: '1px' }}></i>
+                        </button>
+                        
+                        <div style={{ position: 'absolute', bottom: '15px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '6px', zIndex: 20 }}>
+                            {slideImages.map((_, idx) => (
+                                <div 
+                                    key={idx} 
+                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCurrentImageIndex(idx); }} 
+                                    style={{ width: '8px', height: '8px', borderRadius: '50%', background: currentImageIndex === idx ? '#fff' : 'rgba(255,255,255,0.5)', cursor: 'pointer', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }} 
+                                />
+                            ))}
+                        </div>
+                    </>
+                )}
                 
                 {/* Small Logo Badge on Left Bottom Corner (Only on Tour Packages page) */}
                 {isPackagesPage && (

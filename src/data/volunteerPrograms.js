@@ -79,14 +79,20 @@ export const volunteerPrograms = [
             { src: kandyTrain, caption: "Scenic Train Journey" },
             { src: ellaImg, caption: "Little Adam's Peak" },
             { src: mirissaImg, caption: "Mirissa Beach" },
-            { src: galleImg, caption: "Galle Fort" }
+            { src: galleImg, caption: "Galle Fort" },
+            { src: volunteerCommunity, caption: "Community Impact" },
+            { src: volunteerWildlife, caption: "Wildlife Experience" },
+            { src: volunteer1, caption: "Volunteer Team" },
+            { src: cultureExp, caption: "Cultural Exchange" },
+            { src: elephantImg, caption: "Elephant Safari" }
         ],
         highlights: [
             "27-day structured group itinerary balancing travel, culture, and volunteering",
             "Explore Kandy, Dambulla Cave Temple, Sigiriya Lion Rock, and Polonnaruwa",
             "Scenic hill country journey to Nuwara Eliya and train ride to Ella",
             "Relax on Mirissa beaches and explore the historic Galle Fort",
-            "Spend 14 days in Hikkaduwa volunteering on community-led grassroots projects"
+            "Spend 14 days in Hikkaduwa volunteering on community-led grassroots projects",
+            "Experience authentic Sri Lankan cuisine and warm local hospitality"
         ],
         sections: [
             {

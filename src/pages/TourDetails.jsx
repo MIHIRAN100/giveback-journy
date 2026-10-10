@@ -19,7 +19,6 @@ import southernSlide3 from '../assets/8eeee338cd666554a60655b357eaa8a8.jpg';
 import southernSlide4 from '../assets/1f8f75930498b2c5d3372acb2b1846b7.jpg';
 import southernSlide5 from '../assets/a735dcb73a82a89825015f4d36176403.jpg';
 import southernSlide6 from '../assets/054ff48fcfa601cd27a05ae96c945843.jpg';
-import SpotifyAdCard from '../components/SpotifyAdCard';
 import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
 import PromotedExperiences from '../components/PromotedExperiences';
 import { useCompare } from '../context/CompareContext';
@@ -2254,8 +2253,6 @@ const TourDetails = () => {
                                 </p>
                             </div>
                         </div>
-
-                        <SpotifyAdCard margin="10px 0 0 0" />
 
                         {/* Cost-Benefit Travel Card */}
                         <div style={{

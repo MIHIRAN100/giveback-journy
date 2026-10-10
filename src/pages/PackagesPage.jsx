@@ -5,7 +5,7 @@ import NewsletterSubscribeBanner from '../components/NewsletterSubscribeBanner';
 import SriLankaGlance from '../components/SriLankaGlance';
 
 import { tourPackages } from '../data/tours';
-import heroBg from '../assets/tour_packages_hero.jpg';
+import heroBg from '../assets/praveen-maleesha-gCjCxFUugoQ-unsplash.jpg';
 import brandLogo from '../assets/WhatsApp_Image_2026-07-27_at_11.04.19-removebg-preview.png';
 
 const PackagesPage = () => {

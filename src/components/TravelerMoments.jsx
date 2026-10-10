@@ -102,10 +102,7 @@ const MomentCard = ({ moment, activeCardId, setActiveCardId }) => {
                 <img src={moment.image} alt={moment.title} />
             )}
             
-            {/* Bottom Centered Social Handle */}
-            <div className="shorts-handle-overlay">
-                {moment.handle}
-            </div>
+            {/* Bottom Centered Social Handle Removed */}
         </div>
     );
 };

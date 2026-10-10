@@ -74,37 +74,37 @@ const REVIEW_PROFILES = [
 const REVIEW_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 const CRITICAL_REVIEWS_1_STAR = [
-    "Very disappointed with the organization. The vehicle air conditioning broke down on day 2 and was never fixed despite multiple complaints, making the long drives in 35-degree heat completely unbearable.",
-    "Terrible scheduling and logistics. We spent nearly the entire day stuck in heavy traffic and arrived at the main attraction right as the gates were closing. Customer support offered no help or compensation.",
-    "Would not recommend this operator. The driver kept diverting us to unrequested tourist gift shops to pressure us into buying overpriced tea and gems instead of following the agreed itinerary.",
-    "Extremely poor communication. The local coordinator changed our schedule multiple times without notifying us in advance, and the booked accommodation was dirty and noisy.",
-    "Chaotic planning from start to finish. Tickets that were supposed to be pre-booked were completely forgotten, so we had to skip a major highlight and sit in a crowded van for hours.",
-    "A very frustrating experience. The vehicle was old with broken seats, the driver was constantly on his phone while speeding, and management didn't care when we raised safety concerns.",
-    "Overpriced for what was delivered. Subpar guesthouses, rushed visits, and we felt like tourist wallets rather than valued guests throughout the trip."
+    "The weather wasn't on our side during the trip, but the guide did their best to keep our spirits up. A beautiful country overall!",
+    "I got a bit car sick on the winding roads to the mountains, but the destinations themselves were absolutely stunning.",
+    "We had some minor delays during the trip, but the local food completely made up for it. Would definitely come back.",
+    "The itinerary was a little too packed for me, but it's undeniable that Sri Lanka has amazing sights to offer.",
+    "The tropical heat was a bit intense for us, but the cool breeze at the beaches was a great relief.",
+    "I wish we had more free time to relax, but we did manage to see all the major highlights on our bucket list.",
+    "A few bumps along the road, but the warmth of the locals left a lasting positive impression on us."
 ];
 
 const CRITICAL_REVIEWS_2_STAR = [
-    "The destinations themselves are beautiful, but the pacing was exhausting. We spent 6 to 7 hours inside the van each day with barely 45 minutes to see the actual sights.",
-    "Disappointed with several aspects. The driver drove very aggressively on narrow mountain roads which made several of us car-sick, and the hotels provided were far below the advertised standard.",
-    "Not great value for the price. We spent way too much time at commercial spice and gem workshops where we felt pressured to buy, cutting into our time at the cultural sites.",
-    "Poor time management. Several excursions started very late due to delays by the driver, leaving us to hike key trails under the scorching midday sun.",
-    "The itinerary looked great on paper, but in reality it felt rushed and disjointed. Rooms were damp and musty, and the promised Wi-Fi was nonexistent throughout the stay.",
-    "Too much time stuck in traffic and too little flexibility. When rain washed out one of our morning plans, there was no backup activity or alternative itinerary provided.",
-    "The guide spoke very limited English and couldn't share much about the history or culture. Felt like we just paid for an expensive taxi driver rather than a guided tour.",
-    "Disappointing accommodation choices. Two of the hotels had loud street noise throughout the night and air conditioning units that barely cooled the room."
+    "Some of the hotels were a bit basic, but the incredible warmth of the Sri Lankan people made it a memorable trip.",
+    "There was a lot of driving involved between cities, but the views of tea plantations from the window were breathtaking.",
+    "The schedule felt a bit rushed at times, but we did get to see everything we wanted to. Very eventful!",
+    "A few minor miscommunications before the trip, but once we arrived, the on-ground team was super helpful and kind.",
+    "The historical sites are great, though we recommend bringing a good pair of walking shoes and plenty of water.",
+    "We spent quite a bit of time in the vehicle, but our driver made sure we were comfortable and played great local music.",
+    "A bit exhausting with early morning starts, but catching the sunrise over the mountains made it worth it.",
+    "Good overall, just wish we had an extra day in the itinerary to just sit by the pool and do nothing."
 ];
 
 const CRITICAL_REVIEWS_3_STAR = [
-    "Mixed experience overall. The sights and scenery were gorgeous, but the itinerary was overly packed with very little free time to actually relax.",
-    "Decent trip, but has room for improvement. The historical sites were lovely, but the lunch stops chosen by the driver were overpriced tourist buffets rather than authentic local food.",
-    "Average overall. Visiting the key highlights was memorable, but the long driving distances between cities were quite tiring and the van suspension was very stiff.",
-    "Good destinations, but the pacing felt rushed. It felt like checking items off a checklist rather than actually immersing ourselves in the local culture.",
-    "The mountain views and beaches were fantastic, but our hotel in the hill country was dated and noisy. Would recommend shorter driving days.",
-    "A bit of a mixed bag. The driver was polite and safe, but there was too much commercial stopping at souvenir shops along the way.",
-    "Okay tour. The scenery was stunning, but bad weather disrupted our outdoor hike and the guide didn't have an alternative plan ready.",
-    "Beautiful island, but felt somewhat commercialized. More authentic local dining and cultural interaction would have made this a much better experience.",
-    "Pacing could be much better. Early 5:30 AM wake-ups every morning left us drained by day 4, though the sunrise views were indeed pretty.",
-    "The attractions themselves are great, but the logistics and communication from the office before arrival were quite clumsy and slow."
+    "A solid trip! The days are long and full of activities, which is great if you want to see a lot, though a bit tiring.",
+    "Good experience overall. The food and culture are amazing, even if the travel times between cities are long.",
+    "Decent value. The sights are spectacular, just be prepared for the tropical heat and humidity!",
+    "Loved the beaches and mountains. A few minor hiccups along the way, but nothing that ruined a wonderful vacation.",
+    "The pacing was quite fast, but it meant we got to experience both the cultural triangle and the south coast in one trip.",
+    "Overall a good time. Our guide was very knowledgeable, though some of the stops felt a bit crowded with other tourists.",
+    "Enjoyable holiday. The wildlife safari was the absolute peak, even if the early wake-up call was tough.",
+    "Beautiful island, vibrant culture, and delicious curries. We had a good time despite some long driving days.",
+    "A nice overview of Sri Lanka. The train ride was fantastic, though the train itself was quite busy.",
+    "Good itinerary. We felt well taken care of by the team and enjoyed learning about the rich history of the island."
 ];
 
 const MODERATE_REVIEWS_4_STAR = [
